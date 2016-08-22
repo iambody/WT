@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">微糖商城</string>
+    <string name="action_settings">Settings</string>
+    <!-- 程序异常string -->
+    <string name="check_net">请检查网络</string>
+    <string name="app_xieyi">《微糖商城用户协议》</string>
+    <string name="app_xieyi1">用户协议</string>
+    <string name="network_not_connected">网络连接失败，请检查网络设置</string>
+    <string name="xml_parser_failed">数据解析异常</string>
+    <string name="io_exception_error">文件流异常</string>
+    <string name="http_status_code_error">网络异常，错误码：%d</string>
+    <string name="http_exception_error">网络异常，请求超时</string>
+    <string name="socket_exception_error">网络异常，读取数据超时</string>
+    <string name="app_run_code_error">应用程序运行时异常</string>
+    <string name="app_error">应用程序错误</string>
+    <string name="app_error_message">很抱歉，应用程序出现错误，即将退出。\n请提交错误报告，我们会尽快修复这个问题！</string>
+    <string name="submit_report">提交报告</string>
+    <string name="net_error_tip">网络已断开请设置网络</string>
+    <string name="nullstr">--</string>
+    <string name="viewpager_indicator">%1$d/%2$d</string>
+    <!-- 极光推送 -->
+    <string name="hello">Hello World, JPush!</string>
+    <string name="tag_hint">Tag为大小写字母，数字，下划线,中文， 多个用以逗号分隔</string>
+    <string name="alias_hint">Alias为大小写字母，数字，下划线</string>
+    <string name="style_hint">style为数字</string>
+    <string name="error_style_empty">style不能为空</string>
+    <string name="error_alias_empty">alias不能为空</string>
+    <string name="error_tag_empty">tag不能为空</string>
+    <string name="error_tag_gs_empty">格式不对</string>
+    <string name="error_network">网络连接异常,初始化失败 请检查网络！</string>
+    <string name="logining">程序在后台执行, 请查看日志！</string>
+    <string name="setting_su">设置成功</string>
+    <string name="take_photo">拍照</string>
+    <!-- 极光推送************************ -->
+    <!-- @author大兔兔 Xlistview -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_last_time">上次更新时间:</string>
+    <string name="xlistview_footer_hint_ready">查看更多</string>
+    <string name="xlistview_footer_hint_normal">更多</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">玩命加载中···</string>
+    <string name="loading">玩命加载中···</string>
+    <string name="edgoodloading">编辑中···</string>
+    <string name="home_souso">搜索微糖商品/店铺</string>
+    <string name="dataerror">数据异常</string>
+    <!-- @author大兔兔 Xlistview -->
+    <!-- 程序异常string -->
+    <string name="sure">确定</string>
+    <string name="cancle">取消</string>
+    <string name="sousou">搜索</string>
+    <string name="tab_home">首页</string>
+    <string name="tab_shop">店铺</string>
+    <string name="tab_show">SHOW</string>
+    <string name="tab_shopbus">购物车</string>
+    <string name="tab_center">我的</string>
+    <string name="test">一男子在闹市骑摩托撞昏了一个陌生的老汉！ 男子惊吓的不知所措！围观群众越来越多！突然，该男抱住老汉，声泪俱下的喊道：“爹，你等着我，我这就去给你找医生！”说后，就跑掉了。。。老汉挣扎着愤怒的喊道：“给老子回来！”众人纷纷感慨：“这儿子当的真孝顺！”</string>
+    <string name="lijijiesuan">取消</string>
+    <string name="addbus">加入购物车</string>
+    <!-- 我点店铺界面的string -->
+    <string name="shop_tody_incom">今日收入</string>
+    <string name="shop_tody_number">今日销量</string>
+    <string name="shop_tody_inverstor">当日访客</string>
+    <string name="shop_all_income">累计收入(元)</string>
+    <string name="shop_tuandui_num">团队人数</string>
+    <string name="shop_tuandui_inf">团队信息</string>
+    <string name="shop_xiaji_num">直属下级人数</string>
+    <string name="grad1">发布商品</string>
+    <string name="grad2">订单管理</string>
+    <string name="grad3">渠道管理</string>
+    <string name="grad4">采购订单</string>
+    <string name="grad5">品牌代理</string>
+    <string name="grad6">商品管理</string>
+    <string name="grad7">销售统计</string>
+    <string name="grad8">店铺预览</string>
+    <string name="grad9">品牌入驻</string>
+    <!-- 搜索 界面 -->
+    <string name="sousou_hint">搜索微糖商品</string>
+    <string name="sousou_shop_hint">搜索微糖店铺</string>
+    <string name="sousou_remen">热门商品</string>
+    <string name="sousou_history">历史搜索</string>
+    <string name="shop_sousou">搜索店铺</string>
+    <string name="sousou_shopnei_hint">搜索店铺内商品</string>
+    <!-- 品牌详情 -->
+    <string name="brand_detail_title_txt">品牌详情</string>
+    <string name="brand_detail_apply">申请代理</string>
+    <!-- 各种title -->
+    <string name="shop_oder_manger">订单管理</string>
+    <string name="shop_oder_purchase">采购订单</string>
+    <string name="shop_oder_channel">渠道管理</string>
+    <string name="shop_oder_brand_daili">品牌代理</string>
+    <string name="shop_oder_add_good">发布商品</string>
+    <string name="shop_good_manger">商品管理</string>
+
+    <!-- 渠道管理页面 -->
+    <string name="be_junior">成为下级</string>
+    <string name="develop_junior">发展下级</string>
+    <string name="invite_superior">发展上级</string>
+    <string name="invite_record">发展记录</string>
+    <string name="this_week_sales">本周销量</string>
+    <string name="this_week_goods_in">本周进货量</string>
+    <string name="my_superior">我的上级</string>
+    <string name="my_junior">我的下级</string>
+    <string name="shuru_initor_code">请输入被邀请人手机号</string>
+    <string name="dingxian">定向邀请</string>
+    <string name="bushuruerweimawei">(不输入生成二维码为非定向邀请二维码)</string>
+    <string name="toerweima">成生二维码</string>
+    <string name="yaoqingshangji_yaoqing">请填写上级信息</string>
+    <string name="dailipinpai">代理品牌</string>
+    <string name="yaoiqng">邀请</string>
+    <string name="chanle_t_name">请填写姓名</string>
+    <string name="chanle_t_phone">请填写手机号</string>
+    <string name="chanle_t_brand">请填写品牌名</string>
+    <string name="chanle_t_teamnumber">请填写团队数</string>
+    <string name="chanle_t_teamnuminf">请填写团队信息</string>
+    <string name="tijiaochengg">提交成功</string>
+    <string name="phone_right">请填写正确手机号</string>
+    <!-- 二维码相关 -->
+
+    <string name="camera_open_notice">您已经开启了灯光！</string>
+    <string name="camera_close_notice">您已经关闭了灯光！</string>
+    <string name="camera_problem">抱歉，您相机出现问题。您可能需要重启设备。</string>
+    <string name="framwork_problem">二维码扫描暂时出现问题。您重启再试。</string>
+    <string name="msg_share_subject_line">这是我所扫描条码的内容</string>
+    <string name="msg_default_mms_subject">Hi</string>
+    <string name="msg_intent_failed">抱歉，无法打开所需软件。 条码内容可能无效。</string>
+    <string name="button_ok">确定</string>
+    <string name="result_uri">网址路径</string>
+    <string name="button_1">浏览器打开</string>
+    <string name="button_2">内容</string>
+    <string name="button_3">其它标题</string>
+    <string name="result_title_default">网址路径</string>
+    <string name="qrcode_notice">将二维码放入框内，即可自动扫描。</string>
+    <string name="openorclose_light">打开或关闭灯光</string>
+    <string name="qrcode_empty"></string>
+    <string name="qrcode_open">用浏览器打开</string>
+    <string name="paramete_error">参数正确，请重新扫描</string>
+
+    <!-- 成为下级 -->
+
+
+    <!-- 发展下线 -->
+    <string name="select_branding_business_txt">请选择品牌商</string>
+    <string name="select_level_txt">请选择级别</string>
+
+    <!-- 我的 -->
+    <string name="zhifubao">支付宝</string>
+    <string name="yinhangka">银行卡</string>
+    <!-- 我的show圈 -->
+    <string name="center_show">我的SHOW圈</string>
+    <string name="center_oder">我的订单</string>
+    <string name="center_yaoqingma">我的邀请码</string>
+    <string name="center_wallet">我的钱包</string>
+    <string name="center_kaquan">我的卡券</string>
+    <string name="center_good_guanzhu">商品关注</string>
+    <string name="center_shop_collect">店铺收藏</string>
+    <string name="center_jilu">浏览记录</string>
+    <string name="zanwushow">暂无更多Show</string>
+    <!-- 商户店铺 -->
+    <string name="shopdetail_guanzhu">已收藏人数</string>
+    <string name="shopdetail_fangke">访客</string>
+    <string name="shopdetail_zizhi">    查看    </string>
+    <string name="shopdetail_jiaguanzhu">+关注</string>
+
+    <!-- 购物车 -->
+    <string name="shopbus_all">全部商品</string>
+    <string name="shopbus_lingshou">零售商品</string>
+    <string name="shopbus_caigou">采购商品</string>
+    <string name="shopbus_guige">规格: </string>
+
+    <!-- 商品详情 -->
+    <string name="buy">买</string>
+    <string name="yijiandaimai">一键代买</string>
+    <string name="fahuodi">发货地：</string>
+    <string name="yunfei">运费：</string>
+    <string name="jianyilingshou">售价:</string>
+    <string name="chakanshow">查看商品show</string>
+    <string name="tuwendetail">图文详情</string>
+    <!-- 我的钱包 -->
+    <string name="bank_card_manage">银行卡管理</string>
+    <string name="alipay_manage">支付宝管理</string>
+    <string name="property_detail">资金明细</string>
+    <string name="lable_bank_card_numb">银行卡卡号</string>
+    <string name="lable_alipay_numb">支付宝账号</string>
+    <string name="alipay_real_name">真实姓名：</string>
+    <string name="i_agree_bank_transfer_agreement">已阅读并同意</string>
+    <string name="bank_transfer">《银行转账授权协议》</string>
+    <string name="txt_filter">筛选</string>
+    <string name="add_bank_card">添加银行卡</string>
+    <string name="select_bank">选择银行</string>
+    <string name="lable_add_alipay">添加支付宝</string>
+    <string name="please_select_bank">请选择银行</string>
+    <string name="alipay_limit_time_money">00:00:00-23:59:59期间转出，支持5万额度</string>
+    <string name="this_time_allow_transfer_money">本次最多可转出200.00元</string>
+    <string name="alipay_money">金额</string>
+    <string name="apply_withdraw_deposit">申请</string>
+    <string name="alipay_account_txt">支付宝账户：</string>
+    <string name="no_alipay_desc">您还没有绑定支付宝账户，快去绑定吧</string>
+    <string name="alipay_real_name_format">真实姓名：%1$s</string>
+    <string name="lable_alipay_numb_format">支付宝账号：%1$s</string>
+    <string name="lable_bank_numb_format">尾号%1$s快捷</string>
+    <string name="lable_bank_numb_format_1">(尾号%1$s快捷)</string>
+    <string name="property_detail_select_all">全部</string>
+    <string name="property_detail_buy_good">购物</string>
+    <string name="property_detail_top_up">充值</string>
+    <string name="property_detail_withdraw">提现</string>
+    <string name="property_detail_sell_record">销售</string>
+
+    <!-- 个人资料 -->
+    <string name="personal_data">个人资料</string>
+    <string name="authentication">实名认证</string>
+    <string name="address_manage">地址管理</string>
+    <string name="account_safe">账户安全</string>
+    <string name="about_w_town">关于微糖</string>
+    <string name="txt_phone_numb">手机号</string>
+    <string name="new_consignee_address">新建收货人地址</string>
+    <string name="txt_save">保存</string>
+    <string name="detail_address">详细地址</string>
+    <string name="contact_phone_numb">联系电话</string>
+    <string name="txt_consignee">收   货   人 </string>
+    <string name="consignee_name">收货人姓名</string>
+    <string name="enter_detail_address">请填写详细地址……</string>
+    <string name="in_location">所在地区</string>
+    <string name="reset_pwd">重置支付密码</string>
+    <string name="set_pwd">设置支付密码</string>
+    <string name="real_name">姓名</string>
+    <string name="txt_enter_real_name">请填入真实姓名</string>
+    <string name="id_numb">身份证</string>
+    <string name="txt_enter_id_numb">请输入身份证号码</string>
+    <string name="next_step">下一步</string>
+    <string name="txt_enter_phone_numb">请输入手机号码</string>
+    <string name="default_address">默认地址</string>
+    <string name="txt_edit">编辑</string>
+    <string name="txt_delete">删除</string>
+    <string name="vido_error">视频播放出错请稍后重试</string>
+    <!-- 店铺资料 -->
+    <string name="shop_data">店铺资料</string>
+    <string name="shop_icon">店铺头像</string>
+    <string name="shop_id">店铺号</string>
+    <string name="long_click_copy">(长按可复制店铺号)</string>
+    <string name="shop_cover">店铺封面</string>
+    <string name="shop_another_name">店铺名称</string>
+    <string name="shop_introduce">店铺介绍</string>
+    <string name="goods_count">共%1$d件商品</string>
+    <string name="good_price">￥%1$.2f</string>
+    <string name="post_price">(含运费￥%1$.2f)</string>
+    <string name="delete">删除</string>
+    <!-- 订单管理 -->
+    <string name="tv_commentview_name">"收 货 人 ："</string>
+    <string name="daifu_confirm_order">确认订单</string>
+    <string name="daifu_contact">联系方式：</string>
+    <string name="daifu_consignee">"收 货 人 ："</string>
+    <string name="daifu_create_time">下单时间：</string>
+    <string name="daifu_order_id">订单编号：</string>
+    <string name="daifu_order_detail">订单详情</string>
+    <string name="daifu_total_price">总价</string>
+    <string name="faifu_order_modity">修改订单</string>
+    <string name="faifu_order_modity_before_count">修改前数量：X%1$s</string>
+    <string name="faifu_order_modity_after_count">修改后数量：X%1$s</string>
+    <string name="daifu_modify_total_price">总价：</string>
+    <string name="daifu_total_price_modify_after">总价：￥100.00(含运费￥10.00)</string>
+    <string name="daifu_finish">完成</string>
+    <string name="daifu_edit">编辑</string>
+    <string name="daifu_good_standard">净含量：</string>
+    <string name="order_id">订单编号：</string>
+    <string name="ordering_time">下单时间：</string>
+    <string name="pay_time">付款时间：</string>
+    <string name="modify_order">修改订单</string>
+    <string name="look_express">查看物流</string>
+    <string name="order_detail">订单详情</string>
+    <string name="send_out_good">发货</string>
+    <string name="consignee_name_order">收 货 人 ：%1$s</string>
+    <string name="consignee_detail_address">收货地址：%1$s</string>
+    <string name="confirm_order">确认订单</string>
+    <string name="send_out_good_title">发货</string>
+    <string name="total_price">总价</string>
+    <string name="fast_send_out">快些发货……</string>
+    <string name="buyer_message">买家留言</string>
+    <string name="no_logistics_send_out">无需物流发货</string>
+    <string name="logistics_send_out">物流发货</string>
+    <string name="select_logistics_company_title">请选择物流公司</string>
+    <string name="express_number_hint">请输入快递单号</string>
+    <string name="i_agree_refund">同意退款</string>
+    <string name="i_not_agree_refund">不同意退款</string>
+
+    <!-- 登录界面 -->
+    <string name="Real_auth_title">实名认证</string>
+    <string name="login_yijianlogin">微信一键登录</string>
+    <string name="login_phone_number">手机号</string>
+    <string name="get_sms_code">获取验证码</string>
+    <string name="login">登录</string>
+    <string name="submit_real_auth">提交认证</string>
+    <string name="wanchengyanzheng">完成验证</string>
+    <string name="txtresuorce_phoneerror">你猜你输入的手机号正确么( ˇˍˇ )</string>
+    <string name="txtresuorce_getcode">获取验证码</string>
+    <string name="txtresuorce_seconde">秒</string>
+    <string name="txtresuorce_getcodeerror">获取验证码失败</string>
+    <string name="txtresuorce_getok">获取成功</string>
+    <string name="txtresuorce_registok">恭喜您注册成功</string>
+    <string name="other_login">其他登录方式</string>
+    <string name="login_login_wx">微信登录</string>
+    <string name="login_tianxie_initer_cose">填写邀请码</string>
+    <string name="regist_clause">我同意《微糖注册协议》</string>
+    <string name="login_realid_hint_name">请输入真实姓名</string>
+    <string name="login_realid_hint_id">请输入身份证号</string>
+    <string name="login_agreen_xieyi">我已阅读并同意</string>
+    <!-- view -->
+    <string name="guige">规格: </string>
+    <string name="queding">确定</string>
+    <string name="quxiao">取消</string>
+    <string name="zhijieshangjia">直接上架</string>
+    <string name="shangjiazhuanfa">上架转发</string>
+    <!-- 品牌入驻页面 -->
+    <string name="brand_join_rule">品牌入驻规则</string>
+    <string name="brand_introduce">品牌介绍</string>
+    <string name="brand_join_confirm">提交</string>
+    <string name="brand_join">品牌入驻</string>
+    <string name="apply_proxy_rule">代理规则</string>
+    <string name="introduce_youself">自我介绍</string>
+    <string name="apply_proxy">申请代理</string>
+
+    <!-- 我的卡卷页面 -->
+    <string name="select_all">全选</string>
+    <string name="select_coupons_count">已选用2张</string>
+    <string name="deduction_how_money">可抵扣￥400.00元</string>
+    <string name="coupons_confirm">确认</string>
+    <string name="delivery_address">收货地址：%1$s</string>
+    <string name="my_coupons_validity">%1$s至%2$s</string>
+
+    <!-- 店铺品牌代理页面 -->
+    <string name="brand_agent_agency_time">代理时间：%1$s</string>
+    <string name="brand_agent_look_certificate">查看证书</string>
+    <string name="brand_agent_apply_level">申请升级</string>
+    <string name="brand_agent_level_0">特级代理</string>
+    <string name="brand_agent_level_1">一级代理</string>
+    <string name="brand_agent_level_2">二级代理</string>
+    <string name="brand_agent_level_3">三级代理</string>
+    <string name="brand_agent_level_4">四级代理</string>
+    <string name="brand_agent_level_5">五级代理</string>
+    <string name="add_brand_item_desc">您还没有任何品牌，快去代理吧</string>
+    <!-- 收银台页面 -->
+    <string name="cashier_desk">收银台</string>
+    <string name="cashier_desk_order_id">订单编号：</string>
+    <string name="cashier_desk_create_time">下单时间：</string>
+    <string name="cashier_desk_account_balance">账户余额</string>
+    <string name="cashier_desk_now_account_balance">当前余额：</string>
+    <string name="cashier_desk_forget_psw">忘记密码</string>
+    <string name="cashier_desk_need_pay">应支付：</string>
+    <string name="cashier_desk_go_pay">去支付</string>
+    <string name="cashier_desk_should_pay">应付金额：￥100.00</string>
+    <string name="cashier_desk_weixin_pay">微信支付</string>
+    <string name="cashier_desk_alipay_pay">支付宝支付</string>
+    <string name="cashier_desk_yinlian_pay">银联支付 </string>
+    <string name="add_rule_comfrim">确定</string>
+
+    <!-- 添加宝贝页面 -->
+    <string name="add_good_rule_txt">商品规格</string>
+    <string name="add_good_category">类目</string>
+    <string name="add_good_rule_size">大小</string>
+    <string name="add_good_rule_color">颜色</string>
+    <string name="add_good_rule_retail_price">建议零售价</string>
+    <string name="add_good_rule_inventory">库存</string>
+    <string name="add_good_rule_junior_commission">下级代卖佣金</string>
+    <string name="go_on_add_rule">添加规格</string>
+    <string name="add_good_post_price">运费</string>
+    <string name="add_good_free_post_price">0元默认包邮</string>
+    <string name="allow_modify_junior_price">是否允许下级修改价格</string>
+    <string name="add_good_preview">预览</string>
+    <string name="add_good_direct_sell">直接上架</string>
+    <string name="add_good_title">商品标题</string>
+    <string name="chongxinluzhi">重新录制</string>
+    <string name="add_address">请选择发货地</string>
+    <string name="add_good_inf">添加商品信息</string>
+    <string name="add_good_miaoshuf">商品描述</string>
+    <string name="add_good_fahuodi">发货地</string>
+    <!-- 实名认证页面 -->
+    <string name="authentication_desc">完成身份验证可核对真实身份\n保障合法权益</string>
+    <string name="please_input_real_name">请输入真实姓名</string>
+    <string name="please_input_number_id">请输入身份证号</string>
+    <string name="authentication_next_step">下一步</string>
+    <string name="please_input_6_bit_reset_psd">输入密码</string>
+    <string name="please_input_again_6_bit_reset_psd">再次确认密码</string>
+    <string name="the_reset_psd_modify_finish">支付密码修改完成</string>
+    <string name="two_reset_psd_not_equals">两次密码不一致请重新输入</string>
+    <string name="anthentication_finish">验证完成</string>
+    <string name="please_input_your_real_name">请输入真实姓名</string>
+    <string name="please_input_your_number_id">请输入身份证号码</string>
+    <string name="the_number_id_format_error_input_restart">身份证号码格式有误，请重新输入</string>
+
+    <!-- 购物车生成订单 -->
+    <string name="oderbeing_tijiaooder">    提交订单     </string>
+    <string name="kaquan">卡券</string>
+    <string name="lijian">立减:</string>
+    <string name="needpay">还需支付:</string>
+    <string name="address">收货地址:</string>
+    <string name="shouhuoren">收 货 人 ：</string>
+    <string name="phone">电话:</string>
+    <string name="querendizhi">请确定收货地址</string>
+    <string name="nocoup">暂无卡券</string>
+    <!-- 查看资质页面 -->
+    <string name="look_aptitude">品牌</string>
+    <string name="my_aptitude_look_certificate">查看证书</string>
+    <string name="my_aptitude_become_agent">成为代理</string>
+
+    <!-- 申请退款页面 -->
+    <string name="apply_tuikuan">申请退款</string>
+    <string name="tuikuan_cause">退款原因</string>
+    <string name="select_tuikuan_cause_must_one">请选择退款原因:</string>
+    <string name="apply_tuikuan_btn">申请退款</string>
+    <string name="apply_tuikuan_select_other">其它</string>
+
+    <!-- 我的Show进来的资料设置界面 -->
+    <string name="my_show_data_set">资料设置</string>
+    <string name="select_privice">请选择省市区</string>
+    <string name="connect_shangjia">联系商家</string>
+
+    <!-- 关于我们 -->
+    <string name="service_clause">服务条款</string>
+    <string name="private_statement">隐私声明</string>
+    <string name="new_version_update">检查更新</string>
+    <string name="function_introduce">用户协议</string>
+    <string name="opinion_feedback">功能介绍</string>
+    <string name="contact_service">联系客服</string>
+    <string name="grade_to_app">给软件评价</string>
+    <string name="wt_app_version">版本1.0.0</string>
+    <string name="wt_app_new_version">是最新版本</string>
+    <!-- 关于我们之意见反馈 -->
+    <string name="enter_your_valuable_opinion">请输入您的建议，我们将不断改进...</string>
+    <string name="enter_your_contact">请输入您的联系方式：邮箱或手机号</string>
+    <string name="submit_opinion">提交</string>
+    <string name="common_question">常见问题</string>
+    <string name="common_question1">小视频自动循环播放会产生额外流量</string>
+    <string name="common_question2">我能在电脑上使用微糖吗？</string>
+    <string name="common_question3">如何区分实库和虚库？</string>
+    <string name="common_question4">无法上传照片</string>
+    <string name="shurushopid">请输入店铺id</string>
+
+    <!-- 发货地址页面 -->
+    <string name="save_send_out_address">保存发货地址</string>
+    <string name="enter_send_out_detail_address">请输入详细地址</string>
+    <string name="send_out_address">发货地址</string>
+    <string name="please_select_address">请选择地区</string>
+
+    <!-- 品牌 -->
+    <string name="pinpaimiaoshu">品牌描述</string>
+    <!-- 登录 -->
+    <string name="phone_is_null">手机号不能为空</string>
+    <string name="phone_is_long">请输入11位手机号</string>
+    <string name="code_is_null">验证码不能为空</string>
+    <string name="login_title">登录</string>
+    <!-- 添加宝贝 -->
+    <string name="selectformgally">从相册中选取</string>
+    <string name="addpic">添加照片</string>
+    <string name="addvido">添加视频</string>
+    <string name="benzhou">   近一周  </string>
+    <string name="benyue">  近一月   </string>
+    <string name="benji">  近一季   </string>
+
+    <!-- 商品管理 -->
+    <string name="add">添加</string>
+    <!-- 图片浏览 -->
+    <string name="only_choose_num">超出可选图片张数</string>
+    <string name="finish">完成</string>
+    <string name="invalidSD">sdcard无效或没有插入！</string>
+    <string name="photo">选择相册</string>
+    <string name="album">相册</string>
+    <string name="preview">预览</string>
+    <string name="unfinished">完成</string>
+    <string name="camera_cancel">取消</string>
+    <string name="no_photo">相册没有图片</string>
+    <!-- 我的邀请码页面 -->
+    <string name="my_invite_code_tips">我的邀请码</string>
+    <string name="my_invite_code_copy">  复制   </string>
+    <string name="invite_frends">邀请好友</string>
+    <string name="my_invite_code_share_to_wx">微信</string>
+    <string name="my_invite_code_share_to_frends">朋友圈</string>
+
+    <!-- 我的采购单之订单详情页面 -->
+    <string name="purchase_contact_seller_txt">联系卖家</string>
+    <string name="purchase_cancel_order">取消订单</string>
+    <string name="purchase_to_pay">去付款</string>
+    <string name="purchase_apply_tuikuan">申请退款</string>
+    <string name="purchase_remind_send_out">提醒发货</string>
+    <string name="purchase_delay_shouhuo">延期收货</string>
+    <string name="purchase_confirm_shouhuo">确认收货</string>
+    <string name="purchase_arbitration">仲裁中</string>
+    <string name="purchase_buy_again">再次购买</string>
+    <string name="look_express_speed">查看物流</string>
+    <string name="title_property_detail_all">全部资金明细</string>
+    <string name="title_property_detail_buy_good">购物资金明细</string>
+    <string name="title_property_detail_top_up">充值资金明细</string>
+    <string name="title_property_detail_withdraw">提现资金明细</string>
+    <string name="title_property_detail_sell_record">销售资金明细</string>
+
+    <!-- 商品分享&&&&&&&&&&&&&&&& -->
+    <string name="szhuan_saying">说点什么吧...</string>
+    <string name="share">分享</string>
+    <string name="uploading">正在上传中</string>
+    <string name="kongkong">空空如也....</string>
+    <string name="changesort">更改类目会删除已添加的规格</string>
+    <string name="chongzhi_vido">是否重新录制？</string>
+    <string name="shuruyunfei">请输入运费</string>
+    <string name="check_new_version">检测到新版本</string>
+    <string name="hulie_version">取消</string>
+    <string name="updown_version">升级</string>
+    <string name="new_version">新版本</string>
+
+    <!-- 消息 -->
+    <string name="wt_helper">微糖客服</string>
+    <string name="wt_weburl">http://www.v-town.cc</string>
+    <!-- 品牌 -->
+    <string name="brand_inf">品牌详情</string>
+    <string name="invter_share_conten">微糖通过其专业的技术团队，力求为每一个商家打造强大公信力，为每个消费者创造购物的便捷和良好的用户体验</string>
+    <string name="yinlian_pay_payfuzhi">网址已复制</string>
+    <string name="noshimingrenz">您还没有进行实名认证</string>
+    <string name="share_app">微糖商城App | </string>
+    <string name="getzs_loading">获取证书中···</string>
+    <string name="share_quan_str">新用户注册送5元优惠券\n通过邀请码邀请好友注册并登录各得20元</string>
+    <string name="qrcode_shop_desc">扫一扫上面二维码图案,关注我的店铺</string>
+    <string name="qrcode_regist_desc">扫一扫上面二维码图案,注册可得20元哦</string>
+    <string name="brand_add_us">您的品牌想要入住微糖商城,请联系我们,赶快行动吧~</string>
+
+    <!-- shop -->
+    <string name="brand_ruzhu">免费高效的进口化妆品卫生许可注册备案服务。成功率100%，周期不超过4个月。</string>
+    <string name="brand_runzhu2">专业全面的品牌代运营服务，涵盖从品牌推广、活动策划、产品设计、客户管理、订单管理、客服咨询等。</string>
+    <string name="brand_ruzhu_label"> 我们给您提供的服务有:</string>
+   
+
+</resources>

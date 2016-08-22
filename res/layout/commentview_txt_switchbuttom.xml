@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:background="@color/white"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/tv_switch_button_lable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/grey"
+         />
+
+    <io.vtown.WeiTangApp.comment.view.custom.switchButtonView.EaseSwitchButton
+        android:id="@+id/switch_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="right" 
+        android:contentDescription="@null"
+        
+        />
+
+</RelativeLayout>

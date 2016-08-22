@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/center_wallet_select_bank_listview_item_padding"
+         >
+
+        <ImageView
+            android:id="@+id/iv_bank_select_icon"
+            android:layout_width="@dimen/center_wallet_select_bank_listview_item_icon_width"
+            android:layout_height="@dimen/center_wallet_select_bank_listview_item_icon_width"
+           />
+
+        <TextView
+            android:id="@+id/tv_bank_card_select_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:text="@string/nullstr"
+            android:layout_marginLeft="@dimen/center_wallet_select_bank_listview_item_name_txt_margin"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/center_wallet_select_bank_listview_item_name_txt_size"
+            android:textStyle="bold"
+            
+            />
+        
+    </LinearLayout>
+
+</LinearLayout>

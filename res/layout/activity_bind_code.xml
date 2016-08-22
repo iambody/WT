@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="您将要绑定的邀请码"
+        android:textColor="@color/gray" />
+
+    <TextView
+        android:id="@+id/bindcode_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:background="@drawable/shap_bind_code"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/TextColorWhite" />
+
+    <TextView
+        android:id="@+id/bindcode_submint_bt"
+        style="@style/bt_textview_comment"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/select_fen_to_gray"
+        android:padding="10dp"
+        android:text="绑定" />
+
+</LinearLayout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="CircleTextView">
+        <attr name="TextColor" format="color" />
+        <attr name="TextSize" format="dimension" />
+        <attr name="TextPadding" format="dimension" />
+        <attr name="BorderColor" format="color" />
+        <attr name="BorderWidth" format="dimension" />
+        <attr name="CircleColor" format="color" />
+    </declare-styleable>
+
+    <!-- SwitchButton -->
+    <declare-styleable name="EaseSwitchButton">
+        <attr name="switchOpenImage" format="reference" />
+        <attr name="switchCloseImage" format="reference" />
+        <attr name="switchStatus">
+            <enum name="open" value="0" />
+            <enum name="close" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <!-- 短视频 -->
+    <declare-styleable name="MovieRecorderView">
+
+        <!-- 开始是否打开摄像头 -->
+        <attr name="is_open_camera" format="boolean" />
+        <!-- 一次拍摄最长时间 -->
+        <attr name="record_max_time" format="integer" />
+        <!-- 视频分辨率宽度 -->
+        <attr name="width" format="integer" />
+        <!-- 视频分辨率高度 -->
+        <attr name="height" format="integer" />
+    </declare-styleable>
+
+    <!-- 自定义小圆点 -->
+    <declare-styleable name="DotView">
+        <attr name="Dotradius" format="integer"></attr>
+        <attr name="Dotcolor" format="color"></attr>
+    </declare-styleable>
+
+    <string-array name="address">
+        <item>北京</item>
+        <item>柳州</item>
+        <item>桂林</item>
+        <item>大庆</item>
+        <item>大庆</item>
+        <item>石家庄</item>
+        <item>邯郸</item>
+        <item>济南</item>
+        <item>青岛</item>
+        <item>淄博</item>
+        <item>枣庄</item>
+        <item>合肥</item>
+        <item>蚌埠</item>
+        <item>芜湖</item>
+        <item>淮南</item>
+        <item>亳州</item>
+        <item>阜阳</item>
+        <item>广州</item>
+        <item>深圳</item>
+        <item>汕头</item>
+        <item>惠州</item>
+        <item>珠海</item>
+        <item>揭阳</item>
+        <item>佛山</item>
+        <item>昆明</item>
+        <item>曲靖</item>
+        <item>玉溪</item>
+        <item>长沙</item>
+        <item>株洲</item>
+        <item>湘潭</item>
+        <item>衡阳</item>
+        <item>岳阳</item>
+        <item>郴州</item>
+        <item>永州</item>
+        <item>郑州</item>
+        <item>洛阳</item>
+        <item>开封</item>
+        <item>漯河</item>
+        <item>南昌</item>
+        <item>九江</item>
+        <item>赣州</item>
+        <item>吉安</item>
+        <item>上海</item>
+        <item>杭州</item>
+        <item>嘉兴</item>
+        <item>乌鲁木齐</item>
+        <item>呼和浩特</item>
+        <item>苏州</item>
+        <item>昆山</item>
+        <item>保定</item>
+    </string-array>
+    <string-array name="usr">
+        <item>赵某</item>
+        <item>钱某某</item>
+        <item>孙某</item>
+        <item>李某某</item>
+        <item>周某</item>
+        <item>吴某某</item>
+        <item>郑某某</item>
+        <item>王某某</item>
+        <item>冯某</item>
+        <item>陈某某</item>
+        <item>楮某某</item>
+        <item>卫某</item>
+        <item>蒋某某</item>
+        <item>沈某某</item>
+        <item>韩某</item>
+        <item>杨某某</item>
+        <item>朱某</item>
+        <item>易某某</item>
+        <item>苏某</item>
+        <item>秦某某</item>
+        <item>尤某某</item>
+        <item>许某某</item>
+        <item>何某某</item>
+        <item>吕某</item>
+        <item>施某某</item>
+        <item>张某</item>
+        <item>孔某某</item>
+        <item>朱某</item>
+        <item>曹某某</item>
+        <item>严某某</item>
+        <item>华某某</item>
+        <item>金某</item>
+        <item>魏某某</item>
+        <item>陶某</item>
+        <item>姜某某</item>
+        <item>戚某</item>
+        <item>谢某某</item>
+        <item>邹某某</item>
+        <item>喻某某</item>
+        <item>柏某某</item>
+        <item>水某</item>
+        <item>窦某某</item>
+        <item>章某</item>
+        <item>云某某</item>
+        <item>苏某</item>
+        <item>潘某某</item>
+        <item>葛某某</item>
+        <item>奚某某</item>
+        <item>范某</item>
+        <item>彭某某</item>
+        <item>郎某某</item>
+        <item>鲁某某</item>
+        <item>郎某</item>
+        <item>韦某某</item>
+        <item>马某</item>
+        <item>苗某某</item>
+        <item>方某某</item>
+        <item>任某某</item>
+        <item>罗某</item>
+        <item>常某某</item>
+        <item>贺某某</item>
+        <item>鲍某</item>
+        <item>袁某某</item>
+        <item>俞某某</item>
+        <item>郝某</item>
+        <item>唐某某</item>
+        <item>殷某某</item>
+    </string-array>
+    <string-array name="sex">
+        <item>先生</item>
+        <item>女士</item>
+    </string-array>
+    <!-- 圆圈滑动 -->
+    <declare-styleable name="Circle">
+        <attr name="circleBackground" format="integer" />
+        <attr name="firstChildPosition">
+            <enum name="East" value="0" />
+            <enum name="South" value="90" />
+            <enum name="West" value="180" />
+            <enum name="North" value="270" />
+        </attr>
+        <attr name="rotateToCenter" format="boolean" />
+        <attr name="isRotating" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CircleImageView">
+        <attr name="name" format="string" />
+    </declare-styleable>
+    
+     <declare-styleable name="RatioImageView">
+        <attr name="ratio" format="float" />
+    </declare-styleable>
+
+</resources>

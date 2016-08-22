@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="@dimen/center_wallet_property_detail_inside_listview_data_time_width"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/center_wallet_property_detail_inside_listview_data_time_margin"
+            android:gravity="right|center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/nullstr"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/center_wallet_property_detail_inside_listview_data_time_txt_size" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_gray"
+                android:textSize="@dimen/center_wallet_property_detail_inside_listview_data_time_txt_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_margin"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <View
+                android:id="@+id/vertical_line"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_height"
+                android:layout_marginBottom="2dp"
+                android:background="@color/app_gray" />
+
+            <io.vtown.WeiTangApp.comment.view.DotView
+                android:id="@+id/dot_view"
+                android:layout_width="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size"
+                android:layout_height="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_height"
+                android:layout_marginTop="2dp"
+                android:background="@color/app_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_record_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/center_wallet_property_detail_inside_listview_content_title_txt_margin"
+                android:text="@string/nullstr"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/center_wallet_property_detail_inside_listview_content_title_txt_size" />
+
+            <TextView
+                android:id="@+id/tv_trade_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/center_wallet_property_detail_inside_listview_content_trade_type_txt_margin"
+                android:layout_marginTop="@dimen/center_wallet_property_detail_inside_listview_content_trade_type_txt_margin"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_gray"
+                android:textSize="@dimen/center_wallet_property_detail_inside_listview_content_trade_type_txt_size" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_record_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="@string/nullstr"
+            android:textColor="@color/app_fen"
+            android:textSize="@dimen/center_wallet_property_detail_inside_listview_money_txt_size" />
+    </LinearLayout>
+
+</LinearLayout>

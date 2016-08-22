@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="libs/afinal_0.5.1_bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/easemobchat_2.1.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/happy-dns-0.2.3.2.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="libs/libammsdk.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jpush-android-2.1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/ShareSDK-Core-2.7.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/ShareSDK-Wechat-2.7.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/ShareSDK-Wechat-Core-2.7.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/ShareSDK-Wechat-Moments-2.7.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/MobCommons-2016.0426.1819.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/MobTools-2016.0426.1819.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/android-async-http-1.4.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/zxing.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/qiniu-android-sdk-7.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/alipaySdk-20160516.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/Volley.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/xUtils-2.6.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/eventbus-1.0.1.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="lib" path="libs/fastjson-1.2.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/hellocharts-library-1.5.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/badgeview.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/universal-image-loader-1.9.3-with-sources.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

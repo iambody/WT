@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/item_shopbus_in_select_log"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        android:src="@drawable/quan_select_1" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/item_shop_purchase_height"
+        android:layout_height="@dimen/item_shop_purchase_height" >
+
+        <ImageView
+            android:id="@+id/item_shopbus_in_log"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/testiv" />
+
+        <ImageView
+            android:id="@+id/item_shopbus_in_log_tag"
+            android:layout_width="@dimen/center_comment_iv_height"
+            android:layout_height="@dimen/center_comment_iv_height"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/shopbus_item_in_shiku" />
+    </RelativeLayout>
+
+    <!-- 右边的 -->
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <!-- 上边 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/item_shopbus_in_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:lines="1"
+                android:textStyle="bold" />
+            <TextView 
+                android:id="@+id/item_shopbus_in_sell_statue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="20dp"
+                android:textColor="@color/grey"
+                />
+        </LinearLayout>
+        <!-- 中间 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/shopbus_guige"
+                android:textColor="@color/grey" />
+
+            <TextView
+                android:id="@+id/item_shopbus_in_guige"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <!-- 最下边 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/item_shopbus_in_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textColor="@color/app_fen"
+                android:textStyle="bold" />
+
+            <io.vtown.WeiTangApp.comment.view.AddAndSubView
+                android:id="@+id/item_shopbus_in_number"
+                android:layout_width="130dp"
+                android:layout_height="40dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

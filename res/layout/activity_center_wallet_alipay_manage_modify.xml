@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_alipay_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/center_wallet_modify_alipay_layout_top_bottom_margin"
+            android:layout_marginTop="@dimen/center_wallet_modify_alipay_layout_top_bottom_margin"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/center_wallet_modify_alipay_layout_padding" >
+
+            <ImageView
+                android:id="@+id/iv_alipay_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/alipay_log" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/center_wallet_modify_alipay_message_margin"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/ll_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/alipay_real_name"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/comment_label_txtsize" />
+
+                    <TextView
+                        android:id="@+id/tv_modify_real_alipay_name_before"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nullstr"
+                        android:textColor="@color/app_gray"
+                        android:textSize="@dimen/comment_label_txtsize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/alipay_account_txt"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/comment_label_txtsize" />
+
+                    <TextView
+                        android:id="@+id/tv_modify_alipay_id_before"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/nullstr"
+                        android:textColor="@color/app_gray"
+                        android:textSize="@dimen/comment_label_txtsize" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/center_wallet_modify_modify_layout_padding" >
+
+                <TextView
+                    android:id="@+id/tv_modify_alipay_real_name_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="真实姓名:"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize" />
+
+                <TextView
+                    android:id="@+id/tv_modify_alipay_real_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/center_wallet_modify_modify_layout_margin"
+                    android:text="@string/nullstr"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/comment_label_txtsize" />
+            </LinearLayout>
+
+            <View style="@style/line_left" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/center_wallet_modify_modify_layout_padding" >
+
+                <TextView
+                    android:id="@+id/tv_modify_alipay_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                   android:textSize="@dimen/comment_label_txtsize"
+                   android:textColor="@color/grey"
+                    android:text="支付宝账号:" />
+
+                <EditText
+                    android:id="@+id/et_modify_alipay_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/center_wallet_modify_modify_layout_margin"
+                     android:textColor="@color/app_gray"
+                     android:textSize="@dimen/comment_label_txtsize"
+                    android:background="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_modify_alipay_save"
+        style="@style/build_two_dimension_code_btn_style_no_circular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/comment_label_txtsize"
+        android:padding="16dp"
+        android:text="保存修改" />
+
+</LinearLayout>

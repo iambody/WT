@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/iv_coupons_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ico_kaquan_nor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_my_conpous_bg"
+            android:padding="10dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                 >
+
+                <TextView
+                    android:id="@+id/tv_my_coupons_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                   android:layout_marginLeft="15dp"
+                    android:text="@string/nullstr"
+                   
+                    android:textColor="@color/app_fen"
+                    android:textSize="36dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="元"
+                    android:textColor="@color/app_fen"
+                    android:textSize="10dp"
+                    android:paddingBottom="10dp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_vertical_xuxian_bg" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+       
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/center_my_conpons_my_coupons_type_padding" >
+
+                <TextView
+                    android:id="@+id/tv_my_coupons_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nullstr" />
+
+                <TextView
+                    android:id="@+id/tv_my_coupons_validity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/center_my_conpons_my_coupons_validity_margin"
+                    android:text="@string/my_coupons_validity"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/center_my_conpons_my_coupons_validity_txt_size" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:gravity="center" 
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_my_coupons_used"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/center_my_conpons_my_coupons_usr_type_padding" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

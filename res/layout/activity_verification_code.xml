@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/transparent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/verification_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white"
+                android:hint="@string/txt_enter_phone_numb"
+                android:inputType="phone"
+                android:padding="5dp"
+                android:textColor="@color/gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_size1"
+                android:background="@color/app_fen"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/verification_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:textColor="@color/gray" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_size1"
+                    android:background="@color/app_fen" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/verification_getcode_bt"
+                style="@style/bt_textview_comment"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/select_fen_to_gray"
+                android:text="@string/get_sms_code" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/verification_submint_bt"
+            style="@style/bt_textview_comment"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/select_fen_to_gray"
+            android:padding="10dp"
+            android:text="@string/login" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/quan_select_3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/login_agreen_xieyi"
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:id="@+id/verification_deal_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/app_xieyi"
+            android:textColor="@color/app_fen" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/verification_code_down_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <include layout="@layout/commentview_line_txt" />
+
+        <TextView
+            android:id="@+id/verification_wx_login"
+            style="@style/bt_match"
+            android:layout_margin="10dp"
+            android:background="@drawable/select_white_to_fen1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/login_login_wx"
+            android:textColor="@color/app_fen" />
+    </LinearLayout>
+
+</LinearLayout>

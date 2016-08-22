@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/iv_two_dimension_code"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+             />
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            >
+            
+            <Button 
+                android:id="@+id/btn_share_qrcode"
+                style="@style/build_two_dimension_code_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="分享"
+                android:visibility="gone"
+                />
+            
+            <Button 
+                android:id="@+id/btn_save_gallery"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                style="@style/build_two_dimension_code_btn_style"
+                android:layout_height="wrap_content"
+                android:text="保存相册"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

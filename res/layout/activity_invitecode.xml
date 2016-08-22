@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <EditText
+        android:id="@+id/invitecode_ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:hint="@string/login_tianxie_initer_cose"
+        android:padding="10dp" 
+        android:gravity="left"
+        android:textColor="@color/grey"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@color/app_fen" />
+
+    <LinearLayout
+        android:id="@+id/invitecode_check_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <CheckBox
+            android:id="@+id/invitecode_agreen"
+            style="@style/MyCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:checked="true"
+            android:paddingLeft="10dp"
+            android:textColor="@color/grey" />
+
+        <TextView
+            android:id="@+id/invitecode_clause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:text="@string/regist_clause"
+            android:textColor="#f39700"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/invitecode_submint_bt"
+        style="@style/bt_textview_comment"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/select_fen_to_gray"
+        android:padding="10dp"
+        android:text="绑定" />
+
+</LinearLayout>

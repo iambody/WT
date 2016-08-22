@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/insulate_view_height" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_bind_bank_card_real_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/center_wallet_add_bankcarde_padding"
+                    android:text="@string/nullstr"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize" />
+
+                <View style="@style/line_left" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/center_wallet_add_bankcarde_padding" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lable_bank_card_numb"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/comment_label_txtsize" />
+
+                    <EditText
+                        android:id="@+id/et_bank_card_numb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/center_wallet_add_bankcard_name_margin"
+                        android:background="@drawable/shape_add_goods_edit_bg"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:padding="@dimen/center_wallet_add_bankcard_bankcard_padding"
+                        android:paddingLeft="@dimen/center_wallet_add_bankcard_bankcard_padding"
+                        android:singleLine="true"
+                        android:textColor="@color/app_gray"
+                        android:textSize="@dimen/comment_label_txtsize" />
+                </LinearLayout>
+
+                <View style="@style/line_left" />
+
+                <include
+                    android:id="@+id/select_bank"
+                    layout="@layout/commentview_txtarrow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:padding="@dimen/center_wallet_add_bankcarde_padding" >
+
+                <ImageView
+                    android:layout_width="@dimen/center_wallet_add_alipay_select_imager_size"
+                    android:layout_height="@dimen/center_wallet_add_alipay_select_imager_size"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/quan_select_3" />
+
+                <TextView
+                    android:id="@+id/tv_bank_transfer_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/center_wallet_add_bankcard_name_margin"
+                    android:text="@string/i_agree_bank_transfer_agreement"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/center_wallet_add_bankcard_transfer_agreement_size" />
+
+                <TextView
+                    android:id="@+id/tv_alipay_transfer_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bank_transfer"
+                    android:textColor="@color/app_fen"
+                    android:textSize="@dimen/center_wallet_add_bankcard_transfer_agreement_size" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_btn_submit_bank_card"
+        style="@style/btnstyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="@dimen/center_wallet_add_bankcard_submit_padding"
+        android:text="提交"
+        android:textSize="@dimen/comment_label_txtsize" />
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_center_order_no_pay_seller_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/order_list_outside_layout_padding"
+        android:text="KOBE"
+        android:textColor="@color/slategrey"
+        android:textSize="@dimen/comment_label_txtsize" />
+
+    <View style="@style/line_left_right" />
+
+    <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+        android:id="@+id/item_fragment_center_order_no_pay_inside"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null" />
+
+</LinearLayout>

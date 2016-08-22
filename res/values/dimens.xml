@@ -1,0 +1,545 @@
+<resources>
+
+    <!-- @all-author TODO项目优化阶段需要进行每个values的适配问题！ -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- titlelayout的配置 TODO架构好后需要在每个values里面进行整体适配！ -->
+    <dimen name="titlebarheingh">50dip</dimen>
+    <dimen name="titlebarheingh1">40dip</dimen>
+    <dimen name="titlebar_size">18dp</dimen>
+    <dimen name="home_bannerheigh">120dp</dimen>
+    <dimen name="beandshop_bannerheigh">140dp</dimen>
+    <dimen name="neterrorheingh">35dp</dimen>
+    <dimen name="line_size1">0.5dip</dimen>
+    <dimen name="line_size">1dip</dimen>
+    <dimen name="line_size2">0.2dip</dimen>
+    <dimen name="line_size3">0.1dip</dimen>
+    <!-- 公用layout的配置dp TODO适配！ -->
+    <dimen name="comment_circular_iv_height">46dp</dimen>
+    <dimen name="comment_rightbar_iv_height">20dp</dimen>
+    <dimen name="comment_txtarrow_txtsize">16dp</dimen>
+
+    <!-- TextView,EditText 的标签 -->
+    <dimen name="comment_label_txtsize">15sp</dimen>
+
+    <!-- 品牌详情 -->
+    <dimen name="brand_detail_brand_iv">60dp</dimen>
+    <dimen name="brand_detail_brand_log_height">130dp</dimen>
+    <dimen name="brand_detail_brand_item_iv_height">120dp</dimen>
+    <!-- 商品一级分类 -->
+    <dimen name="item_goodsort_iv_height">90dip</dimen>
+    <!-- show里面 -->
+    <dimen name="item_show_iv_height">50dip</dimen>
+
+    <!-- 我的里面 -->
+    <dimen name="center_comment_iv_height">16dip</dimen>
+    <dimen name="center_comment_arrow_height">16dip</dimen>
+    <dimen name="center_bg_height">220dp</dimen>
+    <dimen name="center_iv_height">60dp</dimen>
+    <dimen name="center_iv_marg_top">50dp</dimen>
+    <!-- 我的show -->
+    <dimen name="center_comment_myshow_ivheight_height">120dip</dimen>
+    <dimen name="center_comment_myshow_headivheight_height">50dip</dimen>
+
+    <!-- 我的采购单 -->
+    <dimen name="item_shop_purchase_height">80dip</dimen>
+    <dimen name="item_shop_purchase_width">60dip</dimen>
+
+    <!-- 一级页面的bottom -->
+    <dimen name="bottom_height0">150dip</dimen>
+    <dimen name="bottom_height">70dip</dimen>
+    <dimen name="bottom_height1">50dip</dimen>
+    <dimen name="bottom_height2">90dip</dimen>
+
+    <!-- 商品详情 -->
+    <dimen name="goode_detail_sell_iv_height">40dip</dimen>
+    <!-- 品牌 详情 -->
+    <dimen name="brand_detail_collect_iv_height">36dip</dimen>
+
+    <!-- 横滑动的ls的高度 -->
+    <dimen name="horizontallistview">40dip</dimen>
+
+    <!-- 订单结算 -->
+    <dimen name="jiesuan_iv_height">60dip</dimen>
+
+    <!-- 消息item中头像的 -->
+
+    <dimen name="item_my_new_head_iv_hright">40dip</dimen>
+    <dimen name="ui_10_dip">10dip</dimen>
+
+    <!-- 活动专区 -->
+    <dimen name="zhuanqu_item_height">180dp</dimen>
+
+    <!-- 适配优先！！！！！！！！！！！！！ -->
+    <dimen name="show_oneiv_height">150dp</dimen>
+    <!-- 店铺详情 -->
+    <dimen name="shop_detail_head_height">140dp</dimen>
+
+    <!-- 添加宝贝的的视频的高度 -->
+    <dimen name="good_add_vido_height">150dp</dimen>
+
+    <!-- show播放按钮的高度 -->
+
+    <dimen name="show_play_height">30dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，总价金额字体大小 -->
+    <dimen name="order_list_total_money">18sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，运费字体大小 -->
+    <dimen name="order_list_poseage">10sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，订单编号字体大小 -->
+    <dimen name="order_list_order_sn">13sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，"订单编号"字体大小 -->
+    <dimen name="order_list_order_sn_lable">13sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，按钮字体大小 -->
+    <dimen name="order_list_button_txt">12sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，文字padding -->
+    <dimen name="order_list_txt_padding">5dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，布局padding -->
+    <dimen name="order_list_outside_layout_padding">10dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，列表margin -->
+    <dimen name="order_listview_margin">5dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，商品个数字体大小 -->
+    <dimen name="order_list_good_number">15sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，"待付款"字体大小 -->
+    <dimen name="order_list_wait_pay">15sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，按钮margin -->
+    <dimen name="order_list_button_margin">10dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，按钮里文字左右padding -->
+    <dimen name="order_list_button_txt_left_right_padding">7dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，按钮里文字上下padding -->
+    <dimen name="order_list_button_txt_top_bottom_padding">4dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，第二层ListView中的规格标题字体大小 -->
+    <dimen name="order_list_inside_standard_lable_size">12sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，第二层ListView中的规格字体大小 -->
+    <dimen name="order_list_inside_standard_size">12sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，第二层ListView中商品价格字体大小 -->
+    <dimen name="order_list_inside_price_size">15sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，第二层ListView中商品总价格字体大小 -->
+    <dimen name="order_list_inside_total_price_size">15sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，第二层ListView中商品数量字体大小 -->
+    <dimen name="order_list_inside_number_size">13sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，第二层ListView左右padding -->
+    <dimen name="order_list_inside_left_right_padding">8dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，第二层ListView上下padding -->
+    <dimen name="order_list_inside_top_bottom_padding">4dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，第二层ListView布局padding -->
+    <dimen name="order_list_inside_layout_padding">10dp</dimen>
+
+    <!-- 所有页面隔断高度 -->
+    <dimen name="insulate_view_height">8dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的布局padding -->
+    <dimen name="order_detail_layout_padding">10dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的布局上下padding -->
+    <dimen name="order_detail_layout_top_bottom_padding">5dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的几件商品字体大小 -->
+    <dimen name="order_detail_goods_number_txt_size">12sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的价格标题字体大小 -->
+    <dimen name="order_detail_goods_total_price_lable_size">12sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的价格字体大小 -->
+    <dimen name="order_detail_goods_total_price_size">18sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的运费字体大小 -->
+    <dimen name="order_detail_goods_postage_size">10sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的订单号字体大小 -->
+    <dimen name="order_detail_order_sn_size">12sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的快递信息里的点大小 -->
+    <dimen name="order_detail_express_dot_size">5dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的快递公司字体大小 -->
+    <dimen name="order_detail_express_name_size">12sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的快递单号字体大小 -->
+    <dimen name="order_detail_express_number_size">12sp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的联系卖家Margin -->
+    <dimen name="order_detail_contact_seller_margin">5dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里的Margin -->
+    <dimen name="order_detail_margin">5dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情里Button的Margin -->
+    <dimen name="order_detail_button_margin">16dp</dimen>
+
+    <!-- 订单管理，我的订单，采购单，详情商品ListView中的规格标题字体大小 -->
+    <dimen name="order_detail_standard_lable_size">12sp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品ListView中的规格字体大小 -->
+    <dimen name="order_detail_standard_size">12sp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品ListView中商品价格字体大小 -->
+    <dimen name="order_detail_price_size">15sp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品ListView中商品总价格字体大小 -->
+    <dimen name="order_detail_total_price_size">15sp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品ListView中商品数量字体大小 -->
+    <dimen name="order_detail_number_size">13sp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情里listview的价格字体大小 -->
+    <dimen name="order_detail_listview_goods_total_price_size">18sp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品ListView中padding -->
+    <dimen name="order_detail_listview_padding">10dp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品ListView中margin -->
+    <dimen name="order_detail_listview_margin">5dp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品圆点大小 -->
+    <dimen name="order_detail_dot_size">10dp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品圆点默认大小 -->
+    <dimen name="order_detail_dot_default_size">5dp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品ListView左右padding -->
+    <dimen name="order_detail_left_right_padding">8dp</dimen>
+    <!-- 订单管理，我的订单，采购单，详情商品ListView上下padding -->
+    <dimen name="order_detail_top_bottom_padding">4dp</dimen>
+    <!-- 订单管理修改商品价格输入框文字大小 -->
+    <dimen name="order_detail_modify_price_size">13sp</dimen>
+    <!-- 订单管理修改商品价格输入框标题文字大小 -->
+    <dimen name="order_detail_modify_price_lable_size">12sp</dimen>
+    <!-- 订单管理修改商品价格修改之前的价格显示文字大小 -->
+    <dimen name="order_detail_modify_before_price_size">12sp</dimen>
+    <!-- 订单管理修改商品价格EditText width -->
+    <dimen name="order_detail_modify_price_edittext_width">80dp</dimen>
+
+    <!-- *******start*******订单管理修改商品地址页面 ********start********** -->
+    <!-- 左右margin -->
+    <dimen name="order_detail_modify_address_left_right_margin">10dp</dimen>
+    <!-- 上下margin -->
+    <dimen name="order_detail_modify_address_top_buttom_margin">12dp</dimen>
+    <!-- 输入框的marginLeft -->
+    <dimen name="order_detail_modify_address_edittext_marginleft">16dp</dimen>
+    <dimen name="order_detail_modify_address_delivery_edittext_height">120dp</dimen>
+    <!-- *******end*******订单管理修改商品地址页面 ********end********** -->
+
+
+    <!-- **********start**********订单管理物流公司选择页面  *********start********** -->
+    <!-- 订单管理物流公司选择页面 padding -->
+    <dimen name="order_detail_select_express_padding">10dp</dimen>
+    <!-- 订单管理物流公司选择页面 物流公司名字字体大小 -->
+    <dimen name="order_detail_select_express_name_size">16sp</dimen>
+    <!-- **********end**********订单管理物流公司选择页面  *********end********** -->
+
+
+    <!-- **********start********** 我的邀请码页面  *********start********** -->
+    <!-- 页面所有字体大小 -->
+    <dimen name="center_my_invite_code_txt_all_size">12sp</dimen>
+    <!-- 邀请码字体大小 -->
+    <dimen name="center_my_invite_code_txt_size">18sp</dimen>
+    <!-- 头像margin -->
+    <dimen name="center_my_invite_code_icon_margin">10dp</dimen>
+    <!-- padding -->
+    <dimen name="center_my_invite_code_padding">5dp</dimen>
+    <!-- 邀请码描述padding -->
+    <dimen name="center_my_invite_code_desc_padding">10dp</dimen>
+    <!-- line margin -->
+    <dimen name="center_my_invite_code_line_margin">10dp</dimen>
+    <!-- **********end********** 我的邀请码页面   *********end********** -->
+
+
+    <!-- **********start********** 我的卡券页面  *********start********** -->
+    <!-- 列表margin -->
+    <dimen name="center_my_conpons_listview_magrin">10dp</dimen>
+    <!-- 列表间隔高度 -->
+    <dimen name="center_my_conpons_listview_divider_height">10dp</dimen>
+    <!-- 查看过期卡券文字padding -->
+    <dimen name="center_my_conpons_look_over_time_coupons_txt_padding">4dp</dimen>
+    <!-- 卡券有效期的margin -->
+    <dimen name="center_my_conpons_my_coupons_validity_margin">20dp</dimen>
+    <!-- 卡券有效期的文字大小 -->
+    <dimen name="center_my_conpons_my_coupons_validity_txt_size">13sp</dimen>
+    <!-- 卡券是否可用图标padding -->
+    <dimen name="center_my_conpons_my_coupons_usr_type_padding">5dp</dimen>
+    <!-- 卡券是否可用图标padding -->
+    <dimen name="center_my_conpons_my_coupons_type_padding">8dp</dimen>
+    <!-- **********end********** 我的卡券页面   *********end********** -->
+
+
+    <!-- **********start********** 个人设置页面  *********start********** -->
+    <!-- 手机号左右padding -->
+    <dimen name="center_set_personal_data_phone_left_right_padding">10dp</dimen>
+    <!-- 手机号上下margin -->
+    <dimen name="center_set_personal_data_phone_top_buttom_magrin">12dp</dimen>
+    <!-- 清除缓存高度 -->
+    <dimen name="center_set_personal_data_clear_cache_height">50dp</dimen>
+    <!-- 清除缓存左右margin -->
+    <dimen name="center_set_personal_data_clear_cache_left_right_margin">10dp</dimen>
+    <!-- 清除缓存数值文字大小 -->
+    <dimen name="center_set_personal_data_clear_cache_txt_size">10sp</dimen>
+    <!-- 清除缓存按钮margin -->
+    <dimen name="center_set_personal_data_clear_cache_buttom_margin">8dp</dimen>
+    <!-- 退出按钮marginTop -->
+    <dimen name="center_set_personal_data_quit_buttom_top_margin">80dp</dimen>
+    <!-- 退出按钮左右margin -->
+    <dimen name="center_set_personal_data_quit_buttom_left_right_margin">16dp</dimen>
+    <!-- **********end********** 个人设置页面   *********end********** -->
+
+
+    <!-- **********start********** 地址管理页面  *********start********** -->
+    <!-- 联系人和手机号左右margin -->
+    <dimen name="center_address_manager_name_phone_left_right_margin">16dp</dimen>
+    <!-- 联系人和手机号上下margin -->
+    <dimen name="center_address_manager_name_phone_top_buttom_margin">5dp</dimen>
+    <!-- 收货地址上下margin -->
+    <dimen name="center_address_manager_delivery_address_top_buttom_margin">8dp</dimen>
+    <!-- 收货地址左右margin -->
+    <dimen name="center_address_manager_delivery_address_left_right_margin">16dp</dimen>
+    <!-- 默认地址文字margin -->
+    <dimen name="center_address_manager_default_margin">5dp</dimen>
+    <!-- **********end********** 地址管理页面   *********end********** -->
+
+
+    <!-- **********start********** 添加收货人页面  *********start********** -->
+    <!-- 左右margin -->
+    <dimen name="center_address_manager_add_address_left_right_margin">10dp</dimen>
+    <!-- 上下margin -->
+    <dimen name="center_address_manager_add_address_top_buttom_margin">12dp</dimen>
+    <!-- 详细地址输入框marginLeft -->
+    <dimen name="center_address_manager_add_address_edittext_margin_left">16dp</dimen>
+    <!-- 详细地址输入框高度 -->
+    <dimen name="center_address_manager_add_address_edittext_height">120dp</dimen>
+    <!-- 保存按钮margin -->
+    <dimen name="center_address_manager_add_address_save_buttom_margin">16dp</dimen>
+    <!-- **********end********** 添加收货人页面  *********end********** -->
+
+
+    <!-- **********start********** 认证成功页面  *********start********** -->
+    <!-- padding -->
+    <dimen name="center_set_real_auth_succeed_padding">10dp</dimen>
+    <!-- **********end********** 认证成功页面  *********end********** -->
+
+
+    <!-- **********start********** 重置交易密码页面  *********start********** -->
+    <!-- 手机号padding -->
+    <dimen name="center_set_account_safe_resetpsw_phone_padding">10dp</dimen>
+    <!-- 验证码左右padding -->
+    <dimen name="center_set_account_safe_resetpsw_verification_code_left_right_padding">10dp</dimen>
+    <!-- 验证码上下padding -->
+    <dimen name="center_set_account_safe_resetpsw_verification_code_top_buttom_padding">5dp</dimen>
+    <!-- 验证码输入框padding -->
+    <dimen name="center_set_account_safe_resetpsw_verification_code_edittext_padding">5dp</dimen>
+    <!-- 验证码左右margin -->
+    <dimen name="center_set_account_safe_resetpsw_verification_code_left_right_margin">10dp</dimen>
+    <!-- 真实姓名padding -->
+    <dimen name="center_set_account_safe_resetpsw_real_name_padding">10dp</dimen>
+    <!-- 下一步按钮左右margin -->
+    <dimen name="center_set_account_safe_resetpsw_next_buttom_left_right_margin">16dp</dimen>
+    <!-- 下一步按钮上margin -->
+    <dimen name="center_set_account_safe_resetpsw_next_buttom_top_margin">80dp</dimen>
+    <!-- **********end********** 重置交易密码页面  *********end********** -->
+
+
+    <!-- **********start********** 我的钱包页面  *********start********** -->
+    <!-- 总资产字体大小 -->
+    <dimen name="center_wallet_total_money_txt_size">20sp</dimen>
+    <!-- margin -->
+    <dimen name="center_wallet_margin">10dp</dimen>
+    <!-- padding -->
+    <dimen name="center_wallet_padding">10dp</dimen>
+    <!-- 总资产分类layout高度 -->
+    <dimen name="center_wallet_subprogect_height">35dp</dimen>
+    <!-- 总资产分类文字大小 -->
+    <dimen name="center_wallet_subprogect_txt_size">12sp</dimen>
+    <!-- 体现按钮padding -->
+    <dimen name="center_wallet_submit_padding">16dp</dimen>
+    <!-- **********end********** 我的钱包页面  *********end********** -->
+
+
+    <!-- **********start********** 添加支付宝页面  *********start********** -->
+    <!-- 真实姓名布局padding -->
+    <dimen name="center_wallet_add_alipay_name_padding">10dp</dimen>
+    <!-- 真实姓名margin -->
+    <dimen name="center_wallet_add_alipay_name_margin">10dp</dimen>
+    <!-- 支付宝输入框padding -->
+    <dimen name="center_wallet_add_alipay_alipay_padding">5dp</dimen>
+    <!-- 查看协议选择图片 -->
+    <dimen name="center_wallet_add_alipay_select_imager_size">20dp</dimen>
+    <!-- 查看协议字体大小 -->
+    <dimen name="center_wallet_add_alipay_transfer_agreement_size">13sp</dimen>
+    <!-- 提交按钮padding -->
+    <dimen name="center_wallet_add_alipay_submit_padding">15sp</dimen>
+    <!-- **********end********** 添加支付宝页面  *********end********** -->
+
+
+    <!-- **********start********** 添加银行卡页面  *********start********** -->
+    <!-- 真实姓名布局padding -->
+    <dimen name="center_wallet_add_bankcarde_padding">10dp</dimen>
+    <!-- 真实姓名margin -->
+    <dimen name="center_wallet_add_bankcard_name_margin">10dp</dimen>
+    <!-- 银行卡输入框padding -->
+    <dimen name="center_wallet_add_bankcard_bankcard_padding">5dp</dimen>
+    <!-- 查看协议选择图片 -->
+    <dimen name="center_wallet_add_bankcard_select_imager_size">20dp</dimen>
+    <!-- 查看协议字体大小 -->
+    <dimen name="center_wallet_add_bankcard_transfer_agreement_size">13sp</dimen>
+    <!-- 提交按钮padding -->
+    <dimen name="center_wallet_add_bankcard_submit_padding">15sp</dimen>
+    <!-- **********end********** 添加银行卡页面  *********end********** -->
+
+
+    <!-- **********start********** 支付宝管理页面  *********start********** -->
+    <!-- 支付宝管理布局padding -->
+    <dimen name="center_wallet_alipay_manage_padding">10dp</dimen>
+    <!-- 支付宝管理布局相对父布局的padding -->
+    <dimen name="center_wallet_alipay_manage_layout_padding">20dp</dimen>
+    <!-- 支付宝管理margin -->
+    <dimen name="center_wallet_alipay_manage_margin">10dp</dimen>
+    <!-- 支付宝管理上下margin -->
+    <dimen name="center_wallet_alipay_manage_top_bottom_margin">5dp</dimen>
+    <!-- 按钮margin -->
+    <dimen name="center_wallet_alipay_manage_bottom_margin">10dp</dimen>
+    <!-- 没有绑定支付宝时的提示padding -->
+    <dimen name="center_wallet_alipay_manage_no_alipay_desc_padding">40dp</dimen>
+    <!-- **********end********** 支付宝管理页面  *********end********** -->
+
+
+    <!-- **********start********** 银行卡管理页面  *********start********** -->
+    <!-- 列表margin -->
+    <dimen name="center_wallet_bankcard_manage_listview_margin">10dp</dimen>
+    <!-- 列表间隔高度 -->
+    <dimen name="center_wallet_bankcard_manage_listview_divider_height">10dp</dimen>
+    <!-- padding -->
+    <dimen name="center_wallet_bankcard_manage_listview_foot_layout_padding">5dp</dimen>
+    <!-- padding -->
+    <dimen name="center_wallet_bankcard_manage_listview_foot_padding">16dp</dimen>
+    <!-- padding -->
+    <dimen name="center_wallet_bankcard_manage_listview_foot_no_card_desc_padding">10dp</dimen>
+    <!-- 银行图标marginleft -->
+    <dimen name="center_wallet_bankcard_manage_bank_icon_marginleft">10dp</dimen>
+    <!-- 银行图标大小 -->
+    <dimen name="center_wallet_bankcard_manage_bank_icon_size">50dp</dimen>
+    <!-- 银行图标margintop -->
+    <dimen name="center_wallet_bankcard_manage_bank_icon_margintop">15dp</dimen>
+    <!-- 银行名称marginleft -->
+    <dimen name="center_wallet_bankcard_manage_bank_name_marginleft">10dp</dimen>
+    <!-- 银行名称margintop -->
+    <dimen name="center_wallet_bankcard_manage_bank_name_margintop">30dp</dimen>
+    <!-- 银行账号paddingBottom -->
+    <dimen name="center_wallet_bankcard_manage_bank_number_padding">13dp</dimen>
+    <!-- 银行账号marginRight -->
+    <dimen name="center_wallet_bankcard_manage_number_number_marginright">13dp</dimen>
+    <!-- listview item height -->
+    <dimen name="center_wallet_bankcard_manage_listview_item_height">120dp</dimen>
+    <!-- **********end********** 银行卡管理页面  *********end********** -->
+
+
+    <!-- **********start********** 银行卡修改页面  *********start********** -->
+    <!-- 银行图标大小 -->
+    <dimen name="center_wallet_modify_bankcard_icon_size">50dp</dimen>
+    <!-- 银行图标上下margin -->
+    <dimen name="center_wallet_modify_bankcard_icon_top_bottom_margin">10dp</dimen>
+    <!-- 银行信息margin -->
+    <dimen name="center_wallet_modify_bankcard_message_margin">5dp</dimen>
+    <!-- 选择的银行图标大小 -->
+    <dimen name="center_wallet_modify_bankcard_select_icon_size">30dp</dimen>
+    <!-- 选择的银行图标margin -->
+    <dimen name="center_wallet_modify_bankcard_select_icon_margin">10dp</dimen>
+    <!-- padding -->
+    <dimen name="center_wallet_modify_bankcard_padding">10dp</dimen>
+    <!-- padding -->
+    <dimen name="center_wallet_modify_bankcard_submit_button_padding">16dp</dimen>
+    <!-- **********end********** 银行卡修改页面  *********end********** -->
+
+
+    <!-- **********start********** 支付宝修改页面  *********start********** -->
+    <!-- 支付宝信息布局padding -->
+    <dimen name="center_wallet_modify_alipay_layout_padding">20dp</dimen>
+    <!-- 支付宝信息布局上下margin -->
+    <dimen name="center_wallet_modify_alipay_layout_top_bottom_margin">5dp</dimen>
+    <!-- 支付宝信息相对支付宝图标margin -->
+    <dimen name="center_wallet_modify_alipay_message_margin">10dp</dimen>
+    <!-- 布局padding -->
+    <dimen name="center_wallet_modify_modify_layout_padding">10dp</dimen>
+    <!-- 布局margin -->
+    <dimen name="center_wallet_modify_modify_layout_margin">10dp</dimen>
+    <!-- 按钮padding -->
+    <dimen name="center_wallet_modify_modify_buttom_padding">16dp</dimen>
+    <!-- **********end********** 支付宝修改页面  *********end********** -->
+
+
+    <!-- **********start********** 资金明细  *********start********** -->
+    <!-- 第一层listview的padding -->
+    <dimen name="center_wallet_property_detail_outside_listview_padding">5dp</dimen>
+    <!-- 第二层listview的日期和时间布局width -->
+    <dimen name="center_wallet_property_detail_inside_listview_data_time_width">60dp</dimen>
+    <!-- 第二层listview的日期和时间布局margin -->
+    <dimen name="center_wallet_property_detail_inside_listview_data_time_margin">5dp</dimen>
+    <!-- 第二层listview的日期和时间文字大小 -->
+    <dimen name="center_wallet_property_detail_inside_listview_data_time_txt_size">10sp</dimen>
+    <!-- 第二层listview的日期和时间布局竖线margin -->
+    <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_margin">3dp</dimen>
+    <!-- 第二层listview的日期和时间布局竖线margin -->
+    <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_height">25dp</dimen>
+    <!-- 第二层listview的日期和时间布局竖线中点的大小 -->
+    <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size">10dp</dimen>
+    <!-- 第二层listview的正文标题文字大小 -->
+    <dimen name="center_wallet_property_detail_inside_listview_content_title_txt_size">13sp</dimen>
+    <!-- 第二层listview的正文标题文字margin -->
+    <dimen name="center_wallet_property_detail_inside_listview_content_title_txt_margin">5dp</dimen>
+    <!-- 第二层listview的交易类型文字大小 -->
+    <dimen name="center_wallet_property_detail_inside_listview_content_trade_type_txt_size">10sp</dimen>
+    <!-- 第二层listview的交易类型文字margin -->
+    <dimen name="center_wallet_property_detail_inside_listview_content_trade_type_txt_margin">10dp</dimen>
+    <!-- 第二层listview的交易类型文字margin -->
+    <dimen name="center_wallet_property_detail_inside_listview_money_txt_size">13sp</dimen>
+    <!-- **********end********** 资金明细  *********end********** -->
+
+
+    <!-- **********start********** 选择银行页面  *********start********** -->
+    <!-- listview dividerHeight -->
+    <dimen name="center_wallet_select_bank_listview_divider_height">10dp</dimen>
+    <!-- listview item padding -->
+    <dimen name="center_wallet_select_bank_listview_item_padding">10dp</dimen>
+    <!-- listview item bank icon size -->
+    <dimen name="center_wallet_select_bank_listview_item_icon_width">60dp</dimen>
+    <!-- listview item bank name txt size -->
+    <dimen name="center_wallet_select_bank_listview_item_name_txt_size">20sp</dimen>
+    <!-- listview item bank name txt margin -->
+    <dimen name="center_wallet_select_bank_listview_item_name_txt_margin">16sp</dimen>
+    <!-- **********end********** 选择银行页面   *********end********** -->
+
+
+    <!-- **********start********** 提现页面  *********start********** -->
+    <!-- 提现页面的padding -->
+    <dimen name="center_wallet_tixian_padding">10dp</dimen>
+    <!-- 提现页面的margin -->
+    <dimen name="center_wallet_tixian_margin">10dp</dimen>
+    <!-- 提现页面的金额输入框的margin -->
+    <dimen name="center_wallet_tixian_edittext_margin">10dp</dimen>
+    <!-- 提现页面的金额输入框的padding -->
+    <dimen name="center_wallet_tixian_edittext_padding">5dp</dimen>
+    <!-- 提现页面的按钮的padding -->
+    <dimen name="center_wallet_tixian_btn_padding">15dp</dimen>
+    <!-- **********end********** 提现页面  *********end********** -->
+
+
+    <!-- shop=>代理品牌=》列表的头像 -->
+    <dimen name="shop_dailils_iv_height">100dp</dimen>
+
+    <!-- shopData的弹出二维码的dialog的头像 -->
+    <dimen name="shop_data_dialog_iv_height">60dp</dimen>
+
+    <!-- 用户头像的宽高 -->
+    <dimen name="shop_user_hright">56dp</dimen>
+    <dimen name="shop_cover_height">160dp</dimen>
+    <dimen name="shop_user_totop_hright">40dp</dimen>
+
+</resources>

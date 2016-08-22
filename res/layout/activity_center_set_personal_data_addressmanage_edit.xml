@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/center_address_manager_add_address_top_buttom_margin"
+                android:layout_marginLeft="@dimen/center_address_manager_add_address_left_right_margin"
+                android:layout_marginRight="@dimen/center_address_manager_add_address_left_right_margin"
+                android:layout_marginTop="@dimen/center_address_manager_add_address_top_buttom_margin"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_edit_address_consignee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/txt_consignee"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize" />
+
+                <EditText
+                    android:id="@+id/et_edit_address_consignee_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/center_address_manager_add_address_edittext_margin_left"
+                    android:background="@null"
+                    android:hint="@string/consignee_name"
+                    android:textColor="@color/app_gray"
+                    android:gravity="right"
+                    android:textSize="@dimen/comment_label_txtsize" />
+            </LinearLayout>
+
+            <View style="@style/line_left" />
+
+            <RelativeLayout
+                android:id="@+id/rl_edit_addres_contact_phone_numb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/center_address_manager_add_address_top_buttom_margin"
+                android:layout_marginLeft="@dimen/center_address_manager_add_address_left_right_margin"
+                android:layout_marginRight="@dimen/center_address_manager_add_address_left_right_margin"
+                android:layout_marginTop="@dimen/center_address_manager_add_address_top_buttom_margin"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/tv_edit_addres_contact_phone_numb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_phone_numb"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize"  />
+
+                <EditText
+                    android:id="@+id/et_edit_addres_contact_phone_numb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/center_address_manager_add_address_edittext_margin_left"
+                    android:layout_toRightOf="@id/tv_edit_addres_contact_phone_numb"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:hint="收货联系电话"
+                    android:textColor="@color/app_gray"
+                    android:gravity="right"
+                    android:textSize="@dimen/comment_label_txtsize" 
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_edit_addres_look_connect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/select_add_rule_bg"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View style="@style/line_left" />
+
+            <include
+                android:id="@+id/edit_address_location"
+                layout="@layout/commentview_txtarrow" />
+
+            <View style="@style/line_left" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/center_address_manager_add_address_top_buttom_margin"
+                android:layout_marginLeft="@dimen/center_address_manager_add_address_left_right_margin"
+                android:layout_marginRight="@dimen/center_address_manager_add_address_left_right_margin"
+                android:layout_marginTop="@dimen/center_address_manager_add_address_top_buttom_margin"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_address"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize" />
+
+                <EditText
+                    android:id="@+id/et_edit_addres_detail_address_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/center_address_manager_add_address_edittext_height"
+                    android:layout_marginLeft="@dimen/center_address_manager_add_address_edittext_margin_left"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:hint="@string/enter_detail_address"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/comment_label_txtsize" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_edit_addres_save"
+        style="@style/build_two_dimension_code_btn_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/comment_label_txtsize"
+        android:layout_margin="@dimen/center_address_manager_add_address_save_buttom_margin"
+        android:text="@string/txt_save" />
+
+</LinearLayout>

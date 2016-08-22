@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/shop_good_manager_modify_content_outlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="10dp" >
+
+                    <ImageView
+                        android:id="@+id/iv_shop_good_manager_modify_store_icon"
+                        android:layout_width="@dimen/item_shop_purchase_height"
+                        android:layout_height="@dimen/item_shop_purchase_height" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+               
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="商品名称："
+                                android:textColor="@color/grey" />
+
+                           <!--  <ImageView
+                                android:id="@+id/iv_shop_good_manager_modify_store_good_is_agent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/shopbus_item_log3" /> -->
+
+                            <TextView
+                                android:id="@+id/tv_shop_good_manager_modify_store_good_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                         
+                                android:textColor="@color/app_gray" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_shop_good_manager_modify_store_good_seller"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="卖家名称"
+                            android:textColor="@color/grey" />
+
+                        <TextView
+                            android:id="@+id/tv_shop_good_manager_modify_store_good_level"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="代卖等级"
+                            android:textColor="@color/grey" />
+
+                        <TextView
+                            android:id="@+id/tv_shop_good_manager_modify_store_good_deliver"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="发货地"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/insulate_view_height" />
+
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                    android:id="@+id/lv_content_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" 
+                    android:dividerHeight="@dimen/insulate_view_height"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv_shop_good_manager_modify_store_modify"
+            style="@style/build_two_dimension_code_btn_style_no_circular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="修改完成" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/shop_good_manager_modify_content_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+</LinearLayout>

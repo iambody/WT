@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="false"
+    android:focusable="false"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_good_detail_grad_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:text="@string/nullstr"
+        android:textColor="@color/grey" />
+    <!-- android:background="@drawable/shape_pop_gridview_txt_normal_bg" -->
+
+</LinearLayout>

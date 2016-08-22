@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu
+        android:id="@+id/activity_ls_good_odermanger_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!-- 下bain布局 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/fragment_isbrand_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/fragment_isbrand_ziying_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_left_pre"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="自营"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/fragment_isbrand_brand_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_right_nor"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="品牌"
+                android:textColor="@color/app_fen" />
+        </LinearLayout>
+
+        <io.vtown.WeiTangApp.comment.view.listview.HorizontalListView
+            android:id="@+id/fragment_shop_good_manger_brand_horizon_ls"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
+        <!-- 正常分页加载的列表 -->
+
+        <io.vtown.WeiTangApp.comment.view.listview.LListView
+            android:id="@+id/lv_comment_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:focusableInTouchMode="false"
+            android:listSelector="#00000000"
+            android:scrollbars="none"
+            android:visibility="gone" >
+        </io.vtown.WeiTangApp.comment.view.listview.LListView>
+        <!-- 品牌商品需要添加品牌时候的按钮 -->
+
+        <include
+            android:id="@+id/fragent_goodmanger_nodata_lay"
+            layout="@layout/commentview_nodata"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_add_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            
+            android:background="@drawable/shape_shop_circular_bg"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/add"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

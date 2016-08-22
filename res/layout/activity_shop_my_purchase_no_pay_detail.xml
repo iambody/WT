@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/shop_purchase_order_no_pay_detail_outlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <include
+                    android:id="@+id/shop_purchase_my_order_no_pay_address"
+                    layout="@layout/commentview_address" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/insulate_view_height" />
+
+                <include
+                    android:id="@+id/shop_purchase_my_order_no_pay_order_message"
+                    layout="@layout/commentview_order_message" />
+
+                <LinearLayout
+                    android:id="@+id/ll_shop_purchase_no_pay_used_balance_and_coupons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg" />
+
+                    <TextView
+                        android:id="@+id/tv_shop_purchase_no_pay_used_coupons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/comment_label_txtsize"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/insulate_view_height" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+
+                    <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                        android:id="@+id/item_shop_purchase_order_no_pay_detail_outside"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@null" />
+
+                    <View style="@style/line" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/order_detail_layout_padding" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="总价："
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/order_detail_goods_total_price_lable_size" />
+
+                            <TextView
+                                android:id="@+id/tv_shop_purchase_my_order_no_pay_total_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nullstr"
+                                android:textColor="@color/app_fen"
+                                android:textSize="@dimen/order_detail_goods_total_price_size" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/ll_shop_purchase_order_no_pay_cancel_and_to_pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_shop_purchase_order_no_pay_to_pay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/select_white_to_gray"
+                android:gravity="center"
+                android:padding="@dimen/order_detail_layout_padding"
+                android:text="去付款"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/comment_label_txtsize" />
+
+            <ImageView
+                android:layout_width="@dimen/line_size1"
+                android:layout_height="match_parent"
+                android:src="@color/app_line" />
+
+            <TextView
+                android:id="@+id/tv_shop_purchase_order_no_pay_cancel_order"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/select_fen_to_gray1"
+                android:gravity="center"
+                android:padding="@dimen/order_detail_layout_padding"
+                android:text="取消订单"
+                android:textColor="@color/TextColorWhite"
+                android:textSize="@dimen/comment_label_txtsize" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/shop_purchase_order_no_pay_detail_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+</LinearLayout>

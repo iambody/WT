@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_shopmanger_circular_bg"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_shopmanger_circular_bg"
+        android:orientation="vertical"
+        android:padding="@dimen/order_list_txt_padding" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/order_list_outside_layout_padding" >
+
+            <TextView
+                android:id="@+id/tv_center_order_no_pay_order_sn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nullstr"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/comment_label_txtsize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+           
+
+            <TextView
+                android:id="@+id/fragment_center_order_no_pay_pay_to"
+                style="@style/bt_textview"
+                
+                android:text="去付款" />
+            
+             <TextView
+                android:id="@+id/fragment_center_order_no_pay_cancel_order"
+                style="@style/bt_textview"
+                android:layout_marginLeft="@dimen/order_list_button_margin"
+                android:text="取消订单" />
+        </LinearLayout>
+
+        <View style="@style/line_left_right" />
+
+        <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+            android:id="@+id/item_fragment_center_order_no_pay_outside"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null" />
+
+        <View style="@style/line_left_right" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/order_list_outside_layout_padding" >
+
+            <TextView
+                android:id="@+id/item_fragment_center_order_no_pay_allnum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/order_list_good_number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="需付款:"
+                android:textColor="@color/slategrey"
+                android:textSize="@dimen/comment_label_txtsize" />
+
+            <TextView
+                android:id="@+id/item_fragment_center_order_no_pay_allmoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_fen"
+                android:textSize="@dimen/order_list_total_money" />
+
+            <TextView
+                android:id="@+id/item_fragment_center_order_no_pay_postage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_fen"
+                android:textSize="@dimen/order_list_poseage" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

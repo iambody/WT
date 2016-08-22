@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/brand_detail_out_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <io.vtown.WeiTangApp.comment.view.ScrollBottomScrollView
+            android:id="@+id/brandscroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <!-- head部分设计 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/transparent"
+                    android:orientation="vertical" >
+
+                    <!-- Log&&品牌名 -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="5dp" >
+
+                        <io.vtown.WeiTangApp.comment.view.CircleImageView
+                            android:id="@+id/brand_detail_brand_iv"
+                            android:layout_width="@dimen/brand_detail_brand_iv"
+                            android:layout_height="@dimen/brand_detail_brand_iv"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15dp" />
+
+                        <TextView
+                            android:id="@+id/brand_detail_brand_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/app_name" />
+
+                        <ImageView
+                            android:id="@+id/brand_detail_brand_lookshow_iv"
+                            android:layout_width="@dimen/brand_detail_collect_iv_height"
+                            android:layout_height="@dimen/brand_detail_collect_iv_height"
+                            android:layout_gravity="center_vertical"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:padding="5dp"
+                            android:src="@drawable/brand_inf3" />
+
+                        <ImageView
+                            android:id="@+id/brand_detail_brand_brandinf_iv"
+                            android:layout_width="@dimen/brand_detail_collect_iv_height"
+                            android:layout_height="@dimen/brand_detail_collect_iv_height"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:padding="5dp"
+                            android:src="@drawable/brand_inf4" />
+                    </LinearLayout>
+                    <!-- Log&&品牌名***** -->
+                    <!-- 品牌LOg -->
+
+
+                    <!-- Banner图 -->
+
+                    <io.vtown.WeiTangApp.comment.view.ImageCycleView
+                        android:id="@+id/branddetail_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <!-- Banner图***** -->
+                    <!-- 品牌LOg*** -->
+                </LinearLayout>
+                <!-- 横向选择 -->
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:src="@color/white" />
+
+                <io.vtown.WeiTangApp.comment.view.listview.HorizontalListView
+                    android:id="@+id/brand_detail_horizontal_ls"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/horizontallistview"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:src="@color/app_bg" />
+                <!-- head部分设计**** -->
+
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+                    android:id="@+id/brand_detail_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:horizontalSpacing="10dp"
+                    android:numColumns="2"
+                    android:scrollbars="none"
+                    android:verticalSpacing="10dp" />
+            </LinearLayout>
+        </io.vtown.WeiTangApp.comment.view.ScrollBottomScrollView>
+
+        <TextView
+            android:id="@+id/brand_detail_apply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_txt_bt"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/brand_detail_apply"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/brand_detail_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+</LinearLayout>

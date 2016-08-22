@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp" >
+
+    <ImageView
+        android:id="@+id/iv_my_account_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/tv_my_account_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/iv_my_account_icon"
+        android:text="@string/nullstr"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/comment_label_txtsize" />
+
+    <TextView
+        android:id="@+id/tv_my_account_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_my_account_name"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:textSize="@dimen/comment_label_txtsize"
+        android:textColor="@color/app_gray"
+        android:layout_toRightOf="@id/iv_my_account_icon"
+        android:text="@string/nullstr"
+        />
+
+    <ImageView
+        android:id="@+id/iv_arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/quan_select_3" />
+
+</RelativeLayout>

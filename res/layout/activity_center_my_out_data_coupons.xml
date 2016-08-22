@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+    
+    <include layout="@layout/titlebar"/>
+    
+    <LinearLayout 
+        android:id="@+id/center_my_out_data_coupons_outlay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+        
+        <io.vtown.WeiTangApp.comment.view.listview.LListView
+        android:id="@+id/lv_my_out_data_conpons_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:focusable="false"
+        android:layout_marginLeft="@dimen/center_my_conpons_listview_magrin"
+        android:layout_marginRight="@dimen/center_my_conpons_listview_magrin"
+        android:focusableInTouchMode="false"
+        android:listSelector="#00000000" />
+        
+        
+        
+    </LinearLayout>
+
+    
+    
+    <include 
+        android:id="@+id/center_my_out_data_coupons_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

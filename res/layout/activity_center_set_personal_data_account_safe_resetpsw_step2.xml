@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/ll_enter_phone_and_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_enter_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/center_set_account_safe_resetpsw_phone_padding"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/comment_label_txtsize" />
+
+        <View style="@style/line_left" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/center_set_account_safe_resetpsw_verification_code_top_buttom_padding"
+            android:paddingLeft="@dimen/center_set_account_safe_resetpsw_verification_code_left_right_padding"
+            android:paddingRight="@dimen/center_set_account_safe_resetpsw_verification_code_left_right_padding"
+            android:paddingTop="@dimen/center_set_account_safe_resetpsw_verification_code_top_buttom_padding" >
+
+            <EditText
+                android:id="@+id/safe_verification_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_login_circular"
+                android:textColor="@color/grey"
+                android:inputType="number"
+                android:padding="@dimen/center_set_account_safe_resetpsw_verification_code_edittext_padding" />
+
+            <TextView
+                android:id="@+id/safe_verification_getcode_bt"
+                style="@style/bt_textview_comment"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/center_set_account_safe_resetpsw_verification_code_left_right_margin"
+                android:background="@drawable/select_fen_to_gray"
+                android:text="@string/get_sms_code" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_enter_name_and_numb_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/center_set_account_safe_resetpsw_real_name_padding"
+            android:text="@string/real_name"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/comment_label_txtsize" />
+
+        <TextView
+            android:id="@+id/tv_reset_psw_real_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/center_set_account_safe_resetpsw_real_name_padding"
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/comment_label_txtsize" />
+
+        <TextView
+            android:id="@+id/tv_id_numb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/center_set_account_safe_resetpsw_real_name_padding"
+            android:text="@string/id_numb"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/comment_label_txtsize" />
+
+        <EditText
+            android:id="@+id/et_enter_id_numb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="@string/txt_enter_id_numb"
+            android:inputType="number"
+            android:padding="@dimen/center_set_account_safe_resetpsw_real_name_padding"
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/comment_label_txtsize"/>
+       
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next_step2"
+        style="@style/build_two_dimension_code_btn_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/center_set_account_safe_resetpsw_next_buttom_left_right_margin"
+        android:layout_marginRight="@dimen/center_set_account_safe_resetpsw_next_buttom_left_right_margin"
+        android:layout_marginTop="@dimen/center_set_account_safe_resetpsw_next_buttom_top_margin"
+        android:text="@string/next_step" />
+
+</LinearLayout>

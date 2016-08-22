@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\MyStudioSpace\WtApp\assets"><file name="province_data.xml" path="D:\MyStudioSpace\WtApp\assets\province_data.xml"/><file name="pubkey.pem" path="D:\MyStudioSpace\WtApp\assets\pubkey.pem"/><file name="ShareSDK.xml" path="D:\MyStudioSpace\WtApp\assets\ShareSDK.xml"/></source><source path="D:\MyStudioSpace\WtApp\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\MyStudioSpace\WtApp\build-types\debug\assets"/></dataSet></merger>

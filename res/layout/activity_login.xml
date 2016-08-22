@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/login_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/login_log" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/login_wx_login"
+        style="@style/bt_match"
+        android:layout_margin="13dp"
+        android:background="@drawable/select_fen_to_gray"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/login_yijianlogin"
+        android:textColor="@color/TextColorWhite" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/line_size1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@color/app_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/other_login"
+            android:textColor="@color/app_gray" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/line_size1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@color/app_gray" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/login_phone_login"
+        style="@style/bt_match"
+        android:layout_margin="10dp"
+        android:background="@drawable/select_white_to_fen1"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/login_phone_number"
+        android:textColor="@color/app_gray" />
+
+</LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/view_sousou_good_footview_goshopsou"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/select_white_to_gray"
+        android:focusable="true"
+        android:clickable="true"
+        android:padding="10dp" 
+        android:text="@string/shop_sousou"
+        android:gravity="center"
+        android:textColor="@color/app_fen"/>
+
+</LinearLayout>
