@@ -3,6 +3,7 @@
     <declare-styleable name="CircleImageView">
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
+        <attr name="name" format="string" />
     </declare-styleable>
     <declare-styleable name="CircleTextView">
         <attr name="TextColor" format="color" />
@@ -179,9 +180,9 @@
         <attr name="rotateToCenter" format="boolean" />
         <attr name="isRotating" format="boolean" />
     </declare-styleable>
-    <declare-styleable name="CircleImageView">
-        <attr name="name" format="string" />
-    </declare-styleable>
+    <!--<declare-styleable name="CircleImageView">
+
+    </declare-styleable>-->
     
      <declare-styleable name="RatioImageView">
         <attr name="ratio" format="float" />
