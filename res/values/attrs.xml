@@ -4,7 +4,6 @@
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
         <attr name="name" format="string" />
-        <attr name="name3" format="string" />
     </declare-styleable>
     <declare-styleable name="CircleTextView">
         <attr name="TextColor" format="color" />
