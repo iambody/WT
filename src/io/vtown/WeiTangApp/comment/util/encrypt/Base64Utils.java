@@ -20,7 +20,7 @@ public class Base64Utils
 			-1, -1, -1 };
 
 	/**
-	 * ¼ÓÃÜ
+	 *
 	 * 
 	 * @param data
 	 * @return
@@ -60,7 +60,7 @@ public class Base64Utils
 	}
 
 	/**
-	 * ½âÃÜ
+	 *
 	 * 
 	 * @param str
 	 * @return
