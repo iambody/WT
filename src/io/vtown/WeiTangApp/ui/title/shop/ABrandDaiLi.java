@@ -431,13 +431,14 @@ public class ABrandDaiLi extends ATitleBase {
 	}
 
 	private void toBrandList() {
-		BHome bHome = new BHome();
-		BComment datas = new BComment(bHome.getId(), bHome.getCate_name());
-		Intent intent = new Intent(BaseActivity, ACommentList.class);
-		intent.putExtra(ACommentList.Tage_ResultKey,
-				ACommentList.Tage_HomePopBrand);
-		intent.putExtra(ACommentList.Tage_BeanKey, datas);
-		PromptManager.SkipActivity(BaseActivity, intent);
+//		BHome bHome = new BHome();
+//		BComment datas = new BComment(bHome.getId(), bHome.getCate_name());
+//		Intent intent = new Intent(BaseActivity, ACommentList.class);
+//		intent.putExtra(ACommentList.Tage_ResultKey,
+//				ACommentList.Tage_HomePopBrand);
+//		intent.putExtra(ACommentList.Tage_BeanKey, datas);
+//		PromptManager.SkipActivity(BaseActivity, intent);
+		PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ABrandList.class));
 	}
 
 	@Override

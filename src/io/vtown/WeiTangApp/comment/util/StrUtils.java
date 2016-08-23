@@ -819,7 +819,7 @@ public class StrUtils {
 		if (idNo.length() == 18) {
 			newIdString = idNo.replace(idNo.substring(5, 16), "***********");
 		} else if (idNo.length() == 16) {
-			newIdString = idNo.replace(idNo.substring(5, 14), "********");
+			newIdString = idNo.replace(idNo.substring(5, 13), "*******");
 		}
 		return newIdString;
 	}

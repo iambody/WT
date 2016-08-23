@@ -515,6 +515,9 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 		intent.putExtra("return-data", false);// true:不返回uri，false：返回uri
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, cutImgUri);// 写入截取的图片
 		startActivityForResult(intent, PHOTO_REQUEST_CUT);
+
+
+
 	}
 
 	/**

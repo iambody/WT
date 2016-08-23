@@ -61,7 +61,8 @@ public class Base64Utils
 
 	/**
 	 *
-	 * 
+	 *
+	 *
 	 * @param str
 	 * @return
 	 */

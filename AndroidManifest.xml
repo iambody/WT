@@ -770,6 +770,12 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>
+
+        <activity
+            android:name=".ui.title.shop.ABrandList"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
         <!-- activity的space************************************* -->
 
 
