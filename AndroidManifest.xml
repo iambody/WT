@@ -40,7 +40,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- 极光推送 -->
-
+    <permission android:name="io.vtown.WeiTangApp.jpushdemo.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="io.vtown.WeiTangApp.jpushdemo.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
