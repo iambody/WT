@@ -821,6 +821,7 @@ public class StrUtils {
 			newIdString = idNo.replace(idNo.substring(3, 11), "********");
 		}
 		return newIdString;
+		//Modify
 	}
 
 	/**
