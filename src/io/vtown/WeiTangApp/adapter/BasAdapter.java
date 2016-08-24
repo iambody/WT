@@ -13,7 +13,7 @@ public abstract class BasAdapter extends BaseAdapter {
 
 //ddddddddddddddddd
 
-//ddddddddddd
+ //远端
     }
 
 
