@@ -9,7 +9,6 @@ public abstract class BasAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return 0;
-        //
 
 //ddddddddddddddddd
  //远端的淡淡的
@@ -21,6 +20,10 @@ public abstract class BasAdapter extends BaseAdapter {
     public Object getItem(int arg0) {
         return null;
     }
+
+    //dev 分支进行处理测试
+    //k
+
 
     @Override
     public long getItemId(int arg0) {

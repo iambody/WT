@@ -71,6 +71,7 @@ public class ImageLoaderUtil {
 			int defaultImg) {
 		DisplayImageOptions options = new DisplayImageOptions.Builder()
 				.showImageOnLoading(defaultImg)
+		        .considerExifParams(true)
 				.showImageForEmptyUri(defaultImg).showImageOnFail(defaultImg)
 				.cacheOnDisc(true).cacheInMemory(true)
 				.cacheOnDisk(true)

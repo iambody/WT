@@ -74,6 +74,7 @@ import android.widget.TextView.BufferType;
 
 @SuppressLint("SimpleDateFormat")
 public class StrUtils {
+
 	/**
 	 * 判断是否含有特殊字符
 	 * 
@@ -86,7 +87,7 @@ public class StrUtils {
 		Matcher m = p.matcher(str);
 		return m.find();
 	}
-
+//
 	/**
 	 * 判断给定字符串是否空白串 空白串是指由空格、制表符、回车符、换行符组成的字符串 若输入字符串为null或空字符串，返回true
 	 * 
@@ -806,13 +807,14 @@ public class StrUtils {
 	}
 
 	/**
-	 * Modify
+	 * 
 	 * 身份证号打掩码
+	 * 
 	 * @param idNo
 	 * @return
 	 */
 	public static String getIdNoFormatForUser(String idNo) {
-		System.out.print("");
+		//哈哈
 		if (idNo == null || "".equals(idNo))
 			return "";
 		String newIdString = "";
@@ -822,7 +824,6 @@ public class StrUtils {
 			newIdString = idNo.replace(idNo.substring(3, 11), "********");
 		}
 		return newIdString;
-
 	}
 
 	/**
