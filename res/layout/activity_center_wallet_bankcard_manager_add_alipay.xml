@@ -106,14 +106,14 @@
                     android:textColor="@color/app_gray"
                     android:textSize="@dimen/center_wallet_add_alipay_transfer_agreement_size" />
                 
-                <TextView 
+               <!-- <TextView
                     android:id="@+id/tv_alipay_transfer_agreement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bank_transfer"
                     android:textColor="@color/app_fen"
                     android:textSize="@dimen/center_wallet_add_alipay_transfer_agreement_size"
-                    />
+                    />-->
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
