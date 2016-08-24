@@ -12,7 +12,7 @@ public abstract class BasAdapter extends BaseAdapter {
         //
 
 //ddddddddddddddddd
-//ddddddddddddddddd是事实上事实上事实上事实上
+
 //ddddddddddd
     }
 
