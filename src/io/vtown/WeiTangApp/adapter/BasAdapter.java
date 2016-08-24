@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 public abstract class BasAdapter extends BaseAdapter {
-
+    //dev分支进行提交master分支测试
     @Override
     public int getCount() {
         return 0;
@@ -21,6 +21,10 @@ public abstract class BasAdapter extends BaseAdapter {
     public Object getItem(int arg0) {
         return null;
     }
+
+    //dev 分支进行处理测试
+    //k
+
 
     @Override
     public long getItemId(int arg0) {
