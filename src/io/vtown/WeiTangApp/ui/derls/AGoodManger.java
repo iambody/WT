@@ -1052,36 +1052,36 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 		// 当前订单状态 100在售中;;20 已经下架;;0品牌商品;;1标识垃圾箱
 		case Manger_XiaJia:// 在售中=》下架
 			PromptManager.ShowCustomToast(BaseContext, "下架成功");
-			CurrentPage = 0;
+			CurrentPage = 1;
 			LoadData(CurrentPage, LOAD_INITIALIZE);
 			EventBus.getDefault().post(new BMessage(20));
 			break;
 		case Manger_ShanChu:// 在售中=》删除
 			PromptManager.ShowCustomToast(BaseContext, "删除成功");
-			CurrentPage = 0;
+			CurrentPage = 1;
 			LoadData(CurrentPage, LOAD_INITIALIZE);
 			EventBus.getDefault().post(new BMessage(1));
 			break;
 		case Manger_ShangJia:// 已下架=》上架
 			PromptManager.ShowCustomToast(BaseContext, "上架成功");
-			CurrentPage = 0;
+			CurrentPage = 1;
 			LoadData(CurrentPage, LOAD_INITIALIZE);
 			EventBus.getDefault().post(new BMessage(100));
 			break;
 		case Manger_HuiFu:// 垃圾箱=》恢复
 			PromptManager.ShowCustomToast(BaseContext, "恢复成功");
-			CurrentPage = 0;
+			CurrentPage = 1;
 			LoadData(CurrentPage, LOAD_INITIALIZE);
 			EventBus.getDefault().post(new BMessage(100));
 			break;
 		case Manger_CheDi_ShanChu:// 垃圾箱=》彻底删除
 			PromptManager.ShowCustomToast(BaseContext, "清理成功");
-			CurrentPage = 0;
+			CurrentPage = 1;
 			LoadData(CurrentPage, LOAD_INITIALIZE);
 			break;
 		case Manger_ShanJia:// 品牌==》上架
 			PromptManager.ShowCustomToast(BaseContext, "上架成功");
-			CurrentPage = 0;
+			CurrentPage = 1;
 			LoadData(CurrentPage, LOAD_INITIALIZE);
 			break;
 		case Manger_Good_Attrs:// 品牌商品 =》采购=》获取产品的规格
@@ -1219,7 +1219,7 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 						.getColor(R.color.app_fen));
 				IsBrand = true;
 
-				CurrentPage = 0;
+				CurrentPage = 1;
 				LoadData(CurrentPage, LOAD_INITIALIZE);
 			}
 
@@ -1235,7 +1235,7 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 				fragment_isbrand_ziying_txt.setTextColor(getResources()
 						.getColor(R.color.white));
 				IsBrand = false;
-				CurrentPage = 0;
+				CurrentPage = 1;
 				LoadData(CurrentPage, LOAD_INITIALIZE);
 			}
 			break;

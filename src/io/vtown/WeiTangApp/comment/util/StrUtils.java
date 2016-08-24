@@ -807,13 +807,14 @@ public class StrUtils {
 	}
 
 	/**
-	 * Modify
+	 * 
 	 * 身份证号打掩码
+	 * 
 	 * @param idNo
 	 * @return
 	 */
 	public static String getIdNoFormatForUser(String idNo) {
-		System.out.print("");
+		//哈哈
 		if (idNo == null || "".equals(idNo))
 			return "";
 		String newIdString = "";
@@ -823,7 +824,6 @@ public class StrUtils {
 			newIdString = idNo.replace(idNo.substring(3, 11), "********");
 		}
 		return newIdString;
-
 	}
 
 	/**
