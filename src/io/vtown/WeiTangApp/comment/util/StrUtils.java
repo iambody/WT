@@ -808,7 +808,6 @@ public class StrUtils {
 	/**
 	 * 
 	 * 身份证号打掩码
-	 * 
 	 * @param idNo
 	 * @return
 	 */
