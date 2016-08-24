@@ -172,6 +172,7 @@ public class ABankCardManager extends ATitleBase implements
 	}
 
 	private void IList() {
+		lv_my_bank_card_list.setVisibility(View.GONE);
 		bankCardAdapter = new BankCardAdapter(R.layout.item_bank_card);
 		lv_my_bank_card_list.setAdapter(bankCardAdapter);
 		if (isFinish) {
@@ -188,10 +189,11 @@ public class ABankCardManager extends ATitleBase implements
 
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
-		
+		lv_my_bank_card_list.setVisibility(View.VISIBLE);
 		switch (Data.getHttpResultTage()) {
 		case 0:
 			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+
 				return;
 			}
 
@@ -224,6 +226,7 @@ public class ABankCardManager extends ATitleBase implements
 
 	@Override
 	protected void DataError(String error, int LoadTyp) {
+		lv_my_bank_card_list.setVisibility(View.VISIBLE);
 		PromptManager.ShowMyToast(BaseContext, error);
 		bankCardAdapter.FrashData(new ArrayList<BLComment>());
 		if (!isFinish) {

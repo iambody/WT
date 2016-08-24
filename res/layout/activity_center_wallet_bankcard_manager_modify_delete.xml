@@ -164,6 +164,6 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/comment_label_txtsize"
         android:padding="@dimen/center_wallet_modify_bankcard_submit_button_padding"
-        android:text="提交" />
+        android:text="保存修改" />
 
 </LinearLayout>

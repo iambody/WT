@@ -69,6 +69,7 @@ public class AMyOutDataCoupons extends ATitleBase {
         lv_my_out_data_conpons_list.hidefoot();
         outDataConponsAp = new OutDataConponsAdapter(R.layout.item_my_out_data_coupons_list);
         lv_my_out_data_conpons_list.setAdapter(outDataConponsAp);
+        center_my_out_data_coupons_nodata_lay.setOnClickListener(this);
     }
 
     private void IData() {
@@ -91,6 +92,7 @@ public class AMyOutDataCoupons extends ATitleBase {
     protected void DataResult(int Code, String Msg, BComment Data) {
         if (StrUtils.isEmpty(Data.getHttpResultStr())) {
             PromptManager.ShowCustomToast(BaseContext, "还没有失效卡券");
+            IDataView(center_my_out_data_coupons_outlay, center_my_out_data_coupons_nodata_lay, NOVIEW_ERROR);
             return;
         }
 
@@ -133,6 +135,11 @@ public class AMyOutDataCoupons extends ATitleBase {
 
     @Override
     protected void MyClick(View V) {
+        switch (V.getId()){
+            case R.id.center_my_out_data_coupons_nodata_lay:
+                IData();
+                break;
+        }
     }
 
     @Override

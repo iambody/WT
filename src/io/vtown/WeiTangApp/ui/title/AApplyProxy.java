@@ -92,14 +92,17 @@ public class AApplyProxy extends ATitleBase {
 
 	@Override
 	protected void NetConnect() {
+		NetError.setVisibility(View.GONE);
 	}
 
 	@Override
 	protected void NetDisConnect() {
+		NetError.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	protected void SetNetView() {
+		SetNetStatuse(NetError);
 	}
 
 	@Override
@@ -110,6 +113,7 @@ public class AApplyProxy extends ATitleBase {
 				PromptManager.ShowCustomToast(BaseContext, "请输入申请理由");
 				return;
 			}
+			if(CheckNet(BaseContext))return;
 			BrandApplay(apply_id, et_introduce_youself.getText().toString()
 					.trim());
 			break;

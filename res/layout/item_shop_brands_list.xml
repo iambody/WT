@@ -83,7 +83,7 @@
                 android:id="@+id/tv_shop_brand_apply_success"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/lightgoldenrodyellow"
+                android:background="@color/royalblue"
                 android:gravity="center"
                 android:paddingBottom="4dp"
                 android:paddingLeft="7dp"

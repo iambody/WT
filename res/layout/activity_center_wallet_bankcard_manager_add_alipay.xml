@@ -120,7 +120,7 @@
 
     <TextView
         android:id="@+id/tv_btn_submit_alipay"
-        style="@style/btnstyle"
+        style="@style/build_two_dimension_code_btn_style_no_circular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"

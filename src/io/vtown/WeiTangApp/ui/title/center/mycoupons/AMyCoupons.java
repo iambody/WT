@@ -95,10 +95,11 @@ public class AMyCoupons extends ATitleBase {
 
 		center_my_coupons_outlay = (LinearLayout) findViewById(R.id.center_my_coupons_outlay);
 		center_my_coupons_nodata_lay = findViewById(R.id.center_my_coupons_nodata_lay);
-		IDataView(center_my_coupons_outlay, center_my_coupons_nodata_lay,
-				NOVIEW_INITIALIZE);
+
 		center_my_coupons_nodata_lay.setOnClickListener(this);
 		lv_my_conpons_list = (ListView) findViewById(R.id.lv_my_conpons_list);
+		IDataView(lv_my_conpons_list, center_my_coupons_nodata_lay,
+				NOVIEW_INITIALIZE);
 		ll_look_out_data_coupons = (LinearLayout) findViewById(R.id.ll_look_out_data_coupons);
 		tv_look_over_time_coupons = (TextView) findViewById(R.id.tv_look_over_time_coupons);
 		// 如果是确认订单过来的就不需要显示查看过期卡券
@@ -139,8 +140,8 @@ public class AMyCoupons extends ATitleBase {
 
 		if (StrUtils.isEmpty(Data.getHttpResultStr())) {
 			PromptManager.ShowCustomToast(BaseContext, "暂无优惠券");
-			IDataView(center_my_coupons_outlay, center_my_coupons_nodata_lay,
-					NOVIEW_RIGHT);
+			IDataView(lv_my_conpons_list, center_my_coupons_nodata_lay,
+					NOVIEW_ERROR);
 			return;
 		}
 
@@ -153,7 +154,7 @@ public class AMyCoupons extends ATitleBase {
 			DataError("解析失败", 1);
 		}
 
-		IDataView(center_my_coupons_outlay, center_my_coupons_nodata_lay,
+		IDataView(lv_my_conpons_list, center_my_coupons_nodata_lay,
 				NOVIEW_RIGHT);
 		myConpousAdapter.FrashData(listdata);
 	}
@@ -162,9 +163,12 @@ public class AMyCoupons extends ATitleBase {
 	protected void DataError(String error, int LoadType) {
 		PromptManager.ShowCustomToast(BaseContext, error);
 		switch (LoadType) {
+			case LOAD_INITIALIZE:
+				IDataView(lv_my_conpons_list, center_my_coupons_nodata_lay,
+						NOVIEW_ERROR);
+				break;
 		case LOAD_REFRESHING:// 刷新数据
-			IDataView(center_my_coupons_outlay, center_my_coupons_nodata_lay,
-					NOVIEW_ERROR);
+
 		 
 
 			break;

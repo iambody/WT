@@ -168,7 +168,7 @@
 
         <TextView
             android:id="@+id/tv_apply_withdraw_deposit"
-            style="@style/btnstyle"
+            style="@style/build_two_dimension_code_btn_style_no_circular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/center_wallet_tixian_btn_padding"
