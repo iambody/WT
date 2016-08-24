@@ -812,6 +812,7 @@ public class StrUtils {
 	 * @return
 	 */
 	public static String getIdNoFormatForUser(String idNo) {
+		System.out.print("");
 		if (idNo == null || "".equals(idNo))
 			return "";
 		String newIdString = "";
@@ -821,7 +822,7 @@ public class StrUtils {
 			newIdString = idNo.replace(idNo.substring(3, 11), "********");
 		}
 		return newIdString;
-		//Modify
+
 	}
 
 	/**
