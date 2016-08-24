@@ -6,34 +6,30 @@ import android.widget.BaseAdapter;
 
 public abstract class BasAdapter extends BaseAdapter {
 
-	@Override
-	public int getCount() {
-		return 0;
-		//
+    @Override
+    public int getCount() {
+        return 0;
+        //
+
+//ddddddddddddddddd
+
+//ddddddddddd
+    }
 
 
+    @Override
+    public Object getItem(int arg0) {
+        return null;
+    }
 
+    @Override
+    public long getItemId(int arg0) {
+        return 0;
+    }
 
-
-	}
-
-
-
-
-
-	@Override
-	public Object getItem(int arg0) {
-		return null;
-	}
-
-	@Override
-	public long getItemId(int arg0) {
-		return 0;
-	}
-
-	@Override
-	public View getView(int arg0, View arg1, ViewGroup arg2) {
-		return null;
-	}
+    @Override
+    public View getView(int arg0, View arg1, ViewGroup arg2) {
+        return null;
+    }
 
 }
