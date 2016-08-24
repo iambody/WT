@@ -104,12 +104,12 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 		}
 		switch (type) {
 		case 1:
-			tv_modify_desc.setText("好名字可以让你的店铺更加瞩目");
+			tv_modify_desc.setText("好店铺名称可以让你的店铺更加瞩目");
 			tv_content_count.setVisibility(View.GONE);
 			break;
 
 		case 2:
-			tv_modify_desc.setText("填写店铺描述，你的店铺与众不同");
+			tv_modify_desc.setText("填写店铺介绍，你的店铺与众不同");
 			MaxNumber = 20;
 			et_content.clearFocus();
 			et_content.addTextChangedListener(this);
@@ -137,11 +137,11 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 		String title = "";
 		switch (type) {
 		case 1:
-			title = "更改店铺名字";
+			title = "更改店铺名称";
 			break;
 
 		case 2:
-			title = "更改店铺描述";
+			title = "更改店铺介绍";
 			break;
 
 		default:
@@ -296,12 +296,13 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 	private long calculateLength(CharSequence c) {
 		double len = 0;
 		for (int i = 0; i < c.length(); i++) {
-			int temp = (int) c.charAt(i);
-			if (temp > 0 && temp < 127) {
-				len += 0.5;
-			} else {
-				len++;
-			}
+//			int temp = (int) c.charAt(i);
+//			if (temp > 0 && temp < 127) {
+//				len += 1;
+//			} else {
+//				len++;
+//			}
+			len++;
 		}
 		return Math.round(len);
 	}

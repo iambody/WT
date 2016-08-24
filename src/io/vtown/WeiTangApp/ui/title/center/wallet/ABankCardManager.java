@@ -11,6 +11,7 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
@@ -357,7 +358,8 @@ public class ABankCardManager extends ATitleBase implements
 			if (arg1 == null) {
 				arg1 = inflater.inflate(ResourcesId, null);
 				item = new BankCardItem();
-				item.iv_bank_icon = ViewHolder.get(arg1, R.id.iv_bank_icon);
+				//item.iv_bank_icon = ViewHolder.get(arg1, R.id.iv_bank_icon);
+				item.iv_bank_icon = (CircleImageView)arg1.findViewById(R.id.iv_bank_icon);
 				item.tv_bank_card_name = ViewHolder.get(arg1,
 						R.id.tv_bank_card_name);
 				item.tv_bank_card_numb = ViewHolder.get(arg1,
@@ -377,7 +379,7 @@ public class ABankCardManager extends ATitleBase implements
 		}
 
 		class BankCardItem {
-			ImageView iv_bank_icon;
+			CircleImageView iv_bank_icon;
 			TextView tv_bank_card_name, tv_bank_card_numb;
 
 		}

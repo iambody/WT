@@ -117,8 +117,6 @@ public class ACenterWallet extends ATitleBase {
 		user_Get = Spuit.User_Get(BaseContext);
 		IBase();
 		ICache();
-		IData(LOAD_INITIALIZE);
-		ITiXianData();
 		isFristInto = true;
 	}
 
@@ -152,6 +150,8 @@ public class ACenterWallet extends ATitleBase {
 	protected void onResume() {
 
 		super.onResume();
+		IData(LOAD_INITIALIZE);
+		ITiXianData();
 		
 	}
 
@@ -338,13 +338,16 @@ public class ACenterWallet extends ATitleBase {
 		case R.id.tv_btn_submit:// 提现
 			if (CheckNet(BaseContext))
 				return;
-			if (data1.getBank_list() == null
-					&& StrUtils.isEmpty(data1.getAlipay_list().getAlipay())) {
-				ShowCustomDialog(2, "请先绑定银行卡或支付宝", "");
-			} else {
-				PromptManager.SkipActivity(BaseActivity, new Intent(
-						BaseActivity, ATiXian.class));
+			if(data1 != null){
+				if (data1.getBank_list() == null
+						&& StrUtils.isEmpty(data1.getAlipay_list().getAlipay())) {
+					ShowCustomDialog(2, "请先绑定银行卡或支付宝", "");
+				} else {
+					PromptManager.SkipActivity(BaseActivity, new Intent(
+							BaseActivity, ATiXian.class));
+				}
 			}
+
 
 			break;
 		case R.id.bank_card_manage:

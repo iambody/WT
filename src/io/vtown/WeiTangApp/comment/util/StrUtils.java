@@ -818,8 +818,8 @@ public class StrUtils {
 		String newIdString = "";
 		if (idNo.length() == 18) {
 			newIdString = idNo.replace(idNo.substring(5, 16), "***********");
-		} else if (idNo.length() == 16) {
-			newIdString = idNo.replace(idNo.substring(5, 13), "*******");
+		} else if (idNo.length() == 15) {
+			newIdString = idNo.replace(idNo.substring(3, 11), "********");
 		}
 		return newIdString;
 	}

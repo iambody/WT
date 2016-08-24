@@ -77,9 +77,10 @@ public class AApplyProxy extends ATitleBase {
 
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
-		PromptManager.ShowCustomToast(BaseContext, "申请成功");
+		PromptManager.ShowCustomToast(BaseContext, "申请已提交，请耐心等候系统审核");
 		EventBus.getDefault().post(
 				new BMessage(BMessage.Tage_Brand_Apply_Statue));
+		EventBus.getDefault().post(new BMessage(BMessage.Tage_Updata_Brand_list));
 		BaseActivity.finish();
 	}
 

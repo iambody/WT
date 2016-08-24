@@ -49,6 +49,11 @@ public class BMessage {
 	public static final int Tage_My_Purchase = 506;
 
 	/**
+	 * 品牌列刷新
+	 */
+	public static final int Tage_Updata_Brand_list = 1178;
+
+	/**
 	 * 修改商品价格事件标识
 	 */
 	public float Tage_Edit_Good_Price = 0;

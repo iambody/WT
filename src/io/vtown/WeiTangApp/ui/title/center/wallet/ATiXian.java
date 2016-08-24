@@ -409,11 +409,37 @@ public class ATiXian extends ATitleBase {
 
 			break;
 
-		case R.id.tv_apply_withdraw_deposit:
-			PassView(fetch_type);
-			
+			case R.id.tv_apply_withdraw_deposit:
+				switch (fetch_type){
+					case  1:
+						String transferMoney1 = et_this_time_allow_transfer_money_bank
+								.getText().toString().trim();
+						if (!StrUtils.checkMoney(BaseContext, transferMoney1, 100, 50000)) {
+							return;
+						}
+						if (bank_list != null) {
+							if (CheckNet(BaseContext))
+								return;
+							PassView(fetch_type, transferMoney1);
+						}
+						break;
 
-			break;
+					case 2:
+						String transferMoney = et_this_time_allow_transfer_money_alipay
+								.getText().toString().trim();
+
+						if (!StrUtils.checkMoney(BaseContext, transferMoney, 100, 50000)) {
+							return;
+						}
+						if (CheckNet(BaseContext))
+							return;
+						PassView(fetch_type,transferMoney);
+						break;
+				}
+
+
+
+				break;
 
 		case R.id.bank_card_account:
 			if (CheckNet(BaseContext))
@@ -484,7 +510,7 @@ public class ATiXian extends ATitleBase {
 	 * @param name
 	 * @param id_numb
 	 */
-	private void PassView(final int fetch_type) {
+	private void PassView(final int fetch_type,final String money) {
 		final PPassWord p = new PPassWord(BaseContext, screenWidth,
 				getString(R.string.please_input_6_bit_reset_psd));
 
@@ -495,32 +521,17 @@ public class ATiXian extends ATitleBase {
 
 				p.dismiss();
 				switch (fetch_type) {
-				case 2:
-					String transferMoney = et_this_time_allow_transfer_money_alipay
-							.getText().toString().trim();
-
-					if (!StrUtils.checkMoney(BaseContext, transferMoney, 1, 50000)) {
-						return;
-					}
-					if (CheckNet(BaseContext))
-						return;
-					int money_int = (int) (Float.parseFloat(transferMoney) * 100);
+					case 2:
+					int money_int = (int) (Float.parseFloat(money) * 100);
 					ApplyWithdraw(2, alipay_list, money_int + "",getStrPassword);
 					break;
 
 				case 1:
 
-					String transferMoney1 = et_this_time_allow_transfer_money_bank
-							.getText().toString().trim();
-					if (!StrUtils.checkMoney(BaseContext, transferMoney1, 1, 50000)) {
-						return;
-					}
-					if (bank_list != null) {
-						if (CheckNet(BaseContext))
-							return;
-						int money1_int = (int) (Float.parseFloat(transferMoney1) * 100);
+
+						int money1_int = (int) (Float.parseFloat(money) * 100);
 						ApplyWithdraw(1, bank_list, money1_int + "",getStrPassword);
-					}
+
 					break;
 
 				default:

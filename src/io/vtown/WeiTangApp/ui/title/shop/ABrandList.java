@@ -18,9 +18,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -58,6 +61,7 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_shop_brand_list);
+		EventBus.getDefault().register(this,"getEventMsg", BMessage.class);
 		SetTitleHttpDataLisenter(this);
 		IView();
 		IData(LOAD_INITIALIZE,CurrentPage);
@@ -324,4 +328,21 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
 		public CircleImageView shop_brand_iv;
 	}
 
+	private void getEventMsg(BMessage event){
+		int msg = event.getMessageType();
+		if(msg == BMessage.Tage_Updata_Brand_list){
+			CurrentPage = 1;
+			IData(LOAD_INITIALIZE,CurrentPage);
+		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		try{
+			EventBus.getDefault().unregister(this);
+		}catch (Exception e){
+			return;
+		}
+	}
 }
