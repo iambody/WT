@@ -42,7 +42,7 @@
                 android:layout_width="@dimen/brand_detail_brand_iv"
                 android:layout_height="@dimen/brand_detail_brand_iv" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -53,7 +53,8 @@
                     android:id="@+id/pop_purchase_kucun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
+                    android:maxLines="2"
+                    android:ellipsize="end"
                     android:paddingLeft="5dp"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/comment_label_txtsize"
@@ -63,14 +64,11 @@
                     android:id="@+id/pop_purchase_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@id/pop_purchase_kucun"
                     android:layout_marginTop="5dp"
                     android:paddingLeft="5dp"
-                    android:text="￥1234.22"
                     android:textColor="@color/app_fen"
                     android:textSize="@dimen/comment_label_txtsize" />
-            </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
 
         <View
