@@ -135,8 +135,6 @@ public class HorizontalScrollMenu extends LinearLayout {
 
 	/**
 	 * 初始化菜单项 四个充满全屏幕的处理
-	 * 
-	 * @param items
 	 */
 	public void initMenuItems(Context cn, int Widht) {
 		if (null != mItems && 0 != mItems.size()) {
@@ -180,8 +178,6 @@ public class HorizontalScrollMenu extends LinearLayout {
 
 	/**
 	 * 初始化菜单项
-	 * 
-	 * @param items
 	 */
 	public void initMenuItems3(Context cn, int Widht) {
 		if (null != mItems && 0 != mItems.size()) {

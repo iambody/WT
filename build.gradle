@@ -10,12 +10,22 @@ apply plugin: 'android'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
+
 }
 
 android {
+    //====》for getColorStateList
+    lintOptions {
+        disable "ResourceType"
+    }
+    //==>for shop
+    defaultConfig {
+        multiDexEnabled true
+    }
     compileSdkVersion 18
     buildToolsVersion "24.0.0"
-    aaptOptions {         cruncherEnabled = false     }
+
+    aaptOptions { cruncherEnabled = false }
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
