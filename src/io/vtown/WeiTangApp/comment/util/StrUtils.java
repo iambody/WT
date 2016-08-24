@@ -656,6 +656,8 @@ public class StrUtils {
 
 	public static boolean isIDNO(String id) {
 		String telRegex = "[\\d]{14,17}[0-9a-zA-Z]";
+		String Regex="";
+
 		if (isEmpty(id))
 			return false;
 		else
@@ -672,6 +674,11 @@ public class StrUtils {
 	public static boolean checkIdNo(Context context, String idNo) {
 		if (isEmpty(idNo)) {
 			PromptManager.ShowMyToast(context, "请输入身份证号码");
+			return false;
+		}
+
+		if(idNo.length() > 15 &&idNo.length()<18 ){
+			PromptManager.ShowMyToast(context, "您输入的身份证号码有误");
 			return false;
 		}
 
