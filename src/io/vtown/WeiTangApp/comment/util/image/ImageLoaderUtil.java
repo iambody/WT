@@ -24,6 +24,8 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
@@ -85,14 +87,20 @@ public class ImageLoaderUtil {
 
 	public static void Load22(String imgUrl, final ImageView imageView,
 			int defaultImg) {
-		DisplayImageOptions options = new DisplayImageOptions.Builder() 
-				.cacheOnDisc(true).cacheInMemory(true)
-				.cacheOnDisk(true)
-				// .considerExifParams(true)
-				// .displayer(new FadeInBitmapDisplayer(100))
+		DisplayImageOptions options = new DisplayImageOptions.Builder()
+				.showStubImage(defaultImg)
+				.showImageForEmptyUri(defaultImg)
+				.showImageOnFail(defaultImg)
+				.cacheInMemory(true)
+				.cacheOnDisc(true)
 //				.displayer(new SimpleBitmapDisplayer())
-				.bitmapConfig(Bitmap.Config.ARGB_8888).build();
-		ImageLoader.getInstance().displayImage(imgUrl, imageView, options);
+				.imageScaleType(ImageScaleType.NONE)
+				.bitmapConfig(Bitmap.Config.RGB_565)//设置为RGB565比起默认的ARGB_8888要节省大量的内存
+				.delayBeforeLoading(100)//载入图片前稍做延时可以提高整体滑动的流畅度
+				.build();
+		ImageAware imageAware = new ImageViewAware(imageView, false);
+		ImageLoader.getInstance().displayImage(imgUrl, imageAware,options);
+//		ImageLoader.getInstance().displayImage(imgUrl, imageView, options);
 
 	}
 

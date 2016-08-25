@@ -485,19 +485,26 @@
     <!-- 第二层listview的日期和时间文字大小 -->
     <dimen name="center_wallet_property_detail_inside_listview_data_time_txt_size">10sp</dimen>
     <!-- 第二层listview的日期和时间布局竖线margin -->
-    <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_margin">3dp</dimen>
+    <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_margin">3dp
+    </dimen>
     <!-- 第二层listview的日期和时间布局竖线margin -->
-    <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_height">25dp</dimen>
+    <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_height">
+        25dp
+    </dimen>
     <!-- 第二层listview的日期和时间布局竖线中点的大小 -->
-    <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size">10dp</dimen>
+    <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size">
+        10dp
+    </dimen>
     <!-- 第二层listview的正文标题文字大小 -->
     <dimen name="center_wallet_property_detail_inside_listview_content_title_txt_size">13sp</dimen>
     <!-- 第二层listview的正文标题文字margin -->
     <dimen name="center_wallet_property_detail_inside_listview_content_title_txt_margin">5dp</dimen>
     <!-- 第二层listview的交易类型文字大小 -->
-    <dimen name="center_wallet_property_detail_inside_listview_content_trade_type_txt_size">10sp</dimen>
+    <dimen name="center_wallet_property_detail_inside_listview_content_trade_type_txt_size">10sp
+    </dimen>
     <!-- 第二层listview的交易类型文字margin -->
-    <dimen name="center_wallet_property_detail_inside_listview_content_trade_type_txt_margin">10dp</dimen>
+    <dimen name="center_wallet_property_detail_inside_listview_content_trade_type_txt_margin">10dp
+    </dimen>
     <!-- 第二层listview的交易类型文字margin -->
     <dimen name="center_wallet_property_detail_inside_listview_money_txt_size">13sp</dimen>
     <!-- **********end********** 资金明细  *********end********** -->

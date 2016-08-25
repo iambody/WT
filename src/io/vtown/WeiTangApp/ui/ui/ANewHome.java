@@ -61,6 +61,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
@@ -203,8 +204,8 @@ public class ANewHome extends ATitileNoBase implements IXListViewListener {
 		newhome_ls.hidefoot();
 
 		newhome_ls.setAdapter(newHoemAp);
-		// newhome_ls.setOnScrollListener(new PauseOnScrollListener(ImageLoader
-		// .getInstance(), false, true));
+//		 newhome_ls.setOnScrollListener(new PauseOnScrollListener(ImageLoader
+//		 .getInstance(), false, true));
 		newhome_select_iv.setOnClickListener(this);
 		newhome_sou_lay.setOnClickListener(this);
 		newhome_sao_iv.setOnClickListener(this);
@@ -523,53 +524,53 @@ public class ANewHome extends ATitileNoBase implements IXListViewListener {
 			final Myitem myitem2 = myItem;
 			final int Postion = arg0;
 			final BHome data = datas.get(arg0);
-			// ImageLoaderUtil.Load2(datas.get(arg0).getPic_path(),
-			// myItem.item_home_brand_iv, R.drawable.error_iv1);
+			 ImageLoaderUtil.Load22(datas.get(arg0).getPic_path(),
+			 myItem.item_home_brand_iv, R.drawable.error_iv1);
 
-			DisplayImageOptions options = new DisplayImageOptions.Builder()
-					.showImageOnLoading(R.drawable.error_iv1)
-					.showImageForEmptyUri(R.drawable.error_iv1)
-					.showImageOnFail(R.drawable.error_iv1)
-					.cacheOnDisc(true)
-					.cacheInMemory(true)
-					.cacheOnDisk(true)
-					// .considerExifParams(true)
-					// .displayer(new FadeInBitmapDisplayer(100))
-					// .imageScaleType(ImageScaleType.NONE)
-					.displayer(new SimpleBitmapDisplayer())
-					.bitmapConfig(Bitmap.Config.RGB_565).build();
-
-			String tag = (String) myitem2.item_home_brand_iv.getTag();
-			if (tag == null || !tag.equals(datas.get(Postion).getPic_path())) {
-				ImageLoader.getInstance().displayImage(
-						datas.get(Postion).getPic_path(),
-						myitem2.item_home_brand_iv, options,
-						new ImageLoadingListener() {
-							@Override
-							public void onLoadingStarted(String s, View view) {
-
-							}
-
-							@Override
-							public void onLoadingFailed(String s, View view,
-									FailReason failReason) {
-
-							}
-
-							@Override
-							public void onLoadingComplete(String s, View view,
-									Bitmap bitmap) {
-								myitem2.item_home_brand_iv.setTag(datas.get(
-										Postion).getPic_path());// 确保下载完成再打tag.
-							}
-
-							@Override
-							public void onLoadingCancelled(String s, View view) {
-
-							}
-
-						});
-			}
+//			DisplayImageOptions options = new DisplayImageOptions.Builder()
+//					.showImageOnLoading(R.drawable.error_iv1)
+//					.showImageForEmptyUri(R.drawable.error_iv1)
+//					.showImageOnFail(R.drawable.error_iv1)
+//					.cacheOnDisc(true)
+//					.cacheInMemory(true)
+//					.cacheOnDisk(true)
+//					// .considerExifParams(true)
+//					// .displayer(new FadeInBitmapDisplayer(100))
+//					// .imageScaleType(ImageScaleType.NONE)
+//					.displayer(new SimpleBitmapDisplayer())
+//					.bitmapConfig(Bitmap.Config.RGB_565).build();
+//
+//			String tag = (String) myitem2.item_home_brand_iv.getTag();
+//			if (tag == null || !tag.equals(datas.get(Postion).getPic_path())) {
+//				ImageLoader.getInstance().displayImage(
+//						datas.get(Postion).getPic_path(),
+//						new ImageViewAware(myitem2.item_home_brand_iv, false), options,
+//						new ImageLoadingListener() {
+//							@Override
+//							public void onLoadingStarted(String s, View view) {
+//
+//							}
+//
+//							@Override
+//							public void onLoadingFailed(String s, View view,
+//									FailReason failReason) {
+//
+//							}
+//
+//							@Override
+//							public void onLoadingComplete(String s, View view,
+//									Bitmap bitmap) {
+//								myitem2.item_home_brand_iv.setTag(datas.get(
+//										Postion).getPic_path());// 确保下载完成再打tag.
+//							}
+//
+//							@Override
+//							public void onLoadingCancelled(String s, View view) {
+//
+//							}
+//
+//						});
+//			}
 
 			// myItem.item_home_brand_iv.setOnClickListener(new
 			// OnClickListener() {

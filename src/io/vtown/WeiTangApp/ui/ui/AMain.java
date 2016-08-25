@@ -20,6 +20,7 @@ import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.event.receiver.NewMessageBroadcastReceiver;
 import io.vtown.WeiTangApp.service.DownloadService;
+import io.vtown.WeiTangApp.ui.ANdkTest;
 import io.vtown.WeiTangApp.ui.title.ACenter;
 import io.vtown.WeiTangApp.ui.title.AShopBus;
 
