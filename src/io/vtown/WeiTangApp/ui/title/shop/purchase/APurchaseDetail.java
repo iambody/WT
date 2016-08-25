@@ -1225,6 +1225,7 @@ public class APurchaseDetail extends ATitleBase {
 		}
 	}
 
+
 	@Override
 	protected void onDestroy() {
 

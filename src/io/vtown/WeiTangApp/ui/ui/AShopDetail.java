@@ -185,6 +185,12 @@ public class AShopDetail extends ATitileNoBase {
 	 * 用户信息
 	 */
 	private BUser user_Get;
+	/**
+	 * 商品总数
+	 */
+	private TextView shopdetail_shop_total_goods;
+
+	private TextView line_2,line_1;
 
 	// 是否关注本店铺
 	private boolean IsCollect;
@@ -278,6 +284,10 @@ public class AShopDetail extends ATitileNoBase {
 		shopdetail_shop_guanzhu_number = (TextView) findViewById(R.id.shopdetail_shop_guanzhu_number);
 
 		shopdetail_shop_visitor_number = (TextView) findViewById(R.id.shopdetail_shop_visitor_number);
+		line_2 = (TextView) findViewById(R.id.line_2);
+		line_1 = (TextView) findViewById(R.id.line_1);
+
+		shopdetail_shop_total_goods =  (TextView)findViewById(R.id.shopdetail_shop_total_goods);
 		shopdetail_zizhi_horizon_ls = (HorizontalListView) findViewById(R.id.shopdetail_zizhi_horizon_ls);
 		shop_detail_horizontal_ls = (HorizontalListView) findViewById(R.id.shop_detail_horizontal_ls);
 
@@ -494,6 +504,8 @@ public class AShopDetail extends ATitileNoBase {
 		if (base.getMember_id() != null
 				&& base.getMember_id().equals(user_Get.getMember_id())) {// 是我自己的店铺
 			shopdetail_shop_guanzhu_bt.setVisibility(View.GONE);
+			line_1.setVisibility(View.GONE);
+			line_2.setVisibility(View.GONE);
 			shopdetail_shop_lianix.setVisibility(View.GONE);
 		}
 		IsCollect = base.getIs_collect().equals("1");// 1标识已经收藏过
@@ -515,18 +527,17 @@ public class AShopDetail extends ATitileNoBase {
 		StrUtils.SetTxt(shopdetail_shop_tag, StrUtils.isEmpty(base.getIntro())?"暂无介绍":base.getIntro());
 		StrUtils.SetTxt(shopdetail_shop_guanzhu_number, base.getAttention());
 		StrUtils.SetTxt(shopdetail_shop_visitor_number, base.getTodayVisitor());
+		StrUtils.SetTxt(shopdetail_shop_total_goods,base.getGoods_count());
 		IsCollectBtControl(IsCollect);
 
 	}
 
 	private void IsCollectBtControl(boolean isCollect) {
 		if (isCollect) {// 收藏过
-			shopdetail_shop_guanzhu_bt.setBackground(getResources()
-					.getDrawable(R.drawable.select_fen_to_gray));
+			shopdetail_shop_guanzhu_bt.setTextColor(getResources().getColor(R.color.app_fen));
 			shopdetail_shop_guanzhu_bt.setText("取消收藏");
 		} else {// 未收藏过
-			shopdetail_shop_guanzhu_bt.setBackground(getResources()
-					.getDrawable(R.drawable.select_white_to_fen));
+			shopdetail_shop_guanzhu_bt.setTextColor(getResources().getColor(R.color.TextColorWhite));
 			shopdetail_shop_guanzhu_bt.setText("+收藏");
 
 		}

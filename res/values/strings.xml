@@ -158,8 +158,9 @@
     <string name="center_jilu">浏览记录</string>
     <string name="zanwushow">暂无更多Show</string>
     <!-- 商户店铺 -->
-    <string name="shopdetail_guanzhu">已收藏人数</string>
-    <string name="shopdetail_fangke">访客</string>
+    <string name="shopdetail_guanzhu">收藏人数</string>
+    <string name="shopdetail_fangke">累计访客</string>
+    <string name="shopdetail_total_goods">商品总数</string>
     <string name="shopdetail_zizhi">    查看    </string>
     <string name="shopdetail_jiaguanzhu">+关注</string>
 
