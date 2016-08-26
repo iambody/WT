@@ -108,11 +108,11 @@ public class AAlipayManager extends ATitleBase {
 	}
 
 	private void IData() {
+
+		SetTitleHttpDataLisenter(this);
 		PromptManager.showtextLoading(BaseContext,
 				getResources()
 						.getString(R.string.xlistview_header_hint_loading));
-		SetTitleHttpDataLisenter(this);
-		PromptManager.showLoading(BaseContext);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("member_id", user_Get.getId());
 		FBGetHttpData(map, Constants.MY_ALIPAY_LIST, Method.GET, 0,

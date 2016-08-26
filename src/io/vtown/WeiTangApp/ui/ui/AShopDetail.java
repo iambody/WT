@@ -189,8 +189,17 @@ public class AShopDetail extends ATitileNoBase {
 	 * 商品总数
 	 */
 	private TextView shopdetail_shop_total_goods;
+	/**
+	 * show 数量
+	 */
+	private TextView shopdetail_shop_show_count;
 
-	private TextView line_2,line_1;
+	/**
+	 * show
+	 */
+	private LinearLayout ll_shopdetail_shop_look_show;
+
+
 
 	// 是否关注本店铺
 	private boolean IsCollect;
@@ -257,7 +266,7 @@ public class AShopDetail extends ATitileNoBase {
 
 	private void IBase() {
 		shopdetail_shop_look_show = (TextView) findViewById(R.id.shopdetail_shop_look_show);
-		shopdetail_shop_look_show.setOnClickListener(this);
+
 
 		shopdetail_imagview_cover = (ImageView) findViewById(R.id.shopdetail_imagview_cover);
 		shopdetail_shop_bran_horizon_lay = (LinearLayout) findViewById(R.id.shopdetail_shop_bran_horizon_lay);
@@ -277,6 +286,9 @@ public class AShopDetail extends ATitileNoBase {
 		shopdetail_imagview = (CircleImageView) findViewById(R.id.shopdetail_imagview);
 		shopdetail_imagview.setOnClickListener(this);
 
+		ll_shopdetail_shop_look_show = (LinearLayout) findViewById(R.id.ll_shopdetail_shop_look_show);
+
+
 		shopdetail_shop_name = (TextView) findViewById(R.id.shopdetail_shop_name);
 		shopdetail_shop_tag = (TextView) findViewById(R.id.shopdetail_shop_tag);
 		shopdetail_shop_lianix = (TextView) findViewById(R.id.shopdetail_shop_lianix);
@@ -284,8 +296,8 @@ public class AShopDetail extends ATitileNoBase {
 		shopdetail_shop_guanzhu_number = (TextView) findViewById(R.id.shopdetail_shop_guanzhu_number);
 
 		shopdetail_shop_visitor_number = (TextView) findViewById(R.id.shopdetail_shop_visitor_number);
-		line_2 = (TextView) findViewById(R.id.line_2);
-		line_1 = (TextView) findViewById(R.id.line_1);
+		shopdetail_shop_show_count = (TextView) findViewById(R.id.shopdetail_shop_show_count);
+
 
 		shopdetail_shop_total_goods =  (TextView)findViewById(R.id.shopdetail_shop_total_goods);
 		shopdetail_zizhi_horizon_ls = (HorizontalListView) findViewById(R.id.shopdetail_zizhi_horizon_ls);
@@ -302,6 +314,7 @@ public class AShopDetail extends ATitileNoBase {
 
 		shopdetail_shop_lianix.setOnClickListener(this);
 		shopdetail_shop_guanzhu_bt.setOnClickListener(this);
+		ll_shopdetail_shop_look_show.setOnClickListener(this);
 
 		shop_detail_brand.setOnClickListener(this);
 		shop_detail_ziying.setOnClickListener(this);
@@ -504,8 +517,6 @@ public class AShopDetail extends ATitileNoBase {
 		if (base.getMember_id() != null
 				&& base.getMember_id().equals(user_Get.getMember_id())) {// 是我自己的店铺
 			shopdetail_shop_guanzhu_bt.setVisibility(View.GONE);
-			line_1.setVisibility(View.GONE);
-			line_2.setVisibility(View.GONE);
 			shopdetail_shop_lianix.setVisibility(View.GONE);
 		}
 		IsCollect = base.getIs_collect().equals("1");// 1标识已经收藏过
@@ -528,6 +539,7 @@ public class AShopDetail extends ATitileNoBase {
 		StrUtils.SetTxt(shopdetail_shop_guanzhu_number, base.getAttention());
 		StrUtils.SetTxt(shopdetail_shop_visitor_number, base.getTodayVisitor());
 		StrUtils.SetTxt(shopdetail_shop_total_goods,base.getGoods_count());
+		StrUtils.SetTxt(shopdetail_shop_show_count,base.getShow_count());
 		IsCollectBtControl(IsCollect);
 
 	}
@@ -889,7 +901,7 @@ public class AShopDetail extends ATitileNoBase {
 
 		}
 	}
-
+//-------------------------------------------------------------------------------------------------------
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
@@ -987,7 +999,7 @@ public class AShopDetail extends ATitileNoBase {
 		case R.id.shopdetail_nodata_lay:
 			IData();
 			break;
-		case R.id.shopdetail_shop_look_show:// 查看show
+		case R.id.ll_shopdetail_shop_look_show:// 查看show
 			// if (null != MyData &&
 			// !StrUtils.isEmpty(MyData.getBase().getId()))
 			//

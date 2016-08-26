@@ -162,7 +162,7 @@
     <string name="shopdetail_fangke">累计访客</string>
     <string name="shopdetail_total_goods">商品总数</string>
     <string name="shopdetail_zizhi">    查看    </string>
-    <string name="shopdetail_jiaguanzhu">+关注</string>
+    <string name="shopdetail_jiaguanzhu">     +关注     </string>
 
     <!-- 购物车 -->
     <string name="shopbus_all">全部商品</string>

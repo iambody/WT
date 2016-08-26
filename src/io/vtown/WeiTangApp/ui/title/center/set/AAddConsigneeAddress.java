@@ -121,6 +121,7 @@ public class AAddConsigneeAddress extends ATitleBase {
 			String tel, String province, String city, String county,
 			String address, String street_address) {
 		SetTitleHttpDataLisenter(this);
+		PromptManager.showLoading(BaseContext);
 		HashMap<String, String> map = new HashMap<String, String>();
 
 		map.put("member_id", member_id);
@@ -145,6 +146,7 @@ public class AAddConsigneeAddress extends ATitleBase {
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
 		if (200 == Code) {
+			btn_save.setEnabled(true);
 			DataError("保存成功", 1);
 			Intent intent = new Intent();
 			setResult(RESULT_OK, intent);
@@ -155,11 +157,13 @@ public class AAddConsigneeAddress extends ATitleBase {
 	@Override
 	protected void DataError(String error, int LoadTyp) {
 		PromptManager.ShowMyToast(BaseContext, error);
+		btn_save.setEnabled(true);
 	}
 
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
+		btn_save.setEnabled(true);
 	}
 
 	@Override
@@ -201,6 +205,7 @@ public class AAddConsigneeAddress extends ATitleBase {
 	}
 
 	private void SaveAddress() {
+		btn_save.setEnabled(false);
 		String name = et_consignee_name.getText().toString().trim();
 
 		String mobile = et_contact_phone_numb.getText().toString().trim();
@@ -212,14 +217,17 @@ public class AAddConsigneeAddress extends ATitleBase {
 
 		if (StrUtils.isEmpty(name)) {
 			PromptManager.ShowMyToast(BaseContext, "请输入姓名");
+			btn_save.setEnabled(true);
 			return;
 		}
 		if (!StrUtils.checkMobile(BaseContext, mobile)) {
+			btn_save.setEnabled(true);
 			return;
 		}
 
 		if (StrUtils.isEmpty(addressInfo)) {
 			PromptManager.ShowMyToast(BaseContext, "请选择收货地址");
+			btn_save.setEnabled(true);
 			return;
 		}
 
@@ -231,6 +239,7 @@ public class AAddConsigneeAddress extends ATitleBase {
 
 		if (StrUtils.isEmpty(address)) {
 			PromptManager.ShowMyToast(BaseContext, "请输入详细地址");
+			btn_save.setEnabled(true);
 			return;
 		}
 

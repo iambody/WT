@@ -173,6 +173,7 @@ public class AEditAddress extends ATitleBase {
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
 		if (200 == Code) {
+			btn_edit_addres_save.setEnabled(true);
 			DataError("修改成功", 1);
 			Intent intent = new Intent();
 			setResult(RESULT_OK, intent);
@@ -182,12 +183,15 @@ public class AEditAddress extends ATitleBase {
 
 	@Override
 	protected void DataError(String error, int LoadType) {
+		btn_edit_addres_save.setEnabled(true);
 		PromptManager.ShowMyToast(BaseContext, error);
+
 	}
 
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
+		btn_edit_addres_save.setEnabled(true);
 	}
 
 	@Override
@@ -210,11 +214,14 @@ public class AEditAddress extends ATitleBase {
 				
 				@Override
 				public void RightResult() {
+					btn_edit_addres_save.setEnabled(false);
 					ModityAddress();
+
 				}
 				
 				@Override
 				public void LeftResult() {
+					btn_edit_addres_save.setEnabled(true);
 				}
 			});
 			
@@ -234,6 +241,7 @@ public class AEditAddress extends ATitleBase {
 	}
 
 	private void ModityAddress() {
+
 		String name = et_edit_address_consignee_name.getText().toString()
 				.trim();
 
@@ -255,19 +263,23 @@ public class AEditAddress extends ATitleBase {
 
 		if (StrUtils.isEmpty(name)) {
 			PromptManager.ShowMyToast(BaseContext, "请输入姓名");
+			btn_edit_addres_save.setEnabled(true);
 			return;
 		}
 		if (!StrUtils.checkMobile(BaseContext,mobile)) {
+			btn_edit_addres_save.setEnabled(true);
 			return;
 		}
 
 		if (StrUtils.isEmpty(addressInfo)) {
 			PromptManager.ShowMyToast(BaseContext, "请选择收货地址");
+			btn_edit_addres_save.setEnabled(true);
 			return;
 		}
 
 		if (StrUtils.isEmpty(address)) {
 			PromptManager.ShowMyToast(BaseContext, "请输入详细地址");
+			btn_edit_addres_save.setEnabled(true);
 			return;
 		}
 

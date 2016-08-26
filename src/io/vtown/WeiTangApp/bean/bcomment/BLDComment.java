@@ -93,6 +93,7 @@ public class BLDComment extends BBase {
 	// private String avatar;// ": "http://fs.v-town.cc/head01.gif",
 	// private String intro;// ": "zzzzzzzzzzzzzzzz",
 	private String goods_count;
+	private String show_count;
 	private String credential;//
 	private String todayVisitor;// ": 0
 	private String is_collect;
@@ -277,6 +278,14 @@ public class BLDComment extends BBase {
 	// private String level;//":2,
 	// private String description;//":"成为kobe的二级代理商"
 
+
+	public String getShow_count() {
+		return show_count;
+	}
+
+	public void setShow_count(String show_count) {
+		this.show_count = show_count;
+	}
 
 	public String getGoods_count() {
 		return goods_count;

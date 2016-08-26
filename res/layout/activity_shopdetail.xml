@@ -453,7 +453,7 @@
 
             </RelativeLayout>-->
 
-            <RelativeLayout
+          <!--  <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="230dp">
 
@@ -545,9 +545,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-
                         android:gravity="center_vertical"
-
                         android:orientation="horizontal">
 
 
@@ -555,11 +553,9 @@
                             style="@style/AudioFileInfoOverlayText1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
-
                             android:text="@string/shopdetail_guanzhu"
                             android:textColor="@color/TextColorWhite"
-                            android:textSize="11sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/shopdetail_shop_guanzhu_number"
@@ -571,14 +567,12 @@
                             android:layout_marginLeft="5dp"
                             android:text="@string/nullstr"
                             android:textColor="@color/TextColorWhite"
-                            android:textSize="11sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
-
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -587,33 +581,24 @@
                             style="@style/AudioFileInfoOverlayText1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
-
-
                             android:text="@string/shopdetail_fangke"
                             android:textColor="@color/TextColorWhite"
-                            android:textSize="11sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/shopdetail_shop_visitor_number"
                             style="@style/AudioFileInfoOverlayText1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
-
-
                             android:layout_marginLeft="5dp"
                             android:text="@string/nullstr"
-
                             android:textColor="@color/TextColorWhite"
-                            android:textSize="11sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
-
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -622,21 +607,19 @@
                             style="@style/AudioFileInfoOverlayText1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:text="@string/shopdetail_total_goods"
                             android:textColor="@color/TextColorWhite"
-                            android:textSize="11sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/shopdetail_shop_total_goods"
                             style="@style/AudioFileInfoOverlayText1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:layout_marginLeft="5dp"
                             android:text="@string/nullstr"
                             android:textColor="@color/TextColorWhite"
-                            android:textSize="11sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
 
@@ -656,7 +639,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
-
                         android:layout_weight="1"
                         android:gravity="center"
                         android:paddingBottom="4dp"
@@ -677,7 +659,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
-
                         android:layout_weight="1"
                         android:gravity="center"
                         android:paddingBottom="4dp"
@@ -698,7 +679,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
-
                         android:layout_weight="1"
                         android:gravity="center"
                         android:paddingBottom="4dp"
@@ -707,6 +687,284 @@
                         android:paddingTop="4dp"
                         android:text="联系店铺"
                         android:textColor="@color/TextColorWhite" />
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="230dp">
+
+                <ImageView
+                    android:id="@+id/shopdetail_imagview_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="vertical">
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="40dp"
+                        android:orientation="vertical">
+
+                        <io.vtown.WeiTangApp.comment.view.CircleImageView
+                            android:id="@+id/shopdetail_imagview"
+                            android:layout_width="@dimen/brand_detail_brand_iv"
+                            android:layout_height="@dimen/brand_detail_brand_iv"
+
+
+                            android:clickable="true"
+                            android:focusable="true" />
+
+                        <TextView
+                            android:id="@+id/shopdetail_shop_name"
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:paddingTop="5dp"
+                            android:textColor="@color/TextColorWhite"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/shopdetail_shop_tag"
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+
+                            android:gravity="center"
+                            android:layout_margin="10dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+
+
+                            android:textColor="@color/lightyellow" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="10dp"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+
+
+
+
+                    <TextView
+                        android:id="@+id/shopdetail_shop_lianix"
+                        style="@style/bt_textview"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="2dp"
+                        android:background="@color/transparent"
+                        android:text="联系店铺"
+                        android:textColor="@color/TextColorWhite" />
+
+                    <TextView
+                        android:id="@+id/shopdetail_shop_guanzhu_bt"
+                        style="@style/bt_textview"
+
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/select_white_to_fen"
+                        android:text="@string/shopdetail_jiaguanzhu"
+                        android:textColor="@color/TextColorWhite" />
+
+
+
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/transparent3"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/shopdetail_shop_guanzhu_number"
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+
+                            android:text="@string/nullstr"
+                            android:textColor="@color/TextColorWhite"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/shopdetail_guanzhu"
+                            android:textColor="@color/TextColorWhite"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+
+
+
+                    <TextView
+                        android:id="@+id/line_1"
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white" />
+
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/shopdetail_shop_visitor_number"
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="@string/nullstr"
+                            android:textColor="@color/TextColorWhite"
+                            android:textSize="12sp" />
+
+
+                        <TextView
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/shopdetail_fangke"
+                            android:textColor="@color/TextColorWhite"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/line_2"
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/shopdetail_shop_total_goods"
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nullstr"
+                            android:textColor="@color/TextColorWhite"
+                            android:textSize="12sp" />
+
+
+                        <TextView
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/shopdetail_total_goods"
+                            android:textColor="@color/TextColorWhite"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/line_3"
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white" />
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_shopdetail_shop_look_show"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/shopdetail_shop_show_count"
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nullstr"
+                            android:textColor="@color/TextColorWhite"
+                            android:textSize="12sp" />
+
+
+                        <TextView
+                            android:id="@+id/shopdetail_shop_look_show"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:gravity="center"
+                            style="@style/AudioFileInfoOverlayText1"
+                            android:textSize="12sp"
+                            android:text="SHOW"
+                            android:textColor="@color/TextColorWhite" />
+
+
+                    </LinearLayout>
+
+
+
+
 
 
                 </LinearLayout>
