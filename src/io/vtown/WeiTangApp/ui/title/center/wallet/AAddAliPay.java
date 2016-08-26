@@ -111,6 +111,7 @@ public class AAddAliPay extends ATitleBase {
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
 		if(200 == Code){
+			tv_btn_submit_alipay.setEnabled(true);
 			PromptManager.ShowMyToast(BaseContext, "支付宝添加成功");
 			Intent intent = null;
 			if(1 == togo){
@@ -125,17 +126,20 @@ public class AAddAliPay extends ATitleBase {
 			this.finish();
 		}else{
 			PromptManager.ShowMyToast(BaseContext, "支付宝添加失败");
+			tv_btn_submit_alipay.setEnabled(true);
 		}
 	}
 
 	@Override
 	protected void DataError(String error,int LoadTyp) {
 		PromptManager.ShowMyToast(BaseContext, error);
+		tv_btn_submit_alipay.setEnabled(true);
 	}
 
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
+		tv_btn_submit_alipay.setEnabled(true);
 	}
 
 	@Override
@@ -155,6 +159,7 @@ public class AAddAliPay extends ATitleBase {
 
 			break;
 		case R.id.tv_btn_submit_alipay:
+			tv_btn_submit_alipay.setEnabled(false);
 			getAlipayInfo();
 			break;
 
@@ -168,6 +173,7 @@ public class AAddAliPay extends ATitleBase {
 		String alipay = et_alipay_numb.getText().toString().trim();
 		
 		if(!StrUtils.CheckAlipay(BaseContext,alipay)){
+			tv_btn_submit_alipay.setEnabled(true);
 			return;
 		}
 		

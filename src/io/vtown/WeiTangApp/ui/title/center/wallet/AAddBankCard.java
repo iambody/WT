@@ -123,7 +123,7 @@ public class AAddBankCard extends ATitleBase {
 
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
-
+		tv_btn_submit_bank_card.setEnabled(true);
 		if (Code == 200) {
 			PromptManager.ShowMyToast(BaseContext, "银行卡添加成功");
 			Intent intent = null;
@@ -146,13 +146,14 @@ public class AAddBankCard extends ATitleBase {
 
 	@Override
 	protected void DataError(String error, int LoadTyp) {
-
+		tv_btn_submit_bank_card.setEnabled(true);
 		PromptManager.ShowMyToast(BaseContext, error);
 	}
 
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
+		tv_btn_submit_bank_card.setEnabled(true);
 	}
 
 	@Override
@@ -178,15 +179,18 @@ public class AAddBankCard extends ATitleBase {
 			break;
 
 		case R.id.tv_btn_submit_bank_card:
+			tv_btn_submit_bank_card.setEnabled(false);
 			String cardNo = et_bank_card_numb.getText().toString().trim();
 
 			if (!StrUtils.checkBankCard(BaseContext, cardNo)) {
+				tv_btn_submit_bank_card.setEnabled(true);
 				return;
 			}
 
 			String bank_name = comment_txtarrow_content.getText().toString()
 					.trim();
 			if (StrUtils.isEmpty(bank_name)) {
+				tv_btn_submit_bank_card.setEnabled(true);
 				PromptManager.ShowMyToast(BaseContext, "选择您要绑定的银行");
 				return;
 			}

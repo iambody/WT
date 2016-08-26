@@ -111,7 +111,9 @@ public class AModifyAlipay extends ATitleBase {
 
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
+		tv_modify_alipay_save.setEnabled(true);
 		if(200 == Code){
+
 			PromptManager.ShowMyToast(BaseContext, "支付宝修改成功");
 			Intent intent = new Intent(BaseContext,AAlipayManager.class);
 			intent.putExtra("isFinish", true);
@@ -120,17 +122,20 @@ public class AModifyAlipay extends ATitleBase {
 			finish();
 		}else{
 			PromptManager.ShowMyToast(BaseContext, "支付宝修改失败");
+
 		}
 	}
 
 	@Override
 	protected void DataError(String error, int LoadType) {
 		PromptManager.ShowMyToast(BaseContext, error);
+		tv_modify_alipay_save.setEnabled(true);
 	}
 
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
+		tv_modify_alipay_save.setEnabled(true);
 	}
 
 	@Override
@@ -147,6 +152,7 @@ public class AModifyAlipay extends ATitleBase {
 	protected void MyClick(View V) {
 		switch (V.getId()) {
 		case R.id.tv_modify_alipay_save:
+			tv_modify_alipay_save.setEnabled(false);
 			getAlipayInfo();
 			break;
 
@@ -161,6 +167,7 @@ public class AModifyAlipay extends ATitleBase {
 	private void getAlipayInfo() {
 		String alipay_id = et_modify_alipay_id.getText().toString().trim();
 		if(!StrUtils.CheckAlipay(BaseContext,alipay_id)){
+			tv_modify_alipay_save.setEnabled(true);
 			return;
 		}
 		if(CheckNet(BaseContext))return;

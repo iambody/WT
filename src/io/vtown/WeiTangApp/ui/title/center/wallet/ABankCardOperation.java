@@ -158,6 +158,7 @@ public class ABankCardOperation extends ATitleBase {
 
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
+		tv_mofify_submit.setEnabled(true);
 		if(200 == Code){
 			PromptManager.ShowMyToast(BaseContext, "银行卡修改成功");
 			Intent intent = new Intent(BaseContext,ABankCardManager.class);
@@ -170,6 +171,7 @@ public class ABankCardOperation extends ATitleBase {
 
 	@Override
 	protected void DataError(String error, int LoadType) {
+		tv_mofify_submit.setEnabled(true);
 		PromptManager.ShowMyToast(BaseContext, error);
 		
 	}
@@ -177,6 +179,7 @@ public class ABankCardOperation extends ATitleBase {
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
+		tv_mofify_submit.setEnabled(true);
 	}
 
 	@Override
@@ -201,6 +204,7 @@ public class ABankCardOperation extends ATitleBase {
 			break;
 			
 		case R.id.tv_mofify_submit:
+			tv_mofify_submit.setEnabled(false);
 			if(CheckNet(BaseContext))return;
 			getBankCardInfo();
 			break;
@@ -218,12 +222,14 @@ public class ABankCardOperation extends ATitleBase {
 		String name = user_Get.getName();
 		String bank_name = tv_modify_bank_card_select_name.getText().toString().trim();
 		if("请选择开户银行".equals(bank_name)){
+			tv_mofify_submit.setEnabled(true);
 			PromptManager.ShowMyToast(BaseContext, "选择您要修改的银行");
 			return ;
 			
 		}
 		String card_number = et_modify_bank_card_numb.getText().toString().trim();
 		if (!StrUtils.checkBankCard(BaseContext,card_number)) {
+			tv_mofify_submit.setEnabled(true);
 			return;
 		}
 		String bank_id = mBlcomment.getBank_id();
