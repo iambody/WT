@@ -70,9 +70,10 @@ public abstract class NHttpBase {
 			myonErrorResponse(new VolleyError());
 			return;
 		}
-		RequestQueue queue = VolleyHttps.newRequestQueue(context, null, true,
-				R.raw.ssl);// Volley.newRequestQueue(context);
-		// RequestQueue queue = Volley.newRequestQueue(context, stack);
+//		RequestQueue queue = VolleyHttps.newRequestQueue(context, null, true,
+//				R.raw.ssl);// Volley.newRequestQueue(context);
+		 RequestQueue queue = Volley.newRequestQueue(context);
+
 
 		// 添加标识
 		map1.put("UUID", Constants.GetPhoneId(context));

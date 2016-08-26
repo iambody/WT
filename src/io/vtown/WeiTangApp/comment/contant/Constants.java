@@ -112,7 +112,7 @@ public class Constants {
 	/**
 	 * 开发环境 的host
 	 */
-	// public static String Host = "http://dev.vt.api.v-town.cn";
+	 public static String Host = "http://dev.vt.api.v-town.cn";
 	/**
 	 * 测试环境的host 测试环境 需要切换key 需要同时切换SignKey这个字段!!!!!!!!!!!!!!!!!!!!
 	 */
@@ -122,7 +122,7 @@ public class Constants {
 	/**
 	 * 生产环境
 	 */
-	public static String Host = "https://api.v-town.cc";
+//	public static String Host = "https://api.v-town.cc";
 
 	// 接口配置参数*******************************************************************
 	/**
@@ -868,9 +868,9 @@ public class Constants {
 	// 其他参数*******************************************************************
 	// 其他参数*******************************************************************
 	/**
-	 * 签名时候的key TODO到时候需要Native（）方法写进C代码中调用 测试环境！！！！！！！！！！
+	 * 签名时候的key  开发环境
 	 */
-	// public static String SignKey = "GriE93gIGp$5bDjQ4rc20FzxWGghTIau";
+	 public static String SignKey = "GriE93gIGp$5bDjQ4rc20FzxWGghTIau";
 	/**
 	 * 测试环境
 	 */
@@ -878,7 +878,7 @@ public class Constants {
 	/**
 	 * 正式环境的key
 	 */
-	public static String SignKey = "hkf%t5SMv1HtrVS!Y%B!NPNS!!0cWgy";
+//	public static String SignKey = "hkf%t5SMv1HtrVS!Y%B!NPNS!!0cWgy";
 
 	// 微糖小助手
 	// public static String WtHelper = "prod_v-town000111222";
