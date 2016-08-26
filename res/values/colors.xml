@@ -43,6 +43,7 @@
     <color name="red">#ffff0000</color>
     <color name="green">#78C575</color>
     <color name="transparent">#00000000</color>
+    <color name="transparent5">#1a000000</color>
     <color name="transparent3">#2c000000</color>
     <color name="transparent1">#4c000000</color>
     <color name="TextColorWhite">#ffffffff</color>
@@ -50,6 +51,7 @@
     <!-- 自定义色值 -->
     <color name="province_line_border">#C7C7C7</color>
     <color name="app_fen">#FF4878</color>
+    <color name="app_fen3">#5cFF4878</color>
     <color name="app_fen1">#99FF4878</color>
     <color name="app_fen2">#abFF4878</color>
     <color name="tab_text_nor">#757373</color>

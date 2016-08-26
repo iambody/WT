@@ -51,7 +51,7 @@
                         android:padding="@dimen/center_wallet_add_alipay_alipay_padding"
                         android:paddingLeft="@dimen/center_wallet_add_alipay_alipay_padding"
                         android:singleLine="true"
-                        android:textColor="@color/app_gray"
+                        android:textColor="@color/grey"
                         android:textSize="@dimen/comment_label_txtsize" />
                 </LinearLayout>
 

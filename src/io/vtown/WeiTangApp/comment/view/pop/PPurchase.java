@@ -513,7 +513,7 @@ public class PPurchase extends PopupWindow implements OnClickListener,
 				.findViewById(R.id.iv_pop_goods_icon);
 
 		ImageLoaderUtil.Load2(databean.getCover(), iv_pop_goods_icon,
-				R.drawable.ic_launcher);
+				R.drawable.error_iv2);
 		// 第一次弹出页面时，头布局隐藏
 
 		pop_purchase_price = (TextView) BaseView

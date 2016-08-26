@@ -239,7 +239,7 @@
     <string name="shop_data">店铺资料</string>
     <string name="shop_icon">店铺头像</string>
     <string name="shop_id">店铺号</string>
-    <string name="long_click_copy">(长按可复制店铺号)</string>
+    <string name="long_click_copy">(通过店铺号搜索到您的店铺，长按复制)</string>
     <string name="shop_cover">店铺封面</string>
     <string name="shop_another_name">店铺名称</string>
     <string name="shop_introduce">店铺介绍</string>

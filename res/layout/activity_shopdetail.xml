@@ -776,33 +776,72 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="center_vertical"
                     android:layout_margin="10dp"
-                    android:layout_alignParentRight="true"
-                    android:orientation="vertical">
 
-
-
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content" />
+
+
+
+
+                   <!-- <TextView
                         android:id="@+id/shopdetail_shop_lianix"
                         style="@style/bt_textview"
                         android:layout_gravity="center_vertical"
                         android:layout_marginRight="2dp"
-                        android:background="@color/transparent"
+                        android:background="@drawable/select_white_to_fen"
                         android:text="联系店铺"
-                        android:textColor="@color/TextColorWhite" />
 
-                    <TextView
+                        android:textColor="@color/TextColorWhite" />-->
+
+                    <RelativeLayout
+                        android:id="@+id/rl_shop_detail_shoucang_log"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/shape_pink_round_bg" >
+
+                        <ImageView
+                            android:id="@+id/shop_detail_shoucang_log"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_shoucang_nor" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_shop_detail_contact_log"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_pink_round_bg" >
+
+                        <ImageView
+                            android:id="@+id/shop_detail_contact_log"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_lianxikefu_nor" />
+                    </RelativeLayout>
+
+
+
+
+                   <!-- <TextView
                         android:id="@+id/shopdetail_shop_guanzhu_bt"
                         style="@style/bt_textview"
 
-                        android:layout_marginTop="10dp"
+
                         android:background="@drawable/select_white_to_fen"
                         android:text="@string/shopdetail_jiaguanzhu"
-                        android:textColor="@color/TextColorWhite" />
+                        android:textColor="@color/TextColorWhite" />-->
 
 
 
@@ -817,7 +856,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/transparent3"
+                    android:background="@color/transparent5"
                     android:orientation="horizontal"
                     android:padding="5dp">
 

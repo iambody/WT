@@ -65,14 +65,14 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/tv_record_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/center_wallet_property_detail_inside_listview_content_title_txt_margin"
+
                 android:text="@string/nullstr"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/center_wallet_property_detail_inside_listview_content_title_txt_size" />
@@ -81,7 +81,7 @@
                 android:id="@+id/tv_trade_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/center_wallet_property_detail_inside_listview_content_trade_type_txt_margin"
+
                 android:layout_marginTop="@dimen/center_wallet_property_detail_inside_listview_content_trade_type_txt_margin"
                 android:text="@string/nullstr"
                 android:textColor="@color/app_gray"

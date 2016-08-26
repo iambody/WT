@@ -206,6 +206,7 @@ public class AApplyTuikuan extends ATitleBase implements OnItemClickListener {
 
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
+		tv_apply_tuikuan.setEnabled(true);
 		switch (Data.getHttpResultTage()) {
 		case 0:
 			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
@@ -259,12 +260,14 @@ public class AApplyTuikuan extends ATitleBase implements OnItemClickListener {
 
 	@Override
 	protected void DataError(String error, int LoadType) {
+		tv_apply_tuikuan.setEnabled(true);
 		PromptManager.ShowMyToast(BaseContext, error);
 	}
 
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
+		tv_apply_tuikuan.setEnabled(true);
 	}
 
 	@Override
@@ -285,12 +288,14 @@ public class AApplyTuikuan extends ATitleBase implements OnItemClickListener {
 			break;
 
 		case R.id.tv_apply_tuikuan:// 申请退款按钮
+			tv_apply_tuikuan.setEnabled(false);
 			if(CheckNet(BaseContext))return;
 			if ("99".equals(return_reason_id)) {
 				String cause_other = et_apply_tuikuan_cause_other.getText()
 						.toString().trim();
 				if (StrUtils.isEmpty(cause_other)) {
 					PromptManager.ShowMyToast(BaseContext, "请输入其它退款原因");
+					tv_apply_tuikuan.setEnabled(true);
 					return;
 				}
 				ApplyRefund(cause_other, return_reason_id);

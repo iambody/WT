@@ -47,6 +47,7 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -100,11 +101,11 @@ public class AShopDetail extends ATitileNoBase {
 	/**
 	 * Te联系卖家
 	 */
-	private TextView shopdetail_shop_lianix;
+	//private TextView shopdetail_shop_lianix;
 	/**
 	 * 关注卖家
 	 */
-	private TextView shopdetail_shop_guanzhu_bt;
+	//private TextView shopdetail_shop_guanzhu_bt;
 	/**
 	 * 已关注人数
 	 */
@@ -199,6 +200,15 @@ public class AShopDetail extends ATitileNoBase {
 	 */
 	private LinearLayout ll_shopdetail_shop_look_show;
 
+	/**
+	 * Te联系卖家
+	 */
+	private RelativeLayout rl_shop_detail_contact_log;
+
+	private RelativeLayout rl_shop_detail_shoucang_log;
+
+	private ImageView shop_detail_shoucang_log;
+
 
 
 	// 是否关注本店铺
@@ -291,8 +301,11 @@ public class AShopDetail extends ATitileNoBase {
 
 		shopdetail_shop_name = (TextView) findViewById(R.id.shopdetail_shop_name);
 		shopdetail_shop_tag = (TextView) findViewById(R.id.shopdetail_shop_tag);
-		shopdetail_shop_lianix = (TextView) findViewById(R.id.shopdetail_shop_lianix);
-		shopdetail_shop_guanzhu_bt = (TextView) findViewById(R.id.shopdetail_shop_guanzhu_bt);
+		//shopdetail_shop_lianix = (TextView) findViewById(R.id.shopdetail_shop_lianix);
+		rl_shop_detail_contact_log = (RelativeLayout)findViewById(R.id.rl_shop_detail_contact_log);
+		//shopdetail_shop_guanzhu_bt = (TextView) findViewById(R.id.shopdetail_shop_guanzhu_bt);
+		rl_shop_detail_shoucang_log = (RelativeLayout)findViewById(R.id.rl_shop_detail_shoucang_log);
+		shop_detail_shoucang_log = (ImageView) findViewById(R.id.shop_detail_shoucang_log);
 		shopdetail_shop_guanzhu_number = (TextView) findViewById(R.id.shopdetail_shop_guanzhu_number);
 
 		shopdetail_shop_visitor_number = (TextView) findViewById(R.id.shopdetail_shop_visitor_number);
@@ -312,8 +325,9 @@ public class AShopDetail extends ATitileNoBase {
 
 		shopdetail_shop_zizhi.setOnClickListener(this);
 
-		shopdetail_shop_lianix.setOnClickListener(this);
-		shopdetail_shop_guanzhu_bt.setOnClickListener(this);
+		rl_shop_detail_contact_log.setOnClickListener(this);
+		rl_shop_detail_shoucang_log.setOnClickListener(this);
+		//shopdetail_shop_guanzhu_bt.setOnClickListener(this);
 		ll_shopdetail_shop_look_show.setOnClickListener(this);
 
 		shop_detail_brand.setOnClickListener(this);
@@ -516,8 +530,8 @@ public class AShopDetail extends ATitileNoBase {
 	private void BaseViewFradsash(BLDComment base) {
 		if (base.getMember_id() != null
 				&& base.getMember_id().equals(user_Get.getMember_id())) {// 是我自己的店铺
-			shopdetail_shop_guanzhu_bt.setVisibility(View.GONE);
-			shopdetail_shop_lianix.setVisibility(View.GONE);
+			rl_shop_detail_shoucang_log.setVisibility(View.GONE);
+			rl_shop_detail_contact_log.setVisibility(View.GONE);
 		}
 		IsCollect = base.getIs_collect().equals("1");// 1标识已经收藏过
 														// ;;;;;0标识未收藏过
@@ -546,11 +560,14 @@ public class AShopDetail extends ATitileNoBase {
 
 	private void IsCollectBtControl(boolean isCollect) {
 		if (isCollect) {// 收藏过
-			shopdetail_shop_guanzhu_bt.setTextColor(getResources().getColor(R.color.app_fen));
-			shopdetail_shop_guanzhu_bt.setText("取消收藏");
+			//shopdetail_shop_guanzhu_bt.setTextColor(getResources().getColor(R.color.app_fen));
+			//shopdetail_shop_guanzhu_bt.setText("取消收藏");
+			shop_detail_shoucang_log.setImageDrawable(getResources().getDrawable(R.drawable.ic_shoucang_press));
 		} else {// 未收藏过
-			shopdetail_shop_guanzhu_bt.setTextColor(getResources().getColor(R.color.TextColorWhite));
-			shopdetail_shop_guanzhu_bt.setText("+收藏");
+			//shopdetail_shop_guanzhu_bt.setTextColor(getResources().getColor(R.color.TextColorWhite));
+			//shopdetail_shop_guanzhu_bt.setText("+收藏");
+
+			shop_detail_shoucang_log.setImageDrawable(getResources().getDrawable(R.drawable.ic_shoucang_nor));
 
 		}
 
@@ -901,7 +918,7 @@ public class AShopDetail extends ATitileNoBase {
 
 		}
 	}
-//-------------------------------------------------------------------------------------------------------
+
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
@@ -955,10 +972,11 @@ public class AShopDetail extends ATitileNoBase {
 					ALookAptitude.class));
 			break;
 
-		case R.id.shopdetail_shop_guanzhu_bt:// 关注按钮
+		//case R.id.shopdetail_shop_guanzhu_bt:// 关注按钮
+		case R.id.rl_shop_detail_shoucang_log:
 			GuanZhuSho(baseBcBComment.getId(), !IsCollect);
 			break;
-		case R.id.shopdetail_shop_lianix:// 联系店主
+		case R.id.rl_shop_detail_contact_log:// 联系店主
 			if (!StrUtils.isEmpty(MyData.getBase().getId()))
 				PromptManager.SkipActivity(
 						BaseActivity,
