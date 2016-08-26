@@ -35,7 +35,7 @@
     <dimen name="center_comment_iv_height">16dip</dimen>
     <dimen name="center_comment_arrow_height">16dip</dimen>
     <dimen name="center_bg_height">220dp</dimen>
-    <dimen name="center_iv_height">60dp</dimen>
+    <dimen name="center_iv_height">70dp</dimen>
     <dimen name="center_iv_marg_top">50dp</dimen>
     <!-- 我的show -->
     <dimen name="center_comment_myshow_ivheight_height">120dip</dimen>
@@ -243,7 +243,7 @@
     <!-- 页面所有字体大小 -->
     <dimen name="center_my_invite_code_txt_all_size">12sp</dimen>
     <!-- 邀请码字体大小 -->
-    <dimen name="center_my_invite_code_txt_size">18sp</dimen>
+    <dimen name="center_my_invite_code_txt_size">28sp</dimen>
     <!-- 头像margin -->
     <dimen name="center_my_invite_code_icon_margin">10dp</dimen>
     <!-- padding -->
@@ -545,8 +545,8 @@
     <dimen name="shop_data_dialog_iv_height">60dp</dimen>
 
     <!-- 用户头像的宽高 -->
-    <dimen name="shop_user_hright">56dp</dimen>
-    <dimen name="shop_cover_height">160dp</dimen>
-    <dimen name="shop_user_totop_hright">40dp</dimen>
+    <dimen name="shop_user_hright">76dp</dimen>
+    <dimen name="shop_cover_height">180dp</dimen>
+    <dimen name="shop_user_totop_hright">30dp</dimen>
 
 </resources>

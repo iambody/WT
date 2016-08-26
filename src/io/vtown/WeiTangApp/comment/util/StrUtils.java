@@ -58,6 +58,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.ArrowKeyMovementMethod;
+import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -543,6 +544,20 @@ public class StrUtils {
 						new ForegroundColorSpan(XX.getResources().getColor(
 								RightColor)), left.length(), AllStr.length(),
 						Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		textView.setText(spsString);
+	}
+
+	public static void SetColorsTxt(Context XX, TextView textView,	int RightColor, String left,String center, String right) {
+		String AllStr = left + center+right;
+		String leftStr = left + center ;
+		SpannableString spsString = new SpannableString(AllStr);
+		spsString
+				.setSpan(
+						new ForegroundColorSpan(XX.getResources().getColor(
+								RightColor)), left.length(), leftStr.length(),
+						Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+//		spsString.setSpan(new AbsoluteSizeSpan(43), left.length(), leftStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  ;
 		textView.setText(spsString);
 	}
 

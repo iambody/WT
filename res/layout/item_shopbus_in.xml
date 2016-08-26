@@ -79,12 +79,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/shopbus_guige"
-                android:textColor="@color/grey" />
+                android:textColor="@color/gray" />
 
             <TextView
                 android:id="@+id/item_shopbus_in_guige"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/app_gray"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
 

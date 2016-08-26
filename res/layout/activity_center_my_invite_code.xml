@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_bg"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:orientation="vertical">
 
-    <include layout="@layout/titlebar" />
+    <include layout="@layout/titlebar"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/white" >
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <io.vtown.WeiTangApp.comment.view.CircleImageView
                 android:id="@+id/iv_my_invite_code_icon"
@@ -26,18 +26,35 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/center_my_invite_code_icon_margin"
                 android:clickable="true"
-                android:src="@drawable/error_iv2" />
+                android:src="@drawable/error_iv2"/>
 
-            <TextView
-                android:id="@+id/tv_my_invite_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/center_my_invite_code_padding"
-                android:text="@string/nullstr"
-                android:textColor="@color/app_fen"
-                android:textSize="@dimen/center_my_invite_code_txt_size" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
+                <TextView
+                    android:id="@+id/tv_my_invite_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:paddingTop="@dimen/center_my_invite_code_padding"
+                    android:paddingBottom="@dimen/center_my_invite_code_padding"
+                    android:textColor="@color/app_fen"
+                    android:textSize="@dimen/center_my_invite_code_txt_size"
+                    />
+                <ImageView
+                    android:id="@+id/tv_my_invite_code_copy_iv"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_toRightOf="@+id/tv_my_invite_code"
+                    android:layout_alignParentTop="true"
+                    android:clickable="true"
+                    android:focusable="true"
+android:layout_marginBottom="-5dp"
+                    android:src="@drawable/center_iv2"/>
+            </RelativeLayout>
+
+            <!--<TextView
                 android:id="@+id/tv_my_invite_code_copy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,23 +63,24 @@
                 android:padding="@dimen/center_my_invite_code_padding"
                 android:text="@string/my_invite_code_copy"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/center_my_invite_code_txt_all_size" />
+                android:textSize="@dimen/center_my_invite_code_txt_all_size"
+                android:visibility="gone"/>-->
 
             <TextView
                 android:id="@+id/tv_my_invite_code_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:padding="@dimen/center_my_invite_code_desc_padding"
                 android:textColor="@color/grey"
-                android:gravity="center"
-                android:textSize="@dimen/center_my_invite_code_txt_all_size" />
+                android:textSize="@dimen/center_my_invite_code_txt_all_size"/>
 
             <ImageView
                 android:id="@+id/my_invite_code_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:focusable="true" />
+                android:focusable="true"/>
         </LinearLayout>
     </ScrollView>
 
@@ -70,40 +88,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
                 android:layout_marginRight="@dimen/center_my_invite_code_line_margin"
                 android:layout_weight="1"
-                android:background="@color/grey" />
+                android:background="@color/grey"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/invite_frends"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/center_my_invite_code_txt_all_size" />
+                android:textSize="@dimen/center_my_invite_code_txt_all_size"/>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="@dimen/center_my_invite_code_line_margin"
                 android:layout_weight="1"
-                android:background="@color/grey" />
+                android:background="@color/grey"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/ll_my_invite_code_share_to_wx"
@@ -114,12 +132,12 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/share_wxpy" />
+                    android:src="@drawable/share_wxpy"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -127,7 +145,7 @@
                     android:padding="@dimen/center_my_invite_code_padding"
                     android:text="@string/my_invite_code_share_to_wx"
                     android:textColor="@color/grey"
-                    android:textSize="@dimen/center_my_invite_code_txt_all_size" />
+                    android:textSize="@dimen/center_my_invite_code_txt_all_size"/>
             </LinearLayout>
 
             <LinearLayout
@@ -139,12 +157,12 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/sharer_weixin" />
+                    android:src="@drawable/sharer_weixin"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -152,7 +170,7 @@
                     android:padding="@dimen/center_my_invite_code_padding"
                     android:text="@string/my_invite_code_share_to_frends"
                     android:textColor="@color/grey"
-                    android:textSize="@dimen/center_my_invite_code_txt_all_size" />
+                    android:textSize="@dimen/center_my_invite_code_txt_all_size"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

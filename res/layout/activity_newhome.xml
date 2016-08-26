@@ -56,17 +56,18 @@
                     android:layout_centerInParent="true"
                     android:text="@string/home_souso"
                     android:textColor="@color/sousou_ed"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:id="@+id/textView"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginRight="4dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:src="@drawable/sousou" />
+                    android:src="@drawable/sousou"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/textView"
+                    android:layout_toStartOf="@+id/textView"/>
             </RelativeLayout>
 
             <ImageView

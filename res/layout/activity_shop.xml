@@ -77,37 +77,34 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/shop_user_totop_hright"
-                        android:orientation="horizontal" >
+                        android:orientation="vertical" >
 
                         <io.vtown.WeiTangApp.comment.view.CircleImageView
                             android:id="@+id/tab_shop_iv"
                             android:layout_width="@dimen/shop_user_hright"
                             android:layout_height="@dimen/shop_user_hright"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="center_horizontal"
                             android:clickable="true"
                             imagecontrol:border_color="@color/white"
                             imagecontrol:border_width="30" />
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1"
+                            android:layout_gravity="center_horizontal"
                             android:orientation="vertical" >
 
                             <TextView
                                 android:id="@+id/tab_shop_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                style="@style/AudioFileInfoOverlayText1"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:gravity="bottom"
+                                android:gravity="center"
                                 android:paddingBottom="2dp"
                                 android:singleLine="true"
-                                android:text="@string/nullstr"
+
                                 android:textColor="@color/TextColorWhite"
                                 android:textSize="16dp"
                                 android:textStyle="bold" />
@@ -116,10 +113,10 @@
                                 android:id="@+id/tab_shop_sign"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                         style="@style/AudioFileInfoOverlayText1"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:gravity="top"
+                                android:gravity="center"
                                 android:paddingTop="2dp"
                                 android:singleLine="true"
                                 android:text="@string/nullstr"

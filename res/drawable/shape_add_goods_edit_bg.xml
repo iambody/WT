@@ -3,7 +3,7 @@
 
     <!-- 添加宝贝页面中的输入框中的背景 -->
 
-    <corners android:radius="0dp" />
+    <corners android:radius="5dp" />
 
     <solid android:color="@color/white" />
 

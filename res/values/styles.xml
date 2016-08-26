@@ -117,7 +117,7 @@
 
     <style name="btnstyle" parent="@android:style/Widget.Button">
         <item name="android:textColor">@drawable/select_btn_text_bg</item>
-        <item name="android:background">@drawable/select_white_to_pink_btn_bg</item>
+        <item name="android:background">@drawable/select_fen_to_gray_no_circular</item>
     </style>
 
     <style name="build_two_dimension_code_btn_style" parent="@android:style/Widget.Button">
@@ -155,8 +155,8 @@
     <style name="bt_textview_comment">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">7dp</item>
-        <item name="android:paddingRight">7dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingBottom">4dp</item>
         <item name="android:gravity">center</item>

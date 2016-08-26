@@ -153,6 +153,7 @@ public class AShopBus extends ATitleBase implements IXListViewListener {
 	 * 加载购物车列表数据 type标识 是否是删除完后的刷新
 	 */
 	private void IData(int Type) {
+//		PromptManager.showtextLoading();
 		;// (boolean frash, int Type) {
 			// 获取数据钱 先要收到设置未处于全选状态********处于结算状态***********
 		IsAllSelectIv = false;

@@ -65,7 +65,8 @@ public class AMyInviteCode extends ATitleBase {
 	/**
 	 * 复制按钮
 	 */
-	private TextView tv_my_invite_code_copy;
+//	private TextView tv_my_invite_code_copy;
+	private ImageView tv_my_invite_code_copy_iv;
 	/**
 	 * 邀请码描述
 	 */
@@ -137,22 +138,25 @@ public class AMyInviteCode extends ATitleBase {
 	 * 初始化控件
 	 */
 	private void IView() {
+
+		tv_my_invite_code_copy_iv= (ImageView) findViewById(R.id.tv_my_invite_code_copy_iv);
 		my_invite_code_iv = (ImageView) findViewById(R.id.my_invite_code_iv);
 		my_invite_code_iv.setOnClickListener(this);
 		iv_my_invite_code_icon = (CircleImageView) findViewById(R.id.iv_my_invite_code_icon);
 		ImageLoaderUtil.Load2(mBShop.getAvatar(), iv_my_invite_code_icon,
 				R.drawable.error_iv2);
 		tv_my_invite_code = (TextView) findViewById(R.id.tv_my_invite_code);
-		tv_my_invite_code_copy = (TextView) findViewById(R.id.tv_my_invite_code_copy);
+//		tv_my_invite_code_copy = (TextView) findViewById(R.id.tv_my_invite_code_copy);
 		tv_my_invite_code_desc = (TextView) findViewById(R.id.tv_my_invite_code_desc);
 		ll_my_invite_code_share_to_wx = (LinearLayout) findViewById(R.id.ll_my_invite_code_share_to_wx);
 		ll_my_invite_code_share_to_frends = (LinearLayout) findViewById(R.id.ll_my_invite_code_share_to_frends);
-		tv_my_invite_code_copy.setOnClickListener(this);
+//		tv_my_invite_code_copy.setOnClickListener(this);
+		tv_my_invite_code_copy_iv.setOnClickListener(this);
 		ll_my_invite_code_share_to_wx.setOnClickListener(this);
 		ll_my_invite_code_share_to_frends.setOnClickListener(this);
 		tv_my_invite_code_desc.setText(getResources().getString(
 				R.string.share_quan_str));
-
+		 StrUtils.SetColorsTxt(BaseContext,tv_my_invite_code_desc,R.color.red,"邀请好友注册各得","20元",",快快扫我吧") ;
 		// tv_my_invite_code_desc.setVisibility(View.GONE);
 
 		StrUtils.SetTxt(tv_my_invite_code, bUser.getInvite_code());
@@ -204,7 +208,8 @@ public class AMyInviteCode extends ATitleBase {
 							MyBitMap = BitmapFactory.decodeFile(Pathe);
 							my_invite_code_iv.setImageBitmap(MyBitMap);
 							my_invite_code_iv.setVisibility(View.VISIBLE);
-
+							new ImagViewDialog(BaseContext, MyBitMap, screenWidth, 2)
+									.show();
 						}
 					});
 				}
@@ -277,7 +282,7 @@ public class AMyInviteCode extends ATitleBase {
 				new ImagViewDialog(BaseContext, MyBitMap, screenWidth, 2)
 						.show();
 			break;
-		case R.id.tv_my_invite_code_copy:// 复制邀请码
+		case R.id.tv_my_invite_code_copy_iv:// 复制邀请码
 			copy();
 			break;
 		case R.id.ll_my_invite_code_share_to_wx:// 分享好友

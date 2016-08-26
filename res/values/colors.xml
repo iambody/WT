@@ -62,6 +62,7 @@
     <color name="app_title_bg">#e5e5e5</color>
     <color name="app_line">#dcdcdc</color>
     <color name="app_gray">#a9abac</color>
+    <color name="app_gray1">#dfdfdf</color>
     <color name="app_black">#1c1c1c</color>
     <color name="sousou_ed">#ff608a</color>
     <color name="item_home_txt">#2d2229</color>

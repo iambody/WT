@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
 
-    <include layout="@layout/titlebar" />
+    <include layout="@layout/titlebar"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:background="@color/transparent" />
+        android:background="@color/transparent"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/verification_phone"
@@ -31,26 +31,27 @@
                 android:hint="@string/txt_enter_phone_numb"
                 android:inputType="phone"
                 android:padding="5dp"
-                android:textColor="@color/gray" />
+                android:textColor="@color/gray"
+                android:textSize="16dp"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_size1"
                 android:background="@color/app_fen"
-                android:paddingLeft="5dp" />
+                android:paddingLeft="5dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/verification_code"
@@ -59,12 +60,13 @@
                     android:background="@drawable/white"
                     android:inputType="number"
                     android:padding="5dp"
-                    android:textColor="@color/gray" />
+                    android:textColor="@color/gray"
+                    android:textSize="16dp"/>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_size1"
-                    android:background="@color/app_fen" />
+                    android:background="@color/app_fen"/>
             </LinearLayout>
 
             <TextView
@@ -73,7 +75,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/select_fen_to_gray"
-                android:text="@string/get_sms_code" />
+                android:text="@string/get_sms_code"
+                android:textSize="13dp"/>
         </LinearLayout>
 
         <TextView
@@ -83,27 +86,28 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/select_fen_to_gray"
             android:padding="10dp"
-            android:text="@string/login" />
+            android:textSize="16dp"
+            android:text="@string/login"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/quan_select_3" />
+            android:src="@drawable/quan_select_3"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/login_agreen_xieyi"
-            android:textColor="@color/gray" />
+            android:textColor="@color/gray"/>
 
         <TextView
             android:id="@+id/verification_deal_txt"
@@ -115,7 +119,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="@string/app_xieyi"
-            android:textColor="@color/app_fen" />
+            android:textColor="@color/app_fen"/>
     </LinearLayout>
 
     <LinearLayout
@@ -123,9 +127,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone" >
+        android:visibility="gone">
 
-        <include layout="@layout/commentview_line_txt" />
+        <include layout="@layout/commentview_line_txt"/>
 
         <TextView
             android:id="@+id/verification_wx_login"
@@ -135,7 +139,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/login_login_wx"
-            android:textColor="@color/app_fen" />
+            android:textColor="@color/app_fen"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -268,7 +268,7 @@ public class AMain extends TabActivity implements OnTabChangeListener {
 				// mBaseApplication.setTabPostion(i);
 				// tabHost.setCurrentTabByTag(TableMenu[i]);
 				TableTexts.get(i).setTextColor(
-						getResources().getColor(R.color.tab_text_pr));
+						getResources().getColor(R.color.app_fen));
 				TableImages.get(i).setImageResource(pr_ivs[i]);
 
 			} else {
