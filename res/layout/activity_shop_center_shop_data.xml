@@ -45,6 +45,8 @@
                         android:visibility="gone"
                        />
 
+                    <!--分享-->
+
 
                     <TextView
                         android:id="@+id/share_my_shop_url"
