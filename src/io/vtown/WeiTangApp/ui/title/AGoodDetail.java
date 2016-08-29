@@ -1122,8 +1122,8 @@ public class AGoodDetail extends ATitleBase {
 	private Runnable mRandomMessageTimerTask = new Runnable() {
 		@Override
 		public void run() {
-
 			GetInstantUsrInfo();
+
 
 			// Random random = new Random();
 			// int r = random.nextInt(119) + 1;

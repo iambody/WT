@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <!---->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/my_coupons_list_item_height"
         android:layout_marginTop="5dp"
+        android:background="@drawable/shape_my_conpous_bg"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_coupons_item_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ico_kaquan_nor"/>
+            android:background="@drawable/ico_kaquan_nor" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_my_conpous_bg"
+
             android:orientation="horizontal">
 
             <LinearLayout
@@ -40,7 +44,7 @@
 
                     android:textColor="@color/app_fen"
                     android:textSize="36dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -50,30 +54,37 @@
                     android:paddingBottom="10dp"
                     android:text="元"
                     android:textColor="@color/app_fen"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp" />
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="@dimen/my_coupons_layout_height"
+                 android:orientation="vertical"
 
-                <io.vtown.WeiTangApp.comment.view.DashedLine
-                    android:layout_width="@dimen/line_size"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    />
-              <!--  <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_banyuan_nor"
+                 >
 
-                    />-->
-            </LinearLayout>
+
+
+                 <io.vtown.WeiTangApp.comment.view.DashedLine
+                     android:layout_width="@dimen/line_size"
+                     android:layout_height="wrap_content"
+                     android:layout_centerHorizontal="true"
+                     android:layout_gravity="center_horizontal"
+                     android:layout_weight="1"
+                     />
+               <ImageView
+                     android:layout_width="20dp"
+                     android:layout_height="20dp"
+                     android:src="@drawable/ic_banyuan_nor"
+
+                     android:adjustViewBounds="true"
+                     />
+             </LinearLayout>
+
+
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -81,13 +92,13 @@
 
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="@dimen/center_my_conpons_my_coupons_type_padding">
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/tv_my_coupons_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nullstr"/>
+                    android:text="@string/nullstr" />
 
                 <TextView
                     android:id="@+id/tv_my_coupons_validity"
@@ -96,7 +107,7 @@
                     android:layout_marginTop="@dimen/center_my_conpons_my_coupons_validity_margin"
                     android:text="@string/my_coupons_validity"
                     android:textColor="@color/app_gray"
-                    android:textSize="@dimen/center_my_conpons_my_coupons_validity_txt_size"/>
+                    android:textSize="@dimen/center_my_conpons_my_coupons_validity_txt_size" />
             </LinearLayout>
 
             <RelativeLayout
@@ -110,7 +121,7 @@
                     android:id="@+id/iv_my_coupons_used"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/center_my_conpons_my_coupons_usr_type_padding"/>
+                    android:padding="@dimen/center_my_conpons_my_coupons_usr_type_padding" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

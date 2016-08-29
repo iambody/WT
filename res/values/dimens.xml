@@ -549,4 +549,8 @@
     <dimen name="shop_cover_height">180dp</dimen>
     <dimen name="shop_user_totop_hright">30dp</dimen>
 
+    <!-- 我的卡券 -->
+    <dimen name="my_coupons_list_item_height">100dp</dimen>
+    <dimen name="my_coupons_layout_height">98dp</dimen>
+
 </resources>
