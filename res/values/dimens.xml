@@ -303,7 +303,7 @@
     <!-- 收货地址左右margin -->
     <dimen name="center_address_manager_delivery_address_left_right_margin">16dp</dimen>
     <!-- 默认地址文字margin -->
-    <dimen name="center_address_manager_default_margin">5dp</dimen>
+    <dimen name="center_address_manager_default_margin">10dp</dimen>
     <!-- **********end********** 地址管理页面   *********end********** -->
 
 

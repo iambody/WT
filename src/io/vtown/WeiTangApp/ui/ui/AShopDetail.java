@@ -769,7 +769,7 @@ public class AShopDetail extends ATitileNoBase {
 		public List<BLComment> GetRsource() {
 			return datas;
 
-		}
+	}
 
 		@Override
 		public int getCount() {

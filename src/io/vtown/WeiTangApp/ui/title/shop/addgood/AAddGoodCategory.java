@@ -85,7 +85,11 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 		SetTitleHttpDataLisenter(this);
 		if(type == 0){
 			PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.loading));
+		}else{
+			goodCategoryFragment.showLoading(true);
 		}
+
+
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("pid", pid);
 		FBGetHttpData(map, Constants.Add_Good_Categoty, Method.GET, type,
@@ -116,6 +120,7 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 			
 			@Override
 			public void onClickIndex(int index) {
+				if(CheckNet(BaseContext))return;
 				BLComment blComment = category_list.get(index);
 				if(blComment.getAttrs().size() >= 2){
 					blComment.setAdd_good_id(blComment.getId());
@@ -204,14 +209,17 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 
 	@Override
 	protected void NetConnect() {
+		NetError.setVisibility(View.GONE);
 	}
 
 	@Override
 	protected void NetDisConnect() {
+		NetError.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	protected void SetNetView() {
+		SetNetStatuse(NetError);
 	}
 
 	@Override
@@ -303,7 +311,7 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 		mPosition = arg2;
 		IData(item.getId(), 1);
 		mCategoryAdapter.notifyDataSetChanged();
-		goodCategoryFragment.showLoading(true);
+		//goodCategoryFragment.showLoading(true);
 
 	}
 

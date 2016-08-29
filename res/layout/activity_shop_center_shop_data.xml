@@ -25,17 +25,44 @@
                 android:gravity="center_vertical"
                 android:padding="10dp" >
 
-                <ImageView
-                    android:id="@+id/shop_qr_code_iv"
-                    android:layout_width="@dimen/shop_user_hright"
-                    android:layout_height="@dimen/shop_user_hright"
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:visibility="gone" 
-                    android:paddingBottom="10dp"
-                    android:layout_marginRight="20dp"/>
+                    android:gravity="center_horizontal"
+
+                    android:layout_marginRight="20dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/shop_qr_code_iv"
+                        android:layout_width="@dimen/shop_user_hright"
+                        android:layout_height="@dimen/shop_user_hright"
+
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:visibility="gone"
+                       />
+
+
+                    <TextView
+                        android:id="@+id/share_my_shop_url"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="分享"
+                       android:paddingTop="8dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/app_fen"
+                        android:clickable="true"
+                        android:visibility="gone"
+                        android:focusable="true"
+                        />
+
+                </LinearLayout>
+
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"

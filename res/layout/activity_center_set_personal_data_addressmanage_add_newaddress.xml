@@ -43,6 +43,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:background="@null"
+                    android:gravity="right"
+                    android:layout_marginRight="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:textColor="@color/app_gray"
                     android:textSize="@dimen/comment_label_txtsize"
                     android:hint="@string/consignee_name" />
@@ -75,6 +77,8 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/app_gray"
                     android:textSize="@dimen/comment_label_txtsize"
+                    android:gravity="right"
+                    android:layout_marginRight="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:layout_toRightOf="@id/tv_contact_phone_numb"
                     android:layout_marginLeft="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:background="@null"
@@ -124,6 +128,7 @@
                     android:textColor="@color/app_gray"
                     android:textSize="@dimen/comment_label_txtsize"
                     android:background="@null"
+                    android:layout_marginRight="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:gravity="left"
                     android:hint="@string/enter_detail_address" />
             </LinearLayout>

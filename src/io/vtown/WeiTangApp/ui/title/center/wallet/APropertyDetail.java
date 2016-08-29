@@ -332,7 +332,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 		popupWindow.setFocusable(true);
 		ColorDrawable dw = new ColorDrawable(0xb0000000);
 		popupWindow.setBackgroundDrawable(dw);
-		popupWindow.showAsDropDown(V, 0,2);
+		popupWindow.showAsDropDown(V, 0,30);
 	}
 
 	@Override
