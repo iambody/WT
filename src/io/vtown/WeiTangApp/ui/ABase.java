@@ -500,17 +500,17 @@ public class ABase extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		ImageLoader.getInstance().clearMemoryCache();
-		ImageLoader.getInstance().clearDiscCache();
-		ImageLoader.getInstance().clearDiskCache();
-		ImageLoader.getInstance().pause();
+//		ImageLoader.getInstance().clearMemoryCache();
+//		ImageLoader.getInstance().clearDiscCache();
+//		ImageLoader.getInstance().clearDiskCache();
+//		ImageLoader.getInstance().pause();
 
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		ImageLoader.getInstance().resume();
+//		ImageLoader.getInstance().resume();
 	}
 
 	/**

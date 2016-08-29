@@ -171,7 +171,9 @@ public class ANewHome extends ATitileNoBase implements IXListViewListener {
 	 * 获取数据
 	 */
 	private void GetHomeData(int Page, int LoadType) {
-
+if(LoadType==LOAD_INITIALIZE){
+	PromptManager.showtextLoading(BaseContext,"获取宝贝中.....");
+}
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("page", Page + "");
 		map.put("pageNum", Constants.PageSize + "");

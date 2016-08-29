@@ -55,7 +55,7 @@
                         android:id="@+id/share_my_shop_url"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="分享"
+                        android:text="分享店铺"
                        android:paddingTop="8dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"

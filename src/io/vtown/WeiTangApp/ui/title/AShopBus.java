@@ -153,6 +153,8 @@ public class AShopBus extends ATitleBase implements IXListViewListener {
 	 * 加载购物车列表数据 type标识 是否是删除完后的刷新
 	 */
 	private void IData(int Type) {
+		if (Type != LOAD_REFRESHING)
+		PromptManager.showtextLoading(BaseContext,"加载中");
 //		PromptManager.showtextLoading();
 		;// (boolean frash, int Type) {
 			// 获取数据钱 先要收到设置未处于全选状态********处于结算状态***********
@@ -164,8 +166,8 @@ public class AShopBus extends ATitleBase implements IXListViewListener {
 		SetIvSelect(sopbus_bottom_select_iv, IsAllSelectIv);
 		right_iv.setVisibility(View.GONE);
 		// 开始获取数据
-		if (Type != LOAD_REFRESHING)// 不是下拉刷新时候才需要 界面显示为空
-			IDataView(shopbus_show_lay, shopbus_nodata_lay, NOVIEW_INITIALIZE);
+//		if (Type != LOAD_REFRESHING)// 不是下拉刷新时候才需要 界面显示为空
+//			IDataView(shopbus_show_lay, shopbus_nodata_lay, NOVIEW_INITIALIZE);
 		// if (!frash)
 		// PromptManager.showtextLoading(BaseContext, "努力加载");
 		HashMap<String, String> map = new HashMap<String, String>();
