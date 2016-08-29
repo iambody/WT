@@ -33,6 +33,9 @@
                     android:layout_centerVertical="true"
                     android:gravity="center_horizontal"
 
+
+
+
                     android:layout_marginRight="20dp"
                     android:layout_height="wrap_content">
                     <ImageView
