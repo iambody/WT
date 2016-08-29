@@ -362,14 +362,18 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     private void ShareShopUrl(){
         BNew myBNwe = new BNew();
         myBNwe.setShare_log(Spuit.Shop_Get(BaseContext).getAvatar());
-        myBNwe.setShare_title("分享我的店铺");
-        myBNwe.setShare_content(uBShop.getSeller_url());
+        myBNwe.setShare_title(Spuit.Shop_Get(BaseContext).getSeller_name());
+        myBNwe.setShare_content(Spuit.Shop_Get(BaseContext).getIntro());
         myBNwe.setShare_url(uBShop.getSeller_url());
         ShowP(myView,myBNwe);
     }
 
+
+
+
     @Override
     protected void InItBundle(Bundle bundle) {
+        //
     }
 
     @Override
