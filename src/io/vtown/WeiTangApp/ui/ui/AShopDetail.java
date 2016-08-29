@@ -18,6 +18,7 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
+import io.vtown.WeiTangApp.comment.view.load.ShapeLoadingDialog;
 import io.vtown.WeiTangApp.ui.ATitileNoBase;
 import io.vtown.WeiTangApp.ui.comment.AGoodShow;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
@@ -216,18 +217,28 @@ public class AShopDetail extends ATitileNoBase {
 	// 是否品牌按钮被点击
 	private boolean IsBrandStatue = false;
 
+
+
+	private ShapeLoadingDialog shapeLoadingDialog;
+
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_shopdetail);
 		user_Get = Spuit.User_Get(BaseContext);
+		shapeLoadingDialog=new ShapeLoadingDialog(this);
+		shapeLoadingDialog.setLoadingText("加载中...");
 		IBase();
 		IData();
 	}
 
 	// 获取商品详情的通道
 	private void IData() {
-		PromptManager.showtextLoading(BaseContext,
-				getResources().getString(R.string.loading));
+//		PromptManager.showtextLoading(BaseContext,
+//				getResources().getString(R.string.loading));
+
+		shapeLoadingDialog.show();
+
+
 		SetTitleHttpDataLisenter(this);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("seller_id", baseBcBComment.getId());// 自营店铺
@@ -384,6 +395,7 @@ public class AShopDetail extends ATitileNoBase {
 
 		switch (Data.getHttpResultTage()) {
 		case Tag_Inf:
+			shapeLoadingDialog.dismiss();
 			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
 				DataError(Msg, Data.getHttpLoadType());
 				return;
@@ -575,9 +587,10 @@ public class AShopDetail extends ATitileNoBase {
 
 	@Override
 	protected void DataError(String error, int LoadTyp) {
-		if (LoadTyp == LOAD_INITIALIZE)
+		if (LoadTyp == LOAD_INITIALIZE){
+			shapeLoadingDialog.dismiss();
 			IDataView(activivty_shopdetail_outlay, shopdetail_nodata_lay,
-					NOVIEW_ERROR);
+					NOVIEW_ERROR);}
 		else {
 			PromptManager.ShowCustomToast(BaseContext, error);
 		}

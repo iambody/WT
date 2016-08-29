@@ -21,6 +21,7 @@ import io.vtown.WeiTangApp.comment.view.ImageCycleView.ImageCycleViewListener;
 import io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView;
 import io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView.OnGetDistanceListener;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.comment.view.load.ShapeLoadingDialog;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase.OnPopupStutaChangerListener;
 import io.vtown.WeiTangApp.ui.ATitleBase;
@@ -273,6 +274,7 @@ public class AGoodDetail extends ATitleBase {
 		IBanner();
 		IIBundle();
 		IBase();
+
 		IData(GoodsId);
 	}
 
@@ -288,6 +290,7 @@ public class AGoodDetail extends ATitleBase {
 		PromptManager.showtextLoading(BaseContext,
 				getResources()
 						.getString(R.string.xlistview_header_hint_loading));
+
 		SetTitleHttpDataLisenter(this);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("goods_id", GoodsId);
