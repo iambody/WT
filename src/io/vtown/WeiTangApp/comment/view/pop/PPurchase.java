@@ -1173,9 +1173,9 @@ public class PPurchase extends PopupWindow implements OnClickListener,
 						popupListener.getPopupStuta(TYPE_ADD_SHOPBUS);
 					PPurchase.this.dismiss();
 					PromptManager.ShowMyToast(pContext, "商品已添加到购物车");
-					EventBus.getDefault().post(new BMessage(BMessage.Shop_Frash));
-					if(goods_num > 0){
-						BMessage msg = new BMessage();
+					//EventBus.getDefault().post(new BMessage(BMessage.Shop_Frash));
+					if(goods_num > 0){//发送商品个数给购物车
+						BMessage msg = new BMessage(BMessage.Shop_Frash);
 						msg.setGood_numb(goods_num);
 						EventBus.getDefault().post(msg);
 					}

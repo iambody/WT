@@ -594,6 +594,7 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 			SetTitleTxt(getResources().getString(R.string.center_jilu));
 			SetRightText("清空");
 			right_txt.setOnClickListener(this);
+			right_txt.setVisibility(View.GONE);
 			break;
 		case Tage_AGoodSort:
 			SetTitleTxt(SkipBean.getTitle());
@@ -692,6 +693,7 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 		switch (Data.getHttpLoadType()) {
 		case LOAD_INITIALIZE:
 			commentAdapter.Refrsh(DATA);
+			right_txt.setVisibility(View.VISIBLE);
 			IDataView(acomment_list, comment_nodata_lay, NOVIEW_RIGHT);
 			break;
 		case LOAD_REFRESHING:
@@ -753,8 +755,14 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 
 			if (Tage_Result == Tage_ACenterGoodBrowseRecord) {// 浏览记录
 				if (!StrUtils
-						.isEmpty(CacheUtil.Guanzhu_LiuLan_Get(BaseContext)))
+						.isEmpty(CacheUtil.Guanzhu_LiuLan_Get(BaseContext))){
+					right_txt.setVisibility(View.VISIBLE);
 					break;
+				}else{
+					right_txt.setVisibility(View.GONE);
+				}
+
+
 			}
 
 			PromptManager.ShowCustomToast(BaseContext, error);
@@ -785,6 +793,8 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 		case R.id.right_txt://清空收藏商品记录
 			//PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 			//		ABrandJoin.class));
+
+			if (CheckNet(BaseContext))return;
 
 			ShowCustomDialog("确定清空所有商品浏览记录吗？", "取消", "确定", new IDialogResult() {
 
