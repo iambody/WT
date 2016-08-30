@@ -65,6 +65,9 @@ import com.android.volley.Request.Method;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
 import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 
 import de.greenrobot.event.EventBus;
@@ -756,13 +759,48 @@ public class AShow extends ATitleBase implements IXListViewListener {
 				// imageItem.item_show_in_imagview.setLayoutParams(layoutParams);
 				//
 
-				ImageLoaderUtil.Load2(datas.get(arg0),
-						imageItem.item_show_in_imagview, R.drawable.error_iv2);
+
 
 				arg1.setTag(imageItem);
 			} else {
 				imageItem = (InImageItem) arg1.getTag();
 			}
+//			ImageLoaderUtil.Load22(datas.get(arg0),
+//					imageItem.item_show_in_imagview, R.drawable.error_iv2);
+
+
+
+			String tag = (String) imageItem.item_show_in_imagview.getTag();
+			if (tag == null || !tag.equals(datas.get(arg0))) {
+				ImageLoader.getInstance().displayImage(
+						datas.get(arg0),
+						new ImageViewAware(imageItem.item_show_in_imagview, false), ImageLoaderUtil.GetDisplayOptions(R.drawable.error_iv2),
+						new ImageLoadingListener() {
+							@Override
+							public void onLoadingStarted(String s, View view) {
+
+							}
+
+							@Override
+							public void onLoadingFailed(String s, View view,
+														FailReason failReason) {
+
+							}
+
+							@Override
+							public void onLoadingComplete(String s, View view,
+														  Bitmap bitmap) {
+								view.setTag(datas.get(arg0));// 确保下载完成再打tag.
+							}
+
+							@Override
+							public void onLoadingCancelled(String s, View view) {
+
+							}
+
+						});
+			}
+
 
 			return arg1;
 		}

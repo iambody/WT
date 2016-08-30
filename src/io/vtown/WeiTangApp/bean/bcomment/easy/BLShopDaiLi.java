@@ -93,4 +93,9 @@ public class BLShopDaiLi extends BBase {
 		this.seller_name = seller_name;
 	}
 
+	public BLShopDaiLi(String id, String seller_name, boolean isSelectBrand) {
+		this.id = id;
+		this.seller_name = seller_name;
+		IsSelectBrand = isSelectBrand;
+	}
 }
