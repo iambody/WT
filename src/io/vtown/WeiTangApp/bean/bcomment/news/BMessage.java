@@ -185,6 +185,11 @@ public class BMessage {
 	public static final int Good_Manger_ToEdit_num =1601;
 	//修改数量的activity通知规格的listview
 	public static final int Good_Manger_Edit =1602;
+
+	//购物车有结算  开始刷新购物车
+	public static final int Shop_Frash=1703;
+
+
 	public String GoodMangeAlterNUmbe;
 	public int GoodMangeAlterPostion;
 	
