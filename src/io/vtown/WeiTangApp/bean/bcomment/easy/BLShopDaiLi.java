@@ -17,6 +17,18 @@ public class BLShopDaiLi extends BBase {
 	private String is_brand;// =1
 	private String level;// =1
 	private String seller_name;// =卡卡西品牌旗舰店
+	//横向滑动 是否已经选择
+	private boolean IsSelectBrand=false;
+
+
+	public boolean isSelectBrand() {
+		return IsSelectBrand;
+	}
+
+	public void setSelectBrand(boolean selectBrand) {
+		IsSelectBrand = selectBrand;
+	}
+
 	public String getAgency_time() {
 		return agency_time;
 	}

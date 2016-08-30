@@ -873,7 +873,7 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 		private LayoutInflater inflater;
 		private int ResourceId;
 		private List<BLShopDaiLi> datas = new ArrayList<BLShopDaiLi>();
-		private List<MyBrandItem> Views = new ArrayList<MyBrandItem>();
+		private List<MyBrandItem> Views= new ArrayList<MyBrandItem>();;
 
 		public BrandAp(int resourceId) {
 			super();
@@ -885,8 +885,12 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 
 		public void Refrsh(List<BLShopDaiLi> da) {
 			this.datas = da;
+//			Views	= new ArrayList<MyBrandItem>();
+//			for(int i=0;i<da.size();i++){
+//				Views.add(new MyBrandItem());
+//			}
 			notifyDataSetChanged();
-
+//			IColor();
 		}
 
 		/**
@@ -921,14 +925,15 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 		public View getView(int arg0, View convertView, ViewGroup arg2) {
 			MyBrandItem myItem = null;
 			if (convertView == null) {
-				myItem = new MyBrandItem();
+				myItem =  new MyBrandItem();
 				convertView = inflater.inflate(ResourceId, null);
 				myItem.item_fragment_shop_good_manger_brand_name = (TextView) convertView
 						.findViewById(R.id.item_fragment_shop_good_manger_brand_name);
 				convertView.setTag(myItem);
+
+//				if(Views.contains(myItem))
 				Views.add(myItem);
-				if (0 == arg0)// TODO测试用的 后期需要删除 仅供效果展示
-					IColor();
+
 			} else {
 				myItem = (MyBrandItem) convertView.getTag();
 			}
@@ -1154,11 +1159,12 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 			} else {
 				mBlShopDaiLis = JSON.parseArray(Data.getHttpResultStr(),
 						BLShopDaiLi.class);
-				List<BLShopDaiLi> datss = new ArrayList<BLShopDaiLi>();
-				datss.add(new BLShopDaiLi("", "全部商品"));
-				datss.addAll(mBlShopDaiLis);
+//				List<BLShopDaiLi> datss = new ArrayList<BLShopDaiLi>();
+//				datss.add(new BLShopDaiLi("", "全部商品"));
+//				datss.addAll(mBlShopDaiLis);
 
-				brandAp.Refrsh(datss);
+				brandAp.Refrsh(mBlShopDaiLis);
+//				brandAp.IColor();
 			}
 			break;
 		default:
