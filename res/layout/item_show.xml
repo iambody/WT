@@ -57,21 +57,22 @@
 
             <RelativeLayout
                 android:id="@+id/item_show_vido_lay"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone" >
 
                 <ImageView
                     android:id="@+id/item_show_vido_image"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/show_oneiv_height"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"
+                    />
 
                 <ImageView
                     android:id="@+id/item_show_vido_control_image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_centerInParent="true"
                     android:clickable="true"
                     android:focusable="true"

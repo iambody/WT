@@ -109,7 +109,10 @@ public class AShopBus extends ATitleBase implements IXListViewListener {
 	 * 错误时候需要显示的
 	 */
 	private View shopbus_nodata_lay;
-
+	/**
+	 * 下边结算的布局
+	 */
+private LinearLayout shopbus_down_lay;
 	/**
 	 * 当前的列表筛选分类
 	 */
@@ -127,7 +130,7 @@ public class AShopBus extends ATitleBase implements IXListViewListener {
 	 * 是否是普通
 	 */
 	private boolean IsPu;
-	private boolean IsAfterFrist = false;
+//	private boolean IsAfterFrist = false;
 
 	private int AllNumber = 0;
 
@@ -140,14 +143,15 @@ public class AShopBus extends ATitleBase implements IXListViewListener {
 		EventBus.getDefault().register(this, "getEventBusMsg", BMessage.class);
 		IBase();
 		SetTitleHttpDataLisenter(this);
+		IData(LOAD_INITIALIZE);
 	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		IData(LOAD_INITIALIZE);
-		IsAfterFrist = true;
-	}
+//	@Override
+//	protected void onResume() {
+//		super.onResume();
+////		IData(LOAD_INITIALIZE);
+////		IsAfterFrist = true;
+//	}
 
 	/**
 	 * 加载购物车列表数据 type标识 是否是删除完后的刷新
@@ -181,6 +185,8 @@ public class AShopBus extends ATitleBase implements IXListViewListener {
 	 * 删除商品操作
 	 */
 	private void IBase() {
+		InitTile();
+		shopbus_down_lay= (LinearLayout) findViewById(R.id.shopbus_down_lay);
 
 		shopbus_show_lay = (LinearLayout) findViewById(R.id.shopbus_show_lay);
 		shopbus_nodata_lay = findViewById(R.id.shopbus_nodata_lay);
@@ -239,8 +245,10 @@ public class AShopBus extends ATitleBase implements IXListViewListener {
 				right_iv.setVisibility(View.GONE);
 				AllNumber = 0;
 				Send(AllNumber);
+				shopbus_down_lay.setVisibility(View.GONE);
 				return;
 			}
+			shopbus_down_lay.setVisibility(View.VISIBLE);
 			if (Data.getHttpLoadType() == LOAD_REFRESHING) {
 				shopbus_ls.stopRefresh();
 			}
@@ -1201,6 +1209,9 @@ public class AShopBus extends ATitleBase implements IXListViewListener {
 	public void getEventBusMsg(BMessage event) {
 		int messageType = event.getMessageType();
 		switch (messageType) {
+			case BMessage.Shop_Frash:
+				IData(LOAD_REFRESHING);
+				break;
 		case BMessage.IM_Have_MSG:
 
 			right_right_iv.setImageDrawable(getResources().getDrawable(

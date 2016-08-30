@@ -739,4 +739,9 @@ public class ABase extends Activity {
 		}
 	}
 
+	//eventbus通知操作
+	public void SenMessage(int SentType){
+		EventBus.getDefault().post(new BMessage(SentType));
+	}
+
 }

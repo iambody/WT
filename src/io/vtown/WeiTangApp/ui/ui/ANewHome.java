@@ -71,7 +71,7 @@ import de.greenrobot.event.EventBus;
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
  * @version 创建时间：2016-7-14 下午1:35:30
- * 
+ *
  */
 public class ANewHome extends ATitileNoBase implements IXListViewListener {
 
@@ -121,21 +121,21 @@ public class ANewHome extends ATitileNoBase implements IXListViewListener {
 
 	@Override
 	protected void InItBaseView() {
-
 		setContentView(R.layout.activity_newhome);
 		basView = LayoutInflater.from(BaseContext).inflate(
 				R.layout.activity_newhome, null);
 		mBUser = Spuit.User_Get(BaseContext);
 		EventBus.getDefault().register(this, "getEventBusMsg", BMessage.class);
-		IBasView();
+
 		SetTitleHttpDataLisenter(this);
-		GetHomeData(CurrNumber, LOAD_INITIALIZE); 
+		IBasView();
+//		GetHomeData(CurrNumber, LOAD_INITIALIZE);
 
 	}
 
 	private void IBasView() {
 		IUpView();
-//		ICacheData();
+		ICacheData();
 	}
 
 	/**
@@ -145,6 +145,7 @@ public class ANewHome extends ATitileNoBase implements IXListViewListener {
 		if (StrUtils.isEmpty(CacheUtil.Home_Get(BaseContext))) {
 			PromptManager.showtextLoading(BaseContext, getResources()
 					.getString(R.string.loading));
+			GetHomeData(CurrNumber, LOAD_INITIALIZE);
 			return;
 		}
 		// 开始解析数据
@@ -159,21 +160,21 @@ public class ANewHome extends ATitileNoBase implements IXListViewListener {
 				newhome_ls.ShowFoot();
 			}
 		} catch (Exception e) {
-			PromptManager.showtextLoading(BaseContext, getResources()
-					.getString(R.string.loading));
+//			PromptManager.showtextLoading(BaseContext, getResources()
+//					.getString(R.string.loading));
 
 			return;
 		}
-
+		GetHomeData(CurrNumber, LOAD_INITIALIZE);
 	}
 
 	/**
 	 * 获取数据
 	 */
 	private void GetHomeData(int Page, int LoadType) {
-if(LoadType==LOAD_INITIALIZE){
-	PromptManager.showtextLoading(BaseContext,"获取宝贝中.....");
-}
+//if(LoadType==LOAD_INITIALIZE){
+//	PromptManager.showtextLoading(BaseContext,"获取宝贝中.....");
+//}
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("page", Page + "");
 		map.put("pageNum", Constants.PageSize + "");
@@ -526,111 +527,45 @@ if(LoadType==LOAD_INITIALIZE){
 			final Myitem myitem2 = myItem;
 			final int Postion = arg0;
 			final BHome data = datas.get(arg0);
-			 ImageLoaderUtil.Load22(datas.get(arg0).getPic_path(),
-			 myItem.item_home_brand_iv, R.drawable.error_iv1);
 
-//			DisplayImageOptions options = new DisplayImageOptions.Builder()
-//					.showImageOnLoading(R.drawable.error_iv1)
-//					.showImageForEmptyUri(R.drawable.error_iv1)
-//					.showImageOnFail(R.drawable.error_iv1)
-//					.cacheOnDisc(true)
-//					.cacheInMemory(true)
-//					.cacheOnDisk(true)
-//					// .considerExifParams(true)
-//					// .displayer(new FadeInBitmapDisplayer(100))
-//					// .imageScaleType(ImageScaleType.NONE)
-//					.displayer(new SimpleBitmapDisplayer())
-//					.bitmapConfig(Bitmap.Config.RGB_565).build();
-//
-//			String tag = (String) myitem2.item_home_brand_iv.getTag();
-//			if (tag == null || !tag.equals(datas.get(Postion).getPic_path())) {
-//				ImageLoader.getInstance().displayImage(
-//						datas.get(Postion).getPic_path(),
-//						new ImageViewAware(myitem2.item_home_brand_iv, false), options,
-//						new ImageLoadingListener() {
-//							@Override
-//							public void onLoadingStarted(String s, View view) {
-//
-//							}
-//
-//							@Override
-//							public void onLoadingFailed(String s, View view,
-//									FailReason failReason) {
-//
-//							}
-//
-//							@Override
-//							public void onLoadingComplete(String s, View view,
-//									Bitmap bitmap) {
-//								myitem2.item_home_brand_iv.setTag(datas.get(
-//										Postion).getPic_path());// 确保下载完成再打tag.
-//							}
-//
-//							@Override
-//							public void onLoadingCancelled(String s, View view) {
-//
-//							}
-//
-//						});
-//			}
+//			 ImageLoaderUtil.Load22(datas.get(arg0).getPic_path(),
+//			 myItem.item_home_brand_iv, R.drawable.error_iv1);
 
-			// myItem.item_home_brand_iv.setOnClickListener(new
-			// OnClickListener() {
-			// @Override
-			// public void onClick(View v) {
-			//
-			// if (CheckNet(BaseContext))
-			// return;
-			// // advert_type 类型 1H5首页，2商品详情页，3店铺详情页,4活动详情页
-			// if (StrUtils.isEmpty(data.getAdvert_type()))
-			// return;
-			//
-			// int Type = StrUtils.toInt(data.getAdvert_type());
-			//
-			// switch (Type) {
-			// case 1:// HT跳转
-			//
-			// PromptManager.SkipActivity(BaseActivity, new Intent(
-			// BaseActivity, AWeb.class).putExtra(
-			// AWeb.Key_Bean,
-			// new BComment(data.getUrl(), StrUtils
-			// .NullToStr(data.getAdvert_type_str()))));
-			// break;
-			// case 2:// 商品详情页
-			// PromptManager.SkipActivity(BaseActivity, new Intent(
-			// BaseContext, AGoodDetail.class).putExtra(
-			// "goodid", data.getSource_id()));
-			// // PromptManager.SkipActivity(BaseActivity, new
-			// // Intent(BaseContext, APlayer.class));
-			// break;
-			// case 3:// 店铺详情页!!!!!!!!!!!!!!!!!!!!!!!!需要修改
-			// BComment mBComment = new BComment(data.getSource_id(),
-			// data.getTitle());
-			// if (data.getIs_brand().equals("1")) {// 品牌店铺
-			// PromptManager
-			// .SkipActivity(BaseActivity, new Intent(
-			// BaseActivity, ABrandDetail.class)
-			// .putExtra(BaseKey_Bean, mBComment));
-			// } else {// 自营店铺
-			// PromptManager.SkipActivity(BaseActivity,
-			// new Intent(BaseActivity, AShopDetail.class)
-			// .putExtra(BaseKey_Bean, mBComment));
-			// }
-			// break;
-			// case 4:// 活动详情页
-			// BComment mBCommentss = new BComment(
-			// data.getSource_id(), data.getTitle());
-			// PromptManager.SkipActivity(BaseActivity, new Intent(
-			// BaseContext, AZhuanQu.class).putExtra(
-			// BaseKey_Bean, mBCommentss));
-			// break;
-			// default:
-			// // default时候直接展示大图
-			// break;
-			// }
-			//
-			// }
-			// });
+
+
+			String tag = (String) myitem2.item_home_brand_iv.getTag();
+			if (tag == null || !tag.equals(datas.get(Postion).getPic_path())) {
+				ImageLoader.getInstance().displayImage(
+						datas.get(Postion).getPic_path(),
+						new ImageViewAware(myitem2.item_home_brand_iv, false), ImageLoaderUtil.GetDisplayOptions(R.drawable.error_iv1),
+						new ImageLoadingListener() {
+							@Override
+							public void onLoadingStarted(String s, View view) {
+
+							}
+
+							@Override
+							public void onLoadingFailed(String s, View view,
+									FailReason failReason) {
+
+							}
+
+							@Override
+							public void onLoadingComplete(String s, View view,
+									Bitmap bitmap) {
+                                view.setTag(datas.get(
+										Postion).getPic_path());// 确保下载完成再打tag.
+							}
+
+							@Override
+							public void onLoadingCancelled(String s, View view) {
+
+							}
+
+						});
+			}
+
+
 
 			return arg1;
 		}

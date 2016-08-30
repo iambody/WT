@@ -24,9 +24,12 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_size1"
-            android:src="@color/app_fen" />
+            android:src="@color/app_fen"
+            android:visibility="gone"/>
 
         <LinearLayout
+            android:id="@+id/shopbus_down_lay"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/bottom_height1"
