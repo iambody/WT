@@ -196,7 +196,8 @@ public class BMessage {
 	private int MessageType;
 
 	private int TabShopBusNumber = 0;
-	
+
+	private int good_numb = 0;
 	//fragment切换For all===>nopay
 	private int FragmentPostion;
 	
@@ -297,4 +298,11 @@ public class BMessage {
 		FragmentPostion = fragmentPostion;
 	}
 
+	public int getGood_numb() {
+		return good_numb;
+	}
+
+	public void setGood_numb(int good_numb) {
+		this.good_numb = good_numb;
+	}
 }

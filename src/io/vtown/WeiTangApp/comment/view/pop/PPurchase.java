@@ -287,6 +287,7 @@ public class PPurchase extends PopupWindow implements OnClickListener,
 
 	private boolean UpAdapterItemClick = false;
 	private boolean DownAdapterItemClick = false;
+
 	// 记录数量
 	private int goods_num = 0;
 
@@ -1173,6 +1174,12 @@ public class PPurchase extends PopupWindow implements OnClickListener,
 					PPurchase.this.dismiss();
 					PromptManager.ShowMyToast(pContext, "商品已添加到购物车");
 					EventBus.getDefault().post(new BMessage(BMessage.Shop_Frash));
+					if(goods_num > 0){
+						BMessage msg = new BMessage();
+						msg.setGood_numb(goods_num);
+						EventBus.getDefault().post(msg);
+					}
+
 					// 我的订单--订单详情需要finish
 					// EventBus.getDefault().post(new
 					// BMessage(BMessage.Tage_Apply_Refund));
