@@ -9,16 +9,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/my_coupons_list_item_height"
-        android:layout_marginTop="5dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:background="@drawable/shape_my_conpous_bg"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/iv_coupons_item_bg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ico_kaquan_nor" />
+        <!-- <ImageView
+             android:id="@+id/iv_coupons_item_bg"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@drawable/ico_kaquan_nor" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,38 +52,54 @@
                     android:layout_gravity="center_vertical"
                     android:gravity="center"
                     android:paddingBottom="10dp"
+
                     android:text="元"
                     android:textColor="@color/app_fen"
                     android:textSize="10dp" />
             </LinearLayout>
 
 
-             <LinearLayout
-                 android:layout_width="wrap_content"
-                 android:layout_height="@dimen/my_coupons_layout_height"
-                 android:orientation="vertical"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
 
-                 >
+                >
 
-
-
-                 <io.vtown.WeiTangApp.comment.view.DashedLine
-                     android:layout_width="@dimen/line_size"
-                     android:layout_height="wrap_content"
-                     android:layout_centerHorizontal="true"
-                     android:layout_gravity="center_horizontal"
-                     android:layout_weight="1"
-                     />
-               <ImageView
-                     android:layout_width="20dp"
-                     android:layout_height="20dp"
-                     android:src="@drawable/ic_banyuan_nor"
-
-                     android:adjustViewBounds="true"
-                     />
-             </LinearLayout>
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_banyuan_up"
 
 
+                    />
+
+
+                <io.vtown.WeiTangApp.comment.view.DashedLine
+
+                    android:layout_width="@dimen/line_size"
+                    android:layout_height="0dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+
+                    />
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_banyuan_nor"
+
+                    />
+
+
+            </LinearLayout>
 
 
             <LinearLayout

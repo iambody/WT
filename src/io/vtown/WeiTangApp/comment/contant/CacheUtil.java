@@ -172,6 +172,16 @@ public class CacheUtil {
 
 	}
 
+	public static void Guanzhu_LiuLan_Delete(Context pcContext) {
+		SharedPreferences Sp = pcContext.getSharedPreferences(Sp_Guanzhu,
+				Context.MODE_PRIVATE);
+		Editor editor = Sp.edit();
+		editor.remove("liulan");
+		editor.commit();
+	}
+
+
+
 	/**
 	 * 获取我的钱包缓存
 	 * 

@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.comment.view.pop;
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
@@ -7,6 +8,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BGoodDetail;
 import io.vtown.WeiTangApp.bean.bcomment.easy.gooddetail.BDataGood;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -1170,6 +1172,7 @@ public class PPurchase extends PopupWindow implements OnClickListener,
 						popupListener.getPopupStuta(TYPE_ADD_SHOPBUS);
 					PPurchase.this.dismiss();
 					PromptManager.ShowMyToast(pContext, "商品已添加到购物车");
+					EventBus.getDefault().post(new BMessage(BMessage.Shop_Frash));
 					// 我的订单--订单详情需要finish
 					// EventBus.getDefault().post(new
 					// BMessage(BMessage.Tage_Apply_Refund));

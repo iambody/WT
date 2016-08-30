@@ -9,7 +9,8 @@
         android:id="@+id/rl_my_superior_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/item_shangji_iv" >
+        android:layout_marginTop="10dp"
+       >
 
         <ImageView
             android:id="@+id/rl_my_superior_item_bag_iv"
@@ -43,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nullstr"
-                    android:textColor="@color/white"
+                    android:textColor="@color/grey"
                     android:textSize="20sp" />
 
                 <TextView
@@ -52,7 +53,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/nullstr"
-                    android:textColor="@color/white"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:textColor="@color/app_gray"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>

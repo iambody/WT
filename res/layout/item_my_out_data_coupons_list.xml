@@ -11,22 +11,23 @@
         android:layout_marginBottom="5dp"
         android:orientation="vertical" >
 
-        <ImageView
+      <!--  <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ico_kaquan_press" />
+            android:background="@drawable/ico_kaquan_press" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/my_coupons_list_item_height"
             android:background="@drawable/shape_my_conpous_bg"
-            android:padding="10dp"
+
             android:orientation="horizontal" >
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:padding="10dp"
                 android:gravity="center"
                  >
 
@@ -53,10 +54,47 @@
                     android:textSize="10dp" />
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="2dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/shape_vertical_xuxian_bg" />
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+
+                >
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_banyuan_up"
+
+
+                    />
+
+
+                <io.vtown.WeiTangApp.comment.view.DashedLine
+
+                    android:layout_width="@dimen/line_size"
+                    android:layout_height="0dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+
+                    />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_banyuan_nor"
+
+                    />
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -87,11 +125,13 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
+
                 android:gravity="center" >
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:padding="@dimen/center_my_conpons_my_coupons_usr_type_padding"
                     android:src="@drawable/ic_guoqi_nor" />
             </RelativeLayout>

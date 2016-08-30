@@ -267,7 +267,7 @@
     <!-- 卡券有效期的文字大小 -->
     <dimen name="center_my_conpons_my_coupons_validity_txt_size">13sp</dimen>
     <!-- 卡券是否可用图标padding -->
-    <dimen name="center_my_conpons_my_coupons_usr_type_padding">5dp</dimen>
+    <dimen name="center_my_conpons_my_coupons_usr_type_padding">10dp</dimen>
     <!-- 卡券是否可用图标padding -->
     <dimen name="center_my_conpons_my_coupons_type_padding">8dp</dimen>
     <!-- **********end********** 我的卡券页面   *********end********** -->
@@ -551,6 +551,6 @@
 
     <!-- 我的卡券 -->
     <dimen name="my_coupons_list_item_height">100dp</dimen>
-    <dimen name="my_coupons_layout_height">98dp</dimen>
+    <dimen name="my_coupons_layout_height">100dp</dimen>
 
 </resources>

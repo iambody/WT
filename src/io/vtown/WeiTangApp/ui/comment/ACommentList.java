@@ -139,6 +139,8 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 
 
 
+
+
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_commentlist);
@@ -281,12 +283,12 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 			String LiuLanStr = CacheUtil.Guanzhu_LiuLan_Get(BaseContext);
 			if (!StrUtils.isEmpty(LiuLanStr)) {// 不为空开始缓存
 				// PromptManager.ShowCustomToast(BaseContext, "缓存浏览");
+
 				List<BLComment> DATA = JSON.parseArray(LiuLanStr,
 						BLComment.class);
 				IDataView(acomment_list, comment_nodata_lay, NOVIEW_RIGHT);
 				commentAdapter.Refrsh(DATA);
 			}
-
 			break;
 		default:
 			break;
@@ -582,6 +584,7 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 
 		case Tage_ACenterOderGuanzhu:
 			SetTitleTxt(getResources().getString(R.string.center_good_guanzhu));
+
 			break;
 
 		case Tage_ACenterShopCollect:
@@ -589,6 +592,8 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 			break;
 		case Tage_ACenterGoodBrowseRecord:
 			SetTitleTxt(getResources().getString(R.string.center_jilu));
+			SetRightText("清空");
+			right_txt.setOnClickListener(this);
 			break;
 		case Tage_AGoodSort:
 			SetTitleTxt(SkipBean.getTitle());
@@ -638,6 +643,7 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 
 		if (Data.getHttpResultTage() == 111) {
 			PromptManager.ShowCustomToast(BaseContext, "删除成功");
+			CacheUtil.Guanzhu_LiuLan_Delete(BaseContext);
 			CurrentPage = 1;
 			IData(CurrentPage, LOAD_INITIALIZE);
 			return;
@@ -646,7 +652,9 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 		if (StrUtils.isEmpty(Data.getHttpResultStr())
 				&& Data.getHttpLoadType() != LOAD_LOADMOREING) {
 			// PromptManager.ShowCustomToast(BaseContext, Msg);
-
+			commentAdapter.Refrsh(new ArrayList<BLComment>());
+			right_txt.setVisibility(View.GONE);
+			IDataView(acomment_list, comment_nodata_lay, NOVIEW_ERROR);
 			DataError(Constants.SucessToError, Data.getHttpLoadType());
 			return;
 		}
@@ -659,6 +667,8 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 		
 		List<BLComment> DATA = JSON.parseArray(Data.getHttpResultStr(),
 				BLComment.class);
+
+
 
 		// 开始缓存center的商品关注，店铺收藏，浏览记录的缓存***************************
 
@@ -728,7 +738,7 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 
 	@Override
 	protected void DataError(String error, int LoadTyp) {
-
+		PromptManager.ShowCustomToast(BaseContext, error);
 		switch (LoadTyp) {
 		case LOAD_INITIALIZE:
 			if (Tage_Result == Tage_ACenterOderGuanzhu) {// 商品关注有缓存
@@ -772,13 +782,29 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 	protected void MyClick(View V) {
 
 		switch (V.getId()) {
-		case R.id.right_txt:
-			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-					ABrandJoin.class));
+		case R.id.right_txt://清空收藏商品记录
+			//PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+			//		ABrandJoin.class));
+
+			ShowCustomDialog("确定清空所有商品浏览记录吗？", "取消", "确定", new IDialogResult() {
+
+				@Override
+				public void RightResult() {
+					DeletNet("");
+
+				}
+
+				@Override
+				public void LeftResult() {
+				}
+			});
+
 			break;
 		case R.id.comment_nodata_lay:
 			IData(CurrentPage, LOAD_INITIALIZE);
 			break;
+
+
 		default:
 			break;
 		}

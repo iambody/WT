@@ -286,8 +286,8 @@ public class AMyCoupons extends ATitleBase {
 			if (arg1 == null) {
 				myCoupons = new MyCouponsItem();
 				arg1 = inflater.inflate(ResourcesId, null);
-				myCoupons.iv_coupons_item_bg = ViewHolder.get(arg1,
-						R.id.iv_coupons_item_bg);
+//				myCoupons.iv_coupons_item_bg = ViewHolder.get(arg1,
+//						R.id.iv_coupons_item_bg);
 
 				myCoupons.iv_my_coupons_used = ViewHolder.get(arg1,
 						R.id.iv_my_coupons_used);
@@ -316,16 +316,16 @@ public class AMyCoupons extends ATitleBase {
 			myCoupons.iv_my_coupons_used.setBackgroundResource(datas.get(arg0)
 					.getStatus().equals("1") ? R.color.transparent
 					: R.drawable.ic_buke_nor);
-			myCoupons.iv_coupons_item_bg.setBackgroundResource(datas.get(arg0)
-					.getStatus().equals("1") ? R.drawable.ico_kaquan_nor
-					: R.drawable.ico_kaquan_press);
+//			myCoupons.iv_coupons_item_bg.setBackgroundResource(datas.get(arg0)
+//					.getStatus().equals("1") ? R.drawable.ico_kaquan_nor
+//					: R.drawable.ico_kaquan_press);
 			return arg1;
 		}
 
 		class MyCouponsItem {
 			TextView tv_my_coupons_price, tv_my_coupons_type,
 					tv_my_coupons_validity;
-			ImageView iv_coupons_item_bg, iv_my_coupons_used;
+			ImageView iv_my_coupons_used;//iv_coupons_item_bg,
 		}
 
 	}
