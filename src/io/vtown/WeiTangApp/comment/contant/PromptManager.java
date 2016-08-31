@@ -444,7 +444,11 @@ public class PromptManager {
         activity.overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out);
     }
-
+    public static void SkipActivityUpToTpo(Activity activity, Intent intent) {
+        activity.startActivity(intent);
+        activity.overridePendingTransition(R.anim.push_bttomin,
+                R.anim.push_topout);
+    }
     /**
      * 页面跳转
      *

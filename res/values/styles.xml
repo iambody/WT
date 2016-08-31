@@ -164,6 +164,15 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
     </style>
+    <style name="bt_login_textview_comment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/TextColorWhite</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
     <!-- 视频播放的style -->
     <style name="width_height_fw">
         <item name="android:layout_width">fill_parent</item>

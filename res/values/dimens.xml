@@ -554,6 +554,9 @@
     <dimen name="my_coupons_layout_height">100dp</dimen>
     <dimen name="paymethod_iv_height">40dp</dimen>
 
+    <!--登录-->
+
+    <dimen name="login_margentop_log">40dp</dimen>
 
     <!--商品详情购物车，关注，联系客服等图标大小-->
     <dimen name="goos_detail_icon_size">25dp</dimen>

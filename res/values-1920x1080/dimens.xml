@@ -4,4 +4,7 @@
 
 
     <dimen name="paymethod_iv_height">50dp</dimen>
+
+
+    <dimen name="login_margentop_log">70dp</dimen>
 </resources>
