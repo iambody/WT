@@ -32,6 +32,7 @@ public class ShapeLoadingDialog {
 
         mLoadingView = (LoadingView) mDialogContentView.findViewById(R.id.loadView);
         mDialog.setContentView(mDialogContentView);
+        mDialog.setCanceledOnTouchOutside(false);
 //        setBackground(mContext.getResources().getColor(R.color.white));
     }
 

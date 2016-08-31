@@ -279,6 +279,7 @@ public class PromptManager {
     public static void closeTextLoading3() {
         if (textdialog3 != null && textdialog3.isShowing()) {
             textdialog3.dismiss();
+            textdialog3=null;
         }
     }
     /**

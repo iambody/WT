@@ -289,6 +289,7 @@ public class ANewHome extends ATitileNoBase implements IXListViewListener {
 
 			mBComment = JSON.parseObject(Data.getHttpResultStr(),
 					BComment.class);
+			Spuit.ShopBusNumber_Save(BaseContext,mBComment.getCart_num());
 			Send(mBComment.getCart_num());
 			newHoemAp.FrashData(mBComment.getAdvert());
 

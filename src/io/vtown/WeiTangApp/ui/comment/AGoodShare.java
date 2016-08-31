@@ -781,7 +781,7 @@ public class AGoodShare extends ATitleBase implements OnCheckedChangeListener {
 
 			sp.setText(Content);
 			sp.setImageUrl(IvUrl);
-			sp.setTitle(getResources().getString(R.string.share_app) + Title);//
+			sp.setTitle(getResources().getString(R.string.share_app) +" "+ Title);//
 			sp.setUrl(UrL );
 
 			// sp.setText("大兔兔的测试数据");

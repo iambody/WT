@@ -83,7 +83,10 @@ public class Spuit {
 	 * IM消息
 	 */
 	private static final String IM_MESSAGE = "IM_Message";
-
+/**
+ * 保存购物车的清单数量
+ */
+	private static final String ShopNumber="shopnumber_sp";
 	/**
 	 * 获取是否已经登录过的标识
 	 */
@@ -456,6 +459,19 @@ public class Spuit {
 		Editor ed = sp.edit();
 		ed.putBoolean("im_message", immessage);
 		ed.commit();
+	}
+	//购物车数量的存储
+	public static void ShopBusNumber_Save(Context Pcontext,int Number){
+		SharedPreferences sp = Pcontext.getSharedPreferences(ShopNumber,
+				Context.MODE_PRIVATE);
+		Editor ed = sp.edit();
+		ed.putInt("shopbusnumber",Number);
+		ed.commit();
+	}
+	public static int ShopBusNumber_Get(Context Pcontext){
+		SharedPreferences sp=Pcontext.getSharedPreferences(ShopNumber,Context.MODE_PRIVATE);
+		return sp.getInt("shopbusnumber",0);
+
 	}
 
 }

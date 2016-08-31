@@ -216,6 +216,7 @@ private LinearLayout shopbus_down_lay;
 		TextPaint tp = left_txt.getPaint();
 		tp.setFakeBoldText(true);
 		left_txt.setOnClickListener(this);// 筛选按钮
+		left_txt.setVisibility(View.GONE);
 		right_iv.setVisibility(View.GONE);
 		left_txt.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.select_white_to_fen));
@@ -240,23 +241,17 @@ private LinearLayout shopbus_down_lay;
 
 		switch (Data.getHttpResultTage()) {
 		case 0:// 代表购物车列表数据
-			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-				DataError(Constants.SucessToError, Data.getHttpLoadType());
-				right_iv.setVisibility(View.GONE);
-				AllNumber = 0;
-				Send(AllNumber);
-				shopbus_down_lay.setVisibility(View.GONE);
-				return;
-			}
-			shopbus_down_lay.setVisibility(View.VISIBLE);
+//			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+//				DataError(Constants.SucessToError, Data.getHttpLoadType());
+//				right_iv.setVisibility(View.GONE);
+//				shopbus_down_lay.setVisibility(View.GONE);
+//				IDataView(shopbus_show_lay, shopbus_nodata_lay, NOVIEW_ERROR);
+//				return;
+//			}
+			IDataView(shopbus_show_lay, shopbus_nodata_lay, NOVIEW_RIGHT);
 			if (Data.getHttpLoadType() == LOAD_REFRESHING) {
 				shopbus_ls.stopRefresh();
 			}
-			IDataView(shopbus_show_lay, shopbus_nodata_lay, NOVIEW_RIGHT);
-
-			// StrUtils.JsonContainKey(oJsonObject, "CG");
-
-			// BShopBus bComment = new BShopBus();
 
 			BShopBus bComment = JSON.parseObject(Data.getHttpResultStr(),
 					BShopBus.class);
@@ -287,6 +282,15 @@ private LinearLayout shopbus_down_lay;
 			// }
 			// }
 			// 开始解析***************************************************************
+			if(bComment.getPT() == null && bComment.getCG() == null){// 没有普通也没有采购的
+
+				right_iv.setVisibility(View.GONE);
+				shopbus_down_lay.setVisibility(View.GONE);
+				IDataView(shopbus_show_lay, shopbus_nodata_lay, NOVIEW_ERROR);
+				AllNumber = 0;
+				Spuit.ShopBusNumber_Save(getApplicationContext(),0);
+				Send(AllNumber);
+			}
 			if (bComment.getPT() != null && bComment.getCG() == null) {// 只有普通的没有采购的
 				busAdapter = new BusAdapter(R.layout.item_shopbus_out);
 				shopbus_ls.setAdapter(busAdapter);
@@ -305,7 +309,9 @@ private LinearLayout shopbus_down_lay;
 							+ bComment.getPT().get(i).getList().size();
 
 				}
+				Spuit.ShopBusNumber_Save(BaseContext,AllNumber);
 				Send(AllNumber);
+				shopbus_down_lay.setVisibility(View.VISIBLE);
 			}
 			if (bComment.getPT() == null && bComment.getCG() != null) {// 只有采购的没有普通的
 
@@ -326,7 +332,9 @@ private LinearLayout shopbus_down_lay;
 							+ bComment.getCG().get(i).getList().size();
 
 				}
+				Spuit.ShopBusNumber_Save(BaseContext,AllNumber);
 				Send(AllNumber);
+				shopbus_down_lay.setVisibility(View.VISIBLE);
 			}
 
 			if (bComment.getPT() != null && bComment.getCG() != null) {// 既有采购也有普通
@@ -361,8 +369,9 @@ private LinearLayout shopbus_down_lay;
 					AllNumber = AllNumber
 							+ bComment.getCG().get(i).getList().size();
 				}
-
+				Spuit.ShopBusNumber_Save(BaseContext,AllNumber);
 				Send(AllNumber);
+				shopbus_down_lay.setVisibility(View.VISIBLE);
 			}
 
 			break;
@@ -1210,6 +1219,7 @@ private LinearLayout shopbus_down_lay;
 		int messageType = event.getMessageType();
 		switch (messageType) {
 			case BMessage.Shop_Frash:
+
 				IData(LOAD_REFRESHING);
 				break;
 		case BMessage.IM_Have_MSG:

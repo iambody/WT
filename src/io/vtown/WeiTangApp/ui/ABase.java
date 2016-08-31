@@ -80,7 +80,9 @@ public class ABase extends Activity {
 	/**
 	 * 全局单利application
 	 */
-	protected BaseApplication baseApplication;
+//	protected BaseApplication baseApplication;
+
+	protected  Context BaseAppContext;
 	/**
 	 * 上下文context
 	 */
@@ -143,7 +145,9 @@ public class ABase extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		baseApplication = BaseApplication.GetInstance();
+//		baseApplication = BaseApplication.GetInstance();
+
+
 		/**
 		 * 添加activities的栈里面进行管理
 		 */
@@ -172,9 +176,9 @@ public class ABase extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		AppManager.getAppManager().finishActivity(this);
-		ImageLoader.getInstance().clearMemoryCache();
-		ImageLoader.getInstance().clearDiscCache();
-		ImageLoader.getInstance().clearDiskCache();
+//		ImageLoader.getInstance().clearMemoryCache();
+//		ImageLoader.getInstance().clearDiscCache();
+//		ImageLoader.getInstance().clearDiskCache();
 	}
 
 	/**
