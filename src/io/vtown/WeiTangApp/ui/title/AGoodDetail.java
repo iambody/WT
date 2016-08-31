@@ -270,7 +270,7 @@ public class AGoodDetail extends ATitleBase {
 				R.layout.activity_gooddetail, null);
 		user_Get = Spuit.User_Get(BaseContext);
 		IsCaiGou = getIntent().getBooleanExtra(Tage_CaiGou, false);
-
+		SetTitleHttpDataLisenter(this);
 		IBanner();
 		IIBundle();
 		IBase();
@@ -291,7 +291,7 @@ public class AGoodDetail extends ATitleBase {
 				getResources()
 						.getString(R.string.xlistview_header_hint_loading));
 
-		SetTitleHttpDataLisenter(this);
+
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("goods_id", GoodsId);
 		map.put("extend", "1");

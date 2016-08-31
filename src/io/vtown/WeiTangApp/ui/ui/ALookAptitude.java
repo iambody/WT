@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.ui;
 
+import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
@@ -55,8 +56,8 @@ public class ALookAptitude extends ATitleBase {
 		setContentView(R.layout.activity_shopdetail_look_aptitude);
 		user_Get = Spuit.User_Get(BaseContext);
 
-		myBlComments = baseApplication.getZiYingShop_To_Ls();
-		baseApplication.setZiYingShop_To_Ls(null);
+		myBlComments =  BaseApplication.GetInstance().getZiYingShop_To_Ls();
+		BaseApplication.GetInstance().setZiYingShop_To_Ls(null);
 		IList();
 	}
 

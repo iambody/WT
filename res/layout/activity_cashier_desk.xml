@@ -74,9 +74,10 @@
 
                     <ImageView
                         android:id="@+id/iv_money_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_money_nor" />
+                        android:layout_width="@dimen/paymethod_iv_height"
+                        android:layout_height="@dimen/paymethod_iv_height"
+                        android:src="@drawable/ic_money_nor"
+                        android:padding="5dp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"

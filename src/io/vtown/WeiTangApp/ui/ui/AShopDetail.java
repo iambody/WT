@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.ui;
 
+import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
@@ -980,7 +981,7 @@ public class AShopDetail extends ATitileNoBase {
 
 		case R.id.shopdetail_shop_zizhi:
 			List<BLComment> DATA = shopBrandsLsAp.GetRsource();
-			baseApplication.setZiYingShop_To_Ls(DATA);
+			BaseApplication.GetInstance().setZiYingShop_To_Ls(DATA);
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 					ALookAptitude.class));
 			break;

@@ -226,10 +226,9 @@ public class ACashierDesk extends ATitleBase {
 		ll_cashier_desk_edit_psw.setOnClickListener(this);
 		tv_cashier_desk_need_pay = (TextView) findViewById(R.id.tv_cashier_desk_need_pay);
 		tv_cashier_desk_go_pay = (TextView) findViewById(R.id.tv_cashier_desk_go_pay);
-		SetViewContent(weixin_pay, getString(R.string.cashier_desk_weixin_pay));
-		SetViewContent(alipay_pay, getString(R.string.cashier_desk_alipay_pay));
-		SetViewContent(yinlian_pay,
-				getString(R.string.cashier_desk_yinlian_pay));
+		SetViewContent(weixin_pay, getString(R.string.cashier_desk_weixin_pay),R.drawable.ic_pay_wx);
+		SetViewContent(alipay_pay, getString(R.string.cashier_desk_alipay_pay),R.drawable.ic_pay_zfb);
+		SetViewContent(yinlian_pay,	getString(R.string.cashier_desk_yinlian_pay),R.drawable.ic_pay_yl);
 
 		// iv_cashier_desk_select.setOnClickListener(this);
 		weixin_pay.setOnClickListener(this);
@@ -279,9 +278,11 @@ public class ACashierDesk extends ATitleBase {
 
 	}
 
-	private void SetViewContent(View view, String content) {
+	private void SetViewContent(View view, String content,int ResourceId) {
 		TextView tv_commentview_left_txt_right_check_txt = (TextView) view
 				.findViewById(R.id.tv_commentview_left_txt_right_check_txt);
+		((ImageView)view.findViewById(R.id.tv_commentview_left_iv)).setImageResource(ResourceId);
+		((ImageView)view.findViewById(R.id.tv_commentview_left_iv)).setVisibility(View.VISIBLE);
 		tv_commentview_left_txt_right_check_txt.setText(content);
 	}
 

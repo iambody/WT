@@ -8,7 +8,7 @@
         android:id="@+id/item_show_in_imagview"
         android:layout_width="match_parent"
         android:layout_height="90dp"  
-        android:scaleType="fitCenter" 
+        android:scaleType="fitXY"
          />
 
 </LinearLayout>

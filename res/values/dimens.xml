@@ -552,5 +552,6 @@
     <!-- 我的卡券 -->
     <dimen name="my_coupons_list_item_height">100dp</dimen>
     <dimen name="my_coupons_layout_height">100dp</dimen>
+    <dimen name="paymethod_iv_height">40dp</dimen>
 
 </resources>
