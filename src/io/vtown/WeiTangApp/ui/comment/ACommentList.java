@@ -1174,7 +1174,7 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 						centerShopCollect.iv_shop_collect_shop_icon,
 						R.drawable.error_iv2);
 				StrUtils.SetTxt(centerShopCollect.tv_shop_collect_shop_desc,
-						data.getIntro());
+						data.getIntro().trim());
 				StrUtils.SetTxt(centerShopCollect.tv_shop_collect_shop_title,
 						data.getSeller_name());
 				break;

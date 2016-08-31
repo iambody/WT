@@ -126,13 +126,15 @@
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/shape_pink_round_bg" >
+                            android:padding="@dimen/goos_detail_icons_padding"
+                             >
 
                             <ImageView
                                 android:id="@+id/good_detail_shopbus_log"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/goos_detail_icon_size"
+                                android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
+
                                 android:src="@drawable/ic_gouwuche_nor_good_detail" />
                         </RelativeLayout>
 
@@ -140,14 +142,13 @@
                             android:id="@+id/rl_good_detail_shoucang_log"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/shape_pink_round_bg" >
+                            android:padding="@dimen/goos_detail_icons_padding"
+                            >
 
                             <ImageView
                                 android:id="@+id/good_detail_shoucang_log"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/goos_detail_icon_size"
+                                android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/ic_shoucang_nor_good_detail" />
                         </RelativeLayout>
@@ -156,12 +157,13 @@
                             android:id="@+id/rl_good_detail_lianxikefu_log"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/shape_pink_round_bg" >
+                            android:padding="@dimen/goos_detail_icons_padding"
+                             >
 
                             <ImageView
                                 android:id="@+id/good_detail_lianxikefu_log"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/goos_detail_icon_size"
+                                android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/ic_lianxikefu_nor_good_detail" />
                         </RelativeLayout>
@@ -170,13 +172,13 @@
                             android:id="@+id/rl_look_show"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:background="@drawable/shape_pink_round_bg" >
+                            android:padding="@dimen/goos_detail_icons_padding"
+                            >
 
                             <ImageView
                                 android:id="@+id/iv_show_icon"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/goos_detail_icon_size"
+                                android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/ic_chakanshangpinshow_nor_good_detail" />
                         </RelativeLayout>
@@ -185,13 +187,13 @@
                             android:id="@+id/rl_look_share"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:background="@drawable/shape_pink_round_bg" >
+                            android:padding="@dimen/goos_detail_icons_padding"
+                             >
 
                             <ImageView
                                 android:id="@+id/iv_show_share"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/goos_detail_icon_size"
+                                android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/ic_fenxiang_nor_good_detail" />
                         </RelativeLayout>

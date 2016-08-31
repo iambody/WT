@@ -188,6 +188,9 @@ public class AShopOrderManager extends ATitleBase implements
 			tv_center_order_over = (TextView) contentView
 					.findViewById(R.id.tv_center_order_over);
 
+			tv_center_order_paid.setText("待发货");
+			tv_center_order_no_take.setText("已发货");
+
 			View gray_view = contentView.findViewById(R.id.gray_view);
 			changeTextColor(tv_center_order_all);
 			ll_center_order_all.setOnClickListener(this);
@@ -389,7 +392,7 @@ public class AShopOrderManager extends ATitleBase implements
 			break;
 
 		case R.id.ll_center_order_paid:
-			categoryOperate("已付款", tv_center_order_paid, PYiFu);
+			categoryOperate("待发货", tv_center_order_paid, PYiFu);
 			break;
 
 		case R.id.ll_center_order_no_take:
@@ -445,7 +448,7 @@ public class AShopOrderManager extends ATitleBase implements
 			) {
 
 		if (loadType == LOAD_INITIALIZE) {
-			PromptManager.showtextLoading(BaseContext, getResources()
+			PromptManager.showtextLoading(AShopOrderManager.this, getResources()
 					.getString(R.string.loading));
 		}
 

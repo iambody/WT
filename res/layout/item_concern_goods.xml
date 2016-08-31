@@ -63,12 +63,12 @@
                     android:background="@drawable/shap_dai_bg"
                     android:orientation="horizontal" >
 
-                    <TextView
+                    <!--<TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/orange"
                         android:text="代"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white" />-->
 
                     <TextView
                         android:id="@+id/tv_center_good_collect_good_rule1"
