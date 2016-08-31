@@ -300,7 +300,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 					onError("解析失败", 1);
 				}
 				if (0 == Ket_Tage) {
-					CacheUtil.Shop_Purchase_List_Save(BaseContext,
+					CacheUtil.Shop_Purchase_List_Save(getApplicationContext(),
 							Data.getHttpResultStr());
 				}
 
@@ -368,7 +368,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 			} catch (Exception e) {
 
 			}
-			PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+			PromptManager.SkipActivity(AShopPurchaseOrder.this, new Intent(BaseContext,
 					ACashierDesk.class).putExtra("addOrderInfo", data));
 			break;
 
@@ -467,7 +467,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 
 	private void ICache() {
 		String shop_Purchase_List = CacheUtil
-				.Shop_Purchase_List_Get(BaseContext);
+				.Shop_Purchase_List_Get(getApplicationContext());
 		if (StrUtils.isEmpty(shop_Purchase_List)) {
 			PromptManager.showtextLoading(BaseContext, getResources()
 					.getString(R.string.loading));
@@ -486,7 +486,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 	}
 
 	private void IBase() {
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		ILs();
 
 		ICache();
@@ -1550,36 +1550,11 @@ public class AShopPurchaseOrder extends ATitleBase implements
 
 	// *************************************************************************
 
-	/**
-	 * 暴露对象
-	 * 
-	 * @param arg
-	 * @return
-	 */
-	public static FShopPurchase newInstance(int arg) {
-		FShopPurchase fragment = new FShopPurchase();
-		Bundle bundle = new Bundle();
-		bundle.putInt(Key_TageStr, arg);
-		fragment.setArguments(bundle);
-		return fragment;
-	}
 
-	/**
-	 * 暴露当是哪个订单状态的页面
-	 * 
-	 * @return
-	 */
-	public static int GetKetTage() {
-		return Ket_Tage;
-	}
 
-	/**
-	 * 重新刷新数据
-	 */
-	public void RegetData() {
-		last_id = "";
-		IData(LOAD_INITIALIZE, Ket_Tage + "");
-	}
+
+
+
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {

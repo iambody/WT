@@ -477,8 +477,8 @@ public class AGoodDetail extends ATitleBase {
 			break;
 
 		case 1:// 关注商品
-			right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press
-					: R.drawable.ic_shoucang_nor);
+			right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
+					: R.drawable.ic_shoucang_nor_good_detail);
 			PromptManager.ShowMyToast(BaseContext, isAttention ? "关注商品成功"
 					: "取消关注商品成功");
 			break;
@@ -595,8 +595,8 @@ public class AGoodDetail extends ATitleBase {
 		if (!StrUtils.isEmpty(is_collect)) {
 
 			isAttention = ("1".equals(is_collect)) ? true : false;
-			right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press
-					: R.drawable.ic_shoucang_nor);
+			right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
+					: R.drawable.ic_shoucang_nor_good_detail);
 
 		}
 		ImageLoaderUtil.Load2(datas.getAvatar(), iv_seller_icon,

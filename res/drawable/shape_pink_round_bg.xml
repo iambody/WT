@@ -10,7 +10,7 @@
  
 
     <solid
-        android:color="@color/app_fen3"/>
+        android:color="@color/transparent"/>
 
     <stroke
 

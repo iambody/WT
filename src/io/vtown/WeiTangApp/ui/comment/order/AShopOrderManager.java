@@ -133,7 +133,7 @@ public class AShopOrderManager extends ATitleBase implements
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_shop_order_manager);
 		SetTitleHttpDataLisenter(this);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		IView();
 		
 		ICache();
@@ -263,7 +263,7 @@ public class AShopOrderManager extends ATitleBase implements
 					lv_fall_daifu_common.setVisibility(View.GONE);
 					myAdapter.FrashData(new ArrayList<BLShopOrderManage>());
 					if (0 == Ket_Tage) {
-						CacheUtil.Shop_Order_List_Save(BaseContext,
+						CacheUtil.Shop_Order_List_Save(getApplicationContext(),
 								Data.getHttpResultStr());
 					}
 				}
@@ -298,10 +298,10 @@ public class AShopOrderManager extends ATitleBase implements
 
 			last_id = dattaa.get(dattaa.size() - 1).getId();
 			if (0 == Ket_Tage) {
-				CacheUtil.Shop_Order_List_Save(BaseContext,
+				CacheUtil.Shop_Order_List_Save(AShopOrderManager.this,
 						Data.getHttpResultStr());
 			}
-			PromptManager.closetextLoading();
+			//PromptManager.closetextLoading();
 			switch (Data.getHttpLoadType()) {
 			case LOAD_INITIALIZE:
 				myAdapter.FrashData(dattaa);
@@ -393,7 +393,7 @@ public class AShopOrderManager extends ATitleBase implements
 			break;
 
 		case R.id.ll_center_order_no_take:
-			categoryOperate("待收货", tv_center_order_no_take, PDaiShou);
+			categoryOperate("已发货", tv_center_order_no_take, PDaiShou);
 			break;
 
 		case R.id.ll_center_order_refund_and_arbitrament:
@@ -427,7 +427,7 @@ public class AShopOrderManager extends ATitleBase implements
 	}
 
 	private void ICache() {
-		String shop_Order_List = CacheUtil.Shop_Order_List_Get(BaseContext);
+		String shop_Order_List = CacheUtil.Shop_Order_List_Get(getApplicationContext());
 		if (StrUtils.isEmpty(shop_Order_List)) {
 			return;
 		}
@@ -886,7 +886,7 @@ public class AShopOrderManager extends ATitleBase implements
 									AGoodDetail.class);
 							intent.putExtra("goodid", goods.get(position)
 									.getGoods_id());
-							PromptManager.SkipActivity(BaseActivity, intent);
+							PromptManager.SkipActivity(AShopOrderManager.this, intent);
 						}
 					});
 
@@ -919,15 +919,15 @@ public class AShopOrderManager extends ATitleBase implements
 							case 10:// 待付款
 								if (CheckNet(BaseContext))
 									return;
-								intent = new Intent(BaseContext,
+								intent = new Intent(AShopOrderManager.this,
 										ADaifuOrderModify.class);
 
 								break;
 
 							case 30:// 已发货
-								if (CheckNet(BaseContext))
+								if (CheckNet(AShopOrderManager.this))
 									return;
-								intent = new Intent(BaseContext,
+								intent = new Intent(AShopOrderManager.this,
 										ADaifaOrderModify.class);
 
 								intent.putExtra(
@@ -965,7 +965,7 @@ public class AShopOrderManager extends ATitleBase implements
 								blComment.getSeller_order_sn());
 						intent.putExtra(ADaifaOrderModify.Tag,
 								ADaifaOrderModify.Tage_From_Send);
-						PromptManager.SkipActivity((Activity) BaseContext,
+						PromptManager.SkipActivity(AShopOrderManager.this,
 								intent);
 						break;
 					case 40:// 不同意退款
@@ -996,7 +996,7 @@ public class AShopOrderManager extends ATitleBase implements
 								blComment.getSeller_order_sn());
 						intent.putExtra(ADaifaOrderModify.Tag,
 								ADaifaOrderModify.Tage_From_Modify);
-						PromptManager.SkipActivity((Activity) BaseContext,
+						PromptManager.SkipActivity(AShopOrderManager.this,
 								intent);
 						break;
 
@@ -1193,12 +1193,12 @@ public class AShopOrderManager extends ATitleBase implements
 			int order_status = Integer.parseInt(blComment.getOrder_status());
 			Intent intent = null;
 			if (100 == order_status) {
-				intent = new Intent(BaseContext, ADaifaOrderModify.class);
+				intent = new Intent(AShopOrderManager.this, ADaifaOrderModify.class);
 				intent.putExtra(ADaifaOrderModify.Tag,
 						ADaifaOrderModify.Tage_From_Look_Detail_Close);
 
 			} else {
-				intent = new Intent(BaseContext, AOderDetail.class);
+				intent = new Intent(AShopOrderManager.this, AOderDetail.class);
 				intent.putExtra("order_status", order_status);
 				intent.putExtra("is_send", blComment.getIs_send());
 				intent.putExtra("is_edit", blComment.getIs_edit());
@@ -1208,7 +1208,7 @@ public class AShopOrderManager extends ATitleBase implements
 			intent.putExtra("seller_id", blComment.getSeller_id());
 			intent.putExtra("seller_order_sn", blComment.getSeller_order_sn());
 
-			PromptManager.SkipActivity((Activity) BaseContext, intent);
+			PromptManager.SkipActivity(AShopOrderManager.this, intent);
 		}
 
 	}
