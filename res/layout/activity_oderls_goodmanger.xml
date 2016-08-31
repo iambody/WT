@@ -86,10 +86,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             
-            android:background="@drawable/shape_shop_circular_bg"
+            android:background="@drawable/select_fen_to_gray_no_circular"
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/add"
+            android:textColor="@color/TextColorWhite"
             android:visibility="gone" />
     </LinearLayout>
 

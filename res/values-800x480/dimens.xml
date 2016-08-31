@@ -3,4 +3,7 @@
 
     <!--   TODO 适配阶段需要填充所有dp！ -->
     <dimen name="paymethod_iv_height">30dp</dimen>
+
+
+    <dimen name="shop_user_hright">45dp</dimen>
 </resources>

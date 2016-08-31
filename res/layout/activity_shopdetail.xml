@@ -1038,7 +1038,7 @@
                     android:focusable="true"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="  查看   "
+                    android:text="  代理品牌  "
                     android:textColor="@color/white" />
             </LinearLayout>
 

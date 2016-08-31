@@ -219,7 +219,7 @@
     <string name="txt_save">保存</string>
     <string name="detail_address">详细地址</string>
     <string name="contact_phone_numb">联系电话</string>
-    <string name="txt_consignee">收   货   人 </string>
+    <string name="txt_consignee">收      货      人 </string>
     <string name="consignee_name">收货人姓名</string>
     <string name="enter_detail_address">请填写详细地址……</string>
     <string name="in_location">所在地区</string>
@@ -527,6 +527,8 @@
     <string name="brand_runzhu2">专业全面的品牌代运营服务，涵盖从品牌推广、活动策划、产品设计、客户管理、订单管理、客服咨询等。</string>
     <string name="brand_ruzhu_label"> 我们给您提供的服务有:</string>
     <string name="title_activity_andk_test">ANdkTest</string>
+    <string name="putin_shouhuo_name">输入收货人电话</string>
+    <string name="input_shouhuoren_mingzi">输入收货人姓名</string>
 
 
 </resources>

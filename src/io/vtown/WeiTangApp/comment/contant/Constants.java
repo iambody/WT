@@ -153,7 +153,7 @@ public class Constants {
 	 */
 	public static int PageSize = 10;
 	public static int PageSize1 = 100;
-	public static int PageSize3 = 200;
+	public static int PageSize3 = 2000;
 	/**
 	 * 店铺搜索接口 Get
 	 */

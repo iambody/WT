@@ -315,7 +315,7 @@
     <!-- 详细地址输入框marginLeft -->
     <dimen name="center_address_manager_add_address_edittext_margin_left">16dp</dimen>
     <!-- 详细地址输入框高度 -->
-    <dimen name="center_address_manager_add_address_edittext_height">120dp</dimen>
+    <dimen name="center_address_manager_add_address_edittext_height">40dp</dimen>
     <!-- 保存按钮margin -->
     <dimen name="center_address_manager_add_address_save_buttom_margin">16dp</dimen>
     <!-- **********end********** 添加收货人页面  *********end********** -->
@@ -545,7 +545,7 @@
     <dimen name="shop_data_dialog_iv_height">60dp</dimen>
 
     <!-- 用户头像的宽高 -->
-    <dimen name="shop_user_hright">76dp</dimen>
+    <dimen name="shop_user_hright">46dp</dimen>
     <dimen name="shop_cover_height">180dp</dimen>
     <dimen name="shop_user_totop_hright">30dp</dimen>
 

@@ -241,13 +241,13 @@ private LinearLayout shopbus_down_lay;
 
 		switch (Data.getHttpResultTage()) {
 		case 0:// 代表购物车列表数据
-//			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-//				DataError(Constants.SucessToError, Data.getHttpLoadType());
-//				right_iv.setVisibility(View.GONE);
-//				shopbus_down_lay.setVisibility(View.GONE);
-//				IDataView(shopbus_show_lay, shopbus_nodata_lay, NOVIEW_ERROR);
-//				return;
-//			}
+			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+				DataError(Constants.SucessToError, Data.getHttpLoadType());
+				right_iv.setVisibility(View.GONE);
+				shopbus_down_lay.setVisibility(View.GONE);
+				IDataView(shopbus_show_lay, shopbus_nodata_lay, NOVIEW_ERROR);
+				return;
+			}
 			IDataView(shopbus_show_lay, shopbus_nodata_lay, NOVIEW_RIGHT);
 			if (Data.getHttpLoadType() == LOAD_REFRESHING) {
 				shopbus_ls.stopRefresh();
