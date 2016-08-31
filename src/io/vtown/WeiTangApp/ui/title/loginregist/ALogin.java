@@ -218,8 +218,9 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
 
 			break;
 		case R.id.login_phone_login:
-			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+			PromptManager.SkipActivityUpToTpo(BaseActivity, new Intent(BaseActivity,
 					AInviteAndApprove.class).putExtra("iswx", false));
+
 			break;
 		default:
 			break;
