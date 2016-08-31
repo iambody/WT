@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_look_out_data_coupons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/center_my_conpons_look_over_time_coupons_txt_padding" >
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/tv_look_over_time_coupons_downiv"
+                android:padding="@dimen/center_my_conpons_look_over_time_coupons_txt_padding"
+                android:layout_centerVertical="true"
+                android:textSize="13sp"
+                android:text="没有更多卡券了"
+                android:textColor="@color/app_gray" />
+
+            <TextView
+                android:id="@+id/tv_look_over_time_coupons_downiv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="|"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_look_over_time_coupons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_look_over_time_coupons_downiv"
+                android:padding="@dimen/center_my_conpons_look_over_time_coupons_txt_padding"
+                android:layout_centerVertical="true"
+                android:paddingTop="4dp"
+                android:text="查看失效卡券 >"
+                android:textColor="@color/app_fen" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

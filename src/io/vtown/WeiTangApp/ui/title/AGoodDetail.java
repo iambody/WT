@@ -473,7 +473,7 @@ public class AGoodDetail extends ATitleBase {
 			IDataView(gooddetails_outlay, gooddetail_nodata_lay, NOVIEW_RIGHT);
 			RefreshView(datas);
 			runRandomMessage = true;
-			mHandler.postDelayed(mRandomMessageTimerTask, 3000);
+			//mHandler.postDelayed(mRandomMessageTimerTask, 3000);
 			break;
 
 		case 1:// 关注商品
@@ -743,7 +743,7 @@ public class AGoodDetail extends ATitleBase {
 		if (datas == null)
 			IData(GoodsId);
 
-		mHandler.postDelayed(mRandomMessageTimerTask, 1000);
+		//mHandler.postDelayed(mRandomMessageTimerTask, 1000);
 
 	}
 
@@ -972,7 +972,7 @@ public class AGoodDetail extends ATitleBase {
 		super.onResume();
 		gooddetail_banner.startImageCycle();
 		runRandomMessage = true;
-		mHandler.postDelayed(mRandomMessageTimerTask, 3000);
+		//mHandler.postDelayed(mRandomMessageTimerTask, 3000);
 	};
 
 	@Override
@@ -980,7 +980,7 @@ public class AGoodDetail extends ATitleBase {
 		super.onPause();
 		gooddetail_banner.pushImageCycle();
 		runRandomMessage = false;
-		mHandler.removeCallbacks(mRandomMessageTimerTask);
+		//mHandler.removeCallbacks(mRandomMessageTimerTask);
 
 	}
 
@@ -989,7 +989,7 @@ public class AGoodDetail extends ATitleBase {
 		super.onDestroy();
 		gooddetail_banner.pushImageCycle();
 		runRandomMessage = false;
-		mHandler.removeCallbacks(mRandomMessageTimerTask);
+		//mHandler.removeCallbacks(mRandomMessageTimerTask);
 
 	}
 
@@ -1119,7 +1119,7 @@ public class AGoodDetail extends ATitleBase {
 	// }
 	// }
 
-	private Runnable mRandomMessageTimerTask = new Runnable() {
+	/*private Runnable mRandomMessageTimerTask = new Runnable() {
 		@Override
 		public void run() {
 			GetInstantUsrInfo();
@@ -1160,7 +1160,7 @@ public class AGoodDetail extends ATitleBase {
 
 		}
 
-	};
+	};*/
 
 	private void SetMessage() {
 		if (info != null) {

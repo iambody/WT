@@ -18,7 +18,7 @@
         <ListView
             android:id="@+id/lv_my_conpons_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/center_my_conpons_listview_magrin"
             android:layout_marginRight="@dimen/center_my_conpons_listview_magrin"
 
@@ -28,58 +28,21 @@
             android:focusableInTouchMode="false"
             android:listSelector="#00000000" />
 
-        <include
+
+
+        <!--<include
             android:id="@+id/center_my_coupons_nodata_lay"
             layout="@layout/commentview_nodata"
             android:clickable="true"
             android:focusable="true"
-            android:visibility="gone" />
+            android:visibility="gone" />-->
+
+
+
 
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_look_out_data_coupons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/center_my_conpons_look_over_time_coupons_txt_padding" >
 
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/tv_look_over_time_coupons_downiv"
-                android:padding="@dimen/center_my_conpons_look_over_time_coupons_txt_padding"
-                android:text="没有更多卡券了"
-                android:textColor="@color/app_gray" />
-
-            <TextView
-                android:id="@+id/tv_look_over_time_coupons_downiv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="|"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_look_over_time_coupons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_look_over_time_coupons_downiv"
-                android:padding="@dimen/center_my_conpons_look_over_time_coupons_txt_padding"
-                android:paddingTop="4dp"
-                android:text="查看失效卡券 >"
-                android:textColor="@color/app_fen" />
-        </RelativeLayout>
-    </LinearLayout>
 
 </LinearLayout>
