@@ -654,7 +654,10 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 				&& Data.getHttpLoadType() != LOAD_LOADMOREING) {
 			// PromptManager.ShowCustomToast(BaseContext, Msg);
 			commentAdapter.Refrsh(new ArrayList<BLComment>());
-			right_txt.setVisibility(View.GONE);
+			if(Tage_Result == Tage_ACenterGoodBrowseRecord){
+				right_txt.setVisibility(View.GONE);
+			}
+
 			IDataView(acomment_list, comment_nodata_lay, NOVIEW_ERROR);
 			DataError(Constants.SucessToError, Data.getHttpLoadType());
 			return;
@@ -693,7 +696,10 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 		switch (Data.getHttpLoadType()) {
 		case LOAD_INITIALIZE:
 			commentAdapter.Refrsh(DATA);
-			right_txt.setVisibility(View.VISIBLE);
+			if(Tage_Result == Tage_ACenterGoodBrowseRecord){
+				right_txt.setVisibility(View.VISIBLE);
+			}
+
 			IDataView(acomment_list, comment_nodata_lay, NOVIEW_RIGHT);
 			break;
 		case LOAD_REFRESHING:
