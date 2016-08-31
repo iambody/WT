@@ -54,6 +54,7 @@ import io.vtown.WeiTangApp.ui.comment.ACommentList;
 import io.vtown.WeiTangApp.ui.comment.AGoodShare;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.shop.ABrandList;
 import io.vtown.WeiTangApp.ui.title.shop.goodmanger.AAlterBrandNumber;
 import io.vtown.WeiTangApp.ui.title.shop.goodmanger.AGoodMangerEdit;
 
@@ -1229,13 +1230,14 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.tv_add_item:// ss
-                BComment datas = new BComment("", "品牌");
-                PromptManager.SkipActivity(
-                        BaseActivity,
-                        new Intent(BaseContext, ACommentList.class).putExtra(
-                                ACommentList.Tage_ResultKey,
-                                ACommentList.Tage_HomePopBrand).putExtra(
-                                ACommentList.Tage_BeanKey, datas));
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ABrandList.class));
+//                BComment datas = new BComment("", "品牌");
+//                PromptManager.SkipActivity(
+//                        BaseActivity,
+//                        new Intent(BaseContext, ACommentList.class).putExtra(
+//                                ACommentList.Tage_ResultKey,
+//                                ACommentList.Tage_HomePopBrand).putExtra(
+//                                ACommentList.Tage_BeanKey, datas));
                 break;
 
             case R.id.fragment_isbrand_brand_txt:// 品牌

@@ -35,7 +35,7 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/comment_label_txtsize"
-                    android:text="@string/txt_consignee" />
+                    android:text="收  货  人" />
 
                 <EditText
                     android:id="@+id/et_consignee_name"
@@ -43,11 +43,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:background="@null"
-                    android:gravity="right"
+                    android:gravity="left"
                     android:layout_marginRight="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:textColor="@color/app_gray"
                     android:textSize="@dimen/comment_label_txtsize"
-                    android:hint="@string/consignee_name" />
+                    android:hint="@string/consignee_name"
+                    android:text="@string/input_shouhuoren_mingzi"/>
             </LinearLayout>
 
             <View
@@ -77,12 +78,13 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/app_gray"
                     android:textSize="@dimen/comment_label_txtsize"
-                    android:gravity="right"
+                    android:gravity="left"
+
                     android:layout_marginRight="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:layout_toRightOf="@id/tv_contact_phone_numb"
                     android:layout_marginLeft="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:background="@null"
-                     />
+                    android:text="@string/putin_shouhuo_name"/>
 
                 <ImageView
                     android:id="@+id/iv_look_connect"
@@ -99,7 +101,7 @@
 
             <include
                 android:id="@+id/location"
-                layout="@layout/commentview_txtarrow" />
+                layout="@layout/commentview_txtarrow_content_at_left" />
 
             <View
                 style="@style/line_left"/>
@@ -130,18 +132,22 @@
                     android:background="@null"
                     android:layout_marginRight="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:gravity="left"
+                    android:textColorHint="@color/app_gray"
                     android:hint="@string/enter_detail_address" />
             </LinearLayout>
+            <View
+                style="@style/line_left"/>
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/build_two_dimension_code_btn_style"
+                android:textSize="@dimen/comment_label_txtsize"
+                android:text="@string/txt_save"
+                android:layout_margin="@dimen/center_address_manager_add_address_save_buttom_margin"
+                />
         </LinearLayout>
     </ScrollView>
-    <Button 
-        android:id="@+id/btn_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/build_two_dimension_code_btn_style"
-        android:textSize="@dimen/comment_label_txtsize"
-        android:text="@string/txt_save"
-        android:layout_margin="@dimen/center_address_manager_add_address_save_buttom_margin"
-        />
+
 
 </LinearLayout>

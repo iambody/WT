@@ -92,11 +92,11 @@ public class AAddConsigneeAddress extends ATitleBase {
 		location = findViewById(R.id.location);
 
 		comment_txtarrow_content = (TextView) location
-				.findViewById(R.id.comment_txtarrow_content);
+				.findViewById(R.id.comment_txtarrow_addshouhuo_content);
 
 		btn_save = (Button) findViewById(R.id.btn_save);
 
-		((TextView) location.findViewById(R.id.comment_txtarrow_title))
+		((TextView) location.findViewById(R.id.comment_txtarrow_addshouhuo_title))
 				.setText(getResources().getString(R.string.in_location));
 
 		btn_save.setOnClickListener(this);

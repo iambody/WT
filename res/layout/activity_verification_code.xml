@@ -155,7 +155,7 @@
             android:layout_height="12dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/quan_select_3"
+            android:src="@drawable/login_dui"
             />
 
         <TextView
@@ -163,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/login_agreen_xieyi"
-            android:textColor="@color/gray"/>
+            android:textColor="@color/app_gray"/>
 
         <TextView
             android:id="@+id/verification_deal_txt"
@@ -175,7 +175,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="@string/app_xieyi"
-            android:textColor="@color/app_fen"/>
+            android:textColor="@color/gray"/>
     </LinearLayout>
 
     <LinearLayout
