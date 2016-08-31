@@ -96,22 +96,22 @@ public class ImageCycleView extends LinearLayout {
 		LayoutInflater.from(context).inflate(R.layout.ad_cycle_view, this);
 		mAdvPager = (ViewPager) findViewById(R.id.adv_pager);
 		mAdvPager.setOnPageChangeListener(new GuidePageChangeListener());
-		mAdvPager.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				switch (event.getAction()) {
-				case MotionEvent.ACTION_UP:
-					// 开始图片滚动
-					startImageTimerTask();
-					break;
-				default:
-					// 停止图片滚动
-					stopImageTimerTask();
-					break;
-				}
-				return false;
-			}
-		});
+//		mAdvPager.setOnTouchListener(new OnTouchListener() {
+//			@Override
+//			public boolean onTouch(View v, MotionEvent event) {
+//				switch (event.getAction()) {
+//				case MotionEvent.ACTION_UP:
+//					// 开始图片滚动
+//					startImageTimerTask();
+//					break;
+//				default:
+//					// 停止图片滚动
+//					stopImageTimerTask();
+//					break;
+//				}
+//				return false;
+//			}
+//		});
 		// 滚动图片右下指示器视
 		mGroup = (ViewGroup) findViewById(R.id.viewGroup);
 		imageName = (TextView) findViewById(R.id.viewGroup2);
@@ -176,7 +176,7 @@ public class ImageCycleView extends LinearLayout {
 		mAdvPager.setLayoutParams(params);
 		
 		mAdvPager.setAdapter(mAdvAdapter);
-		startImageTimerTask();
+//		startImageTimerTask();
 	}
 
 	/**
@@ -197,37 +197,37 @@ public class ImageCycleView extends LinearLayout {
 	 * 图片滚动任务
 	 */
 	private void startImageTimerTask() {
-		stopImageTimerTask();
-		// 图片滚动
-		mHandler.postDelayed(mImageTimerTask, 8000);
+//		stopImageTimerTask();
+//		// 图片滚动
+//		mHandler.postDelayed(mImageTimerTask, 8000);
 	}
 
 	/**
 	 * 停止图片滚动任务
 	 */
 	private void stopImageTimerTask() {
-		isStop = true;
-		mHandler.removeCallbacks(mImageTimerTask);
+//		isStop = true;
+//		mHandler.removeCallbacks(mImageTimerTask);
 	}
 
-	private Handler mHandler = new Handler();
+//	private Handler mHandler = new Handler();
 
 	/**
 	 * 图片自动轮播Task
 	 */
-	private Runnable mImageTimerTask = new Runnable() {
-		@Override
-		public void run() {
-			if (mImageViews != null) {
-				mAdvPager.setCurrentItem(mAdvPager.getCurrentItem() + 1);
-				if (!isStop) { // if isStop=true //当你退出后 要把这个给停下来 不然 这个一直存在
-								// 就一直在后台循环
-					mHandler.postDelayed(mImageTimerTask, 3000);
-				}
-
-			}
-		}
-	};
+//	private Runnable mImageTimerTask = new Runnable() {
+//		@Override
+//		public void run() {
+//			if (mImageViews != null) {
+//				mAdvPager.setCurrentItem(mAdvPager.getCurrentItem() + 1);
+//				if (!isStop) { // if isStop=true //当你退出后 要把这个给停下来 不然 这个一直存在
+//								// 就一直在后台循环
+//					mHandler.postDelayed(mImageTimerTask, 3000);
+//				}
+//
+//			}
+//		}
+//	};
 
 	/**
 	 * 轮播图片监听
