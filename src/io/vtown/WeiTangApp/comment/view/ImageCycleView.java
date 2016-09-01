@@ -167,7 +167,7 @@ public class ImageCycleView extends LinearLayout {
 		
 
 		imageName.setText(imageNameList.get(0));
-		mAdvAdapter = new ImageCycleAdapter(mContext, imageUrlList,
+		mAdvAdapter = new ImageCycleAdapter( imageUrlList,
 				imageNameList, imageCycleViewListener); 
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,
 //				DimensionPixelUtil.dip2px(mContext, ViewHeight));
@@ -281,12 +281,12 @@ public class ImageCycleView extends LinearLayout {
 		 */
 		private ImageCycleViewListener mImageCycleViewListener;
 
-		private Context mContext;
+//		private Context mContext;
 
-		public ImageCycleAdapter(Context context, ArrayList<String> adList,
+		public ImageCycleAdapter(  ArrayList<String> adList,
 				ArrayList<String> nameList,
 				ImageCycleViewListener imageCycleViewListener) {
-			this.mContext = context;
+//			this.mContext = context;
 			this.mAdList = adList;
 			this.nameList = nameList;
 			mImageCycleViewListener = imageCycleViewListener;
