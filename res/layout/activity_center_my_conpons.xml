@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include layout="@layout/titlebar" />
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
 
         <ListView
@@ -21,13 +21,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/center_my_conpons_listview_magrin"
             android:layout_marginRight="@dimen/center_my_conpons_listview_magrin"
-
             android:cacheColorHint="#00000000"
             android:divider="@null"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:listSelector="#00000000" />
-
+            android:listSelector="#00000000"
+            android:scrollbars="none" />
 
 
         <!--<include
@@ -38,11 +37,7 @@
             android:visibility="gone" />-->
 
 
-
-
-
     </LinearLayout>
-
 
 
 </LinearLayout>
