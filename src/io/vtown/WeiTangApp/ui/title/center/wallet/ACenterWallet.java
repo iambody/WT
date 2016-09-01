@@ -192,6 +192,7 @@ public class ACenterWallet extends ATitleBase {
 		tv_add_up_income = (TextView) findViewById(R.id.tv_add_up_income);
 		tv_btn_submit = (TextView) findViewById(R.id.tv_btn_submit);
 
+
 		bank_card_manage = findViewById(R.id.bank_card_manage);
 		property_detail = findViewById(R.id.property_detail);
 		alipay_manage = findViewById(R.id.alipay_manage);
@@ -272,8 +273,10 @@ public class ACenterWallet extends ATitleBase {
 				data1 = JSON.parseObject(Data.getHttpResultStr(),
 						BDComment.class);
 
+
 			} catch (Exception e) {
 				// DataError("解析失败", 1);
+
 			}
 			break;
 
@@ -339,6 +342,7 @@ public class ACenterWallet extends ATitleBase {
 			if (CheckNet(BaseContext))
 				return;
 			if(data1 != null){
+
 				if (data1.getBank_list() == null
 						&& StrUtils.isEmpty(data1.getAlipay_list().getAlipay())) {
 					ShowCustomDialog(2, "请先绑定银行卡或支付宝", "");
@@ -346,6 +350,9 @@ public class ACenterWallet extends ATitleBase {
 					PromptManager.SkipActivity(BaseActivity, new Intent(
 							BaseActivity, ATiXian.class));
 				}
+			}else{
+				PromptManager.ShowCustomToast(BaseContext,"正在努力获取数据，请稍候……");
+				return;
 			}
 
 
