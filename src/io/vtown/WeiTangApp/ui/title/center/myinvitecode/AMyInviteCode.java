@@ -216,8 +216,8 @@ public class AMyInviteCode extends ATitleBase {
 							MyBitMap = BitmapFactory.decodeFile(Pathe);
 							my_invite_code_iv.setImageBitmap(MyBitMap);
 							my_invite_code_iv.setVisibility(View.VISIBLE);
-							new ImagViewDialog(BaseContext, MyBitMap, screenWidth, 2)
-									.show();
+//							new ImagViewDialog(BaseContext, MyBitMap, screenWidth, 2)
+//									.show();
 						}
 					});
 				}
@@ -339,7 +339,7 @@ public class AMyInviteCode extends ATitleBase {
 		String text = tv_my_invite_code.getText().toString().trim();
 		myClip = ClipData.newPlainText("text", text);
 		myClipboard.setPrimaryClip(myClip);
-		PromptManager.ShowMyToast(BaseContext, "邀请码复制成功");
+		PromptManager.ShowCustomUpToast(BaseContext, "邀请码已经复制,快快邀请好友吧");
 	}
 
 	/**

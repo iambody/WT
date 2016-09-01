@@ -44,8 +44,9 @@
                     />
                 <ImageView
                     android:id="@+id/tv_my_invite_code_copy_iv"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
                     android:layout_toRightOf="@+id/tv_my_invite_code"
                     android:layout_alignParentTop="true"
                     android:clickable="true"
@@ -98,10 +99,12 @@ android:layout_marginBottom="-5dp"
 
             <View
                 android:layout_width="0dp"
-                android:layout_height="0.5dp"
+                android:layout_height="@dimen/line_size"
                 android:layout_marginRight="@dimen/center_my_invite_code_line_margin"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:background="@color/grey"/>
+
+                android:background="@drawable/invitercode_line_shape"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -112,10 +115,11 @@ android:layout_marginBottom="-5dp"
 
             <View
                 android:layout_width="0dp"
-                android:layout_height="0.5dp"
+                android:layout_height="@dimen/line_size"
                 android:layout_marginLeft="@dimen/center_my_invite_code_line_margin"
+                android:layout_marginRight="@dimen/center_my_invite_code_line_margin"
                 android:layout_weight="1"
-                android:background="@color/grey"/>
+                android:background="@drawable/invitercode_line_shape2"/>
         </LinearLayout>
 
         <LinearLayout

@@ -42,12 +42,12 @@
                 android:visibility="gone" />
         </LinearLayout>
 
-        <TextView
+        <io.vtown.WeiTangApp.comment.view.CopyTextView
             android:id="@+id/item_show_txt_inf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:textIsSelectable="true"
+
             android:lineSpacingExtra="3dp"/>
         <!-- 图片九宫格和视频布局的外层线性布局 -->
 

@@ -91,7 +91,23 @@ public class PromptManager {
         CustomToast.show();
 
     }
+    public static void ShowCustomUpToast(Context context, String text) {
+        if (text.equals(Constants.SucessToError))
+            return;
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View CustomView = inflater.inflate(R.layout.toast_customtoast, null);
+        TextView ToastText = (TextView) CustomView.findViewById(R.id.toast_id);
+        ToastText.setText(StrUtils.NullToStr(text));
+        if (CustomToast == null) {
+            CustomToast = new Toast(context);
+        }
+        CustomToast.setGravity(Gravity.TOP, 0,
+                DimensionPixelUtil.dip2px(context, 120));
+        CustomToast.setDuration(Toast.LENGTH_SHORT);
+        CustomToast.setView(CustomView);
+        CustomToast.show();
 
+    }
     /**
      * 显示自定义的toast
      */

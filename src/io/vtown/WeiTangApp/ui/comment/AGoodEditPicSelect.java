@@ -161,6 +161,7 @@ public class AGoodEditPicSelect extends ATitleBase {
 		SetTitleTxt(IsGoodsPicSelect ? "宝贝图片" : "宝贝描述");
 		SetRightText("添加图片");// SelectPop();
 		right_txt.setOnClickListener(this);
+		HindBackIv();
 	}
 
 	@Override
