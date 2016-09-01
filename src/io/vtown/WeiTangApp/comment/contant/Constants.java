@@ -66,7 +66,7 @@ public class Constants {
 	public static final int ACTION_CG_UNREFUND = 8;// 操作类型：采购订单拒绝退款
 	public static final int ACTION_PT_UNREFUND = 9;// 操作类型：采购订单拒绝退款
 	public static final int ACTION_PT_MODIFY_PRICE = 16;// 操作类型：修改价格
-	
+
 	public static final String Api_Version = "2.0.0";
 
 	/**
@@ -118,7 +118,7 @@ public class Constants {
 	 */
 	// public static String Host = "https://testvtapi.v-town.cc";
 	public static String WxHost="https://static.v-town.cc/";
-			
+
 	/**
 	 * 生产环境
 	 */
@@ -215,7 +215,7 @@ public class Constants {
 	 * 商品详情的数据
 	 */
 	public static String GoodDetail = Host + "/v1/goods/goods/detail";
-	
+
 	/**
 	 * 修改商品规格
 	 */
@@ -892,7 +892,7 @@ public class Constants {
 	 * 七牛上传时候的key
 	 */
 	public static String QiNiuHost = "http://fs.v-town.cc";
-	
+
 	/**
 	 * IM的密码
 	 */
@@ -969,7 +969,7 @@ public class Constants {
 
 	/**
 	 * 上传图片时候不需要 encode
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -1072,7 +1072,7 @@ public class Constants {
 	 * deviceID的组成为：渠道标志+识别符来源标志+hash后的终端识别符 渠道标志为： 1，andriod（a） 识别符来源标志： 1，
 	 * wifi mac地址（wifi）； 2， IMEI（imei）； 3， 序列号（sn）； 4，
 	 * id：随机码。若前面的都取不到时，则随机生成一个随机码，需要缓存。
-	 * 
+	 *
 	 * @param context
 	 * @return
 	 */

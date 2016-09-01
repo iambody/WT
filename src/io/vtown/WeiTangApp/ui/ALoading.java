@@ -34,158 +34,160 @@ import android.widget.ImageView.ScaleType;
  * @see 进入app加载页面
  */
 public class ALoading extends ABase implements OnPageChangeListener,
-		OnTouchListener {
-	private ViewPagerAdapter adapter;
-	private ViewPager Homepager;
-	private List<View> views;// 视图数据
-	private int[] imageVeiwResourceId = { R.drawable.a, R.drawable.b 
-			 };// 显示图片的数据
-	private ImageView[] point;// 底部小圆点
-	private int currentId = 0;// 当前ID
-	private int lastX = 0;
+        OnTouchListener {
+    private ViewPagerAdapter adapter;
+    private ViewPager Homepager;
+    private List<View> views;// 视图数据
+    private int[] imageVeiwResourceId = {R.drawable.a, R.drawable.b
+    };// 显示图片的数据
+    private ImageView[] point;// 底部小圆点
+    private int currentId = 0;// 当前ID
+    private int lastX = 0;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		MakeLogion();
-		setContentView(R.layout.activity_load);
-		initView();
-		setPoint();// 第一次设置小圆点位置
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MakeLogion();
+        setContentView(R.layout.activity_load);
+        initView();
+        setPoint();// 第一次设置小圆点位置
+    }
 
-	private void MakeLogion() {
-		if (Spuit.Frist_IsFrist(getApplicationContext()))
-			// if (true)
-			Spuit.Frist_Set(getApplicationContext());
-		else
-			// 跳转界面
-			GoLogion();
-	}
+    private void MakeLogion() {
+        if (Spuit.Frist_IsFrist(BaseActivity))
+            // if (true)
+            Spuit.Frist_Set(BaseActivity);
+        else
+        // 跳转界面
+        {
+            GoLogion();
+            return;
+        }
+    }
 
-	/**
-	 * 初始化view
-	 * 
-	 */
-	private void initView() {
-		Homepager = (ViewPager) findViewById(R.id.wtload_vp);
-		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		views = new ArrayList<View>();
-		for (int i = 0; i < imageVeiwResourceId.length; i++) {
-			ImageView imageView = new ImageView(BaseActivity);
-			imageView.setImageResource(imageVeiwResourceId[i]);
-			imageView.setScaleType(ScaleType.FIT_XY);
-			views.add(imageView);
-		}
-		View view = inflater.inflate(R.layout.view_last_guide, null);
-		views.add(view);
-		Homepager.setOnTouchListener(this);
-		adapter = new ViewPagerAdapter(views);
-		Homepager.setAdapter(adapter);
-		Homepager.setOnPageChangeListener(this);
-	}
+    /**
+     * 初始化view
+     */
+    private void initView() {
+        Homepager = (ViewPager) findViewById(R.id.wtload_vp);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        views = new ArrayList<View>();
+        for (int i = 0; i < imageVeiwResourceId.length; i++) {
+            ImageView imageView = new ImageView(this);
+            imageView.setImageResource(imageVeiwResourceId[i]);
+            imageView.setScaleType(ScaleType.FIT_XY);
+            views.add(imageView);
+        }
+        View view = inflater.inflate(R.layout.view_last_guide, null);
+        views.add(view);
+        Homepager.setOnTouchListener(this);
+        adapter = new ViewPagerAdapter(views);
+        Homepager.setAdapter(adapter);
+        Homepager.setOnPageChangeListener(this);
+    }
 
-	/**
-	 * 设置小圆点
-	 */
-	private void setPoint() {
-		LinearLayout ll = (LinearLayout) this.findViewById(R.id.viewpager_ll);
-		point = new ImageView[ll.getChildCount()];
-		for (int i = 0; i < ll.getChildCount(); i++) {
-			if (currentId == i) {
-				point[i] = (ImageView) ll.getChildAt(i);
-				point[i].setImageResource(R.drawable.point_focus11);
-			} else {
-				point[i] = (ImageView) ll.getChildAt(i);
-				point[i].setImageResource(R.drawable.point_normal);
-			}
-		}
-	}
+    /**
+     * 设置小圆点
+     */
+    private void setPoint() {
+        LinearLayout ll = (LinearLayout) findViewById(R.id.viewpager_ll);
+        point = new ImageView[ll.getChildCount()];
+        for (int i = 0; i < ll.getChildCount(); i++) {
+            if (currentId == i) {
+                point[i] = (ImageView) ll.getChildAt(i);
+                point[i].setImageResource(R.drawable.point_focus11);
+            } else {
+                point[i] = (ImageView) ll.getChildAt(i);
+                point[i].setImageResource(R.drawable.point_normal);
+            }
+        }
+    }
 
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
 
-		switch (event.getAction()) {
-		case MotionEvent.ACTION_DOWN:
-			lastX = (int) event.getX();
-			break;
-		case MotionEvent.ACTION_MOVE:
-			if ((lastX - event.getX()) > 50 && (currentId == views.size() - 1)) {
-				PromptManager.SkipActivity(BaseActivity, new Intent(
-						BaseActivity, ALogin.class));
-				BaseActivity.finish();
-			}
-			break;
-		default:
-			break;
-		}
-		return false;
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                lastX = (int) event.getX();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if ((lastX - event.getX()) > 50 && (currentId == views.size() - 1)) {
+                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                            BaseActivity, ALogin.class));
+                    this.finish();
+                }
+                break;
+            default:
+                break;
+        }
+        return false;
 
-	}
+    }
 
-	private void GoLogion() {
-		
-		PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-				ALoadAd.class));
-		BaseActivity.finish();
-	}
+    private void GoLogion() {
 
-	class ViewPagerAdapter extends PagerAdapter {
-		private static final String TAG = "AdvertAdapter";
-		private List<View> data;
+        PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                ALoadAd.class));
+        ALoading.this.finish();
+    }
 
-		public ViewPagerAdapter(List<View> data) {
-			this.data = data;
+    class ViewPagerAdapter extends PagerAdapter {
+        private static final String TAG = "AdvertAdapter";
+        private List<View> data;
 
-		}
+        public ViewPagerAdapter(List<View> data) {
+            this.data = data;
 
-		@Override
-		public int getCount() {
-			return data.size();
-		}
+        }
 
-		@Override
-		public boolean isViewFromObject(View arg0, Object arg1) {
-			return arg0 == arg1;
-		}
+        @Override
+        public int getCount() {
+            return data.size();
+        }
 
-		@Override
-		public Object instantiateItem(ViewGroup container, int position) {
-			((ViewPager) container).addView(data.get(position));
-			if (data.size() - 1 == position) {// 判断导航页是不是最后一页
-				Button submit = (Button) container
-						.findViewById(R.id.guide_start_app);
-				submit.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						PromptManager.SkipActivity(BaseActivity, new Intent(
-								BaseActivity, ALogin.class));
-						BaseActivity.finish();
-					}
-				});
+        @Override
+        public boolean isViewFromObject(View arg0, Object arg1) {
+            return arg0 == arg1;
+        }
 
-			}
-			return data.get(position);
-		}
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            ((ViewPager) container).addView(data.get(position));
+            if (data.size() - 1 == position) {// 判断导航页是不是最后一页
+                Button submit = (Button) container
+                        .findViewById(R.id.guide_start_app);
+                submit.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        PromptManager.SkipActivity(BaseActivity, new Intent(
+                                BaseActivity, ALogin.class));
+                        BaseActivity.finish();
+                    }
+                });
 
-		@Override
-		public void destroyItem(ViewGroup container, int position, Object object) {
-			container.removeView((View) object);
-		}
+            }
+            return data.get(position);
+        }
 
-	}
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView((View) object);
+        }
 
-	@Override
-	public void onPageScrollStateChanged(int arg0) {
-	}
+    }
 
-	@Override
-	public void onPageScrolled(int arg0, float arg1, int arg2) {
-	}
+    @Override
+    public void onPageScrollStateChanged(int arg0) {
+    }
 
-	@Override
-	public void onPageSelected(int arg0) {
+    @Override
+    public void onPageScrolled(int arg0, float arg1, int arg2) {
+    }
 
-		currentId = arg0;
-		setPoint();
-	}
+    @Override
+    public void onPageSelected(int arg0) {
+
+        currentId = arg0;
+        setPoint();
+    }
 }

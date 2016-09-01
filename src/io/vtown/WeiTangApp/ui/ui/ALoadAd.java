@@ -48,6 +48,7 @@ public class ALoadAd extends ABase {
 			public void onAnimationEnd(Animation animation) {
 				PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 						ALogin.class));
+
 				BaseActivity.finish();
 			}
 		});

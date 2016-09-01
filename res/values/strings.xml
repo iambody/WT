@@ -61,7 +61,7 @@
     <!-- 我点店铺界面的string -->
     <string name="shop_tody_incom">今日收入</string>
     <string name="shop_tody_number">今日销量</string>
-    <string name="shop_tody_inverstor">当日访客</string>
+    <string name="shop_tody_inverstor">今日访客</string>
     <string name="shop_all_income">累计收入(元)</string>
     <string name="shop_tuandui_num">团队人数</string>
     <string name="shop_tuandui_inf">团队信息</string>

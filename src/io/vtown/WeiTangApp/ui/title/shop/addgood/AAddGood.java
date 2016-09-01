@@ -403,6 +403,7 @@ public class AAddGood extends ATitleBase {
 		// 为视频设置的
 		right_txt = (TextView) findViewById(R.id.right_txt);
 		right_txt.setOnClickListener(this);
+		HindBackIv();
 	}
 
 	@Override

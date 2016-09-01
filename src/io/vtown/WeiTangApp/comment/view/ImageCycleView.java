@@ -92,8 +92,8 @@ public class ImageCycleView extends LinearLayout {
 	public ImageCycleView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		mContext = context;
-		mScale = context.getResources().getDisplayMetrics().density;
-		LayoutInflater.from(context).inflate(R.layout.ad_cycle_view, this);
+		mScale = mContext.getResources().getDisplayMetrics().density;
+		LayoutInflater.from(mContext).inflate(R.layout.ad_cycle_view, this);
 		mAdvPager = (ViewPager) findViewById(R.id.adv_pager);
 		mAdvPager.setOnPageChangeListener(new GuidePageChangeListener());
 //		mAdvPager.setOnTouchListener(new OnTouchListener() {
@@ -274,7 +274,7 @@ public class ImageCycleView extends LinearLayout {
 		 * 图片资源列表
 		 */
 		private ArrayList<String> mAdList = new ArrayList<String>();
-		private ArrayList<String> nameList = new ArrayList<String>();
+//		private ArrayList<String> nameList = new ArrayList<String>();
 
 		/**
 		 * 广告图片点击监听
@@ -288,7 +288,7 @@ public class ImageCycleView extends LinearLayout {
 				ImageCycleViewListener imageCycleViewListener) {
 //			this.mContext = context;
 			this.mAdList = adList;
-			this.nameList = nameList;
+//			this.nameList = nameList;
 			mImageCycleViewListener = imageCycleViewListener;
 			mImageViewCacheList = new ArrayList<ImageView>();
 		}
@@ -346,7 +346,7 @@ public class ImageCycleView extends LinearLayout {
 	 * 
 	 * @author minking
 	 */
-	public static interface ImageCycleViewListener {
+	public   interface ImageCycleViewListener {
 		/**
 		 * 加载图片资源
 		 * 

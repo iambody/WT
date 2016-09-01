@@ -747,7 +747,7 @@ public class AGoodDetail extends ATitleBase {
         if (datas == null)
             IData(GoodsId);
 
-        mHandler.postDelayed(mRandomMessageTimerTask, 1000);
+//        mHandler.postDelayed(mRandomMessageTimerTask, 1000);
 
     }
 
@@ -949,25 +949,39 @@ public class AGoodDetail extends ATitleBase {
 
     }
 
-    private ImageCycleViewListener mAdCycleViewListener = new ImageCycleViewListener() {
-        @Override
-        public void onImageClick(int position, View imageView) {
-            List<String> mStrings = gooddetail_banner.getMyImageUrlList();
-            Intent mIntent = new Intent(BaseContext, AphotoPager.class);
-            mIntent.putExtra("position", position);
-            mIntent.putExtra("urls", StrUtils.LsToArray(mStrings));
-            PromptManager.SkipActivity(BaseActivity, mIntent);
-        }
-
-        @Override
-        public void displayImage(String imageURL, ImageView imageView) {
-            ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
-        }
-    };
+//    private ImageCycleViewListener mAdCycleViewListener = new ImageCycleViewListener() {
+//        @Override
+//        public void onImageClick(int position, View imageView) {
+//            List<String> mStrings = gooddetail_banner.getMyImageUrlList();
+//            Intent mIntent = new Intent(BaseContext, AphotoPager.class);
+//            mIntent.putExtra("position", position);
+//            mIntent.putExtra("urls", StrUtils.LsToArray(mStrings));
+//            PromptManager.SkipActivity(BaseActivity, mIntent);
+//        }
+//
+//        @Override
+//        public void displayImage(String imageURL, ImageView imageView) {
+//            ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
+//        }
+//    };
 
     private void InItPaGeView(List<String> data) {
         ArrayList<String> ssss = (ArrayList<String>) data;
-        gooddetail_banner.setImageResources(ssss, ssss, mAdCycleViewListener,
+        gooddetail_banner.setImageResources(ssss, ssss, new ImageCycleViewListener() {
+                    @Override
+                    public void displayImage(String imageURL, ImageView imageView) {
+                        ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
+                    }
+
+                    @Override
+                    public void onImageClick(int position, View imageView) {
+                        List<String> mStrings = gooddetail_banner.getMyImageUrlList();
+                        Intent mIntent = new Intent(BaseContext, AphotoPager.class);
+                        mIntent.putExtra("position", position);
+                        mIntent.putExtra("urls", StrUtils.LsToArray(mStrings));
+                        PromptManager.SkipActivity(BaseActivity, mIntent);
+                    }
+                },
                 screenWidth);
     }
 
@@ -975,11 +989,18 @@ public class AGoodDetail extends ATitleBase {
     protected void onResume() {
         super.onResume();
         gooddetail_banner.startImageCycle();
-        runRandomMessage = true;
-        mHandler.postDelayed(mRandomMessageTimerTask, 3000);
+//        runRandomMessage = true;
+//        mHandler.postDelayed(mRandomMessageTimerTask, 3000);
     }
 
     ;
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+//        runRandomMessage = true;
+//        mHandler.postDelayed(mRandomMessageTimerTask, 3000);
+    }
 
     @Override
     protected void onPause() {
@@ -996,7 +1017,7 @@ public class AGoodDetail extends ATitleBase {
         gooddetail_banner.pushImageCycle();
         runRandomMessage = false;
         mHandler.removeCallbacks(mRandomMessageTimerTask);
-        GoodsPollUtils.stopPollingService(BaseContext);
+//        GoodsPollUtils.stopPollingService(BaseContext);
     }
 
     // ******************end*****************Banner*****************end********************
@@ -1130,7 +1151,7 @@ public class AGoodDetail extends ATitleBase {
         public void run() {
             GetInstantUsrInfo();
 
-
+            Log.i("详情页", "mRandomMessageTimerTask");
             // Random random = new Random();
             // int r = random.nextInt(119) + 1;
             // Resources resources = getResources();
@@ -1205,6 +1226,20 @@ public class AGoodDetail extends ATitleBase {
     }
 
     private Handler mHandler = new Handler();
+
+//    @Override
+//    public void displayImage(String imageURL, ImageView imageView) {
+//        ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
+//    }
+//
+//    @Override
+//    public void onImageClick(int position, View imageView) {
+//        List<String> mStrings = gooddetail_banner.getMyImageUrlList();
+//        Intent mIntent = new Intent(BaseContext, AphotoPager.class);
+//        mIntent.putExtra("position", position);
+//        mIntent.putExtra("urls", StrUtils.LsToArray(mStrings));
+//        PromptManager.SkipActivity(BaseActivity, mIntent);
+//    }
 
     /**
      * @author Yihuihua 图文详情的Holder

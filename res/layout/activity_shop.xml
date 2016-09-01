@@ -149,7 +149,6 @@
                             android:id="@+id/tab_shop_today_income"
                             style="@style/iv_text"
                             android:gravity="center"
-                            android:text="@string/nullstr"
                             android:textColor="@color/red" />
 
                         <ImageView
@@ -161,7 +160,6 @@
                             android:id="@+id/tab_shop_today_volume"
                             style="@style/iv_text"
                             android:gravity="center"
-                            android:text="@string/nullstr"
                             android:textColor="@color/red" />
 
                         <ImageView
@@ -173,7 +171,6 @@
                             android:id="@+id/tab_shop_today_visitor"
                             style="@style/iv_text"
                             android:gravity="center"
-                            android:text="@string/nullstr"
                             android:textColor="@color/red" />
                     </LinearLayout>
                     <!-- 上*** -->
@@ -242,7 +239,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:padding="10dp"
+                            android:padding="5dp"
                             android:text="@string/shop_tuandui_num"
                             android:textColor="@color/grey"
                             android:textSize="16dp" />
@@ -252,8 +249,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:padding="6dp"
-                            android:text="@string/nullstr"
+                            android:padding="4dp"
                             android:textColor="@color/app_fen"
                             android:textSize="20dp" />
                     </LinearLayout>
@@ -277,7 +273,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:padding="10dp"
+                            android:padding="5dp"
                             android:text="@string/shop_xiaji_num"
                             android:textColor="@color/grey"
                             android:textSize="16dp" />
@@ -287,8 +283,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:padding="6dp"
-                            android:text="@string/nullstr"
+                            android:padding="4dp"
                             android:textColor="@color/app_fen"
                             android:textSize="20dp" />
                     </LinearLayout>
