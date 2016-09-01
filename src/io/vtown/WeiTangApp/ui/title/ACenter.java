@@ -110,6 +110,8 @@ public class ACenter extends ATitleBase {
 
 		center_myiv = (CircleImageView) findViewById(R.id.center_myiv);
 		center_myname = (TextView) findViewById(R.id.center_myname);
+		center_myiv.setBorderWidth(10);
+		center_myiv.setBorderColor(getResources().getColor(R.color.transparent6));
 		center_myiv.setOnClickListener(this);
 
 		if (CenterCoverFile.exists()) {

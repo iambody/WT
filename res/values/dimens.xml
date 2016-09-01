@@ -23,7 +23,7 @@
     <dimen name="comment_label_txtsize">15sp</dimen>
 
     <!-- 品牌详情 -->
-    <dimen name="brand_detail_brand_iv">60dp</dimen>
+    <dimen name="brand_detail_brand_iv">70dp</dimen>
     <dimen name="brand_detail_brand_log_height">130dp</dimen>
     <dimen name="brand_detail_brand_item_iv_height">120dp</dimen>
     <!-- 商品一级分类 -->

@@ -291,6 +291,7 @@ public class AShopDetail extends ATitileNoBase {
 
 
 		shopdetail_imagview_cover = (ImageView) findViewById(R.id.shopdetail_imagview_cover);
+
 		shopdetail_shop_bran_horizon_lay = (LinearLayout) findViewById(R.id.shopdetail_shop_bran_horizon_lay);
 
 		activivty_shopdetail_outlay = (ScrollView) findViewById(R.id.activivty_shopdetail_outlay);
@@ -306,6 +307,9 @@ public class AShopDetail extends ATitileNoBase {
 
 		shopdetail_cancle_txt = (TextView) findViewById(R.id.shopdetail_cancle_txt);
 		shopdetail_imagview = (CircleImageView) findViewById(R.id.shopdetail_imagview);
+
+		shopdetail_imagview.setBorderWidth(10);
+		shopdetail_imagview.setBorderColor(getResources().getColor(R.color.transparent6));
 		shopdetail_imagview.setOnClickListener(this);
 
 		ll_shopdetail_shop_look_show = (LinearLayout) findViewById(R.id.ll_shopdetail_shop_look_show);

@@ -152,6 +152,9 @@ public class AShop extends ATitileNoBase {
 		});
 
 		tab_shop_iv = (CircleImageView) findViewById(R.id.tab_shop_iv);
+
+		tab_shop_iv.setBorderWidth(10);
+		tab_shop_iv.setBorderColor(getResources().getColor(R.color.transparent6));
 		tab_shop_name = (TextView) findViewById(R.id.tab_shop_name);
 		tab_shop_name.setOnClickListener(this);
 		iv_shop_cover = (ImageView) findViewById(R.id.iv_shop_cover);

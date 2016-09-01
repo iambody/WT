@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:padding="8dp"
-                android:text="已付款" />
+                android:text="待发货" />
 
             <View style="@style/line_left_right" />
         </LinearLayout>

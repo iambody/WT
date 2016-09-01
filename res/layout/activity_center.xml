@@ -40,8 +40,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/center_iv_marg_top"
                     android:clickable="true"
-                    imagecontrol:border_color="@color/white"
-                    imagecontrol:border_width="30dp" />
+                    imagecontrol:border_color="@color/transparent6"
+                    imagecontrol:border_width="100px" />
 
                 <TextView
                     android:id="@+id/center_myname"

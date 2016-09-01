@@ -47,6 +47,7 @@
     <color name="transparent5">#1a000000</color>
     <color name="transparent3">#2c000000</color>
     <color name="transparent1">#4c000000</color>
+    <color name="transparent6">#5cffffff</color>
     <color name="TextColorWhite">#ffffffff</color>
 <color name="transparent4">#25000000</color>
     <!-- 自定义色值 -->

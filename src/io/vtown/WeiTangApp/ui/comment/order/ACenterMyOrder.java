@@ -634,11 +634,11 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
 								.setVisibility(View.GONE);
 					} else {
 						myItem.fragment_center_order_shouhuo_commiont
-								.setVisibility(View.GONE);
+								.setVisibility(View.VISIBLE);
 						myItem.fragment_center_order_delayreceive
 								.setVisibility(View.GONE);
 						myItem.fragment_center_order_is_delaytime
-								.setVisibility(View.VISIBLE);
+								.setVisibility(View.GONE);
 					}
 				}
 
@@ -1581,6 +1581,14 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
 				if (LOAD_REFRESHING == Data.getHttpLoadType()) {
 					fragment_center_order_ls.stopRefresh();
 					PromptManager.ShowCustomToast(BaseContext, "暂无订单");
+					if (PDaiFu == Ket_Tage) {
+						centerOrderNoPayAdapter
+								.RefreshData(new ArrayList<BLCenterOder>());
+					} else {
+						centerOrderOutsideAdapter
+								.RefreshData(new ArrayList<BLCenterOder>());
+
+					}
 				}
 				return;
 			}
@@ -1731,7 +1739,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
 			break;
 
 		case R.id.ll_center_order_paid:
-			categoryOperate("已付款", tv_center_order_paid, PYiFu);
+			categoryOperate("待发货", tv_center_order_paid, PYiFu);
 			break;
 
 		case R.id.ll_center_order_no_take:

@@ -188,8 +188,6 @@ public class AShopOrderManager extends ATitleBase implements
 			tv_center_order_over = (TextView) contentView
 					.findViewById(R.id.tv_center_order_over);
 
-			tv_center_order_paid.setText("待发货");
-			tv_center_order_no_take.setText("已发货");
 
 			View gray_view = contentView.findViewById(R.id.gray_view);
 			changeTextColor(tv_center_order_all);
@@ -278,6 +276,7 @@ public class AShopOrderManager extends ATitleBase implements
 				if (LOAD_REFRESHING == Data.getHttpLoadType()) {
 					lv_fall_daifu_common.stopRefresh();
 					PromptManager.ShowCustomToast(BaseContext, "暂无订单");
+					myAdapter.FrashData(new ArrayList<BLShopOrderManage>());
 				}
 				// lv_fall_daifu_common.stopRefresh();
 				// lv_fall_daifu_common.stopLoadMore();
@@ -396,7 +395,7 @@ public class AShopOrderManager extends ATitleBase implements
 			break;
 
 		case R.id.ll_center_order_no_take:
-			categoryOperate("已发货", tv_center_order_no_take, PDaiShou);
+			categoryOperate("待收货", tv_center_order_no_take, PDaiShou);
 			break;
 
 		case R.id.ll_center_order_refund_and_arbitrament:

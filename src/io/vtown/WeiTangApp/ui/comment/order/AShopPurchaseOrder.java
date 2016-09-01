@@ -286,6 +286,13 @@ public class AShopPurchaseOrder extends ATitleBase implements
 				if (LOAD_REFRESHING == Data.getHttpLoadType()) {
 					fragment_shop_purchase_ls.stopRefresh();
 					PromptManager.ShowCustomToast(BaseContext, "暂无订单");
+					if (10 == Ket_Tage) {
+						purchaseOrderNoPayAdapter
+								.RefreshData(new ArrayList<BLShopPurchase>());
+					} else {
+						lsAp.RefreshData(new ArrayList<BLShopPurchase>());
+
+					}
 				}
 
 				return;
@@ -428,7 +435,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 			break;
 
 		case R.id.ll_center_order_paid:
-			categoryOperate("已付款", tv_center_order_paid, PYiFu);
+			categoryOperate("待发货", tv_center_order_paid, PYiFu);
 			break;
 
 		case R.id.ll_center_order_no_take:
@@ -827,9 +834,11 @@ public class AShopPurchaseOrder extends ATitleBase implements
 						myItem.fragment_shop_purchase_pay_again
 								.setVisibility(View.GONE);
 						myItem.fragment_shop_purchase_shouhuo_commiont
-								.setVisibility(View.GONE);
-						myItem.fragment_purchase_order_is_delay
 								.setVisibility(View.VISIBLE);
+						myItem.fragment_shop_purchase_shouhuo_commiont
+								.setText("确认收货");
+						myItem.fragment_purchase_order_is_delay
+								.setVisibility(View.GONE);
 					}
 				}
 

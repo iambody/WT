@@ -166,6 +166,9 @@ public class AOtherShow extends ATitleBase implements OnFooterRefreshListener {
 
 		center_othershow_head = (CircleImageView) findViewById(R.id.center_othershow_head);
 
+		center_othershow_head.setBorderWidth(10);
+		center_othershow_head.setBorderColor(getResources().getColor(R.color.transparent6));
+
 		ImageLoaderUtil.Load2(baseBcBComment.getCover(),
 				center_othershow_bg_iv, R.drawable.error_iv1);
 		ImageLoaderUtil.Load2(baseBcBComment.getAvatar(),
