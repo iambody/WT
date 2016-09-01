@@ -18,6 +18,9 @@ import android.content.ClipboardManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -104,8 +107,8 @@ public class AMyInviteCode extends ATitleBase {
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_my_invite_code);
 		myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-		bUser = Spuit.User_Get(BaseActivity);
-		mBShop = Spuit.Shop_Get(BaseContext);
+		bUser = Spuit.User_Get(getApplicationContext());
+		mBShop = Spuit.Shop_Get(getApplicationContext());
 
 		// 缓存处理
 		ICache();
@@ -158,7 +161,12 @@ public class AMyInviteCode extends ATitleBase {
 				R.string.share_quan_str));
 		 StrUtils.SetColorsTxt(BaseContext,tv_my_invite_code_desc,R.color.red,"邀请好友注册各得","20元",",快快扫我吧") ;
 		// tv_my_invite_code_desc.setVisibility(View.GONE);
+		tv_my_invite_code.measure(0,0);
+		int height = tv_my_invite_code.getMeasuredHeight();
+		int width = tv_my_invite_code.getMeasuredWidth();
+		Shader shader =new LinearGradient(0, 0, width/2, height/2, getResources().getColor(R.color.app_fen), getResources().getColor(R.color.green), Shader.TileMode.CLAMP);
 
+		tv_my_invite_code.getPaint().setShader(shader);
 		StrUtils.SetTxt(tv_my_invite_code, bUser.getInvite_code());
 		// InItCode = getFileRoot(BaseContext) + File.separator + "qr_" +
 		// "mycode"
@@ -195,7 +203,7 @@ public class AMyInviteCode extends ATitleBase {
 			@Override
 			public void run() {
 
-				String avatar = Spuit.Shop_Get(BaseContext).getAvatar();
+				String avatar = Spuit.Shop_Get(getApplicationContext()).getAvatar();
 				Bitmap logoBm = com.nostra13.universalimageloader.core.ImageLoader
 						.getInstance().loadImageSync(avatar);
 				boolean success = QRCodeUtil.createQRImage(Str, 800, 800,
@@ -232,7 +240,7 @@ public class AMyInviteCode extends ATitleBase {
 	protected void onResume() {
 		super.onResume();
 		right_txt
-				.setVisibility(Spuit.InvitationCode_Get(BaseContext) ? View.GONE
+				.setVisibility(Spuit.InvitationCode_Get(getApplicationContext()) ? View.GONE
 						: View.VISIBLE);
 
 	}
@@ -310,7 +318,7 @@ public class AMyInviteCode extends ATitleBase {
 	private void IData(int Loadtype, int ShareMethod) {
 		SetTitleHttpDataLisenter(this);
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());
+		map.put("seller_id", Spuit.User_Get(getApplicationContext()).getSeller_id());
 		FBGetHttpData(map, Constants.ShareInItViter, Method.GET, ShareMethod,
 				Loadtype);
 	}

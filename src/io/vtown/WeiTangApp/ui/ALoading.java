@@ -54,9 +54,9 @@ public class ALoading extends ABase implements OnPageChangeListener,
 	}
 
 	private void MakeLogion() {
-		if (Spuit.Frist_IsFrist(BaseActivity))
+		if (Spuit.Frist_IsFrist(getApplicationContext()))
 			// if (true)
-			Spuit.Frist_Set(BaseActivity);
+			Spuit.Frist_Set(getApplicationContext());
 		else
 			// 跳转界面
 			GoLogion();
@@ -71,7 +71,7 @@ public class ALoading extends ABase implements OnPageChangeListener,
 		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		views = new ArrayList<View>();
 		for (int i = 0; i < imageVeiwResourceId.length; i++) {
-			ImageView imageView = new ImageView(this);
+			ImageView imageView = new ImageView(BaseActivity);
 			imageView.setImageResource(imageVeiwResourceId[i]);
 			imageView.setScaleType(ScaleType.FIT_XY);
 			views.add(imageView);
@@ -112,7 +112,7 @@ public class ALoading extends ABase implements OnPageChangeListener,
 			if ((lastX - event.getX()) > 50 && (currentId == views.size() - 1)) {
 				PromptManager.SkipActivity(BaseActivity, new Intent(
 						BaseActivity, ALogin.class));
-				this.finish();
+				BaseActivity.finish();
 			}
 			break;
 		default:
@@ -126,7 +126,7 @@ public class ALoading extends ABase implements OnPageChangeListener,
 		
 		PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 				ALoadAd.class));
-		ALoading.this.finish();
+		BaseActivity.finish();
 	}
 
 	class ViewPagerAdapter extends PagerAdapter {

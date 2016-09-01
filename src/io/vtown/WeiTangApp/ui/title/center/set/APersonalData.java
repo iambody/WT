@@ -80,7 +80,7 @@ public class APersonalData extends ATitleBase implements
 	}
 
 	private void IData() {
-		BUser user_Get = Spuit.User_Get(BaseContext);
+		BUser user_Get = Spuit.User_Get(getApplicationContext());
 		String phone = user_Get.getPhone();
 		if (!StrUtils.isEmpty(phone)) {
 			StrUtils.SetTxt(tv_phone_numb, phone.substring(0, 3) + "****"

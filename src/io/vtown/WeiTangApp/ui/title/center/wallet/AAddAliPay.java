@@ -57,7 +57,7 @@ public class AAddAliPay extends ATitleBase {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_wallet_bankcard_manager_add_alipay);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		togo = getIntent().getIntExtra("togo", 0);
 		IView();
 		IData();
@@ -82,7 +82,7 @@ public class AAddAliPay extends ATitleBase {
 	 * 数据初始化
 	 */
 	private void IData() {
-		BUser user_Get = Spuit.User_Get(BaseContext);
+
 		String name = user_Get.getName();
 		StrUtils.SetTxt(tv_add_alipay_real_name, name);
 	}

@@ -76,7 +76,7 @@ public class AMyOutDataCoupons extends ATitleBase {
         PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
         SetTitleHttpDataLisenter(this);
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("member_id", Spuit.User_Get(BaseContext).getId());
+        map.put("member_id", Spuit.User_Get(getApplicationContext()).getId());
         map.put("status", "0");// 2全部 1 可用 0 过期
         FBGetHttpData(map, Constants.CENTER_MY_COUPONS, Method.GET, 0,
                 LOAD_INITIALIZE);

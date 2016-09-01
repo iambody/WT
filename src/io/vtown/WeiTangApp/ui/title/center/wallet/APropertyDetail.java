@@ -87,7 +87,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_wallet_property_detail);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		IView();
 		ICache();
 		SetTitleHttpDataLisenter(this);
@@ -110,7 +110,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 	}
 	
 	private void ICache(){
-		String center_Wallet_Property = CacheUtil.Center_Wallet_Property_Get(BaseContext);
+		String center_Wallet_Property = CacheUtil.Center_Wallet_Property_Get(getApplicationContext());
 		if(StrUtils.isEmpty(center_Wallet_Property)){
 			return;
 		}
@@ -156,7 +156,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 			PromptManager.ShowCustomToast(BaseContext, "记录为空");
 			if(LOAD_INITIALIZE == Data.getHttpLoadType()){
 				if(CurrentType == TAGE_ALL){
-					CacheUtil.Center_Wallet_Property_Save(BaseContext, Data.getHttpResultStr());
+					CacheUtil.Center_Wallet_Property_Save(getApplicationContext(), Data.getHttpResultStr());
 				}	
 			}
 			
@@ -174,7 +174,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 		IDataView(center_my_property_detail_outlay, center_my_property_detail_nodata_lay, NOVIEW_RIGHT);
 		
 		if(CurrentType == TAGE_ALL){
-			CacheUtil.Center_Wallet_Property_Save(BaseContext, Data.getHttpResultStr());
+			CacheUtil.Center_Wallet_Property_Save(getApplicationContext(), Data.getHttpResultStr());
 		}
 
 		switch (Data.getHttpLoadType()) {

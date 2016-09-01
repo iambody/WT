@@ -273,7 +273,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 					} else {
 						lsAp.RefreshData(new ArrayList<BLShopPurchase>());
 						if (0 == Ket_Tage) {
-							CacheUtil.Shop_Purchase_List_Save(BaseContext,
+							CacheUtil.Shop_Purchase_List_Save(getApplicationContext(),
 									Data.getHttpResultStr());
 						}
 					}

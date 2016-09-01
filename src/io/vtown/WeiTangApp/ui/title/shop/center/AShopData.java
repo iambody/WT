@@ -143,10 +143,10 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
         setContentView(R.layout.activity_shop_center_shop_data);
         myView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_shop_center_shop_data,null);
         myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        user_Get = Spuit.User_Get(BaseContext);
-        uBShop = Spuit.Shop_Get(BaseContext);
+        user_Get = Spuit.User_Get(getApplicationContext());
+        uBShop = Spuit.Shop_Get(getApplicationContext());
         IView();
-        ShowView(Spuit.Shop_Get(BaseContext));
+        ShowView(Spuit.Shop_Get(getApplicationContext()));
     }
 
     private void ShowView(BShop shop_Get) {
@@ -218,7 +218,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
             @Override
             public void run() {
 
-                String avatar = Spuit.Shop_Get(BaseContext).getAvatar();
+                String avatar = Spuit.Shop_Get(getApplicationContext()).getAvatar();
                 Bitmap logoBm = com.nostra13.universalimageloader.core.ImageLoader
                         .getInstance().loadImageSync(avatar);
                 boolean success = QRCodeUtil.createQRImage(seller_url, 800,
@@ -361,9 +361,9 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
      * */
     private void ShareShopUrl(){
         BNew myBNwe = new BNew();
-        myBNwe.setShare_log(Spuit.Shop_Get(BaseContext).getAvatar());
-        myBNwe.setShare_title(Spuit.Shop_Get(BaseContext).getSeller_name());
-        myBNwe.setShare_content(Spuit.Shop_Get(BaseContext).getIntro());
+        myBNwe.setShare_log(Spuit.Shop_Get(getApplicationContext()).getAvatar());
+        myBNwe.setShare_title(Spuit.Shop_Get(getApplicationContext()).getSeller_name());
+        myBNwe.setShare_content(Spuit.Shop_Get(getApplicationContext()).getIntro());
         myBNwe.setShare_url(uBShop.getSeller_url());
         ShowP(myView,myBNwe);
     }
@@ -627,14 +627,14 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
                 if (Code == 200) {
                     if (1 == Type) {
                         Iv.setImageBitmap(bitmap);
-                        Spuit.Save_Shop_Head(BaseContext, PicUrl);
+                        Spuit.Save_Shop_Head(getApplicationContext(), PicUrl);
                         EventBus.getDefault().post(
                                 new BMessage(
                                         BMessage.Tage_Shop_data_cover_change));
 
                     }
                     if (2 == Type) {
-                        Spuit.Save_Shop_Background(BaseContext, PicUrl);
+                        Spuit.Save_Shop_Background(getApplicationContext(), PicUrl);
                         // 发送事件
                         EventBus.getDefault()
                                 .post(new BMessage(

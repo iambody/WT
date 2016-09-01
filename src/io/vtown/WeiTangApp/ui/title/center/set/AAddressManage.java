@@ -95,7 +95,7 @@ public class AAddressManage extends ATitleBase {
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_set_personal_data_addressmanage);
 		SetTitleHttpDataLisenter(this);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		needFinish = getIntent().getBooleanExtra("NeedFinish", false);
 		IView();
 		ICache();

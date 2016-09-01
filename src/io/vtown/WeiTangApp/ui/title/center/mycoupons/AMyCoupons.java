@@ -69,7 +69,7 @@ public class AMyCoupons extends ATitleBase {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_my_conpons);
-		mBUser = Spuit.User_Get(BaseContext);
+		mBUser = Spuit.User_Get(getApplicationContext());
 		GetRequst();
 		IView();
 		IData();

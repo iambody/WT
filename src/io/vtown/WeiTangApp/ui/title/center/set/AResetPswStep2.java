@@ -153,7 +153,7 @@ public class AResetPswStep2 extends ATitleBase {
 	protected void InItBaseView() {
 		SetTitleHttpDataLisenter(this);
 
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		phone = user_Get.getPhone();
 
 		setContentView(R.layout.activity_center_set_personal_data_account_safe_resetpsw_step2);
@@ -204,7 +204,7 @@ public class AResetPswStep2 extends ATitleBase {
 	private void ResetPsw(String psw1, String psw2, String name, String id_numb) {
 		PromptManager.showLoading(BaseContext);
 		HashMap<String, String> map = new HashMap<String, String>();
-		BUser user_Get = Spuit.User_Get(BaseContext);
+
 		map.put("member_id", user_Get.getMember_id());
 		String rsa_psw1 = Constants.RSA(psw1, BaseContext);
 		String identity_card_rsa = Constants.RSA(id_numb, BaseContext);
@@ -234,7 +234,7 @@ public class AResetPswStep2 extends ATitleBase {
 		SetTitleHttpDataLisenter(this);
 		PromptManager.showLoading(BaseContext);
 		HashMap<String, String> map = new HashMap<String, String>();
-		BUser user_Get = Spuit.User_Get(BaseContext);
+
 		map.put("member_id", user_Get.getMember_id());
 		map.put("identity_card", identity_card);
 		map.put("name", name);

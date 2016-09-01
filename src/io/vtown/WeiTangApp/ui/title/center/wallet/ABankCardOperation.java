@@ -93,7 +93,7 @@ public class ABankCardOperation extends ATitleBase {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_wallet_bankcard_manager_modify_delete);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		IView();
 		IData();
 		
@@ -131,7 +131,7 @@ public class ABankCardOperation extends ATitleBase {
 		ImageLoaderUtil.Load2(mBlcomment.getIcon(), iv_modify_bank_icon, R.drawable.error_iv2);
 		StrUtils.SetTxt(tv_modify_bank_name, mBlcomment.getBank_name());
 		StrUtils.SetTxt(tv_modify_bank_card_id, StrUtils.getCardFormatForUser(mBlcomment.getCard_number()));
-		BUser user_Get = Spuit.User_Get(BaseContext);
+
 		String name = user_Get.getName();
 		
 		String format_name = String.format("开户姓名：%1$s", name);
@@ -218,7 +218,7 @@ public class ABankCardOperation extends ATitleBase {
 	 * 获取要输入的信息内容
 	 */
 	private void getBankCardInfo() {
-		BUser user_Get = Spuit.User_Get(BaseContext);
+
 		String name = user_Get.getName();
 		String bank_name = tv_modify_bank_card_select_name.getText().toString().trim();
 		if("请选择开户银行".equals(bank_name)){

@@ -163,14 +163,14 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 
 			switch (type) {
 			case 1:// 保存名称到SP
-				Spuit.Save_Shop_Nickname(BaseContext, content);
+				Spuit.Save_Shop_Nickname(getApplicationContext(), content);
 				// 发送事件
 				EventBus.getDefault().post(
 						new BMessage(BMessage.Tage_Shop_data_shopname_change));
 				break;
 
 			case 2:// 保存描述到SP
-				Spuit.Save_Shop_Introduce(BaseContext, content);
+				Spuit.Save_Shop_Introduce(getApplicationContext(), content);
 				// 发送事件
 				EventBus.getDefault().post(
 						new BMessage(BMessage.Tage_Shop_data_desc_change));

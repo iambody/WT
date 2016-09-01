@@ -126,7 +126,7 @@ public class ATiXian extends ATitleBase {
 		view = LayoutInflater.from(BaseContext).inflate(R.layout.activity_center_wallet_tixian, null);
 		setContentView(view);
 		
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		SetTitleHttpDataLisenter(this);
 		IBase();
 
@@ -392,7 +392,7 @@ public class ATiXian extends ATitleBase {
 
 	@Override
 	protected void MyClick(View V) {
-		boolean isLogin_RenZheng_Set = Spuit.IsLogin_RenZheng_Set(BaseContext);
+		boolean isLogin_RenZheng_Set = Spuit.IsLogin_RenZheng_Set(getApplicationContext());
 		switch (V.getId()) {
 		case R.id.tixian_zhifubao:// 支付宝
 

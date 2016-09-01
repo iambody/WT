@@ -90,7 +90,7 @@ public class AEditAddress extends ATitleBase {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_set_personal_data_addressmanage_edit);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		IView();
 		IData();
 

@@ -108,7 +108,7 @@ public class ABankCardManager extends ATitleBase implements
 		setContentView(contentView);
 		// 注册事件
 		EventBus.getDefault().register(this, "OnGetMessage", BMessage.class);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		IView();
 		IData();
 	}

@@ -55,7 +55,7 @@ public class AModifyAlipay extends ATitleBase {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_wallet_alipay_manage_modify);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		IView();
 		IData();
 	}

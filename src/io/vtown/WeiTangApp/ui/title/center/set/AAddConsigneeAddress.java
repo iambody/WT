@@ -243,7 +243,7 @@ public class AAddConsigneeAddress extends ATitleBase {
 			return;
 		}
 
-		BUser user_Get = Spuit.User_Get(BaseContext);
+		BUser user_Get = Spuit.User_Get(getApplicationContext());
 		IHttp(user_Get.getId(), name, mobile, "", province, city, county,
 				address, ".");
 

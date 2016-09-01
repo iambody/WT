@@ -41,7 +41,7 @@ public class ARealIdauthSucceed extends ATitleBase {
 	}
 	
 	private void IData() {
-		BUser user_Get = Spuit.User_Get(BaseContext);
+		BUser user_Get = Spuit.User_Get(getApplicationContext());
 		String name = user_Get.getName();
 		String identity_card = user_Get.getIdentity_card();
 		StrUtils.SetColorsTxt(BaseContext, tv_real_auth_name, R.color.app_gray, "姓名：", name);

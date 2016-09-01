@@ -114,7 +114,7 @@ public class ACenterWallet extends ATitleBase {
 		SetTitleHttpDataLisenter(this);
 		// 注册事件
 		EventBus.getDefault().register(this, "OnGetMessage", BMessage.class);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		IBase();
 		ICache();
 		isFristInto = true;

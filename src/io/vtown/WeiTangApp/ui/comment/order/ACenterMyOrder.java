@@ -161,7 +161,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
 
 		setContentView(R.layout.activity_center_fragment);
 		SetTitleHttpDataLisenter(this);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		IView();
 
 		ICache();
@@ -173,7 +173,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
 	}
 
 	private void ICache() {
-		String center_Order_List = CacheUtil.Center_Order_List_Get(BaseContext);
+		String center_Order_List = CacheUtil.Center_Order_List_Get(getApplicationContext());
 		if (StrUtils.isEmpty(center_Order_List)) {
 			return;
 		}
@@ -1569,7 +1569,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
 								.RefreshData(new ArrayList<BLCenterOder>());
 
 						if (PAll == Ket_Tage) {
-							CacheUtil.Center_Order_List_Save(BaseContext,
+							CacheUtil.Center_Order_List_Save(getApplicationContext(),
 									Data.getHttpResultStr());
 						}
 					}
@@ -1597,7 +1597,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
 				onError("解析失败", 0);
 			}
 			if (PAll == Ket_Tage) {
-				CacheUtil.Center_Order_List_Save(BaseContext,
+				CacheUtil.Center_Order_List_Save(getApplicationContext(),
 						Data.getHttpResultStr());
 			}
 			switch (Data.getHttpLoadType()) {

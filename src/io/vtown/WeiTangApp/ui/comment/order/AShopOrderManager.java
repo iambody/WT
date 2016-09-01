@@ -301,7 +301,7 @@ public class AShopOrderManager extends ATitleBase implements
 
 			last_id = dattaa.get(dattaa.size() - 1).getId();
 			if (0 == Ket_Tage) {
-				CacheUtil.Shop_Order_List_Save(AShopOrderManager.this,
+				CacheUtil.Shop_Order_List_Save(getApplicationContext(),
 						Data.getHttpResultStr());
 			}
 			//PromptManager.closetextLoading();

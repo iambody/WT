@@ -127,7 +127,7 @@ public class AApplyTuikuan extends ATitleBase implements OnItemClickListener {
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_my_order_apply_tuikuan);
 		SetTitleHttpDataLisenter(this);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		Intent intent = getIntent();
 		seller_order_sn = intent.getStringExtra("seller_order_sn");
 		mFromTag = intent.getIntExtra("FromTag", 0);

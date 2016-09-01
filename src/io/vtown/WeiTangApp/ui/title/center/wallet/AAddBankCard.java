@@ -70,7 +70,7 @@ public class AAddBankCard extends ATitleBase {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_wallet_bankcard_manager_add_bankcard);
-		user_Get = Spuit.User_Get(BaseContext);
+		user_Get = Spuit.User_Get(getApplicationContext());
 		togo = getIntent().getIntExtra("togo", 0);
 		IView();
 	}
@@ -82,7 +82,7 @@ public class AAddBankCard extends ATitleBase {
 		tv_btn_submit_bank_card = (TextView) findViewById(R.id.tv_btn_submit_bank_card);
 		tv_bind_bank_card_real_name = (TextView) findViewById(R.id.tv_bind_bank_card_real_name);
 		StrUtils.SetColorsTxt(BaseContext, tv_bind_bank_card_real_name,
-				R.color.app_gray, "姓名：", Spuit.User_Get(BaseContext).getName());
+				R.color.app_gray, "姓名：", user_Get.getName());
 		SetItemContent(select_bank, R.string.select_bank, "");
 		tv_bank_transfer_agreement.setOnClickListener(this);
 		tv_btn_submit_bank_card.setOnClickListener(this);
@@ -90,7 +90,7 @@ public class AAddBankCard extends ATitleBase {
 
 	private void IData(String cardNo) {
 
-		BUser user_Get = Spuit.User_Get(BaseContext);
+
 		String name = user_Get.getName();
 
 		SetTitleHttpDataLisenter(this);
