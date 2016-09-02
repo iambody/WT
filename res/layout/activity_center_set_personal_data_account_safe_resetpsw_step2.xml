@@ -93,7 +93,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:hint="@string/txt_enter_id_numb"
-            android:inputType="number"
+            android:digits="0123456789xX"
+            android:maxLength="18"
             android:padding="@dimen/center_set_account_safe_resetpsw_real_name_padding"
             android:textColor="@color/app_gray"
             android:textSize="@dimen/comment_label_txtsize"/>

@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include layout="@layout/titlebar" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/realid_name_ed"
@@ -33,8 +33,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" 
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/realid_identityid_ed"
@@ -42,8 +42,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:digits="0123456789xX"
             android:hint="@string/login_realid_hint_id"
-            android:inputType="phone" />
+            android:maxLength="18" />
 
         <View
             android:layout_width="match_parent"
