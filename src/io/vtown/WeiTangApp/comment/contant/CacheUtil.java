@@ -79,6 +79,10 @@ public class CacheUtil {
 	 * shop===》折线的数据的缓存
 	 */
 	private final static String SP_ShopLine = "shoplinesp";
+	/**
+	 * 卡券的数据的缓存
+	 */
+	private final static String SP_My_Coupons = "coupons";
 
 	/**
 	 * 缓存首页数据
@@ -322,6 +326,37 @@ public class CacheUtil {
 
 		editor.commit();
 	}
+
+
+	/**
+	 * 获取卡券列表缓存
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static String My_Coupons_Get(Context context) {
+		SharedPreferences Sp = context.getSharedPreferences(
+				SP_My_Coupons, Context.MODE_PRIVATE);
+		return Sp.getString("my_coupons", "");
+	}
+
+	/**
+	 * 保存卡券列表
+	 *
+	 * @param pcContext
+	 * @param walletStr
+	 */
+	public static void My_Coupons_Save(Context pcContext,
+												   String cache) {
+		SharedPreferences Sp = pcContext.getSharedPreferences(
+				SP_My_Coupons, Context.MODE_PRIVATE);
+		Editor editor = Sp.edit();
+
+		editor.putString("my_coupons", cache);
+
+		editor.commit();
+	}
+
 
 	/**
 	 * 清除所有的sp缓存数据

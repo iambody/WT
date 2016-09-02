@@ -4,6 +4,8 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.coupons.BLMyCoupons;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -66,12 +68,16 @@ public class AMyCoupons extends ATitleBase {
 	private TextView tv_look_over_time_coupons;
 	private LinearLayout ll_look_out_data_coupons;
 
+	private List<BLMyCoupons> listdata;
+
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_my_conpons);
 		mBUser = Spuit.User_Get(getApplicationContext());
+		listdata = new ArrayList<BLMyCoupons>();
 		GetRequst();
 		IView();
+		ICache();
 		IData();
 	}
 
@@ -80,15 +86,30 @@ public class AMyCoupons extends ATitleBase {
 	}
 
 	private void IData() {
-		PromptManager.showtextLoading(BaseContext,
-				getResources()
-						.getString(R.string.xlistview_header_hint_loading));
+
 		SetTitleHttpDataLisenter(this);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("member_id", mBUser.getId());
 		map.put("status", "1");// 2全部 1 可用 0 过期
 		FBGetHttpData(map, Constants.CENTER_MY_COUPONS, Method.GET, 0,
 				LOAD_INITIALIZE);
+	}
+
+	private void ICache(){
+		String cache_data = CacheUtil.My_Coupons_Get(getApplicationContext());
+		if(StrUtils.isEmpty(cache_data)){
+			PromptManager.showtextLoading(BaseContext,
+					getResources()
+							.getString(R.string.xlistview_header_hint_loading));
+			return;
+		}
+		try{
+			listdata = JSON.parseArray(cache_data,BLMyCoupons.class);
+		}catch (Exception e){
+			return;
+		}
+		myConpousAdapter.FrashData(listdata);
+
 	}
 
 	private void IView() {
@@ -151,15 +172,15 @@ public class AMyCoupons extends ATitleBase {
 			return;
 		}
 
-		List<BLComment> listdata = new ArrayList<BLComment>();
+
 		try {
 			listdata = JSON
-					.parseArray(Data.getHttpResultStr(), BLComment.class);
+					.parseArray(Data.getHttpResultStr(), BLMyCoupons.class);
 
 		} catch (Exception e) {
 			DataError("解析失败", 1);
 		}
-
+		CacheUtil.My_Coupons_Save(getApplicationContext(),Data.getHttpResultStr());
 //		IDataView(lv_my_conpons_list, center_my_coupons_nodata_lay,
 //				NOVIEW_RIGHT);
 		myConpousAdapter.FrashData(listdata);
@@ -173,6 +194,7 @@ public class AMyCoupons extends ATitleBase {
 			case LOAD_INITIALIZE:
 //				IDataView(lv_my_conpons_list, center_my_coupons_nodata_lay,
 //						NOVIEW_ERROR);
+				IData();
 				break;
 		case LOAD_REFRESHING:// 刷新数据
 
@@ -241,7 +263,7 @@ public class AMyCoupons extends ATitleBase {
 		/**
 		 * 数据
 		 */
-		private List<BLComment> datas = new ArrayList<BLComment>();
+		private List<BLMyCoupons> datas = new ArrayList<BLMyCoupons>();
 
 		public MyConpousAdapter(Context context, int ResourcesId) {
 			super();
@@ -261,7 +283,7 @@ public class AMyCoupons extends ATitleBase {
 		 * 
 		 * @param dass
 		 */
-		public void FrashData(List<BLComment> dass) {
+		public void FrashData(List<BLMyCoupons> dass) {
 			this.datas = dass;
 			this.notifyDataSetChanged();
 		}
@@ -269,7 +291,7 @@ public class AMyCoupons extends ATitleBase {
 		/**
 		 * 加载更多
 		 */
-		public void AddFrashData(List<BLComment> dass) {
+		public void AddFrashData(List<BLMyCoupons> dass) {
 			this.datas.addAll(datas);
 			this.notifyDataSetChanged();
 		}
