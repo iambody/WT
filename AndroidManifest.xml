@@ -6,8 +6,8 @@
           android:versionName="2.1.8">
 
     <uses-sdk
-        android:minSdkVersion="10"
-        android:targetSdkVersion="21"
+        android:minSdkVersion="13"
+        android:targetSdkVersion="24"
         tools:ignore="OldTargetApi"/>
     <!-- 权限设置space -->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -777,6 +777,12 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".comment.view.select_pic.widget.PicSelActivity"
+            android:theme="@style/Transparent"
+            android:screenOrientation="portrait">
+        </activity>
+
         <!-- activity的space************************************* -->
 
 

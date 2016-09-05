@@ -200,6 +200,10 @@ public class BMessage {
 	private int good_numb = 0;
 	//fragment切换For all===>nopay
 	private int FragmentPostion;
+
+	private List<String> tmpArrayList;
+
+	public static final int Tage_Select_Pic = 7788;
 	
 	
 	//修改品牌商品库存时候的通知和存储修改的数量
@@ -304,5 +308,13 @@ public class BMessage {
 
 	public void setGood_numb(int good_numb) {
 		this.good_numb = good_numb;
+	}
+
+	public List<String> getTmpArrayList() {
+		return tmpArrayList;
+	}
+
+	public void setTmpArrayList(List<String> tmpArrayList) {
+		this.tmpArrayList = tmpArrayList;
 	}
 }

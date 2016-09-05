@@ -9,8 +9,9 @@ buildscript {
 apply plugin: 'android'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
-
+    compile fileTree(include: '*.jar', dir: 'libs')
+    //    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.android.support:support-v4:24.2.0'
 }
 
 android {
@@ -21,8 +22,9 @@ android {
     //==>for shop
     defaultConfig {
         multiDexEnabled true
+        targetSdkVersion 21
     }
-    compileSdkVersion 18
+    compileSdkVersion 21
     buildToolsVersion "24.0.0"
 
     aaptOptions { cruncherEnabled = false }

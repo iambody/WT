@@ -9,6 +9,7 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.wallet.BDCenterWallet;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -18,8 +19,10 @@ import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.onConfirmClick;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.oncancelClick;
 import io.vtown.WeiTangApp.comment.view.listview.SecondStepView;
+import io.vtown.WeiTangApp.comment.view.select_pic.widget.PicSelActivity;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Intent;
@@ -362,6 +365,7 @@ public class ACenterWallet extends ATitleBase {
 				return;
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 					ABankCardManager.class).putExtra("isFinish", false));
+
 			break;
 		case R.id.property_detail:
 			if (CheckNet(BaseContext))
@@ -468,6 +472,7 @@ public class ACenterWallet extends ATitleBase {
 		if (messageType == event.Tage_Updata_Tixian_Message) {
 			ITiXianData();;
 		}
+
 		
 	}
 	

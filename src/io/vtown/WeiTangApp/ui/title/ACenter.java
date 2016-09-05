@@ -16,6 +16,7 @@ import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.onConfirmClick;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.oncancelClick;
+import io.vtown.WeiTangApp.comment.view.select_pic.widget.PicSelActivity;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
@@ -348,10 +349,10 @@ public class ACenter extends ATitleBase {
 		case R.id.center_liulan_history:// 浏览记录
 
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-					ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
-					ACommentList.Tage_ACenterGoodBrowseRecord));
+				ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
+				ACommentList.Tage_ACenterGoodBrowseRecord));
 //			 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-//			 APay.class));
+//			 PicSelActivity.class));
 			break;
 		case R.id.tab_center_oder:
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,

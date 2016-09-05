@@ -383,4 +383,8 @@
     <!-- 透明 -->
     <!-- 上传图片添加的颜色 -->
 <color name="tran">#26000000</color>
+
+
+    <!-- A dark Holo shade of blue -->
+    <color name="holo_blue_dark">#ff0099cc</color>
 </resources>
