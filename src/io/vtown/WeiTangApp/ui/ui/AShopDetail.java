@@ -1,5 +1,43 @@
 package io.vtown.WeiTangApp.ui.ui;
 
+import io.vtown.WeiTangApp.BaseApplication;
+import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.BDComment;
+import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BShop;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shopbrand.BLBrandGood;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.CircleImageView;
+import io.vtown.WeiTangApp.comment.view.ScrollBottomScrollView;
+import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
+import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
+import io.vtown.WeiTangApp.comment.view.load.ShapeLoadingDialog;
+import io.vtown.WeiTangApp.ui.ATitileNoBase;
+import io.vtown.WeiTangApp.ui.comment.AGoodShow;
+import io.vtown.WeiTangApp.ui.comment.AphotoPager;
+import io.vtown.WeiTangApp.ui.comment.im.AChat;
+import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
+import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow;
+import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,52 +58,18 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import de.greenrobot.event.EventBus;
-import io.vtown.WeiTangApp.BaseApplication;
-import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
-import io.vtown.WeiTangApp.bean.bcomment.BUser;
-import io.vtown.WeiTangApp.bean.bcomment.easy.BShop;
-import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
-import io.vtown.WeiTangApp.comment.contant.Constants;
-import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.util.StrUtils;
-import io.vtown.WeiTangApp.comment.util.ViewHolder;
-import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
-import io.vtown.WeiTangApp.comment.view.CircleImageView;
-import io.vtown.WeiTangApp.comment.view.ScrollBottomScrollView;
-import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
-import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
-import io.vtown.WeiTangApp.comment.view.custom.PullView;
-import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
-import io.vtown.WeiTangApp.ui.ATitileNoBase;
-import io.vtown.WeiTangApp.ui.comment.AphotoPager;
-import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
-import io.vtown.WeiTangApp.ui.title.AGoodDetail;
-import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
  * @author 自营商品的店铺
  * @version 创建时间：2016-5-17 下午6:26:43
  */
-public class AShopDetail extends ATitileNoBase  implements PullView.OnFooterRefreshListener {
+public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView.ScrollBottomListener {
     /**
      * 外层的view
      */
-    private ScrollView activivty_shopdetail_outlay;
-
-    private PullView shop_out_scrollview;
+    private ScrollBottomScrollView activivty_shopdetail_outlay;
     // shop的cover
     private ImageView shopdetail_imagview_cover;
     // 横向ls的查看资质所在的布局
@@ -287,8 +291,6 @@ public class AShopDetail extends ATitileNoBase  implements PullView.OnFooterRefr
     }
 
     private void IBase() {
-        shop_out_scrollview= (PullView) findViewById(R.id.shop_out_scrollview);
-        shop_out_scrollview.setOnFooterRefreshListener(this);
         shop_detail_downgoods_gr = (CompleteGridView) findViewById(R.id.shop_detail_downgoods_gr);
 
         shop_detail_goods_chang_iv = (ImageView) findViewById(R.id.shop_detail_goods_chang_iv);
@@ -301,7 +303,8 @@ public class AShopDetail extends ATitileNoBase  implements PullView.OnFooterRefr
 
         shopdetail_shop_bran_horizon_lay = (LinearLayout) findViewById(R.id.shopdetail_shop_bran_horizon_lay);
 
-        activivty_shopdetail_outlay = (ScrollView) findViewById(R.id.activivty_shopdetail_outlay);
+        activivty_shopdetail_outlay = (ScrollBottomScrollView) findViewById(R.id.activivty_shopdetail_outlay);
+        activivty_shopdetail_outlay.setScrollBottomListener(this);
         activivty_shopdetail_outlay.smoothScrollTo(0, 20);
         shopdetail_nodata_lay = findViewById(R.id.shopdetail_nodata_lay);
         shopdetail_nodata_lay.setOnClickListener(this);
@@ -522,17 +525,16 @@ public class AShopDetail extends ATitileNoBase  implements PullView.OnFooterRefr
                     downGoodsAp.FrashView(blComments);
                     if (!IsBrandStatue) {
                         CacheLsDatas_ZiYing = new ArrayList<BLComment>();
-                        CacheLsDatas_ZiYing = blComments;
+                        CacheLsDatas_ZiYing=blComments;
                     } else {
                         CacheLsDatas_Brand = new ArrayList<BLComment>();
-                        CacheLsDatas_Brand = blComments;
+                        CacheLsDatas_Brand=blComments;
                     }
 
                 }
                 if (Data.getHttpLoadType() == LOAD_LOADMOREING) {
                     downGoodsAp.AddFrashView(blComments);
 
-                    shop_out_scrollview.onFooterRefreshComplete();
                     if (!IsBrandStatue) {
                         CacheLsDatas_ZiYing.addAll(blComments);
                     } else {
@@ -651,12 +653,15 @@ public class AShopDetail extends ATitileNoBase  implements PullView.OnFooterRefr
 
     }
 
-
-
     @Override
-    public void onFooterRefresh(PullView view) {
+    public void scrollBottom() {
         CurrentPage = CurrentPage + 1;
         GetList(CurrentPage, CurrentCategory_Id, LOAD_LOADMOREING);
+    }
+
+    @Override
+    public void scrollUp() {
+
     }
 
     /**
@@ -1058,9 +1063,9 @@ public class AShopDetail extends ATitileNoBase  implements PullView.OnFooterRefr
                     CurrentCategory_Id = "0";
                     GetList(CurrentPage, CurrentCategory_Id, LOAD_REFRESHING);
                 } else {
-                    CurrentPage = (int) ((CacheLsDatas_Brand.size() + 10) / 10);
+                    CurrentPage = (int)((CacheLsDatas_Brand.size()+10)/10) ;
                     CurrentCategory_Id = "0";
-                    activivty_shopdetail_outlay.smoothScrollTo(0, 20);
+
                     downGoodsAp.FrashView(CacheLsDatas_Brand);
                 }
                 break;
@@ -1072,13 +1077,13 @@ public class AShopDetail extends ATitileNoBase  implements PullView.OnFooterRefr
                 IsBrandStatue = false;
                 FristSelect();
 
-                if (CacheLsDatas_ZiYing == null || CacheLsDatas_ZiYing.size() == 0) {
+                if(CacheLsDatas_ZiYing==null||CacheLsDatas_ZiYing.size()==0){
                     CurrentPage = 1;
                     CurrentCategory_Id = "0";
                     GetList(CurrentPage, CurrentCategory_Id, LOAD_REFRESHING);
-                } else {
-                    activivty_shopdetail_outlay.smoothScrollTo(0, 20);
-                    CurrentPage = (int) ((CacheLsDatas_ZiYing.size() + 10) / 10);
+                }else{
+
+                    CurrentPage = (int)((CacheLsDatas_ZiYing.size()+10)/10) ;
                     CurrentCategory_Id = "0";
                     downGoodsAp.FrashView(CacheLsDatas_ZiYing);
 
