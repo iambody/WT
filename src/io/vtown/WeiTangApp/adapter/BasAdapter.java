@@ -11,6 +11,7 @@ public abstract class BasAdapter extends BaseAdapter {
         return 0;
 
 //ddddddddddddddddd
+        //dddd
  //远端的淡淡的
         //远端的淡淡的
         //远端的淡淡的
