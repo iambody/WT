@@ -1,4 +1,4 @@
-package io.vtown.WeiTangApp.comment.view.select_pic.widget;
+package io.vtown.WeiTangApp.comment.view.select_pic;
 import java.util.List;
 import android.view.View;
 import android.widget.AdapterView;
@@ -6,10 +6,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.utils.BasePopupWindowForListView;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.utils.CommonAdapter;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.utils.ViewHolder;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.utils.bean.ImageFloder;
+import io.vtown.WeiTangApp.comment.view.select_pic.utils.BasePopupWindowForListView;
+import io.vtown.WeiTangApp.comment.view.select_pic.utils.CommonAdapter;
+import io.vtown.WeiTangApp.comment.view.select_pic.utils.ViewHolder;
+import io.vtown.WeiTangApp.comment.view.select_pic.utils.bean.ImageFloder;
 
 public class ListImageDirPopupWindow extends BasePopupWindowForListView<ImageFloder>
 {

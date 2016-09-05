@@ -1,4 +1,4 @@
-package io.vtown.WeiTangApp.comment.view.select_pic.widget;
+package io.vtown.WeiTangApp.comment.view.select_pic;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -50,11 +50,10 @@ import android.widget.Toast;
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.MyAdapter;
 
 import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.utils.ImageLoader;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.utils.bean.ImageFloder;
+import io.vtown.WeiTangApp.comment.view.select_pic.utils.ImageLoader;
+import io.vtown.WeiTangApp.comment.view.select_pic.utils.bean.ImageFloder;
 
 
 public class PicSelActivity extends Activity implements ListImageDirPopupWindow.OnImageDirSelected {

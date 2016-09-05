@@ -1,4 +1,4 @@
-package io.vtown.WeiTangApp.comment.view.select_pic.widget;
+package io.vtown.WeiTangApp.comment.view.select_pic;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,14 +22,13 @@ import android.os.Environment;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.utils.CommonAdapter;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.utils.ViewHolder;
+import io.vtown.WeiTangApp.comment.view.select_pic.utils.CommonAdapter;
+import io.vtown.WeiTangApp.comment.view.select_pic.utils.ViewHolder;
 
 
 public class MyAdapter extends CommonAdapter<String> {

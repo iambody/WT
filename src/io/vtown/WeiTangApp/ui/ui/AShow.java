@@ -16,6 +16,7 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
+import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.onConfirmClick;
@@ -690,7 +691,7 @@ public class AShow extends ATitleBase implements IXListViewListener {
 					PromptManager
 							.SkipActivity(
 									BaseActivity,
-									new Intent(BaseActivity, AGoodShare.class)
+									new Intent(BaseActivity, ShowSelectPic.class)
 											.putExtra(AGoodShare.Key_FromShow,
 													true).putExtra(
 													AGoodShare.Key_Data,

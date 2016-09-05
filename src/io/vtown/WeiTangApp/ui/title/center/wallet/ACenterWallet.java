@@ -3,13 +3,11 @@ package io.vtown.WeiTangApp.ui.title.center.wallet;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.wallet.BDCenterWallet;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
-import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -19,10 +17,8 @@ import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.onConfirmClick;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.oncancelClick;
 import io.vtown.WeiTangApp.comment.view.listview.SecondStepView;
-import io.vtown.WeiTangApp.comment.view.select_pic.widget.PicSelActivity;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Intent;

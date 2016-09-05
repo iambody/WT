@@ -614,7 +614,14 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ui.comment.AGoodShare"
+        android:name=".ui.comment.AGoodShare"
+        android:launchMode="singleTask"
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="stateHidden">
+    </activity>
+
+        <activity
+            android:name=".comment.view.ShowSelectPic"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
@@ -778,7 +785,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".comment.view.select_pic.widget.PicSelActivity"
+            android:name=".comment.view.select_pic.PicSelActivity"
             android:theme="@style/Transparent"
             android:screenOrientation="portrait">
         </activity>
