@@ -7,7 +7,7 @@
         android:id="@+id/item_fragment_shop_good_manger_brand_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="阿迪达斯"
+
         android:background="@drawable/shape_comment_oval"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

@@ -151,7 +151,7 @@ public class PullView extends LinearLayout {
 	/**
 	 * init
 	 * 
-	 * @param context
+	 * @param
 	 */
 	private void init() {
 		// 需要设置成vertical
