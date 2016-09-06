@@ -497,6 +497,7 @@
     <!-- 商品分享&&&&&&&&&&&&&&&& -->
     <string name="szhuan_saying">说点什么吧...</string>
     <string name="share">分享</string>
+    <string name="show_share">Show分享</string>
     <string name="uploading">正在上传中</string>
     <string name="kongkong">空空如也....</string>
     <string name="changesort">更改类目会删除已添加的规格</string>

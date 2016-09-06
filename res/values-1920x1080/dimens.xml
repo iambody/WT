@@ -7,4 +7,5 @@
 
 
     <dimen name="login_margentop_log">70dp</dimen>
+    <dimen name="show_share_grad_delet_panding">5dp</dimen>
 </resources>

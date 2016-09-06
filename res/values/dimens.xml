@@ -562,5 +562,6 @@
     <dimen name="goos_detail_icon_size">25dp</dimen>
     <!--图标之间的padding值-->
     <dimen name="goos_detail_icons_padding">10dp</dimen>
+    <dimen name="show_share_grad_delet_panding">5dp</dimen>
 
 </resources>

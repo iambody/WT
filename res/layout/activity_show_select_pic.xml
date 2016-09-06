@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/app_bg"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
 
-    <include layout="@layout/titlebar"/>
+    <include layout="@layout/titlebar" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <EditText
                 android:id="@+id/good_show_select_share_ed"
                 android:layout_width="fill_parent"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
-                android:background="@null"
+                android:background="@drawable/shap_rect_no_circular_bg"
                 android:gravity="left|top"
-                android:hint="@string/szhuan_saying" >
-            </EditText>
+                android:hint="@string/szhuan_saying"></EditText>
 
 
             <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
                 android:id="@+id/good_show_select_gridview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:horizontalSpacing="3dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/shape_show_select_pic_bg"
+android:horizontalSpacing="3dp"
+                android:verticalSpacing="3dp"
                 android:numColumns="3"
-
                 android:scrollbars="none"
-                android:verticalSpacing="5dp" />
+                 />
 
         </LinearLayout>
 
@@ -50,7 +50,7 @@
         android:background="@drawable/select_fen_to_gray"
         android:gravity="center"
         android:padding="16dp"
-        android:text="@string/share"
+        android:text="@string/show_share"
         android:textColor="@color/TextColorWhite" />
 
 

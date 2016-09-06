@@ -6,4 +6,5 @@
 
 
     <dimen name="shop_user_hright">45dp</dimen>
+    <dimen name="show_share_grad_delet_panding">5dp</dimen>
 </resources>

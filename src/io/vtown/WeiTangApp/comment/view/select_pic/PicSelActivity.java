@@ -57,7 +57,7 @@ import io.vtown.WeiTangApp.comment.view.select_pic.utils.bean.ImageFloder;
 
 
 public class PicSelActivity extends Activity implements ListImageDirPopupWindow.OnImageDirSelected {
-	protected static final int MAX_SEL_ENABLE = 9;
+	protected static  int MAX_SEL_ENABLE = 0;
 	public static final int REQUEST_PICS_CODE = 201;
 	public static final int RESULT_PICS_OK_CODE = 202;
 	public static final String RESULT_PICS_ARRAY = "RESULT_PICS_ARRAY";
@@ -285,6 +285,8 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
 		instance = this;
 		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
+		int Select_Img_Size = getIntent().getIntExtra("Select_Img_Size",0);
+		MAX_SEL_ENABLE = Select_Img_Size;
 		setContentView(R.layout.com_mark_utils_picsel);
 
 		DisplayMetrics outMetrics = new DisplayMetrics();
