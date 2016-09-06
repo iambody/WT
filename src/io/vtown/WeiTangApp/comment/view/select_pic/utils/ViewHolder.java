@@ -37,7 +37,7 @@ public class ViewHolder {
 	}
 
 	/**
-	 * 拿到�?��ViewHolder对象
+	 * 拿到 对象
 	 * 
 	 * @param context
 	 * @param convertView
