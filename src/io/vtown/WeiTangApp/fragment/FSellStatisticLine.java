@@ -151,8 +151,7 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
 			fragment_sellstatistics_line.setVisibility(View.VISIBLE);
 			fragment_shopline_nodata_lay.setVisibility(View.GONE);
 		}
-		Line line = new Line(mPointValues).setColor(
-				getResources().getColor(R.color.app_fen)).setCubic(true);
+		Line line = new Line(mPointValues).setColor( getResources().getColor(R.color.app_fen)).setCubic(true);
 		// line.setPointColor(getResources().getColor(R.color.gold));
 		// line.setShape(ValueShape.CIRCLE);
 		line.setHasPoints(false);
