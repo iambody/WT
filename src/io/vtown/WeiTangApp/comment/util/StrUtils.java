@@ -1194,4 +1194,13 @@ public class StrUtils {
 		mImageView.setLayoutParams(pLayoutParams);
 
 	}
+
+	/**
+	 *计算第几页
+	 * @param Size
+	 * @return
+     */
+	public static int ShopDetailPage(int Size){
+		return Size % 10 == 0 ? Size / Size : Size / Size+ 1;
+	}
 }

@@ -290,11 +290,13 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
     private void LoadData(int page, int LoadType) {
         switch (Sale_Status) {
             case 100:// 在售中
+                tv_add_item.setVisibility(View.GONE);
                 IData(LoadType, Sale_Status, page, IsBrand ? 1 : 0, 0);// -1=>全部
                 // 0=>自营商品
                 // 1=>品牌商品
                 break;
             case 20:// 已经下架
+                tv_add_item.setVisibility(View.GONE);
                 IData(LoadType, Sale_Status, page, IsBrand ? 1 : 0, 0);
                 break;
             case 0:// 品牌商品
@@ -302,10 +304,11 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
                  * 获取品牌的列表
                  */
                 // IData(LoadType, 100, page, 1, 0);
-
+                tv_add_item.setVisibility(View.VISIBLE);
                 GetBrandLs(LoadType, page);// 获取品牌商品的列表
                 break;
             case 1:// 垃圾箱
+                tv_add_item.setVisibility(View.GONE);
                 IData(LoadType, 20, page, IsBrand ? 1 : 0, 1);
                 break;
             default:
@@ -331,7 +334,7 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 
     /**
      * @param LoadType
-     * @param sale_status售卖状态100在售 /////20下架
+     * @param  /////20下架sale_status售卖状态100在售
      * @param Page
      * @param Is_agent             // 0-自营商品 1-品牌商品
      * @param Is_delete            // 0-正常 1-已删除
@@ -797,7 +800,7 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
     /**
      * 在售=》删除下架 &&垃圾箱=》恢复彻底删除
      *
-     * @param X
+     * @param
      * @param Title
      */
     private void ShowReminder(String Title, final int Type,
@@ -978,38 +981,38 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
             TextView item_fragment_shop_good_manger_brand_name;
         }
 
-        class HorizontalItemClikListener implements OnClickListener {
-            private List<MyBrandItem> Viewsdata = new ArrayList<MyBrandItem>();// 所有的view
-            private int Postion;// 记录点击的位置
-            private BLShopDaiLi blComment;// 记录品牌的数据bean
-
-            public HorizontalItemClikListener(List<MyBrandItem> viewsdata,
-                                              int postion, BLShopDaiLi data) {
-                super();
-                Viewsdata = viewsdata;
-                Postion = postion;
-                blComment = data;
-            }
-
-            @Override
-            public void onClick(View arg0) {
-                for (int i = 0; i < Viewsdata.size(); i++) {
-                    Viewsdata.get(i).item_fragment_shop_good_manger_brand_name
-                            .setBackground(getResources()
-                                    .getDrawable(
-                                            Postion == i ? R.drawable.shape_comment_oval_pre
-                                                    : R.drawable.shape_comment_oval));
-                    Viewsdata.get(i).item_fragment_shop_good_manger_brand_name
-                            .setTextColor(getResources().getColor(
-                                    Postion == i ? R.color.app_fen
-                                            : R.color.grey));
-
-                }
-                // 开始刷新
-                CurrentBrandId = blComment.getId();
-                GetBrandLs(LOAD_INITIALIZE, CurrentPage);
-            }
-        }
+//        class HorizontalItemClikListener implements OnClickListener {
+//            private List<MyBrandItem> Viewsdata = new ArrayList<MyBrandItem>();// 所有的view
+//            private int Postion;// 记录点击的位置
+//            private BLShopDaiLi blComment;// 记录品牌的数据bean
+//
+//            public HorizontalItemClikListener(List<MyBrandItem> viewsdata,
+//                                              int postion, BLShopDaiLi data) {
+//                super();
+//                Viewsdata = viewsdata;
+//                Postion = postion;
+//                blComment = data;
+//            }
+//
+//            @Override
+//            public void onClick(View arg0) {
+//                for (int i = 0; i < Viewsdata.size(); i++) {
+//                    Viewsdata.get(i).item_fragment_shop_good_manger_brand_name
+//                            .setBackground(getResources()
+//                                    .getDrawable(
+//                                            Postion == i ? R.drawable.shape_comment_oval_pre
+//                                                    : R.drawable.shape_comment_oval));
+//                    Viewsdata.get(i).item_fragment_shop_good_manger_brand_name
+//                            .setTextColor(getResources().getColor(
+//                                    Postion == i ? R.color.app_fen
+//                                            : R.color.grey));
+//
+//                }
+//                // 开始刷新
+//                CurrentBrandId = blComment.getId();
+//                GetBrandLs(LOAD_INITIALIZE, CurrentPage);
+//            }
+//        }
     }
 
     @Override
@@ -1034,8 +1037,7 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {// 数据为空
 //                        if (Sale_Status != 0&&Data.getHttpLoadType()!=LOAD_LOADMOREING)
                     if (Data.getHttpLoadType() != LOAD_LOADMOREING)
-                        fragent_goodmanger_nodata_lay
-                                .setVisibility(View.VISIBLE);
+                        fragent_goodmanger_nodata_lay   .setVisibility(View.VISIBLE);
                     return;
                 }
 

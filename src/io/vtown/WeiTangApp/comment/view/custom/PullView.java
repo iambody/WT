@@ -24,7 +24,8 @@ import android.widget.LinearLayout.LayoutParams;
  * 
  */
 public class PullView extends LinearLayout {
-	// private static final String TAG = "PullView";
+
+	// private static final String TAG = "PullToRefreshView";
 	// refresh states
 	private static final int PULL_TO_REFRESH = 2;
 	private static final int RELEASE_TO_REFRESH = 3;
@@ -71,7 +72,7 @@ public class PullView extends LinearLayout {
 	/**
 	 * footer view image
 	 */
-	// private ImageView mFooterImageView;
+	private ImageView mFooterImageView;
 	/**
 	 * header tip text
 	 */
@@ -128,10 +129,6 @@ public class PullView extends LinearLayout {
 	 * footer refresh listener
 	 */
 	private OnHeaderRefreshListener mOnHeaderRefreshListener;
-	/**
-	 * 下拉手势的监听
-	 */
-	private OnfreshListener mOnfreshListener;
 
 	/**
 	 * last update time
@@ -150,7 +147,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * init
-	 * 
+	 *
 	 * @param
 	 */
 	private void init() {
@@ -204,8 +201,8 @@ public class PullView extends LinearLayout {
 	private void addFooterView() {
 		// footer view
 		mFooterView = mInflater.inflate(R.layout.refresh_footer, this, false);
-		// mFooterImageView = (ImageView) mFooterView
-		// .findViewById(R.id.pull_to_load_image);
+		mFooterImageView = (ImageView) mFooterView
+				.findViewById(R.id.pull_to_load_image);
 		mFooterTextView = (TextView) mFooterView
 				.findViewById(R.id.pull_to_load_text);
 		mFooterProgressBar = (ProgressBar) mFooterView
@@ -234,7 +231,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * init AdapterView like ListView,GridView and so on;or init ScrollView
-	 * 
+	 *
 	 */
 	private void initContentAdapterView() {
 		int count = getChildCount();
@@ -283,29 +280,27 @@ public class PullView extends LinearLayout {
 	public boolean onInterceptTouchEvent(MotionEvent e) {
 		int y = (int) e.getRawY();
 		switch (e.getAction()) {
-		case MotionEvent.ACTION_DOWN:
-			// 首先拦截down事件,记录y坐标
-			mLastMotionY = y;
-			break;
-		case MotionEvent.ACTION_MOVE:
-			// deltaY > 0 是向下运动,< 0是向上运动
-			int deltaY = y - mLastMotionY;
-			if (isRefreshViewScroll(deltaY)) {
-				return true;
-			}
-
-			break;
-		case MotionEvent.ACTION_UP:
-		case MotionEvent.ACTION_CANCEL:
-			return true;
-
+			case MotionEvent.ACTION_DOWN:
+				// 首先拦截down事件,记录y坐标
+				mLastMotionY = y;
+				break;
+			case MotionEvent.ACTION_MOVE:
+				// deltaY > 0 是向下运动,< 0是向上运动
+				int deltaY = y - mLastMotionY;
+				if (isRefreshViewScroll(deltaY)) {
+					return true;
+				}
+				break;
+			case MotionEvent.ACTION_UP:
+			case MotionEvent.ACTION_CANCEL:
+				break;
 		}
 		return false;
 	}
 
 	/*
 	 * 如果在onInterceptTouchEvent()方法中没有拦截(即onInterceptTouchEvent()方法中 return
-	 * false)则由PullView 的子View来处理;否则由下面的方法来处理(即由PullView自己来处理)
+	 * false)则由PullToRefreshView 的子View来处理;否则由下面的方法来处理(即由PullToRefreshView自己来处理)
 	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -314,50 +309,49 @@ public class PullView extends LinearLayout {
 		// }
 		int y = (int) event.getRawY();
 		switch (event.getAction()) {
-		case MotionEvent.ACTION_DOWN:
-			// onInterceptTouchEvent已经记录
-			mLastMotionY = y;
-			break;
-		case MotionEvent.ACTION_MOVE:
-			int deltaY = y - mLastMotionY;
-			if (mPullState == PULL_DOWN_STATE) {// 执行下拉
-				// mOnfreshListener.onRefresh();
-				// headerPrepareToRefresh(deltaY);
-				// setHeaderPadding(-mHeaderViewHeight);
-			} else if (mPullState == PULL_UP_STATE) {// 执行上拉
-				footerPrepareToRefresh(deltaY);
-			}
-			mLastMotionY = y;
-			break;
-		case MotionEvent.ACTION_UP:
-		case MotionEvent.ACTION_CANCEL:
-			int topMargin = getHeaderTopMargin();
-			if (mPullState == PULL_DOWN_STATE) {
-				if (topMargin >= 0) {
-					// 开始刷新
-					headerRefreshing();
-				} else {
-					// 还没有执行刷新，重新隐藏
-					setHeaderTopMargin(-mHeaderViewHeight);
+			case MotionEvent.ACTION_DOWN:
+				// onInterceptTouchEvent已经记录
+				// mLastMotionY = y;
+				break;
+			case MotionEvent.ACTION_MOVE:
+				int deltaY = y - mLastMotionY;
+				if (mPullState == PULL_DOWN_STATE) {// 执行下拉
+//				headerPrepareToRefresh(deltaY);
+					// setHeaderPadding(-mHeaderViewHeight);
+				} else if (mPullState == PULL_UP_STATE) {// 执行上拉
+					footerPrepareToRefresh(deltaY);
 				}
-			} else if (mPullState == PULL_UP_STATE) {
-				if (Math.abs(topMargin) >= mHeaderViewHeight
-						+ mFooterViewHeight) {
-					// 开始执行footer 刷新
-					footerRefreshing();
-				} else {
-					// 还没有执行刷新，重新隐藏
-					setHeaderTopMargin(-mHeaderViewHeight);
+				mLastMotionY = y;
+				break;
+			case MotionEvent.ACTION_UP:
+			case MotionEvent.ACTION_CANCEL:
+				int topMargin = getHeaderTopMargin();
+				if (mPullState == PULL_DOWN_STATE) {
+					if (topMargin >= 0) {
+						// 开始刷新
+						headerRefreshing();
+					} else {
+						// 还没有执行刷新，重新隐藏
+						setHeaderTopMargin(-mHeaderViewHeight);
+					}
+				} else if (mPullState == PULL_UP_STATE) {
+					if (Math.abs(topMargin) >= mHeaderViewHeight
+							+ mFooterViewHeight) {
+						// 开始执行footer 刷新
+						footerRefreshing();
+					} else {
+						// 还没有执行刷新，重新隐藏
+						setHeaderTopMargin(-mHeaderViewHeight);
+					}
 				}
-			}
-			break;
+				break;
 		}
 		return super.onTouchEvent(event);
 	}
 
 	/**
-	 * 是否应该到了父View,即PullView滑动
-	 * 
+	 * 是否应该到了父View,即PullToRefreshView滑动
+	 *
 	 * @param deltaY
 	 *            , deltaY > 0 是向下运动,< 0是向上运动
 	 * @return
@@ -400,7 +394,7 @@ public class PullView extends LinearLayout {
 				// 等于父View的高度说明mAdapterView已经滑动到最后
 				if (lastChild.getBottom() <= getHeight()
 						&& mAdapterView.getLastVisiblePosition() == mAdapterView
-								.getCount() - 1) {
+						.getCount() - 1) {
 					mPullState = PULL_UP_STATE;
 					return true;
 				}
@@ -415,7 +409,7 @@ public class PullView extends LinearLayout {
 				return true;
 			} else if (deltaY < 0
 					&& child.getMeasuredHeight() <= getHeight()
-							+ mScrollView.getScrollY()) {
+					+ mScrollView.getScrollY()) {
 				mPullState = PULL_UP_STATE;
 				return true;
 			}
@@ -425,7 +419,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * header 准备刷新,手指移动过程,还没有释放
-	 * 
+	 *
 	 * @param deltaY
 	 *            ,手指滑动的距离
 	 */
@@ -450,7 +444,7 @@ public class PullView extends LinearLayout {
 	/**
 	 * footer 准备刷新,手指移动过程,还没有释放 移动footer view高度同样和移动header view
 	 * 高度是一样，都是通过修改header view的topmargin的值来达到
-	 * 
+	 *
 	 * @param deltaY
 	 *            ,手指滑动的距离
 	 */
@@ -461,12 +455,12 @@ public class PullView extends LinearLayout {
 		if (Math.abs(newTopMargin) >= (mHeaderViewHeight + mFooterViewHeight)
 				&& mFooterState != RELEASE_TO_REFRESH) {
 			mFooterTextView.setText("松开后加载");
-			// mFooterImageView.clearAnimation();
-			// mFooterImageView.startAnimation(mFlipAnimation);
+			mFooterImageView.clearAnimation();
+			mFooterImageView.startAnimation(mFlipAnimation);
 			mFooterState = RELEASE_TO_REFRESH;
 		} else if (Math.abs(newTopMargin) < (mHeaderViewHeight + mFooterViewHeight)) {
-			// mFooterImageView.clearAnimation();
-			// mFooterImageView.startAnimation(mFlipAnimation);
+			mFooterImageView.clearAnimation();
+			mFooterImageView.startAnimation(mFlipAnimation);
 			mFooterTextView.setText("上拉加载更多");
 			mFooterState = PULL_TO_REFRESH;
 		}
@@ -474,7 +468,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * 修改Header view top margin的值
-	 * 
+	 *
 	 * @param deltaY
 	 */
 	private int changingHeaderViewTopMargin(int deltaY) {
@@ -499,7 +493,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * header refreshing
-	 * 
+	 *
 	 */
 	private void headerRefreshing() {
 		mHeaderState = REFRESHING;
@@ -516,15 +510,15 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * footer refreshing
-	 * 
+	 *
 	 */
 	private void footerRefreshing() {
 		mFooterState = REFRESHING;
 		int top = mHeaderViewHeight + mFooterViewHeight;
 		setHeaderTopMargin(-top);
-		// mFooterImageView.setVisibility(View.GONE);
-		// mFooterImageView.clearAnimation();
-		// mFooterImageView.setImageDrawable(null);
+		mFooterImageView.setVisibility(View.GONE);
+		mFooterImageView.clearAnimation();
+		mFooterImageView.setImageDrawable(null);
 		mFooterProgressBar.setVisibility(View.VISIBLE);
 		mFooterTextView.setText("加载中...");
 		if (mOnFooterRefreshListener != null) {
@@ -534,7 +528,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * 设置header view 的topMargin的值
-	 * 
+	 *
 	 * @param topMargin
 	 *            ，为0时，说明header view 刚好完全显示出来； 为-mHeaderViewHeight时，说明完全隐藏了
 	 */
@@ -547,7 +541,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * header view 完成更新后恢复初始状态
-	 * 
+	 *
 	 */
 	public void onHeaderRefreshComplete() {
 		setHeaderTopMargin(-mHeaderViewHeight);
@@ -561,7 +555,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * Resets the list to a normal state after a refresh.
-	 * 
+	 *
 	 * @param lastUpdated
 	 *            Last updated at.
 	 */
@@ -575,8 +569,8 @@ public class PullView extends LinearLayout {
 	 */
 	public void onFooterRefreshComplete() {
 		setHeaderTopMargin(-mHeaderViewHeight);
-		// mFooterImageView.setVisibility(View.VISIBLE);
-		// mFooterImageView.setImageResource(R.drawable.ic_benzhoujinhuo_nor);
+		mFooterImageView.setVisibility(View.VISIBLE);
+		mFooterImageView.setImageResource(R.drawable.icon_loading_not_selected);
 		mFooterTextView.setText("上拉加载更多");
 		mFooterProgressBar.setVisibility(View.GONE);
 		// mHeaderUpdateTextView.setText("");
@@ -585,7 +579,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * Set a text to represent when the list was last updated.
-	 * 
+	 *
 	 * @param lastUpdated
 	 *            Last updated at.
 	 */
@@ -600,7 +594,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * 获取当前header view 的topMargin
-	 * 
+	 *
 	 */
 	private int getHeaderTopMargin() {
 		LayoutParams params = (LayoutParams) mHeaderView.getLayoutParams();
@@ -625,7 +619,7 @@ public class PullView extends LinearLayout {
 
 	/**
 	 * set headerRefreshListener
-	 * 
+	 *
 	 * @param headerRefreshListener
 	 */
 	public void setOnHeaderRefreshListener(
@@ -646,19 +640,6 @@ public class PullView extends LinearLayout {
 		public void onFooterRefresh(PullView view);
 	}
 
-	public void SetResultFrash(OnfreshListener FrashListener) {
-		this.mOnfreshListener = FrashListener;
-	}
-
-	/**
-	 * 监听下拉的手势
-	 * 
-	 * @author datutu
-	 */
-	public interface OnfreshListener {
-		public void onRefresh();
-	}
-
 	/**
 	 * Interface definition for a callback to be invoked when list/grid header
 	 * view should be refreshed.
@@ -666,12 +647,9 @@ public class PullView extends LinearLayout {
 	public interface OnHeaderRefreshListener {
 		public void onHeaderRefresh(PullView view);
 	}
-
-	public void HindFoot() {
+	public void HindFoot(){
 		mFooterView.setVisibility(View.GONE);
 	}
 
-	public void ShowFoot() {
-		mFooterView.setVisibility(View.VISIBLE);
-	}
+	public void	ShowFoot(){mFooterView.setVisibility(View.VISIBLE);}
 }

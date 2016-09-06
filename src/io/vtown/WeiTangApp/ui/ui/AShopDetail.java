@@ -1,43 +1,5 @@
 package io.vtown.WeiTangApp.ui.ui;
 
-import io.vtown.WeiTangApp.BaseApplication;
-import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.BDComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
-import io.vtown.WeiTangApp.bean.bcomment.BUser;
-import io.vtown.WeiTangApp.bean.bcomment.easy.BShop;
-import io.vtown.WeiTangApp.bean.bcomment.easy.shopbrand.BLBrandGood;
-import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
-import io.vtown.WeiTangApp.comment.contant.Constants;
-import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.util.StrUtils;
-import io.vtown.WeiTangApp.comment.util.ViewHolder;
-import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
-import io.vtown.WeiTangApp.comment.view.CircleImageView;
-import io.vtown.WeiTangApp.comment.view.ScrollBottomScrollView;
-import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
-import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
-import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
-import io.vtown.WeiTangApp.comment.view.load.ShapeLoadingDialog;
-import io.vtown.WeiTangApp.ui.ATitileNoBase;
-import io.vtown.WeiTangApp.ui.comment.AGoodShow;
-import io.vtown.WeiTangApp.ui.comment.AphotoPager;
-import io.vtown.WeiTangApp.ui.comment.im.AChat;
-import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
-import io.vtown.WeiTangApp.ui.title.AGoodDetail;
-import io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow;
-import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,18 +20,51 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.BaseApplication;
+import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BShop;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.CircleImageView;
+import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
+import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.comment.view.custom.PullView;
+import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
+import io.vtown.WeiTangApp.ui.ATitileNoBase;
+import io.vtown.WeiTangApp.ui.comment.AphotoPager;
+import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
+import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
  * @author 自营商品的店铺
  * @version 创建时间：2016-5-17 下午6:26:43
  */
-public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView.ScrollBottomListener {
+public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefreshListener {
     /**
      * 外层的view
      */
-    private ScrollBottomScrollView activivty_shopdetail_outlay;
+    private PullView activivty_shopdetail_outlay;
+    private ScrollView shop_out_scrollview;
     // shop的cover
     private ImageView shopdetail_imagview_cover;
     // 横向ls的查看资质所在的布局
@@ -258,7 +253,10 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
      * 获取筛选列表信息 Sell_Id是店铺商的ID// category_id 是分类的ID
      */
     private void GetList(int Page, String category_id, int LoadType) {
-        PromptManager.showLoading(BaseContext);
+        if (LoadType == LOAD_REFRESHING)
+            PromptManager.showLoading(BaseContext);
+        if (LoadType == LOAD_LOADMOREING)
+            activivty_shopdetail_outlay.ShowFoot();
         // 获取全部信息
         HashMap<String, String> SelectMap = new HashMap<String, String>();
         SelectMap.put("category_id", category_id);// 空代表全部，
@@ -291,6 +289,7 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
     }
 
     private void IBase() {
+        shop_out_scrollview = (ScrollView) findViewById(R.id.shop_out_scrollview);
         shop_detail_downgoods_gr = (CompleteGridView) findViewById(R.id.shop_detail_downgoods_gr);
 
         shop_detail_goods_chang_iv = (ImageView) findViewById(R.id.shop_detail_goods_chang_iv);
@@ -303,9 +302,11 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
 
         shopdetail_shop_bran_horizon_lay = (LinearLayout) findViewById(R.id.shopdetail_shop_bran_horizon_lay);
 
-        activivty_shopdetail_outlay = (ScrollBottomScrollView) findViewById(R.id.activivty_shopdetail_outlay);
-        activivty_shopdetail_outlay.setScrollBottomListener(this);
-        activivty_shopdetail_outlay.smoothScrollTo(0, 20);
+        activivty_shopdetail_outlay = (PullView) findViewById(R.id.activivty_shopdetail_outlay);
+        activivty_shopdetail_outlay.setOnFooterRefreshListener(this);
+        activivty_shopdetail_outlay.setLastUpdated(new Date().toLocaleString());
+        activivty_shopdetail_outlay.HindFoot();
+
         shopdetail_nodata_lay = findViewById(R.id.shopdetail_nodata_lay);
         shopdetail_nodata_lay.setOnClickListener(this);
         IDataView(activivty_shopdetail_outlay, shopdetail_nodata_lay,
@@ -503,8 +504,9 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
             case Tag_Ls:
                 List<BLComment> blComments = new ArrayList<BLComment>();
                 if (StrUtils.isEmpty(Data.getHttpResultStr()) && Data.getHttpLoadType() == LOAD_LOADMOREING) {
-//                    PromptManager.ShowCustomToast1(BaseContext, "没更多商品");
-
+                    PromptManager.ShowCustomToast(BaseContext, "没有更多商品");
+                    activivty_shopdetail_outlay.onFooterRefreshComplete();
+                    activivty_shopdetail_outlay.HindFoot();
                     return;
                 }
 
@@ -525,16 +527,21 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
                     downGoodsAp.FrashView(blComments);
                     if (!IsBrandStatue) {
                         CacheLsDatas_ZiYing = new ArrayList<BLComment>();
-                        CacheLsDatas_ZiYing=blComments;
+                        CacheLsDatas_ZiYing = blComments;
                     } else {
                         CacheLsDatas_Brand = new ArrayList<BLComment>();
-                        CacheLsDatas_Brand=blComments;
+                        CacheLsDatas_Brand = blComments;
                     }
 
                 }
                 if (Data.getHttpLoadType() == LOAD_LOADMOREING) {
                     downGoodsAp.AddFrashView(blComments);
-
+                    activivty_shopdetail_outlay.onFooterRefreshComplete();
+                    if (blComments.size() == 10) {
+                        activivty_shopdetail_outlay.ShowFoot();
+                    } else {
+                        activivty_shopdetail_outlay.HindFoot();
+                    }
                     if (!IsBrandStatue) {
                         CacheLsDatas_ZiYing.addAll(blComments);
                     } else {
@@ -647,21 +654,19 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
 
             IDataView(activivty_shopdetail_outlay, shopdetail_nodata_lay,
                     NOVIEW_ERROR);
+        } else if (LoadTyp == LOAD_LOADMOREING) {
+            activivty_shopdetail_outlay.onFooterRefreshComplete();
         } else {
             PromptManager.ShowCustomToast(BaseContext, error);
         }
 
     }
 
+
     @Override
-    public void scrollBottom() {
+    public void onFooterRefresh(PullView view) {
         CurrentPage = CurrentPage + 1;
         GetList(CurrentPage, CurrentCategory_Id, LOAD_LOADMOREING);
-    }
-
-    @Override
-    public void scrollUp() {
-
     }
 
     /**
@@ -923,6 +928,7 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
         private LayoutInflater inflater;
         private int ResourceId;
         private List<BLComment> datas = new ArrayList<BLComment>();
+        private List<String> GoodsIdS = new ArrayList<String>();
 
         public DownGoodsAp(int resourceId) {
             super();
@@ -939,17 +945,28 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
                 return;
             this.datas = datasa;
             this.notifyDataSetChanged();
+            for (int i = 0; i < datas.size(); i++) {
+                GoodsIdS.add(datas.get(i).getGoods_id());
+            }
         }
 
         /**
          * Add刷新
          *
-         * @param datasa
+         * @param
          */
-        public void AddFrashView(List<BLComment> datasa) {
-            if (null == datasa || datasa.size() == 0)
+        public void AddFrashView(List<BLComment> datasasss) {
+
+            if (null == datasasss || datasasss.size() == 0)
                 return;
-            this.datas.addAll(datasa);
+            for (int i = 0; i < datasasss.size(); i++) {
+                if (!GoodsIdS.contains(datasasss.get(i).getGoods_id())) {
+                    GoodsIdS.add(datasasss.get(i).getGoods_id());
+                    this.datas.add(datasasss.get(i));
+                }
+
+            }
+//            this.datas.addAll(datasasss);
             this.notifyDataSetChanged();
         }
 
@@ -1042,7 +1059,7 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
                 shop_detail_downgoods_ls.setVisibility(IsShowLs ? View.VISIBLE : View.GONE);
                 shop_detail_downgoods_gr.setVisibility(!IsShowLs ? View.VISIBLE : View.GONE);
 
-                activivty_shopdetail_outlay.smoothScrollTo(0, 20);
+//                activivty_shopdetail_outlay.smoothScrollTo(0, 20);
                 break;
             case R.id.shop_detail_brand:// 品牌列表
                 shop_detail_brand.setTextColor(getResources().getColor(
@@ -1057,13 +1074,14 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
 //            } else {
 //                CacheLsDatas_Brand.addAll(blComments);
 //            }){}
-
+                shop_out_scrollview.smoothScrollTo(0, 20);
                 if (CacheLsDatas_Brand == null || CacheLsDatas_Brand.size() == 0) {
                     CurrentPage = 1;
                     CurrentCategory_Id = "0";
                     GetList(CurrentPage, CurrentCategory_Id, LOAD_REFRESHING);
                 } else {
-                    CurrentPage = (int)((CacheLsDatas_Brand.size()+10)/10) ;
+
+                    CurrentPage = StrUtils.ShopDetailPage(CacheLsDatas_Brand.size());//(int)((CacheLsDatas_Brand.size()+10)/10) ;
                     CurrentCategory_Id = "0";
 
                     downGoodsAp.FrashView(CacheLsDatas_Brand);
@@ -1076,14 +1094,14 @@ public class AShopDetail extends ATitileNoBase implements ScrollBottomScrollView
                         R.color.app_black));
                 IsBrandStatue = false;
                 FristSelect();
-
-                if(CacheLsDatas_ZiYing==null||CacheLsDatas_ZiYing.size()==0){
+                shop_out_scrollview.smoothScrollTo(0, 20);
+                if (CacheLsDatas_ZiYing == null || CacheLsDatas_ZiYing.size() == 0) {
                     CurrentPage = 1;
                     CurrentCategory_Id = "0";
                     GetList(CurrentPage, CurrentCategory_Id, LOAD_REFRESHING);
-                }else{
+                } else {
 
-                    CurrentPage = (int)((CacheLsDatas_ZiYing.size()+10)/10) ;
+                    CurrentPage = StrUtils.ShopDetailPage(CacheLsDatas_ZiYing.size());//(int)((CacheLsDatas_ZiYing.size()+10)/10) ;
                     CurrentCategory_Id = "0";
                     downGoodsAp.FrashView(CacheLsDatas_ZiYing);
 
