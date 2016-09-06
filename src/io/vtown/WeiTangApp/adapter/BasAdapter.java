@@ -12,6 +12,7 @@ public abstract class BasAdapter extends BaseAdapter {
 
 //ddddddddddddddddd
         //dddd
+        //ddd
  //远端的淡淡的
         //远端的淡淡的
         //远端的淡淡的
