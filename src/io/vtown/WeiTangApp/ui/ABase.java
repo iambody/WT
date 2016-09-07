@@ -121,7 +121,7 @@ public class ABase extends Activity {
      */
     protected BComment baseBcBComment;
 
-    protected List<PicImageItem> arrayData;
+    protected List<PicImageItem> arrayData = new ArrayList<PicImageItem>();
 
     /**
      * 上边传递javabean数据时候对应的key

@@ -100,7 +100,7 @@ public class ShowSelectPic extends ATitleBase {
         // if (IsPic) {// 是图片的分享
         showpics = GetPicChange(ShowDatas.getImgarr());
         showpics_size = GetPicChange(ShowDatas.getImgarr()).size();
-        setArrayData(showpics);
+
 
 
     }
@@ -114,6 +114,14 @@ public class ShowSelectPic extends ATitleBase {
         good_show_select_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
+
+                if(getArrayData() != null && getArrayData().size() > 0){
+                    for(PicImageItem item :getArrayData()){
+                        getArrayData().remove(item);
+                    }
+                }
+
+                setArrayData(showpics);
 
 //                Intent mIntent = new Intent(BaseContext,
 //                        AphotoPager.class);
@@ -188,7 +196,8 @@ public class ShowSelectPic extends ATitleBase {
                 // SelectPicPop();
                 if (showpics.size() < 9) {
                     Intent intent = new Intent(BaseContext, PicSelActivity.class);
-                    intent.putExtra("Select_Img_Size", 9 - showpics.size());
+                    intent.putExtra(PicSelActivity.Select_Img_Size_str, 9 - showpics.size());
+                    intent.putExtra(PicSelActivity.Select_Img_Type,PicSelActivity.Tage_Show_Share);
                     startActivity( intent);
                 } else {
                     PromptManager.ShowCustomToast(BaseContext, "亲，你已经有9张图片了");
@@ -456,7 +465,7 @@ public class ShowSelectPic extends ATitleBase {
 
     public void getEventMsg(BMessage event) {
         int msg_type = event.getMessageType();
-        if (BMessage.Tage_Select_Pic == msg_type) {
+        if (BMessage.Tage_Select_Pic_Show == msg_type) {
             List<String> imgs = event.getTmpArrayList();
 
             if (imgs != null && imgs.size() > 0) {

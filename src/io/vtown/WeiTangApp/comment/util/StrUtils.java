@@ -790,6 +790,9 @@ public class StrUtils {
 		}
 		BitmapFactory.Options mOptions = new BitmapFactory.Options();
 		mOptions.inTempStorage = new byte[100 * 1024];
+		mOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+
+		mOptions.inInputShareable = true;
 		// 设置图片可以被回收，创建Bitmap用于存储Pixel的内存空间在系统内存不足时可以被回收
 		mOptions.inPurgeable = true;
 		// width，hight设为原来的四分一（该参数请使用2的整数倍）,这也减小了位图占用的内存大小；例如，一张//分辨率为2048*1536px的图像使用inSampleSize值为4的设置来解码，产生的Bitmap大小约为//512*384px。相较于完整图片占用12M的内存，这种方式只需0.75M内存(假设Bitmap配置为//ARGB_8888)。

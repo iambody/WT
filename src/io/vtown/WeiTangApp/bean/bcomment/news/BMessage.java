@@ -203,7 +203,10 @@ public class BMessage {
 
 	private List<String> tmpArrayList;
 
-	public static final int Tage_Select_Pic = 7788;
+	public static final int Tage_Select_Pic_Show = 7788;
+	public static final int Tage_Select_Pic_Good_Pics = 7789;
+	public static final int Tage_Select_Pic_Good_Desc = 7790;
+
 	
 	
 	//修改品牌商品库存时候的通知和存储修改的数量

@@ -221,13 +221,13 @@ public abstract class ABaseFragment extends FragmentActivity {
 	}
 
 	public void switchContent1(Fragment fragment, int ResourceId) {
-		 if (CurrentFragment != fragment) {
+		 //if (CurrentFragment != fragment) {
 		 CurrentFragment = fragment;
 		BaseFragmentManager = getSupportFragmentManager();
 		BaseFragmentTransaction = BaseFragmentManager.beginTransaction();
 		BaseFragmentTransaction.replace(ResourceId, fragment) // 替换Fragment，实现切换
 				.commit();
-		 }
+		// }
 	}
 
 	public Fragment getCurrentFragment() {

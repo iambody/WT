@@ -62,6 +62,7 @@ import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.title.shop.goodmanger.ANewGoodMangerEdit;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -571,7 +572,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 							case 100:
 								PromptManager.SkipActivity(BaseActivity,
 										new Intent(BaseContext,
-												AGoodMangerEdit.class)
+												ANewGoodMangerEdit.class)
 												.putExtra("goodid",
 														mBlComment.getId()));
 

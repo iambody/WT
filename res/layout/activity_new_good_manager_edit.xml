@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/titlebar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="商品图片"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/grey"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="(供商品详情页面轮播图显示)"
+            android:textSize="11sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/app_gray"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tv_good_pics"
+            android:layout_width="wrap_content"
+           android:background="@drawable/shape_show_select_pic_bg"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:text="添加"
+            android:textColor="@color/app_gray"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+        android:id="@+id/new_good_manager_good_pics_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:background="@drawable/shape_show_select_pic_bg"
+        android:horizontalSpacing="3dp"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="3dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="商品描述"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/grey"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="(供商品详情页面图文详情显示)"
+            android:textSize="11sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/app_gray"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tv_good_desc"
+            android:layout_width="wrap_content"
+            android:background="@drawable/shape_show_select_pic_bg"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:text="添加"
+            android:textColor="@color/app_gray"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+        android:id="@+id/new_good_manager_good_desc_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:background="@drawable/shape_show_select_pic_bg"
+        android:horizontalSpacing="3dp"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="3dp"
+        />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>
