@@ -144,11 +144,12 @@ public class AMyCoupons extends ATitleBase {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				BLComment blComment = (BLComment) arg0.getItemAtPosition(arg2);
+				BLMyCoupons blComment = (BLMyCoupons) arg0.getItemAtPosition(arg2);
 
 				if (IsFromOderBeing) {// 需要返回到订单页面上数据
 					Intent intent = new Intent();
-					intent.putExtra("coupresult", blComment);
+					intent.putExtra("coupresult",blComment);
+//					intent.putExtra("coupresult", blComment);
 					setResult(202, intent);
 					finish();
 				}

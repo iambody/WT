@@ -1,9 +1,11 @@
 package io.vtown.WeiTangApp.bean.bcomment.easy.coupons;
 
+import io.vtown.WeiTangApp.bean.BBase;
+
 /**
  * Created by Yihuihua on 2016/9/2.
  */
-public class BLMyCoupons {
+public class BLMyCoupons extends BBase{
     private String coupons_id;
     private String taken_time;
     private String coupons_name;

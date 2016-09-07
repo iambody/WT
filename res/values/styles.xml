@@ -119,7 +119,11 @@
         <item name="android:textColor">@drawable/select_btn_text_bg</item>
         <item name="android:background">@drawable/select_fen_to_gray_no_circular</item>
     </style>
-
+    <style name="clickstyle" >
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">@drawable/select_white_to_gray</item>
+    </style>
     <style name="build_two_dimension_code_btn_style" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/select_fen_to_gray</item>
@@ -226,7 +230,7 @@
 
     <style name="line">
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">@dimen/line_size1</item>
+        <item name="android:layout_height">@dimen/line_size</item>
         <item name="android:background">@color/app_line</item>
     </style>
 

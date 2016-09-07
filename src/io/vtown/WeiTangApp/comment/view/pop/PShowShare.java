@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -29,18 +30,29 @@ import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
  */
 public class PShowShare extends PopupWindow implements View.OnClickListener {
 
+
     private Context mContext;
 
     private View mRootView;
 
     private BNew mShareBeanNew;
 
-    private LinearLayout show_share_to_friends,show_share_to_weixin,show_share_to_show;
+    private RelativeLayout show_share_to_friends, show_share_to_weixin, show_share_to_show;
     private TextView show_share_cancel;
     public boolean IsErWeiMaShare = false;
     private BLShow mBLComment;
 
-    public PShowShare(Context context,BNew sharebeanNew,BLShow datBlComment){
+    private ShowShareInterListener MShowShareInterListener;
+
+    public void SetShareListener(ShowShareInterListener result) {
+        this.MShowShareInterListener = result;
+    }
+
+    public interface ShowShareInterListener {
+        public void GetResultType(int ResultType);//1代表 好友；；2代表朋友圈  ；；3代表show分享  4代表取消
+    }
+
+    public PShowShare(Context context, BNew sharebeanNew, BLShow datBlComment) {
         this.mContext = context;
         if (null == sharebeanNew && null == datBlComment) {
             this.dismiss();
@@ -48,17 +60,17 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         }
         this.mBLComment = datBlComment;
         this.mShareBeanNew = sharebeanNew;
-        mRootView = LayoutInflater.from(context).inflate(R.layout.pop_show_share,null);
-        ShareSDK.initSDK(context);
+        mRootView = LayoutInflater.from(context).inflate(R.layout.pop_show_share, null);
+
         IPop();
         IView();
 
     }
 
     private void IView() {
-        show_share_to_friends = (LinearLayout) mRootView.findViewById(R.id.show_share_to_friends);
-        show_share_to_weixin = (LinearLayout) mRootView.findViewById(R.id.show_share_to_weixin);
-        show_share_to_show = (LinearLayout) mRootView.findViewById(R.id.show_share_to_show);
+        show_share_to_friends = (RelativeLayout) mRootView.findViewById(R.id.show_share_to_friends);
+        show_share_to_weixin = (RelativeLayout) mRootView.findViewById(R.id.show_share_to_weixin);
+        show_share_to_show = (RelativeLayout) mRootView.findViewById(R.id.show_share_to_show);
         show_share_cancel = (TextView) mRootView.findViewById(R.id.show_share_cancel);
         show_share_to_friends.setOnClickListener(this);
         show_share_to_weixin.setOnClickListener(this);
@@ -72,10 +84,10 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         mRootView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
 //
-       setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         this.setFocusable(true);
-        //ColorDrawable dw = new ColorDrawable(0xb0000000);
+        ColorDrawable dw = new ColorDrawable(0xb0000000);
         setBackgroundDrawable(null);
         this.setOutsideTouchable(true);
 
@@ -84,16 +96,19 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.show_share_to_friends://分享好友
                 Share(1);
+
                 this.dismiss();
                 break;
             case R.id.show_share_to_weixin://分享朋友圈
                 Share(2);
+
                 this.dismiss();
                 break;
             case R.id.show_share_to_show://show分享
+                MShowShareInterListener.GetResultType(3);
                 toShow();
                 break;
             case R.id.show_share_cancel://取消
@@ -102,7 +117,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         }
     }
 
-    private void toShow(){
+    private void toShow() {
         PromptManager
                 .SkipActivity(
                         (Activity) mContext,
@@ -113,50 +128,9 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     }
 
     private void Share(int Type) {
-
+        ShareSDK.initSDK(mContext);
         Platform platform = null;
         Platform.ShareParams sp = new Platform.ShareParams();
-        switch (Type) {
-            case 1:// 好友分享
-                platform = ShareSDK.getPlatform(mContext, Wechat.NAME);
-//			sp.setShareType(Platform.SHARE_WEBPAGE);
-                if (IsErWeiMaShare) {//二维码=》图片
-                    sp.setShareType(Platform.SHARE_IMAGE);
-                } else {//飞二维码=》网页
-                    sp.setShareType(Platform.SHARE_WEBPAGE);// SHARE_WEBPAGE);}
-                }
-                // sp.setShareType(Platform.SHARE_WEBPAGE);// SHARE_WEBPAGE);
-                // sp.setText("大兔兔的测试数据");
-                // sp.setImageUrl("http://static.freepik.com/free-photo/letter-a-underlined_318-8682.jpg");
-                // sp.setTitle("大兔兔的title");//
-                // sp.setUrl("www.baidu.com");
-
-                sp.setText(mShareBeanNew.getShare_content());
-                sp.setImageUrl(mShareBeanNew.getShare_log());
-                sp.setTitle(mShareBeanNew.getShare_title());//
-                sp.setUrl(mShareBeanNew.getShare_url());
-                break;
-            case 2:// 朋友圈分享
-                platform = ShareSDK.getPlatform(mContext, WechatMoments.NAME);
-                if (IsErWeiMaShare) {//二维码=》图片
-                    sp.setShareType(Platform.SHARE_IMAGE);
-                } else {//飞二维码=》网页
-                    sp.setShareType(Platform.SHARE_WEBPAGE);// SHARE_WEBPAGE);}
-                }
-                // sp.setText("大兔兔的测试数据");
-                // sp.setImageUrl("http://static.freepik.com/free-photo/letter-a-underlined_318-8682.jpg");
-                // sp.setTitle("大兔兔的测试数据");//
-                // sp.setUrl("www.baidu.com");
-                sp.setText(mShareBeanNew.getShare_content());
-                sp.setImageUrl(mShareBeanNew.getShare_log());
-                sp.setTitle(mShareBeanNew.getShare_title());//
-                sp.setUrl(mShareBeanNew.getShare_url());
-                break;
-            default:
-                break;
-        }
-
-
         platform.setPlatformActionListener(new PlatformActionListener() {
 
             @Override
@@ -174,8 +148,32 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 
             @Override
             public void onCancel(Platform arg0, int arg1) {
+                PromptManager.ShowCustomToast(mContext, "分享取消");
+                PShowShare.this.dismiss();
             }
         });
+        switch (Type) {
+            case 1:// 好友分享
+                platform = ShareSDK.getPlatform(mContext, Wechat.NAME);
+                sp.setShareType(Platform.SHARE_WEBPAGE);// S
+                sp.setText(mShareBeanNew.getShare_content());
+                sp.setImageUrl(mShareBeanNew.getShare_log());
+                sp.setTitle(mShareBeanNew.getShare_title());//
+                sp.setUrl(mShareBeanNew.getShare_url());
+                break;
+            case 2:// 朋友圈分享
+                platform = ShareSDK.getPlatform(mContext, WechatMoments.NAME);
+                sp.setShareType(Platform.SHARE_WEBPAGE);
+                sp.setText(mShareBeanNew.getShare_content());
+                sp.setImageUrl(mShareBeanNew.getShare_log());
+                sp.setTitle(mShareBeanNew.getShare_title());//
+                sp.setUrl(mShareBeanNew.getShare_url());
+                break;
+            default:
+                break;
+        }
+
+
         platform.share(sp);
     }
 

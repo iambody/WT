@@ -1,5 +1,10 @@
 package io.vtown.WeiTangApp.ui;
 
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.wechat.friends.Wechat;
+import cn.sharesdk.wechat.moments.WechatMoments;
 import io.vtown.WeiTangApp.AppManager;
 import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
@@ -760,5 +765,9 @@ public class ABase extends Activity {
     public void SenMessage(int SentType) {
         EventBus.getDefault().post(new BMessage(SentType));
     }
+
+
+
+
 
 }
