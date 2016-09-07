@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.ui;
 
+import cn.sharesdk.framework.ShareSDK;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
@@ -453,7 +454,7 @@ public class AShow extends ATitleBase implements IXListViewListener {
             } else {
                 myItem = (ShowItem) convertView.getTag();
             }
-            ImageLoaderUtil.Load(datas.get(arg0).getSellerinfo().getAvatar(),
+            ImageLoaderUtil.Load2(datas.get(arg0).getSellerinfo().getAvatar(),
                     myItem.item_show_iv, R.drawable.testiv);
             IvSet(datas.get(arg0), myItem);
             final BLShow ItemData = datas.get(arg0);
@@ -491,12 +492,7 @@ public class AShow extends ATitleBase implements IXListViewListener {
 
                         @Override
                         public void onClick(View v) {
-                            // if (CheckNet(BaseContext))
-                            // return;
-                            // PromptManager.SkipActivity(BaseActivity,
-                            // new Intent(BaseActivity, AGoodDetail.class)
-                            // .putExtra("goodid",
-                            // ItemData.getGoods_id()));
+
 
                             if (CheckNet(BaseContext))
                                 return;
@@ -686,36 +682,44 @@ public class AShow extends ATitleBase implements IXListViewListener {
 
             @Override
             public void onClick(View arg0) {
-                // SharePop(datBlComment, view);
-                // ShowClick(datBlComment);
+                BNew bnew = new BNew();
+                bnew.setTitle(datBlComment.getGoodinfo().getTitle());
+                bnew.setContent(datBlComment.getSellerinfo().getSeller_name());
+                bnew.setShare_log(datBlComment.getImgarr().get(0));
+                bnew.setShare_url(datBlComment.getGoodurl());
+                PShowShare showShare = new PShowShare(BaseContext, bnew, datBlComment);
 
-                if (datBlComment.getIs_type().equals("0")) {// 照片
-//                    PromptManager
-//                            .SkipActivity(
-//                                    BaseActivity,
-//                                    new Intent(BaseActivity, ShowSelectPic.class).putExtra(
-//                                            ShowSelectPic.Key_Data,
-//                                            datBlComment));
+                showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
+                    @Override
+                    public void GetResultType(int ResultType) {
+                        switch (ResultType) {
+                            case 3:
+                                if (datBlComment.getIs_type().equals("0")) {// 照片
+                                    PromptManager
+                                            .SkipActivity(
+                                                    BaseActivity,
+                                                    new Intent(BaseActivity, ShowSelectPic.class).putExtra(
+                                                            ShowSelectPic.Key_Data,
+                                                            datBlComment));
+
+                                } else {// 视频
+                                    PromptManager.SkipActivity(
+                                            BaseActivity,
+                                            new Intent(BaseActivity, AGoodVidoShare.class)
+                                                    .putExtra(AGoodVidoShare.Key_VidoFromShow,
+                                                            true).putExtra(
+                                                    AGoodVidoShare.Key_VidoData,
+                                                    datBlComment));
+
+                                }
+                                break;
 
 
-                    BNew bnew = new BNew();
-                    bnew.setTitle(datBlComment.getGoodinfo().getTitle());
-                    bnew.setContent(datBlComment.getSellerinfo().getSeller_name());
-                    bnew.setShare_log(datBlComment.getImgarr().get(0));
-                    bnew.setShare_url(datBlComment.getGoodurl());
-                   PShowShare showShare =  new PShowShare(BaseContext,bnew,datBlComment);
-                    showShare.showAtLocation(BaseView,Gravity.CENTER,0,0);
+                        }
+                    }
+                });
+                showShare.showAtLocation(BaseView, Gravity.CENTER, 0, 0);
 
-                } else {// 视频
-                    PromptManager.SkipActivity(
-                            BaseActivity,
-                            new Intent(BaseActivity, AGoodVidoShare.class)
-                                    .putExtra(AGoodVidoShare.Key_VidoFromShow,
-                                            true).putExtra(
-                                    AGoodVidoShare.Key_VidoData,
-                                    datBlComment));
-
-                }
 
             }
         }

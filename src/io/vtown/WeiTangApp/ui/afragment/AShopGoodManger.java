@@ -58,7 +58,6 @@ public class AShopGoodManger extends ABaseFragment {
 	}
 
 	private void initView() {
-
 		activity_f_good_odermanger_container = (HorizontalScrollMenu) findViewById(R.id.activity_f_good_odermanger_container);
 		activity_f_good_odermanger_container.setSwiped(true);
 		activity_f_good_odermanger_container.setAdapter(new MenuAdapter());
@@ -91,17 +90,6 @@ public class AShopGoodManger extends ABaseFragment {
 	@Override
 	protected void InitTile() {
 		SetTitleTxt(getResources().getString(R.string.shop_good_manger));
-		// SetTitleRigthTxt("批量管理");
-		// right_txt.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View arg0) {
-		// // setOnTitleRightTxtChangeLinstener(listener);
-		// FSelling.callGoodHandle();
-		// SetTitleRigthTxt(right_txt.getText().equals("批量管理")?"取消":"批量管理");
-		// }
-		// });
-
 	}
 
 	class MenuAdapter extends HBaseAdapter {

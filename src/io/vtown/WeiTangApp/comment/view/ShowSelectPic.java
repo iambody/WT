@@ -155,14 +155,18 @@ public class ShowSelectPic extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
-
+        PromptManager.closeTextLoading3();
         PromptManager.ShowCustomToast(BaseContext,"Show分享成功");
         BaseActivity.finish();
     }
 
     @Override
     protected void DataError(String error, int LoadType) {
+        PromptManager.closeTextLoading3();
         PromptManager.ShowCustomToast(BaseContext,"上传失败请重试");
+
+
+
     }
 
     @Override
@@ -271,14 +275,14 @@ public class ShowSelectPic extends ATitleBase {
             return;
         }
         // 如果有需要上传的图片===》开始对上边处理过需要上传图片的信息进行上传处理****************
-
+        PromptManager.showtextLoading3(BaseContext, getResources()
+                .getString(R.string.uploading));
         for (int i = 0; i < showpics.size(); i++) {
             final int Postion = i;
 
             if (StrUtils.isEmpty(showpics.get(i).getWeburl())) {
                 // 开始上传本地新增加的图片
-                PromptManager.showtextLoading3(BaseContext, getResources()
-                        .getString(R.string.uploading));
+
 
                 NUpLoadUtils dLoadUtils = new NUpLoadUtils(BaseContext,
                         StrUtils.Bitmap2Bytes(StrUtils.GetBitMapFromPath(showpics.get(Postion).getPathurl())),
@@ -293,7 +297,6 @@ public class ShowSelectPic extends ATitleBase {
 
                     @Override
                     public void Onerror() {
-                        PromptManager.closeTextLoading3();
                         showpics.get(Postion).setWeburl("");
                         AllNumber = AllNumber + 1;
                         if (AllNumber == NeedUpNumber) {
@@ -304,7 +307,7 @@ public class ShowSelectPic extends ATitleBase {
                     @Override
                     public void Complete(String HostUrl, String Url) {
                         AllNumber = AllNumber + 1;
-                        PromptManager.closeTextLoading3();
+
                         showpics.get(Postion).setWeburl(
                                 HostUrl);
                         if (AllNumber == NeedUpNumber) {
@@ -338,8 +341,7 @@ public class ShowSelectPic extends ATitleBase {
             }
         }
         SetTitleHttpDataLisenter(this);
-        PromptManager.showtextLoading3(BaseContext,
-                getResources().getString(R.string.loading));
+
         HashMap<String, String> mHashMap = ShowZhuanNetParm(Urlss,
                 ShowDatas.getGoods_id(), good_show_select_share_ed.getText()
                         .toString().trim(), ShowDatas.getImgarr().get(0));

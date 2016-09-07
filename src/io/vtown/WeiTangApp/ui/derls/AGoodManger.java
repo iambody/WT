@@ -584,7 +584,7 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
                     holder.tv_edit.setVisibility(View.GONE);
                     holder.view_vertical_line1.setVisibility(View.GONE);
                     holder.tv_sold_out.setText("采购");
-                    holder.tv_share_to.setText("虚库到家");
+//				holder.tv_share_to.setText("上架");
                     holder.tv_share_to.setVisibility(View.GONE);
                     OnClickEvent(holder, showType, postion, mBlComment);
 
@@ -594,20 +594,15 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 
                     holder.view_vertical_line2.setVisibility(View.GONE);
                     holder.view_vertical_line1.setVisibility(View.GONE);
-
+                    holder.view_vertical_line3.setVisibility(View.VISIBLE);
                     if (mBlComment.getStatus() == 0) {// 可以上架
                         holder.tv_delete.setText("上架");
                         holder.tv_delete.setVisibility(View.VISIBLE);
-                        holder.view_vertical_line3.setVisibility(View.VISIBLE);
-                    } else {
+                    } else {//1已经上架 不可以上架
                         holder.tv_delete.setVisibility(View.GONE);
                         holder.view_vertical_line3.setVisibility(View.GONE);
                     }
 
-                    // holder.tv_sold_out.setBackgroundDrawable(getResources()
-                    // .getDrawable(R.drawable.select_brand_caigou));
-                    holder.tv_sold_out.setTextColor(getResources().getColor(
-                            R.color.app_fen));
                     break;
 
                 case 1:// 垃圾桶

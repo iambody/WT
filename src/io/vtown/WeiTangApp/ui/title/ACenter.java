@@ -351,6 +351,7 @@ public class ACenter extends ATitleBase {
 		case R.id.tab_center_oder:
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 					ACenterMyOrder.class));
+
 			break;
 		case R.id.tab_center_walle:
 			boolean isLogin_RenZheng_Set = Spuit
@@ -371,11 +372,11 @@ public class ACenter extends ATitleBase {
 	/**
 	 * 实名认证对话框
 	 * 
-	 * @param fetch_type
+	 * @param
 	 * 
-	 * @param datBlComment
+	 * @param
 	 * 
-	 * @param aa
+	 * @param
 	 */
 	private void ShowRealAuthDialog() {
 

@@ -3,22 +3,22 @@ package io.vtown.WeiTangApp.comment.view.select_pic.utils.bean;
 public class ImageFloder
 {
 	/**
-	 * ͼƬ���ļ���·��
+	 *
 	 */
 	private String dir;
 
 	/**
-	 * ��һ��ͼƬ��·��
+	 *
 	 */
 	private String firstImagePath;
 
 	/**
-	 * �ļ��е�����
+	 *
 	 */
 	private String name;
 
 	/**
-	 * ͼƬ������
+	 *
 	 */
 	private int count;
 

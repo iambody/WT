@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <fragment
-        android:name="io.vtown.WeiTangApp.fragment.FShopOderManger"
+    <FrameLayout
         android:id="@+id/activity_f_shop_odermanger_frgment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
