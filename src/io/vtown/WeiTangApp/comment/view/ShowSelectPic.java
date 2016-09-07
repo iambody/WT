@@ -31,13 +31,17 @@ import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils;
+import io.vtown.WeiTangApp.comment.selectpic.ui.AShareGaller;
 import io.vtown.WeiTangApp.comment.selectpic.util.Bimp;
+import io.vtown.WeiTangApp.comment.selectpic.util.PublicWay;
+import io.vtown.WeiTangApp.comment.selectpic.util.Res;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.select_pic.PicSelActivity;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 
 /**
  * Created by Yihuihua on 2016/9/5.
@@ -61,6 +65,7 @@ public class ShowSelectPic extends ATitleBase {
     int width = 0;
 
     private List<PicImageItem> showpics = new ArrayList<PicImageItem>();
+    private List<String> Lpics = new ArrayList<String>();
 
     private int showpics_size = 0;
 
@@ -94,6 +99,7 @@ public class ShowSelectPic extends ATitleBase {
         // if (IsPic) {// 是图片的分享
         showpics = GetPicChange(ShowDatas.getImgarr());
         showpics_size = GetPicChange(ShowDatas.getImgarr()).size();
+        Lpics.addAll(ShowDatas.getImgarr());
 
 
     }
@@ -107,6 +113,12 @@ public class ShowSelectPic extends ATitleBase {
         good_show_select_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
+
+                Intent mIntent = new Intent(BaseContext,
+                        AphotoPager.class);
+                mIntent.putExtra("position", arg2);
+                mIntent.putExtra("urls", StrUtils.LsToArray(Lpics));
+                PromptManager.SkipActivity(BaseActivity, mIntent);
             }
         });
     }
@@ -120,6 +132,7 @@ public class ShowSelectPic extends ATitleBase {
         // 需要图片转化内置的列表数据======》并且展示
         for (int i = 0; i < pics.size(); i++) {
             items.add(new PicImageItem(pics.get(i), ""));
+
         }
         return items;
     }
@@ -134,8 +147,8 @@ public class ShowSelectPic extends ATitleBase {
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
 
-        PromptManager.ShowCustomToast(BaseContext,Msg);
-        BaseActivity.finish();;
+        PromptManager.ShowCustomToast(BaseContext,"Show分享成功");
+        BaseActivity.finish();
     }
 
     @Override
@@ -145,16 +158,19 @@ public class ShowSelectPic extends ATitleBase {
 
     @Override
     protected void NetConnect() {
+        NetError.setVisibility(View.GONE);
 
     }
 
     @Override
     protected void NetDisConnect() {
+        NetError.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     protected void SetNetView() {
+        SetNetStatuse(NetError);
 
     }
 
@@ -163,7 +179,7 @@ public class ShowSelectPic extends ATitleBase {
         switch (V.getId()) {
             case R.id.good_show_select_share_bt:
                 hintKbTwo();
-
+                if(CheckNet(BaseContext))return;
                 ShowZhuanNet();
                 break;
 
@@ -172,7 +188,7 @@ public class ShowSelectPic extends ATitleBase {
                 if (showpics.size() < 9) {
                     Intent intent = new Intent(BaseContext, PicSelActivity.class);
                     intent.putExtra("Select_Img_Size", 9 - showpics.size());
-                    PromptManager.SkipActivity(BaseActivity, intent);
+                    startActivity( intent);
                 } else {
                     PromptManager.ShowCustomToast(BaseContext, "亲，你已经有9张图片了");
                     return;
@@ -441,7 +457,9 @@ public class ShowSelectPic extends ATitleBase {
         int msg_type = event.getMessageType();
         if (BMessage.Tage_Select_Pic == msg_type) {
             List<String> imgs = event.getTmpArrayList();
+
             if (imgs != null && imgs.size() > 0) {
+                Lpics.addAll(imgs);
                 for (String path : imgs) {
                     PicImageItem item = new PicImageItem("", path);
                     showpics.add(item);

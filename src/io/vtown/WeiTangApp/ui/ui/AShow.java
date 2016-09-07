@@ -6,6 +6,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -24,6 +25,7 @@ import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.oncancelClick;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
 import io.vtown.WeiTangApp.comment.view.pop.PShowShangJia;
+import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
@@ -688,12 +690,21 @@ public class AShow extends ATitleBase implements IXListViewListener {
                 // ShowClick(datBlComment);
 
                 if (datBlComment.getIs_type().equals("0")) {// 照片
-                    PromptManager
-                            .SkipActivity(
-                                    BaseActivity,
-                                    new Intent(BaseActivity, ShowSelectPic.class).putExtra(
-                                            ShowSelectPic.Key_Data,
-                                            datBlComment));
+//                    PromptManager
+//                            .SkipActivity(
+//                                    BaseActivity,
+//                                    new Intent(BaseActivity, ShowSelectPic.class).putExtra(
+//                                            ShowSelectPic.Key_Data,
+//                                            datBlComment));
+
+
+                    BNew bnew = new BNew();
+                    bnew.setTitle(datBlComment.getGoodinfo().getTitle());
+                    bnew.setContent(datBlComment.getSellerinfo().getSeller_name());
+                    bnew.setShare_log(datBlComment.getImgarr().get(0));
+                    bnew.setShare_url(datBlComment.getGoodurl());
+                   PShowShare showShare =  new PShowShare(BaseContext,bnew,datBlComment);
+                    showShare.showAtLocation(BaseView,Gravity.CENTER,0,0);
 
                 } else {// 视频
                     PromptManager.SkipActivity(

@@ -157,11 +157,11 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
 		}
 
 //		for (int i = 0; i < mSelectedImage.size(); i++) {
-//			final String uri = mSelectedImage.get(i);
+//			final String uri = ((List<String>) mSelectedImage).get(i);
 //			View child = getLayoutInflater().inflate(
 //					R.layout.com_mark_utils_picsel_bottom_item, null);
 //			ImageView img = (ImageView) child.findViewById(R.id.id_item_image);
-//			ImageLoader.getInstance(3, Type.LIFO).loadImage(uri, img);
+//			ImageLoader.getInstance(3, ImageLoader.Type.LIFO).loadImage(uri, img);
 //			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 //					dip2px(PicSelActivity.this, 77), dip2px(
 //							PicSelActivity.this, 77));
@@ -475,29 +475,29 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
 				}
 
 				Intent getImageByCamera = new Intent("android.media.action.IMAGE_CAPTURE");
-				File tempFile=PicSelActivity.getInstance().getTmpFile();
+				File tempFile= getTmpFile();
 				if (tempFile!=null) {
 					getImageByCamera.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(tempFile));
 				}
 
 
-				PicSelActivity.getInstance().startActivityForResult(getImageByCamera, PicSelActivity.REQUEST_PICS_CODE);
+				startActivityForResult(getImageByCamera, PicSelActivity.REQUEST_PICS_CODE);
 			}
 
 		});
-//		findViewById(R.id.sel_pic).setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				mListImageDirPopupWindow
-//						.setAnimationStyle(R.style.anim_popup_dir);
-//				mListImageDirPopupWindow.showAsDropDown(ly_top, 0, 0);
-//
-//				// 设置背景颜色变暗
-//				WindowManager.LayoutParams lp = getWindow().getAttributes();
-//				lp.alpha = .3f;
-//				getWindow().setAttributes(lp);
-//			}
-//		});
+		findViewById(R.id.iv_pics).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mListImageDirPopupWindow
+						.setAnimationStyle(R.style.anim_popup_dir);
+				mListImageDirPopupWindow.showAsDropDown(ly_top, 0, 0);
+
+				// 设置背景颜色变暗
+				WindowManager.LayoutParams lp = getWindow().getAttributes();
+				lp.alpha = .3f;
+				getWindow().setAttributes(lp);
+			}
+		});
 	}
 
 	@Override
@@ -534,7 +534,7 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
 		if (resultCode == Activity.RESULT_OK
 				&& requestCode == PicSelActivity.REQUEST_PICS_CODE) {
 			if (tmpPath!=null) {
-				Toast.makeText(this,tmpPath, Toast.LENGTH_SHORT).show();
+				//Toast.makeText(this,tmpPath, Toast.LENGTH_SHORT).show();
 				MyAdapter.mSelectedImage.add(tmpPath);
 				onSel(MyAdapter.mSelectedImage);
 			}

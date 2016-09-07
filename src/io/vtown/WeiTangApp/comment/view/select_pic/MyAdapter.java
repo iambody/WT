@@ -110,7 +110,7 @@ public class MyAdapter extends CommonAdapter<String> {
 		convertView.setLayoutParams(params);
 
 		// 设置no_pic
-		helper.setImageResource(R.id.id_item_image, R.drawable.pictures_no);
+		helper.setImageResource(R.id.id_item_image, R.drawable.error_iv2);
 		// 设置no_selected
 //		helper.setImageResource(R.id.id_item_select,
 //				R.drawable.picture_unselected);

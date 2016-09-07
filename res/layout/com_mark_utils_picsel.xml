@@ -24,17 +24,7 @@
             android:layout_height="45dip"
             android:background="#666666">
 
-            <!-- <TextView
-                android:id="@+id/sel_pic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dip"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:text="相册"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" /> -->
+
 
 
             <ImageView
@@ -44,6 +34,29 @@
                 android:layout_centerVertical="true"
                 android:padding="10dp"
                 android:src="@drawable/selpiccamera" />
+
+            <ImageView
+                android:id="@+id/iv_pics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_camera"
+                android:padding="10dp"
+                android:src="@drawable/ic_xiangce_nor" />
+
+
+           <!-- <TextView
+                android:id="@+id/sel_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dip"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/iv_camera"
+                android:text="相册"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />-->
 
 
             <TextView

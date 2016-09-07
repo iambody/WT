@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="30dp"
+    android:background="@drawable/shape_pop_gridview_txt_normal_bg"
+    android:layout_height="wrap_content">
+
+
+
+
+    <LinearLayout
+        android:id="@+id/show_share_to_friends"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal|center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/share_wxpy"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="分享好友"
+            />
+    </LinearLayout>
+    <View
+        style="@style/line"
+        />
+
+    <LinearLayout
+        android:id="@+id/show_share_to_weixin"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_horizontal|center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sharer_weixin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="分享朋友圈"
+            />
+    </LinearLayout>
+    <View
+        style="@style/line"
+        />
+
+    <LinearLayout
+        android:id="@+id/show_share_to_show"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_horizontal|center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_show_press"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="show分享"
+            />
+    </LinearLayout>
+
+    <View
+        style="@style/line"
+       />
+
+    <TextView
+        android:id="@+id/show_share_cancel"
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:text="取消"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
