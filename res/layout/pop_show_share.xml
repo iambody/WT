@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/show_share_to_friends"
         android:layout_width="match_parent"
-        android:padding="10dp"
+        android:padding="5dp"
         android:orientation="horizontal"
         android:gravity="center_horizontal|center"
         android:layout_height="wrap_content">
@@ -37,7 +37,7 @@
         android:id="@+id/show_share_to_weixin"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:padding="5dp"
         android:gravity="center_horizontal|center"
         android:layout_height="wrap_content">
 
@@ -61,7 +61,7 @@
         android:id="@+id/show_share_to_show"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:padding="5dp"
         android:gravity="center_horizontal|center"
         android:layout_height="wrap_content">
 
@@ -85,7 +85,7 @@
     <TextView
         android:id="@+id/show_share_cancel"
         android:layout_width="match_parent"
-        android:padding="16dp"
+        android:padding="14dp"
         android:text="取消"
         android:gravity="center"
         android:layout_height="wrap_content" />

@@ -98,7 +98,7 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
 
 	private Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
-			mProgressDialog.dismiss();
+			//mProgressDialog.dismiss();
 			// 为View绑定数据
 			data2View();
 			// 初始化展示文件夹的popupWindw
@@ -337,7 +337,7 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
 			return;
 		}
 		// 显示进度条
-		mProgressDialog = ProgressDialog.show(this, null, "正在加载...");
+		//mProgressDialog = ProgressDialog.show(this, null, "正在加载...");
 
 		new Thread(new Runnable() {
 			@Override

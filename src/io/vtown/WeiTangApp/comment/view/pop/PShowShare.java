@@ -87,9 +87,11 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         switch (v.getId()){
             case R.id.show_share_to_friends://分享好友
                 Share(1);
+                this.dismiss();
                 break;
             case R.id.show_share_to_weixin://分享朋友圈
                 Share(2);
+                this.dismiss();
                 break;
             case R.id.show_share_to_show://show分享
                 toShow();
@@ -153,17 +155,21 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
             default:
                 break;
         }
+
+
         platform.setPlatformActionListener(new PlatformActionListener() {
 
             @Override
             public void onError(Platform arg0, int arg1, Throwable arg2) {
                 PromptManager.ShowCustomToast(mContext, "分享取消");
+                PShowShare.this.dismiss();
             }
 
             @Override
             public void onComplete(Platform arg0, int arg1,
                                    HashMap<String, Object> arg2) {
                 PromptManager.ShowCustomToast(mContext, "分享完成");
+                PShowShare.this.dismiss();
             }
 
             @Override

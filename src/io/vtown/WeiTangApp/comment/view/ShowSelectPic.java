@@ -65,7 +65,7 @@ public class ShowSelectPic extends ATitleBase {
     int width = 0;
 
     private List<PicImageItem> showpics = new ArrayList<PicImageItem>();
-    private List<String> Lpics = new ArrayList<String>();
+
 
     private int showpics_size = 0;
 
@@ -81,6 +81,7 @@ public class ShowSelectPic extends ATitleBase {
         setContentView(R.layout.activity_show_select_pic);
         EventBus.getDefault().register(this, "getEventMsg", BMessage.class);
         MyUser = Spuit.User_Get(BaseContext);
+
         IBund();
         IView();
     }
@@ -99,7 +100,7 @@ public class ShowSelectPic extends ATitleBase {
         // if (IsPic) {// 是图片的分享
         showpics = GetPicChange(ShowDatas.getImgarr());
         showpics_size = GetPicChange(ShowDatas.getImgarr()).size();
-        Lpics.addAll(ShowDatas.getImgarr());
+        setArrayData(showpics);
 
 
     }
@@ -114,11 +115,11 @@ public class ShowSelectPic extends ATitleBase {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
 
-                Intent mIntent = new Intent(BaseContext,
-                        AphotoPager.class);
-                mIntent.putExtra("position", arg2);
-                mIntent.putExtra("urls", StrUtils.LsToArray(Lpics));
-                PromptManager.SkipActivity(BaseActivity, mIntent);
+//                Intent mIntent = new Intent(BaseContext,
+//                        AphotoPager.class);
+//                mIntent.putExtra("position", arg2);
+//
+//                PromptManager.SkipActivity(BaseActivity, mIntent);
             }
         });
     }
@@ -459,7 +460,7 @@ public class ShowSelectPic extends ATitleBase {
             List<String> imgs = event.getTmpArrayList();
 
             if (imgs != null && imgs.size() > 0) {
-                Lpics.addAll(imgs);
+
                 for (String path : imgs) {
                     PicImageItem item = new PicImageItem("", path);
                     showpics.add(item);
