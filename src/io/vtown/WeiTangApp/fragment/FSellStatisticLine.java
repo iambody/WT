@@ -43,288 +43,288 @@ import com.android.volley.Request.Method;
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
  * @version 创建时间：2016-6-20 下午1:21:18
- * @see 销售统计
+// * @see  销售统计
  */
 public class FSellStatisticLine extends FBase implements OnClickListener {
 
-	private int SellType = -1; // 1==>近一周///2=>近一月 ///3==》近一季
+    private int SellType = 1; // 1==>近一周///2=>近一月 ///3==》近一季
 
-	private TextView fragment_sellstatistics_bt1, fragment_sellstatistics_bt2,
-			fragment_sellstatistics_bt3;
-	private List<TextView> textViews = new ArrayList<TextView>();
+    private TextView fragment_sellstatistics_bt1, fragment_sellstatistics_bt2,
+            fragment_sellstatistics_bt3;
+    private List<TextView> textViews = new ArrayList<TextView>();
 
-	public static final String Key_Tage = "FSellStatisticLinekey";
-	// 当前的page位置
-	private int CurrentPage = 0;
+    public static final String Key_Tage = "FSellStatisticLinekey";
+    // 当前的page位置
+    private int CurrentPage = 0;
 
-	// 折现
-	private LineChartView fragment_sellstatistics_line;
-	private HashMap<Integer, List<BNew>> RecordLs = new HashMap<Integer, List<BNew>>();
-	private BUser mBUser;
+    // 折现
+    private LineChartView fragment_sellstatistics_line;
+    private HashMap<Integer, List<BNew>> RecordLs = new HashMap<Integer, List<BNew>>();
+    private BUser mBUser;
 
-	private View fragment_shopline_nodata_lay;
-	private boolean IsPeople = false;
+    private View fragment_shopline_nodata_lay;
+    private boolean IsPeople = false;
 
-	@Override
-	public void InItView() {
-		BaseView = LayoutInflater.from(BaseContext).inflate(
-				R.layout.fragment_sellstatistics, null);
-		if (-1 == SellType)
-			return;
-		mBUser = Spuit.User_Get(BaseContext);
-		IBaseVV();
-	}
+    @Override
+    public void InItView() {
+        BaseView = LayoutInflater.from(BaseContext).inflate(
+                R.layout.fragment_sellstatistics, null);
+        if (-1 == SellType)
+            return;
+        mBUser = Spuit.User_Get(BaseContext);
+        IBaseVV();
+    }
 
-	private void IBaseVV() {
-		fragment_shopline_nodata_lay = BaseView
-				.findViewById(R.id.fragment_shopline_nodata_lay);
-		fragment_sellstatistics_bt1 = ViewHolder.get(BaseView,
-				R.id.fragment_sellstatistics_bt1);
-		fragment_sellstatistics_bt2 = ViewHolder.get(BaseView,
-				R.id.fragment_sellstatistics_bt2);
-		fragment_sellstatistics_bt3 = ViewHolder.get(BaseView,
-				R.id.fragment_sellstatistics_bt3);
+    private void IBaseVV() {
+        fragment_shopline_nodata_lay = BaseView
+                .findViewById(R.id.fragment_shopline_nodata_lay);
+        fragment_sellstatistics_bt1 = ViewHolder.get(BaseView,
+                R.id.fragment_sellstatistics_bt1);
+        fragment_sellstatistics_bt2 = ViewHolder.get(BaseView,
+                R.id.fragment_sellstatistics_bt2);
+        fragment_sellstatistics_bt3 = ViewHolder.get(BaseView,
+                R.id.fragment_sellstatistics_bt3);
 
-		fragment_sellstatistics_bt1.setOnClickListener(this);
-		fragment_sellstatistics_bt2.setOnClickListener(this);
-		fragment_sellstatistics_bt3.setOnClickListener(this);
+        fragment_sellstatistics_bt1.setOnClickListener(this);
+        fragment_sellstatistics_bt2.setOnClickListener(this);
+        fragment_sellstatistics_bt3.setOnClickListener(this);
 
-		textViews.add(fragment_sellstatistics_bt1);
-		textViews.add(fragment_sellstatistics_bt2);
-		textViews.add(fragment_sellstatistics_bt3);
-		fragment_sellstatistics_line = (LineChartView) BaseView
-				.findViewById(R.id.fragment_sellstatistics_line);
+        textViews.add(fragment_sellstatistics_bt1);
+        textViews.add(fragment_sellstatistics_bt2);
+        textViews.add(fragment_sellstatistics_bt3);
+        fragment_sellstatistics_line = (LineChartView) BaseView
+                .findViewById(R.id.fragment_sellstatistics_line);
 
-		SetLineData(new ArrayList<BNew>());
-		TextClickControl(CurrentPage);
-		GetLines(CurrentPage);
-	}
+        SetLineData(new ArrayList<BNew>());
+        TextClickControl(CurrentPage);
+        GetLines(CurrentPage);
+    }
 
-	public String ChangTime(String da) {
-		if (da.length() > 5) {
-			return da.substring(5, da.length());
+    public String ChangTime(String da) {
+        if (da.length() > 5) {
+            return da.substring(5, da.length());
 
-		}
-		return da;
-	}
+        }
+        return da;
+    }
 
-	private void SetLineData(List<BNew> datass) {
-		List<PointValue> mPointValues = new ArrayList<PointValue>();// 每一个点
-		List<AxisValue> mAxisValues = new ArrayList<AxisValue>();// 每一个X轴
+    private void SetLineData(List<BNew> datass) {
+        List<PointValue> mPointValues = new ArrayList<PointValue>();// 每一个点
+        List<AxisValue> mAxisValues = new ArrayList<AxisValue>();// 每一个X轴
 
-		// for (int i = 0; i < 10; i++) {
-		// mPointValues.add(new PointValue(i, new Random().nextInt(100)));
-		// mAxisValues.add(new AxisValue(i).setLabel("第"+i + "天")); //
-		// 为每个对应的i设置相应的label(显示在X轴)
-		// }
-		boolean IsNoData = true;
-		int MaxNumber = 0;
-		int Sizeleght = 0;
-		for (int i = 0; i < datass.size(); i++) {
+        // for (int i = 0; i < 10; i++) {
+        // mPointValues.add(new PointValue(i, new Random().nextInt(100)));
+        // mAxisValues.add(new AxisValue(i).setLabel("第"+i + "天")); //
+        // 为每个对应的i设置相应的label(显示在X轴)
+        // }
+        boolean IsNoData = true;
+        int MaxNumber = 0;
+        int Sizeleght = 0;
+        for (int i = 0; i < datass.size(); i++) {
 
-			int MyValue = StrUtils.toInt(datass.get(i).getValue());
+            int MyValue = StrUtils.toInt(datass.get(i).getValue());
 
-			mPointValues.add(new PointValue(i, IsPeople ? (int) MyValue
-					: (float) (MyValue / 100)));
-			if (IsPeople) {
-				if (MyValue >= MaxNumber)
-					MaxNumber = MyValue;
-			} else {
-				if ((int) (MyValue / 100) >= MaxNumber)
-					MaxNumber = (int) (MyValue / 100);
-			}
+            mPointValues.add(new PointValue(i, IsPeople ? (int) MyValue
+                    : (float) (MyValue / 100)));
+            if (IsPeople) {
+                if (MyValue >= MaxNumber)
+                    MaxNumber = MyValue;
+            } else {
+                if ((int) (MyValue / 100) >= MaxNumber)
+                    MaxNumber = (int) (MyValue / 100);
+            }
 
-			if (MyValue > 0) {
-				IsNoData = false;
-			}
-			mAxisValues.add(new AxisValue(i).setLabel(ChangTime(datass.get(i)
-					.getDate())));
-		}
+            if (MyValue > 0) {
+                IsNoData = false;
+            }
+            mAxisValues.add(new AxisValue(i).setLabel(ChangTime(datass.get(i)
+                    .getDate())));
+        }
 
-		Sizeleght = StrUtils.toStr(MaxNumber).length();
-		if (IsNoData == true) {
-			// sssss
-			fragment_sellstatistics_line.setVisibility(View.GONE);
-			fragment_shopline_nodata_lay.setVisibility(View.VISIBLE);
-			return;
-		} else {
-			fragment_sellstatistics_line.setVisibility(View.VISIBLE);
-			fragment_shopline_nodata_lay.setVisibility(View.GONE);
-		}
-		Line line = new Line(mPointValues).setColor( getResources().getColor(R.color.app_fen)).setCubic(true);
-		// line.setPointColor(getResources().getColor(R.color.gold));
-		// line.setShape(ValueShape.CIRCLE);
-		line.setHasPoints(false);
-		line.setFilled(true);
+        Sizeleght = StrUtils.toStr(MaxNumber).length();
+        if (IsNoData == true) {
+            // sssss
+            fragment_sellstatistics_line.setVisibility(View.GONE);
+            fragment_shopline_nodata_lay.setVisibility(View.VISIBLE);
+            return;
+        } else {
+            fragment_sellstatistics_line.setVisibility(View.VISIBLE);
+            fragment_shopline_nodata_lay.setVisibility(View.GONE);
+        }
+        Line line = new Line(mPointValues).setColor(
+                getResources().getColor(R.color.app_fen)).setCubic(true);
+        // line.setPointColor(getResources().getColor(R.color.gold));
+        // line.setShape(ValueShape.CIRCLE);
+        line.setHasPoints(false);
+//        line.setFilled(true);
+        line.setStrokeWidth(1);
+        List<Line> lines = new ArrayList<Line>();
+        lines.add(line);
+        LineChartData data = new LineChartData();
+        data.setLines(lines);
+        line.setHasLabelsOnlyForSelected(true);
 
-		List<Line> lines = new ArrayList<Line>();
-		lines.add(line);
-		LineChartData data = new LineChartData();
-		data.setLines(lines);
-		line.setHasLabelsOnlyForSelected(true);
+        // 坐标轴
+        Axis axisX = new Axis(); // X轴
+        axisX.setHasTiltedLabels(true);
 
-		// 坐标轴
-		Axis axisX = new Axis(); // X轴
-		axisX.setHasTiltedLabels(true);
+        axisX.setTextColor(Color.GRAY);
+        // axisX.setMaxLabelChars(5);
+        axisX.setValues(mAxisValues);
+        axisX.setInside(false);
+        // axisX.setMaxLabelChars(10);
+        axisX.setLineColor(Color.GRAY);
+        axisX.setHasLines(false);
+        data.setAxisXBottom(axisX);
 
-		axisX.setTextColor(Color.GRAY);
-		// axisX.setMaxLabelChars(5);
-		axisX.setValues(mAxisValues);
-		axisX.setInside(false);
-		// axisX.setMaxLabelChars(10);
-		axisX.setLineColor(Color.GRAY);
-		axisX.setHasLines(false);
-		data.setAxisXBottom(axisX);
+        Axis axisY = new Axis(); // Y轴
+        axisY.setMaxLabelChars(Sizeleght == 0 ? 1 : Sizeleght ); // 默认是3，只能看最后三个数字
+        axisY.setLineColor(Color.GRAY);
+        // axisY.setFormatter(new MyYValueFormatter())
+        axisY.setTextColor(Color.GRAY);
+        axisY.setHasLines(false);
+        data.setAxisYLeft(axisY);
+        // 坐标轴
 
-		Axis axisY = new Axis(); // Y轴
-		axisY.setMaxLabelChars(Sizeleght == 0 ? 2 : Sizeleght + 1); // 默认是3，只能看最后三个数字
-		axisY.setLineColor(Color.GRAY);
-		// axisY.setFormatter(new MyYValueFormatter())
-		axisY.setTextColor(getResources().getColor(R.color.app_fen));
-		axisY.setHasLines(false);
-		data.setAxisYLeft(axisY);
-		// 坐标轴
+        // 设置行为属性，支持缩放、滑动以及平移
+        fragment_sellstatistics_line.setInteractive(true);
+//        fragment_sellstatistics_line.setBackground(getResources().getDrawable(
+//                R.drawable.chat_bg));
+        fragment_sellstatistics_line.setZoomType(ZoomType.HORIZONTAL);
+        fragment_sellstatistics_line.setContainerScrollEnabled(true,
+                ContainerScrollType.HORIZONTAL);
+        // fragment_sellstatistics_line.setMaximumViewport(initViewPort());
 
-		// 设置行为属性，支持缩放、滑动以及平移
-		fragment_sellstatistics_line.setInteractive(true);
+        fragment_sellstatistics_line.setLineChartData(data);
+        // fragment_sellstatistics_line.no
+        // fragment_sellstatistics_line.setVisibility(View.VISIBLE);
+        // fragment_sellstatistics_line.setMaximumViewport(initViewPort());
 
-		fragment_sellstatistics_line.setBackground(getResources().getDrawable(
-				R.drawable.chat_bg));
-		fragment_sellstatistics_line.setZoomType(ZoomType.HORIZONTAL);
-		fragment_sellstatistics_line.setContainerScrollEnabled(true,
-				ContainerScrollType.HORIZONTAL);
-		// fragment_sellstatistics_line.setMaximumViewport(initViewPort());
+    }
 
-		fragment_sellstatistics_line.setLineChartData(data);
-		// fragment_sellstatistics_line.no
-		// fragment_sellstatistics_line.setVisibility(View.VISIBLE);
-		// fragment_sellstatistics_line.setMaximumViewport(initViewPort());
+    // public class MyYValueFormatter implements Formatter {
+    //
+    // private DecimalFormat mFormat;
+    //
+    // public MyYValueFormatter() {
+    // mFormat = new DecimalFormat("###,###,###,##0");
+    // }
+    //
+    // @Override
+    // public String getFormattedValue(float value, YAxis yAxis) {
+    // return mFormat.format(value);
+    // }
+    // }
+    /**
+     * 设置4个边距
+     */
+    // private Viewport initViewPort() {
+    // Viewport viewport = new Viewport();
+    // viewport.top = 100;
+    // viewport.bottom = 40;
+    // viewport.left = -10;
+    // viewport.right = 90;
+    //
+    // return viewport;
+    // }
 
-	}
+    private void TextClickControl(int Postion) {
 
-	// public class MyYValueFormatter implements Formatter {
-	//
-	// private DecimalFormat mFormat;
-	//
-	// public MyYValueFormatter() {
-	// mFormat = new DecimalFormat("###,###,###,##0");
-	// }
-	//
-	// @Override
-	// public String getFormattedValue(float value, YAxis yAxis) {
-	// return mFormat.format(value);
-	// }
-	// }
-	/**
-	 * 设置4个边距
-	 */
-	// private Viewport initViewPort() {
-	// Viewport viewport = new Viewport();
-	// viewport.top = 100;
-	// viewport.bottom = 40;
-	// viewport.left = -10;
-	// viewport.right = 90;
-	//
-	// return viewport;
-	// }
+        for (int i = 0; i < textViews.size(); i++) {
+            if (Postion == i) {// 被点击了的修改状态
+                textViews.get(Postion).setBackground(
+                        getResources().getDrawable(
+                                R.drawable.shap_sell_line_pre));
+                textViews.get(Postion).setTextColor(
+                        getResources().getColor(R.color.app_fen));
+            } else {// 未点击 的状态
+                textViews.get(i).setBackground(
+                        getResources().getDrawable(
+                                R.drawable.shap_sell_line_nor));
+                textViews.get(i).setTextColor(
+                        getResources().getColor(R.color.grey));
+            }
+        }
+        // 刷新数据
+        GetLines(Postion);
+    }
 
-	private void TextClickControl(int Postion) {
+    @Override
+    public void InitCreate(Bundle d) {
+        if (null != d && d.containsKey(Key_Tage)) {
+            SellType = d.getInt(Key_Tage);
+        }
+    }
 
-		for (int i = 0; i < textViews.size(); i++) {
-			if (Postion == i) {// 被点击了的修改状态
-				textViews.get(Postion).setBackground(
-						getResources().getDrawable(
-								R.drawable.shap_sell_line_pre));
-				textViews.get(Postion).setTextColor(
-						getResources().getColor(R.color.app_fen));
-			} else {// 未点击 的状态
-				textViews.get(i).setBackground(
-						getResources().getDrawable(
-								R.drawable.shap_sell_line_nor));
-				textViews.get(i).setTextColor(
-						getResources().getColor(R.color.grey));
-			}
-		}
-		// 刷新数据
-		GetLines(Postion);
-	}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fragment_sellstatistics_bt1:
+                CurrentPage = 0;
+                TextClickControl(CurrentPage);
 
-	@Override
-	public void InitCreate(Bundle d) {
-		if (null != d && d.containsKey(Key_Tage)) {
-			SellType = d.getInt(Key_Tage);
-		}
-	}
+                break;
+            case R.id.fragment_sellstatistics_bt2:
+                CurrentPage = 1;
+                TextClickControl(CurrentPage);
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.fragment_sellstatistics_bt1:
-			CurrentPage = 0;
-			TextClickControl(CurrentPage);
+                break;
+            case R.id.fragment_sellstatistics_bt3:
+                CurrentPage = 2;
+                TextClickControl(CurrentPage);
 
-			break;
-		case R.id.fragment_sellstatistics_bt2:
-			CurrentPage = 1;
-			TextClickControl(CurrentPage);
+                break;
+            default:
+                break;
+        }
+    }
 
-			break;
-		case R.id.fragment_sellstatistics_bt3:
-			CurrentPage = 2;
-			TextClickControl(CurrentPage);
+    @Override
+    public void getResult(int Code, String Msg, BComment Data) {
 
-			break;
-		default:
-			break;
-		}
-	}
+        List<BNew> bNews = new ArrayList<BNew>();
+        // if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+        // SetLineData(bNews);
+        // return;
+        // }
+        bNews = JSON.parseArray(Data.getHttpResultStr(), BNew.class);
+        RecordLs.put(Data.getHttpResultTage(), bNews);
+        // 刷新折线图***********************************************
+        SetLineData(bNews);
+    }
 
-	@Override
-	public void getResult(int Code, String Msg, BComment Data) {
+    @Override
+    public void onError(String error, int LoadType) {
+        LogUtils.i("s");
+    }
 
-		List<BNew> bNews = new ArrayList<BNew>();
-		// if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-		// SetLineData(bNews);
-		// return;
-		// }
-		bNews = JSON.parseArray(Data.getHttpResultStr(), BNew.class);
-		RecordLs.put(Data.getHttpResultTage(), bNews);
-		// 刷新折线图***********************************************
-		SetLineData(bNews);
-	}
+    /**
+     * 获取数据
+     */
+    private void GetLines(int CurrentIndex) {
 
-	@Override
-	public void onError(String error, int LoadType) {
-		LogUtils.i("s");
-	}
+        if (CurrentIndex == 2)
+            IsPeople = true;
+        else
+            IsPeople = false;
+        if (RecordLs.containsKey(CurrentIndex)) {// 已经下载过了 直接显示就可以
+            List<BNew> news = RecordLs.get(CurrentIndex);
+            // 开始刷新
+            SetLineData(news);
+            return;
 
-	/**
-	 * 获取数据
-	 */
-	private void GetLines(int CurrentIndex) {
+        }
+        // SellType //1==>近一周///2=>近一月 ///3==》近一季
+        // type 1收入 2销量 3访客
 
-		if (CurrentIndex == 2)
-			IsPeople = true;
-		else
-			IsPeople = false;
-		if (RecordLs.containsKey(CurrentIndex)) {// 已经下载过了 直接显示就可以
-			List<BNew> news = RecordLs.get(CurrentIndex);
-			// 开始刷新
-			SetLineData(news);
-			return;
-
-		}
-		// SellType //1==>近一周///2=>近一月 ///3==》近一季
-		// type 1收入 2销量 3访客
-
-		PromptManager.showtextLoading(BaseContext,
-				getResources().getString(R.string.loading));
-		SetTitleHttpDataLisenter(this);
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("seller_id", mBUser.getSeller_id());
-		map.put("range", SellType + "");
-		map.put("type", (CurrentIndex + 1) + "");
-		FBGetHttpData(map, Constants.SellStaatistic_Line, Method.GET,
-				CurrentIndex, INITIALIZE);
-	}
+        PromptManager.showtextLoading(BaseContext,
+                getResources().getString(R.string.loading));
+        SetTitleHttpDataLisenter(this);
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("seller_id", mBUser.getSeller_id());
+        map.put("range", SellType + "");
+        map.put("type", (CurrentIndex + 1) + "");
+        FBGetHttpData(map, Constants.SellStaatistic_Line, Method.GET,
+                CurrentIndex, INITIALIZE);
+    }
 }

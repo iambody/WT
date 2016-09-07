@@ -58,9 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <fragment
+    <FrameLayout
         android:id="@+id/activity_f_shop_goodmanger_frgment"
-        android:name="io.vtown.WeiTangApp.fragment.FShopGoodManger"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

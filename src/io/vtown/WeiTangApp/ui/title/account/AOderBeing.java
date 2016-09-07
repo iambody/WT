@@ -6,6 +6,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.coupons.BLMyCoupons;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
@@ -684,7 +685,7 @@ public class AOderBeing extends ATitleBase {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 201 && resultCode == 202) {// 优惠券返回数据
-            BLComment coupresults = (BLComment) data
+            BLMyCoupons coupresults = (BLMyCoupons) data
                     .getSerializableExtra("coupresult");
             coupComment = new BLDComment(coupresults.getCoupons_id(),
                     coupresults.getCoupons_name(),

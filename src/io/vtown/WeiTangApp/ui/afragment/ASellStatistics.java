@@ -150,37 +150,37 @@ public class ASellStatistics extends ABaseFragment implements OnClickListener,
 		TxtClick(postion);
 
 		switch (postion) {
-		case 0:
+			case 0:
 
-			if (currIndex == 1) {
-				animation = new TranslateAnimation(offset * 2, offset *1, 0, 0);
+				if (currIndex == 1) {
+					animation = new TranslateAnimation(offset * 2, offset *1, 0, 0);
 
-			} else if (currIndex == 2) {
+				} else if (currIndex == 2) {
 
-				animation = new TranslateAnimation(offset * 3, offset * 1, 0, 0);
-			}
+					animation = new TranslateAnimation(offset * 3, offset * 1, 0, 0);
+				}
 
-			break;
-		case 1:
+				break;
+			case 1:
 
-			if (currIndex == 0) {
-				animation = new TranslateAnimation(offset * 1, offset * 2, 0, 0);
-			} else if (currIndex == 2) {
-				animation = new TranslateAnimation(offset * 3, offset * 2, 0, 0);
-			}
+				if (currIndex == 0) {
+					animation = new TranslateAnimation(offset * 1, offset * 2, 0, 0);
+				} else if (currIndex == 2) {
+					animation = new TranslateAnimation(offset * 3, offset * 2, 0, 0);
+				}
 
-			break;
-		case 2:
+				break;
+			case 2:
 
-			if (currIndex == 0) {
-				animation = new TranslateAnimation(offset * 1, offset * 3, 0, 0);
-			} else if (currIndex == 1) {
-				animation = new TranslateAnimation(offset * 2, offset * 3, 0, 0);
-			}
+				if (currIndex == 0) {
+					animation = new TranslateAnimation(offset * 1, offset * 3, 0, 0);
+				} else if (currIndex == 1) {
+					animation = new TranslateAnimation(offset * 2, offset * 3, 0, 0);
+				}
 
-			break;
-		default:
-			break;
+				break;
+			default:
+				break;
 		}
 		currIndex = postion;
 		animation.setFillAfter(true);// True:图片停在动画结束位置
@@ -193,9 +193,9 @@ public class ASellStatistics extends ABaseFragment implements OnClickListener,
 				sellStatisticLines.get(currIndex), R.id.sellstatistics_fragment);
 
 		CurrentIndex = currIndex;
-		
-		 
-		
+
+
+
 	}
 
 	@Override
@@ -206,18 +206,18 @@ public class ASellStatistics extends ABaseFragment implements OnClickListener,
 	@Override
 	public void onClick(View arg0) {
 		switch (arg0.getId()) {
-		case R.id.sellstatistics_up_txt1:
-			TxtChangeControl(0);
-			break;
-		case R.id.sellstatistics_up_txt2:
-			TxtChangeControl(1);
-			break;
-		case R.id.sellstatistics_up_txt3:
-			TxtChangeControl(2);
-			break;
+			case R.id.sellstatistics_up_txt1:
+				TxtChangeControl(0);
+				break;
+			case R.id.sellstatistics_up_txt2:
+				TxtChangeControl(1);
+				break;
+			case R.id.sellstatistics_up_txt3:
+				TxtChangeControl(2);
+				break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 	}
 
@@ -237,7 +237,7 @@ public class ASellStatistics extends ABaseFragment implements OnClickListener,
 	public void onPageSelected(int arg0) {
 		TxtChangeControl(arg0);
 	}
-	
+
 	@Override
 	protected void NetConnect() {
 

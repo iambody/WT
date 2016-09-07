@@ -18,6 +18,7 @@ import io.vtown.WeiTangApp.comment.view.listview.SecondStepView;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitileNoBase;
 import io.vtown.WeiTangApp.ui.afragment.ASellStatistics;
+import io.vtown.WeiTangApp.ui.afragment.AShopGoodManger;
 import io.vtown.WeiTangApp.ui.afragment.AShopPurchase;
 import io.vtown.WeiTangApp.ui.comment.order.AShopOrderManager;
 import io.vtown.WeiTangApp.ui.comment.order.AShopPurchaseOrder;
@@ -362,10 +363,10 @@ public class AShop extends ATitileNoBase {
 					ABrandDaiLi.class));
 			break;
 		case R.id.tab_shop_good_good_guanli:// 商品管理AGoodManger.java
-			// PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-			// AShopGoodManger.class));//AGoodManger
-			PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-					AGoodManger.class));
+			 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+			 AShopGoodManger.class));//AGoodManger
+//			PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+//					AGoodManger.class));
 			break;
 		case R.id.tab_shop_xiaoshoutongji:// 销售统计
 			// PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_bg"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:orientation="vertical">
 
-    <include layout="@layout/titlebar" />
+    <include layout="@layout/titlebar"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -33,11 +33,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:background="@drawable/shape_show_select_pic_bg"
-android:horizontalSpacing="3dp"
-                android:verticalSpacing="3dp"
+                android:horizontalSpacing="3dp"
                 android:numColumns="3"
                 android:scrollbars="none"
-                 />
+                android:verticalSpacing="3dp"
+                />
 
         </LinearLayout>
 
@@ -51,7 +51,7 @@ android:horizontalSpacing="3dp"
         android:gravity="center"
         android:padding="16dp"
         android:text="@string/show_share"
-        android:textColor="@color/TextColorWhite" />
+        android:textColor="@color/TextColorWhite"/>
 
 
 </LinearLayout>

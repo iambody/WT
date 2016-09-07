@@ -211,23 +211,23 @@ public abstract class ABaseFragment extends FragmentActivity {
 			BaseFragmentTransaction.setCustomAnimations(R.anim.push_rigth_in,
 					R.anim.push_rigth_out);
 			if (!to.isAdded()) { // 先判断是否被add过
-				BaseFragmentTransaction.hide(from).add(ResourceId, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
-//				BaseFragmentTransaction.add(ResourceId, to).hide(from).commit();
+//				BaseFragmentTransaction.hide(from).add(ResourceId, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
+				BaseFragmentTransaction.add(ResourceId, to).hide(from).commit();
 			} else {
-				BaseFragmentTransaction.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
-//				BaseFragmentTransaction.show(to).hide(from).commit(); // 隐藏当前的fragment，显示下一个
+//				BaseFragmentTransaction.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
+				BaseFragmentTransaction.show(to).hide(from).commit(); // 隐藏当前的fragment，显示下一个
 			}
 		}
 	}
 
 	public void switchContent1(Fragment fragment, int ResourceId) {
-		// if (CurrentFragment != fragment) {
-		// CurrentFragment = fragment;
+		 if (CurrentFragment != fragment) {
+		 CurrentFragment = fragment;
 		BaseFragmentManager = getSupportFragmentManager();
 		BaseFragmentTransaction = BaseFragmentManager.beginTransaction();
 		BaseFragmentTransaction.replace(ResourceId, fragment) // 替换Fragment，实现切换
 				.commit();
-		// }
+		 }
 	}
 
 	public Fragment getCurrentFragment() {
