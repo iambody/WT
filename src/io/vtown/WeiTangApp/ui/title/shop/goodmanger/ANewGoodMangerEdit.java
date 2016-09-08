@@ -251,6 +251,7 @@ public class ANewGoodMangerEdit extends ATitleBase {
         }
 
         public int getCount() {
+            //
 
             return mShow_datas.size();
 
