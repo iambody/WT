@@ -228,7 +228,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     private boolean IsBrandStatue = false;
 
     private ImageView iv_shop_detail_search;
-    private EditText et_shop_detail_search;
+   // private EditText et_shop_detail_search;
 
     private boolean mFlag = true;
 
@@ -300,7 +300,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         shop_detail_downgoods_gr = (CompleteGridView) findViewById(R.id.shop_detail_downgoods_gr);
 
         iv_shop_detail_search = (ImageView) findViewById(R.id.iv_shop_detail_search);
-        et_shop_detail_search = (EditText) findViewById(R.id.et_shop_detail_search);
+        //et_shop_detail_search = (EditText) findViewById(R.id.et_shop_detail_search);
 
         shop_detail_goods_chang_iv = (ImageView) findViewById(R.id.shop_detail_goods_chang_iv);
         shop_detail_goods_chang_iv.setOnClickListener(this);
@@ -1191,7 +1191,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
 
             case R.id.iv_shop_detail_search://搜索
-                setViewAnim(mFlag);
+
                 break;
             default:
                 break;
@@ -1202,7 +1202,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     private void setViewAnim(boolean flag){
         ScaleAnimation scale = null;
         if(flag){
-            et_shop_detail_search.setVisibility(View.VISIBLE);
+            //.setVisibility(View.VISIBLE);
             scale  =  new ScaleAnimation(0.0f,1.0f,0.0f,1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
                     0.5f);
             scale.setDuration(1000);
@@ -1214,10 +1214,10 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             scale.setDuration(1000);
             scale.setFillAfter(true);
             mFlag = true;
-            et_shop_detail_search.setVisibility(View.GONE);
+            //et_shop_detail_search.setVisibility(View.GONE);
         }
 
-        et_shop_detail_search.setAnimation(scale);
+       // et_shop_detail_search.setAnimation(scale);
 
     }
 
