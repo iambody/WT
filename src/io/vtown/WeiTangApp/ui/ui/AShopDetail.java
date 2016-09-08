@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -225,6 +227,11 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     // 是否品牌按钮被点击
     private boolean IsBrandStatue = false;
 
+    private ImageView iv_shop_detail_search;
+    private EditText et_shop_detail_search;
+
+    private boolean mFlag = true;
+
 
     @Override
     protected void InItBaseView() {
@@ -292,6 +299,9 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         shop_out_scrollview = (ScrollView) findViewById(R.id.shop_out_scrollview);
         shop_detail_downgoods_gr = (CompleteGridView) findViewById(R.id.shop_detail_downgoods_gr);
 
+        iv_shop_detail_search = (ImageView) findViewById(R.id.iv_shop_detail_search);
+        et_shop_detail_search = (EditText) findViewById(R.id.et_shop_detail_search);
+
         shop_detail_goods_chang_iv = (ImageView) findViewById(R.id.shop_detail_goods_chang_iv);
         shop_detail_goods_chang_iv.setOnClickListener(this);
 
@@ -319,7 +329,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         shopdetail_imagview = (CircleImageView) findViewById(R.id.shopdetail_imagview);
 
         shopdetail_imagview.setBorderWidth(10);
-        shopdetail_imagview.setBorderColor(getResources().getColor(R.color.transparent6));
+        shopdetail_imagview.setBorderColor(getResources().getColor(R.color.TextColorWhite));
         shopdetail_imagview.setOnClickListener(this);
 
         ll_shopdetail_shop_look_show = (LinearLayout) findViewById(R.id.ll_shopdetail_shop_look_show);
@@ -348,6 +358,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         shop_detail_ziying = (TextView) findViewById(R.id.shop_detail_ziying);
         shop_detail_downgoods_ls = (CompleteListView) findViewById(R.id.shop_detail_downgoods_ls);
         downGoodsAp = new DownGoodsAp(R.layout.item_shopdetail_ziying_ls);
+        iv_shop_detail_search.setOnClickListener(this);
 
         shopdetail_shop_zizhi.setOnClickListener(this);
 
@@ -1177,9 +1188,37 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     PromptManager.SkipActivity(BaseActivity, intent);
                 }
                 break;
+
+
+            case R.id.iv_shop_detail_search://搜索
+                setViewAnim(mFlag);
+                break;
             default:
                 break;
         }
+    }
+
+
+    private void setViewAnim(boolean flag){
+        ScaleAnimation scale = null;
+        if(flag){
+            et_shop_detail_search.setVisibility(View.VISIBLE);
+            scale  =  new ScaleAnimation(0.0f,1.0f,0.0f,1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+                    0.5f);
+            scale.setDuration(1000);
+            scale.setFillAfter(true);
+            mFlag = false;
+        }else{
+            scale =  new ScaleAnimation(1.0f,0.0f,1.0f,0.0f,Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+                    0.5f);
+            scale.setDuration(1000);
+            scale.setFillAfter(true);
+            mFlag = true;
+            et_shop_detail_search.setVisibility(View.GONE);
+        }
+
+        et_shop_detail_search.setAnimation(scale);
+
     }
 
     /**

@@ -68,13 +68,13 @@ public class AMyCoupons extends ATitleBase {
 	private TextView tv_look_over_time_coupons;
 	private LinearLayout ll_look_out_data_coupons;
 
-	private List<BLMyCoupons> listdata;
+	private List<BLMyCoupons> listdata = new ArrayList<BLMyCoupons>();
 
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_my_conpons);
 		mBUser = Spuit.User_Get(getApplicationContext());
-		listdata = new ArrayList<BLMyCoupons>();
+
 		GetRequst();
 		IView();
 		ICache();
@@ -101,15 +101,16 @@ public class AMyCoupons extends ATitleBase {
 			PromptManager.showtextLoading(BaseContext,
 					getResources()
 							.getString(R.string.xlistview_header_hint_loading));
-			return;
-		}
-		try{
-			listdata = JSON.parseArray(cache_data,BLMyCoupons.class);
-		}catch (Exception e){
-			return;
-		}
-		myConpousAdapter.FrashData(listdata);
 
+		}else{
+			lv_my_conpons_list.setVisibility(View.VISIBLE);
+			try{
+				listdata = JSON.parseArray(cache_data,BLMyCoupons.class);
+			}catch (Exception e){
+				return;
+			}
+			myConpousAdapter.FrashData(listdata);
+		}
 	}
 
 	private void IView() {
