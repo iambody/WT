@@ -5,12 +5,14 @@
               android:layout_margin="30dp"
               android:background="@drawable/shape_pop_gridview_txt_normal_bg"
               android:orientation="vertical"
-              android:padding="@dimen/line_size4">
+               android:padding="@dimen/line_size1">
 
 
     <RelativeLayout
         android:id="@+id/show_share_to_friends"
-        style="@style/clickstyle"
+       android:focusable="true"
+        android:clickable="true"
+        android:background="@drawable/select_show_share_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
@@ -79,6 +81,7 @@
     <RelativeLayout
         android:id="@+id/show_share_to_show"
         style="@style/clickstyle"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
@@ -111,7 +114,9 @@
 
     <TextView
         android:id="@+id/show_share_cancel"
-        style="@style/clickstyle"
+        android:focusable="true"
+        android:clickable="true"
+        android:background="@drawable/select_show_share_down"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

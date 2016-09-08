@@ -117,6 +117,8 @@ public class ABase extends Activity {
     protected static final int LOAD_INITIALIZE = 0;// 初次进入时候
     protected static final int LOAD_REFRESHING = 1;// 刷新
     protected static final int LOAD_LOADMOREING = 2;// 加载更多
+
+    protected static final int LOAD_HindINIT = 3;// 加载更多
     // 进入UI里面 展示动画的标识
     protected static final int NOVIEW_INITIALIZE = 10;// 初次进入时候
     protected static final int NOVIEW_RIGHT = 11;// 获取数据成功

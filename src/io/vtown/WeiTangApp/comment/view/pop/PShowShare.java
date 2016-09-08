@@ -99,12 +99,12 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.show_share_to_friends://分享好友
                 Share(1);
-
+                MShowShareInterListener.GetResultType(1);
                 this.dismiss();
                 break;
             case R.id.show_share_to_weixin://分享朋友圈
                 Share(2);
-
+                MShowShareInterListener.GetResultType(2);
                 this.dismiss();
                 break;
             case R.id.show_share_to_show://show分享
@@ -112,6 +112,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                 toShow();
                 break;
             case R.id.show_share_cancel://取消
+                MShowShareInterListener.GetResultType(4);
                 this.dismiss();
                 break;
         }

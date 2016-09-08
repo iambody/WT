@@ -334,10 +334,10 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 
     /**
      * @param LoadType
-     * @param  /////20下架sale_status售卖状态100在售
+     * @param /////20下架sale_status售卖状态100在售
      * @param Page
-     * @param Is_agent             // 0-自营商品 1-品牌商品
-     * @param Is_delete            // 0-正常 1-已删除
+     * @param Is_agent                      // 0-自营商品 1-品牌商品
+     * @param Is_delete                     // 0-正常 1-已删除
      */
     private void IData(int LoadType, int sale_status, int Page, int Is_agent,
                        int Is_delete) {
@@ -1017,26 +1017,21 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
-
         switch (Data.getHttpResultTage()) {
             case 0:// 获取订单列表
-
                 List<BLGoodManger> dattaa = new ArrayList<BLGoodManger>();// BLComment
-
                 if (!StrUtils.isEmpty(Data.getHttpResultStr())) {// 数据不位空
                     dattaa = JSON.parseArray(Data.getHttpResultStr(),
                             BLGoodManger.class);
                     fragent_goodmanger_nodata_lay.setVisibility(View.GONE);
                 }
-
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {// 数据为空
 //                        if (Sale_Status != 0&&Data.getHttpLoadType()!=LOAD_LOADMOREING)
                     if (Data.getHttpLoadType() != LOAD_LOADMOREING)
-                        fragent_goodmanger_nodata_lay   .setVisibility(View.VISIBLE);
+                        fragent_goodmanger_nodata_lay.setVisibility(View.VISIBLE);
+                    else PromptManager.ShowCustomToast(BaseContext, "没有更多商品");
                     return;
                 }
-
-
                 switch (Data.getHttpLoadType()) {
                     case LOAD_INITIALIZE:// 初始化
                     case LOAD_REFRESHING:// 刷新数据
@@ -1227,7 +1222,7 @@ public class AGoodManger extends ATitleBase implements IXListViewListener {
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.tv_add_item:// ss
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ABrandList.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandList.class));
 //                BComment datas = new BComment("", "品牌");
 //                PromptManager.SkipActivity(
 //                        BaseActivity,

@@ -27,6 +27,8 @@ import io.vtown.WeiTangApp.ui.comment.ACommentList;
 import io.vtown.WeiTangApp.ui.comment.AGoodShare;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.shop.ABrandDaiLi;
+import io.vtown.WeiTangApp.ui.title.shop.ABrandList;
 import io.vtown.WeiTangApp.ui.title.shop.goodmanger.AAlterBrandNumber;
 import io.vtown.WeiTangApp.ui.title.shop.goodmanger.AGoodMangerEdit;
 
@@ -63,6 +65,7 @@ import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.title.shop.goodmanger.ANewGoodMangerEdit;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -378,7 +381,12 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
         }
 
         //局部刷新的代码
-        public void RefreshPosition(int position, int Type) {//Type==1标识除去item
+
+        /**
+         * @param position
+         * @param Type==1标识除去item Type==2 品牌列表==》上架成功
+         */
+        public void RefreshPosition(int position, int Type) {//
             //刷新局部的item
             SellingSoldoutItem holder = map.get(position);
             switch (Type) {
@@ -386,9 +394,30 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                     mydatas.remove(position);
                     notifyDataSetChanged();
                     break;
+
+                case 2://品牌列表==》上架成功
+                    int visiblePosition = lv_comment_listview.getFirstVisiblePosition();
+                    if (position - visiblePosition >= 0) {
+                        View view = lv_comment_listview.getChildAt(position - visiblePosition + 1);
+                        SellingSoldoutItem holder1 = (SellingSoldoutItem) view.getTag();
+                        holder1.tv_delete.setText("已上架");
+                        holder1.tv_delete.setTextColor(getResources().getColor(R.color.app_gray));
+                        holder1.tv_delete.setClickable(false);
+                        holder1.tv_delete.setFocusable(true);
+                    }
+
+
+                    break;
             }
 
-
+//            int visiblePosition = mListView.getFirstVisiblePosition();
+//            //只有当要更新的view在可见的位置时才更新，不可见时，跳过不更新
+//            if (itemIndex - visiblePosition >= 0) {
+//                //得到要更新的item的view
+//                View view = mListView.getChildAt(itemIndex - visiblePosition);
+//                //从view中取得holder
+//                ViewHolder holder = (ViewHolder) view.getTag();
+//                HashMap item = data.get(itemIndex);
 //			String text = holder.textView.getText().toString().trim();
 //			holder.textView.setText(text+"-");
 //			//更改数据源，防止滑动时数据错误
@@ -400,11 +429,8 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
             SellingSoldoutItem holder = null;
 
             if (arg1 == null) {
-                // arg1 = ViewHolder.ToView(BaseContext,
-                // R.layout.item_selling_and_soldout);
                 arg1 = inflater.inflate(ResourceId, null);
                 holder = new SellingSoldoutItem();
-                // holder.rb_select = ViewHolder.get(arg1, R.id.rb_select);
 
                 holder.iv_good_pic = (ImageView) arg1
                         .findViewById(R.id.iv_good_pic2);// ViewHolder.get(arg1,
@@ -527,10 +553,14 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                     holder.view_vertical_line3.setVisibility(View.VISIBLE);
                     if (mBlComment.getStatus() == 0) {// 可以上架
                         holder.tv_delete.setText("上架");
-                        holder.tv_delete.setVisibility(View.VISIBLE);
+//                        holder.tv_delete.setVisibility(View.VISIBLE);
+                        holder.tv_delete.setTextColor(getResources().getColor(R.color.black));
                     } else {//1已经上架 不可以上架
-                        holder.tv_delete.setVisibility(View.GONE);
-                        holder.view_vertical_line3.setVisibility(View.GONE);
+                        holder.tv_delete.setText("已上架");
+                        holder.tv_delete.setTextColor(getResources().getColor(R.color.app_gray));
+                        holder.tv_delete.setClickable(false);
+                        holder.tv_delete.setFocusable(true);
+//                        holder.tv_delete.setVisibility(View.VISIBLE);
                     }
 
                     // holder.tv_sold_out.setBackgroundDrawable(getResources()
@@ -566,7 +596,8 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                         case 100:
                             PromptManager.SkipActivity(BaseActivity,
                                     new Intent(BaseContext,
-                                            AGoodMangerEdit.class)
+//                                            AGoodMangerEdit.class)
+                                            ANewGoodMangerEdit.class)
                                             .putExtra("goodid",
                                                     mBlComment.getId()));
 
@@ -704,7 +735,6 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
         protected void ShowP(View BVivew, BNew bNew) {
             PShare da = new PShare(BaseContext, bNew);
             da.showAtLocation(BVivew, Gravity.BOTTOM, 0, 0);
-
         }
 
         class SellingSoldoutItem {
@@ -886,22 +916,35 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 
         switch (Data.getHttpResultTage()) {
             case 0:// 获取订单列表
-
                 List<BLGoodManger> dattaa = new ArrayList<BLGoodManger>();// BLComment
-                try {
-                    if (!StrUtils.isEmpty(Data.getHttpResultStr())) {// 数据部位空
-                        dattaa = JSON.parseArray(Data.getHttpResultStr(),
-                                BLGoodManger.class);
-                        fragent_goodmanger_nodata_lay.setVisibility(View.GONE);
-                    } else {// 数据为空
-                        if (Sale_Status != 0)
-                            fragent_goodmanger_nodata_lay
-                                    .setVisibility(View.VISIBLE);
-                    }
 
-                } catch (Exception e) {
-                    onError("解析错误", 1);
+                if (!StrUtils.isEmpty(Data.getHttpResultStr())) {// 数据不位空
+                    dattaa = JSON.parseArray(Data.getHttpResultStr(),
+                            BLGoodManger.class);
+                    fragent_goodmanger_nodata_lay.setVisibility(View.GONE);
                 }
+
+                if (StrUtils.isEmpty(Data.getHttpResultStr())) {// 数据为空
+//                        if (Sale_Status != 0&&Data.getHttpLoadType()!=LOAD_LOADMOREING)
+                    if (Data.getHttpLoadType() != LOADMOREING)
+                        fragent_goodmanger_nodata_lay.setVisibility(View.VISIBLE);
+                    return;
+                }
+//                List<BLGoodManger> dattaa = new ArrayList<BLGoodManger>();// BLComment
+//                try {
+//                    if (!StrUtils.isEmpty(Data.getHttpResultStr())) {// 数据部位空
+//                        dattaa = JSON.parseArray(Data.getHttpResultStr(),
+//                                BLGoodManger.class);
+//                        fragent_goodmanger_nodata_lay.setVisibility(View.GONE);
+//                    } else {// 数据为空
+//                        if (Sale_Status != 0)
+//                            fragent_goodmanger_nodata_lay
+//                                    .setVisibility(View.VISIBLE);
+//                    }
+//
+//                } catch (Exception e) {
+//                    onError("解析错误", 1);
+//                }
 
                 switch (Data.getHttpLoadType()) {
                     case INITIALIZE:// 初始化
@@ -968,7 +1011,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                 PromptManager.ShowCustomToast(BaseContext, "上架成功");
 //                CurrentPage = 0;
 //                LoadData(CurrentPage, INITIALIZE);
-                mycommentAdapter.RefreshPosition(DeletPostion, 1);
+                mycommentAdapter.RefreshPosition(DeletPostion, 2);
                 EventBus.getDefault().post(new BMessage(100));
                 break;
             case Manger_Good_Attrs:// 品牌商品 =》采购=》获取产品的规格
@@ -1159,8 +1202,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
         }
         if (-1000 == Methode || null == Host)
             return;
-        PromptManager.showtextLoading(BaseContext,
-                getResources().getString(R.string.loading));
+        PromptManager.showLoading(BaseContext);
         FBGetHttpData(map, Host, Methode, Type, INITIALIZE);
     }
 
@@ -1230,13 +1272,15 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_add_item:// ss
-                BComment datas = new BComment("", "品牌");
-                PromptManager.SkipActivity(
-                        BaseActivity,
-                        new Intent(BaseContext, ACommentList.class).putExtra(
-                                ACommentList.Tage_ResultKey,
-                                ACommentList.Tage_HomePopBrand).putExtra(
-                                ACommentList.Tage_BeanKey, datas));
+
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandList.class));
+//                BComment datas = new BComment("", "品牌");
+//                PromptManager.SkipActivity(
+//                        BaseActivity,
+//                        new Intent(BaseContext, ACommentList.class).putExtra(
+//                                ACommentList.Tage_ResultKey,
+//                                ACommentList.Tage_HomePopBrand).putExtra(
+//                                ACommentList.Tage_BeanKey, datas));
                 break;
 
             case R.id.fragment_isbrand_brand_txt:// 品牌
@@ -1251,7 +1295,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                             .getColor(R.color.app_fen));
                     IsBrand = true;
 
-                    CurrentPage =1;
+                    CurrentPage = 1;
                     LoadData(CurrentPage, INITIALIZE);
                 }
 
@@ -1267,7 +1311,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                     fragment_isbrand_ziying_txt.setTextColor(getResources()
                             .getColor(R.color.white));
                     IsBrand = false;
-                    CurrentPage =1;
+                    CurrentPage = 1;
                     LoadData(CurrentPage, INITIALIZE);
                 }
                 break;

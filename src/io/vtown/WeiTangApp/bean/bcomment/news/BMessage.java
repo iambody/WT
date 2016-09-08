@@ -200,6 +200,8 @@ public class BMessage {
 	private int good_numb = 0;
 	//fragment切换For all===>nopay
 	private int FragmentPostion;
+	//申请品牌商代理时候需要进行通知前边 品牌列表刷新的位置
+	private int BrandApplyPostion;
 
 	private List<String> tmpArrayList;
 
@@ -315,6 +317,14 @@ public class BMessage {
 
 	public List<String> getTmpArrayList() {
 		return tmpArrayList;
+	}
+
+	public int getBrandApplyPostion() {
+		return BrandApplyPostion;
+	}
+
+	public void setBrandApplyPostion(int brandApplyPostion) {
+		BrandApplyPostion = brandApplyPostion;
 	}
 
 	public void setTmpArrayList(List<String> tmpArrayList) {
