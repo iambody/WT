@@ -624,10 +624,9 @@ public class AGoodDetail extends ATitleBase {
 
         }
 
-        if (!StrUtils.isEmpty(datas.getGoods_info().getIntro())) {
+        if (null!=datas.getGoods_info().getIntro()&&datas.getGoods_info().getIntro().size()> 0){
 
-            final List<String> PicLs = JSON.parseArray(datas.getGoods_info()
-                    .getIntro(), String.class);
+            final List<String> PicLs = datas.getGoods_info().getIntro();
             // picTextDetailAdapter = new PicTextDetailAdapter(BaseContext,
             // R.layout.item_good_detail_pic_text_list, PicLs);
             // lv_pic_text_detail.setAdapter(picTextDetailAdapter);
@@ -658,7 +657,7 @@ public class AGoodDetail extends ATitleBase {
                 });
             }
 
-        } else {
+        }else{
 
         }
         // 是从show跳转进来的

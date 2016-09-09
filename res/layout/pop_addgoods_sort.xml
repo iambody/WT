@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/addgoods_out"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-     android:background="#8c000000"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp" >
+                android:id="@+id/addgoods_out"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#8c000000"
+                android:padding="@dimen/ui_10_dip">
+
+
+
 
     <LinearLayout
         android:id="@+id/addgoods_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/pop_addcatory_margitop"
         android:background="@drawable/shape_pop_gridview_txt_normal_bg"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <!-- 填写规格 -->
 
@@ -22,60 +25,69 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            android:paddingRight="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:text="@string/add_good_rule_txt"
-                    android:textColor="@color/app_fen" />
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/ui_10_dip"
+                    android:paddingTop="5dp">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.4" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_good_rule_txt"
+                        android:textColor="@color/gray"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quebao_goodinf"
+                        android:textSize="11dp"
+                        android:textColor="@color/app_gray"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/tv_addgoodpop_rule1"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0.3"
-                                android:gravity="center"
+                                android:layout_weight="0.7"
+                                android:gravity="left|center_vertical"
                                 android:padding="5dp"
                                 android:text="@string/nullstr"
-                                android:textColor="@color/app_fen" />
+                                android:textColor="@color/app_gray"/>
 
                             <EditText
                                 android:id="@+id/et_addgoodpop_rule1"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:paddingLeft="3dp"
                                 android:layout_weight="0.7"
-                                android:background="@drawable/shape_add_goods_edit_bg" />
+                                android:background="@drawable/shape_add_goods_edit_bg"
+                                android:paddingLeft="3dp"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -83,31 +95,31 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="5dp"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/tv_addgoodpop_rule2"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0.3"
-                                android:gravity="center"
+                                android:layout_weight="0.7"
+                                android:gravity="left|center_vertical"
                                 android:padding="5dp"
                                 android:text="@string/nullstr"
-                                android:textColor="@color/app_fen" />
+                                android:textColor="@color/app_gray"/>
 
                             <EditText
                                 android:id="@+id/et_addgoodpop_rule2"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.7"
-                                android:paddingLeft="3dp"
-                                android:background="@drawable/shape_add_goods_edit_bg" />
+                                android:background="@drawable/shape_add_goods_edit_bg"
+                                android:paddingLeft="3dp"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
-            <View style="@style/line_left" />
+            <View style="@style/line_left1"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -115,7 +127,7 @@
                 android:background="@drawable/white"
                 android:orientation="horizontal"
                 android:paddingBottom="12dp"
-                android:paddingTop="12dp" >
+                android:paddingTop="12dp">
 
                 <TextView
                     android:layout_width="0dp"
@@ -123,32 +135,32 @@
                     android:layout_weight="1"
                     android:padding="5dp"
                     android:text="@string/add_good_rule_retail_price"
-                    android:textColor="@color/app_fen" />
+                    android:textColor="@color/app_gray"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
                 <EditText
                     android:id="@+id/et_addgoodpop_retail_price"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingLeft="3dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/shape_add_goods_edit_bg"
                     android:inputType="numberDecimal"
-                    android:background="@drawable/shape_add_goods_edit_bg" />
+                    android:paddingLeft="3dp"/>
             </LinearLayout>
 
-            <View style="@style/line_left" />
+            <View style="@style/line"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white"
                 android:orientation="horizontal"
-                android:paddingBottom="12dp"
-                android:paddingTop="12dp" >
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp">
 
                 <TextView
                     android:layout_width="0dp"
@@ -156,21 +168,21 @@
                     android:layout_weight="1"
                     android:padding="5dp"
                     android:text="@string/add_good_rule_inventory"
-                    android:textColor="@color/app_fen" />
+                    android:textColor="@color/app_gray"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
                 <EditText
                     android:id="@+id/et_addgoodpop_inventory"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingLeft="3dp"
+                    android:layout_weight="2"
                     android:background="@drawable/shape_add_goods_edit_bg"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:paddingLeft="3dp"/>
             </LinearLayout>
         </LinearLayout>
         <!-- 填写规格*************************** -->
@@ -179,7 +191,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/pop_addgoods_cancel_btn"
@@ -188,7 +200,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/left_btn_select"
                 android:text="@string/cancle"
-                android:textColor="@color/app_gray" />
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/pop_addgoods_confirm_btn"
@@ -197,7 +209,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/right_btn_select"
                 android:text="@string/queding"
-                android:textColor="@color/app_gray" />
+                android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>
 

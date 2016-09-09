@@ -5,6 +5,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
@@ -132,7 +133,7 @@ public class AShow extends ATitleBase implements IXListViewListener {
                 R.layout.activity_show, null);
         user_Get = Spuit.User_Get(BaseContext);
         SetTitleHttpDataLisenter(this);
-        // EventBus.getDefault().register(this, "GetMessage", BMessage.class);
+        EventBus.getDefault().register(this, "GetMessage", BMessage.class);
         IBase();
         ICacheLs();
 
@@ -223,7 +224,10 @@ public class AShow extends ATitleBase implements IXListViewListener {
         if (mBMessage.getMessageType() == BMessage.Tage_Main_To_ShowData) {// 第一次进来
             // 后台通知
             // 进行偷偷加载数据
-            IData(LastId, LOAD_INITIALIZE);
+            IData(LastId, LOAD_HindINIT);
+        }
+        if (mBMessage.getMessageType() == BMessage.Tage_Show_Hind_Load) {
+            IData(LastId, LOAD_HindINIT);
         }
     }
 
@@ -685,31 +689,45 @@ public class AShow extends ATitleBase implements IXListViewListener {
                 BNew bnew = new BNew();
                 bnew.setTitle(datBlComment.getGoodinfo().getTitle());
                 bnew.setContent(datBlComment.getSellerinfo().getSeller_name());
-                bnew.setShare_log(datBlComment.getImgarr().get(0));
-                bnew.setShare_url(datBlComment.getGoodurl());
-                PShowShare showShare = new PShowShare(BaseContext, bnew, datBlComment);
 
+                bnew.setShare_url(datBlComment.getGoodurl());
+                if (datBlComment.getIs_type().equals("0")) {//照片直接取出第一张进行分享
+                    bnew.setShare_log(datBlComment.getImgarr().get(0));
+                } else {//视频  直接取出视频封面分享
+                    bnew.setShare_log(datBlComment.getPre_url());
+                }
+                PShowShare showShare = new PShowShare(BaseContext, bnew);
                 showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
                     @Override
                     public void GetResultType(int ResultType) {
                         switch (ResultType) {
                             case 3:
                                 if (datBlComment.getIs_type().equals("0")) {// 照片
+                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
+                                    BShowShare MyBShowShare = new BShowShare();
+                                    MyBShowShare.setImgarr(datBlComment.getImgarr());
+                                    MyBShowShare.setGoods_id(datBlComment.getGoods_id());
+                                    MyBShowShare.setIntro(StrUtils.NullToStr3(datBlComment.getIntro()));
                                     PromptManager
                                             .SkipActivity(
                                                     BaseActivity,
                                                     new Intent(BaseActivity, ShowSelectPic.class).putExtra(
                                                             ShowSelectPic.Key_Data,
-                                                            datBlComment));
+                                                            MyBShowShare));
 
                                 } else {// 视频
+                                    BShowShare MyVidoBShowShare = new BShowShare();
+                                    MyVidoBShowShare.setVido_pre_url(datBlComment.getPre_url());
+                                    MyVidoBShowShare.setVido_Vid(datBlComment.getVid());
+                                    MyVidoBShowShare.setIntro(StrUtils.NullToStr3(datBlComment.getIntro()));
+                                    MyVidoBShowShare.setGoods_id(datBlComment.getGoods_id());
                                     PromptManager.SkipActivity(
                                             BaseActivity,
                                             new Intent(BaseActivity, AGoodVidoShare.class)
                                                     .putExtra(AGoodVidoShare.Key_VidoFromShow,
                                                             true).putExtra(
                                                     AGoodVidoShare.Key_VidoData,
-                                                    datBlComment));
+                                                    MyVidoBShowShare));
 
                                 }
                                 break;
@@ -886,132 +904,6 @@ public class AShow extends ATitleBase implements IXListViewListener {
         IData(LastId, LOAD_LOADMOREING);
     }
 
-    // 点击分享后需要进行判断IsPass=>true标识可以上架/////IsPass=>false标识不可以上架只能转发
-    // private void ShowSelectPop(final BLShow datBlComment2,
-    // final Boolean IsBrand, final Boolean IsPass) {
-    // String Title = StrUtils.NullToStr(datBlComment2.getSellerinfo()
-    // .getSeller_name()) + "(" + (IsBrand ? "品牌" : "自营") + ")";
-    //
-    // ShowCustomDialog(Title, "取消", "分享", new IDialogResult() {
-    // @Override
-    // public void RightResult() {
-    // if (datBlComment2.getIs_type().equals("0")) {// 照片
-    // PromptManager.SkipActivity(
-    // BaseActivity,
-    // new Intent(BaseActivity, AGoodShare.class)
-    // .putExtra(AGoodShare.Key_FromShow, true)
-    // .putExtra(AGoodShare.Key_Data,
-    // datBlComment2));
-    //
-    // } else {// 视频
-    // PromptManager.SkipActivity(
-    // BaseActivity,
-    // new Intent(BaseActivity, AGoodVidoShare.class)
-    // .putExtra(AGoodVidoShare.Key_VidoFromShow,
-    // true).putExtra(
-    // AGoodVidoShare.Key_VidoData,
-    // datBlComment2));
-    //
-    // }
-    //
-    // }
-    //
-    // @Override
-    // public void LeftResult() {
-    // }
-    // });
-    //
-    // // final CustomDialog dialog = new CustomDialog(BaseContext,
-    // // R.style.mystyle, R.layout.customdialog, 3, "取消", !IsPass ? "分享"
-    // // : "上架并分享");
-    // // final CustomDialog dialog = new CustomDialog(BaseContext,
-    // // R.style.mystyle, R.layout.customdialog, 3, "取消", "分享");
-    // //
-    // // dialog.show();
-    // // dialog.setTitleText(Title);
-    // // dialog.setConfirmListener(new onConfirmClick() {
-    // // @Override
-    // // public void onConfirmCLick(View v) {
-    // // dialog.dismiss();
-    // // // if (IsPass) {// 是品牌商品直接分享
-    // // // PromptManager.SkipActivity(
-    // // // BaseActivity,
-    // // // new Intent(BaseActivity, AGoodDetail.class)
-    // // // .putExtra("needshowpop", true).putExtra(
-    // // // "goodid",
-    // // // datBlComment2.getGoods_id()));
-    // // // } else {// 是自营产品时候=》需要调用接口判断是否已经上架过=》if(上架过)跳转分享页面else跳转商品详情
-    // //
-    // // if (datBlComment2.getIs_type().equals("0")) {// 照片
-    // // PromptManager.SkipActivity(
-    // // BaseActivity,
-    // // new Intent(BaseActivity, AGoodShare.class)
-    // // .putExtra(AGoodShare.Key_FromShow, true)
-    // // .putExtra(AGoodShare.Key_Data,
-    // // datBlComment2));
-    // //
-    // // } else {// 视频
-    // // PromptManager.SkipActivity(
-    // // BaseActivity,
-    // // new Intent(BaseActivity, AGoodVidoShare.class)
-    // // .putExtra(AGoodVidoShare.Key_VidoFromShow,
-    // // true).putExtra(
-    // // AGoodVidoShare.Key_VidoData,
-    // // datBlComment2));
-    // //
-    // // }
-    // //
-    // // // }
-    // //
-    // // }
-    // // });
-    // // dialog.setcancelListener(new oncancelClick() {
-    // // @Override
-    // // public void oncancelClick(View v) {
-    // // dialog.dismiss();
-    // // }
-    // // });
-    // }
-    //
-    // // 是否品牌商品=》需要
-    // private void ShowClick(final BLShow datBlComment2) {
-    // final boolean IsBrand = datBlComment2.getSellerinfo().getIs_brand()
-    // .equals("1");
-    // PromptManager.showtextLoading(BaseContext,
-    // getResources().getString(R.string.loading));
-    // NHttpBaseStr mHttpBaseStr = new NHttpBaseStr(BaseContext);
-    // mHttpBaseStr.setPostResult(new IHttpResult<String>() {
-    //
-    // @Override
-    // public void onError(String error, int LoadType) {
-    // PromptManager.ShowCustomToast(BaseContext, error);
-    // }
-    //
-    // @Override
-    // public void getResult(int Code, String Msg, String Data) {
-    // // if (IsBrand) {// 是品牌商品
-    // // if (200 == Code) {// 品牌商品可以上架并且分享
-    // ShowSelectPop(datBlComment2, IsBrand, 200 == Code);
-    // // } else {// 品牌商品不可以上架=》只能分享
-    // // }
-    // //
-    // // } else {// 是自营商品
-    // // if (200 == Code) {// 自营商品可以上架并且分享
-    // // } else {// 品牌商品可以上架=》只能分享
-    // // }
-    // // }
-    //
-    // }
-    // });
-    //
-    // HashMap<String, String> map = new HashMap<String, String>();
-    // map.put("goods_id", datBlComment2.getGoods_id());
-    // map.put("seller_id", user_Get.getSeller_id());
-    // mHttpBaseStr.getData(IsBrand ? Constants.IsDaiMai_Brand
-    // : Constants.IsDaiMai_ZiYing, map, Method.GET);
-    //
-    // }
-
     /**
      * 删除我自己的show
      */
@@ -1043,26 +935,5 @@ public class AShow extends ATitleBase implements IXListViewListener {
             public void LeftResult() {
             }
         });
-
-        // final CustomDialog dialog = new CustomDialog(BaseContext,
-        // R.style.mystyle, R.layout.customdialog, 3, "取消", "确定");
-        //
-        // dialog.show();
-        // dialog.setTitleText("是否删除该show");
-        // dialog.setConfirmListener(new onConfirmClick() {
-        // @Override
-        // public void onConfirmCLick(View v) {
-        //
-        // dialog.dismiss();
-        // PromptManager.showtextLoading3(BaseContext, "正在删除..");
-        // DeletMyShow(ShowId, Postion);
-        // }
-        // });
-        // dialog.setcancelListener(new oncancelClick() {
-        // @Override
-        // public void oncancelClick(View v) {
-        // dialog.dismiss();
-        // }
-        // });
     }
 }

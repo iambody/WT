@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.addgood.BCategory;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import android.app.Activity;
 import android.app.Fragment;
@@ -77,7 +78,7 @@ public class GoodCategoryFragment extends Fragment {
 
 	
 	
-	public void SetData(List<BLComment> datas){
+	public void SetData(List<BCategory> datas){
 		GridView gv_good_2_category = (GridView) view.findViewById(R.id.gv_good_2_category);
 		adapter = new Category2Adapter(datas);
 		gv_good_2_category.setAdapter(adapter);
@@ -99,9 +100,9 @@ public class GoodCategoryFragment extends Fragment {
 	
 	class Category2Adapter extends BaseAdapter{
 		
-		private List<BLComment> datas;
+		private List<BCategory> datas;
 		
-		public Category2Adapter(List<BLComment> datas){
+		public Category2Adapter(List<BCategory> datas){
 			super();
 			this.datas = datas;
 		}

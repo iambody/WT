@@ -40,8 +40,8 @@
     <string name="xlistview_footer_hint_ready">查看更多</string>
     <string name="xlistview_footer_hint_normal">更多</string>
     <string name="xlistview_header_hint_ready">松开刷新数据</string>
-    <string name="xlistview_header_hint_loading">玩命加载中···</string>
-    <string name="loading">玩命加载中···</string>
+    <string name="xlistview_header_hint_loading">加载中···</string>
+    <string name="loading">加载中···</string>
     <string name="edgoodloading">编辑中···</string>
     <string name="home_souso">搜索微糖商品/店铺</string>
     <string name="dataerror">数据异常</string>
@@ -364,7 +364,7 @@
     <string name="add_good_rule_inventory">库存</string>
     <string name="add_good_rule_junior_commission">下级代卖佣金</string>
     <string name="go_on_add_rule">添加规格</string>
-    <string name="add_good_post_price">运费</string>
+    <string name="add_good_post_price">填写运费</string>
     <string name="add_good_free_post_price">0元默认包邮</string>
     <string name="allow_modify_junior_price">是否允许下级修改价格</string>
     <string name="add_good_preview">预览</string>
@@ -460,6 +460,7 @@
 
     <!-- 商品管理 -->
     <string name="add">添加</string>
+    <string name="addgood">添加商品</string>
     <!-- 图片浏览 -->
     <string name="only_choose_num">超出可选图片张数</string>
     <string name="finish">完成</string>
@@ -497,6 +498,7 @@
     <!-- 商品分享&&&&&&&&&&&&&&&& -->
     <string name="szhuan_saying">说点什么吧...</string>
     <string name="share">分享</string>
+    <string name="shareshow">分享SHOW圈</string>
     <string name="show_share">Show分享</string>
     <string name="uploading">正在上传中</string>
     <string name="kongkong">空空如也....</string>
@@ -530,6 +532,33 @@
     <string name="title_activity_andk_test">ANdkTest</string>
     <string name="putin_shouhuo_name">输入收货人电话</string>
     <string name="input_shouhuoren_mingzi">输入收货人姓名</string>
+    <string name="newgoodedit_good_Pic">商品图片</string>
+    <string name="newgoodedit_good_Pic_desc">(供商品详情页面商品轮播图显示使用,谨慎修改)</string>
+    <string name="newgoodedit_good_desc">商品详情</string>
+    <string name="newgoodedit_good_desc_desc">(供商品详情页面图文详情显示使用,请谨慎修改)</string>
+    <string name="new_good_manager_ed_vido">商品视频</string>
+    <string name="new_good_manager_ed_desc">(供商品详情页面商品视频播放使用,请谨慎修改)</string>
+    <string name="replace">替换</string>
+    <string name="upload_good_goodvido">商品视频</string>
+    <string name="upload_good_goodvido_des">(供商品详情页视频显示使用)</string>
+    <string name="upload_good_goods">商品图片</string>
+    <string name="upload_good_goods_des">(供商品详情页轮播图显示使用)</string>
+    <string name="upload_good_desctxt">商品描述</string>
+    <string name="upload_good_desctxt_desc">(供商品详情页描述显示使用)</string>
+    <string name="pic">照片</string>
+    <string name="vido">视频</string>
+    <string name="picurlerror">视频损坏请重新录制</string>
+    <string name="plese_add_title">请填写标题</string>
+    <string name="plese_add_category">请添加规格</string>
+    <string name="plese_add_add">请选择发货地址</string>
+    <string name="plese_add_postmony">请填写运费</string>
+    <string name="plese_add_desc">请添加宝贝描述图片</string>
+    <string name="plese_add_goodpic">请添加宝贝图片</string>
+    <string name="plese_add_goodvido">请录制商品视频</string>
+    <string name="addgoodover">上传完成</string>
+    <string name="addgooderr">上传失败请重新上传</string>
+    <string name="addgooding">上架中,喝杯茶吧</string>
+    <string name="quebao_goodinf">(请确保规格描述尽可能准确)</string>
 
 
 </resources>

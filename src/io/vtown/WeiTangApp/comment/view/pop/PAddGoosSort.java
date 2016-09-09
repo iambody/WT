@@ -2,6 +2,7 @@ package io.vtown.WeiTangApp.comment.view.pop;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.addgood.BCategory;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import android.content.Context;
@@ -60,9 +61,9 @@ public class PAddGoosSort extends PopupWindow implements OnClickListener {
 	/**
 	 * 获取的数据源
 	 */
-	private BLComment ResouceData = new BLComment();
+	private BCategory ResouceData = new BCategory();
 
-	public PAddGoosSort(Context pContext, BLComment datBlCommen) {
+	public PAddGoosSort(Context pContext, BCategory datBlCommen) {
 		super();
 		this.pContext = pContext;
 
@@ -106,7 +107,7 @@ public class PAddGoosSort extends PopupWindow implements OnClickListener {
 	 * @param resouceData2
 	 *            刷新POP数据
 	 */
-	private void IData(BLComment resouceData2) {
+	private void IData(BCategory resouceData2) {
 		tv_addgoodpop_rule1.setText(resouceData2.getAdd_good_attrs_name_1());
 		tv_addgoodpop_rule2.setText(resouceData2.getAdd_good_attrs_name_2());
 	}
@@ -197,7 +198,7 @@ public class PAddGoosSort extends PopupWindow implements OnClickListener {
 			return false;
 		}
 
-		BLComment mComment = new BLComment();
+		BCategory mComment = new BCategory();
 
 		mComment.setAdd_good_attrs_value_1(value1);
 		mComment.setAdd_good_attrs_value_2(value2);
@@ -220,7 +221,7 @@ public class PAddGoosSort extends PopupWindow implements OnClickListener {
 	private OnPopupListener myListener;
 
 	public interface OnPopupListener {
-		void sendData(BLComment ResouceData);
+		void sendData(BCategory ResouceData);
 	}
 
 	public void SetOnPopupListener(OnPopupListener listener) {

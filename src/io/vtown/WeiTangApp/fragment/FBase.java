@@ -37,7 +37,7 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
 	protected static final int INITIALIZE = 0;// 初次进入时候
 	protected static final int REFRESHING = 1;// 刷新
 	protected static final int LOADMOREING = 2;// 加载更多
-
+	protected static final int LOADHind = 3;// 偷偷加载
 	/**
 	 * 获取HTtp数后的接口 供给子类暴露接口
 	 */

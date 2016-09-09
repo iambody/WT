@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,12 +25,14 @@ import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
 import io.vtown.WeiTangApp.bean.bcomment.easy.PicImageItem;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.net.qiniu.NUPLoadUtil;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils;
 import io.vtown.WeiTangApp.comment.selectpic.ui.AShareGaller;
 import io.vtown.WeiTangApp.comment.selectpic.util.Bimp;
@@ -55,7 +58,7 @@ public class ShowSelectPic extends ATitleBase {
     // show；列表传递进来的数据****************
     public final static String Key_Data = "showdata";
     // =====>从show列表进入的分享界面
-    private BLShow ShowDatas = new BLShow();// ;new BLComment();
+    private BShowShare ShowDatas = new BShowShare();//
 
     // 上传图片时候的九宫格的Ap
     private MyGridAdapter myGridAdapter;
@@ -88,6 +91,8 @@ public class ShowSelectPic extends ATitleBase {
 
     private void IView() {
         good_show_select_share_ed = (EditText) findViewById(R.id.good_show_select_share_ed);
+        good_show_select_share_ed.setText(ShowDatas.getIntro());
+
         good_show_select_gridview = (CompleteGridView) findViewById(R.id.good_show_select_gridview);
         good_show_select_share_bt = (TextView) findViewById(R.id.good_show_select_share_bt);
         good_show_select_share_bt.setOnClickListener(this);
@@ -96,11 +101,10 @@ public class ShowSelectPic extends ATitleBase {
 
     // 获取数据
     private void IBund() {
-        ShowDatas = (BLShow) getIntent().getSerializableExtra(Key_Data);
+        ShowDatas = (BShowShare) getIntent().getSerializableExtra(Key_Data);
         // if (IsPic) {// 是图片的分享
         showpics = GetPicChange(ShowDatas.getImgarr());
         showpics_size = GetPicChange(ShowDatas.getImgarr()).size();
-
 
 
     }
@@ -115,13 +119,13 @@ public class ShowSelectPic extends ATitleBase {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
 
-                if(getArrayData() != null && getArrayData().size() > 0){
-                    for(PicImageItem item :getArrayData()){
+                if (getArrayData() != null && getArrayData().size() > 0) {
+                    for (PicImageItem item : getArrayData()) {
                         getArrayData().remove(item);
                     }
                 }
 
-                setArrayData(showpics);
+//                setArrayData(showpics);
 
 //                Intent mIntent = new Intent(BaseContext,
 //                        AphotoPager.class);
@@ -156,15 +160,16 @@ public class ShowSelectPic extends ATitleBase {
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
         PromptManager.closeTextLoading3();
-        PromptManager.ShowCustomToast(BaseContext,"Show分享成功");
+        PromptManager.ShowCustomToast(BaseContext, "Show分享成功");
         BaseActivity.finish();
+        //偷偷刷新show列表
+        EventBus.getDefault().post(new BMessage(BMessage.Tage_Show_Hind_Load));
     }
 
     @Override
     protected void DataError(String error, int LoadType) {
         PromptManager.closeTextLoading3();
-        PromptManager.ShowCustomToast(BaseContext,"上传失败请重试");
-
+        PromptManager.ShowCustomToast(BaseContext, "上传失败请重试");
 
 
     }
@@ -192,7 +197,7 @@ public class ShowSelectPic extends ATitleBase {
         switch (V.getId()) {
             case R.id.good_show_select_share_bt:
                 hintKbTwo();
-                if(CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
                 ShowZhuanNet();
                 break;
 
@@ -201,8 +206,8 @@ public class ShowSelectPic extends ATitleBase {
                 if (showpics.size() < 9) {
                     Intent intent = new Intent(BaseContext, PicSelActivity.class);
                     intent.putExtra(PicSelActivity.Select_Img_Size_str, 9 - showpics.size());
-                    intent.putExtra(PicSelActivity.Select_Img_Type,PicSelActivity.Tage_Show_Share);
-                    startActivity( intent);
+                    intent.putExtra(PicSelActivity.Select_Img_Type, PicSelActivity.Tage_Show_Share);
+                    startActivity(intent);
                 } else {
                     PromptManager.ShowCustomToast(BaseContext, "亲，你已经有9张图片了");
                     return;
@@ -282,14 +287,9 @@ public class ShowSelectPic extends ATitleBase {
 
             if (StrUtils.isEmpty(showpics.get(i).getWeburl())) {
                 // 开始上传本地新增加的图片
-
-
-                NUpLoadUtils dLoadUtils = new NUpLoadUtils(BaseContext,
-                        StrUtils.Bitmap2Bytes(StrUtils.GetBitMapFromPath(showpics.get(Postion).getPathurl())),
-                        StrUtils.UploadQNName("photo"));
-
-                dLoadUtils.SetUpResult(new NUpLoadUtils.UpResult() {
-
+                NUPLoadUtil dLoadUtils = new NUPLoadUtil(BaseContext, new File(
+                        showpics.get(Postion).getPathurl()), StrUtils.UploadQNName("photo"));
+                dLoadUtils.SetUpResult1(new NUPLoadUtil.UpResult1() {
                     @Override
                     public void Progress(String arg0, double arg1) {
 
@@ -317,15 +317,42 @@ public class ShowSelectPic extends ATitleBase {
                 });
                 dLoadUtils.UpLoad();
 
+//                NUpLoadUtils dLoadUtils = new NUpLoadUtils(BaseContext,
+//                        StrUtils.Bitmap2Bytes(StrUtils.GetBitMapFromPath(showpics.get(Postion).getPathurl())),
+//                        StrUtils.UploadQNName("photo"));
+//
+//                dLoadUtils.SetUpResult(new NUpLoadUtils.UpResult() {
+//
+//                    @Override
+//                    public void Progress(String arg0, double arg1) {
+//
+//                    }
+//
+//                    @Override
+//                    public void Onerror() {
+//                        showpics.get(Postion).setWeburl("");
+//                        AllNumber = AllNumber + 1;
+//                        if (AllNumber == NeedUpNumber) {
+//                            UpOverToShare();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void Complete(String HostUrl, String Url) {
+//                        AllNumber = AllNumber + 1;
+//
+//                        showpics.get(Postion).setWeburl(
+//                                HostUrl);
+//                        if (AllNumber == NeedUpNumber) {
+//                            UpOverToShare();
+//                        }
+//                    }
+//                });
+//                dLoadUtils.UpLoad();
+
             }
 
         }
-
-        // PromptManager.ShowCustomToast(BaseContext, "需要上传的图片" + NeedUpNumber
-        // + ";;;;;总共图片数量" + PicLs.size());
-        // if (true)
-        // return;
-
     }
 
 

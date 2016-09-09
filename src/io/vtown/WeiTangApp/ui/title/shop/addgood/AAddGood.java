@@ -689,19 +689,19 @@ public class AAddGood extends ATitleBase {
 		} else {// 传递的是视频
 			mHashMap.put("vid", HavaUpVido);// 小视频******************
 		}
-		String SortStr = StrUtils.BeansToJson(
-				addGoodRuleAdapter.GetShortDatas()).toString();
-		mHashMap.put("attrs", SortStr);// 商品规格信息******************
+//		String SortStr = StrUtils.BeansToJson(
+//				addGoodRuleAdapter.GetShortDatas()).toString();
+//		mHashMap.put("attrs", SortStr);// 商品规格信息******************
 		mHashMap.put("seller_id", user_Get.getSeller_id());// 代理商id******************
 
 		mHashMap.put("rtype", (IsCurrentPic ? 0 : 1) + "");// 轮播图内容类型 0-图片
 															// 1-小视频******************
 															// ratio!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		mHashMap.put("itype", "0");// 内容类型 0-图片 1-文字******************
-		mHashMap.put("sell_price",
-				StrUtils.AddGoodPriceGet(addGoodRuleAdapter.GetShortDatas(), 1));// 售价**************
-		mHashMap.put("max_price",
-				StrUtils.AddGoodPriceGet(addGoodRuleAdapter.GetShortDatas(), 2));// 最大价格******************
+//		mHashMap.put("sell_price",
+//				StrUtils.AddGoodPriceGet(addGoodRuleAdapter.GetShortDatas(), 1));// 售价**************
+//		mHashMap.put("max_price",
+//				StrUtils.AddGoodPriceGet(addGoodRuleAdapter.GetShortDatas(), 2));// 最大价格******************
 		return mHashMap;
 	}
 
@@ -732,18 +732,18 @@ public class AAddGood extends ATitleBase {
 
 	// 填写规格的的POp输入框**************************************************
 	private void ShowSortPop(View addbaseView2) {
-		PAddGoosSort mAddGoosSort = new PAddGoosSort(BaseContext,
-				CurrentSortData);
-		mAddGoosSort.showAtLocation(addbaseView2, Gravity.CENTER, 0, 0);
-		mAddGoosSort.SetOnPopupListener(new OnPopupListener() {
-
-			@Override
-			public void sendData(BLComment ResouceData) {
-				SortResourcesList.add(ResouceData);
-				addGoodRuleAdapter.AddFrashData(SortResourcesList);
-
-			}
-		});
+//		PAddGoosSort mAddGoosSort = new PAddGoosSort(BaseContext,
+//				CurrentSortData);
+//		mAddGoosSort.showAtLocation(addbaseView2, Gravity.CENTER, 0, 0);
+//		mAddGoosSort.SetOnPopupListener(new OnPopupListener() {
+//
+//			@Override
+//			public void sendData(BLComment ResouceData) {
+//				SortResourcesList.add(ResouceData);
+//				addGoodRuleAdapter.AddFrashData(SortResourcesList);
+//
+//			}
+//		});
 	}
 
 	@Override

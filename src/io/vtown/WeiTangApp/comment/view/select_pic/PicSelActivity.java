@@ -59,9 +59,9 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
 
     public static String Select_Img_Size_str = "Select_Img_Size";
     public static String Select_Img_Type = "Select_Img_Type";
-    public static final int Tage_Show_Share = 101;
-    public static final int Tage_Good_Pics = 102;
-    public static final int Tage_Good_Desc = 103;
+    public static final int Tage_Show_Share = 101;//Show分享时候使用的标记
+    public static final int Tage_Good_Pics = 102;//编辑商品时候==》编辑商品图片
+    public static final int Tage_Good_Desc = 103;//编辑商品时候==》编辑商品描述
     private int Current_Type = 0;
     protected static int MAX_SEL_ENABLE = 0;
     public static final int REQUEST_PICS_CODE = 201;
@@ -434,7 +434,7 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
         Window window = getWindow();
 
         // 设置显示动画
-        window.setWindowAnimations(R.style.main_menu_animstyless);
+//        window.setWindowAnimations(R.style.main_menu_animstyless);
         mGirdView = (GridView) findViewById(R.id.id_gridView);
 
         ly_bt_content = (LinearLayout) findViewById(R.id.ly_bt_content);

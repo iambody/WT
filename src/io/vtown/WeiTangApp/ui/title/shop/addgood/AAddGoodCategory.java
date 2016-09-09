@@ -1,8 +1,11 @@
 package io.vtown.WeiTangApp.ui.title.shop.addgood;
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.addgood.BCategory;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -68,7 +71,7 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 
 	private GoodCategoryFragment goodCategoryFragment;
 
-	private List<BLComment> category_list;
+	private List<BCategory> category_list;
 
 	private LinearLayout good_category_outlay;
 
@@ -121,7 +124,7 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 			@Override
 			public void onClickIndex(int index) {
 				if(CheckNet(BaseContext))return;
-				BLComment blComment = category_list.get(index);
+				BCategory blComment = category_list.get(index);
 				if(blComment.getAttrs().size() >= 2){
 					blComment.setAdd_good_id(blComment.getId());
 					blComment.setAdd_good_cate_name(blComment.getCate_name());
@@ -134,32 +137,15 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 					PromptManager.ShowMyToast(BaseContext, "选择的规格有误");
 					return;
 				}
-				Intent intent = new Intent();
-				intent.putExtra("category_data", blComment);
-				setResult(RESULT_OK, intent);
+//				Intent intent = new Intent();
+//				intent.putExtra("category_data", blComment);
+//				setResult(RESULT_OK, intent);
+				BMessage MysBMessage=new BMessage(BMessage.Tage_AddGood_SelectCategory);
+				MysBMessage.setAddGoods_SelectCatory(blComment);
+				EventBus.getDefault().post(MysBMessage);
 				AAddGoodCategory.this.finish();
 			}
 		});
-//		if(goodCategoryFragment.isClick){
-//			//BLComment item = (BLComment) mCategory2Adapter.getItem(arg2);
-//			BLComment blComment = category_list.get(goodCategoryFragment.getPosition());
-//			if(blComment.getAttrs().size() >= 2){
-//				blComment.setAdd_good_id(blComment.getId());
-//				blComment.setAdd_good_cate_name(blComment.getCate_name());
-//				blComment.setAdd_good_attrs_id_1(blComment.getAttrs().get(0).getId());
-//				blComment.setAdd_good_attrs_id_2(blComment.getAttrs().get(1).getId());
-//				blComment.setAdd_good_attrs_name_1(blComment.getAttrs().get(0).getName());
-//				blComment.setAdd_good_attrs_name_2(blComment.getAttrs().get(1).getName());
-//				
-//			}else{
-//				PromptManager.ShowMyToast(BaseContext, "选择的规格有误");
-//				return;
-//			}
-//			Intent intent = new Intent();
-//			intent.putExtra("category_data", blComment);
-//			setResult(RESULT_OK, intent);
-//			AAddGoodCategory.this.finish();
-//		}
 
 	}
 
@@ -176,10 +162,10 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 			return;
 		}
 
-		category_list = new ArrayList<BLComment>();
+		category_list = new ArrayList<BCategory>();
 		try {
 			category_list = JSON.parseArray(Data.getHttpResultStr(),
-					BLComment.class);
+					BCategory.class);
 
 		} catch (Exception e) {
 			DataError("解析失败", 0);
@@ -239,7 +225,7 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 		private Context context;
 		private int ResourseId;
 		private LayoutInflater inflater;
-		private List<BLComment> datas = new ArrayList<BLComment>();
+		private List<BCategory> datas = new ArrayList<BCategory>();
 
 		public CategoryAdapter(Context context, int ResourseId, int type) {
 			super();
@@ -259,7 +245,7 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 		 * 
 		 * @param dass
 		 */
-		public void FrashData(List<BLComment> dass) {
+		public void FrashData(List<BCategory> dass) {
 			this.datas = dass;
 			this.notifyDataSetChanged();
 		}
@@ -307,7 +293,7 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		BLComment item = (BLComment) mCategoryAdapter.getItem(arg2);
+		BCategory item = (BCategory) mCategoryAdapter.getItem(arg2);
 		mPosition = arg2;
 		IData(item.getId(), 1);
 		mCategoryAdapter.notifyDataSetChanged();

@@ -40,7 +40,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     private RelativeLayout show_share_to_friends, show_share_to_weixin, show_share_to_show;
     private TextView show_share_cancel;
     public boolean IsErWeiMaShare = false;
-    private BLShow mBLComment;
+
 
     private ShowShareInterListener MShowShareInterListener;
 
@@ -52,13 +52,12 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         public void GetResultType(int ResultType);//1代表 好友；；2代表朋友圈  ；；3代表show分享  4代表取消
     }
 
-    public PShowShare(Context context, BNew sharebeanNew, BLShow datBlComment) {
+    public PShowShare(Context context, BNew sharebeanNew ) {
         this.mContext = context;
-        if (null == sharebeanNew && null == datBlComment) {
+        if (null == sharebeanNew  ) {
             this.dismiss();
             return;
         }
-        this.mBLComment = datBlComment;
         this.mShareBeanNew = sharebeanNew;
         mRootView = LayoutInflater.from(context).inflate(R.layout.pop_show_share, null);
 
@@ -109,7 +108,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                 break;
             case R.id.show_share_to_show://show分享
                 MShowShareInterListener.GetResultType(3);
-                toShow();
+                this.dismiss();
                 break;
             case R.id.show_share_cancel://取消
                 MShowShareInterListener.GetResultType(4);
@@ -118,41 +117,13 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         }
     }
 
-    private void toShow() {
-        PromptManager
-                .SkipActivity(
-                        (Activity) mContext,
-                        new Intent(mContext, ShowSelectPic.class).putExtra(
-                                ShowSelectPic.Key_Data,
-                                mBLComment));
-        this.dismiss();
-    }
+
 
     private void Share(int Type) {
         ShareSDK.initSDK(mContext);
         Platform platform = null;
         Platform.ShareParams sp = new Platform.ShareParams();
-        platform.setPlatformActionListener(new PlatformActionListener() {
 
-            @Override
-            public void onError(Platform arg0, int arg1, Throwable arg2) {
-                PromptManager.ShowCustomToast(mContext, "分享取消");
-                PShowShare.this.dismiss();
-            }
-
-            @Override
-            public void onComplete(Platform arg0, int arg1,
-                                   HashMap<String, Object> arg2) {
-                PromptManager.ShowCustomToast(mContext, "分享完成");
-                PShowShare.this.dismiss();
-            }
-
-            @Override
-            public void onCancel(Platform arg0, int arg1) {
-                PromptManager.ShowCustomToast(mContext, "分享取消");
-                PShowShare.this.dismiss();
-            }
-        });
         switch (Type) {
             case 1:// 好友分享
                 platform = ShareSDK.getPlatform(mContext, Wechat.NAME);
@@ -174,7 +145,27 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                 break;
         }
 
+        platform.setPlatformActionListener(new PlatformActionListener() {
 
+            @Override
+            public void onError(Platform arg0, int arg1, Throwable arg2) {
+                PromptManager.ShowCustomToast(mContext, "分享取消");
+                PShowShare.this.dismiss();
+            }
+
+            @Override
+            public void onComplete(Platform arg0, int arg1,
+                                   HashMap<String, Object> arg2) {
+                PromptManager.ShowCustomToast(mContext, "分享完成");
+                PShowShare.this.dismiss();
+            }
+
+            @Override
+            public void onCancel(Platform arg0, int arg1) {
+                PromptManager.ShowCustomToast(mContext, "分享取消");
+                PShowShare.this.dismiss();
+            }
+        });
         platform.share(sp);
     }
 

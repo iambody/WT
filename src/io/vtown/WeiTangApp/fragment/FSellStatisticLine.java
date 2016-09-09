@@ -19,6 +19,7 @@ import java.util.Random;
 
 import lecho.lib.hellocharts.gesture.ContainerScrollType;
 import lecho.lib.hellocharts.gesture.ZoomType;
+import lecho.lib.hellocharts.listener.LineChartOnValueSelectListener;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.Line;
@@ -27,6 +28,7 @@ import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.ValueShape;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
+
 import android.R.integer;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -43,7 +45,7 @@ import com.android.volley.Request.Method;
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
  * @version 创建时间：2016-6-20 下午1:21:18
-// * @see  销售统计
+ *          // * @see  销售统计
  */
 public class FSellStatisticLine extends FBase implements OnClickListener {
 
@@ -154,8 +156,8 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
         Line line = new Line(mPointValues).setColor(
                 getResources().getColor(R.color.app_fen)).setCubic(true);
         // line.setPointColor(getResources().getColor(R.color.gold));
-        // line.setShape(ValueShape.CIRCLE);
-        line.setHasPoints(false);
+        line.setShape(ValueShape.CIRCLE);
+        line.setHasPoints(true);
 //        line.setFilled(true);
         line.setStrokeWidth(1);
         List<Line> lines = new ArrayList<Line>();
@@ -178,7 +180,7 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
         data.setAxisXBottom(axisX);
 
         Axis axisY = new Axis(); // Y轴
-        axisY.setMaxLabelChars(Sizeleght == 0 ? 1 : Sizeleght ); // 默认是3，只能看最后三个数字
+        axisY.setMaxLabelChars(Sizeleght == 0 ? 1 : Sizeleght); // 默认是3，只能看最后三个数字
         axisY.setLineColor(Color.GRAY);
         // axisY.setFormatter(new MyYValueFormatter())
         axisY.setTextColor(Color.GRAY);
@@ -188,6 +190,8 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
 
         // 设置行为属性，支持缩放、滑动以及平移
         fragment_sellstatistics_line.setInteractive(true);
+        fragment_sellstatistics_line.setInteractive(true);
+        fragment_sellstatistics_line.setActivated(true);//setPreviewColor(getResources().getColor(R.color.green));
 //        fragment_sellstatistics_line.setBackground(getResources().getDrawable(
 //                R.drawable.chat_bg));
         fragment_sellstatistics_line.setZoomType(ZoomType.HORIZONTAL);
@@ -196,6 +200,18 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
         // fragment_sellstatistics_line.setMaximumViewport(initViewPort());
 
         fragment_sellstatistics_line.setLineChartData(data);
+
+        fragment_sellstatistics_line.setOnValueTouchListener(new LineChartOnValueSelectListener() {
+            @Override
+            public void onValueSelected(int i, int i1, PointValue pointValue) {
+                PromptManager.ShowCustomToast(BaseContext, pointValue.getY() + "");
+            }
+
+            @Override
+            public void onValueDeselected() {
+
+            }
+        });
         // fragment_sellstatistics_line.no
         // fragment_sellstatistics_line.setVisibility(View.VISIBLE);
         // fragment_sellstatistics_line.setMaximumViewport(initViewPort());
@@ -215,6 +231,7 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
     // return mFormat.format(value);
     // }
     // }
+
     /**
      * 设置4个边距
      */
@@ -227,7 +244,6 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
     //
     // return viewport;
     // }
-
     private void TextClickControl(int Postion) {
 
         for (int i = 0; i < textViews.size(); i++) {

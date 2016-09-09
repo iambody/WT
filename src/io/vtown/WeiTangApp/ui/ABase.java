@@ -439,7 +439,7 @@ public class ABase extends Activity {
         if (file.exists()) {
             bitmappp = ThumbnailUtils.createVideoThumbnail(
                     file.getAbsolutePath(), Thumbnails.MICRO_KIND);// 创建一个视频缩略图
-            bitmappp = ThumbnailUtils.extractThumbnail(bitmappp, 200, 200,
+            bitmappp = ThumbnailUtils.extractThumbnail(bitmappp, 300, 300,
                     ThumbnailUtils.OPTIONS_RECYCLE_INPUT);// 指定视频缩略图的大小
         }
         return bitmappp;

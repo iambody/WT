@@ -28,6 +28,7 @@ import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
 import io.vtown.WeiTangApp.ui.title.shop.ABrandCheck;
 import io.vtown.WeiTangApp.ui.title.shop.ABrandDaiLi;
 import io.vtown.WeiTangApp.ui.title.shop.addgood.AAddGood;
+import io.vtown.WeiTangApp.ui.title.shop.addgood.ANewAddGood;
 import io.vtown.WeiTangApp.ui.title.shop.center.AShopData;
 import io.vtown.WeiTangApp.ui.title.shop.channel.AChannel;
 
@@ -342,8 +343,10 @@ public class AShop extends ATitileNoBase {
 	protected void MyClick(View V) {
 		switch (V.getId()) {
 		case R.id.tab_shop_good_fabu:// 产品发布
+//			PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+//					AAddGood.class));
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-					AAddGood.class));
+					ANewAddGood.class));
 			break;
 		case R.id.tab_shop_good_oder_guanli:// 订单管理
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,

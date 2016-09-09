@@ -2,7 +2,6 @@ package io.vtown.WeiTangApp.ui.title.shop.goodmanger;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BGoodDetail;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
@@ -233,13 +232,13 @@ public class AGoodMangerEdit extends ATitleBase {
 			ImageLoaderUtil.Load2(datas2.getCover(), alter_goods_vido_cover,
 					R.drawable.error_iv1);
 		}
-		if (!StrUtils.isEmpty(datas.getGoods_info().getIntro())) { // 判断是否存在宝贝描述**************
-			PicMiaoShuLs = (ArrayList<String>) JSON.parseArray(datas2
-					.getGoods_info().getIntro(), String.class);
-			picTextAdapter = new PicTextAdapter(
-					R.layout.item_good_detail_pic_text_list, PicMiaoShuLs);
-			alter_goods_conten_ls.setAdapter(picTextAdapter);
-		}
+//		if (!StrUtils.isEmpty(datas.getGoods_info().getIntro())) { // 判断是否存在宝贝描述**************
+//			PicMiaoShuLs = (ArrayList<String>) JSON.parseArray(datas2
+//					.getGoods_info().getIntro(), String.class);
+//			picTextAdapter = new PicTextAdapter(
+//					R.layout.item_good_detail_pic_text_list, PicMiaoShuLs);
+//			alter_goods_conten_ls.setAdapter(picTextAdapter);
+//		}
 	}
 
 	private ImageCycleViewListener mAdCycleViewListener = new ImageCycleViewListener() {
@@ -901,8 +900,8 @@ public class AGoodMangerEdit extends ATitleBase {
 			map.put("intro", JSON.toJSONString(PicsChangeStr(MiaoShusUpLs)));
 			map.put("ratio", GetRate(PicsChangeStr(MiaoShusUpLs).size()));
 		} else {// 没变化
-			map.put("intro", datas.getGoods_info().getIntro());
-			map.put("ratio", datas.getGoods_info().getIntro());
+//			map.put("intro", datas.getGoods_info().getIntro());
+//			map.put("ratio", datas.getGoods_info().getIntro());
 		}
 		// 轮播图**************************************
 		if (IsPicDetail) {

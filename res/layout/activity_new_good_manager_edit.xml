@@ -1,135 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:background="@color/app_bg"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:orientation="vertical">
 
     <include layout="@layout/titlebar"/>
 
     <ScrollView
+        android:id="@+id/new_good_manager_ed_scroll"
         android:layout_width="match_parent"
-        android:scrollbars="none"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
+            <!--上边视频的布局 -->
+            <LinearLayout
+                android:id="@+id/new_good_manager_good_vido_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:text="商品图片"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/grey"
-            android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/new_good_manager_ed_vido"
+                        android:textColor="@color/grey"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:text="(供商品详情页面轮播图显示)"
-            android:textSize="11sp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/app_gray"
-            android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/newgoodedit_good_Pic_desc"
+                        android:textColor="@color/app_gray"
+                        android:textSize="11sp"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-
-        <TextView
-            android:id="@+id/tv_good_pics"
-            android:layout_width="wrap_content"
-           android:background="@drawable/shape_show_select_pic_bg"
-            android:paddingLeft="7dp"
-            android:paddingRight="7dp"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
-            android:text="添加"
-            android:textColor="@color/app_gray"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
 
 
-    <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
-        android:id="@+id/new_good_manager_good_pics_gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:background="@drawable/shape_show_select_pic_bg"
-        android:horizontalSpacing="3dp"
-        android:numColumns="3"
-        android:scrollbars="none"
-        android:verticalSpacing="3dp"
-        />
+                    <TextView
+                        android:id="@+id/new_good_manager_ed_vid_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_show_select_pic_bg"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingTop="4dp"
+                        android:text="替换"
+                        android:textColor="@color/app_gray"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:layout_height="wrap_content">
+                </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:text="商品描述"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/grey"
-            android:layout_height="wrap_content" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:text="(供商品详情页面图文详情显示)"
-            android:textSize="11sp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/app_gray"
-            android:layout_height="wrap_content" />
+                    <ImageView
+                        android:id="@+id/new_good_manager_good_pics_pre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/newgoodedit_vido_height"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+                    <ImageView
+                        android:id="@+id/new_good_manager_good_pics_control_iv"
+                        android:layout_width="@dimen/new_goodedit_vido_play_iv"
+                        android:layout_height="@dimen/new_goodedit_vido_play_iv"
+                        android:layout_centerInParent="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:src="@drawable/video_player"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <!--上边视频的布局 -->
 
 
-        <TextView
-            android:id="@+id/tv_good_desc"
-            android:layout_width="wrap_content"
-            android:background="@drawable/shape_show_select_pic_bg"
-            android:paddingLeft="7dp"
-            android:paddingRight="7dp"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
-            android:text="添加"
-            android:textColor="@color/app_gray"
-            android:layout_height="wrap_content" />
+            <!--上边图片的布局 -->
 
-    </LinearLayout>
 
-    <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
-        android:id="@+id/new_good_manager_good_desc_gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:background="@drawable/shape_show_select_pic_bg"
-        android:horizontalSpacing="3dp"
-        android:numColumns="3"
-        android:scrollbars="none"
-        android:verticalSpacing="3dp"
-        />
+            <LinearLayout
+                android:id="@+id/new_good_manager_good_pics_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/newgoodedit_good_Pic"
+                        android:textColor="@color/grey"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/new_good_manager_ed_desc"
+                        android:textColor="@color/app_gray"
+                        android:textSize="11sp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+
+                    <TextView
+                        android:id="@+id/tv_good_pics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_show_select_pic_bg"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingTop="4dp"
+                        android:text="添加"
+                        android:textColor="@color/app_gray"/>
+
+                </LinearLayout>
+
+
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+                    android:id="@+id/new_good_manager_good_pics_gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/shape_show_select_pic_bg"
+                    android:horizontalSpacing="3dp"
+                    android:numColumns="3"
+                    android:scrollbars="none"
+                    android:verticalSpacing="3dp"
+                    />
+            </LinearLayout>
+            <!--上边图片的布局 -->
+
+
+            <LinearLayout
+                android:id="@+id/new_good_manager_good_des_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/newgoodedit_good_desc"
+                    android:textColor="@color/grey"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/newgoodedit_good_desc_desc"
+                    android:textColor="@color/app_gray"
+                    android:textSize="11sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+
+                <TextView
+                    android:id="@+id/tv_good_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_show_select_pic_bg"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:paddingTop="4dp"
+                    android:text="添加"
+                    android:textColor="@color/app_gray"/>
+
+            </LinearLayout>
+
+            <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+                android:id="@+id/new_good_manager_good_desc_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@drawable/shape_show_select_pic_bg"
+                android:horizontalSpacing="3dp"
+                android:numColumns="3"
+                android:scrollbars="none"
+                android:verticalSpacing="3dp"
+                />
 
         </LinearLayout>
 
 
     </ScrollView>
-
-
+    <TextView
+        android:id="@+id/new_good_manager_good_ed_commint"
+        style="@style/bt_match"
+         android:layout_margin="@dimen/ui_10_dip"
+        android:background="@drawable/select_fen_to_gray"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/queding"
+        android:textColor="@color/TextColorWhite"
+        android:visibility="gone"/>
 
 </LinearLayout>

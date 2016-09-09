@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
 
-    <include layout="@layout/titlebar" />
+    <include layout="@layout/titlebar"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:scrollbars="none" >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/white" >
+                android:background="@drawable/white">
 
                 <EditText
                     android:id="@+id/comment_infback_ed"
@@ -33,7 +33,7 @@
                     android:background="@null"
                     android:gravity="left"
                     android:padding="10dp"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/comment_infback_ed_number"
@@ -43,7 +43,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="2dp"
                     android:layout_marginRight="2dp"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="10dp"/>
             </RelativeLayout>
 
             <View
@@ -51,17 +51,24 @@
                 android:layout_height="@dimen/line_size1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@color/app_fen" />
+                android:background="@color/app_fen"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@color/transparent"/>
+
+            <TextView
+                android:id="@+id/comment_infback_submint"
+
+                style="@style/bt_textview_comment"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/select_fen_to_gray"
+                android:padding="10dp"
+                android:text="@string/queding"/>
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/comment_infback_submint"
-        style="@style/bt_textview_comment"
-        android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        android:background="@drawable/select_fen_to_gray"
-        android:padding="10dp"
-        android:text="@string/queding" />
 
 </LinearLayout>

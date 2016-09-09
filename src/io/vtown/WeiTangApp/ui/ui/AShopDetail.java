@@ -445,6 +445,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                 IDataView(activivty_shopdetail_outlay, shopdetail_nodata_lay,
                         NOVIEW_RIGHT);
                 MyData = new BShop();
+                shop_out_scrollview.smoothScrollTo(0, 20);
                 // 解析**************************************************************************************************
                 JSONObject mJsonObject = null;
                 try {
@@ -1199,17 +1200,23 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     }
 
 
-    private void setViewAnim(boolean flag){
+    private void setViewAnim(boolean flag) {
         ScaleAnimation scale = null;
+<<<<<<< Updated upstream
         if(flag){
             //.setVisibility(View.VISIBLE);
             scale  =  new ScaleAnimation(0.0f,1.0f,0.0f,1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+=======
+        if (flag) {
+            et_shop_detail_search.setVisibility(View.VISIBLE);
+            scale = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+>>>>>>> Stashed changes
                     0.5f);
             scale.setDuration(1000);
             scale.setFillAfter(true);
             mFlag = false;
-        }else{
-            scale =  new ScaleAnimation(1.0f,0.0f,1.0f,0.0f,Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+        } else {
+            scale = new ScaleAnimation(1.0f, 0.0f, 1.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
                     0.5f);
             scale.setDuration(1000);
             scale.setFillAfter(true);
