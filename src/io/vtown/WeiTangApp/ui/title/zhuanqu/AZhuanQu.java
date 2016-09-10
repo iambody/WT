@@ -5,6 +5,9 @@ import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuan;
+import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuanQuBean;
+import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuanquGood;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -121,10 +124,10 @@ public class AZhuanQu extends ATitleBase {
 			PromptManager.ShowCustomToast(BaseContext, Msg);
 			return;
 		}
-		BDComment bdComment;
+		BZhuan bdComment;
 		try {
 			bdComment = JSON.parseObject(Data.getHttpResultStr(),
-					BDComment.class);
+					BZhuan.class);
 		} catch (Exception e) {
 			PromptManager.ShowCustomToast(BaseContext, "解析错误");
 			return;
@@ -187,7 +190,7 @@ public class AZhuanQu extends ATitleBase {
 	}
 
 	class HuoDongAdapter extends BaseAdapter {
-		private List<BLComment> data = new ArrayList<BLComment>();
+		private List<BZhuanQuBean> data = new ArrayList<BZhuanQuBean>();
 
 		private LayoutInflater layoutInflater;
 
@@ -203,7 +206,7 @@ public class AZhuanQu extends ATitleBase {
 		 * 
 		 * @param mBlComments
 		 */
-		public void FrashAp(List<BLComment> mBlComments) {
+		public void FrashAp(List<BZhuanQuBean> mBlComments) {
 			this.data = mBlComments;
 			this.notifyDataSetChanged();
 		}
@@ -242,7 +245,7 @@ public class AZhuanQu extends ATitleBase {
 			} else {
 				zhaunQuItem = (ZhaunQuItem) arg1.getTag();
 			}
-			final BLComment daComment = data.get(arg0);
+			final BZhuanQuBean daComment = data.get(arg0);
 
 			StrUtils.SetTxt(zhaunQuItem.item_zhuanqu_name,
 					daComment.getCategory_name());
@@ -277,11 +280,11 @@ public class AZhuanQu extends ATitleBase {
 	 * 内部的gridview的适配器
 	 */
 	private class InAp extends BaseAdapter {
-		private List<BLDComment> comments = new ArrayList<BLDComment>();
+		private List<BZhuanquGood> comments = new ArrayList<BZhuanquGood>();
 		private Context inContext;
 		private LayoutInflater layoutInflater;
 
-		public InAp(List<BLDComment> commentssss, Context inContext) {
+		public InAp(List<BZhuanquGood> commentssss, Context inContext) {
 			super();
 			this.comments = commentssss;
 			this.inContext = inContext;
@@ -320,17 +323,7 @@ public class AZhuanQu extends ATitleBase {
 			} else {
 				dongInItem = (HuoDongInItem) convertView.getTag();
 			}
-			BLDComment dddata = comments.get(position);
-			// LinearLayout.LayoutParams params = new LayoutParams(
-			// (DimensionPixelUtil.dip2px(BaseContext, screenWidth) - 30) / 2,
-			// (DimensionPixelUtil.dip2px(BaseContext, screenWidth) - 30) / 2);
-			//
-			//
-			// params.width = (DimensionPixelUtil.dip2px(BaseContext,
-			// screenWidth) - 30) / 2;
-			// params.height=(DimensionPixelUtil.dip2px(BaseContext,
-			// screenWidth) - 30) / 2;
-			// dongInItem.item_zhuanqu_in_iv.setLayoutParams(params);
+			BZhuanquGood dddata = comments.get(position);
 
 			ImageLoaderUtil.Load2(dddata.getCover(),
 					dongInItem.item_zhuanqu_in_iv, R.drawable.error_iv2);

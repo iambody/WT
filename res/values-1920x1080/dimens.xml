@@ -11,4 +11,5 @@
     <dimen name="newgoodedit_vido_height">80dp</dimen>
     <dimen name="good_upload_vido_iv_height">100dp</dimen>
     <dimen name="pop_addcatory_margitop">80dp</dimen>
+    <dimen name="vidoshare_height">170dp</dimen>
 </resources>

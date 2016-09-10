@@ -569,5 +569,6 @@
     <dimen name="new_goods_vido_play_pading">5dp</dimen>
     <dimen name="good_upload_vido_iv_height">100dp</dimen>
     <dimen name="pop_addcatory_margitop">40dp</dimen>
+    <dimen name="vidoshare_height">170dp</dimen>
 
 </resources>

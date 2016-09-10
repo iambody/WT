@@ -239,8 +239,8 @@ public class ANewHome extends ATitileNoBase implements IXListViewListener {
 					break;
 				case 2:// 商品详情页
 					PromptManager.SkipActivity(BaseActivity, new Intent(
-							BaseContext, AGoodDetail.class).putExtra("goodid",
-							data.getSource_id()));
+						BaseContext, AGoodDetail.class).putExtra("goodid",
+						data.getSource_id()));
 					// PromptManager.SkipActivity(BaseActivity, new
 					// Intent(BaseContext, APlayer.class));
 					break;

@@ -2,9 +2,10 @@ package io.vtown.WeiTangApp;
 
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.PicImageItem;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopGoods;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.selectpic.util.ImageItem;
 import io.vtown.WeiTangApp.event.receiver.NewMessageBroadcastReceiver;
 
 import java.io.File;
@@ -58,11 +59,12 @@ public class BaseApplication extends Application {
      */
     private AppException appException = AppException.getAppExceptionHandler();
 
-    private List<BLComment> ZiYingShop_To_Ls = new ArrayList<BLComment>();
+    private List<BShopGoods> ZiYingShop_To_Ls = new ArrayList<BShopGoods>();
 
     NewMessageBroadcastReceiver msgReceiver = new NewMessageBroadcastReceiver();
     public int PicType;// 1==>selectpice；；；2==》goodshow;3==>goodshare
-
+    //在点击图片 跳转到大图查看区域
+    private List<PicImageItem> PicImages = new ArrayList<PicImageItem>();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -127,40 +129,6 @@ public class BaseApplication extends Application {
 
         ImageLoader.getInstance().init(config);
 
-//		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-//				getApplicationContext())
-//				// .memoryCacheExtraOptions(480, 800)
-//
-//				// max width, max height，即保存的每个缓存文件的最大长宽
-//				// .discCacheExtraOptions(480, 800, CompressFormat.JPEG, 75,
-//				// null) // Can slow ImageLoader, use it carefully (Better don't
-//				// use it)/设置缓存的详细信息，最好不要设置这个
-//
-//				.threadPoolSize(3)
-//				.memoryCacheExtraOptions(480, 800)
-//				// 线程池内加载的数量
-//				.threadPriority(Thread.NORM_PRIORITY - 2)
-//				.denyCacheImageMultipleSizesInMemory()
-//				.memoryCache(new UsingFreqLimitedMemoryCache(2 * 1024 * 1024))
-//				// You can pass your own memory cache
-//				// implementation/你可以通过自己的内存缓存实现
-//				.memoryCacheSize(2 * 1024 * 1024)
-//				.discCacheSize(50 * 1024 * 1024)
-//				.discCacheFileNameGenerator(new Md5FileNameGenerator())
-//				// 将保存的时候的URI名称用MD5 加密
-//				.tasksProcessingOrder(QueueProcessingType.LIFO)
-//				.discCacheFileCount(100) // 缓存的文件数量
-//				.discCache(new UnlimitedDiscCache(new File(Constants.PicCach)))// 自定义缓存路径
-//				.defaultDisplayImageOptions(DisplayImageOptions.createSimple())
-//				.imageDownloader(
-//						new BaseImageDownloader(getApplicationContext(),
-//								5 * 1000, 30 * 1000)) // connectTimeout (5 s),
-//														// readTimeout (30
-//														// s)超时时间
-//				.writeDebugLogs() // Remove for release app
-//				.build();// 开始构建
-//		ImageLoader.getInstance().init(config);
-        // Initialize ImageLoader with configuration.
     }
 
     /**
@@ -183,7 +151,6 @@ public class BaseApplication extends Application {
     public static BaseApplication GetInstance() {
         if (null == instance) {
             instance = new BaseApplication();
-
         }
         return instance;
     }
@@ -233,7 +200,6 @@ public class BaseApplication extends Application {
     }
 
     public synchronized boolean onInit(Context context) {
-
         Context appContext = getApplicationContext();
         int pid = android.os.Process.myPid();
         String processAppName = getAppName(pid);
@@ -297,11 +263,11 @@ public class BaseApplication extends Application {
         return processName;
     }
 
-    public List<BLComment> getZiYingShop_To_Ls() {
+    public List<BShopGoods> getZiYingShop_To_Ls() {
         return ZiYingShop_To_Ls;
     }
 
-    public void setZiYingShop_To_Ls(List<BLComment> ziYingShop_To_Ls) {
+    public void setZiYingShop_To_Ls(List<BShopGoods> ziYingShop_To_Ls) {
         ZiYingShop_To_Ls = ziYingShop_To_Ls;
     }
 
@@ -313,4 +279,11 @@ public class BaseApplication extends Application {
         PicType = picType;
     }
 
+    public List<PicImageItem> getPicImages() {
+        return PicImages;
+    }
+
+    public void setPicImages(List<PicImageItem> picImages) {
+        PicImages = picImages;
+    }
 }

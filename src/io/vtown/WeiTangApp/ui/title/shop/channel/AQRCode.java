@@ -9,7 +9,6 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils.UpResult;
-import io.vtown.WeiTangApp.comment.selectpic.util.Bimp;
 import io.vtown.WeiTangApp.comment.util.QRCodeUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.view.pop.PShare;

@@ -108,9 +108,9 @@
         android:resizeable="true"
         android:smallScreens="true"/>
     <!-- 支付宝end -->
-    <instrumentation
-        android:name="android.test.InstrumentationTestRunner"
-        android:targetPackage="io.vtown.WeiTangApp"/>
+    <!--  <instrumentation
+          android:name="android.test.InstrumentationTestRunner"
+          android:targetPackage="io.vtown.WeiTangApp"/>-->
 
     <application
         android:name=".BaseApplication"
@@ -224,10 +224,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".ui.title.shop.addgood.AAddGood"
-            android:screenOrientation="portrait">
-        </activity>
+
         <activity
             android:name=".ui.title.shop.addgood.ANewAddGood"
             android:screenOrientation="portrait"/>
@@ -390,16 +387,8 @@
             android:name=".ui.title.shop.center.AShopDataEdit"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".ui.title.multiphotopicker.APublicGood"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".ui.title.multiphotopicker.AImageZoom"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
+
+
         <activity
             android:name=".ui.comment.AphotoPager"
             android:launchMode="singleTask"
@@ -543,15 +532,8 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".ui.title.shop.addgood.AEditGoodDesc"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".ui.title.shop.addgood.AAddpic"
-            android:screenOrientation="portrait">
-        </activity>
+
+
         <activity
             android:name=".ui.comment.AEditInfBack"
             android:screenOrientation="portrait">
@@ -561,11 +543,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".ui.title.shop.goodmanger.AGoodMangerEdit"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
+
         <activity
             android:name=".ui.ui.ALoadAd"
             android:launchMode="singleTask"
@@ -575,27 +553,8 @@
             android:name=".ui.title.shop.odermanger.ASeleteLogistics"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".ui.comment.ASelectPic"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".comment.selectpic.ui.AlbumActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".comment.selectpic.ui.GalleryActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".comment.selectpic.ui.ImageFile"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".comment.selectpic.ui.ShowAllPhoto"
-            android:screenOrientation="portrait">
-        </activity>
+
+
         <activity
             android:name=".ui.title.ABeQRCode"
             android:launchMode="singleTask"
@@ -616,12 +575,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".ui.comment.AGoodShare"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
-        </activity>
+
 
         <activity
             android:name=".comment.view.ShowSelectPic"
@@ -629,10 +583,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
         </activity>
-        <activity
-            android:name=".comment.selectpic.ui.AShareGaller"
-            android:screenOrientation="portrait">
-        </activity>
+
         <activity
             android:name=".ui.title.center.myorder.ACenterMyOrderDetail"
             android:screenOrientation="portrait">
@@ -693,21 +644,8 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".ui.comment.AGoodEditPicSelect"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".comment.selectpic.ui.AAlterGaller"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".comment.selectpic.ui.AAlterBum"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
+
+
         <activity
             android:name=".ui.title.shop.odermanger.AModifyDeliveryAddress"
             android:screenOrientation="portrait">
@@ -742,11 +680,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".ui.ui.AShowNew"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
+
         <activity
             android:name=".ui.title.shop.goodmanger.AAlterBrandNumber"
             android:launchMode="singleTask"
@@ -757,11 +691,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".ui.derls.AGoodManger"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
+
         <activity
             android:name=".ui.comment.order.ACenterMyOrder"
             android:launchMode="singleTask"
@@ -798,7 +728,14 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-
+        <activity
+            android:name=".ui.comment.AShopGoodSou"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.comment.ALoactePhotoPager"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->
 
 

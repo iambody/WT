@@ -24,7 +24,9 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/shap_rect_no_circular_bg"
                 android:gravity="left|top"
-                android:hint="@string/szhuan_saying"></EditText>
+                android:hint="@string/szhuan_saying"
+                android:padding="@dimen/line_size4"
+                android:textColor="@color/gray"></EditText>
 
 
             <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView

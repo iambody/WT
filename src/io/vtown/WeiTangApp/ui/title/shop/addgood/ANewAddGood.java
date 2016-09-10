@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
@@ -50,6 +51,7 @@ import io.vtown.WeiTangApp.comment.view.select_pic.PicSelActivity;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AEditInfBack;
+import io.vtown.WeiTangApp.ui.comment.ALoactePhotoPager;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderVido;
 
@@ -217,6 +219,29 @@ public class ANewAddGood extends ATitleBase {
         good_upload_vido_add_bt.setOnClickListener(this);
         good_upload_roll_add_bt.setOnClickListener(this);
         good_upload_desc_add_bt.setOnClickListener(this);
+
+
+
+        good_upload_roll_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent mIntent = new Intent(BaseContext,
+                        ALoactePhotoPager.class);
+                mIntent.putExtra("position", position);
+                BaseApplication.GetInstance().setPicImages(upgridAdapter.GetDatas());
+                PromptManager.SkipActivity(BaseActivity, mIntent);
+            }
+        });
+        good_upload_desc_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent mIntent = new Intent(BaseContext,
+                        ALoactePhotoPager.class);
+                mIntent.putExtra("position", position);
+                BaseApplication.GetInstance().setPicImages(downgridAdapter.GetDatas());
+                PromptManager.SkipActivity(BaseActivity, mIntent);
+            }
+        });
 
 
     }

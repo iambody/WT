@@ -6,9 +6,11 @@ import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BGoodDetail;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
 import io.vtown.WeiTangApp.bean.bcomment.easy.gooddetail.BDataGood;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -23,7 +25,6 @@ import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
-import io.vtown.WeiTangApp.ui.comment.AGoodShare;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.title.account.AOderBeing;
 
@@ -42,6 +43,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -964,7 +966,7 @@ public class PPurchase extends PopupWindow implements OnClickListener,
                 tv_real_lib.setBackground(pContext.getResources().getDrawable(
                         R.drawable.orange));
                 tv_virtual_lib.setTextColor(pContext.getResources().getColor(
-                        R.drawable.orange));
+                        R.color.orange));
                 tv_virtual_lib.setBackground(pContext.getResources().getDrawable(
                         R.drawable.shap_rect_no_circular_bg));
                 break;
@@ -975,7 +977,7 @@ public class PPurchase extends PopupWindow implements OnClickListener,
                 tv_virtual_lib.setBackground(pContext.getResources().getDrawable(
                         R.drawable.orange));
                 tv_real_lib.setTextColor(pContext.getResources().getColor(
-                        R.drawable.orange));
+                        R.color.orange));
                 tv_real_lib.setBackground(pContext.getResources().getDrawable(
                         R.drawable.shap_rect_no_circular_bg));
                 break;
@@ -1200,29 +1202,76 @@ public class PPurchase extends PopupWindow implements OnClickListener,
                     case 3:// 上架后转发
                         PPurchase.this.dismiss();
                         PromptManager.ShowMyToast(pContext, "上架成功");
-                        BLShow dComment = StrUtils.BDtoBL_BLShow(databean);
-                        if (dComment.getIs_type().equals("0")) {// 照片
-                            PromptManager
-                                    .SkipActivity(
-                                            pActivity,
-                                            new Intent(pActivity, ShowSelectPic.class).putExtra(
-                                                    ShowSelectPic.Key_Data,
-                                                    dComment));
+                        BNew bnew = new BNew();
+                        bnew.setTitle(databean.getSeller_name());
+                        bnew.setContent(databean.getTitle());
+                        bnew.setShare_log(StrUtils.isEmpty(databean.getCover()) ? databean.getGoods_info().getIntro().get(0) : databean.getCover());
+                        bnew.setShare_url(databean.getGoods_url());
+                        PShowShare showShare = new PShowShare(pContext, bnew);
+                        showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
+                            @Override
+                            public void GetResultType(int ResultType) {
+                                switch (ResultType) {
+                                    case 3:
+                                        if (databean.getGoods_info().getRtype().equals("0")) {// 照片
+                                            BShowShare MyBShowShare = new BShowShare();
+                                            MyBShowShare.setImgarr(databean.getGoods_info().getIntro());
+                                            MyBShowShare.setGoods_id(databean.getId());
+                                            MyBShowShare.setIntro(databean.getTitle());
+                                            PromptManager
+                                                    .SkipActivity(
+                                                            pActivity,
+                                                            new Intent(pActivity, ShowSelectPic.class).putExtra(
+                                                                    ShowSelectPic.Key_Data,
+                                                                    MyBShowShare));
 
-                        } else {// 视频
-                            PromptManager
-                                    .SkipActivity(
-                                            pActivity,
-                                            new Intent(pActivity,
-                                                    AGoodVidoShare.class)
-                                                    .putExtra(
-                                                            AGoodVidoShare.Key_VidoFromShow,
-                                                            true)
-                                                    .putExtra(
+                                        } else {// 视频
+                                            BShowShare MyVidoBShowShare = new BShowShare();
+                                            MyVidoBShowShare.setVido_pre_url(StrUtils.isEmpty(databean.getCover()) ? databean.getGoods_info().getIntro().get(0) : databean.getCover());
+                                            MyVidoBShowShare.setVido_Vid(databean.getGoods_info().getVid());
+                                            MyVidoBShowShare.setIntro(databean.getTitle());
+                                            MyVidoBShowShare.setGoods_id(databean.getId());
+
+                                            PromptManager.SkipActivity(
+                                                    pActivity,
+                                                    new Intent(pActivity, AGoodVidoShare.class)
+                                                            .putExtra(AGoodVidoShare.Key_VidoFromShow,
+                                                                    true).putExtra(
                                                             AGoodVidoShare.Key_VidoData,
-                                                            dComment));
+                                                            MyVidoBShowShare));
 
-                        }
+                                        }
+                                        break;
+
+
+                                }
+                            }
+                        });
+                        showShare.showAtLocation(BaseView, Gravity.CENTER, 0, 0);
+
+//                        BLShow dComment = StrUtils.BDtoBL_BLShow(databean);
+//                        if (dComment.getIs_type().equals("0")) {// 照片
+//                            PromptManager
+//                                    .SkipActivity(
+//                                            pActivity,
+//                                            new Intent(pActivity, ShowSelectPic.class).putExtra(
+//                                                    ShowSelectPic.Key_Data,
+//                                                    dComment));
+//
+//                        } else {// 视频
+//                            PromptManager
+//                                    .SkipActivity(
+//                                            pActivity,
+//                                            new Intent(pActivity,
+//                                                    AGoodVidoShare.class)
+//                                                    .putExtra(
+//                                                            AGoodVidoShare.Key_VidoFromShow,
+//                                                            true)
+//                                                    .putExtra(
+//                                                            AGoodVidoShare.Key_VidoData,
+//                                                            dComment));
+//
+//                        }
                         break;
                     default:
                         break;

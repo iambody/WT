@@ -27,13 +27,11 @@ import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ANull;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
-import io.vtown.WeiTangApp.ui.comment.AGoodShare;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.shop.ABrandDaiLi;
 import io.vtown.WeiTangApp.ui.title.shop.ABrandList;
 import io.vtown.WeiTangApp.ui.title.shop.goodmanger.AAlterBrandNumber;
-import io.vtown.WeiTangApp.ui.title.shop.goodmanger.AGoodMangerEdit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -1156,7 +1154,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
     /**
      * 在售=》删除下架 &&垃圾箱=》恢复彻底删除
      *
-     * @param X
+     * @param
      * @param Title
      */
     private void ShowReminder(String Title, final int Type,

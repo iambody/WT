@@ -15,12 +15,10 @@ import io.vtown.WeiTangApp.event.interf.OnPasswordInputFinish;
 import io.vtown.WeiTangApp.ui.ALoading;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.ASellStatistics;
-import io.vtown.WeiTangApp.ui.comment.ASelectPic;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderVido;
 import io.vtown.WeiTangApp.ui.title.loginregist.ALogin;
-import io.vtown.WeiTangApp.ui.title.multiphotopicker.APublicGood;
 import io.vtown.WeiTangApp.ui.ui.CaptureActivity;
 import io.vtown.WeiTangApp.wxapi.AH5Pay;
 
@@ -271,10 +269,10 @@ public class APay extends ATitleBase implements PlatformActionListener {
 			final String userid = platform.getDb().getUserId();
 			String usericon = platform.getDb().getUserIcon();
 			String platformName = platform.getName();
-			Toast.makeText(
-					BaseContext,
-					String.format("昵称%s;   id是%s;   名字是%s", nickname, userid,
-							platformName), 10 * 1000).show();
+//			Toast.makeText(
+//					BaseContext,
+//					String.format("昵称%s;   id是%s;   名字是%s", nickname, userid,
+//							platformName), 10*1000).show();
 
 		}
 	};
@@ -292,8 +290,7 @@ public class APay extends ATitleBase implements PlatformActionListener {
 			Share9();
 			break;
 		case R.id.ssduotu:
-			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-					ASelectPic.class));
+
 
 			break;
 		case R.id.loadinggg:// 引导页
@@ -324,8 +321,6 @@ public class APay extends ATitleBase implements PlatformActionListener {
 			ToImagPage();
 			break;
 		case R.id.bbaa:
-			PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-					APublicGood.class));
 			break;
 		case R.id.bba:// 支付
 			Pay();

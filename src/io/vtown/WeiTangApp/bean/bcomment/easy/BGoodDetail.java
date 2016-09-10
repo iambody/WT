@@ -6,6 +6,7 @@ import io.vtown.WeiTangApp.bean.BBase;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.gooddetail.BDataGood;
+import io.vtown.WeiTangApp.bean.bcomment.easy.gooddetail.BDataPrice;
 import io.vtown.WeiTangApp.bean.bcomment.easy.gooddetail.BSellInf;
 
 /**
@@ -32,7 +33,7 @@ public class BGoodDetail extends BBase {
     private String is_delete;// =0
     private String is_desell;// =0
     private String is_edit;// =0
-    private BLDComment ladder_price = new BLDComment();//
+    private BDataPrice ladder_price = new BDataPrice();//
     private String max_price;// =3
     private String postage;// =0
     private String sale_status;// =100
@@ -189,11 +190,11 @@ public class BGoodDetail extends BBase {
         this.is_edit = is_edit;
     }
 
-    public BLDComment getLadder_price() {
+    public BDataPrice getLadder_price() {
         return ladder_price;
     }
 
-    public void setLadder_price(BLDComment ladder_price) {
+    public void setLadder_price(BDataPrice ladder_price) {
         this.ladder_price = ladder_price;
     }
 

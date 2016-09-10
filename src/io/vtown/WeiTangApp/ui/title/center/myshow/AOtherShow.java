@@ -23,6 +23,7 @@ import io.vtown.WeiTangApp.ui.comment.ACommentList;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
+import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 import java.util.ArrayList;
@@ -192,10 +193,9 @@ public class AOtherShow extends ATitleBase implements OnFooterRefreshListener {
 				0, 0);
 		center_othershow_head.setLayoutParams(pasLayoutParams);
 		// center_othershow_head.setOnClickListener(this);
-		center_othershow_head.setOnTouchListener(new OnTouchListener() {
-
+		center_othershow_head.setOnClickListener(new OnClickListener() {
 			@Override
-			public boolean onTouch(View v, MotionEvent event) {
+			public void onClick(View v) {
 				PromptManager.SkipActivity(
 						BaseActivity,
 						new Intent(BaseActivity, baseBcBComment.getIs_brand()
@@ -206,9 +206,25 @@ public class AOtherShow extends ATitleBase implements OnFooterRefreshListener {
 								BaseKey_Bean,
 								new BComment(baseBcBComment.getId(),
 										baseBcBComment.getSeller_name())));
-				return true;
 			}
 		});
+//		center_othershow_head.setOnTouchListener(new OnTouchListener() {
+//
+//			@Override
+//			public boolean onTouch(View v, MotionEvent event) {
+//				PromptManager.SkipActivity(
+//						BaseActivity,
+//						new Intent(BaseActivity, baseBcBComment.getIs_brand()
+//								.equals("1") ? ABrandDetail.class
+//								: AShopDetail.class).putExtra(
+//								ACommentList.Tage_ResultKey,
+//								ACommentList.Tage_HomePopBrand).putExtra(
+//								BaseKey_Bean,
+//								new BComment(baseBcBComment.getId(),
+//										baseBcBComment.getSeller_name())));
+//				return true;
+//			}
+//		});
 
 	}
 
@@ -421,7 +437,16 @@ public class AOtherShow extends ATitleBase implements OnFooterRefreshListener {
 					R.layout.item_center_show_inside,
 					datas.get(arg0).getList(), itemWidth);
 			centerShowOutside.lv_item_center_show.setAdapter(centerShowInAp);
-
+			centerShowOutside.lv_item_center_show.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					BLOtherShowIn ddddd= (BLOtherShowIn) parent.getItemAtPosition(position);
+//					PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity,));
+					PromptManager.SkipActivity(BaseActivity, new Intent(
+							BaseContext, AGoodDetail.class).putExtra("goodid",
+							ddddd.getGoods_id()));
+				}
+			});
 			// centerShowOutside.lv_item_center_show
 			// .setOnItemClickListener(new OnItemClickListener() {
 			// @Override
@@ -644,20 +669,33 @@ public class AOtherShow extends ATitleBase implements OnFooterRefreshListener {
 
 				ImageLoaderUtil.Load2(datas.get(arg0), pic.iv_center_show_pic,
 						R.drawable.error_iv2);
-				pic.iv_center_show_pic
-						.setOnTouchListener(new OnTouchListener() {
+				pic.iv_center_show_pic.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent mIntent = new Intent(BaseContext,
+								AphotoPager.class);
+						mIntent.putExtra("position", arg0);
+						mIntent.putExtra("urls", ToArray(datas));
+						PromptManager.SkipActivity(BaseActivity,
+								mIntent);
+					}
+				});
 
-							@Override
-							public boolean onTouch(View v, MotionEvent event) {
-								Intent mIntent = new Intent(BaseContext,
-										AphotoPager.class);
-								mIntent.putExtra("position", arg0);
-								mIntent.putExtra("urls", ToArray(datas));
-								PromptManager.SkipActivity(BaseActivity,
-										mIntent);
-								return true;
-							}
-						});
+
+//				pic.iv_center_show_pic
+//						.setOnTouchListener(new OnTouchListener() {
+//
+//							@Override
+//							public boolean onTouch(View v, MotionEvent event) {
+//								Intent mIntent = new Intent(BaseContext,
+//										AphotoPager.class);
+//								mIntent.putExtra("position", arg0);
+//								mIntent.putExtra("urls", ToArray(datas));
+//								PromptManager.SkipActivity(BaseActivity,
+//										mIntent);
+//								return true;
+//							}
+//						});
 
 				// pic.iv_center_show_pic
 				// .setOnClickListener(new OnClickListener() {

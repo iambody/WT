@@ -1,7 +1,6 @@
 package io.vtown.WeiTangApp.bean.bcomment.news;
 
 import io.vtown.WeiTangApp.bean.bcomment.easy.addgood.BCategory;
-import io.vtown.WeiTangApp.comment.selectpic.util.ImageItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +22,7 @@ public class BMessage {
     public static final int Tage_AddGoodPic = 501;
     // 添加商品描述的标识
     public static final int Tage_AddGoodDescPic = 502;
-    // 添加完毕图片后需要事件传递给addgood界面
-    private List<ImageItem> addImageItems = new ArrayList<ImageItem>();
+
     // 添加完毕视频后需要把视频的path传递给添加宝贝界面
     public final static int Tage_AddGoodVido = 512;
 
@@ -262,13 +260,7 @@ public class BMessage {
         GoodMangeAlterPostion = goodMangeAlterPostion;
     }
 
-    public List<ImageItem> getAddImageItems() {
-        return addImageItems;
-    }
 
-    public void setAddImageItems(List<ImageItem> addImageItems) {
-        this.addImageItems = addImageItems;
-    }
 
     public static int getTageOrderManageUpdata() {
         return Tage_Order_Manage_Updata;

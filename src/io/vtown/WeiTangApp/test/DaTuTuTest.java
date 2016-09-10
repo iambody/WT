@@ -6,7 +6,6 @@ import io.vtown.WeiTangApp.bean.bcomment.news.BPay;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.multiphoto.model.ImageItem1;
 import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.net.delet.NHttpDeletBaseStr;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -182,16 +181,6 @@ public class DaTuTuTest extends AndroidTestCase {
         LogUtils.i("ssss");
     }
 
-    public void TestUrlsToObj() {
-        List<ImageItem1> da = new ArrayList<ImageItem1>();
-
-        da.add(new ImageItem1("abcdefg"));
-        da.add(new ImageItem1("ddag"));
-        da.add(new ImageItem1("grrdefg"));
-        // JSONArray oJsonArray = StrUtils.ListImages(da);
-        // String aaa = oJsonArray.toString();
-        LogUtils.i("ssss");
-    }
 
     public void Tesss() {
         // List<String> aa = new ArrayList<String>();

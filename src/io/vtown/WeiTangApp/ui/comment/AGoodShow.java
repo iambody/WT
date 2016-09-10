@@ -9,8 +9,6 @@ import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.selectpic.util.Bimp;
-import io.vtown.WeiTangApp.comment.selectpic.util.ImageItem;
 import io.vtown.WeiTangApp.comment.util.DateUtils;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -98,11 +96,7 @@ public class AGoodShow extends ATitleBase implements IXListViewListener {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		for (int i = 0; i < Bimp.tempSelectBitmap.size(); i++) {
-			CacheUtil.BitMapRecycle(Bimp.tempSelectBitmap.get(i).getBitmap());
-		}
-		Bimp.tempSelectBitmap=new ArrayList<ImageItem>();
-		Bimp.max=0;
+
 //		CacheUtil.BitMapRecycle(bimap);
 	}
 

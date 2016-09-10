@@ -862,7 +862,10 @@ public class Constants {
 	 */
 	public static String NewItemDeletByType = Host
 			+ "/v1/member/message/delete";
-
+/**
+ * 店铺内进行搜索
+ */
+	public static String ShopGoodSou=Host+"/v1/goods/goods/search";
 	// 其他参数*******************************************************************
 	// 其他参数*******************************************************************
 	// 其他参数*******************************************************************

@@ -13,7 +13,6 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.news.BPay;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.selectpic.util.ImageItem;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -527,7 +526,9 @@ public class StrUtils {
     public static void SetTxt(TextView T, String Str) {
         T.setText(NullToStr1(Str));
     }
-
+    public static void SetEdTxt(EditText T, String Str) {
+        T.setText(NullToStr1(Str));
+    }
     /**
      * 设置字体库的字体
      */
@@ -967,14 +968,14 @@ public class StrUtils {
     /**
      * 上传宝贝时候 上传的图片列表 需要构造成 Url的json列表
      */
-    public static JSONArray ListImages(List<ImageItem> data) {
-        JSONArray jsonArray = new JSONArray();
-        for (int i = 0; i < data.size(); i++) {
-            ImageItem dItem = data.get(i);
-            jsonArray.put(dItem.getThumbnailPath());
-        }
-        return jsonArray;
-    }
+//    public static JSONArray ListImages(List<ImageItem> data) {
+//        JSONArray jsonArray = new JSONArray();
+//        for (int i = 0; i < data.size(); i++) {
+//            ImageItem dItem = data.get(i);
+//            jsonArray.put(dItem.getThumbnailPath());
+//        }
+//        return jsonArray;
+//    }
     public static String PicLsToStr(List<PicImageItem> data) {
         JSONArray jsonArray = new JSONArray();
         for (int i = 0; i < data.size(); i++) {

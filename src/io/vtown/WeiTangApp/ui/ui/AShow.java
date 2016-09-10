@@ -1,48 +1,5 @@
 package io.vtown.WeiTangApp.ui.ui;
 
-import cn.sharesdk.framework.ShareSDK;
-import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLComment;
-import io.vtown.WeiTangApp.bean.bcomment.BUser;
-import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
-import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
-import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
-import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
-import io.vtown.WeiTangApp.comment.contant.Constants;
-import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
-import io.vtown.WeiTangApp.comment.util.DateUtils;
-import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
-import io.vtown.WeiTangApp.comment.util.StrUtils;
-import io.vtown.WeiTangApp.comment.util.ViewHolder;
-import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
-import io.vtown.WeiTangApp.comment.view.CircleImageView;
-import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
-import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
-import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
-import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.onConfirmClick;
-import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.oncancelClick;
-import io.vtown.WeiTangApp.comment.view.listview.LListView;
-import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
-import io.vtown.WeiTangApp.comment.view.pop.PShowShangJia;
-import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
-import io.vtown.WeiTangApp.event.interf.IDialogResult;
-import io.vtown.WeiTangApp.event.interf.IHttpResult;
-import io.vtown.WeiTangApp.ui.ATitleBase;
-import io.vtown.WeiTangApp.ui.comment.AGoodShare;
-import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
-import io.vtown.WeiTangApp.ui.comment.AVidemplay;
-import io.vtown.WeiTangApp.ui.comment.AphotoPager;
-import io.vtown.WeiTangApp.ui.title.AGoodDetail;
-import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -53,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -65,17 +22,45 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.android.volley.Cache;
 import com.android.volley.Request.Method;
-import com.android.volley.toolbox.ImageLoader.ImageCache;
-import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
+import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
+import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.DateUtils;
+import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
+import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.CircleImageView;
+import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
+import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
+import io.vtown.WeiTangApp.comment.view.listview.LListView;
+import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
+import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
+import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
+import io.vtown.WeiTangApp.ui.comment.AVidemplay;
+import io.vtown.WeiTangApp.ui.comment.AphotoPager;
+import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -840,32 +825,7 @@ public class AShow extends ATitleBase implements IXListViewListener {
         }
     }
 
-    /**
-     * 图片缓存机制的实力
-     */
-    // class ImageCache mCache = new ImageCache() {
-    //
-    // @Override
-    // public void putBitmap(String url, Bitmap bitmap) {
-    // }
-    //
-    // @Override
-    // public Bitmap getBitmap(String url) {
-    // return null;
-    // }
-    // };
 
-    /**
-     * 弹出分享上架的操作
-     *
-     * @param datBlComment2
-     * @param view2
-     */
-    private void SharePop(BLComment datBlComment2, View view2) {
-        PShowShangJia pShowShangJia = new PShowShangJia(BaseContext,
-                BaseActivity, screenWidth, datBlComment2);
-        pShowShangJia.showAtLocation(view2, Gravity.CENTER, 0, 0);
-    }
 
     Handler mHandler = new Handler() {
 

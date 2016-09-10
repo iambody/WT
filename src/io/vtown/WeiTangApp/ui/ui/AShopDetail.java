@@ -38,6 +38,9 @@ import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BShop;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopBase;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopCatory;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopGoods;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -51,6 +54,7 @@ import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.PullView;
 import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
 import io.vtown.WeiTangApp.ui.ATitileNoBase;
+import io.vtown.WeiTangApp.ui.comment.AShopGoodSou;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
@@ -75,18 +79,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
      * 外层的
      */
     private View shopdetail_nodata_lay;
-    /**
-     * 输入框的返回
-     */
-    private ImageView shopdetail_back_iv;
-    /**
-     * 搜索的输入框
-     */
-    private EditText shopdetail_sou_ed;
-    /**
-     * 搜索的取消
-     */
-    private TextView shopdetail_cancle_txt;
+
     /**
      * 头像
      */
@@ -99,14 +92,6 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
      * 店铺描述
      */
     private TextView shopdetail_shop_tag;
-    /**
-     * Te联系卖家
-     */
-    //private TextView shopdetail_shop_lianix;
-    /**
-     * 关注卖家
-     */
-    //private TextView shopdetail_shop_guanzhu_bt;
     /**
      * 已关注人数
      */
@@ -203,6 +188,8 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
      */
     private LinearLayout ll_shopdetail_shop_look_show;
 
+    private ImageView shopdetail_sou_iv;//搜索
+
     /**
      * Te联系卖家
      */
@@ -212,8 +199,8 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
     private ImageView shop_detail_shoucang_log;
     //缓存自营商品的列表
-    private List<BLComment> CacheLsDatas_ZiYing = new ArrayList<BLComment>();
-    private List<BLComment> CacheLsDatas_Brand = new ArrayList<BLComment>();
+    private List<BShopGoods> CacheLsDatas_ZiYing = new ArrayList<BShopGoods>();
+    private List<BShopGoods> CacheLsDatas_Brand = new ArrayList<BShopGoods>();
     /**
      * 控制gradview和ls切换的imagview
      */
@@ -227,8 +214,8 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     // 是否品牌按钮被点击
     private boolean IsBrandStatue = false;
 
-    private ImageView iv_shop_detail_search;
-   // private EditText et_shop_detail_search;
+//    private ImageView iv_shop_detail_search;
+    // private EditText et_shop_detail_search;
 
     private boolean mFlag = true;
 
@@ -296,10 +283,12 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     }
 
     private void IBase() {
+        shopdetail_sou_iv = (ImageView) findViewById(R.id.shopdetail_sou_iv);
+
         shop_out_scrollview = (ScrollView) findViewById(R.id.shop_out_scrollview);
         shop_detail_downgoods_gr = (CompleteGridView) findViewById(R.id.shop_detail_downgoods_gr);
 
-        iv_shop_detail_search = (ImageView) findViewById(R.id.iv_shop_detail_search);
+//        iv_shop_detail_search = (ImageView) findViewById(R.id.iv_shop_detail_search);
         //et_shop_detail_search = (EditText) findViewById(R.id.et_shop_detail_search);
 
         shop_detail_goods_chang_iv = (ImageView) findViewById(R.id.shop_detail_goods_chang_iv);
@@ -322,10 +311,6 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         IDataView(activivty_shopdetail_outlay, shopdetail_nodata_lay,
                 NOVIEW_INITIALIZE);
 
-        shopdetail_back_iv = (ImageView) findViewById(R.id.shopdetail_back_iv);
-        shopdetail_sou_ed = (EditText) findViewById(R.id.shopdetail_sou_ed);
-
-        shopdetail_cancle_txt = (TextView) findViewById(R.id.shopdetail_cancle_txt);
         shopdetail_imagview = (CircleImageView) findViewById(R.id.shopdetail_imagview);
 
         shopdetail_imagview.setBorderWidth(10);
@@ -358,7 +343,6 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         shop_detail_ziying = (TextView) findViewById(R.id.shop_detail_ziying);
         shop_detail_downgoods_ls = (CompleteListView) findViewById(R.id.shop_detail_downgoods_ls);
         downGoodsAp = new DownGoodsAp(R.layout.item_shopdetail_ziying_ls);
-        iv_shop_detail_search.setOnClickListener(this);
 
         shopdetail_shop_zizhi.setOnClickListener(this);
 
@@ -369,6 +353,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
         shop_detail_brand.setOnClickListener(this);
         shop_detail_ziying.setOnClickListener(this);
+        shopdetail_sou_iv.setOnClickListener(this);
 
         shopBrandsLsAp = new ShopBrandsLsAp(BaseContext,
                 R.layout.item_shop_detail_brands);
@@ -387,7 +372,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1,
                                     int arg2, long arg3) {
-                BLComment da = (BLComment) arg0.getItemAtPosition(arg2);
+                BShopGoods da = (BShopGoods) arg0.getItemAtPosition(arg2);
                 PromptManager.SkipActivity(BaseActivity, new Intent(
                         BaseContext, AGoodDetail.class).putExtra(
                         "goodid", da.getId()));
@@ -400,7 +385,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     @Override
                     public void onItemClick(AdapterView<?> arg0, View arg1,
                                             int arg2, long arg3) {
-                        BLComment da = (BLComment) arg0.getItemAtPosition(arg2);
+                        BShopGoods da = (BShopGoods) arg0.getItemAtPosition(arg2);
                         PromptManager.SkipActivity(BaseActivity, new Intent(
                                 BaseContext, AGoodDetail.class).putExtra(
                                 "goodid", da.getId()));
@@ -413,11 +398,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     @Override
                     public void onItemClick(AdapterView<?> arg0, View arg1,
                                             int arg2, long arg3) {
-                        BLComment da = (BLComment) arg0.getItemAtPosition(arg2);
-//						downGoodsAp.Clearn();
-                        // PromptManager.showLoading(BaseContext);
-                        // GetList(CurrentPage, da.getId(),
-                        // user_Get.getSeller_id());
+                        BShopCatory da = (BShopCatory) arg0.getItemAtPosition(arg2);
                         CurrentPage = 1;
                         CurrentCategory_Id = da.getId();
                         GetList(CurrentPage, da.getId(), LOAD_REFRESHING);
@@ -462,7 +443,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                         if (!StrUtils.isEmpty(mJsonObject.getString("agents")))
                             MyData.setAgents(JSON.parseArray(
                                     mJsonObject.getString("agents"),
-                                    BLComment.class));
+                                    BShopGoods.class));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -473,7 +454,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                         if (!StrUtils.isEmpty(mJsonObject.getString("categorys")))
                             MyData.setCategorys(JSON.parseArray(
                                     mJsonObject.getString("categorys"),
-                                    BLComment.class));
+                                    BShopCatory.class));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -482,7 +463,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     try {
                         if (!StrUtils.isEmpty(mJsonObject.getString("base")))
                             MyData.setBase(JSON.parseObject(
-                                    mJsonObject.getString("base"), BLDComment.class));
+                                    mJsonObject.getString("base"), BShopBase.class));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -491,7 +472,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     try {
                         if (!StrUtils.isEmpty(mJsonObject.getString("diy")))
                             MyData.setDiy(JSON.parseArray(
-                                    mJsonObject.getString("diy"), BLComment.class));
+                                    mJsonObject.getString("diy"), BShopGoods.class));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -514,7 +495,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
                 break;
             case Tag_Ls:
-                List<BLComment> blComments = new ArrayList<BLComment>();
+                List<BShopGoods> blComments = new ArrayList<BShopGoods>();
                 if (StrUtils.isEmpty(Data.getHttpResultStr()) && Data.getHttpLoadType() == LOAD_LOADMOREING) {
                     PromptManager.ShowCustomToast(BaseContext, "没有更多商品");
                     activivty_shopdetail_outlay.onFooterRefreshComplete();
@@ -523,12 +504,12 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                 }
 
                 if (StrUtils.isEmpty(Data.getHttpResultStr()) && Data.getHttpLoadType() == LOAD_REFRESHING) {
-                    downGoodsAp.FrashView(new ArrayList<BLComment>());
+                    downGoodsAp.FrashView(new ArrayList<BShopGoods>());
                     return;
                 }
                 try {
                     blComments = JSON.parseArray(Data.getHttpResultStr(),
-                            BLComment.class);
+                            BShopGoods.class);
                 } catch (Exception e) {
                     DataError(Msg, Data.getHttpLoadType());
 
@@ -538,10 +519,10 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
                     downGoodsAp.FrashView(blComments);
                     if (!IsBrandStatue) {
-                        CacheLsDatas_ZiYing = new ArrayList<BLComment>();
+                        CacheLsDatas_ZiYing = new ArrayList<BShopGoods>();
                         CacheLsDatas_ZiYing = blComments;
                     } else {
-                        CacheLsDatas_Brand = new ArrayList<BLComment>();
+                        CacheLsDatas_Brand = new ArrayList<BShopGoods>();
                         CacheLsDatas_Brand = blComments;
                     }
 
@@ -614,7 +595,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
      *
      * @param base
      */
-    private void BaseViewFradsash(BLDComment base) {
+    private void BaseViewFradsash(BShopBase base) {
         if (base.getMember_id() != null
                 && base.getMember_id().equals(user_Get.getMember_id())) {// 是我自己的店铺
             rl_shop_detail_shoucang_log.setVisibility(View.GONE);
@@ -689,7 +670,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         private Context mycContext;
         private LayoutInflater inflater;
         private int ResourceId;
-        private List<BLComment> datas = new ArrayList<BLComment>();
+        private List<BShopCatory> datas = new ArrayList<BShopCatory>();
 
         public ShopSortLsAp(Context mycContext, int resourceId) {
             super();
@@ -701,14 +682,14 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         /**
          * 刷新需要在头部添加一个全部的item
          */
-        public void Refrsh(List<BLComment> da) {
-            if (da == null)
-                da = new ArrayList<BLComment>();
-            BLComment dad = new BLComment();
+        public void Refrsh(List<BShopCatory> da) {
+            if (da == null || da.size() == 0)
+                return;
+            BShopCatory dad = new BShopCatory();
             dad.setId("");
             dad.setCate_name("全部");
-            dad.setIsBrandDetaiLsSelect(false);
-            this.datas = new ArrayList<BLComment>();
+            dad.setBrandDetaiLsSelect(false);
+            this.datas = new ArrayList<BShopCatory>();
             this.datas.add(dad);
             this.datas.addAll(da);
 
@@ -716,12 +697,12 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
         }
 
-        public void Notifi(List<BLComment> daSS) {
+        public void Notifi(List<BShopCatory> daSS) {
             this.datas = daSS;
             this.notifyDataSetChanged();
         }
 
-        public List<BLComment> getdaBlComments() {
+        public List<BShopCatory> getdaBlComments() {
             return datas;
         }
 
@@ -756,12 +737,12 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             }
             myItem.item_fragment_shop_good_manger_brand_name
                     .setBackgroundResource(datas.get(arg0)
-                            .isIsBrandDetaiLsSelect() ? R.drawable.shape_comment_oval_pre
+                            .isBrandDetaiLsSelect() ? R.drawable.shape_comment_oval_pre
                             : R.drawable.shape_comment_oval);
             myItem.item_fragment_shop_good_manger_brand_name
                     .setTextColor(getResources()
                             .getColor(
-                                    datas.get(arg0).isIsBrandDetaiLsSelect() ? R.color.app_fen
+                                    datas.get(arg0).isBrandDetaiLsSelect() ? R.color.app_fen
                                             : R.color.grey));
 
             StrUtils.SetTxt(myItem.item_fragment_shop_good_manger_brand_name,
@@ -780,12 +761,12 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         class HorizontalItemClikListener implements OnClickListener {
 
             private int Postion;// 记录点击的位置
-            private List<BLComment> blCommentss;// 记录品牌的数据bean
+            private List<BShopCatory> blCommentss;// 记录品牌的数据beanList<BShopCatory>
             private MyShopItem myBrandItem;
             ShopSortLsAp ap;
 
             public HorizontalItemClikListener(int postion,
-                                              List<BLComment> data, MyShopItem item,
+                                              List<BShopCatory> data, MyShopItem item,
                                               ShopSortLsAp aBrandLsAp) {
                 super();
                 myBrandItem = item;
@@ -796,22 +777,22 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
             @Override
             public void onClick(View arg0) {
-                if (blCommentss.get(Postion).isIsBrandDetaiLsSelect())
+                if (blCommentss.get(Postion).isBrandDetaiLsSelect())
                     return;
 
                 for (int i = 0; i < blCommentss.size(); i++) {
 
-                    blCommentss.get(i).setIsBrandDetaiLsSelect(i == Postion);
+                    blCommentss.get(i).setBrandDetaiLsSelect(i == Postion);
 
                     myBrandItem.item_fragment_shop_good_manger_brand_name
                             .setBackgroundResource(blCommentss.get(Postion)
-                                    .isIsBrandDetaiLsSelect() ? R.drawable.shape_comment_oval_pre
+                                    .isBrandDetaiLsSelect() ? R.drawable.shape_comment_oval_pre
                                     : R.drawable.shape_comment_oval);
                     myBrandItem.item_fragment_shop_good_manger_brand_name
                             .setTextColor(getResources()
                                     .getColor(
                                             blCommentss.get(Postion)
-                                                    .isIsBrandDetaiLsSelect() ? R.color.app_fen
+                                                    .isBrandDetaiLsSelect() ? R.color.app_fen
                                                     : R.color.grey));
                 }
                 ap.notifyDataSetChanged();
@@ -820,15 +801,15 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     }
 
     public void FristSelect() {
-        List<BLComment> blCommentss = new ArrayList<BLComment>();
+        List<BShopCatory> blCommentss = new ArrayList<BShopCatory>();
 
         blCommentss = shopSortLsAp.getdaBlComments();
 
         for (int i = 0; i < blCommentss.size(); i++) {
             if (i == 0) {
-                blCommentss.get(i).setIsBrandDetaiLsSelect(true);
+                blCommentss.get(i).setBrandDetaiLsSelect(true);
             } else
-                blCommentss.get(i).setIsBrandDetaiLsSelect(false);
+                blCommentss.get(i).setBrandDetaiLsSelect(false);
 
         }
         shopSortLsAp.Notifi(blCommentss);
@@ -843,7 +824,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         private Context mycContext;
         private LayoutInflater inflater;
         private int ResourceId;
-        private List<BLComment> datas = new ArrayList<BLComment>();
+        private List<BShopGoods> datas = new ArrayList<BShopGoods>();
 
         public ShopBrandsLsAp(Context mycContext, int resourceId) {
             super();
@@ -852,7 +833,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             this.ResourceId = resourceId;
         }
 
-        public void FrashView(List<BLComment> datasa) {
+        public void FrashView(List<BShopGoods> datasa) {
             if (datasa == null || datasa.size() == 0) {
                 shopdetail_shop_bran_horizon_lay.setVisibility(View.GONE);
                 return;
@@ -863,7 +844,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             this.notifyDataSetChanged();
         }
 
-        public List<BLComment> GetRsource() {
+        public List<BShopGoods> GetRsource() {
             return datas;
 
         }
@@ -905,7 +886,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             } else {
                 mBrandsItems = (ShopBrandsItems) arg1.getTag();
             }
-            ImageLoaderUtil.Load(datas.get(arg0).getAvatar(),
+            ImageLoaderUtil.Load2(datas.get(arg0).getAvatar(),
                     mBrandsItems.item_shop_detail_brands_brandiv,
                     R.drawable.error_iv2);
 
@@ -939,12 +920,11 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
         private LayoutInflater inflater;
         private int ResourceId;
-        private List<BLComment> datas = new ArrayList<BLComment>();
+        private List<BShopGoods> datas = new ArrayList<BShopGoods>();
         private List<String> GoodsIdS = new ArrayList<String>();
 
         public DownGoodsAp(int resourceId) {
             super();
-
             this.inflater = LayoutInflater.from(BaseContext);
             this.ResourceId = resourceId;
         }
@@ -952,13 +932,14 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         /**
          * 刷新ls
          */
-        public void FrashView(List<BLComment> datasa) {
+        public void FrashView(List<BShopGoods> datasa) {
             if (null == datasa)
                 return;
             this.datas = datasa;
             this.notifyDataSetChanged();
+            GoodsIdS = new ArrayList<String>();
             for (int i = 0; i < datas.size(); i++) {
-                GoodsIdS.add(datas.get(i).getGoods_id());
+                GoodsIdS.add(datas.get(i).getId());
             }
         }
 
@@ -967,18 +948,23 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
          *
          * @param
          */
-        public void AddFrashView(List<BLComment> datasasss) {
+        public void AddFrashView(List<BShopGoods> datasasss) {
 
             if (null == datasasss || datasasss.size() == 0)
                 return;
-            for (int i = 0; i < datasasss.size(); i++) {
-                if (!GoodsIdS.contains(datasasss.get(i).getGoods_id())) {
-                    GoodsIdS.add(datasasss.get(i).getGoods_id());
-                    this.datas.add(datasasss.get(i));
-                }
+            List<BShopGoods> ddddd = new ArrayList<BShopGoods>();
+            ddddd.addAll(datas);
+            //(datasasss);
 
+
+            for (int i = 0; i < datasasss.size(); i++) {
+                if (!GoodsIdS.contains(datasasss.get(i).getId())) {
+                    GoodsIdS.add(datasasss.get(i).getId());
+                    ddddd.add(datasasss.get(i));
+                }
             }
-//            this.datas.addAll(datasasss);
+            this.datas = null;
+            this.datas = ddddd;
             this.notifyDataSetChanged();
         }
 
@@ -986,7 +972,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
          * 清除ls
          */
         public void Clearn() {
-            this.datas = new ArrayList<BLComment>();
+            this.datas = new ArrayList<BShopGoods>();
             this.notifyDataSetChanged();
         }
 
@@ -1022,7 +1008,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             } else {
                 detailGoodsItem = (ShopDetailGoodsItem) arg1.getTag();
             }
-            ImageLoaderUtil.Load(datas.get(arg0).getCover(),
+            ImageLoaderUtil.Load2(datas.get(arg0).getCover(),
                     detailGoodsItem.item_shopdetail_good_iv,
                     R.drawable.error_iv2);
             StrUtils.SetTxt(detailGoodsItem.item_shopdetail_good_name, datas
@@ -1065,6 +1051,9 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     @Override
     protected void MyClick(View V) {
         switch (V.getId()) {
+            case R.id.shopdetail_sou_iv://搜索
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AShopGoodSou.class).putExtra("Sellid", MyData.getBase().getId()).putExtra("Sellname", MyData.getBase().getSeller_name()));
+                break;
             case R.id.shop_detail_goods_chang_iv:
                 IsShowLs = !IsShowLs;
                 shop_detail_goods_chang_iv.setImageResource(IsShowLs ? R.drawable.shop_good_iv_ls : R.drawable.shop_good_iv_gr);
@@ -1086,7 +1075,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 //            } else {
 //                CacheLsDatas_Brand.addAll(blComments);
 //            }){}
-                shop_out_scrollview.smoothScrollTo(0, 20);
+
                 if (CacheLsDatas_Brand == null || CacheLsDatas_Brand.size() == 0) {
                     CurrentPage = 1;
                     CurrentCategory_Id = "0";
@@ -1098,6 +1087,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
                     downGoodsAp.FrashView(CacheLsDatas_Brand);
                 }
+                shop_out_scrollview.smoothScrollTo(0, 20);
                 break;
             case R.id.shop_detail_ziying:// 自营的按钮
                 shop_detail_ziying.setTextColor(getResources().getColor(
@@ -1106,7 +1096,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                         R.color.app_black));
                 IsBrandStatue = false;
                 FristSelect();
-                shop_out_scrollview.smoothScrollTo(0, 20);
+
                 if (CacheLsDatas_ZiYing == null || CacheLsDatas_ZiYing.size() == 0) {
                     CurrentPage = 1;
                     CurrentCategory_Id = "0";
@@ -1118,11 +1108,11 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     downGoodsAp.FrashView(CacheLsDatas_ZiYing);
 
                 }
-
+                shop_out_scrollview.smoothScrollTo(0, 20);
                 break;
 
             case R.id.shopdetail_shop_zizhi:
-                List<BLComment> DATA = shopBrandsLsAp.GetRsource();
+                List<BShopGoods> DATA = shopBrandsLsAp.GetRsource();
                 BaseApplication.GetInstance().setZiYingShop_To_Ls(DATA);
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ALookAptitude.class));
@@ -1191,50 +1181,48 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                 break;
 
 
-            case R.id.iv_shop_detail_search://搜索
 
-                break;
             default:
                 break;
         }
     }
 
 
-    private void setViewAnim(boolean flag) {
-        ScaleAnimation scale = null;
-<<<<<<< Updated upstream
-        if(flag){
-            //.setVisibility(View.VISIBLE);
-            scale  =  new ScaleAnimation(0.0f,1.0f,0.0f,1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-=======
-        if (flag) {
-            et_shop_detail_search.setVisibility(View.VISIBLE);
-            scale = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
->>>>>>> Stashed changes
-                    0.5f);
-            scale.setDuration(1000);
-            scale.setFillAfter(true);
-            mFlag = false;
-        } else {
-            scale = new ScaleAnimation(1.0f, 0.0f, 1.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-                    0.5f);
-            scale.setDuration(1000);
-            scale.setFillAfter(true);
-            mFlag = true;
-            //et_shop_detail_search.setVisibility(View.GONE);
-        }
-
-       // et_shop_detail_search.setAnimation(scale);
-
-    }
-
-    /**
-     * 点击左侧按钮的监听事件
-     */
-    public void title_left_bt(View v) {
-        finish();
-        overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
-    }
+    //    private void setViewAnim(boolean flag) {
+//        ScaleAnimation scale = null;
+//
+//        if(flag){
+//            //.setVisibility(View.VISIBLE);
+//            scale  =  new ScaleAnimation(0.0f,1.0f,0.0f,1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+//=======
+//        if (flag) {
+//            et_shop_detail_search.setVisibility(View.VISIBLE);
+//            scale = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+//>>>>>>> Stashed changes
+//                    0.5f);
+//            scale.setDuration(1000);
+//            scale.setFillAfter(true);
+//            mFlag = false;
+//        } else {
+//            scale = new ScaleAnimation(1.0f, 0.0f, 1.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+//                    0.5f);
+//            scale.setDuration(1000);
+//            scale.setFillAfter(true);
+//            mFlag = true;
+//            //et_shop_detail_search.setVisibility(View.GONE);
+//        }
+//
+//       // et_shop_detail_search.setAnimation(scale);
+//
+//    }
+//
+//    /**
+//     * 点击左侧按钮的监听事件
+//     */
+//    public void title_left_bt(View v) {
+//        finish();
+//        overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
+//    }
 
     ;
 

@@ -22,12 +22,10 @@ import io.vtown.WeiTangApp.ui.afragment.AShopGoodManger;
 import io.vtown.WeiTangApp.ui.afragment.AShopPurchase;
 import io.vtown.WeiTangApp.ui.comment.order.AShopOrderManager;
 import io.vtown.WeiTangApp.ui.comment.order.AShopPurchaseOrder;
-import io.vtown.WeiTangApp.ui.derls.AGoodManger;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
 import io.vtown.WeiTangApp.ui.title.shop.ABrandCheck;
 import io.vtown.WeiTangApp.ui.title.shop.ABrandDaiLi;
-import io.vtown.WeiTangApp.ui.title.shop.addgood.AAddGood;
 import io.vtown.WeiTangApp.ui.title.shop.addgood.ANewAddGood;
 import io.vtown.WeiTangApp.ui.title.shop.center.AShopData;
 import io.vtown.WeiTangApp.ui.title.shop.channel.AChannel;
@@ -215,7 +213,6 @@ public class AShop extends ATitileNoBase {
 
 	@Override
 	protected void onResume() {
-
 		super.onResume();
 
 	}
@@ -424,11 +421,11 @@ public class AShop extends ATitileNoBase {
 	/**
 	 * 实名认证对话框
 	 * 
-	 * @param fetch_type
+	 * @param
 	 * 
-	 * @param datBlComment
+	 * @param
 	 * 
-	 * @param aa
+	 * @param
 	 */
 	private void ShowRealAuthDialog() {
 

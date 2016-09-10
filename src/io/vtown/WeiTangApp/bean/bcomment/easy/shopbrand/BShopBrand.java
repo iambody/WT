@@ -6,6 +6,8 @@ import java.util.List;
 import io.vtown.WeiTangApp.bean.BBase;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopBase;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopCatory;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -15,10 +17,10 @@ import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 public class BShopBrand extends BBase {
 
 	private List<String> roll  ;
-	private List<BLComment> categorys  ;
+	private List<BShopCatory> categorys  ;
 	private List<BLBrandGood> agent  ;
 	private String is_agented;
-	private BDComment base;
+	private BShopBase base;
 
 	public List<String> getRoll() {
 		return roll;
@@ -28,11 +30,11 @@ public class BShopBrand extends BBase {
 		this.roll = roll;
 	}
 
-	public List<BLComment> getCategorys() {
+	public List<BShopCatory> getCategorys() {
 		return categorys;
 	}
 
-	public void setCategorys(List<BLComment> categorys) {
+	public void setCategorys(List<BShopCatory> categorys) {
 		this.categorys = categorys;
 	}
 
@@ -46,11 +48,11 @@ public class BShopBrand extends BBase {
 		this.is_agented = is_agented;
 	}
 
-	public BDComment getBase() {
+	public BShopBase getBase() {
 		return base;
 	}
 
-	public void setBase(BDComment base) {
+	public void setBase(BShopBase base) {
 		this.base = base;
 	}
 

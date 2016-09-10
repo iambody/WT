@@ -1016,6 +1016,7 @@ public class AGoodDetail extends ATitleBase {
         gooddetail_banner.pushImageCycle();
         runRandomMessage = false;
         mHandler.removeCallbacks(mRandomMessageTimerTask);
+
 //        GoodsPollUtils.stopPollingService(BaseContext);
     }
 

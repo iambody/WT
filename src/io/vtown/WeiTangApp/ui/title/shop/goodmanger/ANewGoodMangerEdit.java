@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ import java.util.List;
 import java.util.Set;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
@@ -45,6 +47,7 @@ import io.vtown.WeiTangApp.comment.view.select_pic.PicSelActivity;
 import io.vtown.WeiTangApp.event.interf.ICustomDialogResult;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.ALoactePhotoPager;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderVido;
 
@@ -118,6 +121,26 @@ public class ANewGoodMangerEdit extends ATitleBase {
         new_good_manager_ed_vid_add.setOnClickListener(this);
         tv_good_pics.setOnClickListener(this);
         tv_good_desc.setOnClickListener(this);
+        new_good_manager_good_pics_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent mIntent = new Intent(BaseContext,
+                        ALoactePhotoPager.class);
+                mIntent.putExtra("position", position);
+                BaseApplication.GetInstance().setPicImages(myAdapter1.GetDatas());
+                PromptManager.SkipActivity(BaseActivity, mIntent);
+            }
+        });
+        new_good_manager_good_desc_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent mIntent = new Intent(BaseContext,
+                        ALoactePhotoPager.class);
+                mIntent.putExtra("position", position);
+                BaseApplication.GetInstance().setPicImages(myAdapter2.GetDatas());
+                PromptManager.SkipActivity(BaseActivity, mIntent);
+            }
+        });
     }
 
     // 获取商品详情的通道

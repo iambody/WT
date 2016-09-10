@@ -126,7 +126,6 @@ public class AMain extends TabActivity implements OnTabChangeListener {
         IShowDown();
 
         ShopBadgeView.setBadgeCount(Spuit.ShopBusNumber_Get(BaseCotext));
-
         // 检测升级
         UpCheck();
 
@@ -443,4 +442,22 @@ public class AMain extends TabActivity implements OnTabChangeListener {
         });
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        outState.putInt("postion",Postion);
+
+
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle state) {
+        super.onRestoreInstanceState(state);
+        if(state != null){
+//            state.getInt("postion");
+//            tabHost.setCurrentTabByTag(TableMenu[postionTage]);
+            ChangeTabBg(TableMenu[ state.getInt("postion")]);
+        }
+    }
 }

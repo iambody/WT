@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
@@ -34,16 +35,13 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUPLoadUtil;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils;
-import io.vtown.WeiTangApp.comment.selectpic.ui.AShareGaller;
-import io.vtown.WeiTangApp.comment.selectpic.util.Bimp;
-import io.vtown.WeiTangApp.comment.selectpic.util.PublicWay;
-import io.vtown.WeiTangApp.comment.selectpic.util.Res;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.select_pic.PicSelActivity;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.ALoactePhotoPager;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 
 /**
@@ -119,19 +117,19 @@ public class ShowSelectPic extends ATitleBase {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
 
-                if (getArrayData() != null && getArrayData().size() > 0) {
-                    for (PicImageItem item : getArrayData()) {
-                        getArrayData().remove(item);
-                    }
-                }
+//                if (getArrayData() != null && getArrayData().size() > 0) {
+//                    for (PicImageItem item : getArrayData()) {
+//                        getArrayData().remove(item);
+//                    }
+//                }
 
 //                setArrayData(showpics);
 
-//                Intent mIntent = new Intent(BaseContext,
-//                        AphotoPager.class);
-//                mIntent.putExtra("position", arg2);
-//
-//                PromptManager.SkipActivity(BaseActivity, mIntent);
+                Intent mIntent = new Intent(BaseContext,
+                        ALoactePhotoPager.class);
+                mIntent.putExtra("position", arg2);
+                BaseApplication.GetInstance().setPicImages(showpics);
+                PromptManager.SkipActivity(BaseActivity, mIntent);
             }
         });
     }
@@ -496,7 +494,6 @@ public class ShowSelectPic extends ATitleBase {
         int msg_type = event.getMessageType();
         if (BMessage.Tage_Select_Pic_Show == msg_type) {
             List<String> imgs = event.getTmpArrayList();
-
             if (imgs != null && imgs.size() > 0) {
 
                 for (String path : imgs) {

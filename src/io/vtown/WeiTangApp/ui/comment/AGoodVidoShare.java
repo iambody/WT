@@ -27,7 +27,6 @@ import io.vtown.WeiTangApp.comment.net.qiniu.NUPLoadUtil;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUPLoadUtil.UpResult1;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils.UpResult;
-import io.vtown.WeiTangApp.comment.selectpic.util.Bimp;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
@@ -121,6 +120,8 @@ public class AGoodVidoShare extends ATitleBase {
 
     private void IBaseV() {
         good_vido_share_ed = (EditText) findViewById(R.id.good_vido_share_ed);
+        StrUtils.SetEdTxt(good_vido_share_ed,ShowDatas.getIntro());
+
         good_vido_share_bt = (TextView) findViewById(R.id.good_vido_share_bt);
         good_vido_share_bt.setOnClickListener(this);
 

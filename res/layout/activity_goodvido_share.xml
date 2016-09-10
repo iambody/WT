@@ -20,14 +20,14 @@
             <RelativeLayout
                 android:id="@+id/good_vido_lay"
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="@dimen/vidoshare_height">
 
                 <ImageView
                     android:id="@+id/good_vido_lay_bg_iv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitCenter"/>
 
                 <ImageView
                     android:id="@+id/good_vido_lay_control_iv"

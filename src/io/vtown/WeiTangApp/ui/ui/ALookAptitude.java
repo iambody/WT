@@ -5,6 +5,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopGoods;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -48,7 +49,7 @@ public class ALookAptitude extends ATitleBase {
 	 */
 	private BUser user_Get;
 
-	private List<BLComment> myBlComments = new ArrayList<BLComment>();
+	private List<BShopGoods> myBlComments = new ArrayList<BShopGoods>();
 
 	@Override
 	protected void InItBaseView() {
@@ -127,7 +128,7 @@ public class ALookAptitude extends ATitleBase {
 
 		private int ResourseId;
 		private LayoutInflater inflater;
-		private List<BLComment> blComments = new ArrayList<BLComment>();
+		private List<BShopGoods> blComments = new ArrayList<BShopGoods>();
 
 		public AaptitudeAdapter(int ResourseId) {
 			super();
@@ -142,7 +143,7 @@ public class ALookAptitude extends ATitleBase {
 			return blComments.size();
 		}
 
-		public void Frash(List<BLComment> dd) {
+		public void Frash(List<BShopGoods> dd) {
 			if (dd == null)
 				return;
 			blComments = dd;
@@ -189,7 +190,7 @@ public class ALookAptitude extends ATitleBase {
 
 			// 1-没代理 2-正在审核中 3-已经代理
 
-			final BLComment dddaa = blComments.get(arg0);
+			final BShopGoods dddaa = blComments.get(arg0);
 			ImageLoaderUtil.Load2(dddaa.getAvatar(),
 					aaptitude.iv_my_aptitude_brand_icon, R.drawable.error_iv2);
 			StrUtils.SetTxt(aaptitude.tv_my_aptitude_desc,
