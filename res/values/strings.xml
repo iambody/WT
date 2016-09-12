@@ -561,6 +561,10 @@
     <string name="addgooding">上架中,喝杯茶吧</string>
     <string name="quebao_goodinf">(请确保规格描述尽可能准确)</string>
     <string name="nomoregood">没有更多商品了</string>
+    <string name="add_good_exit_note">确定退出编辑</string>
+    <string name="error_null_noda">网络调皮,点我刷新</string>
+    <string name="buyer_liuyan">买家留言</string>
+    <string name="hint_buyer_liuyan">选填:对本次交易说明</string>
 
 
 </resources>

@@ -549,13 +549,12 @@ public class PPurchase extends PopupWindow implements OnClickListener,
                 .getC2());
 
         aasv_add_sub = (AddAndSubView) BaseView.findViewById(R.id.aasv_add_sub);
-        if (IsCaiGou) {// 采购
-            aasv_add_sub.setNum(10);
-            aasv_add_sub.SetMinNumber(10);
-        } else {
+//        if (IsCaiGou) {// 采购
+//            aasv_add_sub.setNum(10);
+//            aasv_add_sub.SetMinNumber(10);
+//        } else {
             aasv_add_sub.setNum(1);
-        }
-
+//        }
         goods_num = aasv_add_sub.getNum();
         tv_real_lib = (TextView) BaseView.findViewById(R.id.tv_real_lib);
         tv_virtual_lib = (TextView) BaseView.findViewById(R.id.tv_virtual_lib);

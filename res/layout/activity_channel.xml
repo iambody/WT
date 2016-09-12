@@ -249,7 +249,6 @@
 
     <include
         android:id="@+id/channel_nodata_lay"
-        android:layout_marginBottom="10dp"
         layout="@layout/commentview_nodata"
         android:clickable="true"
         android:focusable="true"

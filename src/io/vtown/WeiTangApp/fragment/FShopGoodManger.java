@@ -1343,4 +1343,13 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                 break;
         }
     }
+
+    @Override
+    public void onDestroy() {
+        try {
+            EventBus.getDefault().unregister(this);
+        } catch (Exception e) {
+        }
+        super.onDestroy();
+    }
 }

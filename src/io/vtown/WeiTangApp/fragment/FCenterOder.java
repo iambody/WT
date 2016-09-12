@@ -1651,4 +1651,12 @@ public class FCenterOder extends FBase implements OnItemClickListener,
 		IData(REFRESHING, order_status);
 	}
 
+	@Override
+	public void onDestroy() {
+		try {
+			EventBus.getDefault().unregister(this);
+		} catch (Exception e) {
+		}
+		super.onDestroy();
+	}
 }

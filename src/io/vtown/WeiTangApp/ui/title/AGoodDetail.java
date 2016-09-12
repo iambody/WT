@@ -347,7 +347,7 @@ public class AGoodDetail extends ATitleBase {
         rl_to_top = (RelativeLayout) findViewById(R.id.rl_to_top);
         good_detail_scrollview = (ScrollDistanceScrollView) findViewById(R.id.good_detail_scrollview);
         rl_to_top.setOnClickListener(this);
-
+        ShowErrorCanLoad("网络调皮,点我重试哦");
         good_detail_scrollview
                 .SetOnGetDistanceListener(new OnGetDistanceListener() {
 
@@ -457,8 +457,9 @@ public class AGoodDetail extends ATitleBase {
                 // TODO可能有提交操作 所以是否判断值为空
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     // DataError(Msg, Data.getHttpLoadType());
-                    BaseActivity.finish();
-                    PromptManager.ShowCustomToast(BaseContext, Msg);
+//                    BaseActivity.finish();
+//                    PromptManager.ShowCustomToast(BaseContext, Msg);
+                    DataError("网络异常", LOAD_INITIALIZE);
                     return;
                 }
 
@@ -624,7 +625,7 @@ public class AGoodDetail extends ATitleBase {
 
         }
 
-        if (null!=datas.getGoods_info().getIntro()&&datas.getGoods_info().getIntro().size()> 0){
+        if (null != datas.getGoods_info().getIntro() && datas.getGoods_info().getIntro().size() > 0) {
 
             final List<String> PicLs = datas.getGoods_info().getIntro();
             // picTextDetailAdapter = new PicTextDetailAdapter(BaseContext,
@@ -657,7 +658,7 @@ public class AGoodDetail extends ATitleBase {
                 });
             }
 
-        }else{
+        } else {
 
         }
         // 是从show跳转进来的

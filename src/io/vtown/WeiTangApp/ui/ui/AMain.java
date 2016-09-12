@@ -460,4 +460,5 @@ public class AMain extends TabActivity implements OnTabChangeListener {
             ChangeTabBg(TableMenu[ state.getInt("postion")]);
         }
     }
+
 }

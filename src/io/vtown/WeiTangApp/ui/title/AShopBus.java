@@ -304,7 +304,6 @@ private LinearLayout shopbus_down_lay;
 				AllNumber = 0;
 
 				for (int i = 0; i < bComment.getPT().size(); i++) {
-
 					AllNumber = AllNumber
 							+ bComment.getPT().get(i).getList().size();
 
@@ -828,7 +827,7 @@ private LinearLayout shopbus_down_lay;
 									.getGoods_price()));
 
 			if (!IsPu) {
-				myItem.item_shopbus_in_number.SetMinNumber(10);
+//				myItem.item_shopbus_in_number.SetMinNumber(10);
 
 				// 设置可选
 				daBldComment.setIs_sales("1");

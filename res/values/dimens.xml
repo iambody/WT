@@ -570,5 +570,6 @@
     <dimen name="good_upload_vido_iv_height">100dp</dimen>
     <dimen name="pop_addcatory_margitop">40dp</dimen>
     <dimen name="vidoshare_height">170dp</dimen>
+    <dimen name="oderbeing_buyer_txt_size">15dp</dimen>
 
 </resources>
