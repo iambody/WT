@@ -214,6 +214,8 @@ public class BMessage {
     public static final int Tage_Select_Pic_Show = 7788;
     public static final int Tage_Select_Pic_Good_Pics = 7789;
     public static final int Tage_Select_Pic_Good_Desc = 7790;
+    public static final int Tage_Select_Pic_ID_Face = 7791;
+    public static final int Tage_Select_Pic_ID_Back = 7792;
     //添加商品时候填写商品标题后
     public static final int Tage_AddGood_EditTitle = 57;
     private String AddGood_GoodTitle;

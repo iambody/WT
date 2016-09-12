@@ -63,7 +63,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 	// 操作类别 1提现，2帐户充值，3销售，4购物
 	private static final int TAGE_ALL = 0;
 	private static final int TAGE_WITHDRAW = 1;
-	private static final int TAGE_RECHARGE = 2;
+	private static final int TAGE_RECHARGE = 5;
 	private static final int TAGE_SELl = 3;
 	private static final int TAGE_SHOPPING = 4;
 	private int CurrentType = TAGE_ALL;
@@ -267,7 +267,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 			popupWindow.dismiss();
 			break;
 
-		case R.id.tv_top_up:// 充值
+		case R.id.tv_top_up:// 退款
 			if(CurrentType != TAGE_RECHARGE){
 				SetTitleTxt(getResources().getString(R.string.title_property_detail_top_up));
 				CurrentType = TAGE_RECHARGE;
@@ -509,7 +509,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 				break;
 
 			case 4:
-				item.tv_trade_state.setText("购物");
+				item.tv_trade_state.setText("退款");
 				break;
 
 			default:

@@ -205,7 +205,7 @@
     <string name="lable_bank_numb_format_1">(尾号%1$s快捷)</string>
     <string name="property_detail_select_all">全部</string>
     <string name="property_detail_buy_good">购物</string>
-    <string name="property_detail_top_up">充值</string>
+    <string name="property_detail_top_up">退款</string>
     <string name="property_detail_withdraw">提现</string>
     <string name="property_detail_sell_record">销售</string>
 
@@ -492,7 +492,7 @@
     <string name="look_express_speed">查看物流</string>
     <string name="title_property_detail_all">全部资金明细</string>
     <string name="title_property_detail_buy_good">购物资金明细</string>
-    <string name="title_property_detail_top_up">充值资金明细</string>
+    <string name="title_property_detail_top_up">退款资金明细</string>
     <string name="title_property_detail_withdraw">提现资金明细</string>
     <string name="title_property_detail_sell_record">销售资金明细</string>
 

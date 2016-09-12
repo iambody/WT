@@ -346,7 +346,7 @@ public class ACenter extends ATitleBase {
 				ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
 				ACommentList.Tage_ACenterGoodBrowseRecord));
 //			 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-//			 PicSelActivity.class));
+//			 AShowIDPic.class));
 			break;
 		case R.id.tab_center_oder:
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,

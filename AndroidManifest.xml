@@ -736,6 +736,11 @@
             android:name=".ui.comment.ALoactePhotoPager"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.title.AShowIDPic"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->
 
 

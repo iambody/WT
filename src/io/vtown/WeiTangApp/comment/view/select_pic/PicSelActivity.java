@@ -62,6 +62,8 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
     public static final int Tage_Show_Share = 101;//Show分享时候使用的标记
     public static final int Tage_Good_Pics = 102;//编辑商品时候==》编辑商品图片
     public static final int Tage_Good_Desc = 103;//编辑商品时候==》编辑商品描述
+    public static final int Tage_Usr_ID_Face = 104;//身份证信息---正面
+    public static final int Tage_Usr_ID_Back = 105;//身份证信息---反面
     private int Current_Type = 0;
     protected static int MAX_SEL_ENABLE = 0;
     public static final int REQUEST_PICS_CODE = 201;
@@ -471,6 +473,14 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
 
                     case Tage_Good_Desc://商品描述
                         Sent_Type = BMessage.Tage_Select_Pic_Good_Desc;
+                        break;
+
+                    case Tage_Usr_ID_Face://身份证正面
+                        Sent_Type = BMessage.Tage_Select_Pic_ID_Face;
+                        break;
+
+                    case Tage_Usr_ID_Back://身份证反面
+                        Sent_Type = BMessage.Tage_Select_Pic_ID_Back;
                         break;
                 }
                 BMessage msg = new BMessage(Sent_Type);
