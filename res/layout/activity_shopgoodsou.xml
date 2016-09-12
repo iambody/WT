@@ -1,8 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-    <include layout="@layout/titlebar"/>
+    android:orientation="vertical">
+
+    <include layout="@layout/titlebar" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/shop_good_sou_title"
+            style="@style/edit_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_shop_good_sou_edittext_bg"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/grey"
+
+            android:textSize="13sp" />
+
+
+        <ImageView
+            android:id="@+id/shop_good_sou_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@drawable/sousou" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/line"
+        />
+
+    <io.vtown.WeiTangApp.comment.view.listview.LListView
+        android:id="@+id/shop_good_sou_result_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+
+        android:cacheColorHint="#00000000"
+        android:listSelector="#00000000"
+        android:scrollbars="none" />
+
+    <include
+        android:id="@+id/shop_good_sou_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+
 </LinearLayout>

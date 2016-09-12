@@ -13,6 +13,7 @@ import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
+import io.vtown.WeiTangApp.comment.net.qiniu.NUPLoadUtil;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils.UpResult;
 import io.vtown.WeiTangApp.comment.util.QRCodeUtil;
@@ -408,7 +409,10 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     private static final int PHOTO_REQUEST_CUT = 3;// 结果
 
     /* 头像名称 */
-    private static final String PHOTO_FILE_NAME = "datutu.jpg";
+    private static final String PHOTO_FILE_COVER = "cover.jpg";
+
+    /* 封面 */
+    private static final String PHOTO_FILE_AVATAR = "avatar.jpg";
 
     /**
      * 所有上传图片拍照图片必须要放在本文件夹里面
@@ -428,8 +432,18 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
      * @param view
      */
     public void gallery() {
-        tempFile = getFile(PHOTO_FILE_PATH + "/" + System.currentTimeMillis()
-                + PHOTO_FILE_NAME);
+        switch (show_type){
+            case 1:
+                tempFile = getFile(PHOTO_FILE_PATH + "/" + System.currentTimeMillis()
+                        + PHOTO_FILE_COVER);
+                break;
+
+            case 2:
+                tempFile = getFile(PHOTO_FILE_PATH + "/" + System.currentTimeMillis()
+                        + PHOTO_FILE_AVATAR);
+                break;
+        }
+
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, PHOTO_REQUEST_GALLERY);
@@ -443,8 +457,20 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
      */
     public void camera() {
         // 判断存储卡是否可以用，可用进行存储
-        tempFile = getFile(PHOTO_FILE_PATH + "/" + System.currentTimeMillis()
-                + PHOTO_FILE_NAME);
+
+        switch (show_type){
+            case 1:
+
+                tempFile = getFile(PHOTO_FILE_PATH + "/" + System.currentTimeMillis()
+                        + PHOTO_FILE_COVER);
+                break;
+
+            case 2:
+                tempFile = getFile(PHOTO_FILE_PATH + "/" + System.currentTimeMillis()
+                        + PHOTO_FILE_AVATAR);
+                break;
+        }
+
         if (hasSdcard()) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// 调用照相机
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
@@ -573,30 +599,55 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 
     // ****************end********获取头像的相关代码**********end*********************
 
-    public void UpdaIvTest(File aa, byte[] bytes, String picname,
+    public void UpdaIvTest(final File aa, byte[] bytes, String picname,
                            final ImageView Iv, final Bitmap bitmap, final int type) {
 
-        NUpLoadUtils dLoadUtils = new NUpLoadUtils(BaseContext, bytes, picname);
-        dLoadUtils.SetUpResult(new UpResult() {
+       // NUpLoadUtils dLoadUtils = new NUpLoadUtils(BaseContext, bytes, picname);
 
+        NUPLoadUtil dLoadUtils = new NUPLoadUtil(BaseContext, aa,picname);
+//        dLoadUtils.SetUpResult(new UpResult() {
+//
+//            @Override
+//            public void Progress(String arg0, double arg1) {
+//            }
+//
+//            @Override
+//            public void Onerror() {
+//
+//                PromptManager.closeLoading();
+//            }
+//
+//            @Override
+//            public void Complete(String HostUrl, String Url) {
+//                PromptManager.closeLoading();
+//                LogUtils.i(Url);
+//
+//                // Iv.setImageBitmap(bitmap);
+//                LoadIv(Iv, bitmap, HostUrl, type);
+//
+//            }
+//        });
+//        PromptManager.showLoading(BaseContext);
+//        dLoadUtils.UpLoad();
+
+        dLoadUtils.SetUpResult1(new NUPLoadUtil.UpResult1() {
             @Override
             public void Progress(String arg0, double arg1) {
+
             }
 
             @Override
             public void Onerror() {
-
                 PromptManager.closeLoading();
             }
 
             @Override
             public void Complete(String HostUrl, String Url) {
-                PromptManager.closeLoading();
+
                 LogUtils.i(Url);
 
                 // Iv.setImageBitmap(bitmap);
                 LoadIv(Iv, bitmap, HostUrl, type);
-
             }
         });
         PromptManager.showLoading(BaseContext);
@@ -625,12 +676,14 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
             @Override
             public void getResult(int Code, String Msg, String Data) {
                 if (Code == 200) {
+
                     if (1 == Type) {
                         Iv.setImageBitmap(bitmap);
                         Spuit.Save_Shop_Head(getApplicationContext(), PicUrl);
                         EventBus.getDefault().post(
                                 new BMessage(
                                         BMessage.Tage_Shop_data_cover_change));
+                        IItCodeIv();
 
                     }
                     if (2 == Type) {
@@ -652,6 +705,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("seller_id", user_Get.getSeller_id());
+        PromptManager.showLoading(BaseContext);
         if (Type == 1) {// 头像
             myUrl = Constants.MODIFI_SHOP_ICON;
             map.put("avatar", PicUrl);

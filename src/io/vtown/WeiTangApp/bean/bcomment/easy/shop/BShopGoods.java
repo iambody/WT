@@ -41,7 +41,7 @@ public class BShopGoods extends BBase {
     private String is_edit;//": 0
 
     private String seller_name;//": "圣珂兰",
-        private String id;//": 1014688,
+    private String id;//": 1014688,
     private String cover;//": "http://fs.v-town.cc/photo_a5Q62X2hQQ2zmqpnOcESwkJnV85zIhck",
     private String is_brand;//": 1,
     private String level;//": 2,
@@ -52,6 +52,34 @@ public class BShopGoods extends BBase {
     private String attention;//": 0,
     private String credential;//": ""
 
+    //private String id;//"id":563,
+    //private String goods_info_id;//       "goods_info_id":324,
+    //private String seller_id;//       "seller_id":1014742,
+    //private String sale_status;//     "sale_status":100,
+    private String is_delete;//     "is_delete":0,
+    //private String goods_sid;//      "goods_sid":338,
+   // private String title;//     "title":"约翰巴赫莹亮水润面膜保湿补水面膜 6片/盒",
+   // private String sell_price;//    "sell_price":26800,
+    private String postage;//    "postage":0,
+    //private String is_agent;//    "is_agent":1,
+   // private String cover;//    "cover":"http://fs.v-town.cc/photo_em7BRZpW9CFfIY1vpRGz6xlcQqFF4WtS"
+
+
+    public String getIs_delete() {
+        return is_delete;
+    }
+
+    public void setIs_delete(String is_delete) {
+        this.is_delete = is_delete;
+    }
+
+    public String getPostage() {
+        return postage;
+    }
+
+    public void setPostage(String postage) {
+        this.postage = postage;
+    }
 
     public String getIs_agent() {
         return is_agent;
