@@ -277,7 +277,7 @@ public class AAddGoodCategory extends ATitleBase implements OnItemClickListener 
 			StrUtils.SetTxt(category.tv_category_content, datas.get(arg0)
 					.getCate_name());
 			if(arg0 == mPosition){
-				arg1.setBackgroundResource(R.color.app_gray);
+				arg1.setBackgroundResource(R.color.app_gray1);
 			}else{
 				arg1.setBackgroundResource(R.color.white);
 			}

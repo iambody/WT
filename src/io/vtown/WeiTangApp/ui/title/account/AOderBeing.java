@@ -37,6 +37,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -94,6 +95,10 @@ public class AOderBeing extends ATitleBase {
      * 卡券的名字
      */
     private TextView oderbeing_coupons_nameprice;
+    /**
+     * 卖家留言
+     */
+    private EditText oderbeing_note_ed;
     /**
      * 获取的数据源
      */
@@ -221,7 +226,7 @@ public class AOderBeing extends ATitleBase {
         findViewById(R.id.commentview_add_iv).setVisibility(View.VISIBLE);
         oderAp = new OderAp(R.layout.item_oderbeing_out);
         oderbeing_ls.setAdapter(oderAp);
-
+        ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
         oderbeing_address.setOnClickListener(this);
         oderbeing_commint.setOnClickListener(this);
         oderbeing_coupons_lay.setOnClickListener(this);
@@ -270,10 +275,10 @@ public class AOderBeing extends ATitleBase {
             case 0:// 获取界面的数据=》
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     PromptManager.ShowCustomToast(BaseContext, Msg);
-                    BaseActivity.finish();
+//                    BaseActivity.finish();
+                    IDataView(oderbeing_out_lay, oderbeing_nodata_lay, NOVIEW_ERROR);
                     return;
                 }
-
                 IDataView(oderbeing_out_lay, oderbeing_nodata_lay, NOVIEW_RIGHT);
                 try {
                     mBdComment = JSON.parseObject(Data.getHttpResultStr(),
@@ -282,7 +287,6 @@ public class AOderBeing extends ATitleBase {
                     String aa = e.toString();
                     LogUtils.i("");
                 }
-
                 IsUserCoup = !(StrUtils.isEmpty(mBdComment.getIs_used_coupons()) || mBdComment
                         .getIs_used_coupons().equals("N"));
                 IResultData(mBdComment);
@@ -337,31 +341,31 @@ public class AOderBeing extends ATitleBase {
         // 判断地址数据是否为空
         addressBldComment = mBdComment.getAddress();
         // 判断优惠券是否为空
-        coupComment = mBdComment.getCoupons();
-
+//        coupComment = mBdComment.getCoupons();
+//        coupComment = new BLDComment();
         RefreshResultView(addressBldComment);
         // 判断卡券数据是否为空
-        if (null == coupComment
-                || (StrUtils.isEmpty(coupComment.getCoupons_name()) && StrUtils
-                .isEmpty(coupComment.getId()))) {
-            if (IsUserCoup)
-                oderbeing_coupons_lay.setVisibility(View.INVISIBLE);
-            ;
-            CurrenShowKaQuanType = 0;
+//        if (null == coupComment
+//                || (StrUtils.isEmpty(coupComment.getCoupons_name()) && StrUtils
+//                .isEmpty(coupComment.getId()))) {
+//            if (IsUserCoup)
+//                oderbeing_coupons_lay.setVisibility(View.INVISIBLE);
+//            ;
+//            CurrenShowKaQuanType = 0;
             ShowSelect();
-        }// 卡券数据不为空
-        else {
-            StrUtils.SetColorsTxt(
-                    BaseContext,
-                    oderbeing_coupons_nameprice,
-                    R.color.red,
-                    getResources().getString(R.string.lijian),
-                    "￥"
-                            + StrUtils.SetTextForMony(coupComment
-                            .getCoupons_money()));
-            CurrenShowKaQuanType = 1;
-            ShowSelect();
-        }
+//        }// 卡券数据不为空
+//        else {
+//            StrUtils.SetColorsTxt(
+//                    BaseContext,
+//                    oderbeing_coupons_nameprice,
+//                    R.color.red,
+//                    getResources().getString(R.string.lijian),
+//                    "￥"
+//                            + StrUtils.SetTextForMony(coupComment
+//                            .getCoupons_money()));
+//            CurrenShowKaQuanType = 1;
+//            ShowSelect();
+//        }
 
         StrUtils.SetTxt(
                 oderbeing_yingfu,
@@ -370,7 +374,7 @@ public class AOderBeing extends ATitleBase {
                         .getOrder_total_price()) + "元");
         StrUtils.SetColorsTxt(BaseContext, oderbeing_need, R.color.red,
                 getResources().getString(R.string.needpay),
-                "￥" + StrUtils.SetTextForMony(mBdComment.getMoney_paid()));
+                "￥" + StrUtils.SetTextForMony(mBdComment.getOrder_total_price()));
     }
 
     @Override
@@ -692,6 +696,9 @@ public class AOderBeing extends ATitleBase {
                     coupresults.getCoupons_money());
             // 选择优惠券后进行数据重绘
             RCalculate();
+
+            CurrenShowKaQuanType = 1;
+            ShowSelect();
         }
 
         if (100 == requestCode && RESULT_OK == resultCode) {// 地址=》返回
@@ -861,24 +868,19 @@ public class AOderBeing extends ATitleBase {
                     .getString(R.string.querendizhi));
             return;
         }
-        // if (coupComment == null) {
-        // StrUtils.SetColorsTxt(BaseContext, oderbeing_coupons_nameprice,
-        // R.color.grey, "", getResources().getString(R.string.nocoup));
-        // return;
-        // }
+
         String GoodsStr = GetGoodsIdStr(mBdComment, 1);
         String CidsStr = GetGoodsIdStr(mBdComment, 2);
-        PromptManager.showtextLoading(BaseContext,
-                getResources().getString(R.string.loading));
+        PromptManager.showtextLoading(BaseContext,  getResources().getString(R.string.loading));
 
         // CurrenShowKaQuanType ========> 0表示 没有卡券 隐藏状态;;1=>当前显示 不使用卡券
         // ;;2==》当前显示 使用卡券
         if (CurrenShowKaQuanType == 0 || CurrenShowKaQuanType == 2) {// 手动的不用卡券
             OderBeing(user_Get.getId(), addressBldComment, GoodsStr, CidsStr,
-                    "", "");
+                    StrUtils.NullToStr3(oderbeing_note_ed.getText().toString().trim()), "");
         } else {// 使用卡券
             OderBeing(user_Get.getId(), addressBldComment, GoodsStr, CidsStr,
-                    "", coupComment == null ? "" : coupComment.getCoupons_id());
+                    StrUtils.NullToStr3(oderbeing_note_ed.getText().toString().trim()), coupComment == null ? "" : coupComment.getCoupons_id());
         }// 测试先把卡券置为空//
         // coupComment.getCoupons_id());
         // PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,

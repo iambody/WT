@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.comment.util.image;
 
+import java.io.File;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -305,6 +306,9 @@ public class ImageLoaderUtil {
                                                                 .ShopCoverPath(pContext));
                                     }
                                     if (2 == Type) {// center的高斯保存
+                                        if( new File(ImagePathConfig.CenterCoverPath(pContext)).exists()){
+                                            SdCardUtils.delFile(ImagePathConfig.CenterCoverPath(pContext));
+                                        }
                                         SdCardUtils
                                                 .drawableTofile(
                                                         drawable,

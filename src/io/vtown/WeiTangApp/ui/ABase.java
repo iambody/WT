@@ -70,6 +70,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
@@ -79,6 +80,8 @@ import com.easemob.chat.ImageMessageBody;
 import com.easemob.chat.TextMessageBody;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+
+import org.w3c.dom.Text;
 
 import de.greenrobot.event.EventBus;
 
@@ -459,6 +462,10 @@ public class ABase extends Activity {
                 + "good" + File.separator + "savePic";
     }
 
+    protected void ShowErrorCanLoad(String ErrorTxt) {
+        ((TextView) findViewById(R.id.error_kong)).setText(ErrorTxt);
+    }
+
     /**
      * 左右选择弹出框的封装
      */
@@ -767,9 +774,6 @@ public class ABase extends Activity {
     public void SenMessage(int SentType) {
         EventBus.getDefault().post(new BMessage(SentType));
     }
-
-
-
 
 
 }

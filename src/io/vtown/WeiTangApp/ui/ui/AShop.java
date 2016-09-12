@@ -9,6 +9,7 @@ import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.ImagePathConfig;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.SdCardUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
@@ -510,14 +511,29 @@ public class AShop extends ATitileNoBase {
 
 			break;
 		case BMessage.Tage_Shop_data_cover_change:
-
-			ImageLoaderUtil.Load(Spuit.Shop_Get(BaseContext).getAvatar(),
+			ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
 					tab_shop_iv, R.drawable.testiv);
+
+			ImageLoaderUtil.LoadGaosi(BaseContext,
+					Spuit.Shop_Get(BaseContext).getAvatar(), new ImageView(BaseContext),
+					R.drawable.error_iv1, 2);
+
 
 			break;
 		case BMessage.Tage_Shop_data_background_change:
-			ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
-					.getCover(), iv_shop_cover, R.drawable.item_shangji_iv, 0);
+//			ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
+//					.getCover(), iv_shop_cover, R.drawable.item_shangji_iv, 0);
+			File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
+			SdCardUtils.delFile(CoverFile.toString());
+			if (CoverFile.exists()) {// 已经存在了
+				iv_shop_cover.setImageBitmap(BitmapFactory
+						.decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
+			} else {
+				ImageLoaderUtil.LoadGaosi(BaseContext,
+						StrUtils.NullToStr(myBShop.getCover()), iv_shop_cover,
+						R.color.app_fen, 1);
+
+			}
 			break;
 
 		default:

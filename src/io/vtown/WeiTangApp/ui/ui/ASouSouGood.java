@@ -151,7 +151,6 @@ public class ASouSouGood extends ATitileNoBase {
 		setContentView(R.layout.activity_sousou);
 		mDaoSouRecord = DaoSouRecord.getInstance(BaseContext);
 		IView();
-
 		IData();
 	}
 

@@ -168,7 +168,7 @@ public class AChannel extends ATitleBase {
 		channel_nodata_lay = findViewById(R.id.channel_nodata_lay);
 
 		IDataView(channel_out_lay, channel_nodata_lay, NOVIEW_INITIALIZE);
-
+		ShowErrorCanLoad("点我重试哦");
 		ll_this_week_sales = (LinearLayout) findViewById(R.id.ll_this_week_sales);
 		// ll_this_week_goods_in = (LinearLayout)
 		// findViewById(R.id.ll_this_week_goods_in);

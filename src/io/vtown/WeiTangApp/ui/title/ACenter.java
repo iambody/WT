@@ -242,6 +242,8 @@ public class ACenter extends ATitleBase {
 				ImageLoaderUtil.LoadGaosi(BaseContext,
 						Spuit.Shop_Get(BaseContext).getAvatar(), center_cover,
 						R.drawable.item_shangji_iv, 2);
+
+
 		case BMessage.Tage_Shop_data_cover_change:
 			if (!StrUtils.isEmpty(myBShop.getAvatar())) {
 				ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
@@ -252,7 +254,6 @@ public class ACenter extends ATitleBase {
 			}
 			break;
 		case BMessage.Tage_Shop_data_shopname_change:
-
 			StrUtils.SetTxt(center_myname, Spuit.Shop_Get(BaseContext)
 					.getSeller_name());
 

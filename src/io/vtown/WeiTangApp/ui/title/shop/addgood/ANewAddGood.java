@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -219,7 +220,6 @@ public class ANewAddGood extends ATitleBase {
         good_upload_vido_add_bt.setOnClickListener(this);
         good_upload_roll_add_bt.setOnClickListener(this);
         good_upload_desc_add_bt.setOnClickListener(this);
-
 
 
         good_upload_roll_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -709,7 +709,7 @@ public class ANewAddGood extends ATitleBase {
             ));
             return;
         }
-        PromptManager.showtextLoading3(this,getResources().getString(R.string.addgooding));
+        PromptManager.showtextLoading3(this, getResources().getString(R.string.addgooding));
         //开始上传图片
         BeginUpDatas();
 
@@ -947,11 +947,12 @@ public class ANewAddGood extends ATitleBase {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+
         try {
             EventBus.getDefault().unregister(this);
         } catch (Exception e) {
         }
+        super.onDestroy();
     }
 
     private String GetRate(int MysIZE) {
@@ -972,5 +973,66 @@ public class ANewAddGood extends ATitleBase {
     @Override
     protected void SaveBundle(Bundle bundle) {
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && IsEdit()) {
+
+            ShowCustomDialog(getResources().getString(R.string.add_good_exit_note), getResources().getString(R.string.cancle), getResources().getString(R.string.queding), new IDialogResult() {
+                @Override
+                public void LeftResult() {
+
+                }
+
+                @Override
+                public void RightResult() {
+                    BaseActivity.finish();
+                }
+            });
+
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private boolean IsEdit() {
+        if (!StrUtils.IsTextViewEmpty(good_upload_good_title_txt)) {
+            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note));
+            return true;
+        }
+        if (CategoryAdapter.getCount() > 0) {
+            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note));
+            return true;
+        }
+        if (!StrUtils.IsTextViewEmpty(good_upload_address_txt)) {
+            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+            ));
+            return true;
+        }
+        if (!StrUtils.EditTextIsEmPty(good_upload_post_price)) {
+            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+            ));
+            return true;
+        }
+        if (downgridAdapter.getCount() > 0) {
+            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+            ));
+            return true;
+        }
+
+        if (IsPice && upgridAdapter.getCount() > 0) {
+            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+            ));
+            return true;
+        }
+        if (!IsPice && !StrUtils.isEmpty(GoodVidoPath)) {
+            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+            ));
+            return true;
+        }
+        return false;
     }
 }
