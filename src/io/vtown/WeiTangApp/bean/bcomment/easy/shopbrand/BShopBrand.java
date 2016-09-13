@@ -8,6 +8,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopBase;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopCatory;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopGoods;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -18,7 +19,7 @@ public class BShopBrand extends BBase {
 
 	private List<String> roll  ;
 	private List<BShopCatory> categorys  ;
-	private List<BLBrandGood> agent  ;
+	private List<BShopGoods> agent  ;
 	private String is_agented;
 	private BShopBase base;
 
@@ -56,11 +57,11 @@ public class BShopBrand extends BBase {
 		this.base = base;
 	}
 
-	public List<BLBrandGood> getAgent() {
+	public List<BShopGoods> getAgent() {
 		return agent;
 	}
 
-	public void setAgent(List<BLBrandGood> agent) {
+	public void setAgent(List<BShopGoods> agent) {
 		this.agent = agent;
 	}
 

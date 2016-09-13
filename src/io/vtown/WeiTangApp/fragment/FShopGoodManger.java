@@ -387,7 +387,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
          * @param position
          * @param Type==1标识除去item Type==2 品牌列表==》上架成功
          */
-        public void RefreshPosition(int position, int Type,int Store) {//
+        public void RefreshPosition(int position, int Type, int Store) {//
             //刷新局部的item
             SellingSoldoutItem holder = map.get(position);
             switch (Type) {
@@ -412,7 +412,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                     if (position - visiblePosition3 >= 0) {
                         View view = lv_comment_listview.getChildAt(position - visiblePosition3 + 1);
                         SellingSoldoutItem holder1 = (SellingSoldoutItem) view.getTag();
-                        holder1.tv_inventory.setText(Store+"");
+                        holder1.tv_inventory.setText(Store + "");
                     }
                     break;
             }
@@ -611,7 +611,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                             break;
                         case 20:// 已下架
                             ShowReminder("确定修改库存?", Manger_Brand_Number,
-                                    mydatas.get(postion),postion);
+                                    mydatas.get(postion), postion);
                             break;
                         default:
                             break;
@@ -639,7 +639,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                         case 1:// 垃圾箱=》恢复
                             DeletPostion = postion;
                             ShowReminder("确定恢复?", Manger_HuiFu,
-                                    mydatas.get(postion),postion);
+                                    mydatas.get(postion), postion);
                             break;
                         case 0:// 品牌商品=》开始上架
 
@@ -656,13 +656,13 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                         case 100:// 在售中=》下架
                             DeletPostion = postion;
                             ShowReminder("确定下架?", Manger_XiaJia,
-                                    mydatas.get(postion),postion);
+                                    mydatas.get(postion), postion);
                             break;
 
                         case 20:// 已下架=》上架
                             DeletPostion = postion;
                             ShowReminder("确定上架?", Manger_ShangJia,
-                                    mydatas.get(postion),postion);
+                                    mydatas.get(postion), postion);
                             // PPurchase pShowVirtualLibGood = new
                             // PPurchase(
                             // BaseContext, 200,
@@ -973,41 +973,41 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 //                CurrentPage = 0;
 //                LoadData(CurrentPage, INITIALIZE);
 
-                mycommentAdapter.RefreshPosition(DeletPostion, 1,-1);
+                mycommentAdapter.RefreshPosition(DeletPostion, 1, -1);
                 EventBus.getDefault().post(new BMessage(20));
                 break;
             case Manger_ShanChu:// 在售中=》删除
                 PromptManager.ShowCustomToast(BaseContext, "删除成功");
 //                CurrentPage = 0;
 //                LoadData(CurrentPage, INITIALIZE);
-                mycommentAdapter.RefreshPosition(DeletPostion, 1,-1);
+                mycommentAdapter.RefreshPosition(DeletPostion, 1, -1);
                 EventBus.getDefault().post(new BMessage(1));
                 break;
             case Manger_ShangJia:// 已下架=》上架
                 PromptManager.ShowCustomToast(BaseContext, "上架成功");
 //                CurrentPage = 0;
 //                LoadData(CurrentPage, INITIALIZE);
-                mycommentAdapter.RefreshPosition(DeletPostion, 1,-1);
+                mycommentAdapter.RefreshPosition(DeletPostion, 1, -1);
                 EventBus.getDefault().post(new BMessage(100));
                 break;
             case Manger_HuiFu:// 垃圾箱=》恢复
                 PromptManager.ShowCustomToast(BaseContext, "恢复成功");
 //                CurrentPage = 0;
 //                LoadData(CurrentPage, INITIALIZE);
-                mycommentAdapter.RefreshPosition(DeletPostion, 1,-1);
+                mycommentAdapter.RefreshPosition(DeletPostion, 1, -1);
                 EventBus.getDefault().post(new BMessage(100));
                 break;
             case Manger_CheDi_ShanChu:// 垃圾箱=》彻底删除
                 PromptManager.ShowCustomToast(BaseContext, "清理成功");
 //                CurrentPage = 0;
 //                LoadData(CurrentPage, INITIALIZE);
-                mycommentAdapter.RefreshPosition(DeletPostion, 1,-1);
+                mycommentAdapter.RefreshPosition(DeletPostion, 1, -1);
                 break;
             case Manger_ShanJia:// 品牌==》上架
                 PromptManager.ShowCustomToast(BaseContext, "上架成功");
 //                CurrentPage = 0;
 //                LoadData(CurrentPage, INITIALIZE);
-                mycommentAdapter.RefreshPosition(DeletPostion, 2,-1);
+                mycommentAdapter.RefreshPosition(DeletPostion, 2, -1);
                 EventBus.getDefault().post(new BMessage(100));
                 break;
             case Manger_Good_Attrs:// 品牌商品 =》采购=》获取产品的规格
@@ -1045,7 +1045,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 //                }
 //                final BLShow datBlComment = StrUtils.BDtoBL_BLShow(dattt);
                 BNew bnew = new BNew();
-                bnew.setTitle(dattt.getSeller_name());
+                bnew.setTitle(dattt.getTitle());//dattt.getSeller_name());
                 bnew.setContent(dattt.getTitle());
                 bnew.setShare_log(StrUtils.isEmpty(dattt.getCover()) ? dattt.getGoods_info().getIntro().get(0) : dattt.getCover());
                 bnew.setShare_url(dattt.getGoods_url());
@@ -1089,7 +1089,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                         }
                     }
                 });
-                showShare.showAtLocation(BaseView, Gravity.CENTER, 0, 0);
+                showShare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
 
                 break;
             case 55:// 获取品牌的列表
@@ -1261,7 +1261,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
         if (IsToEditNumber && bMessage.getMessageType() == BMessage.Good_Manger_ToEdit_num) {// 修改商品库存页面修改后进行的通知刷新操作
 //            CurrentPage = 1;
 //            LoadData(CurrentPage, REFRESHING);
-            mycommentAdapter.RefreshPosition(bMessage.getPostEditPostion(), 3,bMessage.getAlterAllNumber());
+            mycommentAdapter.RefreshPosition(bMessage.getPostEditPostion(), 3, bMessage.getAlterAllNumber());
             return;
         }
 
@@ -1351,5 +1351,15 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
         } catch (Exception e) {
         }
         super.onDestroy();
+    }
+
+
+    /**
+     * 没有数据时候修改文字暂无数据
+     *
+     * @param ErrorTxt
+     */
+    protected void ShowErrorCanLoad(String ErrorTxt) {
+        ((TextView) BaseView.findViewById(R.id.error_kong)).setText(ErrorTxt);
     }
 }

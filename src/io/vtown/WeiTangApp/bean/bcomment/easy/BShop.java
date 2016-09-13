@@ -24,7 +24,6 @@ public class BShop extends BBase {
 	private List<BShopGoods> diy = new ArrayList<BShopGoods>();
 	//品牌店铺
 
-
 	public BShopBase getBase() {
 		return base;
 	}

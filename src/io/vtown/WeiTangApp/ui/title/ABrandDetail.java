@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title;
 
+import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
@@ -8,6 +9,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopBase;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopCatory;
+import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BShopGoods;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shopbrand.BLBrandGood;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shopbrand.BShopBrand;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
@@ -105,7 +107,8 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     /*
     搜搜
      */
-    private ImageView brand_detail_brand_sou_iv;
+//    private ImageView brand_detail_brand_sou_iv;
+    private ImageView brand_detail_brand_collect_iv;
 
     /**
      * 横向分类的Ls
@@ -115,7 +118,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
      * 横线滑动Ls的Ap
      */
     private BrandLsAp brandLsAp;
-    private ImageView right_right_iv;
+//    private ImageView right_right_iv;
     /**
      * 推荐品牌
      */
@@ -154,6 +157,13 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     // 当前分类的id号
     private String Current_Category_id;
 
+    //返回按钮
+    private ImageView brandshop_back_iv;
+    //搜索布局按钮
+    private RelativeLayout brandshop_sou_lay;
+    //联系店铺
+    private ImageView brandshop_connect_iv;
+
 //	private int LateItem;
 
     @Override
@@ -169,7 +179,12 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
      * view的初始化
      */
     private void IView() {
-        brand_detail_brand_sou_iv = (ImageView) findViewById(R.id.brand_detail_brand_sou_iv);
+
+        brand_detail_brand_collect_iv = (ImageView) findViewById(R.id.brand_detail_brand_collect_iv);
+        brandshop_back_iv = (ImageView) findViewById(R.id.brandshop_back_iv);
+        brandshop_sou_lay = (RelativeLayout) findViewById(R.id.brandshop_sou_lay);
+        brandshop_connect_iv = (ImageView) findViewById(R.id.brandshop_connect_iv);
+//        brand_detail_brand_sou_iv = (ImageView) findViewById(R.id.brand_detail_brand_sou_iv);
         brandscroll = (PullView) findViewById(R.id.brandscroll);
         brandscroll.setOnFooterRefreshListener(this);
         branddetail_banner = (ImageCycleView) findViewById(R.id.branddetail_banner);
@@ -204,7 +219,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
-                BLBrandGood mBlComment = (BLBrandGood) arg0
+                BShopGoods mBlComment = (BShopGoods) arg0
                         .getItemAtPosition(arg2);
 
                 PromptManager.SkipActivity(BaseActivity, new Intent(
@@ -213,6 +228,12 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 
             }
         });
+
+        brand_detail_brand_collect_iv.setOnClickListener(this);
+        brandshop_back_iv.setOnClickListener(this);
+        brandshop_sou_lay.setOnClickListener(this);
+        brandshop_connect_iv.setOnClickListener(this);
+
     }
 
     /**
@@ -222,7 +243,6 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
         SetTitleHttpDataLisenter(this);
         PromptManager.showtextLoading(BaseContext,
                 getResources().getString(R.string.loading));
-
         // 获取基本信息
         HashMap<String, String> map = new HashMap<String, String>();
         // map.put("agency_id", "1");
@@ -250,14 +270,14 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     @Override
     protected void InitTile() {
         SetTitleTxt(baseBcBComment.getTitle());
-        right_iv = (ImageView) findViewById(R.id.right_iv);
-        right_iv.setVisibility(View.VISIBLE);
-        right_iv.setOnClickListener(this);
-
-        right_right_iv = (ImageView) findViewById(R.id.right_right_iv);
-        right_right_iv.setImageResource(R.drawable.ic_lianxikefu_nor);
-        right_right_iv.setOnClickListener(this);
-        brand_detail_brand_sou_iv.setOnClickListener(this);
+//        brand_detail_brand_collect_iv = (ImageView) findViewById(R.id.brand_detail_brand_collect_iv);
+//        brand_detail_brand_collect_iv.setVisibility(View.VISIBLE);
+//        brand_detail_brand_collect_iv.setOnClickListener(this);
+//
+//        right_right_iv = (ImageView) findViewById(R.id.right_right_iv);
+//        right_right_iv.setImageResource(R.drawable.ic_lianxikefu_nor);
+//        right_right_iv.setOnClickListener(this);
+//        brand_detail_brand_sou_iv.setOnClickListener(this);
         // SetTitleTxt(getResources().getString(R.string.brand_detail_title_txt));
     }
 
@@ -286,7 +306,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                         if (!StrUtils.isEmpty(mJsonObject.getString("agent")))
                             mBComment.setAgent(JSON.parseArray(
                                     mJsonObject.getString("agent"),
-                                    BLBrandGood.class));
+                                    BShopGoods.class));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -346,10 +366,10 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 
                     return;
                 }
-                List<BLBrandGood> mBlComments = new ArrayList<BLBrandGood>();
+                List<BShopGoods> mBlComments = new ArrayList<BShopGoods>();
                 try {
                     mBlComments = JSON.parseArray(Data.getHttpResultStr(),
-                            BLBrandGood.class);
+                            BShopGoods.class);
                 } catch (Exception e) {
                     // DataError("", Data.getHttpLoadType());
                     return;
@@ -398,7 +418,6 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     }
 
     public void ReciverMessage(BMessage message) {
-
         if (message.getMessageType() == BMessage.Tage_Brand_Apply_Statue) {
             brand_detail_apply.setClickable(false);
             brand_detail_apply.setFocusable(false);
@@ -416,8 +435,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
      * @param ；；1标识获取
      */
     private void ResultData(BShopBrand data) {
-
-        right_right_iv.setVisibility(View.VISIBLE);
+        brandshop_connect_iv.setVisibility(View.VISIBLE);
         if (data.getIs_agented().equals("1")) {// 已经代理过
             brand_detail_apply.setClickable(false);
             brand_detail_apply.setFocusable(false);
@@ -454,8 +472,8 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     }
 
     private void CollectIV(boolean IsCollect) {
-        right_iv.setImageResource(IsCollect ? R.drawable.ic_shoucang_press
-                : R.drawable.ic_shoucang_nor);
+        brand_detail_brand_collect_iv.setImageResource(IsCollect ? R.drawable.brand_collct_pre
+                : R.drawable.brand_collct_nor);
     }
 
     @Override
@@ -532,16 +550,15 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
             case R.id.brand_detail_nodata_lay:
                 IData();
                 break;
-            case R.id.right_iv:
+            case R.id.brand_detail_brand_collect_iv:
 
                 CollecNetDo(!IsCollect);
                 break;
-            case R.id.brand_detail_brand_sou_iv://搜搜
+            case R.id.brandshop_sou_lay://搜搜
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AShopGoodSou.class).putExtra("Sellid", mBComment.getBase().getId()).putExtra("Sellname", mBComment.getBase().getSeller_name()));
-
-
+                BaseApplication.GetInstance().setShopSouRecommend(mBComment.getAgent());
                 break;
-            case R.id.right_right_iv:// 联系客服
+            case R.id.brandshop_connect_iv:// 联系客服
 
                 if (!StrUtils.isEmpty(mBComment.getBase().getId()))
                     PromptManager.SkipActivity(
@@ -769,7 +786,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
      * @author datutu
      */
     class RecommendAp extends BaseAdapter {
-        private List<BLBrandGood> datas = new ArrayList<BLBrandGood>();
+        private List<BShopGoods> datas = new ArrayList<BShopGoods>();
         private Context myContext;
 
         public RecommendAp(Context myContext) {
@@ -782,7 +799,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
          *
          * @param da
          */
-        public void FrashData(List<BLBrandGood> da) {
+        public void FrashData(List<BShopGoods> da) {
             if (da == null)
                 return;
             this.datas = da;
@@ -794,7 +811,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
          *
          * @param da
          */
-        public void AddFrashData(List<BLBrandGood> da) {
+        public void AddFrashData(List<BShopGoods> da) {
             if (da == null)
                 return;
             this.datas.addAll(da);
@@ -802,7 +819,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
         }
 
         public void Clearn() {
-            datas = new ArrayList<BLBrandGood>();
+            datas = new ArrayList<BShopGoods>();
             this.notifyDataSetChanged();
         }
 
@@ -839,7 +856,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
             } else {
                 myItem = (Myitem) arg1.getTag();
             }
-            BLBrandGood data = datas.get(arg0);
+            BShopGoods data = datas.get(arg0);
             ImageLoaderUtil.Load2(data.getCover(), myItem.item_branddetail_iv,
                     R.drawable.error_iv2);
             StrUtils.SetTxt(myItem.item_branddetail_name, data.getTitle());

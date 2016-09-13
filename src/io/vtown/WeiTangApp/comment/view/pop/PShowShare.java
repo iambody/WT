@@ -52,9 +52,9 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         public void GetResultType(int ResultType);//1代表 好友；；2代表朋友圈  ；；3代表show分享  4代表取消
     }
 
-    public PShowShare(Context context, BNew sharebeanNew ) {
+    public PShowShare(Context context, BNew sharebeanNew) {
         this.mContext = context;
-        if (null == sharebeanNew  ) {
+        if (null == sharebeanNew) {
             this.dismiss();
             return;
         }
@@ -116,7 +116,6 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                 break;
         }
     }
-
 
 
     private void Share(int Type) {

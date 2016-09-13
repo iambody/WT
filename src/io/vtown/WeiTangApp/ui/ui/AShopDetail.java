@@ -1053,6 +1053,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         switch (V.getId()) {
             case R.id.shopdetail_sou_iv://搜索
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AShopGoodSou.class).putExtra("Sellid", MyData.getBase().getId()).putExtra("Sellname", MyData.getBase().getSeller_name()));
+                BaseApplication.GetInstance().setShopSouRecommend(MyData.getDiy());
                 break;
             case R.id.shop_detail_goods_chang_iv:
                 IsShowLs = !IsShowLs;
@@ -1060,7 +1061,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                 shop_detail_downgoods_ls.setVisibility(IsShowLs ? View.VISIBLE : View.GONE);
                 shop_detail_downgoods_gr.setVisibility(!IsShowLs ? View.VISIBLE : View.GONE);
 
-//                activivty_shopdetail_outlay.smoothScrollTo(0, 20);
+//              activivty_shopdetail_outlay.smoothScrollTo(0, 20);
                 break;
             case R.id.shop_detail_brand:// 品牌列表
                 shop_detail_brand.setTextColor(getResources().getColor(
@@ -1113,7 +1114,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
             case R.id.shopdetail_shop_zizhi:
                 List<BShopGoods> DATA = shopBrandsLsAp.GetRsource();
-                BaseApplication.GetInstance().setZiYingShop_To_Ls(DATA);
+                ((BaseApplication)getApplication()).setZiYingShop_To_Ls(DATA);
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ALookAptitude.class));
                 break;

@@ -47,8 +47,7 @@
                     android:layout_marginRight="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:textColor="@color/app_gray"
                     android:textSize="@dimen/comment_label_txtsize"
-                    android:hint="@string/consignee_name"
-                    android:text="@string/input_shouhuoren_mingzi"/>
+                    android:hint="@string/input_shouhuoren_mingzi"/>
             </LinearLayout>
 
             <View
@@ -84,7 +83,7 @@
                     android:layout_toRightOf="@id/tv_contact_phone_numb"
                     android:layout_marginLeft="@dimen/center_address_manager_add_address_edittext_margin_left"
                     android:background="@null"
-                    android:text="@string/putin_shouhuo_name"/>
+                    android:hint="@string/putin_shouhuo_name"/>
 
                 <ImageView
                     android:id="@+id/iv_look_connect"

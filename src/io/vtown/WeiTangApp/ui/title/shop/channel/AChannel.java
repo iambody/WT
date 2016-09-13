@@ -194,6 +194,9 @@ public class AChannel extends ATitleBase {
 		SetItemContent(invite_superior, R.string.invite_superior);
 		SetItemContent(invite_record, R.string.invite_record);
 
+
+
+		ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 		// be_junior.setOnClickListener(this);
 		// develop_junior.setOnClickListener(this);
 		// invite_superior.setOnClickListener(this);

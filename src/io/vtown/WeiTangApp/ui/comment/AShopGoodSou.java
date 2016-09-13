@@ -64,11 +64,11 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
     }
 
     private void IView() {
-       shop_good_sou_title =  (EditText) findViewById(R.id.shop_good_sou_title);
+        shop_good_sou_title = (EditText) findViewById(R.id.shop_good_sou_title);
         shop_good_sou_iv = (ImageView) findViewById(R.id.shop_good_sou_iv);
         shop_good_sou_result_list = (LListView) findViewById(R.id.shop_good_sou_result_list);
         shop_good_sou_nodata_lay = findViewById(R.id.shop_good_sou_nodata_lay);
-        IDataView(shop_good_sou_result_list,shop_good_sou_nodata_lay,NOVIEW_INITIALIZE);
+        IDataView(shop_good_sou_result_list, shop_good_sou_nodata_lay, NOVIEW_INITIALIZE);
         shop_good_sou_iv.setOnClickListener(this);
         IList();
     }
@@ -90,10 +90,9 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
 
     /**
      * 搜索
-     *
      */
     private void ISouConnect(int LoadType) {
-        if(LOAD_INITIALIZE == LoadType){
+        if (LOAD_INITIALIZE == LoadType) {
             PromptManager.showtextLoading(BaseContext, getResources()
                     .getString(R.string.searching));
         }
@@ -109,18 +108,18 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
 
-        if(StrUtils.isEmpty(Data.getHttpResultStr())){
-            IDataView(shop_good_sou_result_list,shop_good_sou_nodata_lay,NOVIEW_ERROR);
+        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+            IDataView(shop_good_sou_result_list, shop_good_sou_nodata_lay, NOVIEW_ERROR);
             return;
         }
         List<BShopGoods> list_datas = new ArrayList<BShopGoods>();
-        try{
-            list_datas = JSON.parseArray(Data.getHttpResultStr(),BShopGoods.class);
-        }catch (Exception e){
+        try {
+            list_datas = JSON.parseArray(Data.getHttpResultStr(), BShopGoods.class);
+        } catch (Exception e) {
             return;
         }
-        IDataView(shop_good_sou_result_list,shop_good_sou_nodata_lay,NOVIEW_RIGHT);
-        switch (Data.getHttpLoadType()){
+        IDataView(shop_good_sou_result_list, shop_good_sou_nodata_lay, NOVIEW_RIGHT);
+        switch (Data.getHttpLoadType()) {
             case LOAD_INITIALIZE:
                 searchAP.UpdataList(list_datas);
                 break;
@@ -142,7 +141,7 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
         PromptManager.ShowMyToast(BaseContext, error);
         switch (LoadType) {
             case LOAD_INITIALIZE:// 刷新数据
-                IDataView(shop_good_sou_result_list,shop_good_sou_nodata_lay,NOVIEW_ERROR);
+                IDataView(shop_good_sou_result_list, shop_good_sou_nodata_lay, NOVIEW_ERROR);
 
                 break;
             case LOAD_LOADMOREING:// 加载更多
@@ -169,16 +168,16 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
 
     @Override
     protected void MyClick(View V) {
-        switch (V.getId()){
+        switch (V.getId()) {
             case R.id.shop_good_sou_iv:
                 hintKbTwo();
-                if(CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
                 CurrentTitle = shop_good_sou_title.getText().toString();
-                if(!StrUtils.isEmpty(CurrentTitle)){
+                if (!StrUtils.isEmpty(CurrentTitle)) {
                     CurrentPage = 1;
                     ISouConnect(LOAD_INITIALIZE);
-                }else{
-                    PromptManager.ShowCustomToast(BaseContext,"请输入您要搜索的内容");
+                } else {
+                    PromptManager.ShowCustomToast(BaseContext, "请输入您要搜索的内容");
                     return;
                 }
 
@@ -198,8 +197,6 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
     }
 
 
-
-
     @Override
     public void onRefresh() {
 //        CurrentPage = 1;
@@ -209,7 +206,7 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
     @Override
     public void onLoadMore() {
 
-        CurrentPage = CurrentPage+1;
+        CurrentPage = CurrentPage + 1;
         ISouConnect(LOAD_REFRESHING);
 
     }
@@ -224,16 +221,16 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
     }
 
 
-    class SearchResultAdapter extends BaseAdapter{
+    class SearchResultAdapter extends BaseAdapter {
 
         private int ResoultId;
         private LayoutInflater inflater;
         private List<BShopGoods> datas = new ArrayList<BShopGoods>();
 
-        public SearchResultAdapter(int ResoultId){
+        public SearchResultAdapter(int ResoultId) {
             super();
             this.ResoultId = ResoultId;
-           this.inflater =  LayoutInflater.from(BaseContext);
+            this.inflater = LayoutInflater.from(BaseContext);
         }
 
         @Override
@@ -241,12 +238,12 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
             return datas.size();
         }
 
-        public void UpdataList( List<BShopGoods> datas){
-           this.datas = datas;
+        public void UpdataList(List<BShopGoods> datas) {
+            this.datas = datas;
             this.notifyDataSetChanged();
         }
 
-        public void AddMore(List<BShopGoods> data){
+        public void AddMore(List<BShopGoods> data) {
             this.datas.addAll(data);
             this.notifyDataSetChanged();
         }
@@ -263,34 +260,34 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ResultItem holder  = null;
+            ResultItem holder = null;
 
-            if(convertView == null){
+            if (convertView == null) {
                 holder = new ResultItem();
-                convertView = inflater.inflate(ResoultId,null);
+                convertView = inflater.inflate(ResoultId, null);
                 holder.shop_good_sou_good_icon = (ImageView) convertView.findViewById(R.id.shop_good_sou_good_icon);
                 holder.shop_good_sou_good_is_agent = (ImageView) convertView.findViewById(R.id.shop_good_sou_good_is_agent);
                 holder.shop_good_sou_good_title = (TextView) convertView.findViewById(R.id.shop_good_sou_good_title);
                 holder.shop_good_sou_price = (TextView) convertView.findViewById(R.id.shop_good_sou_price);
                 convertView.setTag(holder);
-                ImageLoaderUtil.Load2(datas.get(position).getCover(),holder.shop_good_sou_good_icon,R.drawable.error_iv2);
-            }else{
+                ImageLoaderUtil.Load2(datas.get(position).getCover(), holder.shop_good_sou_good_icon, R.drawable.error_iv2);
+            } else {
                 holder = (ResultItem) convertView.getTag();
             }
-           if(0 ==  Integer.parseInt(datas.get(position).getIs_agent())){
-               holder.shop_good_sou_good_is_agent.setVisibility(View.GONE);
-           }else{
-               holder.shop_good_sou_good_is_agent.setVisibility(View.VISIBLE);
-           }
-            StrUtils.SetTxt(holder.shop_good_sou_good_title,datas.get(position).getTitle());
-            StrUtils.SetTxt(holder.shop_good_sou_price,StrUtils.SetTextForMony(datas.get(position).getSell_price())+"元");
+            if (0 == Integer.parseInt(datas.get(position).getIs_agent())) {
+                holder.shop_good_sou_good_is_agent.setVisibility(View.GONE);
+            } else {
+                holder.shop_good_sou_good_is_agent.setVisibility(View.VISIBLE);
+            }
+            StrUtils.SetTxt(holder.shop_good_sou_good_title, datas.get(position).getTitle());
+            StrUtils.SetTxt(holder.shop_good_sou_price, StrUtils.SetTextForMony(datas.get(position).getSell_price()) + "元");
             return convertView;
         }
     }
 
-    class ResultItem{
-        ImageView shop_good_sou_good_icon,shop_good_sou_good_is_agent;
-        TextView shop_good_sou_good_title,shop_good_sou_price;
+    class ResultItem {
+        ImageView shop_good_sou_good_icon, shop_good_sou_good_is_agent;
+        TextView shop_good_sou_good_title, shop_good_sou_price;
 
     }
 }

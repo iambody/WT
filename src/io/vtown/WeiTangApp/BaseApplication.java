@@ -65,6 +65,8 @@ public class BaseApplication extends Application {
     public int PicType;// 1==>selectpice；；；2==》goodshow;3==>goodshare
     //在点击图片 跳转到大图查看区域
     private List<PicImageItem> PicImages = new ArrayList<PicImageItem>();
+    //跳转到店铺内搜索时候传入的推荐商品
+    private List<BShopGoods>ShopSouRecommend=new ArrayList<BShopGoods>();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -285,5 +287,13 @@ public class BaseApplication extends Application {
 
     public void setPicImages(List<PicImageItem> picImages) {
         PicImages = picImages;
+    }
+
+    public List<BShopGoods> getShopSouRecommend() {
+        return ShopSouRecommend;
+    }
+
+    public void setShopSouRecommend(List<BShopGoods> shopSouRecommend) {
+        ShopSouRecommend = shopSouRecommend;
     }
 }

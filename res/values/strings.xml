@@ -565,6 +565,9 @@
     <string name="error_null_noda">网络调皮,点我刷新</string>
     <string name="buyer_liuyan">买家留言</string>
     <string name="hint_buyer_liuyan">选填:对本次交易说明</string>
+    <string name="brand_sousou">搜索店铺内商品</string>
+    <string name="error_fuwuqi">服务器异常</string>
+    <string name="error_null_address">\"您还没有添加地址哦~~~\"</string>
 
 
 </resources>

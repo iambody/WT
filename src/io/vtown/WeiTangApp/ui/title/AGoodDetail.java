@@ -430,6 +430,7 @@ public class AGoodDetail extends ATitleBase {
         // PromptManager.SkipActivity(BaseActivity, mIntent);
         // }
         // });
+        ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 
     }
 
@@ -459,6 +460,7 @@ public class AGoodDetail extends ATitleBase {
                     // DataError(Msg, Data.getHttpLoadType());
 //                    BaseActivity.finish();
 //                    PromptManager.ShowCustomToast(BaseContext, Msg);
+
                     DataError("网络异常", LOAD_INITIALIZE);
                     return;
                 }

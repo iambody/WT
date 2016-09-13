@@ -884,7 +884,7 @@ public class Constants {
  //	public static String SignKey = "hkf%t5SMv1HtrVS!Y%B!NPNS!!0cWgy";
 
 	// 微糖小助手sheng'chuan'j生产
- // public static String WtHelper = "prod_v-town000111222";
+ // public static String WtHelper = "v-town000111222";
  //开发环境
 	 public static String WtHelper = "v-town000111222";
 	/**

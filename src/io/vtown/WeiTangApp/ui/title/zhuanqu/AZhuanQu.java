@@ -50,6 +50,7 @@ public class AZhuanQu extends ATitleBase {
 
 	private ScrollView zhuanqu_scrollview;
 	private ImageCycleView imageCycleView;
+	private View zhuan_nodata_lay;
 
 	private ArrayList<String> d = new ArrayList<String>();
 
@@ -77,13 +78,20 @@ public class AZhuanQu extends ATitleBase {
 	}
 
 	private void IBasV() {
+		zhuan_nodata_lay=findViewById(R.id.zhuan_nodata_lay);
 		zhuanqu_scrollview = (ScrollView) findViewById(R.id.zhuanqu_scrollview);
+
+
 
 		imageCycleView = (ImageCycleView) findViewById(R.id.zhuanqu_banner);
 
 		zhuanqu_ls = (CompleteListView) findViewById(R.id.zhuanqu_ls);
 		huoDongAdapter = new HuoDongAdapter(BaseContext);
 		zhuanqu_ls.setAdapter(huoDongAdapter);
+
+		IDataView(zhuanqu_scrollview, zhuan_nodata_lay, NOVIEW_INITIALIZE);
+		zhuan_nodata_lay.setOnClickListener(this);
+		ShowErrorCanLoad("点我重试哦");
 	}
 
 	// ssi==0调用自己的商品id
@@ -122,8 +130,10 @@ public class AZhuanQu extends ATitleBase {
 	protected void DataResult(int Code, String Msg, BComment Data) {
 		if (StrUtils.isEmpty(Data.getHttpResultStr())) {
 			PromptManager.ShowCustomToast(BaseContext, Msg);
+			IDataView(zhuanqu_scrollview, zhuan_nodata_lay, NOVIEW_ERROR);
 			return;
 		}
+		IDataView(zhuanqu_scrollview, zhuan_nodata_lay, NOVIEW_RIGHT);
 		BZhuan bdComment;
 		try {
 			bdComment = JSON.parseObject(Data.getHttpResultStr(),
@@ -139,6 +149,7 @@ public class AZhuanQu extends ATitleBase {
 
 	@Override
 	protected void DataError(String error, int LoadType) {
+		IDataView(zhuanqu_scrollview, zhuan_nodata_lay, NOVIEW_ERROR);
 	}
 
 	@Override
@@ -179,6 +190,11 @@ public class AZhuanQu extends ATitleBase {
 
 	@Override
 	protected void MyClick(View V) {
+		switch (V.getId()){
+			case R.id.zhuan_nodata_lay:
+				IData(baseBcBComment.getId());
+			break;
+		}
 	}
 
 	@Override

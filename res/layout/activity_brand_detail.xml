@@ -5,7 +5,85 @@
               android:background="@color/app_bg"
               android:orientation="vertical">
 
-    <include layout="@layout/titlebar"/>
+    <include
+        layout="@layout/titlebar"
+        android:visibility="gone"/>
+    <!-- 搜索 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/titlebarheingh"
+            android:background="@color/app_fen"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/ui_10_dip"
+            android:paddingBottom="@dimen/ui_10_dip">
+
+
+            <ImageView
+                android:id="@+id/brandshop_back_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/arrow_back"/>
+
+            <RelativeLayout
+                android:id="@+id/brandshop_sou_lay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shap_sousou_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/brand_sousou"
+                    android:textColor="@color/sousou_ed"
+                    android:textSize="15dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/textView"
+                    android:layout_toStartOf="@+id/textView"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/sousou"/>
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/brandshop_connect_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/ui_10_dip"
+                android:layout_marginLeft="@dimen/ui_10_dip"
+                android:src="@drawable/ic_lianxikefu_nor"/>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/neterrorview"
+            layout="@layout/net_status_bar_info_top"
+            android:clickable="true"
+            android:visibility="gone"/>
+    </LinearLayout>
+    <!--搜索-->
 
     <LinearLayout
         android:id="@+id/brand_detail_out_lay"
@@ -64,15 +142,18 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_weight="1"
                                 android:text="@string/app_name"/>
+
                             <ImageView
-                                android:id="@+id/brand_detail_brand_sou_iv"
+                                android:id="@+id/brand_detail_brand_collect_iv"
                                 android:layout_width="@dimen/brand_detail_collect_iv_height"
                                 android:layout_height="@dimen/brand_detail_collect_iv_height"
                                 android:layout_gravity="center_vertical"
+                                android:layout_margin="10dp"
                                 android:clickable="true"
                                 android:focusable="true"
                                 android:padding="5dp"
-                                android:src="@drawable/sousou"/>
+                                android:src="@drawable/brand_collct_nor"/>
+
                             <ImageView
                                 android:id="@+id/brand_detail_brand_lookshow_iv"
                                 android:layout_width="@dimen/brand_detail_collect_iv_height"

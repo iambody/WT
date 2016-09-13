@@ -34,5 +34,10 @@
                 android:scrollbars="none" />
         </LinearLayout>
     </ScrollView>
-
+    <include
+        android:id="@+id/zhuan_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
 </LinearLayout>
