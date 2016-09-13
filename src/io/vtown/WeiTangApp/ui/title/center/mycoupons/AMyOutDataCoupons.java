@@ -91,8 +91,11 @@ public class AMyOutDataCoupons extends ATitleBase {
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
         if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-            PromptManager.ShowCustomToast(BaseContext, "还没有失效卡券");
+            //PromptManager.ShowCustomToast(BaseContext, "还没有失效卡券");
             IDataView(center_my_out_data_coupons_outlay, center_my_out_data_coupons_nodata_lay, NOVIEW_ERROR);
+            center_my_out_data_coupons_nodata_lay.setClickable(false);
+            //DataError(getResources().getString(R.string.error_null_over_coupons), Data.getHttpLoadType());
+           ShowErrorCanLoad(getResources().getString(R.string.error_null_over_coupons));
             return;
         }
 
@@ -111,6 +114,8 @@ public class AMyOutDataCoupons extends ATitleBase {
         PromptManager.ShowMyToast(BaseContext, error);
         if (LOAD_INITIALIZE == LoadType) {
             IDataView(center_my_out_data_coupons_outlay, center_my_out_data_coupons_nodata_lay, NOVIEW_ERROR);
+            center_my_out_data_coupons_nodata_lay.setClickable(true);
+            ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
         }
     }
 

@@ -587,6 +587,7 @@
     <string name="newgoodedite_good_vidoo">(仅供商品详情页视频播放展示使用,请谨慎修改)</string>
     <string name="newgoodedit_good_roll">(仅供商品详情页面轮播图展示使用,请谨慎修改)</string>
     <string name="no_shopbus">您的购物车空空如也,点我挑选商品吧</string>
+    <string name="error_null_over_coupons">您还没有过期卡券哦</string>
 
 
 </resources>
