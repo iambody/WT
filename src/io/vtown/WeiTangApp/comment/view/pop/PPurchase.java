@@ -593,7 +593,7 @@ public class PPurchase extends PopupWindow implements OnClickListener,
                 ll_price.setVisibility(View.VISIBLE);
                 ll_make_how_much.setVisibility(View.VISIBLE);
                 btn_virtual_lib_confirm.setText("直接上架");
-                btn_virtual_lib_cancel.setText("上架并转发");
+                btn_virtual_lib_cancel.setText("上架并分享");
                 break;
             case 113:
 

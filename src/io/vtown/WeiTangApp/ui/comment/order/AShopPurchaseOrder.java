@@ -264,8 +264,32 @@ public class AShopPurchaseOrder extends ATitleBase implements
 			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
 
 				if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
-					PromptManager.ShowCustomToast(BaseContext, "暂无订单");
+					//PromptManager.ShowCustomToast(BaseContext, "暂无订单");
+					switch (Ket_Tage){
+
+
+						case PAll:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_all));
+							break;
+						case PDaiFu:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_no_pay));
+							break;
+						case PYiFu:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_daifa));
+							break;
+						case PDaiShou:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_daishou));
+							break;
+						case PTuiKuan:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_tuikuan));
+							break;
+						case PClose:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_over));
+							break;
+
+					}
 					fragent_purchase_nodata_lay.setVisibility(View.VISIBLE);
+					fragent_purchase_nodata_lay.setClickable(false);
 					fragment_shop_purchase_ls.setVisibility(View.GONE);
 					if (10 == Ket_Tage) {
 						purchaseOrderNoPayAdapter
@@ -304,7 +328,8 @@ public class AShopPurchaseOrder extends ATitleBase implements
 					list_datas = JSON.parseArray(Data.getHttpResultStr(),
 							BLShopPurchase.class);
 				} catch (Exception e) {
-					onError("解析失败", 1);
+					//onError("解析失败", 1);
+					return;
 				}
 				if (0 == Ket_Tage) {
 					CacheUtil.Shop_Purchase_List_Save(getApplicationContext(),
@@ -391,6 +416,9 @@ public class AShopPurchaseOrder extends ATitleBase implements
 		switch (LoadType) {
 		case LOAD_INITIALIZE:// ss
 			fragent_purchase_nodata_lay.setVisibility(View.VISIBLE);
+			fragment_shop_purchase_ls.setVisibility(View.GONE);
+			fragent_purchase_nodata_lay.setClickable(true);
+			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 			break;
 		case LOAD_REFRESHING:// 刷新数据
 			fragment_shop_purchase_ls.stopRefresh();

@@ -259,8 +259,32 @@ public class AShopOrderManager extends ATitleBase implements
 		case 0:// 列表数据
 			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
 				if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
-					PromptManager.ShowCustomToast(BaseContext, "暂无订单");
+					//PromptManager.ShowCustomToast(BaseContext, "暂无订单");
+					switch (Ket_Tage){
+
+
+						case PAll:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_all));
+							break;
+						case PDaiFu:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_no_pay));
+							break;
+						case PYiFu:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_daifa));
+							break;
+						case PDaiShou:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_daishou));
+							break;
+						case PTuiKuan:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_tuikuan));
+							break;
+						case PClose:
+							ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_over));
+							break;
+
+					}
 					fragent_oder_nodata_lay.setVisibility(View.VISIBLE);
+					fragent_oder_nodata_lay.setClickable(false);
 					lv_fall_daifu_common.setVisibility(View.GONE);
 					myAdapter.FrashData(new ArrayList<BLShopOrderManage>());
 					if (0 == Ket_Tage) {
@@ -292,7 +316,7 @@ public class AShopOrderManager extends ATitleBase implements
 				dattaa = JSON.parseArray(Data.getHttpResultStr(),
 						BLShopOrderManage.class);
 			} catch (Exception e) {
-				onError("解析错误", 1);
+				//onError("解析错误", 1);
 				return;
 			}
 			if (dattaa.size() == 0)
@@ -347,6 +371,12 @@ public class AShopOrderManager extends ATitleBase implements
 	protected void DataError(String error, int LoadType) {
 		PromptManager.ShowCustomToast(BaseContext, error);
 		switch (LoadType) {
+			case LOAD_INITIALIZE:
+				lv_fall_daifu_common.setVisibility(View.GONE);
+				fragent_oder_nodata_lay.setVisibility(View.VISIBLE);
+				fragent_oder_nodata_lay.setClickable(true);
+				ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+				break;
 		case LOAD_REFRESHING:// 刷新数据
 			lv_fall_daifu_common.stopRefresh();
 
