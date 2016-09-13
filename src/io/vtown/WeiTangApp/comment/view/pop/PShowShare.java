@@ -83,11 +83,11 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         mRootView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
 //
-        setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-        setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
         this.setFocusable(true);
         ColorDrawable dw = new ColorDrawable(0xb0000000);
-        setBackgroundDrawable(null);
+        setBackgroundDrawable(dw);
         this.setOutsideTouchable(true);
 
     }

@@ -721,7 +721,7 @@ public class AShow extends ATitleBase implements IXListViewListener {
                         }
                     }
                 });
-                showShare.showAtLocation(BaseView, Gravity.CENTER, 0, 0);
+                showShare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
 
 
             }
