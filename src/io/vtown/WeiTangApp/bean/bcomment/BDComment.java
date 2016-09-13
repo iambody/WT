@@ -297,6 +297,8 @@ public class BDComment extends BBase {
 
 	private String logisticinfo;// "logisticinfo": "",
 	private String number;// "number": 1
+
+
 	// *****************end*********我的--我的订单--订单详情*********end******************
 
 	// center====>未付款===》son_order的bean********************************

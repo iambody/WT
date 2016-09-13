@@ -1202,8 +1202,8 @@ public class PPurchase extends PopupWindow implements OnClickListener,
                         PPurchase.this.dismiss();
                         PromptManager.ShowMyToast(pContext, "上架成功");
                         BNew bnew = new BNew();
-                        bnew.setTitle(databean.getSeller_name());
-                        bnew.setContent(databean.getTitle());
+                        bnew.setShare_title(pContext.getResources().getString(R.string.share_app)+"  "+databean.getSeller_name());
+                        bnew.setShare_content(pContext.getResources().getString(R.string.share_app)+"  "+databean.getTitle());
                         bnew.setShare_log(StrUtils.isEmpty(databean.getCover()) ? databean.getGoods_info().getIntro().get(0) : databean.getCover());
                         bnew.setShare_url(databean.getGoods_url());
                         PShowShare showShare = new PShowShare(pContext, bnew);

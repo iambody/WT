@@ -13,12 +13,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:orientation="vertical">
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
@@ -37,9 +39,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="@dimen/line_size4"
                     android:paddingLeft="@dimen/ui_10_dip"
                     android:paddingRight="@dimen/ui_10_dip"
+                    android:paddingTop="@dimen/line_size4"
 
                     >
 
@@ -53,6 +55,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:text="@string/upload_good_goodvido_des"
                         android:textColor="@color/app_gray"
@@ -63,8 +66,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
-
-                    <TextView
+                    <ImageView
+                        android:id="@+id/good_upload_vido_add_bt"
+                        android:layout_width="@dimen/shop_add_jia_height"
+                        android:layout_height="@dimen/shop_add_jia_height"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:src="@drawable/iv_add_jia"/>
+                    <!--<TextView
                         android:id="@+id/good_upload_vido_add_bt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,31 +84,44 @@
                         android:paddingRight="7dp"
                         android:paddingTop="4dp"
                         android:text="添加"
-                        android:textColor="@color/app_gray"/>
+                        android:textColor="@color/app_gray"/>-->
                 </LinearLayout>
 
                 <!--上边 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_bg"
+                    android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/good_upload_vido_cover"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/good_upload_vido_iv_height"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitXY"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ui_10_dip"
+                        >
+
+                        <ImageView
+                            android:id="@+id/good_upload_vido_cover"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/good_upload_vido_iv_height"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"/>
+
+                        <ImageView
+                            android:id="@+id/good_upload_vido_play"
+                            android:layout_width="@dimen/new_goodedit_vido_play_iv"
+                            android:layout_height="@dimen/new_goodedit_vido_play_iv"
+                            android:layout_centerInParent="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:src="@drawable/video_player"/>
+                    </RelativeLayout>
 
                     <ImageView
-                        android:id="@+id/good_upload_vido_play"
-                        android:layout_width="@dimen/new_goodedit_vido_play_iv"
-                        android:layout_height="@dimen/new_goodedit_vido_play_iv"
-                        android:layout_centerInParent="true"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:src="@drawable/video_player"/>
-                </RelativeLayout>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"/>
+                </LinearLayout>
             </LinearLayout>
             <!-- 视频的布局..-->
             <!-- 轮播图的布局-->
@@ -107,30 +130,32 @@
                 android:id="@+id/good_upload_roll_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/transparent"
                 android:orientation="vertical">
 
                 <!--上边-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="horizontal"
-                    android:paddingTop="@dimen/line_size4"
                     android:paddingLeft="@dimen/ui_10_dip"
                     android:paddingRight="@dimen/ui_10_dip"
-
+                    android:paddingTop="@dimen/line_size4"
                     >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:padding="5dp"
                         android:text="@string/upload_good_goods"
                         android:textColor="@color/grey"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:text="@string/upload_good_goods_des"
                         android:textColor="@color/app_gray"
@@ -141,18 +166,27 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
-
-                    <TextView
+                    <ImageView
                         android:id="@+id/good_upload_roll_add_bt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_show_select_pic_bg"
-                        android:paddingBottom="4dp"
-                        android:paddingLeft="7dp"
-                        android:paddingRight="7dp"
-                        android:paddingTop="4dp"
-                        android:text="添加"
-                        android:textColor="@color/app_gray"/>
+                        android:layout_width="@dimen/shop_add_jia_height"
+                        android:layout_height="@dimen/shop_add_jia_height"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:src="@drawable/iv_add_jia"/>
+
+                    <!--  <TextView
+                          android:id="@+id/good_upload_roll_add_bt"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:background="@drawable/shape_show_select_pic_bg"
+                          android:paddingBottom="4dp"
+                          android:paddingLeft="7dp"
+                          android:paddingRight="7dp"
+                          android:paddingTop="4dp"
+                          android:text="添加"
+                          android:textColor="@color/app_gray"
+                          android:visibility="gone"/>-->
                 </LinearLayout>
 
                 <!--上边 -->
@@ -181,17 +215,18 @@
                 android:id="@+id/good_upload_desc_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/transparent"
                 android:orientation="vertical">
 
                 <!--上边-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="horizontal"
-                    android:paddingTop="@dimen/line_size4"
                     android:paddingLeft="@dimen/ui_10_dip"
                     android:paddingRight="@dimen/ui_10_dip"
+                    android:paddingTop="@dimen/line_size4"
                     >
 
                     <TextView
@@ -199,11 +234,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="@string/upload_good_desctxt"
+
                         android:textColor="@color/grey"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:text="@string/upload_good_desctxt_desc"
                         android:textColor="@color/app_gray"
@@ -214,18 +251,25 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
-
-                    <TextView
+                    <ImageView
                         android:id="@+id/good_upload_desc_add_bt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_show_select_pic_bg"
-                        android:paddingBottom="4dp"
-                        android:paddingLeft="7dp"
-                        android:paddingRight="7dp"
-                        android:paddingTop="4dp"
-                        android:text="添加"
-                        android:textColor="@color/app_gray"/>
+                        android:layout_width="@dimen/shop_add_jia_height"
+                        android:layout_height="@dimen/shop_add_jia_height"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:src="@drawable/iv_add_jia"/>
+                    <!-- <TextView
+                         android:id="@+id/good_upload_desc_add_bt"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:background="@drawable/shape_show_select_pic_bg"
+                         android:paddingBottom="4dp"
+                         android:paddingLeft="7dp"
+                         android:paddingRight="7dp"
+                         android:paddingTop="4dp"
+                         android:text="添加"
+                         android:textColor="@color/app_gray"/>-->
                 </LinearLayout>
 
                 <!--上边 -->

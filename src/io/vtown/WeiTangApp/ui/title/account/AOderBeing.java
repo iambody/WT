@@ -198,7 +198,7 @@ public class AOderBeing extends ATitleBase {
     }
 
     private void IBase() {
-        oderbeing_note_ed= (EditText) findViewById(R.id.oderbeing_note_ed);
+        oderbeing_note_ed = (EditText) findViewById(R.id.oderbeing_note_ed);
         oderbering_view = findViewById(R.id.oderbering_view);
 
         oderbeing_out_lay = (LinearLayout) findViewById(R.id.oderbeing_out_lay);
@@ -338,6 +338,9 @@ public class AOderBeing extends ATitleBase {
         } else {
             oderbeing_coupons_lay.setVisibility(View.INVISIBLE);
         }
+        if (!StrUtils.isEmpty(mBdComment.getCouponsNum())) {
+            StrUtils.SetTxt(oderbeing_coupons_nameprice, mBdComment.getCouponsNum()+"张可用卡券" );
+        }
         oderAp.FrashData(mBdComment.getList());
         // 判断地址数据是否为空
         addressBldComment = mBdComment.getAddress();
@@ -353,7 +356,7 @@ public class AOderBeing extends ATitleBase {
 //                oderbeing_coupons_lay.setVisibility(View.INVISIBLE);
 //            ;
 //            CurrenShowKaQuanType = 0;
-            ShowSelect();
+        ShowSelect();
 //        }// 卡券数据不为空
 //        else {
 //            StrUtils.SetColorsTxt(
@@ -865,14 +868,13 @@ public class AOderBeing extends ATitleBase {
                 .toString().trim())
                 || StrUtils.isEmpty1(commentview_add_phone.getText().toString()
                 .trim())) {
-            PromptManager.ShowCustomToast(BaseContext, getResources()
-                    .getString(R.string.querendizhi));
+            PromptManager.ShowCustomToast(BaseContext, getResources()  .getString(R.string.querendizhi));
             return;
         }
 
         String GoodsStr = GetGoodsIdStr(mBdComment, 1);
         String CidsStr = GetGoodsIdStr(mBdComment, 2);
-        PromptManager.showtextLoading(BaseContext,  getResources().getString(R.string.loading));
+        PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.loading));
 
         // CurrenShowKaQuanType ========> 0表示 没有卡券 隐藏状态;;1=>当前显示 不使用卡券
         // ;;2==》当前显示 使用卡券

@@ -65,14 +65,14 @@ public class NHttpBaseStr extends NHttpBase {
 
                 } catch (Exception e) {
                     if (postResult != null)
-                    postResult.onError(context.getResources().getString(R.string.error_fuwuqi), 0);
+                    postResult.onError(context.getResources().getString(R.string.error_fuwuqi1), 0);
                     return;
                 }
                 try {
                     Msg = obj.getString("msg");
                 } catch (Exception e) {
                     if (postResult != null)
-                    postResult.onError(context.getResources().getString(R.string.error_fuwuqi), 0);
+                    postResult.onError(context.getResources().getString(R.string.error_fuwuqi2), 0);
                     return;
                 }
 
@@ -80,13 +80,13 @@ public class NHttpBaseStr extends NHttpBase {
                     Data = obj.getString("data");
                 } catch (Exception e) {
                     if (postResult != null)
-                    postResult.onError(context.getResources().getString(R.string.error_fuwuqi), 0);
+                    postResult.onError(context.getResources().getString(R.string.error_fuwuqi3), 0);
                     return;
                 }
 
             } catch (Exception e) {
                 if (postResult != null)
-                    postResult.onError(context.getResources().getString(R.string.error_fuwuqi), 0);
+                    postResult.onError(context.getResources().getString(R.string.error_fuwuqi4), 0);
                 return;
             }
 
@@ -98,9 +98,7 @@ public class NHttpBaseStr extends NHttpBase {
     @Override
     public void myonErrorResponse(VolleyError arg0) {
             if (postResult != null)
-                postResult.onError(context.getResources().getString(R.string.error_fuwuqi), 0);
-
-
+                postResult.onError(context.getResources().getString(R.string.error_fuwuqi5), 0);
     }
 
     public void ShowPromptCustomDialog(final Context mContext, String content) {

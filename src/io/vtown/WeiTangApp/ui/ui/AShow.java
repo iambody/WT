@@ -672,8 +672,8 @@ public class AShow extends ATitleBase implements IXListViewListener {
             @Override
             public void onClick(View arg0) {
                 BNew bnew = new BNew();
-                bnew.setTitle(datBlComment.getGoodinfo().getTitle());
-                bnew.setContent(datBlComment.getGoodinfo().getTitle());
+                bnew.setShare_title(getResources().getString(R.string.share_app)+"  "+datBlComment.getGoodinfo().getTitle());
+                bnew.setShare_content(getResources().getString(R.string.share_app)+"  "+datBlComment.getGoodinfo().getTitle());
 
                 bnew.setShare_url(datBlComment.getGoodurl());
                 if (datBlComment.getIs_type().equals("0")) {//照片直接取出第一张进行分享

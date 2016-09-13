@@ -571,5 +571,6 @@
     <dimen name="pop_addcatory_margitop">40dp</dimen>
     <dimen name="vidoshare_height">170dp</dimen>
     <dimen name="oderbeing_buyer_txt_size">15dp</dimen>
+    <dimen name="shop_add_jia_height">36dp</dimen>
 
 </resources>

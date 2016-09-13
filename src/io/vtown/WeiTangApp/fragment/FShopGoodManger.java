@@ -210,7 +210,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 
         fragent_goodmanger_nodata_lay = BaseView
                 .findViewById(R.id.fragent_goodmanger_nodata_lay);
-
+        fragent_goodmanger_nodata_lay.setOnClickListener(this);
         lv_comment_listview = (LListView) BaseView
                 .findViewById(R.id.lv_comment_listview);
 
@@ -378,7 +378,6 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 
         @Override
         public long getItemId(int arg0) {
-
             return 0;
         }
 
@@ -1066,8 +1065,8 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 //                }
 //                final BLShow datBlComment = StrUtils.BDtoBL_BLShow(dattt);
                 BNew bnew = new BNew();
-                bnew.setTitle(dattt.getTitle());//dattt.getSeller_name());
-                bnew.setContent(dattt.getTitle());
+                bnew.setShare_title(getResources().getString(R.string.share_app)+"  "+dattt.getTitle());//dattt.getSeller_name());
+                bnew.setShare_content(getResources().getString(R.string.share_app)+"  "+dattt.getTitle());
                 bnew.setShare_log(StrUtils.isEmpty(dattt.getCover()) ? dattt.getGoods_info().getIntro().get(0) : dattt.getCover());
                 bnew.setShare_url(dattt.getGoods_url());
                 PShowShare showShare = new PShowShare(BaseContext, bnew);
@@ -1137,8 +1136,14 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 
     @Override
     public void onError(String error, int LoadType) {
+
+
         PromptManager.ShowCustomToast(BaseContext, error);
         switch (LoadType) {
+            case INITIALIZE:
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+                fragent_goodmanger_nodata_lay.setVisibility(View.VISIBLE);
+                break;
             case REFRESHING:
                 lv_comment_listview.stopRefresh();
                 break;
@@ -1323,6 +1328,10 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.fragent_goodmanger_nodata_lay:
+                CurrentPage=1;
+                LoadData(CurrentPage, INITIALIZE);
+                break;
             case R.id.tv_add_item:// ss
 
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandList.class));

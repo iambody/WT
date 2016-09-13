@@ -396,7 +396,7 @@
     <string name="lijian">立减:</string>
     <string name="needpay">还需支付:</string>
     <string name="address">收货地址:</string>
-    <string name="shouhuoren">收 货 人 ：</string>
+    <string name="shouhuoren">收  货  人 ：</string>
     <string name="phone">电话:</string>
     <string name="querendizhi">请确定收货地址</string>
     <string name="nocoup">暂无卡券</string>
@@ -587,6 +587,13 @@
     <string name="newgoodedite_good_vidoo">(仅供商品详情页视频播放展示使用,请谨慎修改)</string>
     <string name="newgoodedit_good_roll">(仅供商品详情页面轮播图展示使用,请谨慎修改)</string>
     <string name="no_shopbus">您的购物车空空如也,点我挑选商品吧</string>
+    <string name="error_fuwuqi1">服务器异常1</string>
+    <string name="error_fuwuqi2">服务器异常2</string>
+    <string name="error_fuwuqi3">服务器异常3</string>
+    <string name="error_fuwuqi4">服务器异常4</string>
+    <string name="error_fuwuqi5">服务器异常5</string>
+    <string name="no_doudou_goods">没有相关商品</string>
+    <string name="error_null_over_coupons">您还没有过期卡券哦</string>
     <string name="error_null_over_coupons">您还没有过期卡券哦</string>
 
 

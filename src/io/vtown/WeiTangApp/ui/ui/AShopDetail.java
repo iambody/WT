@@ -619,8 +619,8 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         // shopdetail_shop_visitor_number
         ImageLoaderUtil.Load2(base.getAvatar(), shopdetail_imagview,
                 R.drawable.testiv);
-        ImageLoaderUtil.LoadGaosi(BaseContext, base.getCover(),
-                shopdetail_imagview_cover, R.drawable.item_shangji_iv, 0);
+        ImageLoaderUtil.Load2(base.getCover(),
+                shopdetail_imagview_cover, R.drawable.item_shangji_iv);
         StrUtils.SetTxt(shopdetail_shop_name, base.getSeller_name());
 
 
@@ -631,8 +631,8 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         StrUtils.SetTxt(shopdetail_shop_show_count, base.getShow_count());
         IsCollectBtControl(IsCollect);
 
-        if(base.getGoods_count().equals("0")){
-
+        if (base.getGoods_count().equals("0")) {
+            shopdetail_sou_iv.setVisibility(View.GONE);
             ShowErrorCanLoad(getResources().getString(R.string.shop_no_good));
             shop_detail_catory_lay.setVisibility(View.GONE);
             shopdetail_nodata_lay.setVisibility(View.VISIBLE);
@@ -674,9 +674,9 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
     @Override
     public void onFooterRefresh(PullView view) {
-        if(CurrentCategory_Id.equals("-1")){
+        if (CurrentCategory_Id.equals("-1")) {
             activivty_shopdetail_outlay.onFooterRefreshComplete();
-            return ;
+            return;
         }
 
         CurrentPage = CurrentPage + 1;

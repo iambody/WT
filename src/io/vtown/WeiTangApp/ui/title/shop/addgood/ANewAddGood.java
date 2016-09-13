@@ -65,7 +65,7 @@ public class ANewAddGood extends ATitleBase {
     private LinearLayout good_upload_vido_lay, good_upload_roll_lay, good_upload_desc_lay;
 
 
-    private TextView good_upload_vido_add_bt, good_upload_roll_add_bt, good_upload_desc_add_bt;
+    private ImageView good_upload_vido_add_bt, good_upload_roll_add_bt, good_upload_desc_add_bt;
 
     private CompleteGridView good_upload_roll_gridview, good_upload_desc_gridview;
 
@@ -213,9 +213,9 @@ public class ANewAddGood extends ATitleBase {
         good_upload_vido_play = (ImageView) findViewById(R.id.good_upload_vido_play);
         good_upload_vido_play.setOnClickListener(this);
         //按钮
-        good_upload_vido_add_bt = (TextView) findViewById(R.id.good_upload_vido_add_bt);
-        good_upload_roll_add_bt = (TextView) findViewById(R.id.good_upload_roll_add_bt);
-        good_upload_desc_add_bt = (TextView) findViewById(R.id.good_upload_desc_add_bt);
+        good_upload_vido_add_bt = (ImageView) findViewById(R.id.good_upload_vido_add_bt);
+        good_upload_roll_add_bt = (ImageView) findViewById(R.id.good_upload_roll_add_bt);
+        good_upload_desc_add_bt = (ImageView) findViewById(R.id.good_upload_desc_add_bt);
 
         good_upload_vido_add_bt.setOnClickListener(this);
         good_upload_roll_add_bt.setOnClickListener(this);

@@ -114,6 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:textColor="@color/gray"
                 android:gravity="right"/>
 
             <ImageView

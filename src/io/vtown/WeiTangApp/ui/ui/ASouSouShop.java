@@ -48,7 +48,7 @@ public class ASouSouShop extends ATitileNoBase {
 	// 店铺信息
 	private TextView shop_sousou_inf;
 	// 关注人数
-	private TextView shop_sousou_guanzhu;
+//	private TextView shop_sousou_guanzhu;
 	// privat
 	private LinearLayout soushop_outlay;
 	private String ToSouShop = null;
@@ -100,7 +100,7 @@ public class ASouSouShop extends ATitileNoBase {
 		shop_sousou_name = (TextView) findViewById(R.id.shop_sousou_name);
 		shop_sousou_inf = (TextView) findViewById(R.id.shop_sousou_inf);
 
-		shop_sousou_guanzhu = (TextView) findViewById(R.id.shop_sousou_guanzhu);
+//		shop_sousou_guanzhu = (TextView) findViewById(R.id.shop_sousou_guanzhu);
 
 	}
 
@@ -179,8 +179,8 @@ public class ASouSouShop extends ATitileNoBase {
 
 		StrUtils.SetTxt(shop_sousou_inf, ad.getIntro());
 
-		StrUtils.SetColorsTxt(BaseContext, shop_sousou_guanzhu,
-				R.color.app_fen, "关注人数:", StrUtils.NullToStr(ad.getAttention()));
+//		StrUtils.SetColorsTxt(BaseContext, shop_sousou_guanzhu,
+//				R.color.app_fen, "关注人数:", StrUtils.NullToStr(ad.getAttention()));
 
 	}
 

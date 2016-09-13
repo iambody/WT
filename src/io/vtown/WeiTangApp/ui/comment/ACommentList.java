@@ -658,6 +658,8 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 
             IDataView(acomment_list, comment_nodata_lay, NOVIEW_ERROR);
             DataError(Constants.SucessToError, Data.getHttpLoadType());
+            ShowErrorCanLoad(getResources().getString(R.string.no_doudou_goods));
+
             return;
         }
         if (StrUtils.isEmpty(Data.getHttpResultStr()) && Data.getHttpLoadType() == LOAD_LOADMOREING) {
