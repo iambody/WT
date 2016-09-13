@@ -38,7 +38,7 @@ public class MyAdapter extends CommonAdapter<String> {
 
 	
 	public static interface OnPicSelCallBack{
-		void onSel(Set<String> mSelectedImage);
+		void onSel(List<String> mSelectedImage);
 	}
 	
     private OnPicSelCallBack onPicSelCallBack;
@@ -55,7 +55,7 @@ public class MyAdapter extends CommonAdapter<String> {
 	/**
 	 * 用户选择的图片，存储为图片的完整路径
 	 */
-	public static Set<String> mSelectedImage = new HashSet<String>();
+	public static List<String> mSelectedImage = new ArrayList<String>();
 
 	/**
 	 * 文件夹路�?

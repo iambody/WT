@@ -118,7 +118,7 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
     private MyAdapter.OnPicSelCallBack onPicSelCallBack = new MyAdapter.OnPicSelCallBack() {
 
         @Override
-        public void onSel(final Set<String> mSelectedImage) {
+        public void onSel(final List<String> mSelectedImage) {
             PicSelActivity.this.onSel(mSelectedImage);
         }
     };
@@ -128,7 +128,7 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
         return (int) (dipValue * scale + 0.5f);
     }
 
-    protected void onSel(final Set<String> mSelectedImage) {
+    protected void onSel(final List<String> mSelectedImage) {
         if (mSelectedImage == null) {
             return;
         }
@@ -320,7 +320,7 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
                 RESULT_PICS_ARRAY);
         if (pics != null) {
             if (MyAdapter.mSelectedImage == null) {
-                MyAdapter.mSelectedImage = new HashSet<String>();
+                MyAdapter.mSelectedImage = new ArrayList<String>();
             }
             MyAdapter.mSelectedImage.clear();
             MyAdapter.mSelectedImage.addAll(pics);
