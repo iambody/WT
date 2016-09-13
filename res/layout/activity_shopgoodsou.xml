@@ -15,20 +15,46 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/shop_good_sou_title"
-            style="@style/edit_style"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_shop_good_sou_edittext_bg"
-            android:gravity="left|center_vertical"
-            android:textColor="@color/grey"
 
-            android:textSize="13sp" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingBottom="6dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="6dp"
+
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/shop_good_sou_title"
+                style="@style/edit_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:padding="7dp"
+
+                android:background="@drawable/shape_shop_good_sou_edittext_bg"
+                android:gravity="center"
+                android:textColor="@color/grey"
+                android:hint="请输入您要搜索的商品名称"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/shop_good_sou_title_delete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:focusable="true"
+                android:clickable="true"
+                android:visibility="gone"
+                android:src="@drawable/icon_quxiao_unfocused"/>
+
+
+
+
+        </RelativeLayout>
+
+
 
 
         <ImageView

@@ -437,7 +437,8 @@ public class AOderDetail extends ATitleBase {
 						BDShopOrderDetail.class);
 				
 			} catch (Exception e) {
-				DataError("解析错误", 1);
+				//DataError("解析错误", 1);
+				return;
 			}
 			IDataView(order_comment_detail_outlay, order_comment_detail_nodata_lay, NOVIEW_RIGHT);
 			RefreshView(bdComment);
@@ -526,6 +527,7 @@ public class AOderDetail extends ATitleBase {
 		PromptManager.ShowCustomToast(BaseContext, error);
 		if(LOAD_INITIALIZE == LoadType && isGetDetail){
 			IDataView(order_comment_detail_outlay, order_comment_detail_nodata_lay, NOVIEW_ERROR);
+			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 		}
 	}
 

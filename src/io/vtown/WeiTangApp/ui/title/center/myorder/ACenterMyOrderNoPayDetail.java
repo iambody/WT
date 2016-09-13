@@ -352,6 +352,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 		if (LOAD_INITIALIZE == LoadType && isGetDetail) {
 			IDataView(center_my_order_no_pay_detail_outlay,
 					center_my_order_no_pay_detail_nodata_lay, NOVIEW_ERROR);
+			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 		}
 	}
 

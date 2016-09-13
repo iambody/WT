@@ -63,6 +63,7 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
     private List<BShopGoods> Recommend = new ArrayList<BShopGoods>();
     private LinearLayout layout_shop_good_sou_hot_goods;
     private CompleteGridView shop_good_sou_hot_goods;
+    private ImageView shop_good_sou_title_delete;
 
     @Override
     protected void InItBaseView() {
@@ -84,18 +85,23 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
         IDataView(shop_good_sou_result_list, shop_good_sou_nodata_lay, NOVIEW_INITIALIZE);
         layout_shop_good_sou_hot_goods = (LinearLayout) findViewById(R.id.layout_shop_good_sou_hot_goods);
         shop_good_sou_hot_goods = (CompleteGridView) findViewById(R.id.shop_good_sou_hot_goods);
+        shop_good_sou_title_delete = (ImageView) findViewById(R.id.shop_good_sou_title_delete);
         shop_good_sou_iv.setOnClickListener(this);
         shop_good_sou_title.addTextChangedListener(this);
         shop_good_sou_nodata_lay.setOnClickListener(this);
+        shop_good_sou_title_delete.setOnClickListener(this);
         IGrid();
         IList();
     }
+
+
 
     private void IGrid() {
         if(Recommend.size() == 0 || Recommend == null){
             layout_shop_good_sou_hot_goods.setVisibility(View.GONE);
             return;
         }
+
         layout_shop_good_sou_hot_goods.setVisibility(View.VISIBLE);
         HotGoodAdapter hotAP = new HotGoodAdapter(R.layout.item_shop_good_sou_hot_goods, Recommend);
         shop_good_sou_hot_goods.setAdapter(hotAP);
@@ -222,6 +228,10 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
                 }
 
                 break;
+
+            case R.id.shop_good_sou_title_delete:
+                shop_good_sou_title.setText("");
+                break;
         }
 
     }
@@ -270,15 +280,15 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
         if(s.toString().length() == 0){
             layout_shop_good_sou_hot_goods.setVisibility(View.VISIBLE);
             shop_good_sou_result_list.setVisibility(View.GONE);
-        }
-
-//        else{
-//            layout_shop_good_sou_hot_goods.setVisibility(View.GONE);
+            shop_good_sou_title_delete.setVisibility(View.GONE);
+        } else{
+  //          layout_shop_good_sou_hot_goods.setVisibility(View.GONE);
 //            shop_good_sou_result_list.setVisibility(View.VISIBLE);
+            shop_good_sou_title_delete.setVisibility(View.VISIBLE);
 //            CurrentTitle = s.toString();
 //            CurrentPage = 1;
 //            ISouConnect(LOAD_INITIALIZE);
-//        }
+        }
     }
 
     @Override
@@ -397,7 +407,7 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
                 item = (HotGoodsItem) convertView.getTag();
             }
             StrUtils.SetTxt(item.shop_good_sou_hot_goods_title,hot_goods.get(position).getTitle());
-            StrUtils.SetTxt(item.shop_good_sou_hot_goods_price,StrUtils.SetTextForMony(hot_goods.get(position).getSell_price()));
+            StrUtils.SetTxt(item.shop_good_sou_hot_goods_price,StrUtils.SetTextForMony(hot_goods.get(position).getSell_price())+"元");
             return convertView;
         }
     }

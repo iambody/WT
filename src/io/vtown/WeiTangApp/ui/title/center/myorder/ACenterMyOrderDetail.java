@@ -432,6 +432,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
 		lv_center_my_order_good_express_speed = (CompleteListView) findViewById(R.id.lv_center_my_order_good_express_speed);
 		ll_center_my_order_express_message = (LinearLayout) findViewById(R.id.ll_center_my_order_express_message);
 		tv_center_my_order_express_numb = (TextView) findViewById(R.id.tv_center_my_order_express_numb);
+		StrUtils.SetTextViewCopy(tv_center_my_order_express_numb);
 		tv_center_my_order_express_name = (TextView) findViewById(R.id.tv_center_my_order_express_name);
 
 		// 取消订单和去付款
@@ -779,6 +780,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
 		if (LOAD_INITIALIZE == LoadType && isGetDetail) {
 			IDataView(center_my_order_detail_outlay,
 					center_my_order_detail_nodata_lay, NOVIEW_ERROR);
+			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 		}
 	}
 

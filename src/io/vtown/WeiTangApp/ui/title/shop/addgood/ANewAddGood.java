@@ -544,7 +544,7 @@ public class ANewAddGood extends ATitleBase {
                 @Override
                 public void onClick(View v) {
                     mShow_datas.remove(MyPostion);
-                    notifyDataSetChanged();
+                    update();
                 }
             });
             return convertView;

@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.event.receiver;
 
 import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
@@ -29,6 +30,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -86,6 +88,7 @@ public class MyReceiver extends BroadcastReceiver {
 				
 				source_type = Integer.parseInt(json.getString("source_type"));
 				action = Integer.parseInt(json.getString("action"));
+				//Toast.makeText(context,"**source_type**"+source_type+"**action**"+action,Toast.LENGTH_LONG).show();
 			} catch (JSONException e) {
 
 				e.printStackTrace();

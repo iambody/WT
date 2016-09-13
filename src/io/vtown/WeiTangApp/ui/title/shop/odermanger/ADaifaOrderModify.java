@@ -490,6 +490,8 @@ public class ADaifaOrderModify extends ATitleBase {
 
 		ll_express_message = (LinearLayout) findViewById(R.id.ll_express_message);
 		tv_order_express_numb = (TextView) findViewById(R.id.tv_order_express_numb);
+
+		StrUtils.SetTextViewCopy(tv_order_express_numb);
 		tv_order_express_name = (TextView) findViewById(R.id.tv_order_express_name);
 		rl_order_goods_message = (RelativeLayout) findViewById(R.id.rl_order_goods_message);
 		lv_order_good_express_speed = (CompleteListView) findViewById(R.id.lv_order_good_express_speed);

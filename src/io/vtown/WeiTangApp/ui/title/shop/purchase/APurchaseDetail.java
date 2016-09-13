@@ -371,6 +371,8 @@ public class APurchaseDetail extends ATitleBase {
 		tv_purchase_order_good_express_title = (TextView) findViewById(R.id.tv_purchase_order_good_express_title);
 		lv_purchase_good_express_speed = (CompleteListView) findViewById(R.id.lv_purchase_good_express_speed);
 		tv_purchase_express_numb = (TextView) findViewById(R.id.tv_purchase_express_numb);
+
+		StrUtils.SetTextViewCopy(tv_purchase_express_numb);
 		tv_purchase_express_name = (TextView) findViewById(R.id.tv_purchase_express_name);
 
 		// 延期收货与确认收货
@@ -857,6 +859,7 @@ public class APurchaseDetail extends ATitleBase {
 		if (LOAD_INITIALIZE == LoadType && isGetDetail) {
 			IDataView(shop_my_purchase_outlay, shop_purchase_nodata_lay,
 					NOVIEW_ERROR);
+			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 		}
 
 	}

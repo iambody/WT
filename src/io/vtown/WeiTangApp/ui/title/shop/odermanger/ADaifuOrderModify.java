@@ -428,6 +428,7 @@ public class ADaifuOrderModify extends ATitleBase {
 		if (LOAD_INITIALIZE == LoadType && isGetDetail) {
 			IDataView(daifu_order_modify_outlay, daifu_order_modify_nodata_lay,
 					NOVIEW_ERROR);
+			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 		}
 	}
 
