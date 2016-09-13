@@ -164,7 +164,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
      */
     private int CurrentPage = 1;
     //当前的类别
-    private String CurrentCategory_Id = "0";
+    private String CurrentCategory_Id = "-1";
 
     /**
      * 店铺的数据源
@@ -674,6 +674,11 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
     @Override
     public void onFooterRefresh(PullView view) {
+        if(CurrentCategory_Id.equals("-1")){
+            activivty_shopdetail_outlay.onFooterRefreshComplete();
+            return ;
+        }
+
         CurrentPage = CurrentPage + 1;
         GetList(CurrentPage, CurrentCategory_Id, LOAD_LOADMOREING);
     }
