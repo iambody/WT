@@ -295,9 +295,9 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
         instance = this;
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-       Intent intent =  getIntent();
+        Intent intent = getIntent();
         int Select_Img_Size = intent.getIntExtra(Select_Img_Size_str, 0);
-        int Select_Img_Type_int = intent.getIntExtra(Select_Img_Type,0);
+        int Select_Img_Type_int = intent.getIntExtra(Select_Img_Type, 0);
         MAX_SEL_ENABLE = Select_Img_Size;
         Current_Type = Select_Img_Type_int;
         setContentView(R.layout.com_mark_utils_picsel);
@@ -462,7 +462,7 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
                 }
                 setResult(RESULT_PICS_OK_CODE, data);
                 int Sent_Type = 0;
-                switch (Current_Type){
+                switch (Current_Type) {
                     case Tage_Show_Share://Show分享
                         Sent_Type = BMessage.Tage_Select_Pic_Show;
                         break;

@@ -445,7 +445,7 @@ public class AMain extends TabActivity implements OnTabChangeListener {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
 
-        outState.putInt("postion",Postion);
+        outState.putInt("postion", Postion);
 
 
         super.onSaveInstanceState(outState);
@@ -454,10 +454,10 @@ public class AMain extends TabActivity implements OnTabChangeListener {
     @Override
     protected void onRestoreInstanceState(Bundle state) {
         super.onRestoreInstanceState(state);
-        if(state != null){
+        if (state != null) {
 //            state.getInt("postion");
 //            tabHost.setCurrentTabByTag(TableMenu[postionTage]);
-            ChangeTabBg(TableMenu[ state.getInt("postion")]);
+            ChangeTabBg(TableMenu[state.getInt("postion")]);
         }
     }
 

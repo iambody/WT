@@ -262,6 +262,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                 BLGoodManger blComment = (BLGoodManger) arg0
                         .getItemAtPosition(arg2);
                 switch (Sale_Status) {
+
                     case 100:// 在售中
 
                         PromptManager.SkipActivity(BaseActivity, new Intent(
@@ -933,10 +934,30 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                     fragent_goodmanger_nodata_lay.setVisibility(View.GONE);
                 }
 
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {// 数据为空
+                if (StrUtils.isEmpty(Data.getHttpResultStr())||dattaa==null||dattaa.size()==0) {// 数据为空
 //                        if (Sale_Status != 0&&Data.getHttpLoadType()!=LOAD_LOADMOREING)
                     if (Data.getHttpLoadType() != LOADMOREING)
                         fragent_goodmanger_nodata_lay.setVisibility(View.VISIBLE);
+                    if (Data.getHttpLoadType() == INITIALIZE) {
+                        switch (Sale_Status) {
+                            case 100://在售商品
+
+                                ShowErrorCanLoad(getResources().getString(IsBrand?R.string.no_zaishou_brand:R.string.no_zaishou_ziying));
+                                break;
+                            case 20://下架商品
+                                ShowErrorCanLoad(getResources().getString(IsBrand?R.string.no_xiajia_brand:R.string.no_xiajia_ziying));
+                                break;
+                            case  0://品牌详情
+                                ShowErrorCanLoad(getResources().getString(R.string.no_brand_good));
+                                break;
+                            case 1://垃圾箱
+                                ShowErrorCanLoad(getResources().getString(IsBrand?R.string.no_laji_brand:R.string.no_laji_ziying));
+
+                                break;
+                        }
+
+                    }
+
                     return;
                 }
 //

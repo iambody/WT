@@ -132,7 +132,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="可提现余额(元)"
+                                android:text="可提现余额"
                                 android:textColor="@color/grey"
                                 android:textSize="@dimen/center_wallet_subprogect_txt_size" />
 
@@ -146,7 +146,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="交易中金额(元)"
+                                android:text="交易中金额"
                                 android:textColor="@color/grey"
                                 android:textSize="@dimen/center_wallet_subprogect_txt_size" />
 
@@ -160,7 +160,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="累计收入(元)"
+                                android:text="累计收入"
                                 android:textColor="@color/grey"
                                 android:textSize="@dimen/center_wallet_subprogect_txt_size" />
                         </LinearLayout>

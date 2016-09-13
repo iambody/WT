@@ -74,7 +74,6 @@ public abstract class NHttpBase {
 //				R.raw.ssl);// Volley.newRequestQueue(context);
 		 RequestQueue queue = Volley.newRequestQueue(context);
 
-
 		// 添加标识
 		map1.put("UUID", Constants.GetPhoneId(context));
 		map1.put("source", 20 + "");

@@ -198,6 +198,8 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     private RelativeLayout rl_shop_detail_shoucang_log;
 
     private ImageView shop_detail_shoucang_log;
+    //分类的线性布局
+    private LinearLayout shop_detail_catory_lay;
     //缓存自营商品的列表
     private List<BShopGoods> CacheLsDatas_ZiYing = new ArrayList<BShopGoods>();
     private List<BShopGoods> CacheLsDatas_Brand = new ArrayList<BShopGoods>();
@@ -230,8 +232,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
     // 获取商品详情的通道
     private void IData() {
-        PromptManager.showtextLoading(BaseContext,
-                getResources().getString(R.string.loading));
+        PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.loading));
 
 
         SetTitleHttpDataLisenter(this);
@@ -283,6 +284,8 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     }
 
     private void IBase() {
+        shop_detail_catory_lay = (LinearLayout) findViewById(R.id.shop_detail_catory_lay);
+
         shopdetail_sou_iv = (ImageView) findViewById(R.id.shopdetail_sou_iv);
 
         shop_out_scrollview = (ScrollView) findViewById(R.id.shop_out_scrollview);
@@ -451,10 +454,15 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                 if (StrUtils.JsonContainKey(mJsonObject, "categorys")) {
 
                     try {
-                        if (!StrUtils.isEmpty(mJsonObject.getString("categorys")))
+                        if (!StrUtils.isEmpty(mJsonObject.getString("categorys")))//{//存在分类
                             MyData.setCategorys(JSON.parseArray(
                                     mJsonObject.getString("categorys"),
                                     BShopCatory.class));
+//                        } else {//没有分类
+//
+//
+//
+//                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -516,7 +524,6 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     return;
                 }
                 if (Data.getHttpLoadType() == LOAD_REFRESHING) {
-
                     downGoodsAp.FrashView(blComments);
                     if (!IsBrandStatue) {
                         CacheLsDatas_ZiYing = new ArrayList<BShopGoods>();
@@ -624,6 +631,15 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
         StrUtils.SetTxt(shopdetail_shop_show_count, base.getShow_count());
         IsCollectBtControl(IsCollect);
 
+        if(base.getGoods_count().equals("0")){
+
+            ShowErrorCanLoad(getResources().getString(R.string.shop_no_good));
+            shop_detail_catory_lay.setVisibility(View.GONE);
+            shopdetail_nodata_lay.setVisibility(View.VISIBLE);
+
+            shopdetail_sou_iv.setClickable(false);
+        }
+
     }
 
     private void IsCollectBtControl(boolean isCollect) {
@@ -644,7 +660,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     @Override
     protected void DataError(String error, int LoadTyp) {
         if (LoadTyp == LOAD_INITIALIZE) {
-
+            ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
             IDataView(activivty_shopdetail_outlay, shopdetail_nodata_lay,
                     NOVIEW_ERROR);
         } else if (LoadTyp == LOAD_LOADMOREING) {
@@ -1114,7 +1130,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
             case R.id.shopdetail_shop_zizhi:
                 List<BShopGoods> DATA = shopBrandsLsAp.GetRsource();
-                ((BaseApplication)getApplication()).setZiYingShop_To_Ls(DATA);
+                ((BaseApplication) getApplication()).setZiYingShop_To_Ls(DATA);
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ALookAptitude.class));
                 break;
@@ -1180,7 +1196,6 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     PromptManager.SkipActivity(BaseActivity, intent);
                 }
                 break;
-
 
 
             default:

@@ -292,13 +292,13 @@ public class ACenterWallet extends ATitleBase {
 	 */
 	private void RefreshView(BDCenterWallet data2) {
 		StrUtils.SetTxt(tv_my_property,
-				StrUtils.SetTextForMony(data2.getAssets()));
+				StrUtils.SetTextForMony(data2.getAssets())+"元");
 		StrUtils.SetTxt(tv_submit_balance,
-				StrUtils.SetTextForMony(data2.getBlance()));
+				StrUtils.SetTextForMony(data2.getBlance())+"元");
 		StrUtils.SetTxt(tv_trade_money,
-				StrUtils.SetTextForMony(data2.getFreeze()));
+				StrUtils.SetTextForMony(data2.getFreeze())+"元");
 		StrUtils.SetTxt(tv_add_up_income,
-				StrUtils.SetTextForMony(data2.getIncome()));
+				StrUtils.SetTextForMony(data2.getIncome())+"元");
 	}
 
 	@Override

@@ -575,6 +575,18 @@
     <string name="error_null_my_order_daishou">\"暂时没有待收货订单哦~~~\"</string>
     <string name="error_null_my_order_tuikuan">\"暂时没有退款/仲裁订单哦~~~\"</string>
     <string name="error_null_my_order_over">\"暂时没有已完成订单哦~~~\"</string>
+    <string name="no_goods">暂无商品哦</string>
+    <string name="no_zaishou_brand">暂无在售品牌商品</string>
+    <string name="no_zaishou_ziying">暂无在售自营商品</string>
+    <string name="no_xiajia_brand">暂无下架品牌商品</string>
+    <string name="no_xiajia_ziying">暂无下架自营商品</string>
+    <string name="no_brand_good">暂无品牌商品</string>
+    <string name="no_laji_brand">暂无被删除品牌商品</string>
+    <string name="no_laji_ziying">暂无被删除自营商品</string>
+    <string name="shop_no_good">暂无商品</string>
+    <string name="newgoodedite_good_vidoo">(仅供商品详情页视频播放展示使用,请谨慎修改)</string>
+    <string name="newgoodedit_good_roll">(仅供商品详情页面轮播图展示使用,请谨慎修改)</string>
+    <string name="no_shopbus">您的购物车空空如也,点我挑选商品吧</string>
 
 
 </resources>

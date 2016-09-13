@@ -436,7 +436,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
                     android:src="@color/app_bg"/>
-
+<LinearLayout
+    android:id="@+id/shop_detail_catory_lay"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -501,6 +505,7 @@
 
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/app_bg"
@@ -534,7 +539,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_size"
                     android:src="@color/white"/>
-
+</LinearLayout>
                 <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                     android:id="@+id/shop_detail_downgoods_ls"
                     android:layout_width="match_parent"

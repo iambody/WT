@@ -1000,37 +1000,37 @@ public class ANewAddGood extends ATitleBase {
 
     private boolean IsEdit() {
         if (!StrUtils.IsTextViewEmpty(good_upload_good_title_txt)) {
-            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note));
+//            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note));
             return true;
         }
         if (CategoryAdapter.getCount() > 0) {
-            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note));
+//            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note));
             return true;
         }
         if (!StrUtils.IsTextViewEmpty(good_upload_address_txt)) {
-            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
-            ));
+//            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+//            ));
             return true;
         }
         if (!StrUtils.EditTextIsEmPty(good_upload_post_price)) {
-            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
-            ));
+//            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+//            ));
             return true;
         }
         if (downgridAdapter.getCount() > 0) {
-            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
-            ));
+//            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+//            ));
             return true;
         }
 
         if (IsPice && upgridAdapter.getCount() > 0) {
-            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
-            ));
+//            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+//            ));
             return true;
         }
         if (!IsPice && !StrUtils.isEmpty(GoodVidoPath)) {
-            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
-            ));
+//            PromptManager.ShowCustomToast(this, getResources().getString(R.string.add_good_exit_note
+//            ));
             return true;
         }
         return false;

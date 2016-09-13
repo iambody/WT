@@ -45,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="@string/newgoodedit_good_Pic_desc"
+                        android:text="@string/newgoodedite_good_vidoo"
                         android:textColor="@color/app_gray"
                         android:textSize="11sp"/>
 
@@ -121,7 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="@string/new_good_manager_ed_desc"
+                        android:text="@string/newgoodedit_good_roll"
                         android:textColor="@color/app_gray"
                         android:textSize="11sp"/>
 

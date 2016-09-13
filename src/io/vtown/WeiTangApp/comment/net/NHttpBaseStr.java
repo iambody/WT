@@ -46,7 +46,8 @@ public class NHttpBaseStr extends NHttpBase {
     public void myOnResponse(String str) {
         if (StrUtils.isEmpty(str)) {
             if (postResult != null)
-                postResult.getResult(201, "未获得服务器信息请重试.....", str);
+                postResult.onError(context.getResources().getString(R.string.error_fuwuqi), 0);
+            return ;
         } else {
             int Status = 0;
             int Code = 0;
@@ -54,12 +55,12 @@ public class NHttpBaseStr extends NHttpBase {
             String Data = "";
             try {
                 JSONObject obj = new JSONObject(str);
-
                 try {
                     Code = obj.getInt("code");
                     // 判断如果是900就直接被踢下来
                     if (Code == Constants.NetCodeExit) {
                         ShowPromptCustomDialog(context, "账号已在其他设备登录请重新登录");
+
                     }
 
                 } catch (Exception e) {

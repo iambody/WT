@@ -198,6 +198,7 @@ public class AOderBeing extends ATitleBase {
     }
 
     private void IBase() {
+        oderbeing_note_ed= (EditText) findViewById(R.id.oderbeing_note_ed);
         oderbering_view = findViewById(R.id.oderbering_view);
 
         oderbeing_out_lay = (LinearLayout) findViewById(R.id.oderbeing_out_lay);

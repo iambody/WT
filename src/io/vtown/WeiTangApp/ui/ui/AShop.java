@@ -324,7 +324,7 @@ public class AShop extends ATitileNoBase {
 				StrUtils.isEmpty(myBShop.getIntro()) ? "您还未描述店铺" : myBShop
 						.getIntro());
 		StrUtils.SetTxt(All_Income,
-				StrUtils.SetTextForMony(myBShop.getTotalIncome()));
+				StrUtils.SetTextForMony(myBShop.getTotalIncome())+"元");
 	}
 
 	@Override
