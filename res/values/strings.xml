@@ -106,7 +106,7 @@
     <string name="shuru_initor_code">请输入被邀请人手机号</string>
     <string name="dingxian">定向邀请</string>
     <string name="bushuruerweimawei">(不输入生成二维码为非定向邀请二维码)</string>
-    <string name="toerweima">成生二维码</string>
+    <string name="toerweima">生成二维码</string>
     <string name="yaoqingshangji_yaoqing">请填写上级信息</string>
     <string name="dailipinpai">代理品牌</string>
     <string name="yaoiqng">邀请</string>
@@ -595,6 +595,21 @@
     <string name="no_doudou_goods">没有相关商品</string>
     <string name="error_null_over_coupons">您还没有过期卡券哦</string>
     <string name="error_null_over_coupons">您还没有过期卡券哦</string>
+    <string name="coupons_no_data">暂无过期卡券</string>
+    <string name="comment_ls_nodata_guanzhu">暂无关注商品哦=_=</string>
+    <string name="comment_ls_nodata_shop">暂无收藏店铺哦=_=</string>
+    <string name="comment_ls_nodata_liulan">暂无浏览记录哦=_=</string>
+    <string name="no_youhui_data">暂无优惠券=_=,快快邀请好友吧</string>
+    <string name="no_center_sho">偷懒暂未发SHOW哦</string>
+    <string name="nomoreshow">没有更多SHOW咯</string>
+    <string name="no_other_show">店家很懒,还没发SHOW哦</string>
+    <string name="show_noshow">关注更多店铺才能看SHOW哦</string>
+    <string name="show_no_more">没有更多SHOW咯</string>
+    <string name="no_shouru">您暂无收入=_=,继续努力哟</string>
+    <string name="no_xiaoliang">您太懒了=_=,还没卖出商品哟</string>
+    <string name="no_invtor">没有访客=_=,推荐给小伙伴吧</string>
+    <string name="bianji">编辑</string>
+    <string name="input_shop_sou_inf">输入要找的商品信息吧</string>
 
 
 </resources>

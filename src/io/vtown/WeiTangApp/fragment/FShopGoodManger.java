@@ -238,12 +238,12 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                 break;
             case 0:// 品牌商品ss
                 fragment_isbrand_lay.setVisibility(View.GONE);
-                tv_add_item.setVisibility(View.VISIBLE);
+//                tv_add_item.setVisibility(View.VISIBLE);
                 fragment_shop_good_manger_brand_horizon_ls
                         .setVisibility(View.VISIBLE);
                 // lv_comment_listview.setPullRefreshEnable(false);
                 // lv_comment_listview.setPullLoadEnable(false);
-                tv_add_item.setOnClickListener(this);
+//                tv_add_item.setOnClickListener(this);
 
                 IGetBrands();// 获取品牌的列表
 
