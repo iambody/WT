@@ -17,7 +17,7 @@ public abstract class BasAdapter extends BaseAdapter {
         //远端的淡淡的
         //远端的淡淡的
         //之p
-        //2016/9/18
+        //2016/9/18/111111
     }
 
 
