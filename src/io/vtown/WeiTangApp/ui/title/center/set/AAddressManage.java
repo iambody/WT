@@ -20,6 +20,7 @@ import io.vtown.WeiTangApp.ui.ATitleBase;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -90,6 +91,8 @@ public class AAddressManage extends ATitleBase {
      */
     private Button btn_add_new_consignee_address1;
 
+    private boolean isGetList = false;
+
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_center_set_personal_data_addressmanage);
@@ -106,7 +109,7 @@ public class AAddressManage extends ATitleBase {
 
         PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
 
-
+        isGetList = true;
         String id = user_Get.getId();
 
         HashMap<String, String> map = new HashMap<String, String>();
@@ -117,8 +120,9 @@ public class AAddressManage extends ATitleBase {
     }
 
     private void AddressSet(String member_id, String address_id, int LoadType) {
-
+        isGetList = false;
         HashMap<String, String> map = new HashMap<String, String>();
+        PromptManager.showLoading(BaseContext);
         map.put("member_id", member_id);
         map.put("address_id", address_id);
 
@@ -240,13 +244,14 @@ public class AAddressManage extends ATitleBase {
                 break;
             case 1:// 设置默认地址
                 PromptManager.ShowMyToast(BaseContext, "设置成功");
-                IData();
+               // IData();
+                addressAdapter.RefreshPosition(pos,2);
 
                 break;
 
             case 2:// 删除地址
                 PromptManager.ShowMyToast(BaseContext, "删除成功");
-                IData();
+                addressAdapter.RefreshPosition(pos,1);
                 break;
 
             case 3:
@@ -263,7 +268,7 @@ public class AAddressManage extends ATitleBase {
     @Override
     protected void DataError(String error, int LoadTyp) {
         PromptManager.ShowMyToast(BaseActivity, error);
-        if (LOAD_INITIALIZE == LoadTyp) {
+        if (LOAD_INITIALIZE == LoadTyp && isGetList) {
             ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
             IDataView(center_address_manage_outlay, center_address_manage_nodata_lay, NOVIEW_ERROR);
             btn_add_new_consignee_address1.setVisibility(View.VISIBLE);
@@ -340,6 +345,9 @@ public class AAddressManage extends ATitleBase {
 
         private int position = 0;
 
+        //用于局部刷新使用
+        public Map<Integer, AddressItem> map = new HashMap<>();
+
         public AddressAdapter(int ResourcesId) {
             super();
             this.ResourcesId = ResourcesId;
@@ -389,6 +397,36 @@ public class AAddressManage extends ATitleBase {
             return arg0;
         }
 
+        //局部刷新的代码
+
+        /**
+         * @param position
+         * @param Type==1标识除去item Type==2 品牌列表==》上架成功
+         */
+        public void RefreshPosition(int position, int Type) {//
+
+            switch (Type) {
+                case 1://删除某一个item
+
+                    if(datas.size()>0){
+                        if(this.position == Integer.parseInt(datas.get(position).getAddress_id())){
+                            this.position = Integer.parseInt(datas.get(0).getAddress_id());
+                        }
+                        datas.remove(position);
+                        FrashData(datas,this.position);
+                    }
+
+                    break;
+
+                case 2://设置
+
+                    FrashData(datas,Integer.parseInt(datas.get(position).getAddress_id()));
+                   // notifyDataSetChanged();
+                    break;
+            }
+
+        }
+
         @Override
         public View getView(int arg0, View arg1, ViewGroup arg2) {
             AddressItem item = null;
@@ -414,6 +452,7 @@ public class AAddressManage extends ATitleBase {
             } else {
                 item = (AddressItem) arg1.getTag();
             }
+            map.put(arg0,item);
 
             int address_id = Integer.parseInt(datas.get(arg0).getAddress_id());
             if (position == address_id) {
@@ -438,19 +477,21 @@ public class AAddressManage extends ATitleBase {
         }
 
         private void onClickEvent(final AddressItem item,
-                                  final List<BLComment> datas2, final int pos) {
+                                  final List<BLComment> datas2, final int click_position) {
             item.ll_select_default.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View arg0) {
                     if (CheckNet(BaseContext)) return;
-                    AddressSet(user_Get.getId(), datas2.get(pos)
+                    AddressSet(user_Get.getId(), datas2.get(click_position)
                             .getAddress_id(), 1);
 
-                    int address_id = Integer.parseInt(datas2.get(pos).getAddress_id());
-                    Message msg = Message.obtain();
-                    msg.what = address_id;
-                    myHandler.sendMessage(msg);
+                    pos = click_position;
+
+//                    int address_id = Integer.parseInt(datas2.get(pos).getAddress_id());
+//                    Message msg = Message.obtain();
+//                    msg.what = address_id;
+//                    myHandler.sendMessage(msg);
                 }
             });
 
@@ -460,7 +501,7 @@ public class AAddressManage extends ATitleBase {
                 public void onClick(View arg0) {
                     PromptManager.SkipResultActivity(BaseActivity, new Intent(
                             BaseActivity, AEditAddress.class).putExtra("data",
-                            datas2.get(pos)), 100);
+                            datas2.get(click_position)), 100);
 
                 }
             });
@@ -474,8 +515,9 @@ public class AAddressManage extends ATitleBase {
                         @Override
                         public void RightResult() {
                             if (CheckNet(BaseContext)) return;
-                            AddressSet(user_Get.getId(), datas2.get(pos)
+                            AddressSet(user_Get.getId(), datas2.get(click_position)
                                     .getAddress_id(), 2);
+                            pos = click_position;
                         }
 
                         @Override
@@ -499,13 +541,13 @@ public class AAddressManage extends ATitleBase {
     }
 
 
-    Handler myHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            pos = msg.what;
-        }
-
-        ;
-    };
+//    Handler myHandler = new Handler() {
+//        public void handleMessage(android.os.Message msg) {
+//            pos = msg.what;
+//        }
+//
+//        ;
+//    };
 
 
 }

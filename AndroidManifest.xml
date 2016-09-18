@@ -741,6 +741,12 @@
             android:name=".ui.title.AShowIDPic"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".ui.title.center.set.ASelectAddress"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->
 
 
