@@ -89,8 +89,6 @@ public class AAddBankCard extends ATitleBase {
 	}
 
 	private void IData(String cardNo) {
-
-
 		String name = user_Get.getName();
 
 		SetTitleHttpDataLisenter(this);

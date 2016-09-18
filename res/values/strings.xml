@@ -594,7 +594,6 @@
     <string name="error_fuwuqi5">服务器异常5</string>
     <string name="no_doudou_goods">没有相关商品</string>
     <string name="error_null_over_coupons">您还没有过期卡券哦</string>
-    <string name="error_null_over_coupons">您还没有过期卡券哦</string>
     <string name="coupons_no_data">暂无过期卡券</string>
     <string name="comment_ls_nodata_guanzhu">暂无关注商品哦=_=</string>
     <string name="comment_ls_nodata_shop">暂无收藏店铺哦=_=</string>
