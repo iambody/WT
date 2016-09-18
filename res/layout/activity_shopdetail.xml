@@ -197,9 +197,10 @@
 
                         <ImageView
                             android:id="@+id/shopdetail_sou_iv"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:padding="5dp"
+                            android:layout_width="@dimen/shopdetail_sou_iv_height"
+                            android:layout_height="@dimen/shopdetail_sou_iv_height"
+                            android:padding="@dimen/line_size4"
+
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:clickable="true"
@@ -217,9 +218,8 @@
 
                             <ImageView
                                 android:id="@+id/shop_detail_shoucang_log"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:padding="5dp"
+                                android:layout_width="@dimen/shopdetail_sou_iv_height"
+                                android:layout_height="@dimen/shopdetail_sou_iv_height"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/ic_shoucang_nor"/>
                         </RelativeLayout>
@@ -232,8 +232,8 @@
 
                             <ImageView
                                 android:id="@+id/shop_detail_contact_log"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/shopdetail_sou_iv_height"
+                                android:layout_height="@dimen/shopdetail_sou_iv_height"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/ic_lianxikefu_nor"/>
                         </RelativeLayout>
