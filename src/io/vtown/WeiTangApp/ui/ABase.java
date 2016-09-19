@@ -136,7 +136,7 @@ public class ABase extends Activity {
     /**
      * 上边传递javabean数据时候对应的key
      */
-    public static String BaseKey_Bean = "abasebeankey";
+    protected   String BaseKey_Bean = "abasebeankey";
     // 选择图片
     /**
      * 拍照

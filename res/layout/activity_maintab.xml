@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <include
+        android:id="@+id/neterrorview"
+        layout="@layout/net_status_bar_info_top"
+        android:clickable="true"
+        android:visibility="gone" />
+
+
+
+    <FrameLayout
+        android:id="@+id/maintab_fragmentlay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_tab_group_height"
+        android:background="@color/white">
+
+
+        <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioGroup
+            android:id="@+id/maintab_radiobar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/line_size6">
+
+            <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton
+                android:id="@+id/maintab_home"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:drawableTop="@drawable/tab1_nor"
+                android:gravity="center_horizontal|bottom"
+
+                android:text="@string/main_shangcheng"
+                android:textColor="@color/gray"
+                app:gradual_color="#f75151"/>
+
+            <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton
+                android:id="@+id/maintab_shop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/main_tab_shop_margin_right"
+                android:layout_weight="1"
+
+                android:drawableTop="@drawable/tab2_nor"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/main_shop"
+                android:textColor="@color/gray"
+                app:gradual_color="#f75151"/>
+
+            <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton
+                android:id="@+id/maintab_shopbus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/main_tab_shopbus_margin_left"
+                android:layout_weight="1"
+
+                android:gravity="center_horizontal"
+                android:text="@string/main_shopbus"
+                android:textColor="@color/gray"
+                app:gradual_color="#f75151"
+                app:gradual_icon="@drawable/tab3_nor"/>
+
+            <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton
+                android:id="@+id/maintab_center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:gravity="center_horizontal|bottom"
+
+                android:text="@string/main_wode"
+                android:textColor="@color/gray"
+                app:gradual_color="@color/app_fen"
+                app:gradual_icon="@drawable/tab4_nor"/>
+
+        </io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/maintab_radiobar"
+            android:background="@color/app_gray"/>
+
+        <ImageView
+            android:id="@+id/maintab_show_iv"
+            android:layout_width="@dimen/main_tab_showiv_height"
+            android:layout_height="@dimen/main_tab_showiv_height"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/tab3_f_nor"/>
+
+    </RelativeLayout>
+</LinearLayout>

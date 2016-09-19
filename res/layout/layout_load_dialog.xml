@@ -8,7 +8,7 @@
                 android:paddingBottom="36dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
+   <!-- android:background="@drawable/aa_dialog_bg"-->
     <io.vtown.WeiTangApp.comment.view.load.LoadingView
         android:id="@+id/loadView"
         android:layout_centerInParent="true"

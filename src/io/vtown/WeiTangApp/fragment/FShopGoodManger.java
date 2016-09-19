@@ -188,8 +188,9 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
      * 获取品牌的列表
      */
     private void IGetBrands() {
-        PromptManager.showtextLoading(BaseContext,
-                getResources().getString(R.string.loading));
+//        PromptManager.showtextLoading(BaseContext,
+//                getResources().getString(R.string.loading));
+        PromptManager.showLoading(BaseContext);
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("seller_id", user_Get.getSeller_id());
         map.put("page", "1");
@@ -302,8 +303,9 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
     private void IData(int LoadType, int sale_status, int Page, int Is_agent,
                        int Is_delete) {
         if (LoadType == INITIALIZE) {
-            PromptManager.showtextLoading(BaseContext, getResources()
-                    .getString(R.string.loading));
+//            PromptManager.showtextLoading(BaseContext, getResources()
+//                    .getString(R.string.loading));
+            PromptManager.showLoading(BaseContext);
         }
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("seller_id", user_Get.getSeller_id());
@@ -1315,8 +1317,9 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
     public void GetBrandLs(int LoadType, int Page) {
 
         if (LoadType == INITIALIZE)
-            PromptManager.showtextLoading(BaseContext, getResources()
-                    .getString(R.string.loading));
+//            PromptManager.showtextLoading(BaseContext, getResources()
+//                    .getString(R.string.loading));
+            PromptManager.showLoading(BaseContext);
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("agency_id", CurrentBrandId);
         map.put("pagesize", Constants.PageSize + "");

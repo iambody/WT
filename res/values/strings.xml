@@ -609,6 +609,10 @@
     <string name="no_invtor">没有访客=_=,推荐给小伙伴吧</string>
     <string name="bianji">编辑</string>
     <string name="input_shop_sou_inf">输入要找的商品信息吧</string>
+    <string name="main_shangcheng">商城</string>
+    <string name="main_shop">店铺</string>
+    <string name="main_shopbus">购物车</string>
+    <string name="main_wode">我的</string>
 
 
 </resources>

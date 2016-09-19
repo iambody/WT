@@ -195,7 +195,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
      * when the ImageView is no longer used. A good example is from
      * {@link android.view.View#onDetachedFromWindow()} or from
      * {@link android.app.Activity#onDestroy()}. This is automatically called if
-     * you are using {@link cn.com.cuwv.meiba.photoview.PhotoView}.
+     *
      */
     @SuppressWarnings("deprecation")
     public final void cleanup() {
@@ -319,7 +319,7 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
 
     @Override
     public final float getScale() {
-        return FloatMath.sqrt((float) Math.pow(getValue(mSuppMatrix, Matrix.MSCALE_X), 2) + (float) Math.pow(getValue(mSuppMatrix, Matrix.MSKEW_Y), 2));
+        return  (float) Math.sqrt((float) Math.pow(getValue(mSuppMatrix, Matrix.MSCALE_X), 2) + (float) Math.pow(getValue(mSuppMatrix, Matrix.MSKEW_Y), 2));
     }
 
     @Override

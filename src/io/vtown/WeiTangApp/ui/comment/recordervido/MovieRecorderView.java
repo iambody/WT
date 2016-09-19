@@ -68,8 +68,8 @@ public class MovieRecorderView extends LinearLayout implements OnErrorListener {
 
 		TypedArray a = context.obtainStyledAttributes(attrs,
 				R.styleable.MovieRecorderView, defStyle, 0);
-		mWidth = a.getInteger(R.styleable.MovieRecorderView_width, 320);// 默认320
-		mHeight = a.getInteger(R.styleable.MovieRecorderView_height, 240);// 默认240
+		mWidth = a.getInteger(R.styleable.MovieRecorderView_recordwidth, 320);// 默认320
+		mHeight = a.getInteger(R.styleable.MovieRecorderView_recordheight, 240);// 默认240
 
 		isOpenCamera = a.getBoolean(
 				R.styleable.MovieRecorderView_is_open_camera, true);// 默认打开

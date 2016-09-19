@@ -67,7 +67,7 @@ public class Constants {
 	public static final int ACTION_PT_UNREFUND = 9;// 操作类型：采购订单拒绝退款
 	public static final int ACTION_PT_MODIFY_PRICE = 16;// 操作类型：修改价格
 
-	public static final String Api_Version = "2.0.0";
+	public static final String Api_Version = "2.0.1";
 
 	/**
 	 * 下边微测试的test的id 上线需删除

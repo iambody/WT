@@ -51,6 +51,7 @@ public class BMessage {
      */
     public static final int Tage_Updata_Brand_list = 1178;
 
+
     /**
      * 修改商品价格事件标识
      */
@@ -218,6 +219,12 @@ public class BMessage {
     public static final int Tage_Select_Pic_Good_Desc = 7790;
     public static final int Tage_Select_Pic_ID_Face = 7791;
     public static final int Tage_Select_Pic_ID_Back = 7792;
+    //新创建的首页的四个fragment之间的信息传递
+    //在首页fragment获取数据后 刷新购物车数量的提示
+    public static final int Tage_MainTab_ShopBus=853;
+
+
+
     //添加商品时候填写商品标题后
     public static final int Tage_AddGood_EditTitle = 57;
     private String AddGood_GoodTitle;

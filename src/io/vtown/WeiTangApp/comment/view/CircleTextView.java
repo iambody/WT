@@ -1,17 +1,16 @@
 package io.vtown.WeiTangApp.comment.view;
 
-import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.comment.util.StrUtils;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.AvoidXfermode.Mode;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.MeasureSpec;
+
+import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.comment.util.StrUtils;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc

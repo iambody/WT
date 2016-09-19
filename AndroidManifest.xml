@@ -119,9 +119,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <uses-library android:name="android.test.runner"/>
-        <!-- activity的space -->
+        <!-- activity的space .ui.ALoading-->
         <activity
-            android:name=".ui.ALoading"
+            android:name=".ui.ui.AMainTab"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -747,6 +747,11 @@
             android:name=".ui.title.center.set.ASelectAddress"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+
+       <!-- <activity
+            android:name=".ui.ui.AMainTab"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>-->
         <!-- activity的space************************************* -->
 
 

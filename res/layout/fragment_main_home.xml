@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/titlebarheingh"
+            android:background="@color/app_fen"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+
+            <ImageView
+                android:id="@+id/fragment_maintab_sao_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/sao"/>
+
+            <RelativeLayout
+                android:id="@+id/fragment_maintab_sou_lay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shap_sousou_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/home_souso"
+                    android:textColor="@color/sousou_ed"
+                    android:textSize="15dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/textView"
+                    android:layout_toStartOf="@+id/textView"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/sousou"/>
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/fragment_maintab_new_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/new1"/>
+        </LinearLayout>
+        <!-- title*** -->
+
+        <include
+            android:id="@+id/neterrorview"
+            layout="@layout/net_status_bar_info_top"
+            android:clickable="true"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <io.vtown.WeiTangApp.comment.view.listview.LListView
+        android:id="@+id/fragment_maintab_ls"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"/>
+</LinearLayout>

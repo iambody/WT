@@ -636,8 +636,10 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             ShowErrorCanLoad(getResources().getString(R.string.shop_no_good));
             shop_detail_catory_lay.setVisibility(View.GONE);
             shopdetail_nodata_lay.setVisibility(View.VISIBLE);
-
             shopdetail_sou_iv.setClickable(false);
+        }
+        if(StrUtils.isEmpty(base.getShow_count())||"0".equals(base.getShow_count())){
+            ll_shopdetail_shop_look_show.setClickable(false);
         }
 
     }
