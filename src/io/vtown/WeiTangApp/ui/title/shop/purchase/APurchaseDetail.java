@@ -11,6 +11,7 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.CopyTextView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
@@ -187,7 +188,7 @@ public class APurchaseDetail extends ATitleBase {
 	/**
 	 * 快递单号
 	 */
-	private TextView tv_purchase_express_numb;
+	private CopyTextView tv_purchase_express_numb;
 	/**
 	 * 快递名字
 	 */
@@ -370,9 +371,7 @@ public class APurchaseDetail extends ATitleBase {
 		ll_purchase_express_message = (LinearLayout) findViewById(R.id.ll_purchase_express_message);
 		tv_purchase_order_good_express_title = (TextView) findViewById(R.id.tv_purchase_order_good_express_title);
 		lv_purchase_good_express_speed = (CompleteListView) findViewById(R.id.lv_purchase_good_express_speed);
-		tv_purchase_express_numb = (TextView) findViewById(R.id.tv_purchase_express_numb);
-
-		StrUtils.SetTextViewCopy(tv_purchase_express_numb);
+		tv_purchase_express_numb = (CopyTextView) findViewById(R.id.tv_purchase_express_numb);
 		tv_purchase_express_name = (TextView) findViewById(R.id.tv_purchase_express_name);
 
 		// 延期收货与确认收货

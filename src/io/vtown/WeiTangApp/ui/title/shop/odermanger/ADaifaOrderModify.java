@@ -10,6 +10,7 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.CopyTextView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.im.AChat;
@@ -275,7 +276,7 @@ public class ADaifaOrderModify extends ATitleBase {
 	/**
 	 * 快递单号
 	 */
-	private TextView tv_order_express_numb;
+	private CopyTextView tv_order_express_numb;
 	/**
 	 * 物流公司
 	 */
@@ -489,9 +490,7 @@ public class ADaifaOrderModify extends ATitleBase {
 		tv_order_manage_logistics_send_out = (TextView) findViewById(R.id.tv_order_manage_logistics_send_out);
 
 		ll_express_message = (LinearLayout) findViewById(R.id.ll_express_message);
-		tv_order_express_numb = (TextView) findViewById(R.id.tv_order_express_numb);
-
-		StrUtils.SetTextViewCopy(tv_order_express_numb);
+		tv_order_express_numb = (CopyTextView) findViewById(R.id.tv_order_express_numb);
 		tv_order_express_name = (TextView) findViewById(R.id.tv_order_express_name);
 		rl_order_goods_message = (RelativeLayout) findViewById(R.id.rl_order_goods_message);
 		lv_order_good_express_speed = (CompleteListView) findViewById(R.id.lv_order_good_express_speed);

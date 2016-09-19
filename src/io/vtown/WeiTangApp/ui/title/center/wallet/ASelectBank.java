@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.ui.title.center.wallet;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLSelectBank;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -44,7 +45,7 @@ public class ASelectBank extends ATitleBase {
 	 * AP
 	 */
 	private BankAdapter bankAdapter;
-	private List<BLComment> listdata;
+	private List<BLSelectBank> listdata;
 	/**
 	 * 获取到数据时显示的布局
 	 */
@@ -107,11 +108,11 @@ public class ASelectBank extends ATitleBase {
 			return;
 		}
 
-		listdata = new ArrayList<BLComment>();
+		listdata = new ArrayList<BLSelectBank>();
 
 		try {
 			listdata = JSON
-					.parseArray(Data.getHttpResultStr(), BLComment.class);
+					.parseArray(Data.getHttpResultStr(), BLSelectBank.class);
 			
 		} catch (Exception e) {
 			DataError("解析失败", 1);
@@ -174,7 +175,7 @@ public class ASelectBank extends ATitleBase {
 		/**
 		 * 数据
 		 */
-		private List<BLComment> datas = new ArrayList<BLComment>();
+		private List<BLSelectBank> datas = new ArrayList<BLSelectBank>();
 
 		public BankAdapter(int ResourcesId) {
 			super();
@@ -193,7 +194,7 @@ public class ASelectBank extends ATitleBase {
 		 * 
 		 * @param dass
 		 */
-		public void FrashData(List<BLComment> dass) {
+		public void FrashData(List<BLSelectBank> dass) {
 			this.datas = dass;
 			this.notifyDataSetChanged();
 		}
@@ -201,7 +202,7 @@ public class ASelectBank extends ATitleBase {
 		/**
 		 * 加载更多
 		 */
-		public void AddFrashData(List<BLComment> dass) {
+		public void AddFrashData(List<BLSelectBank> dass) {
 			this.datas.addAll(datas);
 			this.notifyDataSetChanged();
 		}

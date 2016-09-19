@@ -1,13 +1,17 @@
 package io.vtown.WeiTangApp.ui.title.shop.odermanger;
 
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.view.pop.PAddSelect;
 import io.vtown.WeiTangApp.comment.view.pop.PAddSelect.AddSelectInterface;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.title.center.set.ASelectAddress;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +21,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
@@ -38,7 +44,7 @@ public class AModifyDeliveryAddress extends ATitleBase {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_shop_order_manage_modify_address);
-		
+		EventBus.getDefault().register(this,"onGetMsg", BMessage.class);
 		IView();
 	}
 
@@ -99,12 +105,9 @@ public class AModifyDeliveryAddress extends ATitleBase {
 	protected void MyClick(View V) {
 		switch (V.getId()) {
 		case R.id.modify_delivery_address://选择地区
-			//隐藏系统键盘
-			InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-			im.hideSoftInputFromWindow(getCurrentFocus()
-					.getApplicationWindowToken(),
-					InputMethodManager.HIDE_NOT_ALWAYS);
-			Address();
+			hintKbTwo();
+			PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ASelectAddress.class));
+
 			break;
 			
 		case R.id.btn_modify_delivery_address://确认地址
@@ -208,6 +211,27 @@ public class AModifyDeliveryAddress extends ATitleBase {
 
 	@Override
 	protected void SaveBundle(Bundle bundle) {
+	}
+
+	public void onGetMsg(BMessage event){
+		int msg_type = event.getMessageType();
+		if(BMessage.Tage_Select_Address == msg_type){
+			List<String> address_infos = event.getAddress_infos();
+			if(address_infos != null && address_infos.size()>0){
+				StrUtils.SetTxt(comment_txtarrow_content, address_infos.get(0) + space
+						+  address_infos.get(1) + space +  address_infos.get(2));
+			}
+		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		try{
+			EventBus.getDefault().unregister(this);
+		}catch (Exception e){
+			return;
+		}
 	}
 
 }

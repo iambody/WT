@@ -2,6 +2,7 @@ package io.vtown.WeiTangApp.ui.title.center.set;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 
 import cn.jpush.a.a.i;
 
@@ -21,10 +22,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -90,6 +94,7 @@ public class AEditAddress extends ATitleBase {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_set_personal_data_addressmanage_edit);
+		EventBus.getDefault().register(this,"onGetMsg", BMessage.class);
 		user_Get = Spuit.User_Get(getApplicationContext());
 		IView();
 		IData();
@@ -155,7 +160,7 @@ public class AEditAddress extends ATitleBase {
 
 		comment_txtarrow_title = (TextView) edit_address_location
 				.findViewById(R.id.comment_txtarrow_title);
-		comment_txtarrow_title.setText("所在地区");
+		comment_txtarrow_title.setText(getResources().getString(R.string.in_location));
 		comment_txtarrow_content = (TextView) edit_address_location.findViewById(R.id.comment_txtarrow_content);
 		
 		// comment_txtarrow_title.setText(getResources().getString(R.string.in_location));
@@ -234,7 +239,9 @@ public class AEditAddress extends ATitleBase {
 			break;
 
 		case R.id.edit_address_location:
-			Address();
+			//Address();
+			hintKbTwo();
+			PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ASelectAddress.class));
 			break;
 
 		}
@@ -377,6 +384,27 @@ public class AEditAddress extends ATitleBase {
 			}
 		});
 		m.showAtLocation(edit_address_location, Gravity.BOTTOM, 0, 0);
+	}
+
+	public void onGetMsg(BMessage event){
+		int msg_type = event.getMessageType();
+		if(BMessage.Tage_Select_Address == msg_type){
+			List<String> address_infos = event.getAddress_infos();
+			if(address_infos != null && address_infos.size()>0){
+				StrUtils.SetTxt(comment_txtarrow_content, address_infos.get(0) + space
+						+  address_infos.get(1) + space +  address_infos.get(2));
+			}
+		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		try{
+			EventBus.getDefault().unregister(this);
+		}catch (Exception e){
+			return;
+		}
 	}
 
 }

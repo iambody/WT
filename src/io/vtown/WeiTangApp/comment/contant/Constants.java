@@ -862,6 +862,24 @@ public class Constants {
 	 */
 	public static String NewItemDeletByType = Host
 			+ "/v1/member/message/delete";
+
+	/**
+	 * 获取收货地址(省)
+	 */
+	public static String Get_Province = Host
+			+ "/v1/api/api/get-province";
+
+	/**
+	 * 获取收货地址（市）
+	 */
+	public static String Get_City = Host
+			+ "/v1/api/api/get-city";
+
+	/**
+	 * 获取地址（区）
+	 */
+	public static String Get_Area = Host
+			+ "/v1/api/api/get-area";
 /**
  * 店铺内进行搜索
  */

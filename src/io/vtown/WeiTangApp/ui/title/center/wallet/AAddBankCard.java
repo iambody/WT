@@ -4,6 +4,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLSelectBank;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -49,7 +50,7 @@ public class AAddBankCard extends ATitleBase {
 	 * 提交按钮
 	 */
 	private TextView tv_btn_submit_bank_card;
-	private BLComment mBlComment;
+	private BLSelectBank mBlComment;
 	/**
 	 * 用户信息
 	 */
@@ -98,6 +99,7 @@ public class AAddBankCard extends ATitleBase {
 		map.put("seller_id", user_Get.getSeller_id());
 		map.put("name", name);
 		map.put("bank_name", mBlComment.getBank_name());
+		map.put("bank_id", mBlComment.getBank_id());
 		map.put("card_number", cardNo);
 		FBGetHttpData(map, Constants.Bank_Manage_Add_Card, Method.POST, 0,
 				LOAD_INITIALIZE);
@@ -123,6 +125,8 @@ public class AAddBankCard extends ATitleBase {
 	protected void DataResult(int Code, String Msg, BComment Data) {
 		tv_btn_submit_bank_card.setEnabled(true);
 		if (Code == 200) {
+			EventBus.getDefault().post(
+					new BMessage(BMessage.Tage_Updata_BankCard_List));
 			PromptManager.ShowMyToast(BaseContext, "银行卡添加成功");
 			Intent intent = null;
 			if (1 == togo) {
@@ -133,8 +137,7 @@ public class AAddBankCard extends ATitleBase {
 			}
 			EventBus.getDefault().post(new BMessage(BMessage.Tage_Updata_Tixian_Message));
 			startActivity(intent);
-			EventBus.getDefault().post(
-					new BMessage(BMessage.Tage_Updata_BankCard_List));
+
 			finish();
 		} else {
 			DataError("银行卡添加失败", 1);
@@ -209,7 +212,7 @@ public class AAddBankCard extends ATitleBase {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (0 == requestCode && resultCode == RESULT_OK) {
-			mBlComment = (BLComment) data.getSerializableExtra("bank_info");
+			mBlComment = (BLSelectBank) data.getSerializableExtra("bank_info");
 			SetItemContent(select_bank, R.string.select_bank,
 					mBlComment.getBank_name());
 		}

@@ -228,7 +228,7 @@
                             android:layout_width="@dimen/order_detail_express_dot_size"
                             android:layout_height="@dimen/order_detail_express_dot_size" />
 
-                        <TextView
+                        <io.vtown.WeiTangApp.comment.view.CopyTextView
                             android:id="@+id/tv_center_my_order_express_numb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

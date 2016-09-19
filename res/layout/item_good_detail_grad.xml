@@ -15,8 +15,9 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingTop="2dp"
+        android:background="@drawable/shape_pop_gridview_txt_normal_bg"
         android:text="@string/nullstr"
         android:textColor="@color/grey" />
-    <!-- android:background="@drawable/shape_pop_gridview_txt_normal_bg" -->
+
 
 </LinearLayout>

@@ -100,6 +100,8 @@ public class ABankCardManager extends ATitleBase implements
 	 */
 	private LinearLayout ll_bank_card_list_foot;
 
+	private boolean need_updata = false;
+
 	@Override
 	protected void InItBaseView() {
 		SetTitleHttpDataLisenter(this);
@@ -110,29 +112,38 @@ public class ABankCardManager extends ATitleBase implements
 		EventBus.getDefault().register(this, "OnGetMessage", BMessage.class);
 		user_Get = Spuit.User_Get(getApplicationContext());
 		IView();
-		IData();
+		if(need_updata){
+			IData(LOAD_HindINIT);
+		}else{
+			IData(LOAD_INITIALIZE);
+		}
+
 	}
 
-	private void IData() {
+	private void IData(int type) {
+		if(type == LOAD_INITIALIZE){
+			PromptManager.showtextLoading(BaseContext,
+					getResources()
+							.getString(R.string.xlistview_header_hint_loading));
+		}
 
-		PromptManager.showtextLoading(BaseContext,
-				getResources()
-						.getString(R.string.xlistview_header_hint_loading));
+
 		HashMap<String, String> map = new HashMap<String, String>();
 		needShowErrorLayout = true;
 		map.put("member_id", user_Get.getId());
 		FBGetHttpData(map, Constants.MY_BANK_LIST, Method.GET, 0,
-				LOAD_INITIALIZE);
+				type);
 
 	}
 
 	/**
 	 * 删除银行卡
 	 */
-	private void RemoveBankCard(String bank_id, String member_id) {
+	private void RemoveBankCard(String bank_id, String member_id,String id) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		needShowErrorLayout = false;
 		map.put("bank_id", bank_id);
+		map.put("id",id);
 		map.put("member_id", member_id);
 		FBGetHttpData(map, Constants.Remove_Bank_Card, Method.DELETE, 1,
 				LOAD_INITIALIZE);
@@ -151,7 +162,7 @@ public class ABankCardManager extends ATitleBase implements
 		isFinish = getIntent().getBooleanExtra("isFinish", false);
 		
 		if (!isFinish) {
-			IData();
+			//IData();
 			//btn_add_new_bank_card1.setVisibility(View.VISIBLE);
 			//btn_add_new_bank_card1.setOnClickListener(this);
 			IFooterView();
@@ -215,7 +226,7 @@ public class ABankCardManager extends ATitleBase implements
 			break;
 		case 1:
 			PromptManager.ShowMyToast(BaseContext, "删除成功");
-			IData();
+			IData(LOAD_HindINIT);
 			break;
 
 		default:
@@ -274,7 +285,7 @@ public class ABankCardManager extends ATitleBase implements
 			break;
 
 		case R.id.center_wallet_bankcard_manage_nodata_lay:// 重新获取数据
-			IData();
+			IData(LOAD_INITIALIZE);
 			break;
 
 		default:
@@ -291,7 +302,7 @@ public class ABankCardManager extends ATitleBase implements
 		super.onNewIntent(intent);
 		setIntent(intent);
 
-		IData();
+		IData(LOAD_HindINIT);
 
 	}
 
@@ -543,7 +554,7 @@ public class ABankCardManager extends ATitleBase implements
 					public void RightResult() {
 						if(CheckNet(BaseContext))return;
 						PromptManager.showLoading(BaseContext);
-						RemoveBankCard(datBlComment.getBank_id(), user_Get.getId());
+						RemoveBankCard(datBlComment.getBank_id(), user_Get.getId(),datBlComment.getId());
 						
 						if (mPopupWindow != null && mPopupWindow.isShowing()) {
 							mPopupWindow.dismiss();
@@ -571,6 +582,7 @@ public class ABankCardManager extends ATitleBase implements
 	public void OnGetMessage(BMessage event) {
 		int messageType = event.getMessageType();
 		if (messageType == event.Tage_Updata_BankCard_List) {
+			need_updata = true;
 			this.finish();
 		}
 		
@@ -581,7 +593,7 @@ public class ABankCardManager extends ATitleBase implements
 		
 		super.onDestroy();
 		try {
-			EventBus.getDefault().unregister(new BMessage());
+			EventBus.getDefault().unregister(this);
 		} catch (Exception e) {
 			
 		}

@@ -10,6 +10,6 @@
 
     <stroke
         android:width="@dimen/line_size1"
-        android:color="@color/transparent6" />
+        android:color="@color/app_gray" />
 
 </shape>

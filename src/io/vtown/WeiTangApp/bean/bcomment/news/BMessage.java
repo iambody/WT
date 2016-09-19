@@ -211,6 +211,8 @@ public class BMessage {
 
     private List<String> tmpArrayList;
 
+
+
     public static final int Tage_Select_Pic_Show = 7788;
     public static final int Tage_Select_Pic_Good_Pics = 7789;
     public static final int Tage_Select_Pic_Good_Desc = 7790;
@@ -224,6 +226,9 @@ public class BMessage {
     private BCategory AddGoods_SelectCatory;
     //修改品牌商品库存时候的通知和存储修改的数量
 
+    //选择好地址后返回
+    public static final int Tage_Select_Address = 10010;
+    private  List<String> address_infos;
 
     public BMessage() {
         super();
@@ -366,5 +371,13 @@ public class BMessage {
 
     public void setTmpArrayList(List<String> tmpArrayList) {
         this.tmpArrayList = tmpArrayList;
+    }
+
+    public List<String> getAddress_infos() {
+        return address_infos;
+    }
+
+    public void setAddress_infos(List<String> address_infos) {
+        this.address_infos = address_infos;
     }
 }

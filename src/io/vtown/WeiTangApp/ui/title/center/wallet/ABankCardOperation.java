@@ -4,6 +4,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLSelectBank;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -83,7 +84,7 @@ public class ABankCardOperation extends ATitleBase {
 	/**
 	 * 选择的银行信息
 	 */
-	private BLComment bank_info;
+	private BLSelectBank bank_info;
 	private boolean isFinish;
 	/**
 	 * 用户相关信息
@@ -139,7 +140,7 @@ public class ABankCardOperation extends ATitleBase {
 		
 	}
 	
-	private void ModifyBank(String member_id,String card_number,String bank_name,String name,String bank_id){
+	private void ModifyBank(String member_id,String card_number,String bank_name,String name,String bank_id,String id){
 		SetTitleHttpDataLisenter(this);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("member_id", member_id);
@@ -147,6 +148,7 @@ public class ABankCardOperation extends ATitleBase {
 		map.put("bank_name", bank_name);
 		map.put("name", name);
 		map.put("bank_id", bank_id);
+		map.put("id", id);
 		FBGetHttpData(map, Constants.Modify_Bank_Card, Method.PUT, 0, LOAD_INITIALIZE);
 		
 	}
@@ -163,8 +165,9 @@ public class ABankCardOperation extends ATitleBase {
 			PromptManager.ShowMyToast(BaseContext, "银行卡修改成功");
 			Intent intent = new Intent(BaseContext,ABankCardManager.class);
 			intent.putExtra("isFinish", false);
-			startActivity(intent);
 			EventBus.getDefault().post(new BMessage(BMessage.Tage_Updata_BankCard_List));
+			startActivity(intent);
+
 			this.finish();
 		}
 	}
@@ -233,7 +236,8 @@ public class ABankCardOperation extends ATitleBase {
 			return;
 		}
 		String bank_id = mBlcomment.getBank_id();
-		ModifyBank(user_Get.getId(), card_number, bank_name, name, bank_id);
+		String id = mBlcomment.getId();
+		ModifyBank(user_Get.getId(), card_number, bank_name, name, bank_id,id);
 	}
 
 	@Override
@@ -248,7 +252,7 @@ public class ABankCardOperation extends ATitleBase {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
 		if(100 == requestCode && RESULT_OK == resultCode){
-			bank_info = (BLComment) data.getSerializableExtra("bank_info");
+			bank_info = (BLSelectBank) data.getSerializableExtra("bank_info");
 			if(bank_info != null){
 				iv_modify_bank_select_icon.setVisibility(View.VISIBLE);
 				ImageLoaderUtil.Load2(bank_info.getIcon(), iv_modify_bank_select_icon, R.drawable.error_iv2);
