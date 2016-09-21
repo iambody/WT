@@ -38,15 +38,18 @@ public class AShowIDPic extends ATitleBase {
     private FrameLayout show_id_pic_back_fl;
     private TextView tv_show_id_pic_face;
     private TextView tv_show_id_pic_back;
+    private TextView show_id_pic_usr_name;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_show_id_pic);
         EventBus.getDefault().register(this, "getEventMsg", BMessage.class);
+
         IView();
     }
 
     private void IView() {
+        show_id_pic_usr_name = (TextView) findViewById(R.id.show_id_pic_usr_name);
         show_id_pic_face = (ImageView) findViewById(R.id.show_id_pic_face);
         show_id_pic_back = (ImageView) findViewById(R.id.show_id_pic_back);
         show_id_pic_submit = (TextView) findViewById(R.id.show_id_pic_submit);
@@ -129,7 +132,7 @@ public class AShowIDPic extends ATitleBase {
     }
 
     /**
-     * 图片分享时候 需要先上传图片完毕在根据上传后的七牛返回的URL分享Show
+     * 上传七牛，返回URL
      */
     private void ImageShareShow() {
 

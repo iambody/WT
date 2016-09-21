@@ -749,6 +749,13 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".ui.title.AGoodPop"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+android:theme="@style/MyDialogStyleTop"
+            />
+
        <activity
             android:name=".ui.ui.AMainTab"
             android:launchMode="singleTask"

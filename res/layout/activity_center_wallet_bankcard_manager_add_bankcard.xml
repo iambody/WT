@@ -44,7 +44,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="@dimen/center_wallet_add_bankcarde_padding" >
+                    android:padding="@dimen/center_wallet_add_bankcarde_padding"
+
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -56,13 +58,12 @@
                     <EditText
                         android:id="@+id/et_bank_card_numb"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/center_wallet_add_bankcard_name_margin"
-                        android:background="@drawable/shape_add_goods_edit_bg"
+                        android:background="@color/white"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:padding="@dimen/center_wallet_add_bankcard_bankcard_padding"
-                        android:paddingLeft="@dimen/center_wallet_add_bankcard_bankcard_padding"
+
                         android:singleLine="true"
                         android:textColor="@color/app_gray"
                         android:textSize="@dimen/comment_label_txtsize" />

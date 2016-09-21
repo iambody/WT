@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/app_bg"
     android:orientation="vertical" >
-    
+
     <include layout="@layout/titlebar"/>
 
     <ScrollView
@@ -43,7 +43,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/order_detail_modify_address_edittext_marginleft"
                     android:background="@null"
-                    android:textColor="@color/grey"
+                    android:textColor="@color/app_gray"
+                    android:gravity="right"
                     android:singleLine="true"
                     android:maxLines="1"
                     android:textSize="@dimen/comment_label_txtsize"
@@ -70,22 +71,23 @@
                    android:textSize="@dimen/comment_label_txtsize"
                     android:textColor="@color/grey"
                     android:text="@string/contact_phone_numb" />
-                
+
                 <EditText
                     android:id="@+id/et_modify_delivery_contact_phone_numb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
+                    android:textColor="@color/app_gray"
                     android:textSize="@dimen/comment_label_txtsize"
                     android:layout_toRightOf="@id/tv_modify_delivery_contact_phone_numb"
                     android:layout_marginLeft="@dimen/order_detail_modify_address_edittext_marginleft"
                     android:singleLine="true"
                     android:maxLines="1"
+                    android:gravity="right"
                     android:inputType="phone"
                     android:background="@null"
                      />
 
-               
+
             </RelativeLayout>
 
             <View
@@ -95,13 +97,13 @@
                 android:id="@+id/modify_delivery_address"
                 layout="@layout/commentview_txtarrow" />
 
-           
-            
+
+
             <!--  <View
                 style="@style/line_left"/> -->
 
             <RelativeLayout
-             
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/order_detail_modify_address_top_buttom_margin"
@@ -118,7 +120,7 @@
                     android:textSize="@dimen/comment_label_txtsize"
                     android:textColor="@color/grey"
                     android:text="邮编" />
-                
+
                 <EditText
                     android:id="@+id/tv_modify_delivery_contact_postcode"
                     android:layout_width="match_parent"
@@ -133,9 +135,9 @@
                     android:background="@null"
                      />
 
-               
+
             </RelativeLayout>
-            
+
              <View
                 style="@style/line_left"/>
 
@@ -160,7 +162,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/order_detail_modify_address_delivery_edittext_height"
                     android:layout_marginLeft="@dimen/order_detail_modify_address_edittext_marginleft"
-                    android:textColor="@color/grey"
+                    android:textColor="@color/app_gray"
                     android:textSize="@dimen/comment_label_txtsize"
                     android:background="@null"
                     android:gravity="left"
@@ -168,7 +170,7 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <Button 
+    <Button
         android:id="@+id/btn_modify_delivery_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

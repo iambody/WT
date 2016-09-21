@@ -7,6 +7,17 @@
 
     <include layout="@layout/titlebar" />
 
+
+    <TextView
+        android:id="@+id/show_id_pic_usr_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请上传您本人的有效二代身份证"
+        android:padding="8dp"
+        android:gravity="center"
+        android:textColor="@color/grey"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

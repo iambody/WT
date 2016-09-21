@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.ui.title.shop.odermanger;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BAddress;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shoporder.BDShopOrderDetail;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
@@ -297,6 +298,7 @@ public class ADaifaOrderModify extends ATitleBase {
 	 * 使用卡券和余额分割线
 	 */
 	private View line_left;
+	private BAddress address_info;
 
 	@Override
 	protected void InItBaseView() {
@@ -717,9 +719,18 @@ public class ADaifaOrderModify extends ATitleBase {
 					R.color.app_gray, getString(R.string.tv_commentview_name),
 					data2.getUsername());
 
+
 			StrUtils.SetTxt(commentview_add_phone, data2.getMobile());
 			StrUtils.SetTxt(commentview_add_address, data2.getProvince()
 					+ data2.getCity() + data2.getArea() + data2.getAddress());
+
+			if(Tage_From_Modify == type){
+				address_info = new BAddress(data2.getUsername(),data2.getMobile(),data2.getProvince(),data2.getCity(),data2.getArea(),data2.getAddress());
+			}
+
+
+
+
 
 			StrUtils.SetTxt(tv_order_id, data2.getSeller_order_sn());
 			StrUtils.SetTxt(tv_ordering_time,
@@ -854,8 +865,13 @@ public class ADaifaOrderModify extends ATitleBase {
 
 			Intent intent = new Intent(BaseActivity,
 					AModifyDeliveryAddress.class);
-			PromptManager.SkipResultActivity(BaseActivity, intent,
-					REQUEST_CODE_ADDRESS);
+			if(address_info != null){
+				intent.putExtra("address_info",address_info);
+				PromptManager.SkipResultActivity(BaseActivity, intent,
+						REQUEST_CODE_ADDRESS);
+			}
+
+
 			break;
 
 		case R.id.btn_daifa_confirm_order:// 确认订单

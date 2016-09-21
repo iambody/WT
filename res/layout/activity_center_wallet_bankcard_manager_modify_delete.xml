@@ -91,6 +91,14 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/center_wallet_modify_bankcard_padding"
                  >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="选择银行："
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize"
+                    android:layout_height="wrap_content" />
+
+
 
                 <ImageView
                     android:id="@+id/iv_modify_bank_select_icon"
@@ -105,17 +113,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/comment_label_txtsize"
-                    
-                    android:textColor="@color/grey"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/app_gray"
+                    android:visibility="gone"
                     android:text="@string/nullstr"
                     />
-                
-                <TextView 
+
+                <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    
-                    />
+                    android:layout_height="wrap_content" />
                 
                 <ImageView 
                     android:layout_width="12dp"
@@ -150,6 +157,7 @@
                     android:singleLine="true"
                     android:maxLines="1"
                     android:inputType="number"
+
                     android:textSize="@dimen/comment_label_txtsize"
                     android:textColor="@color/app_gray"
                     android:background="@color/white" />

@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title.center.wallet;
 
+
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
@@ -467,9 +468,11 @@ public class ABankCardManager extends ATitleBase implements
 				String.format(bank_numb, card_number_sub));
 
 		mPopupWindow = new PopupWindow(view, LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT);
+				LayoutParams.MATCH_PARENT);
 		ColorDrawable dw = new ColorDrawable(0xb0000000);
 		mPopupWindow.setBackgroundDrawable(dw);
+		mPopupWindow.update();
+		mPopupWindow.setOutsideTouchable(true);
 		mPopupWindow.showAtLocation(v, Gravity.BOTTOM, 0, 0);
 
 	}
@@ -547,7 +550,10 @@ public class ABankCardManager extends ATitleBase implements
 				break;
 
 			case R.id.tv_bank_card_delete:
-				
+				if (mPopupWindow != null && mPopupWindow.isShowing()) {
+					mPopupWindow.dismiss();
+					mPopupWindow = null;
+				}
 				
 				ShowCustomDialog("删除银行卡？", "取消", "删除", new IDialogResult() {
 					@Override

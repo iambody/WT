@@ -534,6 +534,8 @@ public class AGoodDetail extends ATitleBase {
 
         if (250 == LoadTyp) {
             info = null;
+            runRandomMessage = false;
+            mHandler.removeCallbacks(mRandomMessageTimerTask);
         }
     }
 
@@ -770,29 +772,35 @@ public class AGoodDetail extends ATitleBase {
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.tv_buy:
-                PPurchase pShowVirtualLibGood1 = new PPurchase(BaseActivity,
-                        BaseContext, 200, PPurchase.TYPE_GOOD_DETAIL_BUY, datas,
-                        GoodsId, IsCaiGou);
-                pShowVirtualLibGood1.showAtLocation(V, Gravity.CENTER, 0, 0);
-
-                pShowVirtualLibGood1
-                        .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
-
-                            @Override
-                            public void getPopupStuta(int stuta) {
-                                switch (stuta) {
-                                    case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
-
-                                        break;
-                                    case PPurchase.TYPE_ADD_ONLINE:// 上架成功
-
-                                        break;
-
-                                    default:
-                                        break;
-                                }
-                            }
-                        });
+                Intent intent  = new Intent(BaseContext,AGoodPop.class);
+                intent.putExtra("good_info",datas);
+                intent.putExtra("Show_type",AGoodPop.TYPE_GOOD_DETAIL_BUY);
+                intent.putExtra("GoodsId",GoodsId);
+                intent.putExtra("IsCaiGou",IsCaiGou);
+                PromptManager.SkipActivity(BaseActivity,intent);
+//                PPurchase pShowVirtualLibGood1 = new PPurchase(BaseActivity,
+//                        BaseContext, 200, PPurchase.TYPE_GOOD_DETAIL_BUY, datas,
+//                        GoodsId, IsCaiGou);
+//                pShowVirtualLibGood1.showAtLocation(V, Gravity.CENTER, 0, 0);
+//
+//                pShowVirtualLibGood1
+//                        .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
+//
+//                            @Override
+//                            public void getPopupStuta(int stuta) {
+//                                switch (stuta) {
+//                                    case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
+//
+//                                        break;
+//                                    case PPurchase.TYPE_ADD_ONLINE:// 上架成功
+//
+//                                        break;
+//
+//                                    default:
+//                                        break;
+//                                }
+//                            }
+//                        });
 
                 break;
             case R.id.tv_replace_sell:

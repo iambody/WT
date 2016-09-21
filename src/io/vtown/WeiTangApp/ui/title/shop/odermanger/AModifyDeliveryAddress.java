@@ -4,6 +4,7 @@ package io.vtown.WeiTangApp.ui.title.shop.odermanger;
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BAddress;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -40,13 +41,19 @@ public class AModifyDeliveryAddress extends ATitleBase {
 	private TextView comment_txtarrow_content;
 	private String space = "  ";
 	private EditText tv_modify_delivery_contact_postcode;
+	private BAddress ba;
 
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_shop_order_manage_modify_address);
 		EventBus.getDefault().register(this,"onGetMsg", BMessage.class);
+		ba = (BAddress)getIntent().getSerializableExtra("address_info");
+		if(ba == null)return;
 		IView();
+		IData();
 	}
+
+
 
 	/**
 	 * 初始化控件
@@ -67,6 +74,15 @@ public class AModifyDeliveryAddress extends ATitleBase {
 		modify_delivery_address.setOnClickListener(this);
 		btn_modify_delivery_address.setOnClickListener(this);
 		
+	}
+
+	private void IData() {
+
+		StrUtils.SetTxt(tv_modify_delivery_name,ba.getUsrname());
+		StrUtils.SetTxt(et_modify_delivery_contact_phone_numb,ba.getMobile());
+		StrUtils.SetTxt(et_detail_modify_delivery_address,ba.getAddress());
+		StrUtils.SetTxt(comment_txtarrow_content,ba.getProvince()+space+ba.getCity()+space+ba.getArea());
+
 	}
 	
 	

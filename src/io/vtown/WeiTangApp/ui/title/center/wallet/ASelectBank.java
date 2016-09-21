@@ -80,7 +80,6 @@ public class ASelectBank extends ATitleBase {
 					long arg3) {
 				Intent intent = new Intent();
 				intent.putExtra("bank_info", listdata.get(arg2));
-				PromptManager.ShowMyToast(BaseContext, "您选择了"+listdata.get(arg2).getBank_name());
 				setResult(RESULT_OK,intent);
 				finish();
 			}

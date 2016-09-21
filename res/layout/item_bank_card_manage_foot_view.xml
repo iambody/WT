@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/shape_add_bank_card_bg"
         android:padding="@dimen/center_wallet_bankcard_manage_listview_foot_layout_padding"
+        android:layout_marginTop="10dp"
         android:orientation="vertical" >
 
         <LinearLayout

@@ -183,7 +183,7 @@
     <string name="bank_card_manage">银行卡管理</string>
     <string name="alipay_manage">支付宝管理</string>
     <string name="property_detail">资金明细</string>
-    <string name="lable_bank_card_numb">银行卡卡号</string>
+    <string name="lable_bank_card_numb">卡号：</string>
     <string name="lable_alipay_numb">支付宝账号</string>
     <string name="alipay_real_name">真实姓名：</string>
     <string name="i_agree_bank_transfer_agreement">已阅读并同意</string>
@@ -249,7 +249,7 @@
     <string name="post_price">(含运费￥%1$.2f)</string>
     <string name="delete">删除</string>
     <!-- 订单管理 -->
-    <string name="tv_commentview_name">"收 货 人 ："</string>
+    <string name="tv_commentview_name">" 收 货 人 ："</string>
     <string name="daifu_confirm_order">确认订单</string>
     <string name="daifu_contact">联系方式：</string>
     <string name="daifu_consignee">"收 货 人 ："</string>

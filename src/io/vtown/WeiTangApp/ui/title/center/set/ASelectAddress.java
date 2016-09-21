@@ -236,12 +236,17 @@ public class ASelectAddress extends ATitleBase implements View.OnClickListener, 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (Current_Tag) {
             case TAG_PROVINCE:
+                address_select_list_province.setVisibility(View.GONE);
+                address_select_list_city.setVisibility(View.GONE);
                 BLSelectAddress province = (BLSelectAddress) addressSelectAdapter_province.getItem(position);
                 ICityData(province.getProvinceid());
                 province_str = province.getProvince();
                 break;
 
             case TAG_CITY:
+                address_select_list_province.setVisibility(View.GONE);
+                address_select_list_city.setVisibility(View.GONE);
+                address_select_list_address.setVisibility(View.GONE);
                 BLSelectAddress city = (BLSelectAddress) addressSelectAdapter_city.getItem(position);
                 IAreaData(city.getCityid());
                 city_str = city.getCity();

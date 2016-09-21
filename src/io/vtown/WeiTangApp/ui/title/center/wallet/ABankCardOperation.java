@@ -110,7 +110,7 @@ public class ABankCardOperation extends ATitleBase {
         ll_select_bank = (LinearLayout) findViewById(R.id.ll_select_bank);
         iv_modify_bank_select_icon = (ImageView) findViewById(R.id.iv_modify_bank_select_icon);
         tv_modify_bank_card_select_name = (TextView) findViewById(R.id.tv_modify_bank_card_select_name);
-        tv_modify_bank_card_select_name.setText("请选择开户银行");
+        //tv_modify_bank_card_select_name.setText("请选择开户银行");
         iv_modify_bank_select_icon.setVisibility(View.GONE);
 
         tv_modify_bank_card_id_lable = (TextView) findViewById(R.id.tv_modify_bank_card_id_lable);
@@ -134,8 +134,9 @@ public class ABankCardOperation extends ATitleBase {
 
         String name = user_Get.getName();
 
-        String format_name = String.format("开户姓名：%1$s", name);
-        StrUtils.SetTxt(tv_modify_bank_usr_name, format_name);
+        //String format_name = String.format("开户姓名：%1$s", name);
+        StrUtils.SetColorsTxt(BaseContext,tv_modify_bank_usr_name,R.color.app_gray,"开户姓名：",name);
+       // StrUtils.SetTxt(tv_modify_bank_usr_name, format_name);
 
     }
 
@@ -223,7 +224,7 @@ public class ABankCardOperation extends ATitleBase {
 
         String name = user_Get.getName();
         String bank_name = tv_modify_bank_card_select_name.getText().toString().trim();
-        if ("请选择开户银行".equals(bank_name)) {
+        if (StrUtils.isEmpty(bank_name)) {
             tv_mofify_submit.setEnabled(true);
             PromptManager.ShowMyToast(BaseContext, "选择您要修改的银行");
             return;
@@ -261,8 +262,9 @@ public class ABankCardOperation extends ATitleBase {
         if (100 == requestCode && RESULT_OK == resultCode) {
             bank_info = (BLSelectBank) data.getSerializableExtra("bank_info");
             if (bank_info != null) {
-                iv_modify_bank_select_icon.setVisibility(View.VISIBLE);
-                ImageLoaderUtil.Load2(bank_info.getIcon(), iv_modify_bank_select_icon, R.drawable.error_iv2);
+                //iv_modify_bank_select_icon.setVisibility(View.VISIBLE);
+                tv_modify_bank_card_select_name.setVisibility(View.VISIBLE);
+                //ImageLoaderUtil.Load2(bank_info.getIcon(), iv_modify_bank_select_icon, R.drawable.error_iv2);
 
                 StrUtils.SetTxt(tv_modify_bank_card_select_name, bank_info.getBank_name());
             }
