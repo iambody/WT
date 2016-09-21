@@ -159,6 +159,7 @@ public class AMyInviteCode extends ATitleBase {
 		ll_my_invite_code_share_to_frends.setOnClickListener(this);
 		tv_my_invite_code_desc.setText(getResources().getString(
 				R.string.share_quan_str));
+		//!!!!!!!!!!!!!!!!!!!!!显示后台数据
 		 StrUtils.SetColorsTxt(BaseContext,tv_my_invite_code_desc,R.color.red,"邀请好友注册各得","20元",",快快扫我吧") ;
 		// tv_my_invite_code_desc.setVisibility(View.GONE);
 		tv_my_invite_code.measure(0,0);

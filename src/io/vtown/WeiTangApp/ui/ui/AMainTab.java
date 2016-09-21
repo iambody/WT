@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.ui.ui;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -63,7 +64,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 
         Fragments.add(FMainHome);
         Fragments.add(FMainShop);
-        Fragments.add(FMainShow);
+//        Fragments.add(FMainShow);
         Fragments.add(FMainShopBus);
         Fragments.add(FMainCenter);
 
@@ -73,7 +74,6 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private Bundle GetBund() {
         Bundle mybundle = new Bundle();
         mybundle.putInt("screenwidth", screenWidth);
-//        mybundle.putInt("screenheight", screenHeight);
         return mybundle;
     }
 
@@ -81,7 +81,6 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         maintab_radiobar = (GradualRadioGroup) findViewById(R.id.maintab_radiobar);
         maintab_home = (GradualRadioButton) findViewById(R.id.maintab_home);
         maintab_shop = (GradualRadioButton) findViewById(R.id.maintab_shop);
-//        maintab_show = (GradualRadioButton) findViewById(R.id.maintab_show);
         maintab_shopbus = (GradualRadioButton) findViewById(R.id.maintab_shopbus);
         maintab_center = (GradualRadioButton) findViewById(R.id.maintab_center);
         RadioButtons = new ArrayList<GradualRadioButton>();
@@ -90,17 +89,9 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         RadioButtons.add(maintab_shop);
         RadioButtons.add(maintab_shopbus);
         RadioButtons.add(maintab_center);
-
-
         maintab_show_iv = (ImageView) findViewById(R.id.maintab_show_iv);
         maintab_radiobar.SetListenerPostion(this);
         maintab_show_iv.setOnClickListener(this);
-
-//        BadgeView ShopBadgeView = new BadgeView(BaseContext);
-//        ShopBadgeView.setTargetView(maintab_shopbus);
-//        ShopBadgeView.setBadgeCount(4);
-//        ShopBadgeView.setBadgeMargin(3, 3, 0, 0);
-
         switchContent1(FMainHome, R.id.maintab_fragmentlay);
         CurrentFragment = FMainHome;
 
@@ -136,15 +127,16 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         if (CurrentPostion == 4) {//当前处于show的fragment
             maintab_show_iv.setImageResource(R.drawable.tab3_f_nor);
             switchContent(CurrentFragment, Fragments.get(postion), R.id.maintab_fragmentlay);
-            CurrentFragment = Fragments.get(postion);
+//            CurrentFragment = Fragments.get(postion);
             CurrentPostion = postion;
             return;
         }
         switchContent(CurrentFragment, Fragments.get(postion), R.id.maintab_fragmentlay);
-        CurrentFragment = Fragments.get(postion);
+//        CurrentFragment = Fragments.get(postion);
         CurrentPostion = postion;
 
     }
+
 
 
     @Override
@@ -165,7 +157,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         }
         maintab_show_iv.setImageResource(R.drawable.tab3_f_pre);
         switchContent(CurrentFragment, FMainShow, R.id.maintab_fragmentlay);
-        CurrentFragment = FMainShow;
+//        CurrentFragment = FMainShow;
         CurrentPostion = 4;
     }
 
@@ -182,6 +174,16 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 
                 break;
             case BMessage.Tage_Tab_four:// shopbus
+
+                switchContent3(CurrentFragment, Fragments.get(2), R.id.maintab_fragmentlay);
+                RadioButtons.get(0).setRadioButtonChecked(false);
+                RadioButtons.get(1).setRadioButtonChecked(false);
+                RadioButtons.get(2).setRadioButtonChecked(true);
+                RadioButtons.get(3).setRadioButtonChecked(false);
+//                getSupportFragmentManager().beginTransaction().hide(CurrentFragment);
+//                switchContent1( Fragments.get(2), R.id.maintab_fragmentlay);
+//                CurrentFragment = FMainShopBus;
+                CurrentPostion = 2;
 
                 break;
             case BMessage.Tage_Tab_five:// center
@@ -212,4 +214,12 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            EventBus.getDefault().unregister(this);
+        } catch (Exception e) {
+        }
+    }
 }

@@ -31,6 +31,7 @@ import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.ui.AMain;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 import java.util.ArrayList;
@@ -902,7 +903,8 @@ public class AGoodDetail extends ATitleBase {
             case R.id.good_detail_shopbus_log:
                 EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_four));
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                        AMain.class));
+                        AMainTab.class).putExtra("a","1"));
+
                 break;
 
             case R.id.rl_to_top:

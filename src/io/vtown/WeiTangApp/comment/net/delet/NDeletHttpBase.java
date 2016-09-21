@@ -65,6 +65,7 @@ public abstract class NDeletHttpBase {
 		// 添加标识
 		mapout.put("UUID", Constants.GetPhoneId(context));
 		mapout.put("source", 20 + "");
+		mapout.put("api_version",Constants.Api_Version);
 		// 进行底层的封装sign
 		final HashMap<String, String> map = Constants.Sign(mapout);
 		final JSONObject obj = Constants.SignToJson(map);

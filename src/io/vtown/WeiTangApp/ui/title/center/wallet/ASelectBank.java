@@ -6,6 +6,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BLSelectBank;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;

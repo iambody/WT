@@ -399,29 +399,7 @@ public class ACenter extends ATitleBase {
 					}
 				});
 
-		// final CustomDialog dialog = new CustomDialog(BaseContext,
-		// R.style.mystyle, R.layout.customdialog, 1, "取消", "去认证");
-		// dialog.show();
-		// dialog.setTitleText("您还没有进行实名认证");
-		// dialog.setConfirmListener(new onConfirmClick() {
-		// @Override
-		// public void onConfirmCLick(View v) {
-		// int from_where = 10;
-		//
-		// PromptManager.SkipActivity(BaseActivity, new Intent(
-		// BaseContext, ARealIdauth.class).putExtra(
-		// ARealIdauth.FROM_WHERE_KEY, from_where));
-		//
-		// dialog.dismiss();
-		// }
-		// });
-		// dialog.setcancelListener(new oncancelClick() {
-		// @Override
-		// public void oncancelClick(View v) {
-		//
-		// dialog.dismiss();
-		// }
-		// });
+
 	}
 
 	@Override

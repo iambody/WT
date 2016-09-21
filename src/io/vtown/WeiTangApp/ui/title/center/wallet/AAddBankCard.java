@@ -71,7 +71,7 @@ public class AAddBankCard extends ATitleBase {
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_wallet_bankcard_manager_add_bankcard);
-		user_Get = Spuit.User_Get(getApplicationContext());
+		user_Get = Spuit.User_Get(BaseActivity);
 		togo = getIntent().getIntExtra("togo", 0);
 		IView();
 	}

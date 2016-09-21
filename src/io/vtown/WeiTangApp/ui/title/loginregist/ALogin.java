@@ -36,6 +36,7 @@ import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -61,8 +62,10 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
 
 		setContentView(R.layout.activity_login);
 		if (Spuit.IsLogin_Get(BaseContext)) {
+//			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//					AMain.class));
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-					AMain.class));
+					AMainTab.class));
 			BaseActivity.finish();
 			return;
 		}

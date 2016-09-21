@@ -211,11 +211,27 @@ public abstract class ABaseFragment extends FragmentActivity {
 //			BaseFragmentTransaction.setCustomAnimations(R.anim.push_rigth_in,
 //					R.anim.push_rigth_out);
 			if (!to.isAdded()) { // 先判断是否被add过
-				BaseFragmentTransaction.hide(from).add(ResourceId, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
-//				BaseFragmentTransaction.add(ResourceId, to).hide(from).commit();
+//				BaseFragmentTransaction.hide(from).add(ResourceId, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
+				BaseFragmentTransaction.add(ResourceId, to).hide(from).commit();
 			} else {
 //				BaseFragmentTransaction.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
 				BaseFragmentTransaction.show(to).hide(from).commit(); // 隐藏当前的fragment，显示下一个
+			}
+		}
+	}
+	public void switchContent3(Fragment from, Fragment to, int ResourceId) {
+		BaseFragmentManager = getSupportFragmentManager();
+		BaseFragmentTransaction = BaseFragmentManager.beginTransaction();
+		if (CurrentFragment != to) {
+			CurrentFragment = to;
+//			BaseFragmentTransaction.setCustomAnimations(R.anim.push_rigth_in,
+//					R.anim.push_rigth_out);
+			if (!to.isAdded()) { // 先判断是否被add过
+//				BaseFragmentTransaction.hide(from).add(ResourceId, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
+				BaseFragmentTransaction.add(ResourceId, to).hide(from).commitAllowingStateLoss();
+			} else {
+//				BaseFragmentTransaction.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
+				BaseFragmentTransaction.show(to).hide(from).commitAllowingStateLoss(); // 隐藏当前的fragment，显示下一个
 			}
 		}
 	}

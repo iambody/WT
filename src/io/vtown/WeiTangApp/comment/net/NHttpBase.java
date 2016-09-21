@@ -49,7 +49,7 @@ public abstract class NHttpBase {
 	/**
 	 * 超时时间
 	 */
-	private int SOCKET_TIMEOUT = 20 * 1000;
+	private int SOCKET_TIMEOUT = 10 * 1000;
 
 	// private RequestQueue queue = null;
 
@@ -63,13 +63,7 @@ public abstract class NHttpBase {
 
 	public void getData(String url, final HashMap<String, String> map1,
 			final int method) {
-//		if (!NetUtil.isConnected(context)) {
-//			PromptManager.closeLoading();
-//			PromptManager.closetextLoading();
-//			PromptManager.ShowCustomToast(context, "请检查网络");
-//			myonErrorResponse(new VolleyError());
-//			return;
-//		}
+
 //		RequestQueue queue = VolleyHttps.newRequestQueue(context, null, true,
 //				R.raw.ssl);// Volley.newRequestQueue(context);
 		 RequestQueue queue = Volley.newRequestQueue(context);
@@ -88,7 +82,7 @@ public abstract class NHttpBase {
 		final HashMap<String, String> map = !url
 				.equals(Constants.Shop_AddGoods) ? Constants.Sign(map1)
 				: Constants.Sign2(map1);
-		 FakeX509TrustManager.allowAllSSL();// 安全认证
+//		 FakeX509TrustManager.allowAllSSL();// 安全认证
 
 		queue.add(new StringRequest(method, method == Method.GET ? url
 				+ MapToStr(map) : url, new Listener<String>() {

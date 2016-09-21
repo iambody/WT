@@ -26,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.TextView;
 
 /**
  * 所有fragment依托于activity所以不需要分别建立basetitle方法
@@ -34,11 +35,18 @@ import android.widget.AbsListView.OnScrollListener;
  */
 
 public abstract class FBase extends Fragment implements IHttpResult<BComment> {
-
     protected static final int INITIALIZE = 0;// 初次进入时候
     protected static final int REFRESHING = 1;// 刷新
     protected static final int LOADMOREING = 2;// 加载更多
     protected static final int LOADHind = 3;// 偷偷加载
+
+
+
+
+    // 进入UI里面 展示动画的标识
+    protected static final int NOVIEW_INITIALIZE = 10;// 初次进入时候
+    protected static final int NOVIEW_RIGHT = 11;// 获取数据成功
+    protected static final int NOVIEW_ERROR = 12;// 获取数据失败
     /**
      * 获取HTtp数后的接口 供给子类暴露接口
      */
@@ -89,6 +97,29 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
 
     public void callGoodHandle() {
 
+    }
+    /**
+     * 获取数据前 加载图片
+     */
+    protected void IDataView(View ShowLay, View ErrorView, int type) {
+
+        switch (type) {
+            case NOVIEW_INITIALIZE:// 初始化进来为获取数据的Error是不显示的 需要把ShowLay也不显示状态
+                ShowLay.setVisibility(View.INVISIBLE);
+                ErrorView.findViewById(R.id.iv_error).setVisibility(View.GONE);
+                break;
+            case NOVIEW_RIGHT:// 获取到数据就正确显示ShowLay；；隐藏ErrorView
+                ErrorView.setVisibility(View.GONE);
+                ShowLay.setVisibility(View.VISIBLE);
+                break;
+            case NOVIEW_ERROR:// 获取数据失败后就显示ErrorView并且可以点击；；；隐藏ErrorView
+                ShowLay.setVisibility(View.GONE);
+                ErrorView.setVisibility(View.VISIBLE);
+                ErrorView.findViewById(R.id.iv_error).setVisibility(View.VISIBLE);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -204,5 +235,7 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
         return false;
 
     }
-
+    protected void ShowErrorCanLoad(String ErrorTxt ) {
+        ((TextView) BaseView.findViewById(R.id.error_kong)).setText(ErrorTxt);
+    }
 }

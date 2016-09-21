@@ -1,9 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <TextView
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebarheingh"
+        android:background="@color/app_fen"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="@dimen/main_shopbus_sidewidth"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/maintab_shopbus_left_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:focusable="true"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_shopbus"
+            android:textColor="@color/white"/>
+
+        <RelativeLayout
+            android:layout_width="@dimen/main_shopbus_sidewidth"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/maintab_shopbus_Right_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="20dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:src="@drawable/lajixiang_iv"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/maintab_shopbus_show_lay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="shopbus"/>
+        android:orientation="vertical">
+
+        <io.vtown.WeiTangApp.comment.view.listview.LListView
+            android:id="@+id/maintab_shopbus_ls"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@color/transparent"
+            android:dividerHeight="20dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_size1"
+            android:src="@color/app_fen"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/maintab_shopbus_down_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/maintab_sopbus_bottom_select_iv"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="5dp"
+                android:src="@drawable/quan_select_1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="全选"
+                android:textColor="@color/grey"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="合计:"
+                    android:textColor="@color/grey"/>
+
+                <TextView
+                    android:id="@+id/maintab_sopbus_bottom_sum_mony"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="3dp"
+                    android:text="@string/nullstr"
+                    android:textColor="@color/app_fen"/>
+
+                <TextView
+                    android:id="@+id/maintab_sopbus_bottom_sum_mumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/nullstr"
+                    android:textColor="@color/grey"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/maintab_sopbus_bottom_jiesuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/select_fen_to_gray1"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="14dp"
+                android:text="  结算  "
+                android:textColor="@color/TextColorWhite"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/maintab_shopbus_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"/>
+
+
 </LinearLayout>

@@ -579,5 +579,8 @@
     <dimen name="main_tab_shop_margin_right">30dp</dimen>
     <dimen name="main_tab_shopbus_margin_left">30dp</dimen>
     <dimen name="main_tab_showiv_height">42dp</dimen>
+    <dimen name="main_tab_group_txt_size">12dp</dimen>
+    <dimen name="show_up_top_height">70sp</dimen>
+    <dimen name="main_shopbus_sidewidth">60dp</dimen>
 
 </resources>

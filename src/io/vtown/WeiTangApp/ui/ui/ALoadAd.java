@@ -2,6 +2,7 @@ package io.vtown.WeiTangApp.ui.ui;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.ui.ABase;
 import io.vtown.WeiTangApp.ui.title.loginregist.ALogin;
 import android.animation.ObjectAnimator;
@@ -46,9 +47,14 @@ public class ALoadAd extends ABase {
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
+                if (Spuit.IsLogin_Get(BaseContext)) {
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                            AMainTab.class));
+                    BaseActivity.finish();
+                    return;
+                }
 				PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 						ALogin.class));
-
 				BaseActivity.finish();
 			}
 		});

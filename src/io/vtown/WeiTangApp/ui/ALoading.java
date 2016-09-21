@@ -128,6 +128,7 @@ public class ALoading extends ABase implements OnPageChangeListener,
 
         PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                 ALoadAd.class));
+
         ALoading.this.finish();
     }
 

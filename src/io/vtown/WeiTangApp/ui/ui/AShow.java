@@ -132,7 +132,6 @@ public class AShow extends ATitleBase implements IXListViewListener {
         if (!StrUtils.isEmpty(CachData)) {
             List<BLShow> data = new ArrayList<BLShow>();
             // 开始解析*************************
-
             try {
                 data = JSON.parseArray(CachData, BLShow.class);// ();
             } catch (Exception e) {
@@ -287,8 +286,7 @@ public class AShow extends ATitleBase implements IXListViewListener {
         if (LoadTyp == LOAD_INITIALIZE) {
             if (showAp.getCount() == 0)
                 IDataView(ShowLs, show_nodata_lay, NOVIEW_ERROR);
-            // PromptManager.ShowCustomToast(BaseContext, getResources()
-            // .getString(R.string.zanwushow));
+
             return;
         }
 
@@ -310,7 +308,6 @@ public class AShow extends ATitleBase implements IXListViewListener {
     @Override
     protected void SetNetView() {
         SetNetStatuse(NetError);
-
     }
 
     @Override
@@ -672,8 +669,8 @@ public class AShow extends ATitleBase implements IXListViewListener {
             @Override
             public void onClick(View arg0) {
                 BNew bnew = new BNew();
-                bnew.setShare_title(getResources().getString(R.string.share_app)+"  "+datBlComment.getGoodinfo().getTitle());
-                bnew.setShare_content(getResources().getString(R.string.share_app)+"  "+datBlComment.getGoodinfo().getTitle());
+                bnew.setShare_title(getResources().getString(R.string.share_app) + "  " + datBlComment.getGoodinfo().getTitle());
+                bnew.setShare_content(getResources().getString(R.string.share_app) + "  " + datBlComment.getGoodinfo().getTitle());
 
                 bnew.setShare_url(datBlComment.getGoodurl());
                 if (datBlComment.getIs_type().equals("0")) {//照片直接取出第一张进行分享
@@ -824,7 +821,6 @@ public class AShow extends ATitleBase implements IXListViewListener {
             ImageView item_show_in_imagview;
         }
     }
-
 
 
     Handler mHandler = new Handler() {
