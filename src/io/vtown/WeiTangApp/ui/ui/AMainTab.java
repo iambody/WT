@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.jauker.widget.BadgeView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,6 +97,10 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         switchContent1(FMainHome, R.id.maintab_fragmentlay);
         CurrentFragment = FMainHome;
 
+        if (Spuit.ShopBusNumber_Get(this) > 0) {
+            maintab_shopbus.SetIsShowTage(true);
+        }
+
     }
 
     @Override
@@ -124,6 +130,9 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
             PromptManager.ShowCustomToast(BaseContext, "无用");
             return;
         }
+        if (postion == 2) {
+            maintab_shopbus.SetIsShowTage(false);
+        }
         if (CurrentPostion == 4) {//当前处于show的fragment
             maintab_show_iv.setImageResource(R.drawable.tab3_f_nor);
             switchContent(CurrentFragment, Fragments.get(postion), R.id.maintab_fragmentlay);
@@ -132,11 +141,10 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
             return;
         }
         switchContent(CurrentFragment, Fragments.get(postion), R.id.maintab_fragmentlay);
-//        CurrentFragment = Fragments.get(postion);
+
         CurrentPostion = postion;
 
     }
-
 
 
     @Override
@@ -199,12 +207,13 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
                 // PromptManager.ShowCustomToast(BaseCotext, "注销广播");
                 break;
             case BMessage.Tage_Tab_ShopBus:
-                // img3
-
-
 //                ShopBadgeView.setBadgeCount(bMessage.getTabShopBusNumber());
 
-
+                break;
+            case BMessage.Tage_MainTab_ShopBus:
+                if (bMessage.getTabShopBusNumber() == 0) {
+                    maintab_shopbus.SetIsShowTage(false);
+                }
                 break;
             case BMessage.Shop_Frash://购物车获取数据刷新后需要进行刷新
 //                Spuit.ShopBusNumber_Save(BaseCotext, Spuit.ShopBusNumber_Get(BaseCotext) + bMessage.getGood_numb());

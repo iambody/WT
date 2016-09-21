@@ -25,6 +25,7 @@ public class GradualRadioButton extends RadioButton {
     private Paint mIconPaint;
     private Paint mTextPaint;
     private Paint mBackgroundPaint;
+    private Paint TextPointPaint;
 
     private Bitmap mBitmap;
     private Bitmap mBackground;
@@ -42,6 +43,10 @@ public class GradualRadioButton extends RadioButton {
     private float mTextWidth;
     private boolean IsText = true;
 
+    //显示个数
+    private int Number=0;
+    //不显示
+    private boolean ShowTageNumber=false;
     public GradualRadioButton(Context context) {
         this(context, null);
     }
@@ -55,7 +60,7 @@ public class GradualRadioButton extends RadioButton {
         mIconPaint = new Paint();
         mTextPaint = new Paint();
         mBackgroundPaint = new Paint();
-
+        TextPointPaint=new Paint();
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.GradualRadioButton);
         mColor = ta.getColor(R.styleable.GradualRadioButton_gradual_color, Color.BLUE);
         mIconDrawable = ta.getDrawable(R.styleable.GradualRadioButton_gradual_icon);
@@ -103,14 +108,25 @@ public class GradualRadioButton extends RadioButton {
     protected void onDraw(Canvas canvas) {
         drawBackgroundIcon(canvas);
         drawTargetIcon(canvas);
-        if(IsText){
-        drawBackgroundText(canvas);
-        drawTargetText(canvas);}
+//        if (IsText) {
+            drawBackgroundText(canvas);
+            drawTargetText(canvas);
+//        }
+        if(ShowTageNumber){//需要显示小红点
+            drawTxtPoint(canvas);
+        }
+    }
+
+    //开始画小红点
+    private void drawTxtPoint(Canvas canvas){
+        TextPointPaint.setColor(getResources().getColor(R.color.app_fen));
+        canvas.drawCircle( getWidth() - iconWidth  +5 , (getHeight()- iconHeight) /2 -5,10,TextPointPaint);
+
     }
 
     private void drawBackgroundIcon(Canvas canvas) {
         mBackgroundPaint.setAlpha(255 - mAlpha);
-        canvas.drawBitmap(mBackground, (getWidth() - iconWidth) / 2,IsText? iconPadding:iconPadding*2, mBackgroundPaint);
+        canvas.drawBitmap(mBackground, (getWidth() - iconWidth) / 2, IsText ? iconPadding : iconPadding * 2, mBackgroundPaint);
     }
 
     private void drawTargetIcon(Canvas canvas) {
@@ -120,7 +136,7 @@ public class GradualRadioButton extends RadioButton {
         mIconPaint.setAntiAlias(true);
         mIconPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         mCanvas.drawRect(mRect, mIconPaint);
-        canvas.drawBitmap(mBitmap, (getWidth() - iconWidth) / 2,IsText? getPaddingTop():getPaddingTop()*2, null);
+        canvas.drawBitmap(mBitmap, (getWidth() - iconWidth) / 2, IsText ? getPaddingTop() : getPaddingTop() * 2, null);
     }
 
     private void drawBackgroundText(Canvas canvas) {
@@ -155,4 +171,11 @@ public class GradualRadioButton extends RadioButton {
         invalidate();
     }
 
+    public void SetIsShowTage(boolean IsShow) {
+        ShowTageNumber=IsShow;
+        invalidate();
+    }
+    public void SetTageNumbe (int tageNumber){
+        Number=tageNumber;
+    }
 }

@@ -153,7 +153,6 @@ public class PromptManager {
     }
 
     public static void showLoading(Context context) {
-
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
             dialog = null;

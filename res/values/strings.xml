@@ -613,6 +613,7 @@
     <string name="main_shop">店铺</string>
     <string name="main_shopbus">购物车</string>
     <string name="main_wode">我的</string>
+    <string name="loadmore">正在加载更多....</string>
 
 
 </resources>

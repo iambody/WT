@@ -21,6 +21,7 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.ui.AMain;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -82,7 +83,9 @@ public class AInviteCode extends ATitleBase {
 
         if (Spuit.IsLogin_RenZheng_Set(BaseContext)) {// 认证过了
             PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                    AMain.class));
+//                    AMain.class));
+                    AMainTab.class));
+
             BaseActivity.finish();
         } else {// 没认证过
             PromptManager.ShowCustomToast(BaseContext, "认证成功");

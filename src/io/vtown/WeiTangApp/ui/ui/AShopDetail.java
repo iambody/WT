@@ -1126,18 +1126,16 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     CurrentCategory_Id = "0";
                     GetList(CurrentPage, CurrentCategory_Id, LOAD_REFRESHING);
                 } else {
-
                     CurrentPage = StrUtils.ShopDetailPage(CacheLsDatas_ZiYing.size());//(int)((CacheLsDatas_ZiYing.size()+10)/10) ;
                     CurrentCategory_Id = "0";
                     downGoodsAp.FrashView(CacheLsDatas_ZiYing);
-
                 }
                 shop_out_scrollview.smoothScrollTo(0, 20);
                 break;
 
             case R.id.shopdetail_shop_zizhi:
                 List<BShopGoods> DATA = shopBrandsLsAp.GetRsource();
-                ((BaseApplication) getApplication()).setZiYingShop_To_Ls(DATA);
+                BaseApplication.GetInstance().setZiYingShop_To_Ls(DATA);
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ALookAptitude.class));
                 break;

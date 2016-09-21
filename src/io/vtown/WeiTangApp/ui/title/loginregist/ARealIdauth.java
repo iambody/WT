@@ -16,6 +16,7 @@ import io.vtown.WeiTangApp.ui.title.center.wallet.AAddAliPay;
 import io.vtown.WeiTangApp.ui.title.center.wallet.AAddBankCard;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.ui.AMain;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 import java.util.HashMap;
 
@@ -96,7 +97,8 @@ public class ARealIdauth extends ATitleBase {
         switch (from_where_value) {
             case 1:// 从登录进来
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AMain.class));
+//                        AMain.class));AMainTab
+                        AMainTab.class));
                 break;
             case 2:// 我的-实名认证进来
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
@@ -142,7 +144,9 @@ public class ARealIdauth extends ATitleBase {
         switch (V.getId()) {
             case R.id.right_txt:// 跳过
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AMain.class));
+//                        AMain.class));
+                        AMainTab.class));
+
                 BaseActivity.finish();
                 break;
             case R.id.realid_submint_bt:// 点击完成需要弹出密码框输入密码

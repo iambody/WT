@@ -4,5 +4,6 @@
         android:radius="2dp"
         />
 
-     <solid android:color="@color/dialog_bg" />
+     <solid android:color="@color/transparent" />
+   <!-- dialog_bg-->
 </shape>

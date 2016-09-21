@@ -23,7 +23,7 @@
             
             <TextView 
                 android:id="@+id/tv_brand_join_rule"
-                android:layout_width="wrap_content"
+                android:layout_width="147dp"
                 android:layout_height="wrap_content"
                 android:text="@string/brand_join_rule"
                 android:padding="10dp"

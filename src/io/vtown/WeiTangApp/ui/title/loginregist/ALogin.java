@@ -145,7 +145,8 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
 
 					} else {// 登录直接跳转
 						PromptManager.SkipActivity(BaseActivity, new Intent(
-								BaseActivity, AMain.class));
+//								BaseActivity, AMain.class));AMainTab
+								BaseActivity, AMainTab.class));
 
 					}
 

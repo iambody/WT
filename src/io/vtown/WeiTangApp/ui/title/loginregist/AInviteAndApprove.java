@@ -64,6 +64,7 @@ import io.vtown.WeiTangApp.event.interf.HttpsPostResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.ui.AMain;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -221,7 +222,8 @@ public class AInviteAndApprove extends ATitleBase {
                                     BaseActivity, ARealIdauth.class));
                         } else {// 绑定过邀请码 也认证过了===》跳转到主页面
                             PromptManager.SkipActivity(BaseActivity, new Intent(
-                                    BaseActivity, AMain.class));
+//                                    BaseActivity, AMain.class));AMainTab
+                                    BaseActivity, AMainTab.class));
                         }
                     }
 
