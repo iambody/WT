@@ -98,7 +98,6 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     }
 
     private void IBaseView() {
-
         fragment_shop_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_shop_refrash);
         fragment_shop_refrash.setCanLoadMore(false);
         fragment_shop_refrash.setOnRefreshListener(this);

@@ -151,7 +151,15 @@ public class ASouSouGood extends ATitileNoBase {
 		setContentView(R.layout.activity_sousou);
 		mDaoSouRecord = DaoSouRecord.getInstance(BaseContext);
 		IView();
+		ICacherRecommend();
 		IData();
+	}
+
+	/**
+	 * 热门搜索的缓存
+	 */
+	private void ICacherRecommend() {
+
 	}
 
 	@Override

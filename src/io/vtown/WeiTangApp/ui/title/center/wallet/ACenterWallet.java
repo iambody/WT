@@ -13,6 +13,7 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.view.PullScrollView;
 import io.vtown.WeiTangApp.comment.view.PullScrollView.onRefreshListener;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.onConfirmClick;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.oncancelClick;
@@ -40,8 +41,8 @@ import de.greenrobot.event.EventBus;
  * @version 创建时间：2016-5-19 下午1:56:46 个人中心的我的钱包
  * 
  */
-public class ACenterWallet extends ATitleBase {
-
+public class ACenterWallet extends ATitleBase implements RefreshLayout.OnLoadListener{
+private RefreshLayout center_wallter_refrash;
 	/**
 	 * 我的资产
 	 */
@@ -82,9 +83,9 @@ public class ACenterWallet extends ATitleBase {
 	private View center_wallet_nodata_lay;
 
 	// 刷新的相关view
-	private PullScrollView wallet_out_scrollview;
-	private SecondStepView wallet_load_head_iv;
-	private AnimationDrawable secondAnimation;
+//	private PullScrollView wallet_out_scrollview;
+//	private SecondStepView wallet_load_head_iv;
+//	private AnimationDrawable secondAnimation;
 
 	/**
 	 * 获取到的数据
@@ -179,6 +180,11 @@ public class ACenterWallet extends ATitleBase {
 	}
 
 	private void IBase() {
+		center_wallter_refrash= (RefreshLayout) findViewById(R.id.center_wallter_refrash);
+		center_wallter_refrash.setOnLoadListener(this);
+		center_wallter_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+		center_wallter_refrash.setCanLoadMore(false);
+
 
 		center_wallet_outlay = (LinearLayout) findViewById(R.id.center_wallet_outlay);
 		center_wallet_nodata_lay = findViewById(R.id.center_wallet_nodata_lay);
@@ -203,23 +209,23 @@ public class ACenterWallet extends ATitleBase {
 		tv_btn_submit.setOnClickListener(this);
 		center_wallet_nodata_lay.setOnClickListener(this);
 		// 刷新
-		wallet_out_scrollview = (PullScrollView) findViewById(R.id.wallet_out_scrollview);
-		wallet_load_head_iv = (SecondStepView) findViewById(R.id.wallet_load_head_iv);
-		wallet_load_head_iv
-				.setBackgroundResource(R.drawable.second_step_animation);
-		secondAnimation = (AnimationDrawable) wallet_load_head_iv
-				.getBackground();
-		wallet_out_scrollview.setOnRefreshListener(new onRefreshListener() {
-
-			@Override
-			public void refresh() {
-
-				// LoadFrashComplet();
-				secondAnimation.start();
-				IData(LOAD_REFRESHING);
-			}
-
-		});
+//		wallet_out_scrollview = (PullScrollView) findViewById(R.id.wallet_out_scrollview);
+//		wallet_load_head_iv = (SecondStepView) findViewById(R.id.wallet_load_head_iv);
+//		wallet_load_head_iv
+//				.setBackgroundResource(R.drawable.second_step_animation);
+//		secondAnimation = (AnimationDrawable) wallet_load_head_iv
+//				.getBackground();
+//		wallet_out_scrollview.setOnRefreshListener(new onRefreshListener() {
+//
+//			@Override
+//			public void refresh() {
+//
+//				// LoadFrashComplet();
+//				secondAnimation.start();
+//				IData(LOAD_REFRESHING);
+//			}
+//
+//		});
 
 	}
 
@@ -393,7 +399,7 @@ public class ACenterWallet extends ATitleBase {
 	 * @param type
 	 * @param title1
 	 * @param title2
-	 * @param blComment
+	 * @param
 	 */
 	private void ShowCustomDialog(int type, String title1, String title2) {
 		dialog = new CustomDialog(BaseContext, R.style.mystyle,
@@ -443,9 +449,7 @@ public class ACenterWallet extends ATitleBase {
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			if (msg.what == 101) {
-				if (secondAnimation != null)
-					secondAnimation.stop();
-				wallet_out_scrollview.stopRefresh();
+				center_wallter_refrash.setRefreshing(false);
 			}
 
 		}
@@ -483,4 +487,13 @@ public class ACenterWallet extends ATitleBase {
 		}
 	}
 
+	@Override
+	public void OnLoadMore() {
+
+	}
+
+	@Override
+	public void OnFrash() {
+		IData(LOAD_REFRESHING);
+	}
 }

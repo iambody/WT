@@ -20,7 +20,7 @@
         <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
             android:id="@+id/fragment_show_refrash"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <ListView
                 android:id="@+id/maintab_show_show_ls"

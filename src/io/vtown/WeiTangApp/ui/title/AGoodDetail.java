@@ -273,7 +273,7 @@ public class AGoodDetail extends ATitleBase {
                 R.layout.activity_gooddetail, null);
         user_Get = Spuit.User_Get(BaseContext);
         IsCaiGou = getIntent().getBooleanExtra(Tage_CaiGou, false);
-//        EventBus.getDefault().register(this, "ReciverMsg", BMessage.class);
+        EventBus.getDefault().register(this, "getReciverMsg", BMessage.class);
         SetTitleHttpDataLisenter(this);
         IBanner();
         IIBundle();
@@ -771,12 +771,14 @@ public class AGoodDetail extends ATitleBase {
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.tv_buy:
-                Intent intent  = new Intent(BaseContext,AGoodPop.class);
-                intent.putExtra("good_info",datas);
-                intent.putExtra("Show_type",AGoodPop.TYPE_GOOD_DETAIL_BUY);
-                intent.putExtra("GoodsId",GoodsId);
-                intent.putExtra("IsCaiGou",IsCaiGou);
-                PromptManager.SkipActivity(BaseActivity,intent);
+//                Intent intent  = new Intent(BaseContext,AGoodPop.class);
+//                intent.putExtra("good_info",datas);
+//                intent.putExtra("Show_type",AGoodPop.TYPE_GOOD_DETAIL_BUY);
+//                intent.putExtra("GoodsId",GoodsId);
+//                intent.putExtra("IsCaiGou",IsCaiGou);
+//                startActivity(intent);
+
+                goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_BUY);
 //                PPurchase pShowVirtualLibGood1 = new PPurchase(BaseActivity,
 //                        BaseContext, 200, PPurchase.TYPE_GOOD_DETAIL_BUY, datas,
 //                        GoodsId, IsCaiGou);
@@ -814,36 +816,40 @@ public class AGoodDetail extends ATitleBase {
 
                 } else {// 自营品牌商品
                     if (IsShangJia) {// 可以上架
-                        PPurchase pShowVirtualLibGood2 = new PPurchase(
-                                BaseActivity, BaseContext, 200,
-                                PPurchase.TYPE_GOOD_DETAIL_REPLACE_SELL, datas,
-                                GoodsId, IsCaiGou);
-                        pShowVirtualLibGood2
-                                .showAtLocation(V, Gravity.CENTER, 0, 0);
-                        pShowVirtualLibGood2
-                                .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
-
-                                    @Override
-                                    public void getPopupStuta(int stuta) {
-                                        switch (stuta) {
-                                            case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
-
-                                                break;
-                                            case PPurchase.TYPE_ADD_ONLINE:// 上架成功
-
-                                                break;
-
-                                            default:
-                                                break;
-                                        }
-                                    }
-                                });
-
-                    } else {// 已经上架过不可以上架了
-                        // tv_replace_sell.setVisibility(View.GONE);
+                        goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_REPLACE_SELL);
                     }
-
                 }
+
+                //                        PPurchase pShowVirtualLibGood2 = new PPurchase(
+//                                BaseActivity, BaseContext, 200,
+//                                PPurchase.TYPE_GOOD_DETAIL_REPLACE_SELL, datas,
+//                                GoodsId, IsCaiGou);
+//                        pShowVirtualLibGood2
+//                                .showAtLocation(V, Gravity.CENTER, 0, 0);
+//                        pShowVirtualLibGood2
+//                                .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
+//
+//                                    @Override
+//                                    public void getPopupStuta(int stuta) {
+//                                        switch (stuta) {
+//                                            case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
+//
+//                                                break;
+//                                            case PPurchase.TYPE_ADD_ONLINE:// 上架成功
+//
+//                                                break;
+//
+//                                            default:
+//                                                break;
+//                                        }
+//                                    }
+//                                });
+//
+//                    } else {// 已经上架过不可以上架了
+//                        // tv_replace_sell.setVisibility(View.GONE);
+//                    }
+//
+//                }
 
                 break;
             case R.id.rl_look_share:// 分享
@@ -943,6 +949,16 @@ public class AGoodDetail extends ATitleBase {
     protected void SaveBundle(Bundle bundle) {
     }
 
+
+    private void goPopActivity(int type){
+        Intent intent  = new Intent(BaseContext,AGoodPop.class);
+        intent.putExtra("good_info",datas);
+        intent.putExtra("Show_type",type);
+        intent.putExtra("GoodsId",GoodsId);
+        intent.putExtra("IsCaiGou",IsCaiGou);
+        startActivity(intent);
+    }
+
     // ******************start*****************Banner*****************start********************
     private void IBanner() {
         // 视频
@@ -1028,8 +1044,27 @@ public class AGoodDetail extends ATitleBase {
         gooddetail_banner.pushImageCycle();
         runRandomMessage = false;
         mHandler.removeCallbacks(mRandomMessageTimerTask);
+        try{
+            EventBus.getDefault().unregister(this);
+        }catch (Exception e){
+            return;
+        }
 
 //        GoodsPollUtils.stopPollingService(BaseContext);
+    }
+
+
+
+    public void getReciverMsg(BMessage event){
+        int msg_type = event.getMessageType();
+        switch (msg_type){
+            case AGoodPop.TYPE_ADD_SHOPBUS:
+
+                break;
+            case AGoodPop.TYPE_ADD_ONLINE:
+
+                break;
+        }
     }
 
     // ******************end*****************Banner*****************end********************

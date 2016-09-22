@@ -13,6 +13,7 @@ import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.onConfirmClick;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.oncancelClick;
@@ -48,6 +49,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -60,7 +62,7 @@ import com.android.volley.Request.Method;
  * @author 同时 TODO考虑Item的点击（item里边有先按钮需要点击属于特殊情况另外添加点击事件监听处理）
  * @version 创建时间：2016-4-20 下午6:34:48
  */
-public class ACommentList extends ATitleBase implements IXListViewListener {
+public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadListener {
     private View comment_nodata_lay;
     /**
      * 商品搜索点击Item跳转过来的商品列表
@@ -121,10 +123,11 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
      * 传递来的bean
      */
     private BComment SkipBean = new BComment();
+    private RefreshLayout commengt_list_refrash;
     /**
      * 公用listview
      */
-    private LListView acomment_list;
+    private ListView acomment_list;
     /**
      * CommentAdapter
      */
@@ -236,16 +239,19 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
     }
 
     private void IView() {
+        commengt_list_refrash = (RefreshLayout) findViewById(R.id.commengt_list_refrash);
+        commengt_list_refrash.setOnLoadListener(this);
+        commengt_list_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
         comment_nodata_lay = findViewById(R.id.comment_nodata_lay);
 
-        acomment_list = (LListView) findViewById(R.id.acomment_list);
+        acomment_list = (ListView) findViewById(R.id.acomment_list);
         acomment_list.setAdapter(commentAdapter);
 
-        acomment_list.setPullRefreshEnable(true);
-        acomment_list.setPullLoadEnable(true);
-        acomment_list.setXListViewListener(this);
-
-        acomment_list.hidefoot();
+//        acomment_list.setPullRefreshEnable(true);
+//        acomment_list.setPullLoadEnable(true);
+//        acomment_list.setXListViewListener(this);
+//
+//        acomment_list.hidefoot();
 
         IDataView(acomment_list, comment_nodata_lay, NOVIEW_INITIALIZE);
         comment_nodata_lay.setOnClickListener(this);
@@ -629,10 +635,12 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == 1) {
-                acomment_list.stopRefresh();
+//                acomment_list.stopRefresh();
+                commengt_list_refrash.setRefreshing(false);
             }
             if (msg.what == 2) {
-                acomment_list.stopLoadMore();
+//                acomment_list.stopLoadMore();
+                commengt_list_refrash.setLoading(false);
             }
         }
     };
@@ -665,7 +673,10 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
         if (StrUtils.isEmpty(Data.getHttpResultStr()) && Data.getHttpLoadType() == LOAD_LOADMOREING) {
             // PromptManager.ShowCustomToast(BaseContext, Msg);
 
-            acomment_list.stopLoadMore();
+//            acomment_list.stopLoadMore();
+//            commengt_list_refrash.setRefreshing(false);
+            commengt_list_refrash.setLoading(false);
+            commengt_list_refrash.setCanLoadMore(false);
             return;
         }
 
@@ -718,9 +729,11 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
         }
 
         if (DATA.size() < Constants.PageSize)
-            acomment_list.hidefoot();
+//            acomment_list.hidefoot();
+            commengt_list_refrash.setCanLoadMore(false);
         else
-            acomment_list.ShowFoot();
+//            acomment_list.ShowFoot();
+            commengt_list_refrash.setCanLoadMore(true);
         // 如果是渠道管理 需要ls需要一个div的高度
 
         // switch (Tage_Result) {
@@ -836,6 +849,7 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 
     }
 
+
     /**
      * 搜索结果的列表AP
      */
@@ -933,7 +947,7 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
 
                         convertView.setTag(myJunior);
                     /*
-					 * myJunior.rl_my_superior_item_bag = ViewHolder.get(
+                     * myJunior.rl_my_superior_item_bag = ViewHolder.get(
 					 * convertView, R.id.rl_my_superior_item_bag);
 					 */
                         break;
@@ -1270,18 +1284,32 @@ public class ACommentList extends ATitleBase implements IXListViewListener {
         }
     }
 
+//    @Override
+//    public void onRefresh() {
+//        CurrentPage = 1;
+//
+//        IData(CurrentPage, LOAD_REFRESHING);
+//
+//    }
+//
+//    @Override
+//    public void onLoadMore() {
+//        CurrentPage = CurrentPage + 1;
+//        IData(CurrentPage, LOAD_LOADMOREING);
+//
+//    }
+
+
     @Override
-    public void onRefresh() {
-        CurrentPage = 1;
-
-        IData(CurrentPage, LOAD_REFRESHING);
-
+    public void OnLoadMore() {
+        CurrentPage = CurrentPage + 1;
+        IData(CurrentPage, LOAD_LOADMOREING);
     }
 
     @Override
-    public void onLoadMore() {
-        CurrentPage = CurrentPage + 1;
-        IData(CurrentPage, LOAD_LOADMOREING);
+    public void OnFrash() {
+        CurrentPage = 1;
 
+        IData(CurrentPage, LOAD_REFRESHING);
     }
 }

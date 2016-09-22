@@ -7,13 +7,16 @@
 
     <include layout="@layout/titlebar" />
 
-    <io.vtown.WeiTangApp.comment.view.custom.PullView
+    <!--<io.vtown.WeiTangApp.comment.view.custom.PullView
         android:id="@+id/center_out_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:scrollbars="none" >
-
+        android:scrollbars="none" >-->
+        <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+            android:id="@+id/mycenter_show_refrash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <ScrollView
             android:id="@+id/myshowscrollview"
             android:layout_width="match_parent"
@@ -90,7 +93,8 @@
                     android:scrollbars="none" />
             </LinearLayout>
         </ScrollView>
-    </io.vtown.WeiTangApp.comment.view.custom.PullView>
+    </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
+ <!--   </io.vtown.WeiTangApp.comment.view.custom.PullView>-->
 
     <include
         android:id="@+id/myshow_nodata_lay"

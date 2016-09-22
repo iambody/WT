@@ -1,8 +1,9 @@
 /**
- * 
+ *
  */
 package io.vtown.WeiTangApp.comment.net;
 
+import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -36,141 +37,142 @@ import com.android.volley.toolbox.Volley;
 
 /**
  * @author 王永奎 E-mail:wangyk@nsecurities.cn
- * @department 互联网金融部
  * @version 创建时间：2015-11-6 下午1:59:49
+ * @department 互联网金融部
  */
 
 public abstract class NHttpBase {
-	/**
-	 * 上下文
-	 */
-	public Context context;
+    /**
+     * 上下文
+     */
+    public Context context;
 
-	/**
-	 * 超时时间
-	 */
-	private int SOCKET_TIMEOUT = 10 * 1000;
+    /**
+     * 超时时间
+     */
+    private int SOCKET_TIMEOUT = 10 * 1000;
 
-	// private RequestQueue queue = null;
+    //    private RequestQueue queue;
+    private StringRequest MyStringRequest;
 
-	public NHttpBase(Context context) {
-		this.context = context;
-	}
+    private String QueTage;
 
-	public abstract void myOnResponse(String str);
+    // private RequestQueue queue = null;
 
-	public abstract void myonErrorResponse(VolleyError arg0);
+    public NHttpBase(Context context) {
+        this.context = context;
+//        queue =VolleyController.getInstance(context).getRequestQueue();// Volley.newRequestQueue(context);
+    }
 
-	public void getData(String url, final HashMap<String, String> map1,
-			final int method) {
+    public abstract void myOnResponse(String str);
 
+    public abstract void myonErrorResponse(VolleyError arg0);
+
+    public void getData(String url, final HashMap<String, String> map1,
+                        final int method) {
 //		RequestQueue queue = VolleyHttps.newRequestQueue(context, null, true,
 //				R.raw.ssl);// Volley.newRequestQueue(context);
-		 RequestQueue queue = Volley.newRequestQueue(context);
+        // 添加标识
+        map1.put("UUID", Constants.GetPhoneId(context));
+        map1.put("source", 20 + "");
+        map1.put("api_version", Constants.Api_Version);
+        // 如果已经登录了就开始加Yoken&&登录后的Token不为空
+        if (Spuit.IsLogin_Get(context) && !StrUtils.isEmpty(Spuit.User_Get(context).getToken())) {
+            map1.put("token", Spuit.User_Get(context).getToken());
+        }
+        // 进行底层的封装sign
+        final HashMap<String, String> map = !url
+                .equals(Constants.Shop_AddGoods) ? Constants.Sign(map1)
+                : Constants.Sign2(map1);
+        QueTage = url;
+        MyStringRequest = new StringRequest(method, method == Method.GET ? url
+                + MapToStr(map) : url, new Listener<String>() {
+            @Override
+            public void onResponse(String arg0) {
+                PromptManager.closeLoading();
+                PromptManager.closetextLoading();
+                myOnResponse(arg0);
 
-		// 添加标识
-		map1.put("UUID", Constants.GetPhoneId(context));
-		map1.put("source", 20 + "");
-		 map1.put("api_version",Constants.Api_Version);
-		// 如果已经登录了就开始加Yoken&&登录后的Token不为空
-		if (Spuit.IsLogin_Get(context)&&!StrUtils.isEmpty(Spuit.User_Get(context).getToken())) {
-			map1.put("token", Spuit.User_Get(context).getToken());
-		}
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError arg0) {
+                PromptManager.closeLoading();
+                PromptManager.closetextLoading();
+                myonErrorResponse(arg0);
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {// post方法获取
 
-		// 进行底层的封装sign
+                return (method == Method.GET) ? super.getParams() : map;
+                // return super.getParams();
 
-		final HashMap<String, String> map = !url
-				.equals(Constants.Shop_AddGoods) ? Constants.Sign(map1)
-				: Constants.Sign2(map1);
-//		 FakeX509TrustManager.allowAllSSL();// 安全认证
+            }
 
-		queue.add(new StringRequest(method, method == Method.GET ? url
-				+ MapToStr(map) : url, new Listener<String>() {
-			@Override
-			public void onResponse(String arg0) {
-				PromptManager.closeLoading();
-				PromptManager.closetextLoading();
-				myOnResponse(arg0);
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                // return obj.toString().getBytes();
+                return super.getBody();
+            }
 
-			}
-		}, new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError arg0) {
-				PromptManager.closeLoading();
-				PromptManager.closetextLoading();
-				myonErrorResponse(arg0);
-			}
-		}) {
-			@Override
-			protected Map<String, String> getParams() throws AuthFailureError {// post方法获取
+            @Override
+            protected VolleyError parseNetworkError(VolleyError volleyError) {
+                return super.parseNetworkError(volleyError);
+            }
 
-				// return method == Method.GET ?map:super.getParams();
-				return (method == Method.GET) ? super.getParams() : map;
-				// return super.getParams();
+            @Override
+            public RetryPolicy getRetryPolicy() {
+                RetryPolicy retryPolicy = new DefaultRetryPolicy(
+                        SOCKET_TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                return retryPolicy;
 
-			}
+            }
 
-			@Override
-			public byte[] getBody() throws AuthFailureError {
-				// return obj.toString().getBytes();
-				return super.getBody();
-			}
+            @Override
+            protected Response<String> parseNetworkResponse(
+                    NetworkResponse response) {
+                String str = null;
+                try {
+                    str = new String(response.data, "utf-8");
+                } catch (UnsupportedEncodingException e) {
 
-			@Override
-			protected VolleyError parseNetworkError(VolleyError volleyError) {
+                    e.printStackTrace();
+                }
+                return Response.success(str,
+                        HttpHeaderParser.parseCacheHeaders(response));
 
-				return super.parseNetworkError(volleyError);
-			}
+            }
+        };
+        VolleyController.getInstance(context).addToRequestQueue(MyStringRequest, QueTage);
+    }
 
-			@Override
-			public RetryPolicy getRetryPolicy() {
-				RetryPolicy retryPolicy = new DefaultRetryPolicy(
-						SOCKET_TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-						DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-				return retryPolicy;
+    public void CancleNet() {
+        if (QueTage != null) {
+            VolleyController.getInstance(context).getRequestQueue().cancelAll(QueTage);
+        }
+    }
 
-			}
+    private String MapToStr(HashMap<String, String> map) {
+        if (map == null)
+            return "";
+        Iterator it = map.entrySet().iterator();
 
-			@Override
-			protected Response<String> parseNetworkResponse(
-					NetworkResponse response) {
-				String str = null;
-				try {
-					str = new String(response.data, "utf-8");
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return Response.success(str,
-						HttpHeaderParser.parseCacheHeaders(response));
+        String MapStr = "?";
+        while (it.hasNext()) {
+            @SuppressWarnings("rawtypes")
+            java.util.Map.Entry entry = (java.util.Map.Entry) it.next();
+            // entry.getKey() 返回与此项对应的键
+            // entry.getValue() 返回与此项对应的值
+            MapStr = it.hasNext() ? MapStr + entry.getKey() + "="
+                    + entry.getValue() + "&" : MapStr + entry.getKey() + "="
+                    + entry.getValue();
 
-			}
+        }
 
-		});
+        return MapStr;
 
-		queue.start();
-	}
-
-	private String MapToStr(HashMap<String, String> map) {
-		if (map == null)
-			return "";
-
-		Iterator it = map.entrySet().iterator();
-
-		String MapStr = "?";
-		while (it.hasNext()) {
-			@SuppressWarnings("rawtypes")
-			java.util.Map.Entry entry = (java.util.Map.Entry) it.next();
-			// entry.getKey() 返回与此项对应的键
-			// entry.getValue() 返回与此项对应的值
-			MapStr = it.hasNext() ? MapStr + entry.getKey() + "="
-					+ entry.getValue() + "&" : MapStr + entry.getKey() + "="
-					+ entry.getValue();
-
-		}
-
-		return MapStr;
-
-	}
+    }
 
 }
