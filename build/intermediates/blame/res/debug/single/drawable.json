@@ -16,12 +16,12 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_white_point.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_white_box.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\bg_white_box.xml"
-    },
-    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_del.xml",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\multiphoto_btn_del.xml"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_white_box.xml",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\bg_white_box.xml"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_select_tuikuan_cause_bg.xml",
@@ -72,16 +72,16 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_my_conpous_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_toast_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_toast_bg.xml"
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_bg.xml",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\wheel_bg.xml"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_txtbt_pre.xml",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_txtbt_pre.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\wheel_bg.xml"
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_toast_bg.xml",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_toast_bg.xml"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_confirm.xml",

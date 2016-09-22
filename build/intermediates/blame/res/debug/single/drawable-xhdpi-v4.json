@@ -4,12 +4,12 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab4_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shoubus_ok.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shoubus_ok.png"
-    },
-    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv6.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv6.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shoubus_ok.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shoubus_ok.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab_ask_pre.png",
@@ -24,28 +24,28 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\login_log.jpg"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_oder.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\new_oder.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_banyuan_up.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_banyuan_up.png"
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_f_nor.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab3_f_nor.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_log.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shopbus_log.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_f_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab3_f_nor.png"
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_banyuan_up.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_banyuan_up.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_in_xuku.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shopbus_item_in_xuku.png"
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_oder.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\new_oder.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sousou.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\sousou.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_in_xuku.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shopbus_item_in_xuku.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jixuzengjiaguige_nor.png",

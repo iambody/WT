@@ -28,20 +28,20 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\row_chat_history.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_shopdetail.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\activity_shopdetail.xml"
-    },
-    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_main_show.xml",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\fragment_main_show.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\commentview_left_txt_right_check.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\commentview_left_txt_right_check.xml"
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_shopdetail.xml",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\activity_shopdetail.xml"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\item_shangjia_grad.xml",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\item_shangjia_grad.xml"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\commentview_left_txt_right_check.xml",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\commentview_left_txt_right_check.xml"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\item_branddaili_foot.xml",
@@ -60,12 +60,12 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\fragment_main_center.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\com_mark_utils_picsel.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\com_mark_utils_picsel.xml"
-    },
-    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\multiphoto_item_publish.xml",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\multiphoto_item_publish.xml"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\com_mark_utils_picsel.xml",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\layout\\com_mark_utils_picsel.xml"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_shop.xml",
