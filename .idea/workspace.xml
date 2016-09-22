@@ -22,39 +22,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="mainhome" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd111d44-5f59-440c-a703-a8624a61d9dd" name="Default" comment="Merge branch 'test' into mydev&#10;&#10;# Conflicts:&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Test.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Testdev.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/dev.java&#10;">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/vtown/WeiTangApp/adapter/dev.java" afterPath="$PROJECT_DIR$/src/io/vtown/WeiTangApp/adapter/ssss.java" />
+    <list default="true" id="fd111d44-5f59-440c-a703-a8624a61d9dd" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
-    <list id="7686e602-f06a-43f6-934b-7d1a5a210242" name="New changelist" comment="New changelist">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WT.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/multidex_1_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/multidex_1_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/multidex_instrumentation_1_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/multidex_instrumentation_1_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_24_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_24_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_compat_24_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_compat_24_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_core_ui_24_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_core_ui_24_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_core_utils_24_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_core_utils_24_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_fragment_24_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_fragment_24_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_media_compat_24_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_media_compat_24_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_24_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_24_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/source/buildConfig/debug/io/vtown/WeiTangApp/BuildConfig.java" afterPath="$PROJECT_DIR$/build/generated/source/buildConfig/debug/io/vtown/WeiTangApp/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugAssets/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-    </list>
+    <list id="7686e602-f06a-43f6-934b-7d1a5a210242" name="New changelist" comment="New changelist" />
     <ignored path="WtApp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <file path="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" ignored="false" />
-    <file path="$PROJECT_DIR$/build.gradle" ignored="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1136,7 +1110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/io/vtown/WeiTangApp/ui/ABaseFragment.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_brand_join.xml" />
         <option value="$PROJECT_DIR$/src/io/vtown/WeiTangApp/ui/title/loginregist/ALogin.java" />
@@ -1187,6 +1160,7 @@
         <option value="$PROJECT_DIR$/src/io/vtown/WeiTangApp/comment/contant/Constants.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_newaddgood.xml" />
         <option value="$PROJECT_DIR$/src/io/vtown/WeiTangApp/adapter/mydev.java" />
+        <option value="$PROJECT_DIR$/src/io/vtown/WeiTangApp/adapter/ssss.java" />
       </list>
     </option>
   </component>
@@ -1962,7 +1936,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474530840618</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Merge branch 'test' into mydev&#10;&#10;# Conflicts:&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Test.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Testdev.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/dev.java&#10;">
+      <created>1474533279941</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1474533279941</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1971,7 +1952,7 @@
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2298913" sideWeight="0.18215613" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4636804" sideWeight="0.5026998" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4636804" sideWeight="0.5048596" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3020962" sideWeight="0.6022851" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1987,7 +1968,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32955772" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.720339" sideWeight="0.54211664" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.5234657" sideWeight="0.4266451" order="2" side_tool="false" content_ui="tabs" x="555" y="259" width="809" height="482" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4636804" sideWeight="0.4973002" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4636804" sideWeight="0.4951404" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972796" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29241878" sideWeight="0.45954692" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23380129" sideWeight="0.81784385" order="0" side_tool="false" content_ui="combo" />
@@ -2024,9 +2005,9 @@
     <MESSAGE value="test环境添加test" />
     <MESSAGE value="dev环境添加dev" />
     <MESSAGE value="Me &#10;&#10;# Conflicts:&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Test.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Testdev.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/dev.java&#10;" />
-    <MESSAGE value="Merge branch 'test' into mydev&#10;&#10;# Conflicts:&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Test.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Testdev.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/dev.java&#10;" />
     <MESSAGE value="New changelist" />
-    <option name="LAST_COMMIT_MESSAGE" value="New changelist" />
+    <MESSAGE value="Merge branch 'test' into mydev&#10;&#10;# Conflicts:&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Test.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Testdev.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/dev.java&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'test' into mydev&#10;&#10;# Conflicts:&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Test.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/Testdev.java&#10;#&#9;src/io/vtown/WeiTangApp/adapter/dev.java&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
