@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+    
+    <include layout="@layout/titlebar"/>
+    
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        
+        >
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            
+            >
+            
+            <TextView 
+                android:id="@+id/tv_brand_join_rule"
+                android:layout_width="147dp"
+                android:layout_height="wrap_content"
+                android:text="@string/brand_join_rule"
+                android:padding="10dp"
+                
+                />
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/brand_introduce"
+                android:paddingLeft="10dp"
+                />
+            
+            <EditText 
+                android:id="@+id/et_brand_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="left"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:background="@drawable/shape_add_goods_edit_bg"
+                />
+        </LinearLayout>
+        
+    </ScrollView>
+    
+    <Button
+        android:id="@+id/btn_brand_join_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/btnstyle"
+        android:text="@string/brand_join_confirm"
+        
+        />
+    
+
+</LinearLayout>

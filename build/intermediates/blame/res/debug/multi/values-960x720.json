@@ -1,0 +1,178 @@
+[
+    {
+        "outputFile": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-960x720\\values-960x720.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 58,
+                    "endOffset": 109
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-960x720\\dimens.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 2,
+                        "startOffset": 411,
+                        "endColumn": 56,
+                        "endOffset": 465
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 114,
+                    "endColumn": 50,
+                    "endOffset": 160
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-960x720\\dimens.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 2,
+                        "startOffset": 142,
+                        "endColumn": 48,
+                        "endOffset": 188
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 165,
+                    "endColumn": 56,
+                    "endOffset": 217
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-960x720\\dimens.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 2,
+                        "startOffset": 355,
+                        "endColumn": 54,
+                        "endOffset": 407
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 222,
+                    "endColumn": 55,
+                    "endOffset": 273
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-960x720\\dimens.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 2,
+                        "startOffset": 300,
+                        "endColumn": 53,
+                        "endOffset": 351
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 278,
+                    "endColumn": 50,
+                    "endOffset": 324
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-960x720\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 2,
+                        "startOffset": 88,
+                        "endColumn": 48,
+                        "endOffset": 134
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 329,
+                    "endColumn": 53,
+                    "endOffset": 378
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-960x720\\dimens.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 2,
+                        "startOffset": 469,
+                        "endColumn": 51,
+                        "endOffset": 518
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 383,
+                    "endColumn": 47,
+                    "endOffset": 426
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-960x720\\dimens.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 2,
+                        "startOffset": 194,
+                        "endColumn": 45,
+                        "endOffset": 237
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 431,
+                    "endColumn": 59,
+                    "endOffset": 486
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-960x720\\dimens.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 2,
+                        "startOffset": 241,
+                        "endColumn": 57,
+                        "endOffset": 296
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 491,
+                    "endColumn": 48,
+                    "endOffset": 535
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-960x720\\dimens.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 2,
+                        "startOffset": 522,
+                        "endColumn": 46,
+                        "endOffset": 566
+                    }
+                }
+            }
+        ]
+    }
+]

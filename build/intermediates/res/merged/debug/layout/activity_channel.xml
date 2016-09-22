@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circle="http://schemas.android.com/apk/res/io.vtown.WeiTangApp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <ScrollView
+        android:id="@+id/channel_out_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/app_gray" >
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:id="@+id/ll_this_week_sales"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/select_white_to_gray"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:padding="15dp" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/this_week_sales"
+                                android:textColor="@color/gray" />
+
+                            <TextView
+                                android:id="@+id/tv_this_week_sales"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nullstr"
+                                android:textColor="@color/app_fen"
+                                android:textSize="24sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:id="@+id/ll_my_superior"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/select_white_to_gray"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:padding="15dp" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_wodeshangji_nor" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/my_superior"
+                                android:textColor="@color/gray" />
+
+                            <TextView
+                                android:id="@+id/tv_my_superior"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nullstr"
+                                android:textColor="@color/app_fen"
+                                android:textSize="24sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|right"
+                            android:src="@drawable/ic_tiaozhuan_nor"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_my_junior"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/select_white_to_gray"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:padding="15dp" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_wodexiaji_nor" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/my_junior"
+                                android:textColor="@color/gray" />
+
+                            <TextView
+                                android:id="@+id/tv_my_junior"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nullstr"
+                                android:textColor="@color/app_fen"
+                                android:textSize="24sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|right"
+                            android:src="@drawable/ic_tiaozhuan_nor"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <include
+                    android:id="@+id/be_junior"
+                    layout="@layout/commentview_txtarrow" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/app_line" />
+
+                <include
+                    android:id="@+id/develop_junior"
+                    layout="@layout/commentview_txtarrow" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/app_line" />
+
+                <include
+                    android:id="@+id/invite_superior"
+                    layout="@layout/commentview_txtarrow" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/app_line"
+                    android:visibility="gone" />
+
+                <include
+                    android:id="@+id/invite_record"
+                    layout="@layout/commentview_txtarrow"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!--
+            <io.vtown.WeiTangApp.comment.view.circlescroll.CircleLayout
+                android:id="@+id/channle_circle_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="240dp"
+                android:layout_marginTop="-20dp"
+                android:layout_gravity="center_horizontal"
+                circle:firstChildPosition="South"
+                circle:isRotating="true"
+                circle:rotateToCenter="true" 
+                android:visibility="" >
+
+                <io.vtown.WeiTangApp.comment.view.circlescroll.CircleImageView
+                    android:id="@+id/channle_be_xiajia"
+                    circle:name="@string/be_junior"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/shop_grad1" />
+
+                <io.vtown.WeiTangApp.comment.view.circlescroll.CircleImageView
+                    android:id="@+id/channle_fazhan_xiajia"
+                    circle:name="@string/develop_junior"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/shop_grad2" />
+
+                <io.vtown.WeiTangApp.comment.view.circlescroll.CircleImageView
+                    android:id="@+id/channle_fazhan_shangji"
+                    circle:name="@string/invite_superior"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/shop_grad3" />
+            </io.vtown.WeiTangApp.comment.view.circlescroll.CircleLayout>
+
+            <TextView
+                android:id="@+id/channle_circle_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/gray" />
+            -->
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/channel_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+</LinearLayout>

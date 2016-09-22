@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="30dp"
+
+    android:background="@color/transparent"
+
+
+    android:padding="@dimen/line_size1">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_bank_card_cancel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        android:orientation="vertical"
+        android:padding="@dimen/line_size1">
+
+        <LinearLayout
+            android:id="@+id/layout22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_show_share_up"
+            android:gravity="center"
+
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iv_bank_manage_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_bank_manage_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/nullstr"
+                android:textColor="@color/grey"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_bank_manage_card_numb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_fen"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <View style="@style/line" />
+
+            <TextView
+                android:id="@+id/tv_modify_bank_card"
+
+                style="@style/clickstyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="修改" />
+
+            <View style="@style/line" />
+
+
+            <TextView
+                android:id="@+id/tv_bank_card_delete"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/select_show_share_down"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="删除" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_bank_card_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/select_show_share_down_up"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="取消" />
+
+</RelativeLayout>

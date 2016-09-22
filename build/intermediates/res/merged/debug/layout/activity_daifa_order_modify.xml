@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/daifa_order_modify_outlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/ll_contact_buyer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/order_detail_layout_padding" >
+
+                        <TextView
+                            android:id="@+id/tv_buyer_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nullstr"
+                            android:visibility="invisible"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_lianxikefu_nor_1" />
+
+                        <TextView
+                            android:id="@+id/tv_call_buyer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/order_detail_contact_seller_margin"
+                            android:text="联系买家"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg" />
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/daifa_address_message"
+                    layout="@layout/commentview_address" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/insulate_view_height"
+                    android:background="@color/app_bg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <include
+                        android:id="@+id/daifa_order_message"
+                        layout="@layout/commentview_order_message" />
+
+                   
+
+                    <LinearLayout
+                        android:id="@+id/ll_order_manager_used_balance_and_coupons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:orientation="vertical" >
+                        
+                         <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg" />
+
+                        <TextView
+                            android:id="@+id/tv_order_manager_used_balance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="5dp"
+                            android:visibility="gone"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+
+                        <View 
+                            android:id="@+id/line_left"
+                            style="@style/line_left" />
+
+                        <TextView
+                            android:id="@+id/tv_order_manager_used_coupons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="5dp"
+                            android:visibility="gone"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_express_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:visibility="visible" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/order_detail_layout_padding"
+                            android:paddingRight="@dimen/order_detail_layout_padding"
+                            android:paddingTop="@dimen/order_detail_layout_top_bottom_padding" >
+
+                            <io.vtown.WeiTangApp.comment.view.DotView
+                                android:id="@+id/dot_view_1"
+                                android:layout_width="@dimen/order_detail_express_dot_size"
+                                android:layout_height="@dimen/order_detail_express_dot_size" />
+
+                            <io.vtown.WeiTangApp.comment.view.CopyTextView
+                                android:id="@+id/tv_order_express_numb"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/order_detail_layout_top_bottom_padding"
+                                android:text="快递单号："
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/order_detail_express_number_size" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingBottom="@dimen/order_detail_layout_top_bottom_padding"
+                            android:paddingLeft="@dimen/order_detail_layout_padding"
+                            android:paddingRight="@dimen/order_detail_layout_padding" >
+
+                            <io.vtown.WeiTangApp.comment.view.DotView
+                                android:id="@+id/dot_view_2"
+                                android:layout_width="@dimen/order_detail_express_dot_size"
+                                android:layout_height="@dimen/order_detail_express_dot_size" />
+
+                            <TextView
+                                android:id="@+id/tv_order_express_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/order_detail_layout_top_bottom_padding"
+                                android:text="物流公司："
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/order_detail_express_name_size" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_send_out_logistics_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_buyer_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/order_detail_layout_padding"
+                        android:paddingRight="@dimen/order_detail_layout_padding"
+                        android:visibility="gone" >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left|top"
+                            android:layout_weight="1"
+                            android:paddingTop="@dimen/order_detail_layout_top_bottom_padding"
+                            android:text="@string/buyer_message"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+
+                        <EditText
+                            android:id="@+id/et_buyer_message"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@null"
+                            android:gravity="left"
+                            android:hint="@string/fast_send_out"
+                            android:padding="@dimen/order_detail_layout_top_bottom_padding"
+                            android:textSize="@dimen/comment_label_txtsize" />
+                    </LinearLayout>
+
+                    <include
+                        android:id="@+id/select_logistics_company"
+                        layout="@layout/commentview_txtarrow" />
+
+                    <View style="@style/line_left" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/order_detail_layout_padding" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="快递单号："
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+
+                        <EditText
+                            android:id="@+id/et_express_number"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/white"
+                            android:hint="@string/express_number_hint"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:src="@drawable/ic_saomiao_nor" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/insulate_view_height"
+                    android:background="@color/app_bg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+
+                    <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                        android:id="@+id/lv_daifa_common_goods"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/order_detail_margin"
+                        android:layout_marginTop="@dimen/order_detail_margin"
+                        android:cacheColorHint="#00000000"
+                        android:divider="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:listSelector="#00000000" >
+                    </io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/app_gray" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_order_goods_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/order_detail_layout_padding" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:background="@color/white"
+                            android:orientation="horizontal" >
+
+                            <io.vtown.WeiTangApp.comment.view.DotView
+                                android:id="@+id/dot_view"
+                                android:layout_width="@dimen/order_detail_dot_size"
+                                android:layout_height="@dimen/order_detail_dot_size" />
+
+                            <TextView
+                                android:id="@+id/tv_daifa_good_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/order_detail_margin"
+                                android:text="@string/nullstr"
+                                android:textColor="@color/app_gray"
+                                android:textSize="@dimen/order_detail_goods_number_txt_size" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_price"
+                                android:textColor="@color/app_gray"
+                                android:textSize="@dimen/order_detail_goods_total_price_lable_size" />
+
+                            <TextView
+                                android:id="@+id/tv_daifa_total_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nullstr"
+                                android:textColor="@color/app_fen"
+                                android:textSize="@dimen/order_detail_goods_total_price_size" />
+
+                            <TextView
+                                android:id="@+id/tv_daifa_post_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nullstr"
+                                android:textColor="@color/app_fen"
+                                android:textSize="@dimen/order_detail_goods_postage_size" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View style="@style/line" />
+
+                <TextView
+                    android:id="@+id/tv_order_good_express_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/order_detail_layout_padding"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize"
+                    android:visibility="gone" />
+
+                <View style="@style/line" />
+
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                    android:id="@+id/lv_order_good_express_speed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cacheColorHint="#00000000"
+                    android:divider="@null"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:listSelector="#00000000"
+                    android:visibility="gone" >
+                </io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
+            </LinearLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:id="@+id/ll_modify_and_send_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/tv_order_manage_logistics_send_out"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/select_fen_to_gray1"
+                    android:gravity="center"
+                    android:padding="@dimen/order_detail_layout_padding"
+                    android:text="@string/logistics_send_out"
+                    android:textColor="@color/TextColorWhite"
+                    android:textSize="@dimen/comment_label_txtsize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_agree_and_no_agree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/tv_order_manage_i_not_agree_refund"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/select_white_to_gray"
+                    android:gravity="center"
+                    android:padding="@dimen/order_detail_layout_padding"
+                    android:text="@string/i_not_agree_refund"
+                    android:textSize="@dimen/comment_label_txtsize" />
+
+                <ImageView
+                    android:layout_width="@dimen/line_size1"
+                    android:layout_height="match_parent"
+                    android:src="@color/app_line" />
+
+                <TextView
+                    android:id="@+id/tv_order_manage_i_agree_refund"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/select_fen_to_gray1"
+                    android:gravity="center"
+                    android:padding="@dimen/order_detail_layout_padding"
+                    android:text="@string/i_agree_refund"
+                    android:textColor="@color/TextColorWhite"
+                    android:textSize="@dimen/comment_label_txtsize" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_daifa_confirm_order"
+                style="@style/build_two_dimension_code_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/order_detail_button_margin"
+                android:text="@string/confirm_order"
+                android:textSize="@dimen/comment_label_txtsize"
+                android:visibility="visible" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/daifa_order_modify_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+</LinearLayout>

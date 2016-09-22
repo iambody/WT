@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/center_refund_reason_outlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/app_fen" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/tuikuan_cause"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/comment_label_txtsize" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/select_tuikuan_cause_must_one"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_select_tuikuan_cause_bg"
+                    android:orientation="vertical" >
+
+                    <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                        android:id="@+id/lv_apply_tuikuan_cause_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:cacheColorHint="#00000000"
+                        android:divider="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:listSelector="#00000000"
+                        android:scrollbars="none" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv_apply_tuikuan"
+            style="@style/build_two_dimension_code_btn_style_no_circular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/apply_tuikuan_btn" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/center_refund_reason_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+</LinearLayout>

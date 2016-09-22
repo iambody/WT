@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/iv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/error_kong"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/no_data" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/error_kong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/kongkong"
+        android:textColor="@color/gray"
+        android:paddingTop="6dp" />
+
+    <Button
+        android:id="@+id/btn_add_new_consignee_address1"
+        style="@style/build_two_dimension_code_btn_style_no_circular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/new_consignee_address"
+         android:visibility="gone" />
+    
+    <Button
+        android:id="@+id/btn_add_new_bank_card"
+        style="@style/build_two_dimension_code_btn_style_no_circular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="添加银行卡"
+         android:visibility="gone" />
+    
+    <Button
+        android:id="@+id/btn_add_new_alipay1"
+        style="@style/build_two_dimension_code_btn_style_no_circular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="绑定支付宝"
+         android:visibility="gone" />
+
+</RelativeLayout>

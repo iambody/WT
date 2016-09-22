@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/title1"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/app_bg" >
+
+        <TextView
+            android:id="@+id/chatName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="聊天"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <io.vtown.WeiTangApp.ui.comment.im.MyImListView
+        android:id="@+id/chat_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+         
+        android:divider="#ff0000" >
+    </io.vtown.WeiTangApp.ui.comment.im.MyImListView>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/below"
+        android:background="#ff0000" />
+
+    <LinearLayout
+        android:id="@+id/below"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/plus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:src="@drawable/chart_jia" />
+
+        <TextView
+            android:id="@+id/record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/select_fen_to_gray"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="7dp"
+            android:text="录音"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/recording"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="按住说话"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/edittv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shap_corner_white" />
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_white_to_fen"
+            android:text="发送"
+            android:textColor="@color/grey" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/chatinf_exater_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:visibility="gone" >
+
+        <include
+            android:id="@+id/chart_inf_pic"
+            layout="@layout/comment_up_down_pic" />
+
+        <include
+            android:id="@+id/chart_inf_pho"
+            android:layout_marginLeft="30dp"
+            layout="@layout/comment_up_down_pic"
+            android:visibility="gone" />
+
+        
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/recording_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recording_hint_bg"
+        android:padding="10dp"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/mic_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/record_animate_01" />
+
+        <TextView
+            android:id="@+id/recording_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mic_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:padding="2dp"
+            android:text="手指上滑，取消发送"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <io.vtown.WeiTangApp.comment.view.listview.LListView
+            android:id="@+id/activity_show_ls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:scrollbars="none" />
+
+        <TextView
+            android:id="@+id/activity_show_uptxt"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:visibility="gone"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="@dimen/bottom_height2"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/select_show_up"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="TOP"
+            android:textColor="@color/white" />
+    </FrameLayout>
+
+    <include
+        android:id="@+id/show_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_height2"
+        android:background="@color/transparent" />
+
+</LinearLayout>

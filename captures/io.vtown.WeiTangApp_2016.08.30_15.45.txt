@@ -1,0 +1,37 @@
+Applications Memory Usage (kB):
+Uptime: 316081900 Realtime: 712487277
+
+** MEMINFO in pid 29905 [io.vtown.WeiTangApp] **
+                   Pss  Private  Private  Swapped     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap     6336     6324        0        0    53848     6866      745
+  Dalvik Heap    33866    33800        0        0    40324    28255    12069
+ Dalvik Other     3775     3708        0        0                           
+        Stack      360      360        0        0                           
+    Other dev        5        0        4        0                           
+     .so mmap      921      260      108        0                           
+    .jar mmap        4        0        4        0                           
+    .apk mmap      234        0       80        0                           
+    .ttf mmap      206        0       60        0                           
+    .dex mmap     4545       28     3916        0                           
+   Other mmap       15        4        0        0                           
+           GL    12400    12400        0        0                           
+      Unknown      192      192        0        0                           
+        TOTAL    62859    57076     4172        0    94172    35121    12814
+ 
+ Objects
+               Views:      390         ViewRootImpl:        2
+         AppContexts:        8           Activities:        4
+              Assets:        3        AssetManagers:        3
+       Local Binders:       20        Proxy Binders:       27
+    Death Recipients:        1
+     OpenSSL Sockets:        2
+ 
+ SQL
+         MEMORY_USED:      144
+  PAGECACHE_OVERFLOW:       53          MALLOC_SIZE:       62
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)          cache  Dbname
+         4       76            111        10/21/7  /data/data/io.vtown.WeiTangApp/databases/v-town1014742_emmsg.db

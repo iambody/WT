@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_center_order_all"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_center_order_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="8dp"
+                android:text="全部" />
+
+            <View style="@style/line_left_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_center_order_no_pay"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_center_order_no_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="8dp"
+                android:text="待付款" />
+
+            <View style="@style/line_left_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_center_order_paid"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_center_order_paid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="8dp"
+                android:text="待发货" />
+
+            <View style="@style/line_left_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_center_order_no_take"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_center_order_no_take"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="8dp"
+                android:text="待收货" />
+
+            <View style="@style/line_left_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_center_order_refund_and_arbitrament"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_center_order_refund_and_arbitrament"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="8dp"
+                android:text="退款/仲裁" />
+
+            <View style="@style/line_left_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_center_order_over"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_center_order_over"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="8dp"
+                android:text="已完成" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/gray_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#8ccc" />
+
+</LinearLayout>

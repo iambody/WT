@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="先登录再测试聊天"
+        android:textSize="28dp" />
+
+    <EditText
+        android:id="@+id/tag_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_margin="20dp"
+        android:ems="10"
+        android:text="v-town482"
+        android:textColor="#323232" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tag_name"
+        android:layout_margin="20dp"
+        android:ems="10"
+        android:text="datutu"
+        android:textColor="#323232" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_margin="20dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="123456"
+        android:textColor="#323232" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_margin="20dp"
+        android:text="登录" />
+
+</LinearLayout>

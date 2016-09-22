@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/titlebar"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebarheingh"
+        android:background="@color/app_fen"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/go_back"
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:padding="10dp"
+            android:src="@drawable/arrow_back" />
+
+        <TextView
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:lines="1"
+            android:text="选择地区"
+            android:textColor="@color/TextColorWhite"
+            android:textSize="@dimen/titlebar_size" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/address_select_list_province"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:scrollbars="none"></ListView>
+
+        <ListView
+            android:id="@+id/address_select_list_city"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:scrollbars="none"></ListView>
+
+        <ListView
+            android:id="@+id/address_select_list_address"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"></ListView>
+
+    </FrameLayout>
+
+
+
+
+
+</LinearLayout>

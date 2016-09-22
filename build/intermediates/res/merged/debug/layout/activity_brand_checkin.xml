@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:text="@string/brand_add_us"
+        android:textColor="@color/app_gray" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:src="@color/app_bg" />
+
+    <include
+        android:id="@+id/brandcheck_phone"
+        layout="@layout/commentview_txtarrow" />
+
+    <View style="@style/line_left" />
+
+    <include
+        android:id="@+id/brandcheck_im"
+        layout="@layout/commentview_txtarrow" />
+
+    <View style="@style/line_left" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:src="@color/app_bg" />
+
+    <include
+        android:id="@+id/brandcheck_web"
+        layout="@layout/commentview_txtarrow" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="8dp"
+        android:text="@string/brand_ruzhu_label"
+        android:textColor="@color/grey" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp" >
+
+        <io.vtown.WeiTangApp.comment.view.DotView
+            android:layout_width="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size"
+            android:layout_height="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size"
+            
+            android:layout_marginTop="3dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:text="@string/brand_ruzhu"
+            android:textColor="@color/app_gray"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp" >
+
+        <io.vtown.WeiTangApp.comment.view.DotView
+            android:layout_width="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size"
+            android:layout_height="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size"
+               android:layout_marginTop="3dp"  />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:text="@string/brand_runzhu2"
+            android:textColor="@color/app_gray"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

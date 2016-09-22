@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/insulate_view_height" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/order_detail_layout_padding"  >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:id="@+id/iv_good_edit_good_icon"
+                        android:layout_width="@dimen/item_shop_purchase_height"
+                        android:layout_height="@dimen/item_shop_purchase_height" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/order_detail_margin"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/iv_good_edit_goods_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/shopbus_item_log3"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tv_good_edit_good_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nullstr"
+                            android:textColor="@color/grey" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_good_edit_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/tv_good_edit_good_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="规格："
+                            android:textColor="@color/app_gray"
+                            android:textSize="@dimen/order_detail_standard_lable_size" />
+
+                        <TextView
+                            android:id="@+id/tv_good_edit_content_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nullstr"
+                            android:textColor="@color/app_gray"
+                            android:textSize="@dimen/order_detail_standard_size" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/order_detail_margin" >
+
+                        <TextView
+                            android:id="@+id/tv_good_edit_good_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/nullstr"
+                            android:textColor="@color/app_fen"
+                            android:textSize="@dimen/order_detail_goods_total_price_size" />
+
+                        <TextView
+                            android:id="@+id/tv_good_edit_good_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/order_detail_layout_padding"
+                            android:text="@string/nullstr"
+                            android:textColor="@color/grey" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            
+            <View style="@style/line"/>
+            
+              <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/order_detail_layout_padding"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <io.vtown.WeiTangApp.comment.view.DotView
+                            android:layout_width="@dimen/order_detail_dot_size"
+                            android:layout_height="@dimen/order_detail_dot_size" >
+                        </io.vtown.WeiTangApp.comment.view.DotView>
+
+                        <TextView
+                            android:id="@+id/tv_good_edit_modity_before_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nullstr"
+                        android:textColor="@color/grey"
+                            android:textSize="@dimen/order_detail_modify_before_price_size" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_good_edit_price_modify_before"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nullstr"
+                        android:textColor="@color/app_fen"
+                        android:textSize="@dimen/order_detail_goods_total_price_size" />
+
+                   
+                </LinearLayout>
+
+               
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/insulate_view_height" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/order_detail_layout_padding" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/comment_label_txtsize"
+                        android:textColor="@color/grey"
+                        android:text="@string/daifu_modify_total_price" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+					<LinearLayout 
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:orientation="vertical"
+					   
+					    
+					    >
+					    
+					    <TextView 
+					        android:id="@+id/tv_modify_price_tips"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:textSize="@dimen/order_detail_modify_price_lable_size"
+					        android:textColor="@color/app_fen"
+					        android:visibility="gone"
+					       android:layout_marginBottom="@dimen/order_detail_margin"
+					        />
+					    
+					     <EditText
+                        android:id="@+id/et_good_edit_price"
+                        android:layout_width="@dimen/order_detail_modify_price_edittext_width"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_add_goods_edit_bg"
+                        android:padding="@dimen/order_detail_layout_top_bottom_padding"
+                        android:textColor="@color/grey"
+                        android:layout_gravity="right"
+                        android:inputType="numberDecimal"
+                        android:textSize="@dimen/order_detail_modify_price_size" />
+					</LinearLayout>
+                   
+                </LinearLayout>
+
+
+              
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    
+    <TextView 
+        android:id="@+id/tv_good_edit_success"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       style="@style/build_two_dimension_code_btn_style_no_circular"
+       android:padding="@dimen/order_detail_layout_padding"
+        android:text="编辑完成"
+        android:textSize="@dimen/comment_label_txtsize"
+                        
+        />
+
+</LinearLayout>

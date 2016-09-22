@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/center_wallet_modify_bankcard_padding" >
+
+            <ImageView
+                android:id="@+id/iv_modify_bank_icon"
+                android:layout_width="@dimen/center_wallet_modify_bankcard_icon_size"
+                android:layout_height="@dimen/center_wallet_modify_bankcard_icon_size"
+                android:layout_marginBottom="@dimen/center_wallet_modify_bankcard_icon_top_bottom_margin"
+                android:layout_marginTop="@dimen/center_wallet_modify_bankcard_icon_top_bottom_margin"
+                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/center_wallet_modify_bankcard_message_margin"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_modify_bank_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/comment_label_txtsize"
+                    android:textColor="@color/grey"
+                    android:text="@string/nullstr" />
+
+                <TextView
+                    android:id="@+id/tv_modify_bank_card_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/comment_label_txtsize"
+                    android:textColor="@color/app_gray"
+                    android:text="@string/nullstr" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/insulate_view_height" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_modify_bank_usr_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/comment_label_txtsize"
+                    android:textColor="@color/grey"
+                android:padding="@dimen/center_wallet_modify_bankcard_padding"
+                android:text="用户名" />
+
+            <View style="@style/line_left" />
+
+          
+
+            <LinearLayout
+                android:id="@+id/ll_select_bank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/center_wallet_modify_bankcard_padding"
+                 >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="选择银行："
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize"
+                    android:layout_height="wrap_content" />
+
+
+
+                <ImageView
+                    android:id="@+id/iv_modify_bank_select_icon"
+                    android:layout_width="@dimen/center_wallet_modify_bankcard_select_icon_size"
+                    android:layout_height="@dimen/center_wallet_modify_bankcard_select_icon_size"
+                    android:layout_marginRight="@dimen/center_wallet_modify_bankcard_select_icon_margin"
+                    android:visibility="gone"
+                     />
+
+                <TextView
+                    android:id="@+id/tv_modify_bank_card_select_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/comment_label_txtsize"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/app_gray"
+                    android:visibility="gone"
+                    android:text="@string/nullstr"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+                
+                <ImageView 
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/arrow_right"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+
+            <View style="@style/line_left" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/center_wallet_modify_bankcard_padding" >
+
+                <TextView
+                    android:id="@+id/tv_modify_bank_card_id_lable"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/comment_label_txtsize"
+                    android:textColor="@color/grey"
+                    android:text="银行卡号：" />
+
+                <EditText
+                    android:id="@+id/et_modify_bank_card_numb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:inputType="number"
+
+                    android:textSize="@dimen/comment_label_txtsize"
+                    android:textColor="@color/app_gray"
+                    android:background="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_mofify_submit"
+        style="@style/build_two_dimension_code_btn_style_no_circular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/comment_label_txtsize"
+        android:padding="@dimen/center_wallet_modify_bankcard_submit_button_padding"
+        android:text="保存修改" />
+
+</LinearLayout>

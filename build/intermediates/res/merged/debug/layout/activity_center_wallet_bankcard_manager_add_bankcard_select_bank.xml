@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+    
+    <LinearLayout
+        android:id="@+id/center_wallet_select_bankcard_outlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        
+        >
+
+    <ListView
+        android:id="@+id/lv_select_bank_card_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="@dimen/center_wallet_select_bank_listview_divider_height"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:listSelector="#00000000"
+        android:scrollbars="none" >
+    </ListView>
+    
+    </LinearLayout>
+    
+    <include 
+        android:id="@+id/center_wallet_select_bankcard_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

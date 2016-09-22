@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/shopbus_item_log1" />
+
+        <TextView
+            android:id="@+id/item_oderbeing_out_shoptxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1"
+            android:text="@string/nullstr"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/item_oderbeing_connect"
+            style="@style/bt_textview"
+            android:layout_marginRight="10dp"
+            android:text="@string/connect_shangjia" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size1"
+        android:layout_marginLeft="20dp"
+        android:src="@color/app_line" />
+
+    <LinearLayout
+        android:id="@+id/item_oderbeing_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:clickable="true"
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/item_oderbeing_iv1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/jiesuan_iv_height"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/testiv"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/item_oderbeing_iv2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/jiesuan_iv_height"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/testiv"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/item_oderbeing_iv3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/jiesuan_iv_height"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/testiv"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/item_oderbeing_more_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/select_white_to_gray"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/item_oderbeing_out_goodnumbers_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_gray"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+    </LinearLayout>
+    <!-- 运费 -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size1"
+        android:layout_marginLeft="20dp"
+        android:src="@color/app_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="运费:" />
+
+        <TextView
+            android:id="@+id/item_oderbeing_out_yunfei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp"
+            android:text="@string/nullstr" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size1"
+        android:layout_marginLeft="20dp"
+        android:src="@color/app_line" />
+
+    <!-- 运费 -->
+    <!-- 价格 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp" >
+
+        <TextView
+            android:id="@+id/item_oderbeing_out_number_down"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:padding="5dp"
+            android:text="@string/nullstr" />
+
+        <TextView
+            android:id="@+id/item_oderbeing_out_mony"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp"
+            android:text="@string/nullstr" />
+    </LinearLayout>
+    <!-- 价格 -->
+
+</LinearLayout>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:id="@+id/center_wallet_tixian_outlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/center_wallet_tixian_margin"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tixian_zhifubao"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_left_pre"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="@dimen/center_wallet_tixian_padding"
+                android:text="@string/zhifubao"
+                android:textColor="@color/TextColorWhite" />
+
+            <TextView
+                android:id="@+id/tixian_yinhangka"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_right_nor"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="@dimen/center_wallet_tixian_padding"
+                android:text="@string/yinhangka"
+                android:textColor="@color/app_fen" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:id="@+id/ll_alipay_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+                <include
+                    android:id="@+id/alipay_account"
+                    layout="@layout/commentview_pay_account" />
+
+                <include
+                    android:id="@+id/no_alipay_account"
+                    layout="@layout/commentview_txtarrow"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tixianguize_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_bg"
+                    android:padding="@dimen/center_wallet_tixian_padding"
+                    android:text="@string/alipay_limit_time_money"
+                    android:textColor="@color/grey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/center_wallet_tixian_padding" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/alipay_money"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/comment_label_txtsize" />
+
+                    <EditText
+                        android:id="@+id/et_this_time_allow_transfer_money_alipay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/center_wallet_tixian_edittext_margin"
+                        android:background="@null"
+                        android:numeric="decimal"
+                        android:paddingLeft="@dimen/center_wallet_tixian_edittext_padding"
+                        android:textColor="@color/app_gray"
+                        android:textSize="@dimen/comment_label_txtsize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/app_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_bank_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <include
+                    android:id="@+id/bank_card_account"
+                    layout="@layout/commentview_pay_account" />
+
+                <include
+                    android:id="@+id/no_bank_card_account"
+                    layout="@layout/commentview_txtarrow"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_bank_card_limit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_bg"
+                    android:padding="@dimen/center_wallet_tixian_padding"
+                    android:textColor="@color/grey" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/center_wallet_tixian_padding" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/alipay_money"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/comment_label_txtsize" />
+
+                    <EditText
+                        android:id="@+id/et_this_time_allow_transfer_money_bank"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/center_wallet_tixian_edittext_margin"
+                        android:background="@null"
+                        android:numeric="decimal"
+                        android:paddingLeft="@dimen/center_wallet_tixian_edittext_padding"
+                        android:textColor="@color/app_gray"
+                        android:textSize="@dimen/comment_label_txtsize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/app_bg" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_apply_withdraw_deposit"
+            style="@style/build_two_dimension_code_btn_style_no_circular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/center_wallet_tixian_btn_padding"
+            android:text="@string/apply_withdraw_deposit"
+            android:textSize="@dimen/comment_label_txtsize" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/center_wallet_tixian_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/app_black"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/pop_shopbus_lingshou"
+        style="@style/bt_textview_comment"
+        android:background="@drawable/select_home_item"
+        android:padding="10dp"
+        android:text="@string/shopbus_lingshou" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size"
+        android:src="@color/app_line" />
+
+    <TextView
+        android:id="@+id/pop_shopbus_caigou"
+        style="@style/bt_textview_comment"
+        android:background="@drawable/select_home_item"
+        android:padding="10dp"
+        android:text="@string/shopbus_caigou" />
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+ 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <include
+            android:id="@+id/pop_share_haoyou"
+            layout="@layout/commentview_ivtext" />
+
+        <ImageView
+            android:layout_width="@dimen/line_size1"
+            android:layout_height="match_parent"
+            android:src="@color/app_line" />
+
+        <include
+            android:id="@+id/pop_share_pyq"
+            layout="@layout/commentview_ivtext" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size1"
+        android:src="@color/app_line" />
+
+    <TextView
+        android:id="@+id/pop_share_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/select_white_to_gray"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="取消" />
+
+</LinearLayout>

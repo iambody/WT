@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\testiv.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\testiv.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_loading_selected.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\icon_loading_selected.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\no_data.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xxhdpi\\no_data.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\selpiccamera.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xxhdpi\\selpiccamera.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\error_iv2.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\error_iv2.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_2.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\app_refresh_people_2.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\chat_default_head.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xxhdpi\\chat_default_head.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\chat_default_image.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xxhdpi\\chat_default_image.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_1.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\app_refresh_people_1.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\test1.jpg",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\test1.jpg"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\error_iv1.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\error_iv1.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_3.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\app_refresh_people_3.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_0.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-480dpi\\app_refresh_people_0.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_xiangce_nor.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xxhdpi\\ic_xiangce_nor.png"
+    }
+]

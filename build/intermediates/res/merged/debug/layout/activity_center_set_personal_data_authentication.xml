@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="40dp"
+        android:text="@string/authentication_desc" />
+
+    <EditText
+        android:id="@+id/et_authentication_input_real_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/shape_add_goods_edit_bg"
+        android:hint="@string/please_input_real_name"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/et_authentication_input_number_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shape_add_goods_edit_bg"
+        android:hint="@string/please_input_number_id"
+        android:padding="10dp" />
+    
+    
+    
+    <Button 
+        android:id="@+id/btn_authentication_next_step"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="50dp"
+        style="@style/build_two_dimension_code_btn_style"
+        android:text="@string/authentication_next_step"
+        
+        />
+
+</LinearLayout>

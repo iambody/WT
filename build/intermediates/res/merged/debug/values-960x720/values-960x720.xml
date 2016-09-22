@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="good_upload_vido_iv_height">100dp</dimen>
+    <dimen name="login_margentop_log">50dp</dimen>
+    <dimen name="new_goods_vido_play_pading">5dp</dimen>
+    <dimen name="newgoodedit_vido_height">120dp</dimen>
+    <dimen name="paymethod_iv_height">45dp</dimen>
+    <dimen name="pop_addcatory_margitop">40dp</dimen>
+    <dimen name="shop_user_hright">50dp</dimen>
+    <dimen name="show_share_grad_delet_panding">5dp</dimen>
+    <dimen name="vidoshare_height">170dp</dimen>
+</resources>

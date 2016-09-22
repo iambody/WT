@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical" >
+
+            <View
+                android:id="@+id/top_line"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/app_gray" />
+
+            <io.vtown.WeiTangApp.comment.view.DotView
+                android:id="@+id/dot_view_center_order"
+                android:layout_width="@dimen/order_detail_dot_size"
+                android:layout_height="@dimen/order_detail_dot_size" />
+
+            <View
+                android:id="@+id/bottom_line"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                
+                android:background="@color/app_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/tv_center_my_order_express_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
+                    android:text="您的订单已出库"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_center_my_order_express_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   android:paddingTop="3dp"
+                    android:textColor="@color/grey"
+                    android:text="2016-6-26 10:20"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+           
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

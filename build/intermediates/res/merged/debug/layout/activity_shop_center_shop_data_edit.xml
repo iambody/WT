@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_content"
+            style="@style/edit_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="left"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/comment_label_txtsize" />
+
+        <TextView
+            android:id="@+id/tv_content_count"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="bottom"
+            android:paddingRight="10dp"
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/comment_label_txtsize" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/app_fen" />
+
+    <TextView
+        android:id="@+id/tv_modify_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@color/app_gray"
+        android:textSize="@dimen/comment_label_txtsize" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        style="@style/build_two_dimension_code_btn_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="50dp"
+        android:text="完成"
+        android:textSize="@dimen/comment_label_txtsize"
+        android:visibility="gone" />
+
+</LinearLayout>

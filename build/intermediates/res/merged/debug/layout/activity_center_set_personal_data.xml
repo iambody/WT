@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/center_set_personal_data_phone_top_buttom_magrin"
+            android:layout_marginTop="@dimen/center_set_personal_data_phone_top_buttom_magrin"
+            android:paddingLeft="@dimen/center_set_personal_data_phone_left_right_padding"
+            android:paddingRight="@dimen/center_set_personal_data_phone_left_right_padding" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_phone_numb"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/comment_txtarrow_txtsize" />
+
+            <TextView
+                android:id="@+id/tv_phone_numb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_gray"
+                android:textSize="@dimen/comment_label_txtsize" />
+        </RelativeLayout>
+
+        <View style="@style/line_left" />
+
+        <include
+            android:id="@+id/authentication"
+            layout="@layout/commentview_txtarrow" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/insulate_view_height"
+            android:background="@color/app_bg" />
+
+        <include
+            android:id="@+id/address_manage"
+            layout="@layout/commentview_txtarrow" />
+
+        <View style="@style/line_left" />
+
+        <include
+            android:id="@+id/account_safe"
+            layout="@layout/commentview_txtarrow" />
+
+        <View style="@style/line_left" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/center_set_personal_data_clear_cache_height"
+            android:layout_marginLeft="@dimen/center_set_personal_data_clear_cache_left_right_margin"
+            android:layout_marginRight="@dimen/center_set_personal_data_clear_cache_left_right_margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_delete_cache_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清除缓存"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/comment_label_txtsize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_cache_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nullstr"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/center_set_personal_data_clear_cache_txt_size" />
+
+            <io.vtown.WeiTangApp.comment.view.custom.switchButtonView.EaseSwitchButton
+                android:id="@+id/switch_delete_cache"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/center_set_personal_data_clear_cache_buttom_margin"
+                android:contentDescription="@null" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/insulate_view_height"
+            android:background="@color/app_bg" />
+
+        <include
+            android:id="@+id/about_w_town"
+            layout="@layout/commentview_txtarrow" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_quit"
+        style="@style/build_two_dimension_code_btn_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/center_set_personal_data_quit_buttom_left_right_margin"
+        android:layout_marginRight="@dimen/center_set_personal_data_quit_buttom_left_right_margin"
+        android:layout_marginTop="@dimen/center_set_personal_data_quit_buttom_top_margin"
+        android:text="安全退出"
+        android:textSize="@dimen/comment_label_txtsize" />
+
+</LinearLayout>

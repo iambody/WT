@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:padding="5dp" >
+
+    <io.vtown.WeiTangApp.comment.view.CircleImageView
+        android:id="@+id/item_show_iv"
+        android:layout_width="@dimen/item_show_iv_height"
+        android:layout_height="@dimen/item_show_iv_height"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerInside" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp" >
+
+        <LinearLayout
+            android:id="@+id/item_show_gooddetail_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/item_show_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:textColor="@color/app_fen" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_show_txt_inf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!-- 图片九宫格和视频布局的外层线性布局 -->
+
+        <ImageView
+            android:id="@+id/item_show_one_iv"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/app_bg"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/item_show_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/app_gray" />
+
+            <TextView
+                android:id="@+id/item_show_delete_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="10dp"
+                android:text="@string/delete"
+                android:textColor="@color/gray"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/item_show_gooddetail_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="10dp"
+                android:src="@drawable/show_xiangqing" />
+
+            <ImageView
+                android:id="@+id/item_show_share_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="10dp"
+                android:src="@drawable/share_iv" />
+
+            <TextView
+                android:id="@+id/item_show_share_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="3dp"
+                android:textColor="@color/app_gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

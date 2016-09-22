@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/titlebar" />
+
+
+    <TextView
+        android:id="@+id/show_id_pic_usr_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请上传您本人的有效二代身份证"
+        android:padding="8dp"
+        android:gravity="center"
+        android:textColor="@color/grey"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/show_id_pic_face_fl"
+            android:layout_width="match_parent"
+            android:background="@drawable/shape_usr_id_bg"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/show_id_pic_face"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/multiphoto_icon_addpic_focused" />
+
+            <TextView
+                android:id="@+id/tv_show_id_pic_face"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:textSize="50sp"
+                android:gravity="center"
+                android:textColor="@color/app_gray"
+                android:text="正面" />
+
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/show_id_pic_back_fl"
+            android:layout_width="match_parent"
+            android:background="@drawable/shape_usr_id_bg"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/show_id_pic_back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+android:scaleType="fitXY"
+                android:src="@drawable/multiphoto_icon_addpic_focused" />
+
+            <TextView
+                android:id="@+id/tv_show_id_pic_back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:textSize="50sp"
+                android:gravity="center"
+                android:textColor="@color/app_gray"
+                android:text="反面" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/show_id_pic_submit"
+        style="@style/build_two_dimension_code_btn_style_no_circular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+
+        android:text="提交" />
+
+</LinearLayout>

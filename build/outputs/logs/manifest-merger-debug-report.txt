@@ -1,0 +1,1472 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:2:1-1054:12
+	package
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:4:11-40
+	android:versionName
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:6:11-38
+		INJECTED from D:\MyStudioSpace\WtApp\AndroidManifest.xml
+		INJECTED from D:\MyStudioSpace\WtApp\AndroidManifest.xml
+	xmlns:tools
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:3:11-57
+	android:versionCode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:5:11-35
+		INJECTED from D:\MyStudioSpace\WtApp\AndroidManifest.xml
+		INJECTED from D:\MyStudioSpace\WtApp\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:8:5-11:38
+MERGED from [com.android.support:multidex:1.0.1] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.0\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-compat:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.0\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-media-compat:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.0\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-fragment:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.0\AndroidManifest.xml:21:5-23:60
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.0\AndroidManifest.xml:23:9-51
+	android:targetSdkVersion
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:10:9-38
+		INJECTED from D:\MyStudioSpace\WtApp\AndroidManifest.xml
+		INJECTED from D:\MyStudioSpace\WtApp\AndroidManifest.xml
+	tools:ignore
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:11:9-36
+	android:minSdkVersion
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:9:9-35
+uses-permission#android.permission.INTERNET
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:13:5-66
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:13:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:14:5-78
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:14:22-76
+uses-permission#android.permission.CALL_PHONE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:15:5-68
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:15:22-66
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:16:5-80
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:16:22-78
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:17:5-70
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:17:22-68
+permission#io.vtown.WeiTangApp.permission.JPUSH_MESSAGE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:19:5-21:46
+	android:protectionLevel
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:21:9-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:20:9-68
+uses-permission#io.vtown.WeiTangApp.permission.JPUSH_MESSAGE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:23:5-83
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:23:22-81
+uses-permission#android.permission.RECEIVE_USER_PRESENT
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:24:5-78
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:24:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:25:5-67
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:25:22-65
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:26:5-74
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:26:22-72
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:27:5-79
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:27:22-77
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:28:5-72
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:28:22-70
+uses-permission#android.permission.VIBRATE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:29:5-65
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:29:22-63
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:30:5-83
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:30:22-81
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:31:5-75
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:31:22-73
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:32:5-77
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:32:22-75
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:33:5-80
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:33:22-78
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:34:5-75
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:34:22-73
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:35:5-78
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:35:22-76
+uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:36:5-88
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:36:22-86
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:37:5-78
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:37:22-76
+uses-permission#android.permission.CAMERA
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:40:5-64
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:40:22-62
+permission#io.vtown.WeiTangApp.jpushdemo.permission.JPUSH_MESSAGE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:43:5-45:46
+	android:protectionLevel
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:45:9-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:44:9-78
+uses-permission#io.vtown.WeiTangApp.jpushdemo.permission.JPUSH_MESSAGE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:47:5-93
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:47:22-91
+uses-permission#android.permission.FLASHLIGHT
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:48:5-68
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:48:22-66
+uses-permission#android.permission.READ_CONTACTS
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:49:5-71
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:49:22-69
+uses-permission#com.android.browser.permission.READ_HISTORY_BOOKMARKS
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:50:5-92
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:50:22-90
+uses-permission#android.permission.MANAGE_ACCOUNTS
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:59:5-73
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:59:22-71
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:60:5-70
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:60:22-68
+uses-permission#android.permission.GET_TASKS
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:61:5-67
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:61:22-65
+uses-feature#android.hardware.camera
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:67:5-69:35
+	android:required
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:69:9-33
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:68:9-47
+uses-feature#android.hardware.camera.front
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:70:5-72:35
+	android:required
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:72:9-33
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:71:9-53
+uses-feature#android.hardware.camera.autofocus
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:73:5-75:35
+	android:required
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:75:9-33
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:74:9-57
+uses-feature#android.hardware.camera.flash
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:76:5-78:35
+	android:required
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:78:9-33
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:77:9-53
+uses-feature#android.hardware.screen.landscape
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:79:5-69
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:79:19-67
+uses-feature#android.hardware.wifi
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:80:5-82:35
+	android:required
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:82:9-33
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:81:9-45
+uses-feature#android.hardware.touchscreen
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:83:5-85:35
+	android:required
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:85:9-33
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:84:9-52
+supports-screens
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:104:5-109:38
+	android:largeScreens
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:106:9-36
+	android:smallScreens
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:109:9-36
+	android:normalScreens
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:107:9-37
+	android:resizeable
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:108:9-34
+	android:anyDensity
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:105:9-34
+application
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:115:5-1052:19
+MERGED from [com.android.support:support-v4:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.0] D:\MyStudioSpace\WtApp\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.0\AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:119:9-41
+	android:allowBackup
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:117:9-36
+	android:icon
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:118:9-45
+	android:theme
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:120:9-40
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:116:9-40
+uses-library#android.test.runner
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:121:9-59
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:121:23-57
+activity#io.vtown.WeiTangApp.ui.ALoading
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:123:9-137:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:126:13-49
+	android:label
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:125:13-45
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:124:13-40
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:127:13-131:29
+action#android.intent.action.MAIN
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:128:17-68
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:128:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:130:17-76
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:130:27-74
+intent-filter#android.intent.category.BROWSABLE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:132:13-136:29
+category#android.intent.category.BROWSABLE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:133:17-77
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:133:27-75
+data
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:135:17-49
+	android:scheme
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:135:23-47
+activity#io.vtown.WeiTangApp.ui.ui.AMain
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:138:9-142:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:141:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:140:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:139:13-40
+activity#io.vtown.WeiTangApp.ui.ui.AShop
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:143:9-147:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:146:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:145:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:144:13-40
+activity#io.vtown.WeiTangApp.ui.ui.AShow
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:148:9-152:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:151:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:150:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:149:13-40
+activity#io.vtown.WeiTangApp.ui.title.AShopBus
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:153:9-157:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:156:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:155:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:154:13-46
+activity#io.vtown.WeiTangApp.ui.title.ACenter
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:158:9-162:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:161:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:160:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:159:13-45
+activity#io.vtown.WeiTangApp.ui.ui.ASouSouGood
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:163:9-167:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:166:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:165:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:164:13-46
+activity#io.vtown.WeiTangApp.ui.ui.ASouSouShop
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:168:9-172:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:171:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:170:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:169:13-46
+activity#io.vtown.WeiTangApp.ui.comment.ACommentList
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:173:9-177:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:176:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:175:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:174:13-52
+activity#io.vtown.WeiTangApp.ui.comment.ACommentGrad
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:178:9-182:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:181:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:180:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:179:13-52
+activity#io.vtown.WeiTangApp.ui.comment.AWeb
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:183:9-187:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:186:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:185:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:184:13-44
+activity#io.vtown.WeiTangApp.ui.title.ABrandDetail
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:188:9-192:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:191:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:190:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:189:13-50
+activity#io.vtown.WeiTangApp.ui.ui.AGoodSort
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:193:9-197:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:196:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:195:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:194:13-44
+activity#io.vtown.WeiTangApp.ui.afragment.AShopOderManage
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:198:9-202:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:201:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:200:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:199:13-57
+activity#io.vtown.WeiTangApp.ui.afragment.AShopPurchase
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:203:9-207:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:206:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:205:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:204:13-55
+activity#io.vtown.WeiTangApp.ui.title.APay
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:208:9-212:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:211:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:210:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:209:13-42
+activity#io.vtown.WeiTangApp.wxapi.WXPayEntryActivity
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:213:9-216:45
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:216:13-43
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:215:13-36
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:214:13-53
+activity#io.vtown.WeiTangApp.ui.title.shop.channel.AChannel
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:217:9-221:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:220:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:219:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:218:13-59
+activity#io.vtown.WeiTangApp.ui.title.shop.ABrandDaiLi
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:222:9-226:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:225:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:224:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:223:13-54
+activity#io.vtown.WeiTangApp.ui.title.shop.addgood.ANewAddGood
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:228:9-230:51
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:230:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:229:13-62
+activity#io.vtown.WeiTangApp.ui.title.shop.addgood.AAddGoodRule
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:231:9-235:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:234:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:233:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:232:13-63
+activity#io.vtown.WeiTangApp.ui.afragment.AShopGoodManger
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:236:9-240:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:239:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:238:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:237:13-57
+activity#io.vtown.WeiTangApp.ui.title.shop.channel.ABeJunior
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:245:9-249:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:248:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:247:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:246:13-60
+activity#io.vtown.WeiTangApp.ui.title.shop.channel.ADevelopJunior
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:250:9-254:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:253:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:252:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:251:13-65
+activity#io.vtown.WeiTangApp.ui.title.shop.channel.AInviteSuperior
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:255:9-259:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:258:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:257:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:256:13-66
+activity#io.vtown.WeiTangApp.ui.title.shop.channel.AInviteRecord
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:260:9-264:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:263:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:262:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:261:13-64
+activity#io.vtown.WeiTangApp.ui.title.shop.channel.AMySuperior
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:265:9-269:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:268:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:267:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:266:13-62
+activity#io.vtown.WeiTangApp.ui.title.shop.channel.AQRCode
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:270:9-274:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:273:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:272:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:271:13-58
+activity#io.vtown.WeiTangApp.ui.comment.AVidemplay
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:275:9-279:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:278:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:277:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:276:13-50
+activity#io.vtown.WeiTangApp.ui.ui.AShopDetail
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:280:9-284:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:283:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:282:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:281:13-46
+activity#io.vtown.WeiTangApp.ui.afragment.ACenterOder
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:285:9-289:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:288:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:287:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:286:13-53
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:290:9-293:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:292:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:291:13-65
+activity#io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:294:9-298:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:297:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:296:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:295:13-63
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.ATiXian
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:304:9-307:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:306:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:305:13-59
+activity#io.vtown.WeiTangApp.ui.title.AGoodDetail
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:308:9-312:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:311:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:309:13-49
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.ABankCardManager
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:313:9-316:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:315:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:314:13-68
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.APropertyDetail
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:317:9-321:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:320:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:319:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:318:13-67
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.AAddBankCard
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:322:9-325:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:324:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:323:13-64
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.AAlipayManager
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:326:9-330:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:329:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:328:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:327:13-66
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.AAddAliPay
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:331:9-335:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:334:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:333:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:332:13-62
+activity#io.vtown.WeiTangApp.ui.title.center.set.AAboutWt
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:336:9-340:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:339:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:338:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:337:13-57
+activity#io.vtown.WeiTangApp.ui.title.center.set.AAccountSafe
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:341:9-345:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:344:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:343:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:342:13-61
+activity#io.vtown.WeiTangApp.ui.title.center.set.AAddConsigneeAddress
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:346:9-349:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:348:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:347:13-69
+activity#io.vtown.WeiTangApp.ui.title.center.set.AAddressManage
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:350:9-353:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:352:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:351:13-63
+activity#io.vtown.WeiTangApp.ui.title.center.set.AAuthentication
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:354:9-358:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:357:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:356:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:355:13-64
+activity#io.vtown.WeiTangApp.ui.title.center.set.APersonalData
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:359:9-363:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:362:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:361:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:360:13-62
+activity#io.vtown.WeiTangApp.ui.title.center.set.AResetPswStep1
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:364:9-368:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:367:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:366:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:365:13-63
+activity#io.vtown.WeiTangApp.ui.title.center.set.AResetPswStep2
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:369:9-373:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:372:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:371:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:370:13-63
+activity#io.vtown.WeiTangApp.wxapi.AH5Pay
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:374:9-378:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:377:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:376:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:375:13-41
+activity#io.vtown.WeiTangApp.ui.title.account.AOderBeing
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:379:9-382:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:381:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:380:13-56
+activity#io.vtown.WeiTangApp.ui.title.shop.center.AShopData
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:383:9-386:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:385:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:384:13-59
+activity#io.vtown.WeiTangApp.ui.title.shop.center.AShopDataEdit
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:387:9-390:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:389:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:388:13-63
+activity#io.vtown.WeiTangApp.ui.comment.AphotoPager
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:393:9-397:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:396:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:395:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:394:13-51
+activity#io.vtown.WeiTangApp.ui.title.loginregist.ALogin
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:398:9-402:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:401:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:400:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:399:13-56
+activity#io.vtown.WeiTangApp.ui.title.loginregist.AInviteAndApprove
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:403:9-406:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:405:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:404:13-67
+activity#io.vtown.WeiTangApp.ui.title.shop.odermanger.AOderDetail
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:407:9-411:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:410:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:409:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:408:13-65
+activity#io.vtown.WeiTangApp.ui.title.shop.odermanger.ADaifaOrderModify
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:412:9-415:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:414:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:413:13-71
+activity#io.vtown.WeiTangApp.ui.title.shop.odermanger.ADaifuOrderModify
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:421:9-424:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:423:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:422:13-71
+activity#io.vtown.WeiTangApp.ui.title.ABrandJoin
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:425:9-429:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:428:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:427:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:426:13-48
+activity#io.vtown.WeiTangApp.ui.title.AApplyProxy
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:430:9-434:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:433:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:432:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:431:13-49
+activity#io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:435:9-438:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:437:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:436:13-65
+activity#io.vtown.WeiTangApp.ui.title.loginregist.AInviteCode
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:439:9-443:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:442:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:441:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:440:13-61
+activity#io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:444:9-448:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:447:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:446:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:445:13-61
+activity#io.vtown.WeiTangApp.ui.title.account.ACashierDesk
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:449:9-453:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:452:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:451:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:450:13-58
+activity#io.vtown.WeiTangApp.ui.title.shop.addgood.AGoodPreview
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:454:9-458:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:457:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:456:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:455:13-63
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.ASelectBank
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:459:9-462:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:461:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:460:13-63
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.AModifyAlipay
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:463:9-467:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:466:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:465:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:464:13-65
+activity#io.vtown.WeiTangApp.ui.title.center.wallet.ABankCardOperation
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:468:9-472:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:471:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:470:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:469:13-70
+activity#io.vtown.WeiTangApp.ui.ui.ALookAptitude
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:473:9-477:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:476:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:475:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:474:13-48
+activity#io.vtown.WeiTangApp.ui.title.center.myorder.AApplyTuikuan
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:478:9-482:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:481:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:480:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:479:13-66
+activity#io.vtown.WeiTangApp.ui.title.center.myshow.AMyShowDataSet
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:483:9-487:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:486:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:485:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:484:13-66
+activity#io.vtown.WeiTangApp.ui.title.shop.addgood.AAddGoodCategory
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:488:9-491:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:490:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:489:13-67
+activity#io.vtown.WeiTangApp.ui.title.center.set.AEditAddress
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:492:9-495:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:494:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:493:13-61
+activity#io.vtown.WeiTangApp.ui.title.center.set.AOpinionFeedback
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:496:9-500:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:499:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:498:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:497:13-65
+activity#io.vtown.WeiTangApp.ui.comment.im.AChat
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:501:9-505:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:504:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:503:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:502:13-48
+activity#io.vtown.WeiTangApp.ui.title.account.AGoodsCheckList
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:506:9-510:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:509:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:508:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:507:13-61
+activity#io.vtown.WeiTangApp.ui.title.mynew.ANew
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:511:9-515:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:514:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:513:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:512:13-48
+activity#io.vtown.WeiTangApp.ui.title.center.set.ARealIdauthSucceed
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:516:9-520:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:519:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:518:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:517:13-67
+activity#io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:521:9-525:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:524:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:523:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:522:13-62
+activity#io.vtown.WeiTangApp.ui.title.ABrandShopInf
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:526:9-530:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:529:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:528:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:527:13-51
+activity#io.vtown.WeiTangApp.ui.title.mynew.AItemNew
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:531:9-535:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:534:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:533:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:532:13-52
+activity#io.vtown.WeiTangApp.ui.comment.AEditInfBack
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:538:9-541:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:540:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:539:13-52
+activity#io.vtown.WeiTangApp.ui.afragment.ASellStatistics
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:542:9-546:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:545:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:544:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:543:13-57
+activity#io.vtown.WeiTangApp.ui.ui.ALoadAd
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:548:9-552:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:551:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:550:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:549:13-42
+activity#io.vtown.WeiTangApp.ui.title.shop.odermanger.ASeleteLogistics
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:553:9-556:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:555:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:554:13-70
+activity#io.vtown.WeiTangApp.ui.title.ABeQRCode
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:559:9-563:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:562:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:561:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:560:13-47
+activity#io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:564:9-568:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:567:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:566:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:565:13-71
+activity#io.vtown.WeiTangApp.ui.title.shop.purchase.APurchaseDetail
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:569:9-573:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:572:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:571:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:570:13-67
+activity#io.vtown.WeiTangApp.ui.comment.im.AChatInf
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:574:9-578:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:577:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:576:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:575:13-51
+activity#io.vtown.WeiTangApp.comment.view.ShowSelectPic
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:581:9-586:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:584:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:583:13-44
+	android:windowSoftInputMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:585:13-54
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:582:13-55
+activity#io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderDetail
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:588:9-591:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:590:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:589:13-73
+activity#io.vtown.WeiTangApp.ui.comment.AGoodVidoShare
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:592:9-597:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:595:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:594:13-44
+	android:windowSoftInputMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:596:13-54
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:593:13-54
+activity#io.vtown.WeiTangApp.ui.comment.AGoodShow
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:598:9-602:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:601:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:600:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:599:13-49
+activity#io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderVido
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:603:9-607:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:606:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:605:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:604:13-65
+activity#io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderSuccess
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:613:9-617:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:616:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:615:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:614:13-68
+activity#io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderNoPayDetail
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:618:9-622:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:621:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:620:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:619:13-78
+activity#io.vtown.WeiTangApp.ui.title.shop.odermanger.AEditGoodPrice
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:623:9-627:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:626:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:625:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:624:13-68
+activity#io.vtown.WeiTangApp.ui.ui.ANewHome
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:628:9-632:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:631:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:630:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:629:13-43
+activity#io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:633:9-637:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:636:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:635:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:634:13-54
+activity#io.vtown.WeiTangApp.test.ATestView
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:638:9-642:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:641:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:640:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:639:13-43
+activity#io.vtown.WeiTangApp.ui.comment.APlayer
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:643:9-647:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:646:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:645:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:644:13-47
+activity#io.vtown.WeiTangApp.ui.title.shop.odermanger.AModifyDeliveryAddress
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:650:9-653:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:652:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:651:13-76
+activity#io.vtown.WeiTangApp.ui.comment.im.AChatLoad
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:654:9-658:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:657:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:656:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:655:13-52
+activity#io.vtown.WeiTangApp.ui.title.shop.purchase.APurchaseNoPayDetail
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:659:9-663:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:662:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:661:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:660:13-72
+activity#io.vtown.WeiTangApp.ui.title.mynew.ANewInf
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:664:9-668:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:667:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:666:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:665:13-51
+activity#io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyOutDataCoupons
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:669:9-673:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:672:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:671:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:670:13-72
+activity#io.vtown.WeiTangApp.ui.title.shop.ABrandCheck
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:674:9-678:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:677:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:676:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:675:13-54
+activity#io.vtown.WeiTangApp.ui.title.center.myinvitecode.ABindCode
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:679:9-683:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:682:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:681:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:680:13-67
+activity#io.vtown.WeiTangApp.ui.title.shop.goodmanger.AAlterBrandNumber
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:685:9-689:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:688:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:687:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:686:13-71
+activity#io.vtown.WeiTangApp.ui.ANull
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:690:9-694:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:693:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:692:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:691:13-37
+activity#io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:696:9-700:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:699:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:698:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:697:13-60
+activity#io.vtown.WeiTangApp.ui.comment.order.AShopOrderManager
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:701:9-705:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:704:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:703:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:702:13-63
+activity#io.vtown.WeiTangApp.ui.title.shop.goodmanger.ABrandNumberEdit
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:706:9-710:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:709:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:708:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:707:13-70
+activity#io.vtown.WeiTangApp.ui.comment.order.AShopPurchaseOrder
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:711:9-715:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:714:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:713:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:712:13-64
+activity#io.vtown.WeiTangApp.ui.title.shop.ABrandList
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:716:9-720:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:719:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:718:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:717:13-53
+activity#io.vtown.WeiTangApp.comment.view.select_pic.PicSelActivity
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:721:9-725:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:723:13-49
+	android:theme
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:724:13-47
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:722:13-67
+activity#io.vtown.WeiTangApp.ui.title.shop.goodmanger.ANewGoodMangerEdit
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:727:9-731:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:730:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:729:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:728:13-72
+activity#io.vtown.WeiTangApp.ui.comment.AShopGoodSou
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:732:9-735:51
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:735:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:734:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:733:13-52
+activity#io.vtown.WeiTangApp.ui.comment.ALoactePhotoPager
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:736:9-739:51
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:739:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:738:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:737:13-57
+activity#io.vtown.WeiTangApp.ui.title.AShowIDPic
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:741:9-744:51
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:744:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:743:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:742:13-48
+activity#io.vtown.WeiTangApp.ui.title.center.set.ASelectAddress
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:747:9-750:51
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:750:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:749:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:748:13-63
+activity#io.vtown.WeiTangApp.ui.title.AGoodPop
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:752:9-757:15
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:755:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:754:13-44
+	android:theme
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:756:1-40
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:753:13-46
+activity#io.vtown.WeiTangApp.ui.ui.AMainTab
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:759:8-762:51
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:762:13-49
+	android:launchMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:761:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:760:13-43
+service#io.vtown.WeiTangApp.service.DownloadService
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:767:9-768:19
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:767:18-57
+activity#cn.jpush.android.ui.PopWinActivity
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:772:9-776:20
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:774:13-37
+	android:theme
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:775:13-49
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:773:13-62
+activity#cn.jpush.android.ui.PushActivity
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:779:9-790:20
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:782:13-37
+	android:configChanges
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:781:13-63
+	android:theme
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:783:13-60
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:780:13-60
+intent-filter#android.intent.category.DEFAULT+cn.jpush.android.ui.PushActivity+io.vtown.WeiTangApp
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:784:13-789:29
+action#cn.jpush.android.ui.PushActivity
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:785:17-74
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:785:25-72
+category#android.intent.category.DEFAULT
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:787:17-75
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:787:27-73
+category#io.vtown.WeiTangApp
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:788:17-63
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:788:27-61
+service#cn.jpush.android.service.DownloadService
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:792:9-796:19
+	android:enabled
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:794:13-35
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:795:13-37
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:793:13-68
+service#cn.jpush.android.service.PushService
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:800:9-810:19
+	android:enabled
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:802:13-35
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:803:13-37
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:801:13-64
+intent-filter#cn.jpush.android.intent.PUSH_TIME+cn.jpush.android.intent.PushService+cn.jpush.android.intent.REGISTER+cn.jpush.android.intent.REPORT
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:804:13-809:29
+action#cn.jpush.android.intent.REGISTER
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:805:17-74
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:805:25-72
+action#cn.jpush.android.intent.REPORT
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:806:17-72
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:806:25-70
+action#cn.jpush.android.intent.PushService
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:807:17-77
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:807:25-75
+action#cn.jpush.android.intent.PUSH_TIME
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:808:17-75
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:808:25-73
+service#cn.jpush.android.service.DaemonService
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:814:9-823:19
+	android:enabled
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:816:13-35
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:817:13-36
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:815:13-66
+intent-filter#cn.jpush.android.intent.DaemonService+io.vtown.WeiTangApp
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:818:13-822:29
+action#cn.jpush.android.intent.DaemonService
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:819:17-79
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:819:25-77
+receiver#cn.jpush.android.service.PushReceiver
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:826:9-846:20
+	android:enabled
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:828:13-35
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:829:13-37
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:827:13-65
+intent-filter#cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY+io.vtown.WeiTangApp
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:830:13-834:29
+	android:priority
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:830:28-51
+action#cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:831:17-93
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:831:25-91
+intent-filter#android.intent.action.USER_PRESENT+android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:835:13-838:29
+action#android.intent.action.USER_PRESENT
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:836:17-76
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:836:25-74
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:837:17-78
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:837:25-76
+intent-filter#android.intent.action.PACKAGE_ADDED+android.intent.action.PACKAGE_REMOVED
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:840:13-845:29
+action#android.intent.action.PACKAGE_ADDED
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:841:17-77
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:841:25-75
+action#android.intent.action.PACKAGE_REMOVED
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:842:17-79
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:842:25-77
+receiver#cn.jpush.android.service.AlarmReceiver
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:849:9-851:39
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:851:13-37
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:850:13-66
+receiver#io.vtown.WeiTangApp.event.receiver.MyReceiver
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:854:9-874:20
+	android:enabled
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:856:13-35
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:857:13-37
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:855:13-54
+intent-filter#cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK+cn.jpush.android.intent.CONNECTION+cn.jpush.android.intent.MESSAGE_RECEIVED+cn.jpush.android.intent.NOTIFICATION_OPENED+cn.jpush.android.intent.NOTIFICATION_RECEIVED+cn.jpush.android.intent.REGISTRATION+cn.jpush.android.intent.UNREGISTRATION+io.vtown.WeiTangApp
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:858:13-873:29
+action#cn.jpush.android.intent.REGISTRATION
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:859:17-78
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:859:25-76
+action#cn.jpush.android.intent.UNREGISTRATION
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:861:17-80
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:861:25-78
+action#cn.jpush.android.intent.MESSAGE_RECEIVED
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:862:17-82
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:862:25-80
+action#cn.jpush.android.intent.NOTIFICATION_RECEIVED
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:864:17-87
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:864:25-85
+action#cn.jpush.android.intent.NOTIFICATION_OPENED
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:866:17-85
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:866:25-83
+action#cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:868:17-90
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:868:25-88
+action#cn.jpush.android.intent.CONNECTION
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:870:17-76
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:870:25-74
+meta-data#JPUSH_CHANNEL
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:877:9-879:48
+	android:value
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:879:13-46
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:878:13-41
+meta-data#JPUSH_APPKEY
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:887:9-889:55
+	android:value
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:889:13-53
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:888:13-40
+activity#io.vtown.WeiTangApp.wxapi.WXEntryActivity
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:895:9-900:74
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:899:13-49
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:898:13-36
+	android:configChanges
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:897:13-74
+	android:theme
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:900:13-72
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:896:13-50
+activity#com.mob.tools.MobUIShell
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:901:9-908:20
+	android:windowSoftInputMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:905:13-67
+	android:configChanges
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:903:13-74
+	android:theme
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:904:13-72
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:902:13-52
+activity#cn.sharesdk.framework.ShareSDKUIShell
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:911:9-931:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:914:13-49
+	android:windowSoftInputMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:916:13-67
+	android:configChanges
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:913:13-63
+	android:theme
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:915:13-72
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:912:13-65
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:923:13-930:29
+action#android.intent.action.VIEW
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:926:17-68
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:926:25-66
+activity#io.vtown.WeiTangApp.ui.ui.CaptureActivity
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:937:9-997:20
+	android:clearTaskOnLaunch
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:939:13-45
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:941:13-49
+	android:stateNotNeeded
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:942:13-42
+	android:windowSoftInputMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:943:13-60
+	android:configChanges
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:940:13-63
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:938:13-50
+intent-filter#android.intent.category.DEFAULT+com.google.zxing.client.android.SCAN
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:944:13-948:29
+action#com.google.zxing.client.android.SCAN
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:945:17-78
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:945:25-76
+activity#com.alipay.sdk.app.H5PayActivity
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1001:9-1007:20
+	android:screenOrientation
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1005:13-47
+	android:exported
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1004:13-37
+	android:windowSoftInputMode
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1006:13-67
+	android:configChanges
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1003:13-85
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1002:13-60
+meta-data#EASEMOB_APPKEY
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1017:9-1019:46
+	android:value
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1019:13-44
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1018:13-42
+service#com.easemob.chat.EMChatService
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1022:9-65
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1022:18-63
+activity#io.vtown.WeiTangApp.ui.ANdkTest
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1042:9-1049:20
+	android:label
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1044:13-61
+	android:parentActivityName
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1045:13-51
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1043:13-40
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1046:13-1048:63
+	android:value
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1048:17-61
+	android:name
+		ADDED from D:\MyStudioSpace\WtApp\AndroidManifest.xml:1047:17-63

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                android:id="@+id/mynew_newlist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" />
+            <!-- 小助手 -->
+
+            <LinearLayout
+                android:id="@+id/new_zhushou_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/select_white_to_gray"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp" >
+
+                <ImageView
+                    android:id="@+id/new_zhushou_iv"
+                    android:layout_width="@dimen/item_my_new_head_iv_hright"
+                    android:layout_height="@dimen/item_my_new_head_iv_hright"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/im_zhushou_iv" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/new_zhushou_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/wt_helper"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/new_zhushou_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:paddingRight="5dp"
+                            android:textColor="@color/app_gray" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="4dp" />
+
+                    <TextView
+                        android:id="@+id/item_my_new_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="top"
+                        android:lines="1"
+                        android:textColor="@color/app_gray" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 小助手 -->
+
+            <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                android:id="@+id/mynew_imlist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:visibility="gone" >
+            </io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

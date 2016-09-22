@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/yaoqingshangji_yaoqing" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/shape_add_goods_edit_bg" >
+
+                <EditText
+                    android:id="@+id/et_superior_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/tv_star1"
+                    android:background="@null"
+                    android:hint="@string/real_name"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_star1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:text="*" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_add_goods_edit_bg" >
+
+                <EditText
+                    android:id="@+id/et_superior_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/tv_star2"
+                    android:background="@null"
+                    android:hint="@string/login_phone_number"
+                    android:inputType="phone"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_star2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:text="*" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/shape_add_goods_edit_bg" >
+
+                <EditText
+                    android:id="@+id/et_superior_agent_brand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/tv_star3"
+                    android:background="@null"
+                    android:hint="@string/dailipinpai"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_star3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:text="*" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_add_goods_edit_bg" >
+
+                <TextView
+                    android:id="@+id/tv_star4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:text="*" />
+
+                <EditText
+                    android:id="@+id/et_superior_agent_teamnumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/tv_star4"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="@string/shop_tuandui_num"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="13sp" >
+
+                    <requestFocus />
+                </EditText>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_add_goods_edit_bg" >
+
+                <TextView
+                    android:id="@+id/tv_star5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:text="*" />
+
+                <EditText
+                    android:id="@+id/et_superior_agent_team_inf"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/tv_star5"
+                    android:background="@null"
+                    android:hint="@string/shop_tuandui_inf"
+                     android:gravity="top|left"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="13sp" >
+                    
+                    <requestFocus />
+                </EditText>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_invite"
+        style="@style/build_two_dimension_code_btn_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:padding="10dp"
+        android:text="@string/yaoiqng" />
+
+</LinearLayout>

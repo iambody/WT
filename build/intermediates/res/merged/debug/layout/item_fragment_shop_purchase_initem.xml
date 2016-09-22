@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/order_list_inside_layout_padding"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/item_fragment_shop_purchase_in_iv"
+            android:scaleType="fitXY"
+            android:layout_width="@dimen/item_shop_purchase_height"
+            android:layout_height="@dimen/item_shop_purchase_height"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/order_list_inside_layout_padding"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_fragment_shop_purchase_in_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:textColor="@color/app_gray"
+            android:text="@string/error_network" />
+        
+        <TextView 
+            android:id="@+id/item_fragment_shop_purchase_in_content"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textSize="@dimen/order_list_inside_standard_lable_size"
+             android:textColor="@color/app_gray"
+            android:text="规格："
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/item_fragment_shop_purchase_in_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/order_list_inside_price_size"
+                android:textColor="@color/salmon"  />
+
+            <TextView
+                android:id="@+id/item_fragment_shop_purchase_in_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/tan"
+                android:textSize="@dimen/order_list_inside_number_size"
+                 />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

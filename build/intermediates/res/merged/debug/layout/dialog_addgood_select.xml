@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/popup_addgood_select_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/tran"
+        android:orientation="vertical" >
+
+     <!--    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_size2"
+            android:background="@color/gray" /> -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/item_pop_addgoods_select_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/select_trans_to_gray"
+                android:padding="10dp"
+                android:text="@string/addpic"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_size2"
+            android:background="@color/lightyellow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/item_addgoods_select_vido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/select_trans_to_gray"
+                android:padding="10dp"
+                android:text="@string/addvido"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_size2"
+            android:background="@color/lightyellow" />
+
+        <Button
+            android:id="@+id/item_addgoods_select_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_trans_to_gray"
+            android:padding="10dp"
+            android:text="@string/cancle"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</RelativeLayout>

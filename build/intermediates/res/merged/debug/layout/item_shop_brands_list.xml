@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
+
+        <io.vtown.WeiTangApp.comment.view.CircleImageView
+            android:id="@+id/shop_brand_iv"
+            android:layout_width="@dimen/shop_user_hright"
+            android:layout_height="@dimen/shop_user_hright"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_shop_brand_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="品牌名称"
+                android:textColor="@color/grey"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_shop_brand_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="品牌介绍:"
+                android:textColor="@color/app_gray"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp" >
+
+            <TextView
+                android:id="@+id/tv_shop_brand_apply"
+                android:background="@drawable/select_fen_to_gray_no_circular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="申    请"
+                android:paddingBottom="4dp"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="4dp"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_shop_brand_is_apply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/app_gray"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="4dp"
+                android:text="申请中"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_shop_brand_apply_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/royalblue"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="4dp"
+                android:text="已代理"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

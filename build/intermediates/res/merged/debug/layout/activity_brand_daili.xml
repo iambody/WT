@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <ListView
+        android:id="@+id/brand_daili_ls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="10dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:listSelector="#00000000"
+        android:scrollbars="none" >
+    </ListView>
+
+    <include
+        android:id="@+id/brand_daili_add"
+        layout="@layout/item_branddaili_foot" />
+
+</LinearLayout>

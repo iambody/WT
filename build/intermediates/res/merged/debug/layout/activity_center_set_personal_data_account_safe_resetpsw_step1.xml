@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+    
+    <include layout="@layout/titlebar"/>
+    
+    <TextView 
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/real_name"
+       android:padding="10dp"
+        
+        />
+    
+    <EditText 
+        android:id="@+id/et_enter_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/txt_enter_real_name"
+        android:padding="10dp"
+        android:textSize="13sp"
+        android:background="@color/white"
+        
+        />
+    <TextView 
+        android:id="@+id/tv_id_numb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/id_numb"
+        />
+    
+    <EditText 
+        android:id="@+id/et_enter_id_numb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:padding="10dp"
+       android:textSize="13sp"
+        android:inputType="number"
+        android:hint="@string/txt_enter_id_numb"
+        android:background="@color/white"
+        
+        />
+    
+    
+    <Button 
+        android:id="@+id/btn_next_step"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/build_two_dimension_code_btn_style"
+        android:text="@string/next_step"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="80dp"
+        />
+
+</LinearLayout>

@@ -1,0 +1,161 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_rootview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/shape_bg1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ly_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:background="#666666">
+
+
+
+
+            <ImageView
+                android:id="@+id/iv_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/selpiccamera" />
+
+            <ImageView
+                android:id="@+id/iv_pics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_camera"
+                android:padding="10dp"
+                android:src="@drawable/ic_xiangce_nor" />
+
+
+           <!-- <TextView
+                android:id="@+id/sel_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dip"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/iv_camera"
+                android:text="相册"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />-->
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dip"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:text="照片"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/id_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dip"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:text="取消"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <GridView
+                android:id="@+id/id_gridView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2.5dip"
+                android:numColumns="4" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="87dip"
+                android:layout_alignParentBottom="true"
+                android:background="#e0000000"
+                android:clickable="true">
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="77dip"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dip">
+
+                    <LinearLayout
+                        android:id="@+id/ly_bt_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dip"
+                        android:gravity="center"
+                        android:orientation="horizontal"></LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:id="@+id/id_ok"
+                    android:layout_width="57dip"
+                    android:layout_height="57dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:background="#fc49ae"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#fc49ae"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:text="确定"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/id_sel_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#fc49ae"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\tab_bg.9.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\tab_bg.9.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\chatto_bg_focused.9.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chatto_bg_focused.9.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\chatto_bg_normal.9.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chatto_bg_normal.9.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\chatfrom_bg_normal.9.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chatfrom_bg_normal.9.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\chatfrom_bg_focused.9.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chatfrom_bg_focused.9.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\bg_rb_checked.9.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\bg_rb_checked.9.png"
+    }
+]

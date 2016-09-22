@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_shopmanger_circular_bg"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/order_list_txt_padding"
+        android:background="@drawable/shape_shopmanger_circular_bg"
+        android:orientation="vertical" >
+
+        <!-- 上部Title -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/order_list_outside_layout_padding" >
+
+            <TextView
+                android:id="@+id/fragment_shop_purchase_shopname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/comment_label_txtsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fragment_shop_purchase_pay_to"
+                style="@style/bt_textview"
+                android:text="去付款"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/fragment_shop_purchase_pay_again"
+                style="@style/bt_textview"
+                android:layout_marginLeft="@dimen/order_list_button_margin"
+                android:text="再次购买"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/fragment_shop_purchase_shouhuo_commiont"
+                style="@style/bt_textview"
+                android:layout_marginLeft="@dimen/order_list_button_margin"
+                android:text="确认收货"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/fragment_purchase_order_arbitration_is_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_order_btn_gray_bg"
+                android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
+                android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
+                android:text="订单已取消"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+            
+            <TextView
+                android:id="@+id/fragment_purchase_order_is_delay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_order_btn_gray_bg"
+                android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
+                android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
+                android:text="已延期收货"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/fragment_purchase_order_arbitration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_order_btn_gray_bg"
+                android:gravity="center"
+                android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
+                android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
+                android:text="仲裁中"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/fragment_purchase_order_is_over"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_order_btn_gray_bg"
+                android:gravity="center"
+                android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
+                android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
+                android:text="订单已完成"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/fragment_purchase_order_apply_refunding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_order_btn_gray_bg"
+                android:gravity="center"
+                android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
+                android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
+                android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
+                android:text="申请退款中"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View style="@style/line_left_right" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/order_list_txt_padding" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="订单编号："
+                android:textColor="@color/slategrey" 
+                android:textSize="@dimen/comment_label_txtsize" />
+
+            <TextView
+                android:id="@+id/tv_purchase_seller_order_sn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nullstr"
+                android:textColor="@color/slategrey" 
+                android:textSize="@dimen/comment_label_txtsize" />
+        </LinearLayout>
+
+        <View style="@style/line_left_right" />
+
+        <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+            android:id="@+id/item_fragment_shop_purchase_ls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null" />
+        <!-- 下部分的Title -->
+
+       <View style="@style/line_left_right" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/order_list_outside_layout_padding" >
+
+            <TextView
+                android:id="@+id/item_fragment_shop_purchase_allnum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="共四件产品"
+                android:textSize="@dimen/order_list_good_number"
+                android:textColor="@color/grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="总价："
+                android:textSize="@dimen/order_list_wait_pay"
+                android:textColor="@color/grey" />
+
+            <TextView
+                android:id="@+id/item_fragment_shop_purchase_allmoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/app_fen"
+                android:textSize="@dimen/order_list_total_money" />
+
+            <TextView
+                android:id="@+id/item_fragment_shop_purchase_postage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_fen"
+                android:textSize="@dimen/order_list_poseage" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

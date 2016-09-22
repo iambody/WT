@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_select_tuikuan_cause_bg" >
+
+        <EditText
+            android:id="@+id/et_enter_your_valuable_opinion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="left"
+            android:hint="@string/enter_your_valuable_opinion"
+            android:padding="10dp"
+            android:textColor="@color/app_gray"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_opinion_words_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="2dp"
+            android:text="0/100"
+            android:textColor="@color/app_gray" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_enter_your_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_select_tuikuan_cause_bg"
+        android:hint="@string/enter_your_contact"
+        android:padding="10dp"
+        android:textColor="@color/app_gray"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_submit_opinion"
+        style="@style/build_two_dimension_code_btn_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="@dimen/comment_label_txtsize"
+        android:text="@string/submit_opinion" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/app_fen" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/common_question"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/comment_label_txtsize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@+id/common_question1"
+            layout="@layout/commentview_txtarrow" />
+
+        <View style="@style/line_left" />
+
+        <include
+            android:id="@+id/common_question2"
+            layout="@layout/commentview_txtarrow" />
+
+        <View style="@style/line_left" />
+
+        <include
+            android:id="@+id/common_question3"
+            layout="@layout/commentview_txtarrow" />
+
+        <View style="@style/line_left" />
+
+        <include
+            android:id="@+id/common_question4"
+            layout="@layout/commentview_txtarrow" />
+    </LinearLayout>
+
+</LinearLayout>

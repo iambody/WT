@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/shop_good_sou_hot_goods_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/error_iv2"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:id="@+id/shop_good_sou_hot_goods_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:id="@+id/shop_good_sou_hot_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/app_fen"
+
+        />
+
+</LinearLayout>

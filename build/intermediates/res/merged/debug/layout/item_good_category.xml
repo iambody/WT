@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/iv_good_category_good_icon"
+        android:layout_width="@dimen/item_shop_purchase_height"
+        android:layout_height="@dimen/item_shop_purchase_height" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp" >
+
+        <TextView
+            android:id="@+id/tv_good_category_good_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nullstr" 
+            android:lines="2"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/tv_good_category_good_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/nullstr"
+            android:textColor="@color/app_fen" />
+    </RelativeLayout>
+
+</LinearLayout>

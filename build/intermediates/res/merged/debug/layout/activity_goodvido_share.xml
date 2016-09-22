@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:orientation="vertical">
+
+    <include layout="@layout/titlebar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/good_vido_lay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/vidoshare_height">
+
+                <ImageView
+                    android:id="@+id/good_vido_lay_bg_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"/>
+
+                <ImageView
+                    android:id="@+id/good_vido_lay_control_iv"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/video_player"/>
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/good_vido_share_ed"
+                android:layout_width="fill_parent"
+                android:layout_height="130dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/shap_corner"
+                android:gravity="left|top"
+                android:hint="@string/szhuan_saying">
+            </EditText>
+
+            <TextView
+                android:id="@+id/good_vido_share_bt"
+                style="@style/bt_match"
+                android:layout_margin="10dp"
+                android:background="@drawable/select_fen_to_gray"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/shareshow"
+                android:textColor="@color/TextColorWhite"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

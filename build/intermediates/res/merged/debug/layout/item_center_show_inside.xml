@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/gv_center_show_vido_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/gv_center_show_vido_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/gv_center_show_vido_play_iv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/video_player" />
+        </RelativeLayout>
+
+        <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+            android:id="@+id/gv_center_show_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:horizontalSpacing="5dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:verticalSpacing="5dp"
+            android:cacheColorHint="@null"
+            android:listSelector="@null" />
+
+        <TextView
+            android:id="@+id/tv_center_show_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:textColor="@color/app_gray"
+            android:text="@string/nullstr" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/center_wallet_property_detail_outside_listview_padding"
+        android:text="本月"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/comment_label_txtsize" />
+
+    <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+        android:id="@+id/lv_property_list_inside"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:listSelector="#00000000"
+        android:scrollbars="none" />
+
+</LinearLayout>

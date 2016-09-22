@@ -1,0 +1,159 @@
+[
+    {
+        "outputFile": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-800x480\\values-800x480.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 58,
+                    "endOffset": 109
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-800x480\\dimens.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 375,
+                        "endColumn": 58,
+                        "endOffset": 429
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 114,
+                    "endColumn": 56,
+                    "endOffset": 166
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-800x480\\dimens.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 317,
+                        "endColumn": 56,
+                        "endOffset": 369
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 171,
+                    "endColumn": 55,
+                    "endOffset": 222
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-800x480\\dimens.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 260,
+                        "endColumn": 55,
+                        "endOffset": 311
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 227,
+                    "endColumn": 50,
+                    "endOffset": 273
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-800x480\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 94,
+                        "endColumn": 50,
+                        "endOffset": 140
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 278,
+                    "endColumn": 53,
+                    "endOffset": 327
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-800x480\\dimens.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 435,
+                        "endColumn": 53,
+                        "endOffset": 484
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 332,
+                    "endColumn": 47,
+                    "endOffset": 375
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-800x480\\dimens.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 150,
+                        "endColumn": 47,
+                        "endOffset": 193
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 380,
+                    "endColumn": 59,
+                    "endOffset": 435
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-800x480\\dimens.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 199,
+                        "endColumn": 59,
+                        "endOffset": 254
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 440,
+                    "endColumn": 48,
+                    "endOffset": 484
+                },
+                "from": {
+                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-800x480\\dimens.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 490,
+                        "endColumn": 48,
+                        "endOffset": 534
+                    }
+                }
+            }
+        ]
+    }
+]

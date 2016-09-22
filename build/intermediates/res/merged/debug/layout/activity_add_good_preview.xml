@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <!-- Banner图 -->
+
+        <RelativeLayout
+            android:id="@+id/rl_add_good_preview_gooddetail_page_lay"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/home_bannerheigh"
+            android:background="@color/transparent" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_add_good_preview_gooddetail_pager"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent" >
+            </android.support.v4.view.ViewPager>
+
+            <LinearLayout
+                android:id="@+id/ll_add_good_preview_gooddetail_viewGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </RelativeLayout>
+        <!-- Banner图***** -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_good_add_good_preview_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/shopbus_item_log3"
+                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                  />
+
+            <RelativeLayout
+                android:id="@+id/rl_add_good_preview_look_show"
+                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/iv_add_good_preview_show_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/center_iv1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_add_good_preview_show_icon"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/chakanshow" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                     android:layout_centerVertical="true"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_add_good_preview_show_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nullstr" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_tiaozhuan_nor" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jianyilingshou" />
+
+                <TextView
+                    android:id="@+id/tv_add_good_preview_suggest_retail_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="@string/nullstr"
+                    android:textColor="@color/app_fen" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="16dp"
+                android:background="@color/app_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fahuodi" />
+
+                <TextView
+                    android:id="@+id/tv_add_good_preview_send_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:text="@string/nullstr" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="16dp"
+                android:background="@color/app_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yunfei" />
+
+                <TextView
+                    android:id="@+id/tv_add_good_preview_freight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="62dp"
+                    android:text="@string/nullstr" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/app_bg" />
+
+            <RelativeLayout
+                android:id="@+id/rl_add_good_preview_seller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                 >
+
+                <ImageView
+                    android:id="@+id/iv_add_good_preview_seller_icon"
+                    android:layout_width="@dimen/goode_detail_sell_iv_height"
+                    android:layout_height="@dimen/goode_detail_sell_iv_height"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitXY"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_add_good_preview_seller_shop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/iv_add_good_preview_seller_icon"
+                    android:text="@string/nullstr" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+            
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/app_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+                
+                <View 
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/line_size1"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                    android:background="@color/app_gray"
+                    />
+                
+                <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tuwendetail"
+                    />
+                
+                <View 
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/line_size1"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                    android:background="@color/app_gray"
+                    />
+            </LinearLayout>
+            
+            <TextView 
+                android:id="@+id/tv_add_good_preview_good_desc_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                 
+                />
+             
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+       
+
+        <TextView
+            android:id="@+id/tv_add_good_preview_replace_sell"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/select_fen_to_gray1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/yijiandaimai"
+            android:textColor="@color/TextColorWhite" />
+    </LinearLayout>
+
+</LinearLayout>

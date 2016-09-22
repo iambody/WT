@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/center_wallet_bankcard_manage_listview_item_height"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_bank_card_bg" >
+
+        <!--<ImageView
+            android:id="@+id/iv_bank_icon"
+            android:layout_width="@dimen/center_wallet_bankcard_manage_bank_icon_size"
+            android:layout_height="@dimen/center_wallet_bankcard_manage_bank_icon_size"
+            android:layout_marginLeft="@dimen/center_wallet_bankcard_manage_bank_icon_marginleft"
+            android:layout_marginTop="@dimen/center_wallet_bankcard_manage_bank_icon_margintop"
+            />-->
+
+        <io.vtown.WeiTangApp.comment.view.CircleImageView
+            android:id="@+id/iv_bank_icon"
+            android:layout_width="@dimen/shop_user_hright"
+            android:layout_height="@dimen/shop_user_hright"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/tv_bank_card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nullstr"
+            android:textSize="@dimen/comment_label_txtsize"
+            android:textColor="@color/wheat"
+            android:layout_toRightOf="@id/iv_bank_icon"
+            android:layout_marginLeft="@dimen/center_wallet_bankcard_manage_bank_name_marginleft"
+            android:layout_marginTop="@dimen/center_wallet_bankcard_manage_bank_name_margintop"
+            />
+        <TextView
+            android:id="@+id/tv_bank_card_numb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nullstr"
+            android:textColor="@color/wheat"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/center_wallet_bankcard_manage_number_number_marginright"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="@dimen/center_wallet_bankcard_manage_bank_number_padding"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
