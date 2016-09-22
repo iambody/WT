@@ -112,11 +112,11 @@ public class Constants {
 	/**
 	 * 开发环境 的host
 	 */
-	  public static String Host = "http://dev.vt.api.v-town.cn";
+//	  public static String Host = "http://dev.vt.api.v-town.cn";
 	/**
 	 * 测试环境的host 测试环境 需要切换key 需要同时切换SignKey这个字段!!!!!!!!!!!!!!!!!!!!
 	 */
-	// public static String Host = "https://testvtapi.v-town.cc";
+	 public static String Host = "https://testvtapi.v-town.cc";
 	public static String WxHost="https://static.v-town.cc/";
 
 	/**
@@ -891,11 +891,11 @@ public class Constants {
 	/**
 	 * 签名时候的key  开发环境
 	 */
-	  public static String SignKey = "GriE93gIGp$5bDjQ4rc20FzxWGghTIau";
+//	  public static String SignKey = "GriE93gIGp$5bDjQ4rc20FzxWGghTIau";
 	/**
 	 * 测试环境
 	 */
-	 //public static String SignKey = "3vh4xN3@G02ixajB*^@PHkxfz88AKk%O";
+	 public static String SignKey = "3vh4xN3@G02ixajB*^@PHkxfz88AKk%O";
 	/**
 	 * 正式环境的key
 	 */

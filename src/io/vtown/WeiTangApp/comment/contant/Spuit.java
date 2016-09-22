@@ -492,7 +492,6 @@ public class Spuit {
         Editor ed = sp.edit();
         ed.putString("sousourecommended", Recommend);
         ed.commit();
-
     }
 
     public static String SousouRecommend_Get(Context PPContext) {
