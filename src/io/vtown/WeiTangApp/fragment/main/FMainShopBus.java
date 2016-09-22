@@ -2,6 +2,7 @@ package io.vtown.WeiTangApp.fragment.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -37,6 +39,7 @@ import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.AddAndSubView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.comment.view.pop.PShopBus;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
@@ -49,7 +52,9 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 /**
  * Created by datutu on 2016/9/18.
  */
-public class FMainShopBus extends FBase implements LListView.IXListViewListener, View.OnClickListener {
+public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshListener , View.OnClickListener {
+
+    private RefreshLayout fragment_shopbus_refrash;
 
     private TextView maintab_shopbus_left_txt;
     private ImageView maintab_shopbus_Right_iv;
@@ -58,7 +63,7 @@ public class FMainShopBus extends FBase implements LListView.IXListViewListener,
     //外层包裹布局
     private LinearLayout maintab_shopbus_show_lay;
     //
-    private LListView maintab_shopbus_ls;
+    private ListView maintab_shopbus_ls;
     //下边结算布局
     private LinearLayout maintab_shopbus_down_lay;
     //下边勾选
@@ -113,12 +118,18 @@ public class FMainShopBus extends FBase implements LListView.IXListViewListener,
     }
 
     private void InItBaseView() {
+        fragment_shopbus_refrash= (RefreshLayout) BaseView.findViewById(R.id.fragment_shopbus_refrash);
+        fragment_shopbus_refrash.setOnRefreshListener(this);
+        fragment_shopbus_refrash.setCanLoadMore(false);
+        fragment_shopbus_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+
+
         maintab_shopbus_left_txt = (TextView) BaseView.findViewById(R.id.maintab_shopbus_left_txt);
         maintab_shopbus_Right_iv = (ImageView) BaseView.findViewById(R.id.maintab_shopbus_Right_iv);
 
 
         maintab_shopbus_show_lay = (LinearLayout) BaseView.findViewById(R.id.maintab_shopbus_show_lay);
-        maintab_shopbus_ls = (LListView) BaseView.findViewById(R.id.maintab_shopbus_ls);
+        maintab_shopbus_ls = (ListView) BaseView.findViewById(R.id.maintab_shopbus_ls);
         maintab_shopbus_down_lay = (LinearLayout) BaseView.findViewById(R.id.maintab_shopbus_down_lay);
         maintab_sopbus_bottom_select_iv = ViewHolder.get(BaseView, R.id.maintab_sopbus_bottom_select_iv);
         maintab_sopbus_bottom_sum_mony = ViewHolder.get(BaseView, R.id.maintab_sopbus_bottom_sum_mony);
@@ -127,10 +138,10 @@ public class FMainShopBus extends FBase implements LListView.IXListViewListener,
         maintab_shopbus_nodata_lay = ViewHolder.get(BaseView, R.id.maintab_shopbus_nodata_lay);
 
 
-        maintab_shopbus_ls.setPullRefreshEnable(true);
-        maintab_shopbus_ls.setPullLoadEnable(false);
-        maintab_shopbus_ls.setXListViewListener(this);
-        maintab_shopbus_ls.hidefoot();
+//        maintab_shopbus_ls.setPullRefreshEnable(true);
+//        maintab_shopbus_ls.setPullLoadEnable(false);
+//        maintab_shopbus_ls.setXListViewListener(this);
+//        maintab_shopbus_ls.hidefoot();
 
         maintab_shopbus_left_txt.setOnClickListener(this);
         maintab_shopbus_Right_iv.setOnClickListener(this);
@@ -188,12 +199,17 @@ public class FMainShopBus extends FBase implements LListView.IXListViewListener,
                     IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
                     ShowErrorCanLoad(getResources().getString(R.string.no_shopbus));
                     NoGood = true;
+                    if (Data.getHttpLoadType() == REFRESHING) {
+//                    maintab_shopbus_ls.stopRefresh();
+                        fragment_shopbus_refrash.setRefreshing(false);
+                    }
                     return;
                 }
                 NoGood = false;
                 IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_RIGHT);
                 if (Data.getHttpLoadType() == REFRESHING) {
-                    maintab_shopbus_ls.stopRefresh();
+//                    maintab_shopbus_ls.stopRefresh();
+                    fragment_shopbus_refrash.setRefreshing(false);
                 }
 
                 BShopBus bComment = JSON.parseObject(Data.getHttpResultStr(),
@@ -311,7 +327,8 @@ public class FMainShopBus extends FBase implements LListView.IXListViewListener,
             IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
         NoGood = false;
         if (LoadType == REFRESHING) {
-            maintab_shopbus_ls.stopRefresh();
+//            maintab_shopbus_ls.stopRefresh();
+            fragment_shopbus_refrash.setRefreshing(false);
         }
 
         PromptManager.ShowCustomToast(BaseContext, StrUtils.NullToStr(error));
@@ -328,13 +345,18 @@ public class FMainShopBus extends FBase implements LListView.IXListViewListener,
 
     @Override
     public void onRefresh() {
-
+        IData(REFRESHING);
     }
 
-    @Override
-    public void onLoadMore() {
-
-    }
+//    @Override
+//    public void onRefresh() {
+//
+//    }
+//
+//    @Override
+//    public void onLoadMore() {
+//
+//    }
 
     private class MainShopBusAp extends BaseAdapter {
 
@@ -513,6 +535,9 @@ public class FMainShopBus extends FBase implements LListView.IXListViewListener,
                         .setOnClickListener(new OutApClick(BusInAdapters
                                 .get(arg0), !getOutbooleans().get(arg0),
                                 myItem.item_shopbus_out_select_iv, this, arg0));
+
+
+
             } else {
 
                 if (daBlComment.isIsCanSelct()) {
@@ -526,7 +551,7 @@ public class FMainShopBus extends FBase implements LListView.IXListViewListener,
                                     arg0));
 
                 } else {
-
+                    myItem.item_shopbus_out_select_iv.setVisibility(View.INVISIBLE);
                 }
             }
             myItem.item_shopbus_out_shopinf_lay

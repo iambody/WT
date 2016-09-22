@@ -43,8 +43,8 @@
                 android:layout_centerInParent="true"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="20dp"
-                android:focusable="true"
                 android:clickable="true"
+                android:focusable="true"
                 android:src="@drawable/lajixiang_iv"/>
         </RelativeLayout>
     </LinearLayout>
@@ -56,13 +56,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <io.vtown.WeiTangApp.comment.view.listview.LListView
-            android:id="@+id/maintab_shopbus_ls"
+        <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+            android:id="@+id/fragment_shopbus_refrash"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:divider="@color/transparent"
-            android:dividerHeight="20dp"/>
+            android:layout_weight="1">
+
+            <io.vtown.WeiTangApp.comment.view.listview.LListView
+                android:id="@+id/maintab_shopbus_ls"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/transparent"
+                android:dividerHeight="20dp"/>
+        </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
 
         <ImageView
             android:layout_width="match_parent"

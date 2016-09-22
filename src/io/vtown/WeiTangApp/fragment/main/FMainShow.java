@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -48,6 +49,7 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
@@ -61,9 +63,10 @@ import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
 /**
  * Created by datutu on 2016/9/18.
  */
-public class FMainShow extends FBase implements LListView.IXListViewListener, View.OnClickListener {
+public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, View.OnClickListener {
 
-    private LListView maintab_show_show_ls;
+    private RefreshLayout fragment_show_refrash;
+    private ListView maintab_show_show_ls;
     private TextView maintab_show_uptxt;
     private View maintab_show_nodata_lay;
     //数据
@@ -113,7 +116,7 @@ public class FMainShow extends FBase implements LListView.IXListViewListener, Vi
         map.put("seller_id", MyUser.getSeller_id());
         map.put("lastid", LastId);
         // map.put("pagesize", "10");
-        FBGetHttpData(map, Constants.Show_ls,  Request.Method.GET, 0, initialize);
+        FBGetHttpData(map, Constants.Show_ls, Request.Method.GET, 0, initialize);
 
     }
 
@@ -146,13 +149,17 @@ public class FMainShow extends FBase implements LListView.IXListViewListener, Vi
      * 初始化各种view
      */
     private void IBaseView() {
-        maintab_show_show_ls = (LListView) BaseView.findViewById(R.id.maintab_show_show_ls);
+        fragment_show_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_show_refrash);
+        fragment_show_refrash.setOnLoadListener(this);
+        fragment_show_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        //只能设置不可以下拉刷新的方法
+//        fragment_show_refrash.setEnabled(false);
+
+        maintab_show_show_ls = (ListView) BaseView.findViewById(R.id.maintab_show_show_ls);
         maintab_show_uptxt = (TextView) BaseView.findViewById(R.id.maintab_show_uptxt);
         maintab_show_nodata_lay = BaseView.findViewById(R.id.maintab_show_nodata_lay);
-        maintab_show_show_ls.setPullLoadEnable(true);
-        maintab_show_show_ls.setPullRefreshEnable(true);
-        maintab_show_show_ls.setXListViewListener(this);
-        maintab_show_show_ls.hidefoot();
+
+
         maintab_show_uptxt.setOnClickListener(this);
         maintab_show_nodata_lay.setOnClickListener(this);
         // ls滑动时候不要加载图片
@@ -200,10 +207,12 @@ public class FMainShow extends FBase implements LListView.IXListViewListener, Vi
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == REFRESHING) {
-                maintab_show_show_ls.stopRefresh();
+//                maintab_show_show_ls.stopRefresh();
+                fragment_show_refrash.setRefreshing(false);
             }
             if (msg.what == LOADMOREING) {
-                maintab_show_show_ls.stopLoadMore();
+//                maintab_show_show_ls.stopLoadMore();
+                fragment_show_refrash.setLoading(false);
             }
         }
     };
@@ -219,16 +228,16 @@ public class FMainShow extends FBase implements LListView.IXListViewListener, Vi
         mHandler.sendMessage(m);
     }
 
-    @Override
-    public void onRefresh() {
-        LastId = "";
-        IData(LastId, REFRESHING);
-    }
-
-    @Override
-    public void onLoadMore() {
-        IData(LastId, LOADMOREING);
-    }
+//    @Override
+//    public void onRefresh() {
+//        LastId = "";
+//        IData(LastId, REFRESHING);
+//    }
+//
+//    @Override
+//    public void onLoadMore() {
+//        IData(LastId, LOADMOREING);
+//    }
 
     @Override
     public void onClick(View v) {
@@ -240,6 +249,17 @@ public class FMainShow extends FBase implements LListView.IXListViewListener, Vi
                 IData(LastId, INITIALIZE);
                 break;
         }
+    }
+
+    @Override
+    public void OnLoadMore() {
+        IData(LastId, LOADMOREING);
+    }
+
+    @Override
+    public void OnFrash() {
+        LastId = "";
+        IData(LastId, REFRESHING);
     }
 
 
@@ -773,12 +793,24 @@ public class FMainShow extends FBase implements LListView.IXListViewListener, Vi
         switch (Data.getHttpResultTage()) {
             case 0:// 获取商品的列表
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    onError(Constants.SucessToError, Data.getHttpLoadType());
-                    if (INITIALIZE == Data.getHttpLoadType()) {
-                        Spuit.Show_SaveStr(BaseContext, Data.getHttpResultStr());
-                        showAp.FrashData(new ArrayList<BLShow>());
+//                    if (INITIALIZE == Data.getHttpLoadType()) {
+//                        Spuit.Show_SaveStr(BaseContext, Data.getHttpResultStr());
+//                        showAp.FrashData(new ArrayList<BLShow>());
+//                    }
+                    switch (Data.getHttpLoadType()) {
+                        case INITIALIZE:
+                            Spuit.Show_SaveStr(BaseContext, Data.getHttpResultStr());
+                            showAp.FrashData(new ArrayList<BLShow>());
+                            onError(Constants.SucessToError, Data.getHttpLoadType());
+                            break;
+                        case REFRESHING:
+                            IsStopFresh(REFRESHING);
+                            onError(Constants.SucessToError, Data.getHttpLoadType());
+                            break;
+                        case LOADMOREING:
+                            IsStopFresh(LOADMOREING);
+                            break;
                     }
-
                     return;
                 }
 
@@ -791,9 +823,11 @@ public class FMainShow extends FBase implements LListView.IXListViewListener, Vi
                 }
                 IDataView(maintab_show_show_ls, maintab_show_nodata_lay, NOVIEW_RIGHT);
                 if (data.size() < 10)
-                    maintab_show_show_ls.hidefoot();
+//                    maintab_show_show_ls.hidefoot();
+                    fragment_show_refrash.setCanLoadMore(false);
                 else
-                    maintab_show_show_ls.ShowFoot();
+//                    maintab_show_show_ls.ShowFoot();
+                    fragment_show_refrash.setCanLoadMore(true);
                 switch (Data.getHttpLoadType()) {
                     case INITIALIZE:
                         showAp.FrashData(data);
@@ -831,16 +865,17 @@ public class FMainShow extends FBase implements LListView.IXListViewListener, Vi
 
 
         if (LoadType == REFRESHING) {
-            maintab_show_show_ls.stopRefresh();
+//            maintab_show_show_ls.stopRefresh();
+            fragment_show_refrash.setRefreshing(false);
         }
         if (LoadType == LOADMOREING) {
-            maintab_show_show_ls.stopLoadMore();
+//            maintab_show_show_ls.stopLoadMore();
+            fragment_show_refrash.setLoading(false);
         }
         if (LoadType == INITIALIZE) {
             if (showAp.getCount() == 0)
                 IDataView(maintab_show_show_ls, maintab_show_nodata_lay, NOVIEW_ERROR);
-            // PromptManager.ShowCustomToast(BaseContext, getResources()
-            // .getString(R.string.zanwushow));
+
             return;
         }
 

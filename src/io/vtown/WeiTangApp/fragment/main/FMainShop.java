@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.PullScrollView;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.listview.SecondStepView;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
@@ -53,11 +55,12 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 /**
  * Created by datutu on 2016/9/18.
  */
-public class FMainShop extends FBase implements View.OnClickListener {
+public class FMainShop extends FBase implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
-    private PullScrollView fragment_main_shop_out_scrollview;
-    private SecondStepView fragment_main_shop_load_head_iv;
-    private AnimationDrawable secondAnimation;
+    private RefreshLayout fragment_shop_refrash;
+
+    //    private SecondStepView fragment_main_shop_load_head_iv;
+//    private AnimationDrawable secondAnimation;
     //背景
     private ImageView fragment_main_iv_shop_cover;
     //头像
@@ -77,6 +80,7 @@ public class FMainShop extends FBase implements View.OnClickListener {
     private View fragment_main_tab_shop_good_fabu, fragment_main_tab_shop_good_oder_guanli, fragment_main_tab_shop_good_qudao_guanli, fragment_main_tab_shop_caigoudan,
             fragment_main_tab_shop_pinpaidaili, fragment_main_tab_shop_good_good_guanli, fragment_main_tab_shop_xiaoshoutongji, fragment_main_tab_shop_lookshop, fragment_main_tab_shop_ruzhu;
 
+
     /**
      * 相关联的数据
      */
@@ -94,8 +98,13 @@ public class FMainShop extends FBase implements View.OnClickListener {
     }
 
     private void IBaseView() {
-        fragment_main_shop_out_scrollview = (PullScrollView) BaseView.findViewById(R.id.fragment_main_shop_out_scrollview);
-        fragment_main_shop_load_head_iv = (SecondStepView) BaseView.findViewById(R.id.fragment_main_shop_load_head_iv);
+
+        fragment_shop_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_shop_refrash);
+        fragment_shop_refrash.setCanLoadMore(false);
+        fragment_shop_refrash.setOnRefreshListener(this);
+        fragment_shop_refrash .setColorSchemeResources(R.color.app_fen,R.color.app_fen1,R.color.app_fen2,R.color.app_fen3);
+//        fragment_main_shop_out_scrollview = (PullScrollView) BaseView.findViewById(R.id.fragment_main_shop_out_scrollview);
+//        fragment_main_shop_load_head_iv = (SecondStepView) BaseView.findViewById(R.id.fragment_main_shop_load_head_iv);
         fragment_main_iv_shop_cover = (ImageView) BaseView.findViewById(R.id.fragment_main_iv_shop_cover);
         fragment_main_tab_shop_iv = (CircleImageView) BaseView.findViewById(R.id.fragment_main_tab_shop_iv);
         fragment_main_tab_shop_name = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_name);
@@ -144,17 +153,17 @@ public class FMainShop extends FBase implements View.OnClickListener {
         SetCommentIV(getResources().getString(R.string.grad8), R.drawable.shop_grad8, fragment_main_tab_shop_lookshop);
         SetCommentIV(getResources().getString(R.string.grad9), R.drawable.shop_grad9, fragment_main_tab_shop_ruzhu);
 
-        fragment_main_shop_load_head_iv .setBackgroundResource(R.drawable.second_step_animation);
-        secondAnimation = (AnimationDrawable) fragment_main_shop_load_head_iv.getBackground();
-        fragment_main_shop_out_scrollview.setOnRefreshListener(new PullScrollView.onRefreshListener() {
-
-            @Override
-            public void refresh() {
-                secondAnimation.start();
-                IData(REFRESHING);
-            }
-
-        });
+//        fragment_main_shop_load_head_iv .setBackgroundResource(R.drawable.second_step_animation);
+//        secondAnimation = (AnimationDrawable) fragment_main_shop_load_head_iv.getBackground();
+//        fragment_main_shop_out_scrollview.setOnRefreshListener(new PullScrollView.onRefreshListener() {
+//
+//            @Override
+//            public void refresh() {
+//                secondAnimation.start();
+//                IData(REFRESHING);
+//            }
+//
+//        });
 
         ShowView(Spuit.Shop_Get(BaseContext));
     }
@@ -230,7 +239,7 @@ public class FMainShop extends FBase implements View.OnClickListener {
             }
 
             if (REFRESHING == Data.getHttpLoadType()) {
-                LoadFrashComplet();
+                fragment_shop_refrash.setRefreshing(false);
             }
             BMyShop mBShop = new BMyShop();
             mBShop = JSON.parseObject(Data.getHttpResultStr(), BMyShop.class);
@@ -252,30 +261,13 @@ public class FMainShop extends FBase implements View.OnClickListener {
     @Override
     public void onError(String error, int LoadType) {
         if (LoadType == REFRESHING) {
-            LoadFrashComplet();
+            fragment_shop_refrash.setRefreshing(false);
             return;
         }
         IData(INITIALIZE);
     }
 
-    private void LoadFrashComplet() {
-        Message m = new Message();
-        m.what = 101;
-        mHandler.sendMessage(m);
-    }
 
-    Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 101) {
-                if (secondAnimation != null)
-                    secondAnimation.stop();
-                fragment_main_shop_out_scrollview.stopRefresh();
-            }
-
-        }
-    };
 
     @Override
     public void onDestroy() {
@@ -375,5 +367,10 @@ public class FMainShop extends FBase implements View.OnClickListener {
 
         }
 
+    }
+
+    @Override
+    public void onRefresh() {
+        IData(REFRESHING);
     }
 }
