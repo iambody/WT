@@ -80,16 +80,17 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
 
                         android:padding="10dp">
 
                         <TextView
                             android:id="@+id/tv_good_standard_lable1"
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:lines="2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                           android:paddingLeft="10dp"
+                            android:paddingBottom="10dp"
+                            android:lines="1"
                             android:text="@string/nullstr"
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
@@ -115,7 +116,7 @@
                         android:id="@+id/ll_good_colors"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:padding="10dp">
 
                         <TextView
@@ -158,12 +159,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
-                            android:orientation="horizontal"
+                            android:orientation="vertical"
                             android:padding="10dp">
 
                             <TextView
                                 android:id="@+id/tv_good_standard_lable3"
-                                android:layout_width="40dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:text="赚到"
@@ -365,7 +366,7 @@
 
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical"
-
+android:layout_marginTop="5dp"
                 android:padding="10dp">
 
 
