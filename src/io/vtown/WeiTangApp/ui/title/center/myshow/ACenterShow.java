@@ -157,7 +157,6 @@ public class ACenterShow extends ATitleBase implements RefreshLayout.OnLoadListe
     }
 
 
-
     private void IData(String Lastid, int LoadType) {
         if (LoadType == LOAD_INITIALIZE) {
             PromptManager.showtextLoading(BaseContext, getResources()
@@ -170,6 +169,7 @@ public class ACenterShow extends ATitleBase implements RefreshLayout.OnLoadListe
         FBGetHttpData(map, Constants.Center_My_Show_Data, Method.GET, 0,
                 LoadType);
     }
+
 
     private void IBase() {
         mycenter_show_refrash = (RefreshLayout) findViewById(R.id.mycenter_show_refrash);
@@ -793,7 +793,7 @@ public class ACenterShow extends ATitleBase implements RefreshLayout.OnLoadListe
 
     @Override
     public void OnFrash() {
-        LastId="";
+        LastId = "";
         IData(LastId, LOAD_REFRESHING);
 
     }
