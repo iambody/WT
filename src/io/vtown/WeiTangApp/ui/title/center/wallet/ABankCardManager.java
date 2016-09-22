@@ -82,7 +82,7 @@ public class ABankCardManager extends ATitleBase implements
 	 * 获取数据失败时显示的布局
 	 */
 	private View center_wallet_bankcard_manage_nodata_lay;
-	
+
 	/**
 	 * 是否需要显示错误的布局
 	 */
@@ -161,17 +161,17 @@ public class ABankCardManager extends ATitleBase implements
 //		btn_add_new_bank_card1.setOnClickListener(this);
 //		center_wallet_bankcard_manage_nodata_lay.setOnClickListener(this);
 		isFinish = getIntent().getBooleanExtra("isFinish", false);
-		
+
 		if (!isFinish) {
 			//IData();
 			//btn_add_new_bank_card1.setVisibility(View.VISIBLE);
 			//btn_add_new_bank_card1.setOnClickListener(this);
 			IFooterView();
 		}
-		
+
 		IList();
 	}
-	
+
 	/**
 	 * 初始化脚布局
 	 */
@@ -203,35 +203,44 @@ public class ABankCardManager extends ATitleBase implements
 	protected void DataResult(int Code, String Msg, BComment Data) {
 		lv_my_bank_card_list.setVisibility(View.VISIBLE);
 		switch (Data.getHttpResultTage()) {
-		case 0:
-			if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+			case 0:
+				if (StrUtils.isEmpty(Data.getHttpResultStr())) {
 
-				return;
-			}
+					lv_my_bank_card_list.setVisibility(View.VISIBLE);
+					PromptManager.ShowMyToast(BaseContext, "您还没有绑定银行卡");
+					if (!isFinish) {
 
-			listdata = new ArrayList<BLComment>();
+						tv_add_bank_card.setVisibility(View.VISIBLE);
+					}
+					bankCardAdapter.FrashData(new ArrayList<BLComment>());
 
-			try {
-				listdata = JSON.parseArray(Data.getHttpResultStr(),
-						BLComment.class);
 
-			} catch (Exception e) {
-				DataError("解析失败", 1);
-			}
+					return;
+				}
 
-			bankCardAdapter.FrashData(listdata);
-			if(!isFinish){
-				tv_add_bank_card.setVisibility(View.GONE);
-			}
-			
-			break;
-		case 1:
-			PromptManager.ShowMyToast(BaseContext, "删除成功");
-			IData(LOAD_HindINIT);
-			break;
+				listdata = new ArrayList<BLComment>();
 
-		default:
-			break;
+				try {
+					listdata = JSON.parseArray(Data.getHttpResultStr(),
+							BLComment.class);
+
+				} catch (Exception e) {
+					DataError("解析失败", 1);
+				}
+
+				bankCardAdapter.FrashData(listdata);
+				if(!isFinish){
+					tv_add_bank_card.setVisibility(View.GONE);
+				}
+
+				break;
+			case 1:
+				PromptManager.ShowMyToast(BaseContext, "删除成功");
+				IData(LOAD_HindINIT);
+				break;
+
+			default:
+				break;
 		}
 
 	}
@@ -240,9 +249,9 @@ public class ABankCardManager extends ATitleBase implements
 	protected void DataError(String error, int LoadTyp) {
 		lv_my_bank_card_list.setVisibility(View.VISIBLE);
 		PromptManager.ShowMyToast(BaseContext, error);
-		bankCardAdapter.FrashData(new ArrayList<BLComment>());
+
 		if (!isFinish) {
-			
+
 			tv_add_bank_card.setVisibility(View.VISIBLE);
 		}
 //		if (LOAD_INITIALIZE == LoadTyp && needShowErrorLayout) {
@@ -271,26 +280,26 @@ public class ABankCardManager extends ATitleBase implements
 	protected void SetNetView() {
 		SetNetStatuse(NetError);
 	}
-	
+
 	@Override
 	protected void MyClick(View V) {
 
 		switch (V.getId()) {
-		//case R.id.btn_add_new_bank_card:
-		//case R.id.btn_add_new_bank_card1:
-		case R.id.ll_bank_card_list_foot:
-			Intent intent = new Intent(BaseActivity, AAddBankCard.class);
-			intent.putExtra("togo", 0);
-			PromptManager.SkipActivity(BaseActivity, intent);
+			//case R.id.btn_add_new_bank_card:
+			//case R.id.btn_add_new_bank_card1:
+			case R.id.ll_bank_card_list_foot:
+				Intent intent = new Intent(BaseActivity, AAddBankCard.class);
+				intent.putExtra("togo", 0);
+				PromptManager.SkipActivity(BaseActivity, intent);
 
-			break;
+				break;
 
-		case R.id.center_wallet_bankcard_manage_nodata_lay:// 重新获取数据
-			IData(LOAD_INITIALIZE);
-			break;
+			case R.id.center_wallet_bankcard_manage_nodata_lay:// 重新获取数据
+				IData(LOAD_INITIALIZE);
+				break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 	}
 
@@ -314,7 +323,7 @@ public class ABankCardManager extends ATitleBase implements
 	class BankCardAdapter extends BaseAdapter {
 
 		private int ResourcesId;
-		
+
 		/**
 		 * 填充器
 		 */
@@ -339,7 +348,7 @@ public class ABankCardManager extends ATitleBase implements
 
 		/**
 		 * 刷新数据
-		 * 
+		 *
 		 * @param dass
 		 */
 		public void FrashData(List<BLComment> dass) {
@@ -413,7 +422,7 @@ public class ABankCardManager extends ATitleBase implements
 
 	@Override
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3) {
+								   long arg3) {
 
 		BLComment bl = (BLComment) arg0.getItemAtPosition(arg2);
 
@@ -429,7 +438,7 @@ public class ABankCardManager extends ATitleBase implements
 
 	/**
 	 * 显示Popup
-	 * 
+	 *
 	 * @param bl
 	 * @param v
 	 */
@@ -529,59 +538,59 @@ public class ABankCardManager extends ATitleBase implements
 		public void onClick(View view) {
 
 			switch (view.getId()) {
-			case R.id.tv_modify_bank_card:
-				Intent intent = new Intent(BaseActivity,
-						ABankCardOperation.class);
-				intent.putExtra("datas", datBlComment);
-				PromptManager.SkipResultActivity(BaseActivity, intent, 101);
-				if (mPopupWindow != null && mPopupWindow.isShowing()) {
-					mPopupWindow.dismiss();
-					mPopupWindow = null;
-				}
+				case R.id.tv_modify_bank_card:
+					Intent intent = new Intent(BaseActivity,
+							ABankCardOperation.class);
+					intent.putExtra("datas", datBlComment);
+					PromptManager.SkipResultActivity(BaseActivity, intent, 101);
+					if (mPopupWindow != null && mPopupWindow.isShowing()) {
+						mPopupWindow.dismiss();
+						mPopupWindow = null;
+					}
 
-				break;
+					break;
 
-			case R.id.tv_bank_card_cancel:
-				if (mPopupWindow != null && mPopupWindow.isShowing()) {
-					mPopupWindow.dismiss();
-					mPopupWindow = null;
-				}
+				case R.id.tv_bank_card_cancel:
+					if (mPopupWindow != null && mPopupWindow.isShowing()) {
+						mPopupWindow.dismiss();
+						mPopupWindow = null;
+					}
 
-				break;
+					break;
 
-			case R.id.tv_bank_card_delete:
-				if (mPopupWindow != null && mPopupWindow.isShowing()) {
-					mPopupWindow.dismiss();
-					mPopupWindow = null;
-				}
-				
-				ShowCustomDialog("删除银行卡？", "取消", "删除", new IDialogResult() {
-					@Override
-					public void RightResult() {
-						if(CheckNet(BaseContext))return;
-						PromptManager.showLoading(BaseContext);
-						RemoveBankCard(datBlComment.getBank_id(), user_Get.getId(),datBlComment.getId());
-						
-						if (mPopupWindow != null && mPopupWindow.isShowing()) {
-							mPopupWindow.dismiss();
-							mPopupWindow = null;
+				case R.id.tv_bank_card_delete:
+					if (mPopupWindow != null && mPopupWindow.isShowing()) {
+						mPopupWindow.dismiss();
+						mPopupWindow = null;
+					}
+
+					ShowCustomDialog("删除银行卡？", "取消", "删除", new IDialogResult() {
+						@Override
+						public void RightResult() {
+							if(CheckNet(BaseContext))return;
+							PromptManager.showLoading(BaseContext);
+							RemoveBankCard(datBlComment.getBank_id(), user_Get.getId(),datBlComment.getId());
+
+							if (mPopupWindow != null && mPopupWindow.isShowing()) {
+								mPopupWindow.dismiss();
+								mPopupWindow = null;
+							}
 						}
-					}
 
-					@Override
-					public void LeftResult() {
-					}
-				});
-				break;
+						@Override
+						public void LeftResult() {
+						}
+					});
+					break;
 			}
 
 		}
 
 	}
-	
+
 	/**
 	 * 接收事件
-	 * 
+	 *
 	 * @param event
 	 */
 
@@ -591,17 +600,17 @@ public class ABankCardManager extends ATitleBase implements
 			need_updata = true;
 			this.finish();
 		}
-		
+
 	}
-	
+
 	@Override
 	protected void onDestroy() {
-		
+
 		super.onDestroy();
 		try {
 			EventBus.getDefault().unregister(this);
 		} catch (Exception e) {
-			
+
 		}
 	}
 
