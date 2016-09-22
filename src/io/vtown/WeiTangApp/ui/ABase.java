@@ -136,7 +136,7 @@ public class ABase extends Activity {
     /**
      * 上边传递javabean数据时候对应的key
      */
-    protected   String BaseKey_Bean = "abasebeankey";
+    protected String BaseKey_Bean = "abasebeankey";
     // 选择图片
     /**
      * 拍照
@@ -155,12 +155,11 @@ public class ABase extends Activity {
 
     private int PicType;// 1==>selectpice；；；2==》goodshow;3==>goodshare
 
+    private NHttpBaseStr MyNHttpBaseStr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//		baseApplication = BaseApplication.GetInstance();
-
-
         /**
          * 添加activities的栈里面进行管理
          */
@@ -189,16 +188,12 @@ public class ABase extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         AppManager.getAppManager().finishActivity(this);
-//		ImageLoader.getInstance().clearMemoryCache();
-//		ImageLoader.getInstance().clearDiscCache();
-//		ImageLoader.getInstance().clearDiskCache();
     }
 
     /**
      * 获取数据前 加载图片
      */
     protected void IDataView(View ShowLay, View ErrorView, int type) {
-
         switch (type) {
             case NOVIEW_INITIALIZE:// 初始化进来为获取数据的Error是不显示的 需要把ShowLay也不显示状态
                 ShowLay.setVisibility(View.INVISIBLE);
@@ -232,16 +227,14 @@ public class ABase extends Activity {
                     BaseKey_Bean);
         }
     }
-
     /**
      * 获取Http数据的开启方法
      */
     public void FBGetHttpData(HashMap<String, String> Map, String Host,
                               int Method, final int Tage, final int LoadType) {
         if (Method == com.android.volley.Request.Method.DELETE) {// Delete请求需要通过body体去操作
-            NHttpDeletBaseStr mBaseStr = new NHttpDeletBaseStr(this);
+            NHttpDeletBaseStr mBaseStr = new NHttpDeletBaseStr(BaseContext);
             mBaseStr.setPostResult(new IHttpResult<String>() {
-
                 @Override
                 public void onError(String error, int LoadType) {
                     if (null != mHttpDataLisenter)
@@ -262,8 +255,8 @@ public class ABase extends Activity {
             mBaseStr.getData(Host, Map, Method);
         } else {// 非Delete请求 通过请求head体去操作
 
-            NHttpBaseStr mBaseStr = new NHttpBaseStr(this);
-            mBaseStr.setPostResult(new IHttpResult<String>() {
+            MyNHttpBaseStr = new NHttpBaseStr(BaseContext);
+            MyNHttpBaseStr.setPostResult(new IHttpResult<String>() {
                 @Override
                 public void onError(String error, int LoadType11) {
                     mHttpDataLisenter.onError(error, LoadType);
@@ -280,7 +273,15 @@ public class ABase extends Activity {
                                 LoadType));
                 }
             });
-            mBaseStr.getData(Host, Map, Method);
+            MyNHttpBaseStr.getData(Host, Map, Method);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (MyNHttpBaseStr != null) {
+            MyNHttpBaseStr.CancleNet();
         }
     }
 

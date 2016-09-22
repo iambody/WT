@@ -13,25 +13,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <io.vtown.WeiTangApp.comment.view.PullScrollView
-            android:id="@+id/wallet_out_scrollview"
+        <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+            android:id="@+id/center_wallter_refrash"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:scrollbars="none" >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <io.vtown.WeiTangApp.comment.view.listview.SecondStepView
-                    android:id="@+id/wallet_load_head_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:padding="10dp" />
-            </RelativeLayout>
+            android:layout_height="match_parent">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -188,7 +173,7 @@
                         layout="@layout/commentview_txtarrow" />
                 </LinearLayout>
             </ScrollView>
-        </io.vtown.WeiTangApp.comment.view.PullScrollView>
+       </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
 
         <TextView
             android:id="@+id/tv_btn_submit"

@@ -35,7 +35,6 @@ public class NHttpBaseStr extends NHttpBase {
     public NHttpBaseStr(Context context) {
         super(context);
     }
-
     private IHttpResult<String> postResult;
 
     public void setPostResult(IHttpResult<String> postresult) {

@@ -32,6 +32,8 @@ import android.widget.TextView;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.easemob.chat.EMChat;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMChatOptions;
@@ -48,7 +50,7 @@ import com.qiniu.android.storage.UploadManager;
 
 public class BaseApplication extends Application {
     // private static final String CompressFormat = null;
-
+    private static RequestQueue mQueue;
     /**
      * 全局单例
      */
@@ -72,12 +74,15 @@ public class BaseApplication extends Application {
         super.onCreate();
         IIM();
         InItData();
+        mQueue = Volley.newRequestQueue(getApplicationContext());
         /**
          * 系统异常注册
          */
         Thread.setDefaultUncaughtExceptionHandler(appException);
     }
-
+    public static RequestQueue getRequstQueue() {
+        return mQueue;
+    }
     private void IIM() {
         EMChat.getInstance().init(getApplicationContext());
         /**
