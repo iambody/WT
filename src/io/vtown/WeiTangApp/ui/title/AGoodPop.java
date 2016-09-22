@@ -284,12 +284,15 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
     private boolean IsCaiGou;
     private View mRootView;
+    private TextView tv_gray_layout;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_good_pop);
         getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_good_pop, null);
+       overridePendingTransition(R.anim.slide_in,0);
+
         SetTitleHttpDataLisenter(this);
         IData();
         IView();
@@ -481,7 +484,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
     private void IView() {
         pop_show_shangjia_cha = (ImageView) findViewById(R.id.pop_purchase_cha);
-
+        tv_gray_layout = (TextView) findViewById(R.id.tv_gray_layout);
+        tv_gray_layout.setOnClickListener(this);
         pop_show_shangjia_cha.setOnClickListener(this);
         gv_net_content = (CompleteGridView) findViewById(R.id.pop_purchase_grid);
         gv_colors = (CompleteGridView) findViewById(R.id.gv_colors);
@@ -780,8 +784,9 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
         switch (Data.getHttpResultTage()) {
             case 1:
-                if (null != popupListener)
-                    popupListener.getPopupStuta(TYPE_ADD_SHOPBUS);
+//                if (null != popupListener)
+//                    popupListener.getPopupStuta(TYPE_ADD_SHOPBUS);
+                EventBus.getDefault().post(new BMessage(TYPE_ADD_SHOPBUS));
                 this.finish();
                 PromptManager.ShowMyToast(BaseContext, "商品已添加到购物车");
                 //EventBus.getDefault().post(new BMessage(BMessage.Shop_Frash));
@@ -793,8 +798,9 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                 break;
 
             case 2:
-                if (null != popupListener)
-                    popupListener.getPopupStuta(TYPE_ADD_ONLINE);
+               // if (null != popupListener)
+                //    popupListener.getPopupStuta(TYPE_ADD_ONLINE);
+                EventBus.getDefault().post(new BMessage(TYPE_ADD_ONLINE));
                 this.finish();
                 PromptManager.ShowMyToast(BaseContext, "上架成功");
                 break;
@@ -902,6 +908,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         switch (V.getId()) {
 
             case R.id.pop_purchase_cha:
+                overridePendingTransition(0,R.anim.slide_out);
                 this.finish();
                 break;
 
@@ -911,6 +918,10 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
             case R.id.btn_virtual_lib_cancel:
                 cancelTo();
+                break;
+
+            case R.id.tv_gray_layout:
+                this.finish();
                 break;
 
         }
@@ -938,6 +949,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
                 break;
             case TYPE_GOOD_DETAIL_BUY:
+
                 this.finish();
                 // toBuy();
                 break;
@@ -1241,6 +1253,24 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,R.anim.slide_out);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        overridePendingTransition(0,R.anim.slide_out);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,R.anim.slide_out);
+    }
 
     /**
      * @author Yihuihua 监听pop执行结果

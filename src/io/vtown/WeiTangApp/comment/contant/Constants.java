@@ -895,7 +895,7 @@ public class Constants {
 	/**
 	 * 测试环境
 	 */
-	// public static String SignKey = "3vh4xN3@G02ixajB*^@PHkxfz88AKk%O";
+	 //public static String SignKey = "3vh4xN3@G02ixajB*^@PHkxfz88AKk%O";
 	/**
 	 * 正式环境的key
 	 */
