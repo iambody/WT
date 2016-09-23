@@ -17,6 +17,7 @@ public class BShow extends BBase {
     private BComment goodinfo;//商品详情
     private BComment sellerinfo;//店铺详情
     private String vid;
+    private String pre_url;
 
     private String sendnumber;
     private long create_time;
@@ -99,5 +100,13 @@ public class BShow extends BBase {
 
     public void setCreate_time(long create_time) {
         this.create_time = create_time;
+    }
+
+    public String getPre_url() {
+        return pre_url;
+    }
+
+    public void setPre_url(String pre_url) {
+        this.pre_url = pre_url;
     }
 }

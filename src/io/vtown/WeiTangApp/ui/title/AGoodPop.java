@@ -307,6 +307,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
      * @param Type ：1， 表示添加购物车，2，表示全部上架 ，3表示上架并转发
      */
     private void ConnectNet(final int Type) {
+        PromptManager.showLoading(BaseContext);
         String urlString = "";
         HashMap<String, String> map = new HashMap<String, String>();
         int method = 0;

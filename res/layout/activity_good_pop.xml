@@ -109,7 +109,7 @@
                             android:verticalSpacing="10dp"></io.vtown.WeiTangApp.comment.view.custom.CompleteGridView>
                     </LinearLayout>
 
-                    <View style="@style/line" />
+                    <View style="@style/line1" />
 
 
                     <LinearLayout
@@ -121,10 +121,11 @@
 
                         <TextView
                             android:id="@+id/tv_good_standard_lable2"
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:lines="2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:paddingBottom="10dp"
+                            android:lines="1"
                             android:text="@string/nullstr"
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
@@ -152,7 +153,7 @@
                         android:orientation="vertical"
                         android:visibility="gone">
 
-                        <View style="@style/line" />
+                        <View style="@style/line1" />
 
                         <LinearLayout
 
@@ -166,16 +167,19 @@
                                 android:id="@+id/tv_good_standard_lable3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="center"
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
                                 android:text="赚到"
                                 android:textColor="@color/grey"
                                 android:textSize="@dimen/comment_label_txtsize" />
 
                             <io.vtown.WeiTangApp.comment.view.listview.HorizontalListView
                                 android:id="@+id/hl_make_how_much"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="30dp"
-                                android:layout_marginLeft="10dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+
                                 android:cacheColorHint="#00000000"
                                 android:listSelector="#00000000"
                                 android:numColumns="5"
@@ -186,7 +190,7 @@
 
                     </LinearLayout>
 
-                    <View style="@style/line" />
+                    <View style="@style/line1" />
 
 
                     <LinearLayout
@@ -215,7 +219,7 @@
                             android:layout_marginLeft="15dp" />
                     </LinearLayout>
 
-                    <View style="@style/line" />
+
 
                     <LinearLayout
                         android:id="@+id/ll_real_virtual"

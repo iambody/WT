@@ -38,6 +38,7 @@ import io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow;
 import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
+import io.vtown.WeiTangApp.ui.ui.ARecyclerShow;
 
 /**
  * Created by datutu on 2016/9/18.
@@ -312,9 +313,12 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                         ACommentList.Tage_ACenterShopCollect));
                 break;
             case R.id.maintab_center_liulan_history://浏览记录
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
+//                        ACommentList.Tage_ACenterGoodBrowseRecord));
+
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
-                        ACommentList.Tage_ACenterGoodBrowseRecord));
+                        ARecyclerShow.class));
                 break;
         }
 

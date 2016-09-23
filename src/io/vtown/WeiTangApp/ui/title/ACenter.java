@@ -37,6 +37,7 @@ import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.ui.ARecyclerShow;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -346,8 +347,7 @@ public class ACenter extends ATitleBase {
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 				ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
 				ACommentList.Tage_ACenterGoodBrowseRecord));
-//			 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-//			 AShowIDPic.class));
+
 			break;
 		case R.id.tab_center_oder:
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
