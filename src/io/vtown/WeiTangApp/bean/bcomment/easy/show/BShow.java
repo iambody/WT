@@ -18,6 +18,8 @@ public class BShow extends BBase {
     private BComment sellerinfo;//店铺详情
     private String vid;
     private String pre_url;
+    private String seller_avatar;
+    private String seller_name;
 
     private String sendnumber;
     private long create_time;
@@ -108,5 +110,21 @@ public class BShow extends BBase {
 
     public void setPre_url(String pre_url) {
         this.pre_url = pre_url;
+    }
+
+    public String getSeller_avatar() {
+        return seller_avatar;
+    }
+
+    public void setSeller_avatar(String seller_avatar) {
+        this.seller_avatar = seller_avatar;
+    }
+
+    public String getSeller_name() {
+        return seller_name;
+    }
+
+    public void setSeller_name(String seller_name) {
+        this.seller_name = seller_name;
     }
 }

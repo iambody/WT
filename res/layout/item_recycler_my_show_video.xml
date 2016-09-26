@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+   >
+    <include
+        android:id="@+id/my_show_video_head"
+        layout="@layout/comment_my_show_layout"/>
+
+    <io.vtown.WeiTangApp.comment.view.CopyTextView
+        android:id="@+id/my_show_content_video_title"
+        android:layout_width="match_parent"
+
+        android:paddingBottom="5dp"
+        android:textColor="@color/grey"
+        android:lineSpacingExtra="3dp"
+        android:layout_height="wrap_content" />
+
+
+
+
+
+
+    <!-- 视频播放的相对布局 -->
+
+    <RelativeLayout
+        android:id="@+id/item_recycler_show_vido_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/item_recycler_my_show_vido_image"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/show_oneiv_height"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+
+            />
+
+        <ImageView
+            android:id="@+id/item_recycler_my_show_vido_control_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/video_player" />
+    </RelativeLayout>
+
+
+
+  <!--  <TextView
+        android:id="@+id/my_show_video_create_time"
+        android:layout_width="match_parent"
+
+        android:paddingTop="5dp"
+        android:textSize="12dp"
+        android:textColor="@color/app_gray"
+        android:layout_height="wrap_content" />-->
+
+
+
+
+
+</LinearLayout>

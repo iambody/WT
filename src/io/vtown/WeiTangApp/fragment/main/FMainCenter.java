@@ -35,6 +35,7 @@ import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
@@ -318,7 +319,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 //                        ACommentList.Tage_ACenterGoodBrowseRecord));
 
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ARecyclerShow.class));
+                        ARecyclerMyShow.class));
                 break;
         }
 

@@ -880,6 +880,12 @@ public class Constants {
 	 */
 	public static String Get_Area = Host
 			+ "/v1/api/api/get-area";
+
+	/**
+	 * 我的Show列表
+	 */
+	public static String Get_My_Show = Host
+			+ "/v1/show/show/myshowlist";
 /**
  * 店铺内进行搜索
  */

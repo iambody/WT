@@ -224,8 +224,8 @@ public class AAddConsigneeAddress extends ATitleBase{
 			im.hideSoftInputFromWindow(getCurrentFocus()
 					.getApplicationWindowToken(),
 					InputMethodManager.HIDE_NOT_ALWAYS);
-            PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ASelectAddress.class));
-			//Address();
+            //PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ASelectAddress.class));
+			Address();
 			break;
 
         }
@@ -364,7 +364,7 @@ public class AAddConsigneeAddress extends ATitleBase{
                 m.dismiss();
             }
         });
-        //m.showAtLocation(location, Gravity.BOTTOM, 0, 0);
+        m.showAtLocation(location, Gravity.BOTTOM, 0, 0);
     }
 
     @Override

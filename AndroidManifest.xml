@@ -639,6 +639,11 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ui.title.center.myshow.ARecyclerMyShow"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.title.AGoodPop"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"

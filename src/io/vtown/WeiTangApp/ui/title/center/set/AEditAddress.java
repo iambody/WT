@@ -239,9 +239,10 @@ public class AEditAddress extends ATitleBase {
 			break;
 
 		case R.id.edit_address_location:
-			//Address();
+
 			hintKbTwo();
-			PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ASelectAddress.class));
+			//PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ASelectAddress.class));
+			Address();
 			break;
 
 		}

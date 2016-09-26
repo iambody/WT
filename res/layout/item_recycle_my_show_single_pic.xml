@@ -9,12 +9,12 @@
     android:layout_height="wrap_content">
 
     <include
-        android:id="@+id/my_show_grid_head"
+        android:id="@+id/my_show_single_pic_head"
         layout="@layout/comment_my_show_layout"/>
 
 
     <io.vtown.WeiTangApp.comment.view.CopyTextView
-        android:id="@+id/my_show_content_title"
+        android:id="@+id/my_show_content_single_pic_title"
         android:layout_width="match_parent"
 
         android:paddingBottom="5dp"
@@ -24,25 +24,29 @@
 
 
 
-    <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
-        android:id="@+id/item_recycler_my_show_gridview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:horizontalSpacing="5dp"
-        android:numColumns="3"
-        android:verticalSpacing="5dp"
+
+
+
+    <ImageView
+        android:id="@+id/item_recycler_my_show_single_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/show_oneiv_height"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="fitCenter"
         android:visibility="visible" />
 
 
 
-      <!--  <TextView
-            android:id="@+id/my_show_create_time"
-            android:layout_width="match_parent"
+   <!-- <TextView
+        android:id="@+id/my_show_single_pic_create_time"
+        android:layout_width="match_parent"
 
-            android:paddingTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/app_gray"
-            android:layout_height="wrap_content" />-->
+        android:paddingTop="5dp"
+        android:textSize="12dp"
+        android:textColor="@color/app_gray"
+        android:layout_height="wrap_content" />-->
 
 
 

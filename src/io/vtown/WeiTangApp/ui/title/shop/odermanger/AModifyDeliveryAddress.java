@@ -122,7 +122,8 @@ public class AModifyDeliveryAddress extends ATitleBase {
 		switch (V.getId()) {
 		case R.id.modify_delivery_address://选择地区
 			hintKbTwo();
-			PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ASelectAddress.class));
+			//PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,ASelectAddress.class));
+			Address();
 
 			break;
 			

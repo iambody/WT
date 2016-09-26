@@ -3,7 +3,7 @@
     android:shape="rectangle"
     >
 
-   <stroke android:color="@color/app_gray"/>
-    <size android:height="@dimen/line_size1"/>
+   <stroke android:color="@color/app_bg"/>
+    <size android:height="@dimen/line_size7"/>
 
 </shape>
