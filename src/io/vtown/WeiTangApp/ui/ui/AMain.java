@@ -114,7 +114,7 @@ public class AMain extends TabActivity implements OnTabChangeListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //		InitJPush();
-        AppManager.getAppManager().addActivity(this);
+//        AppManager.getAppManager().addActivity(this);
         BaseCotext = AMain.this;
         EventBus.getDefault().register(this, "ReciverChangTab", BMessage.class);
         mBUser = Spuit.User_Get(BaseCotext);
@@ -299,7 +299,7 @@ public class AMain extends TabActivity implements OnTabChangeListener {
             } else {
                 // Sputis.SaveFundListCondition(this, 0);
                 // Sputis.SaveFundListSort(this, 1);
-                AppManager.getAppManager().AppExit(BaseCotext);
+//                AppManager.getAppManager().AppExit(BaseCotext);
                 finish();
                 System.exit(0);
             }

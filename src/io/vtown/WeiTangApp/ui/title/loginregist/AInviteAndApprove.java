@@ -228,9 +228,10 @@ public class AInviteAndApprove extends ATitleBase {
                     }
 
                 } else {// 登录直接跳转
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                            BaseActivity, AMain.class));
                     PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseActivity, AMain.class));
-
+                            BaseActivity, AMainTab.class));
 
                 }
 

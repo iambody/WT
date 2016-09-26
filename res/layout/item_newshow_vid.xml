@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+    >
+
+    <include layout="@layout/commenview_newshow_item_head"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/new_show_item_headwidth1">
+
+        <ImageView
+            android:id="@+id/item_newshow_vido_image"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/show_oneiv_height"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/item_newshow_vido_control_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/video_player"/>
+    </RelativeLayout>
+
+    <include layout="@layout/commenview_newshow_item_foot"/>
+</LinearLayout>

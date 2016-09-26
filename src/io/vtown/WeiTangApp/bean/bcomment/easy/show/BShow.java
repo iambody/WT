@@ -9,6 +9,8 @@ import io.vtown.WeiTangApp.bean.BBase;
  */
 
 public class BShow extends BBase {
+    private String id;//分页时候的标记
+
     private String intro;
     private String goods_id;
     private String seller_id;
@@ -21,6 +23,7 @@ public class BShow extends BBase {
     private String seller_avatar;
     private String seller_name;
 
+    //
     private String sendnumber;
     private long create_time;
 
@@ -126,5 +129,13 @@ public class BShow extends BBase {
 
     public void setSeller_name(String seller_name) {
         this.seller_name = seller_name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

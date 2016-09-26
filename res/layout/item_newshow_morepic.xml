@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <include
+        layout="@layout/commenview_newshow_item_head"
+        />
+
+    <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+        android:id="@+id/item_newshow_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/new_show_item_headwidth1"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"
+        android:verticalSpacing="5dp"/>
+
+    <include  layout="@layout/commenview_newshow_item_foot"/>
+</LinearLayout>

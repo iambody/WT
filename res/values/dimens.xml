@@ -586,5 +586,6 @@
     <dimen name="main_tab_group_txt_size">12dp</dimen>
     <dimen name="show_up_top_height">70sp</dimen>
     <dimen name="main_shopbus_sidewidth">60dp</dimen>
-
+    <dimen name="new_show_item_headwidth">60dp</dimen>
+    <dimen name="new_show_item_headwidth1">80dp</dimen>
 </resources>

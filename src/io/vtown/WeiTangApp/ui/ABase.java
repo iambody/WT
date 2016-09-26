@@ -163,7 +163,7 @@ public class ABase extends Activity {
         /**
          * 添加activities的栈里面进行管理
          */
-        AppManager.getAppManager().addActivity(this);
+//        AppManager.getAppManager().addActivity(this);
         /**
          * 初始化配置文件
          */
@@ -187,7 +187,7 @@ public class ABase extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AppManager.getAppManager().finishActivity(this);
+//        AppManager.getAppManager().finishActivity(this);
     }
 
     /**

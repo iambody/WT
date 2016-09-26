@@ -49,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-
             android:lineSpacingExtra="3dp"/>
         <!-- 图片九宫格和视频布局的外层线性布局 -->
 

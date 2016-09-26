@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/new_show_item_headwidth1"
+              android:orientation="horizontal"
+              android:paddingRight="@dimen/ui_10_dip">
+
+    <TextView
+        android:id="@+id/comment_newshow_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/comment_newshow_item_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        android:text="@string/delete"
+        android:textColor="@color/gray"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/comment_newshow_item_gooddetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        android:src="@drawable/show_xiangqing"/>
+
+    <ImageView
+        android:id="@+id/comment_newshow_item_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        android:src="@drawable/share_iv"/>
+
+    <TextView
+        android:id="@+id/comment_newshow_item_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:padding="3dp"
+        android:textColor="@color/app_gray"/>
+</LinearLayout>
