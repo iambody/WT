@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:paddingBottom="15dp"
+    android:paddingBottom="5dp"
     android:paddingTop="15dp"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
@@ -47,6 +47,11 @@
         android:textSize="12dp"
         android:textColor="@color/app_gray"
         android:layout_height="wrap_content" />-->
+
+    <include
+        android:id="@+id/comment_show_operation_pic"
+        layout="@layout/comment_show_operation_layout"
+        />
 
 
 

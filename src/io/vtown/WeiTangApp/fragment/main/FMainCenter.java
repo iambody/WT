@@ -319,7 +319,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 //                        ACommentList.Tage_ACenterGoodBrowseRecord));
 
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ARecyclerMyShow.class));
+                        ARecyclerMyShow.class).putExtra("seller_id",Spuit.User_Get(BaseContext).getSeller_id()));
                 break;
         }
 
