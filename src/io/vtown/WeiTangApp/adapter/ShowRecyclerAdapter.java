@@ -198,7 +198,6 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         }
 
-
     }
 
     @Override
