@@ -44,10 +44,12 @@
         android:layout_weight="1" />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-
-        android:src="@drawable/plubin_camera_del_focused" />
+        android:id="@+id/my_show_item_delete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_ziseshanchu_nor" />
 
 
 </LinearLayout>

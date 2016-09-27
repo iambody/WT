@@ -56,7 +56,7 @@ public class ARecyclerMyShow extends ATitleBase {
         recyclerview_my_show = (RecyclerView) findViewById(R.id.recyclerview_my_show);
         recyclerview_my_show.setLayoutManager(new LinearLayoutManager(this));
         recyclerview_my_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
-        myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth, _seller_id.equals(user_get.getSeller_id()));
+        myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth);
         recyclerview_my_show.setAdapter(myShowAdapter);
     }
 
