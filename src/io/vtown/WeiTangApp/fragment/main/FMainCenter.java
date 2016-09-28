@@ -289,8 +289,10 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 }
                 break;
             case R.id.maintab_center_show://我的show
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        ACenterShow.class));
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ACenterShow.class));
+                        ARecyclerMyShow.class).putExtra("seller_id",Spuit.User_Get(BaseContext).getSeller_id()));
                 break;
             case R.id.maintab_center_invite_code://我的邀请码
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
@@ -314,12 +316,11 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                         ACommentList.Tage_ACenterShopCollect));
                 break;
             case R.id.maintab_center_liulan_history://浏览记录
-//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-//                        ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
-//                        ACommentList.Tage_ACenterGoodBrowseRecord));
-
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ARecyclerMyShow.class).putExtra("seller_id",Spuit.User_Get(BaseContext).getSeller_id()));
+                        ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
+                        ACommentList.Tage_ACenterGoodBrowseRecord));
+
+
                 break;
         }
 

@@ -385,6 +385,13 @@
     <!-- 上传图片添加的颜色 -->
 <color name="tran">#26000000</color>
 
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="nodeColor">#cccccc</color>
+    <color name="nodeTextColor">#00bcb4</color>
+
 
     <!-- A dark Holo shade of blue -->
     <color name="holo_blue_dark">#ff0099cc</color>

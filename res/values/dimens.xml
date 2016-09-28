@@ -588,4 +588,6 @@
     <dimen name="main_shopbus_sidewidth">60dp</dimen>
     <dimen name="new_show_item_headwidth">60dp</dimen>
     <dimen name="new_show_item_headwidth1">80dp</dimen>
+
+
 </resources>

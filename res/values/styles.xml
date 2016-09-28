@@ -4,6 +4,7 @@
 
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:windowNoTitle">true</item>
+
     </style>
     <!-- 弹出框选择确定取消的style——————@author大兔兔 -->
     <style name="mystyle" parent="@android:style/Theme.Dialog">
@@ -334,5 +335,8 @@
         <item name="android:backgroundDimEnabled">false</item>
         <!-- 模糊 -->
     </style>
+
+
+
     <!-- <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>-->
 </resources>

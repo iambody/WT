@@ -192,4 +192,5 @@
         <attr name="ratio" format="float"/>
     </declare-styleable>
 
+
 </resources>
