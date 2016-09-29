@@ -83,6 +83,7 @@
                     android:gravity="left"
                     android:hint="@string/putin_shouhuo_name"
                     android:textColor="@color/app_gray"
+                    android:inputType="phone"
                     android:textSize="@dimen/comment_label_txtsize" />
 
                 <ImageView

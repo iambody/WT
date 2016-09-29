@@ -6,5 +6,13 @@
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\raw\\ssl.cer",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\raw\\ssl.cer"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\raw\\beep.ogg",
+        "source": "D:\\Wt\\WT\\res\\raw\\beep.ogg"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\raw\\ssl.cer",
+        "source": "D:\\Wt\\WT\\res\\raw\\ssl.cer"
     }
 ]

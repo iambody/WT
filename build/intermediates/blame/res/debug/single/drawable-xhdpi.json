@@ -2,5 +2,9 @@
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\net_warning_bar_bg.9.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\net_warning_bar_bg.9.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\net_warning_bar_bg.9.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\net_warning_bar_bg.9.png"
     }
 ]

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WtApp.iml" filepath="$PROJECT_DIR$/WtApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WT.iml" filepath="$PROJECT_DIR$/WT.iml" />
     </modules>
   </component>
 </project>
