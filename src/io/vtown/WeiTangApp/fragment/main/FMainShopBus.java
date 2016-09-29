@@ -52,7 +52,7 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 /**
  * Created by datutu on 2016/9/18.
  */
-public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshListener , View.OnClickListener {
+public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
 
     private RefreshLayout fragment_shopbus_refrash;
 
@@ -114,11 +114,16 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         EventBus.getDefault().register(this, "ReciverBusMsg", BMessage.class);
         InItBaseView();
         SetTitleHttpDataLisenter(this);
+        CachShopBus();
+
         IData(INITIALIZE);
     }
 
+    private void CachShopBus() {
+    }
+
     private void InItBaseView() {
-        fragment_shopbus_refrash= (RefreshLayout) BaseView.findViewById(R.id.fragment_shopbus_refrash);
+        fragment_shopbus_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_shopbus_refrash);
         fragment_shopbus_refrash.setOnRefreshListener(this);
         fragment_shopbus_refrash.setCanLoadMore(false);
         fragment_shopbus_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
@@ -145,6 +150,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
         maintab_shopbus_left_txt.setOnClickListener(this);
         maintab_shopbus_Right_iv.setOnClickListener(this);
+        maintab_sopbus_bottom_jiesuan.setOnClickListener(this);
     }
 
     public void ReciverBusMsg(BMessage MyMessage) {
@@ -535,7 +541,6 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
                         .setOnClickListener(new OutApClick(BusInAdapters
                                 .get(arg0), !getOutbooleans().get(arg0),
                                 myItem.item_shopbus_out_select_iv, this, arg0));
-
 
 
             } else {

@@ -47,11 +47,17 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         FBaseInit();
         IBase();
 
+        HindLoadData();
+    }
+
+    /**
+     * 开始通知刷新数据
+     */
+    private void HindLoadData() {
+
     }
 
     private void FBaseInit() {
-
-
         Fragments = new ArrayList<FBase>();
         FMainHome = new FMainHome();
         FMainShop = new FMainShop();

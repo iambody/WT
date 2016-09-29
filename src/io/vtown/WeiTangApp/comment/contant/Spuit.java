@@ -94,6 +94,10 @@ public class Spuit {
      * 搜索推荐的缓存数据
      */
     private static final String SouSouRecommend = "sousoureoment_sp";
+    /**
+     * 购物车数据的缓存
+     */
+    private static final String ShopBus_Sp="shopbus_sp";
 
     /**
      * 获取是否已经登录过的标识
@@ -497,6 +501,21 @@ public class Spuit {
     public static String SousouRecommend_Get(Context PPContext) {
         SharedPreferences sp = PPContext.getSharedPreferences(SouSouRecommend, Context.MODE_PRIVATE);
         return sp.getString("sousourecommended", "");
+    }
+
+    /**
+     * 购物车的数据缓存ShopBus_Sp
+     */
+    public static String ShopBus_Get(Context PPContext){
+        SharedPreferences sp = PPContext.getSharedPreferences(ShopBus_Sp, Context.MODE_PRIVATE);
+        return sp.getString("shopbusstr", "");
+    }
+    public static void ShopBUs_Save(Context PPcContext,String shopbusdata){
+        SharedPreferences sp = PPcContext.getSharedPreferences(ShopBus_Sp,
+                Context.MODE_PRIVATE);
+        Editor ed = sp.edit();
+        ed.putString("shopbusstr", shopbusdata);
+        ed.commit();
     }
 
 }

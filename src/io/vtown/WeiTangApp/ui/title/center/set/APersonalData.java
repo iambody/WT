@@ -31,8 +31,7 @@ import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
 public class APersonalData extends ATitleBase implements
         OnCheckedChangeListener {
 
-    @BindView(R.id.center_set_test_butterknis)
-    Button centerSetTestButterknis;
+
     /**
      * 电话号码
      */
