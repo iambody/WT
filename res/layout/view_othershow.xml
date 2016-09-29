@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+    >
+
+
+    <ImageView
+        android:id="@+id/comment_othershow_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/center_comment_myshow_ivheight_height"
+        android:clickable="false"
+        android:focusable="false"
+        android:scaleType="fitXY"
+        android:src="@color/gray"/>
+
+
+    <io.vtown.WeiTangApp.comment.view.CircleImageView
+        android:id="@+id/center_show_head"
+        android:layout_width="@dimen/comment_othershow_head"
+        android:layout_height="@dimen/comment_othershow_head"
+        android:layout_gravity="center"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:src="@color/red"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="139dp"/>
+</RelativeLayout>
+

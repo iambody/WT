@@ -6,9 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request;
@@ -17,17 +14,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.adapter.ShowRecyclerAdapter;
-import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
@@ -37,69 +29,61 @@ import io.vtown.WeiTangApp.comment.view.custom.HeaderViewRecyclerAdapter;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
 /**
- * Created by Yihuihua on 2016/9/23.
+ * Created by Yihuihua on 2016/9/29.
  */
 
-public class ARecyclerMyShow extends ATitleBase {
+public class ARecyclerOtherShow extends ATitleBase {
 
-    private RecyclerView recyclerview_my_show;
-    private BUser user_get;
-    private ShowRecyclerAdapter myShowAdapter;
-    private String lastid = "";
-    private String _seller_id;
-
-    private HeaderViewRecyclerAdapter MyHeadAdapter;
-    // 需要他的封面和头像
-    private BShop bShop;
-
-    private View HeadView;
+    private RecyclerView recyclerview_other_show;
+    private  View HeadView;
     private CircleImageView center_show_head;
     private ImageView center_show_bg;
-
-    private LinearLayoutManager MLinearLayoutManager;
+    private LinearLayoutManager mLinearLayoutManager;
+    private ShowRecyclerAdapter mShowAdapter;
+    private HeaderViewRecyclerAdapter mHeadAdapter;
     private boolean IsCanLoadMore = false;
     private boolean IsLoadingMore = false;
+    private String lastid = "";
 
     @Override
     protected void InItBaseView() {
-        setContentView(R.layout.activity_recycler_my_show);
+        setContentView(R.layout.acvitty_recycler_other_show);
         SetTitleHttpDataLisenter(this);
-        String seller_id = getIntent().getStringExtra("seller_id");
-        if (StrUtils.isEmpty(seller_id)) {
-            return;
-        } else {
-            _seller_id = seller_id;
-        }
-        user_get = Spuit.User_Get(BaseContext);
-        bShop = Spuit.Shop_Get(BaseContext);
+        IBundlle();
+        IHeaderView();
         IView();
-        IData(lastid, LOAD_INITIALIZE);
+        IData(lastid,LOAD_INITIALIZE);
+
     }
 
-    private void IView() {
-        HeadView = LayoutInflater.from(BaseContext).inflate(R.layout.view_othershow, null);
+    private void IBundlle() {
+        if (getIntent().getExtras() == null
+                && !getIntent().getExtras().containsKey(BaseKey_Bean))
+            BaseActivity.finish();
+    }
 
+    private void IHeaderView() {
+        HeadView = LayoutInflater.from(BaseContext).inflate(R.layout.view_othershow, null);
         center_show_head = (CircleImageView) HeadView.findViewById(R.id.center_show_head);
         center_show_bg = (ImageView) HeadView.findViewById(R.id.comment_othershow_bg);
         center_show_head.setBorderWidth(10);
         center_show_head.setBorderColor(getResources().getColor(R.color.transparent7));
-
-        ImageLoaderUtil.Load2(bShop.getCover(),
+        ImageLoaderUtil.Load2(baseBcBComment.getCover(),
                 center_show_bg, R.drawable.error_iv1);
-        ImageLoaderUtil.Load2(bShop.getAvatar(),
+        ImageLoaderUtil.Load2(baseBcBComment.getAvatar(),
                 center_show_head, R.drawable.error_iv2);
+    }
 
-        MLinearLayoutManager = new LinearLayoutManager(this);
-        recyclerview_my_show = (RecyclerView) findViewById(R.id.recyclerview_my_show);
-        recyclerview_my_show.setLayoutManager(MLinearLayoutManager);
-        recyclerview_my_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
-        myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth,false);
-
-
-        MyHeadAdapter = new HeaderViewRecyclerAdapter(myShowAdapter);
-        MyHeadAdapter.addHeaderView(HeadView);
-        recyclerview_my_show.setAdapter(MyHeadAdapter);//myShowAdapter
-        recyclerview_my_show.addOnScrollListener(new EndlessRecyclerOnScrollListener(MLinearLayoutManager) {
+    private void IView() {
+        mLinearLayoutManager = new LinearLayoutManager(this);
+        recyclerview_other_show = (RecyclerView) findViewById(R.id.recyclerview_other_show);
+        recyclerview_other_show.setLayoutManager(mLinearLayoutManager);
+        recyclerview_other_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
+        mShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth,false);
+        mHeadAdapter = new HeaderViewRecyclerAdapter(mShowAdapter);
+        mHeadAdapter.addHeaderView(HeadView);
+        recyclerview_other_show.setAdapter(mHeadAdapter);//myShowAdapter
+        recyclerview_other_show.addOnScrollListener(new EndlessRecyclerOnScrollListener(mLinearLayoutManager) {
             @Override
             public void onLoadMore(int currentPage) {
 
@@ -112,7 +96,19 @@ public class ARecyclerMyShow extends ATitleBase {
 
             }
         });
+    }
 
+    private void IData(String Lastid, int LoadType) {
+        if (LoadType == LOAD_INITIALIZE) {
+            PromptManager.showtextLoading(BaseContext, getResources()
+                    .getString(R.string.loading));
+        }
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("seller_id", baseBcBComment.getId());
+        map.put("lastid", Lastid);
+        map.put("pagesize", Constants.PageSize + "");
+        FBGetHttpData(map, Constants.Get_My_Show, Request.Method.GET, 0,
+                LoadType);
     }
 
     /**
@@ -121,33 +117,22 @@ public class ARecyclerMyShow extends ATitleBase {
     private void createLoadMoreView() {
         View loadMoreView = LayoutInflater
                 .from(BaseContext)
-                .inflate(R.layout.swiperefresh_footer, recyclerview_my_show, false);
-        MyHeadAdapter.addFooterView(loadMoreView);
+                .inflate(R.layout.swiperefresh_footer, recyclerview_other_show, false);
+        mHeadAdapter.addFooterView(loadMoreView);
         IsLoadingMore = true;
-        IData(lastid, LOAD_LOADMOREING);
-
+        IData(lastid,LOAD_LOADMOREING);
     }
 
     private void HindLoadMore() {
-        MyHeadAdapter.RemoveFooterView();
+        mHeadAdapter.RemoveFooterView();
         IsLoadingMore = false;
+
     }
 
-    private void IData(String lastid, int loadtype) {
-        if (LOAD_INITIALIZE == loadtype) {
-            PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-        }
-
-        HashMap<String, String> map = new HashMap<>();
-        map.put("seller_id", _seller_id);
-        map.put("lastid", lastid);
-        map.put("pagesize", Constants.PageSize + "");
-        FBGetHttpData(map, Constants.Get_My_Show, Request.Method.GET, 0, loadtype);
-    }
 
     @Override
     protected void InitTile() {
-        SetTitleTxt("我的SHOW");
+        SetTitleTxt(baseBcBComment.getSeller_name());
     }
 
     @Override
@@ -160,7 +145,7 @@ public class ARecyclerMyShow extends ATitleBase {
                 List<BShow> datas = new ArrayList<BShow>();
                 datas = JSON.parseArray(Data.getHttpResultStr(), BShow.class);
                 lastid = datas.get(datas.size() - 1).getId();
-                myShowAdapter.FrashData(datas);
+                mShowAdapter.FrashData(datas);
                 IsCanLoadMore = datas.size() == Constants.PageSize ? true : false;
 
                 break;
@@ -176,12 +161,11 @@ public class ARecyclerMyShow extends ATitleBase {
                 List<BShow> datass = new ArrayList<BShow>();
                 datass = JSON.parseArray(Data.getHttpResultStr(), BShow.class);
                 lastid = datass.get(datass.size() - 1).getId();
-                myShowAdapter.FrashAllData(datass);
+                mShowAdapter.FrashAllData(datass);
                 IsCanLoadMore = datass.size() == Constants.PageSize ? true : false;
 
                 break;
         }
-
     }
 
     @Override
@@ -218,6 +202,4 @@ public class ARecyclerMyShow extends ATitleBase {
     protected void SaveBundle(Bundle bundle) {
 
     }
-
-
 }

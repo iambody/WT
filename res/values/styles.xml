@@ -126,11 +126,13 @@
         <item name="android:background">@drawable/select_white_to_gray</item>
     </style>
     <style name="build_two_dimension_code_btn_style" parent="@android:style/Widget.Button">
+        <item name="android:padding">@dimen/center_wallet_add_alipay_submit_padding</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/select_fen_to_gray</item>
     </style>
 
     <style name="build_two_dimension_code_btn_style_no_circular" parent="@android:style/Widget.Button">
+        <item name="android:padding">@dimen/center_wallet_add_alipay_submit_padding</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/select_fen_to_gray_no_circular</item>
     </style>

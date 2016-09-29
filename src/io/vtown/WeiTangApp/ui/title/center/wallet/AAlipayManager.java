@@ -141,6 +141,8 @@ public class AAlipayManager extends ATitleBase {
 				IDataView(center_wallet_alipay_manage_outlay,
 						center_wallet_alipay_manage_nodata_lay, NOVIEW_ERROR);
 				btn_add_new_alipay1.setVisibility(View.VISIBLE);
+				ShowErrorCanLoad(getResources().getString(R.string.error_null_alipay));
+				center_wallet_alipay_manage_nodata_lay.setClickable(false);
 			}
 			return;
 		}
@@ -193,6 +195,8 @@ public class AAlipayManager extends ATitleBase {
 			IDataView(center_wallet_alipay_manage_outlay,
 					center_wallet_alipay_manage_nodata_lay, NOVIEW_ERROR);
 			btn_add_new_alipay1.setVisibility(View.VISIBLE);
+			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+			center_wallet_alipay_manage_nodata_lay.setClickable(true);
 		}
 	}
 

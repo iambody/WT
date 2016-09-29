@@ -568,6 +568,7 @@
     <string name="brand_sousou">搜索店铺内商品</string>
     <string name="error_fuwuqi">服务器异常</string>
     <string name="error_null_address">\"您还没有添加地址哦~~~\"</string>
+    <string name="error_null_alipay">\"您还没有绑定支付宝哦~~~\"</string>
     <string name="error_null_search_result">\"没有搜到您想要的商品，再试试吧~~~\"</string>
     <string name="error_null_my_order_all">\"暂时没有全部订单哦~~~\"</string>
     <string name="error_null_my_order_no_pay">\"暂时没有待付款订单哦~~~\"</string>

@@ -59,6 +59,7 @@ import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
 
 /**
  * Created by datutu on 2016/9/18.
@@ -446,7 +447,7 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
                 public void onClick(View arg0) {
                     if (CheckNet(BaseContext))
                         return;
-                    Intent intent = new Intent(BaseActivity, AOtherShow.class);
+                    Intent intent = new Intent(BaseActivity, ARecyclerOtherShow.class);
                     intent.putExtra(BaseKey_Bean,
                             new BComment(ItemData.getSeller_id(), ItemData
                                     .getSellerinfo().getCover(), ItemData
