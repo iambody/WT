@@ -21,14 +21,13 @@
         android:id="@+id/center_show_head"
         android:layout_width="@dimen/comment_othershow_head"
         android:layout_height="@dimen/comment_othershow_head"
-        android:layout_gravity="center"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+
+
         android:layout_marginBottom="10dp"
         android:src="@color/red"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+
         android:layout_marginTop="139dp"/>
 </RelativeLayout>
 

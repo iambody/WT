@@ -218,7 +218,8 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 video_item.my_show_content_video_title.setVisibility(StrUtils.isEmpty(datas.get(position).getIntro()) ? View.GONE : View.VISIBLE);
 
-                StrUtils.SetTxt(video_item.comment_show_transmit_numb_video, "有" + bShow.getSendnumber() + "人转发");
+
+                StrUtils.SetTxt(video_item.comment_show_transmit_numb_video, "有" + (StrUtils.isEmpty(bShow.getSendnumber())?"0": bShow.getSendnumber())+ "人转发");
                 try {
                     ImageLoaderUtil.Load2(bShow.getPre_url(),
                             video_item.item_recycler_my_show_vido_image, R.drawable.error_iv1);
@@ -248,7 +249,8 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     pic_item.my_show_item_delete_pic.setVisibility(View.GONE);
                 }
                 SetIntro(pic_item.my_show_content_single_pic_title, datas.get(position).getIntro());
-                StrUtils.SetTxt(pic_item.comment_show_transmit_numb_pic, "有" + bShow.getSendnumber() + "人转发");
+
+                StrUtils.SetTxt(pic_item.comment_show_transmit_numb_pic, "有" + (StrUtils.isEmpty(bShow.getSendnumber())?"0": bShow.getSendnumber())+ "人转发");
                 try {
                     ImageLoaderUtil.Load2(bShow.getImgarr().get(0),
                             pic_item.item_recycler_my_show_single_pic, R.drawable.error_iv1);
