@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title.center.myshow;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +21,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
@@ -27,6 +29,7 @@ import io.vtown.WeiTangApp.comment.view.RecyclerCommentItemDecoration;
 import io.vtown.WeiTangApp.comment.view.custom.EndlessRecyclerOnScrollListener;
 import io.vtown.WeiTangApp.comment.view.custom.HeaderViewRecyclerAdapter;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
  * Created by Yihuihua on 2016/9/29.
@@ -35,7 +38,7 @@ import io.vtown.WeiTangApp.ui.ATitleBase;
 public class ARecyclerOtherShow extends ATitleBase {
 
     private RecyclerView recyclerview_other_show;
-    private  View HeadView;
+    private View HeadView;
     private CircleImageView center_show_head;
     private ImageView center_show_bg;
     private LinearLayoutManager mLinearLayoutManager;
@@ -52,7 +55,7 @@ public class ARecyclerOtherShow extends ATitleBase {
         IBundlle();
         IHeaderView();
         IView();
-        IData(lastid,LOAD_INITIALIZE);
+        IData(lastid, LOAD_INITIALIZE);
 
     }
 
@@ -72,6 +75,8 @@ public class ARecyclerOtherShow extends ATitleBase {
                 center_show_bg, R.drawable.error_iv1);
         ImageLoaderUtil.Load2(baseBcBComment.getAvatar(),
                 center_show_head, R.drawable.error_iv2);
+        center_show_head.setOnClickListener(this);
+
     }
 
     private void IView() {
@@ -79,7 +84,7 @@ public class ARecyclerOtherShow extends ATitleBase {
         recyclerview_other_show = (RecyclerView) findViewById(R.id.recyclerview_other_show);
         recyclerview_other_show.setLayoutManager(mLinearLayoutManager);
         recyclerview_other_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
-        mShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth,false);
+        mShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth, false);
         mHeadAdapter = new HeaderViewRecyclerAdapter(mShowAdapter);
         mHeadAdapter.addHeaderView(HeadView);
         recyclerview_other_show.setAdapter(mHeadAdapter);//myShowAdapter
@@ -87,7 +92,7 @@ public class ARecyclerOtherShow extends ATitleBase {
             @Override
             public void onLoadMore(int currentPage) {
 
-                if(!IsLoadingMore){
+                if (!IsLoadingMore) {
                     if (IsCanLoadMore) {
                         PromptManager.ShowCustomToast(BaseContext, "开始sss");
                         createLoadMoreView();
@@ -120,7 +125,7 @@ public class ARecyclerOtherShow extends ATitleBase {
                 .inflate(R.layout.swiperefresh_footer, recyclerview_other_show, false);
         mHeadAdapter.addFooterView(loadMoreView);
         IsLoadingMore = true;
-        IData(lastid,LOAD_LOADMOREING);
+        IData(lastid, LOAD_LOADMOREING);
     }
 
     private void HindLoadMore() {
@@ -155,7 +160,7 @@ public class ARecyclerOtherShow extends ATitleBase {
                 HindLoadMore();
 
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    IsCanLoadMore=false;
+                    IsCanLoadMore = false;
                     return;
                 }
                 List<BShow> datass = new ArrayList<BShow>();
@@ -190,7 +195,13 @@ public class ARecyclerOtherShow extends ATitleBase {
 
     @Override
     protected void MyClick(View V) {
+        switch (V.getId()) {
+            case R.id.center_show_head:
 
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                        AShopDetail.class).putExtra(BaseKey_Bean, baseBcBComment));
+                break;
+        }
     }
 
     @Override

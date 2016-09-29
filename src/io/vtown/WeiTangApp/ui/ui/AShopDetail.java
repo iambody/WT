@@ -59,6 +59,7 @@ import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -1193,7 +1194,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                 // BaseActivity, AGoodShow.class).putExtra(
                 // AGoodShow.Tage_GoodSid, MyData.getBase().getId()));
                 if (null != MyData && !StrUtils.isEmpty(MyData.getBase().getId())) {
-                    Intent intent = new Intent(BaseActivity, AOtherShow.class);
+                    Intent intent = new Intent(BaseActivity, ARecyclerOtherShow.class);
                     intent.putExtra(BaseKey_Bean, new BComment(MyData.getBase()
                             .getId(), MyData.getBase().getCover(), MyData.getBase()
                             .getAvatar(), MyData.getBase().getSeller_name(), MyData
