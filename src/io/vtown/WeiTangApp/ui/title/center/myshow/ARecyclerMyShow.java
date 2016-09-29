@@ -32,6 +32,7 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.RecyclerCommentItemDecoration;
+import io.vtown.WeiTangApp.comment.view.custom.EndlessRecyclerOnScrollListener;
 import io.vtown.WeiTangApp.comment.view.custom.HeaderViewRecyclerAdapter;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
@@ -54,6 +55,9 @@ public class ARecyclerMyShow extends ATitleBase {
     private View HeadView;
     private CircleImageView center_show_head;
     private ImageView center_show_bg;
+
+    private LinearLayoutManager MLinearLayoutManager;
+    private boolean IsLoading = false;
 
     @Override
     protected void InItBaseView() {
@@ -78,9 +82,9 @@ public class ARecyclerMyShow extends ATitleBase {
         center_show_head.setBorderWidth(10);
         center_show_head.setBorderColor(getResources().getColor(R.color.transparent7));
 
-
+        MLinearLayoutManager = new LinearLayoutManager(this);
         recyclerview_my_show = (RecyclerView) findViewById(R.id.recyclerview_my_show);
-        recyclerview_my_show.setLayoutManager(new LinearLayoutManager(this));
+        recyclerview_my_show.setLayoutManager(MLinearLayoutManager);
         recyclerview_my_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
         myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth);
 
@@ -88,6 +92,29 @@ public class ARecyclerMyShow extends ATitleBase {
         MyHeadAdapter = new HeaderViewRecyclerAdapter(myShowAdapter);
         MyHeadAdapter.addHeaderView(HeadView);
         recyclerview_my_show.setAdapter(MyHeadAdapter);//myShowAdapter
+        recyclerview_my_show.addOnScrollListener(new EndlessRecyclerOnScrollListener(MLinearLayoutManager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                if(IsLoading){
+                PromptManager.ShowCustomToast(BaseContext, "开始sss");
+                createLoadMoreView();}
+            }
+        });
+
+    }
+
+    /**
+     * 开始显示
+     */
+    private void createLoadMoreView() {
+        View loadMoreView = LayoutInflater
+                .from(BaseContext)
+                .inflate(R.layout.swiperefresh_footer, recyclerview_my_show, false);
+        MyHeadAdapter.addFooterView(loadMoreView);
+    }
+
+    private void HindLoadMore() {
+        MyHeadAdapter.RemoveFooterView();
     }
 
     private void IData(String lastid, int loadtype) {

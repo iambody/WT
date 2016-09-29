@@ -39,6 +39,7 @@ import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.custom.EndlessRecyclerOnScrollListener;
 import io.vtown.WeiTangApp.comment.view.custom.HeaderViewRecyclerAdapter;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
+import io.vtown.WeiTangApp.comment.view.custom.recycle.RefreshRecyclerView;
 import io.vtown.WeiTangApp.fragment.FBase;
 
 /**
@@ -47,8 +48,8 @@ import io.vtown.WeiTangApp.fragment.FBase;
 
 public class FMainNewShow extends FBase implements View.OnClickListener,SwipeRefreshLayout.OnRefreshListener {
 
-    private RefreshLayout fragment_newshow_refrash;
-    private RecyclerView maintab_newshow_recyclerview;
+//    private RefreshLayout fragment_newshow_refrash;
+    private RefreshRecyclerView maintab_newshow_recyclerview;
     private View maintab_newshow_nodata_lay;
     //    private TextView maintab_newshow_uptxt;
     //AP
@@ -97,38 +98,45 @@ public class FMainNewShow extends FBase implements View.OnClickListener,SwipeRef
     }
 
     private void IView() {
-        fragment_newshow_refrash= (RefreshLayout) BaseView.findViewById(R.id.fragment_newshow_refrash);
+//        fragment_newshow_refrash= (RefreshLayout) BaseView.findViewById(R.id.fragment_newshow_refrash);
 //        maintab_newshow_uptxt = (TextView) BaseView.findViewById(R.id.maintab_newshow_uptxt);
         maintab_newshow_nodata_lay = BaseView.findViewById(R.id.maintab_newshow_nodata_lay);
 
-        maintab_newshow_recyclerview = (RecyclerView) BaseView.findViewById(R.id.maintab_newshow_recyclerview);
+        maintab_newshow_recyclerview = (RefreshRecyclerView) BaseView.findViewById(R.id.maintab_newshow_recyclerview);
         //绑定布局set
         linearLayoutManager = new LinearLayoutManager(BaseContext);
         maintab_newshow_recyclerview.setLayoutManager(linearLayoutManager);
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
         //
         myNewShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth, BaseView, false, BaseActivity);
-        MyHeadAdapter = new HeaderViewRecyclerAdapter(myNewShowAdapter);
-        maintab_newshow_recyclerview.setAdapter(MyHeadAdapter);//(myNewShowAdapter);
+//        MyHeadAdapter = new HeaderViewRecyclerAdapter(myNewShowAdapter);
+        maintab_newshow_recyclerview.setAdapter(myNewShowAdapter);//(myNewShowAdapter);MyHeadAdapter
         maintab_newshow_recyclerview.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
         maintab_newshow_recyclerview.setItemAnimator(new DefaultItemAnimator());
-
-        //初始化分页frash
-        fragment_newshow_refrash.setOnRefreshListener(this);
-        fragment_newshow_refrash.setColorSchemeResources(R.color.app_fen,R.color.app_fen1,R.color.app_fen2,R.color.app_fen3);
-        maintab_newshow_recyclerview.addOnScrollListener(new EndlessRecyclerOnScrollListener(linearLayoutManager) {
+        maintab_newshow_recyclerview.setLoadMoreEnable(true);//允许加
+        maintab_newshow_recyclerview.setFooterResource(R.layout.swiperefresh_footer);
+        maintab_newshow_recyclerview.setOnLoadMoreListener(new RefreshRecyclerView.OnLoadMoreListener() {
             @Override
-            public void onLoadMore(int currentPage) {
-//                IData(LastId, LOADMOREING);
-
-                if (IsCanLoad) {
-                    IsCanLoad=!IsCanLoad;
-                    PromptManager.ShowCustomToast(BaseContext, "开始第" + currentPage + "页");
-                    createLoadMoreView();
-                    IData(LastId, LOADMOREING);
-                }
+            public void loadMoreListener() {
+                PromptManager.ShowCustomToast(BaseContext,"开始是是是");
             }
         });
+        //初始化分页frash
+//        fragment_newshow_refrash.setOnRefreshListener(this);
+//        maintab_newshow_recyclerview.setColorSchemeResources(R.color.app_fen,R.color.app_fen1,R.color.app_fen2,R.color.app_fen3);
+//        maintab_newshow_recyclerview.addOnScrollListener(new EndlessRecyclerOnScrollListener(linearLayoutManager) {
+//            @Override
+//            public void onLoadMore(int currentPage) {
+////                IData(LastId, LOADMOREING);
+//
+//                if (IsCanLoad) {
+//                    IsCanLoad=!IsCanLoad;
+//                    PromptManager.ShowCustomToast(BaseContext, "开始第" + currentPage + "页");
+//                    createLoadMoreView();
+//                    IData(LastId, LOADMOREING);
+//                }
+//            }
+//        });
 
     }
 
@@ -194,7 +202,7 @@ public class FMainNewShow extends FBase implements View.OnClickListener,SwipeRef
                             IsCanLoad = true;
                         break;
                     case REFRESHING:
-                        fragment_newshow_refrash.setRefreshing(false);
+//                        fragment_newshow_refrash.setRefreshing(false);
                         if (StrUtils.isEmpty(Data.getHttpResultStr())) {//空的
                             return;
                         }
@@ -252,7 +260,7 @@ public class FMainNewShow extends FBase implements View.OnClickListener,SwipeRef
 //                HindLoadMore();
                 break;
             case REFRESHING:
-                fragment_newshow_refrash.setRefreshing(false);
+//                fragment_newshow_refrash.setRefreshing(false);
                 break;
             case LOADHind:
                 break;

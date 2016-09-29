@@ -14,17 +14,18 @@
         android:textSize="18dp"/>
 
 
-    <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+   <!-- <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
         android:id="@+id/fragment_newshow_refrash"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent">-->
 
-        <android.support.v7.widget.RecyclerView
+       <!-- <android.support.v7.widget.RecyclerView-->
+        <io.vtown.WeiTangApp.comment.view.custom.recycle.RefreshRecyclerView
             android:id="@+id/maintab_newshow_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/app_line"/>
-    </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
+   <!-- </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>-->
 
 
     <include
