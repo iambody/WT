@@ -92,7 +92,7 @@ public class CopyTextView  extends TextView{
         mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                setTextColor(android.graphics.Color.BLACK);
+                setTextColor(getResources().getColor(R.color.grey));
                 setBackgroundColor(getResources().getColor(R.color.transparent));
             }
         });

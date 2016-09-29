@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.ui.title.center.myshow;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,6 +32,7 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.RecyclerCommentItemDecoration;
+import io.vtown.WeiTangApp.comment.view.custom.HeaderViewRecyclerAdapter;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
 /**
@@ -39,14 +41,19 @@ import io.vtown.WeiTangApp.ui.ATitleBase;
 
 public class ARecyclerMyShow extends ATitleBase {
 
-
-   private RecyclerView recyclerview_my_show;
+    private RecyclerView recyclerview_my_show;
     private BUser user_get;
     private ShowRecyclerAdapter myShowAdapter;
     private String lastid = "";
     private String _seller_id;
+
+    private HeaderViewRecyclerAdapter MyHeadAdapter;
     // 需要他的封面和头像
     private BShop bShop;
+
+    private View HeadView;
+    private CircleImageView center_show_head;
+    private ImageView center_show_bg;
 
     @Override
     protected void InItBaseView() {
@@ -64,36 +71,23 @@ public class ARecyclerMyShow extends ATitleBase {
     }
 
     private void IView() {
-        RelativeLayout myshow_head_lay = (RelativeLayout) findViewById(R.id.myshow_head_lay);
-        ImageView center_show_bg_iv = (ImageView) findViewById(R.id.center_show_bg_iv);
-        TextView center_show_head_myname = (TextView) findViewById(R.id.center_show_head_myname);
-        CircleImageView center_show_head = (CircleImageView) findViewById(R.id.center_show_head);
+        HeadView = LayoutInflater.from(BaseContext).inflate(R.layout.view_othershow, null);
+
+        center_show_head = (CircleImageView) HeadView.findViewById(R.id.center_show_head);
+        center_show_bg = (ImageView) HeadView.findViewById(R.id.comment_othershow_bg);
         center_show_head.setBorderWidth(10);
         center_show_head.setBorderColor(getResources().getColor(R.color.transparent7));
-        ImageLoaderUtil.Load2(bShop.getCover(), center_show_bg_iv,
-                R.drawable.error_iv2);
-        ImageLoaderUtil.Load2(bShop.getAvatar(), center_show_head,
-                R.drawable.error_iv1);
 
 
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                screenWidth, screenWidth / 2);// new lParams(screenWidth,
-        // screenWidth/2);
-        center_show_bg_iv.setLayoutParams(layoutParams);
-
-        // 设置头像
-        LinearLayout.LayoutParams pasLayoutParams = new LinearLayout.LayoutParams(
-                screenWidth / 4, screenWidth / 4);
-        pasLayoutParams.setMargins(screenWidth * 11 / 16, -(screenWidth / 8),
-                0, 0);
-        center_show_head.setLayoutParams(pasLayoutParams);
-        StrUtils.SetTxt(center_show_head_myname, bShop.getSeller_name());
-
-       recyclerview_my_show = (RecyclerView) findViewById(R.id.recyclerview_my_show);
+        recyclerview_my_show = (RecyclerView) findViewById(R.id.recyclerview_my_show);
         recyclerview_my_show.setLayoutManager(new LinearLayoutManager(this));
         recyclerview_my_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
         myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth);
-        recyclerview_my_show.setAdapter(myShowAdapter);
+
+
+        MyHeadAdapter = new HeaderViewRecyclerAdapter(myShowAdapter);
+        MyHeadAdapter.addHeaderView(HeadView);
+        recyclerview_my_show.setAdapter(MyHeadAdapter);//myShowAdapter
     }
 
     private void IData(String lastid, int loadtype) {

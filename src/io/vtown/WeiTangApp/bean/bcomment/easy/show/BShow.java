@@ -22,7 +22,7 @@ public class BShow extends BBase {
     private String pre_url;
     private String seller_avatar;
     private String seller_name;
-
+    private String  goodurl;
     //
     private String sendnumber;
     private long create_time;
@@ -137,5 +137,13 @@ public class BShow extends BBase {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getGoodurl() {
+        return goodurl;
+    }
+
+    public void setGoodurl(String goodurl) {
+        this.goodurl = goodurl;
     }
 }

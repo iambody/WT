@@ -3,14 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="horizontal"
-    android:paddingBottom="10dp">
+    android:orientation="horizontal" >
 
 
     <io.vtown.WeiTangApp.comment.view.CircleImageView
         android:id="@+id/my_show_item_icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/main_shopbus_sidewidth"
+        android:layout_height="@dimen/main_shopbus_sidewidth"
         android:clickable="false"
         android:focusable="false"
         android:visibility="visible" />

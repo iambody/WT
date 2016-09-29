@@ -51,7 +51,18 @@ public class DateUtils {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
             String date = sdf.format(timeStamp * 1000);  
             return date;  
-    }  
+    }
+
+    /**
+     * 时间戳转化为时间格式
+     * @param timeStamp
+     * @return
+     */
+    public static String timeStampToStr2(long timeStamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        String date = sdf.format(timeStamp * 1000);
+        return date;
+    }
     /** 
      * 时间戳转化为时间格式 
      * @param timeStamp 

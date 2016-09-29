@@ -8,55 +8,55 @@
 
 
 
-    <RelativeLayout
-        android:id="@+id/myshow_head_lay"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:clickable="false"
-        android:focusable="false"
-        android:visibility="visible" >
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/myshow_head_lay"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="180dp"-->
+        <!--android:clickable="false"-->
+        <!--android:focusable="false"-->
+        <!--android:visibility="visible" >-->
 
-        <ImageView
-            android:id="@+id/center_show_bg_iv"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/center_comment_myshow_ivheight_height"
-            android:clickable="false"
-            android:focusable="false"
-            android:scaleType="fitXY" />
+        <!--<ImageView-->
+            <!--android:id="@+id/center_show_bg_iv"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/center_comment_myshow_ivheight_height"-->
+            <!--android:clickable="false"-->
+            <!--android:focusable="false"-->
+            <!--android:scaleType="fitXY" />-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal" >
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:orientation="horizontal" >-->
 
-            <TextView
-                android:id="@+id/center_show_head_myname"
-                style="@style/AudioFileInfoOverlayText1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11"
-                android:gravity="right"
-                android:lines="1"
-                android:padding="5dp"
-                android:textColor="@color/TextColorWhite" />
+            <!--<TextView-->
+                <!--android:id="@+id/center_show_head_myname"-->
+                <!--style="@style/AudioFileInfoOverlayText1"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="11"-->
+                <!--android:gravity="right"-->
+                <!--android:lines="1"-->
+                <!--android:padding="5dp"-->
+                <!--android:textColor="@color/TextColorWhite" />-->
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5" />
-        </LinearLayout>
-    </RelativeLayout>
+            <!--<ImageView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="5" />-->
+        <!--</LinearLayout>-->
+    <!--</RelativeLayout>-->
     <!-- 列表 -->
 
-    <io.vtown.WeiTangApp.comment.view.CircleImageView
+   <!-- <io.vtown.WeiTangApp.comment.view.CircleImageView
         android:id="@+id/center_show_head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="false"
         android:focusable="false"
-        android:visibility="visible" />
+        android:visibility="visible" />-->
 
 
 

@@ -12,7 +12,7 @@ public class BComment extends BBase {
     private String is_brand;//":"0",
     private String avatar;
     private String seller_name;//":"sfasfasdf",
-
+    private String  title;
     public String getIs_brand() {
         return is_brand;
     }
@@ -43,5 +43,13 @@ public class BComment extends BBase {
 
     public void setCover(String cover) {
         this.cover = cover;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

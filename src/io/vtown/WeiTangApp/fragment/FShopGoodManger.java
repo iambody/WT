@@ -335,7 +335,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
          */
         private List<BLGoodManger> mydatas = new ArrayList<BLGoodManger>();
         //用于局部刷新使用
-        public Map<Integer, SellingSoldoutItem> map = new HashMap<>();
+        public Map<Integer, SellingSoldoutItem> map = new HashMap<Integer, SellingSoldoutItem>();
 
         private int showType;
 

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:paddingBottom="5dp"
-    android:paddingTop="15dp"
-    android:paddingRight="10dp"
-    android:paddingLeft="10dp"
-    android:background="@color/white"
-    android:layout_height="wrap_content">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:paddingBottom="5dp"
+              android:paddingTop="5dp"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp">
 
     <include
         android:id="@+id/my_show_single_pic_head"
@@ -16,45 +17,28 @@
     <io.vtown.WeiTangApp.comment.view.CopyTextView
         android:id="@+id/my_show_content_single_pic_title"
         android:layout_width="match_parent"
-
-        android:paddingBottom="5dp"
-        android:textColor="@color/grey"
-        android:lineSpacingExtra="3dp"
-        android:layout_height="wrap_content" />
-
-
-
-
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/new_show_item_headwidth"
+        android:textColor="@color/grey"/>
 
 
     <ImageView
         android:id="@+id/item_recycler_my_show_single_pic"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/show_oneiv_height"
+        android:layout_width="@dimen/show_oneiv_height"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/new_show_item_headwidth"
         android:adjustViewBounds="true"
         android:clickable="true"
         android:focusable="true"
-        android:scaleType="fitCenter"
-        android:visibility="visible" />
+        android:scaleType="fitCenter" />
 
 
 
-   <!-- <TextView
-        android:id="@+id/my_show_single_pic_create_time"
-        android:layout_width="match_parent"
-
-        android:paddingTop="5dp"
-        android:textSize="12dp"
-        android:textColor="@color/app_gray"
-        android:layout_height="wrap_content" />-->
 
     <include
         android:id="@+id/comment_show_operation_pic"
         layout="@layout/comment_show_operation_layout"
         />
-
-
-
 
 
 </LinearLayout>

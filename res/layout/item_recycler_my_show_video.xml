@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:paddingBottom="5dp"
-    android:paddingTop="15dp"
+              android:paddingBottom="5dp"
+              android:paddingTop="5dp"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
     android:layout_height="wrap_content"
@@ -10,15 +10,14 @@
    >
     <include
         android:id="@+id/my_show_video_head"
+
         layout="@layout/comment_my_show_layout"/>
 
     <io.vtown.WeiTangApp.comment.view.CopyTextView
         android:id="@+id/my_show_content_video_title"
         android:layout_width="match_parent"
-
-        android:paddingBottom="5dp"
+        android:layout_marginLeft="@dimen/new_show_item_headwidth"
         android:textColor="@color/grey"
-        android:lineSpacingExtra="3dp"
         android:layout_height="wrap_content" />
 
 
@@ -32,7 +31,7 @@
         android:id="@+id/item_recycler_show_vido_lay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_marginLeft="@dimen/new_show_item_headwidth"
         android:visibility="visible" >
 
         <ImageView
@@ -68,6 +67,7 @@
     <include
         android:id="@+id/comment_show_operation_video"
         layout="@layout/comment_show_operation_layout"
+
         />
 
 

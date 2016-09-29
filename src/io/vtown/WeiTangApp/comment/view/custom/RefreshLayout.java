@@ -214,7 +214,6 @@ public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnS
                          int visibleItemCount, int totalItemCount) {
         // 滚动时到了最底部也可以加载更多
         if (canLoad() && IsCanLoadMore) {
-
             loadData();
         }
     }

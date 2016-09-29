@@ -255,6 +255,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
             case R.id.maintab_center_myiv://头像
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         APersonalData.class));
+
                 break;
             case R.id.maintab_tab_center_oder://我的订单
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
