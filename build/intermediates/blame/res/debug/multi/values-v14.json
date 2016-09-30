@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+        "outputFile": "D:\\wt_work_space\\WT\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
         "map": [
             {
                 "to": {
@@ -9,17 +9,17 @@
                     "startOffset": 55,
                     "endLine": 4,
                     "endColumn": 12,
-                    "endOffset": 201
+                    "endOffset": 182
                 },
                 "from": {
-                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-v14\\styles.xml",
+                    "file": "D:\\wt_work_space\\WT\\res\\values-v14\\styles.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 225,
+                        "startOffset": 227,
                         "endLine": 9,
                         "endColumn": 12,
-                        "endOffset": 373
+                        "endOffset": 356
                     }
                 }
             }

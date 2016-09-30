@@ -2,7 +2,6 @@ apply plugin: 'android'
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.0'
@@ -16,18 +15,18 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        mavenCentral();
     }
 }
 
 //------  maven依赖-------
 dependencies {
     compile fileTree(include: '*.jar', dir: 'libs')
-
-//    compile 'cn.bingoogolapple:bga-badgeview:latestVersion@aar'
+    //    compile 'cn.bingoogolapple:bga-badgeview:latestVersion@aar'
     compile 'com.android.support:support-v4:24.2.0'
-
-
+    compile 'com.android.support:recyclerview-v7:24.2.0'
+    //butterkin注解
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.chanven.lib:cptr:1.1.0'
 }
 
 android {
@@ -43,7 +42,7 @@ android {
 
     }
     compileSdkVersion 22
-    buildToolsVersion "24.0.2"
+    buildToolsVersion '24.0.0'
 
     aaptOptions { cruncherEnabled = false }
     sourceSets {
