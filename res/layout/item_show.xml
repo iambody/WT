@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="horizontal"
-    android:padding="5dp" >
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="horizontal"
+              android:padding="5dp">
 
     <io.vtown.WeiTangApp.comment.view.CircleImageView
         android:id="@+id/item_show_iv"
@@ -12,13 +12,13 @@
         android:layout_height="@dimen/item_show_iv_height"
         android:clickable="true"
         android:focusable="true"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp" >
+        android:padding="5dp">
 
         <LinearLayout
             android:id="@+id/item_show_gooddetail_lay"
@@ -26,20 +26,23 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/item_show_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:paddingBottom="5dp"
-                android:textColor="@color/app_fen" />
+                android:textColor="@color/app_fen"/>
 
-            <TextView
-                android:id="@+id/item_show_gooddetail"
-                style="@style/bt_textview"
-                android:text="详情"
-                android:visibility="gone" />
+            <ImageView
+                android:id="@+id/item_show_delete_txt"
+                android:layout_width="@dimen/item_show_delet_height"
+                android:layout_height="@dimen/item_show_delet_height"
+                android:src="@drawable/ic_ziseshanchu_nor"
+                android:padding="@dimen/line_size4"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <io.vtown.WeiTangApp.comment.view.CopyTextView
@@ -54,7 +57,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <!-- 视频播放的相对布局 -->
 
@@ -62,7 +65,7 @@
                 android:id="@+id/item_show_vido_lay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/item_show_vido_image"
@@ -79,7 +82,7 @@
                     android:layout_centerInParent="true"
                     android:clickable="true"
                     android:focusable="true"
-                    android:src="@drawable/video_player" />
+                    android:src="@drawable/video_player"/>
             </RelativeLayout>
             <!--  -->
             <!-- 一张图片时候显示大图 -->
@@ -92,7 +95,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:scaleType="fitCenter"
-                android:visibility="gone" />
+                android:visibility="gone"/>
             <!-- 九宫格的图片布局 （大于一张图片时候） -->
             <!-- android:layout_height="@dimen/show_oneiv_height" -->
 
@@ -103,7 +106,7 @@
                 android:horizontalSpacing="5dp"
                 android:numColumns="3"
                 android:verticalSpacing="5dp"
-                android:visibility="gone" />
+                android:visibility="gone"/>
         </LinearLayout>
 
         <LinearLayout
@@ -111,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
 
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/item_show_time"
@@ -122,18 +125,18 @@
                 android:layout_weight="1"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
-                android:textColor="@color/app_gray" />
+                android:textColor="@color/app_gray"/>
 
-            <TextView
-                android:id="@+id/item_show_delete_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="10dp"
-                android:text="@string/delete"
-                android:textColor="@color/gray"
-                android:visibility="gone" />
+            <!-- <TextView
+                 android:id="@+id/item_show_delete_txt"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:clickable="true"
+                 android:focusable="true"
+                 android:padding="10dp"
+                 android:text="@string/delete"
+                 android:textColor="@color/gray"
+                 android:visibility="gone" />-->
 
             <ImageView
                 android:id="@+id/item_show_gooddetail_iv"
@@ -143,7 +146,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="10dp"
-                android:src="@drawable/show_xiangqing" />
+                android:src="@drawable/show_xiangqing"/>
 
             <ImageView
                 android:id="@+id/item_show_share_iv"
@@ -153,7 +156,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="10dp"
-                android:src="@drawable/share_iv" />
+                android:src="@drawable/share_iv"/>
 
             <TextView
                 android:id="@+id/item_show_share_number"
@@ -161,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:padding="3dp"
-                android:textColor="@color/app_gray" />
+                android:textColor="@color/app_gray"/>
         </LinearLayout>
     </LinearLayout>
 

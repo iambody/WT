@@ -589,6 +589,7 @@
     <dimen name="new_show_item_headwidth">60dp</dimen>
     <dimen name="new_show_item_headwidth1">80dp</dimen>
     <dimen name="comment_othershow_head">80dp</dimen>
+    <dimen name="item_show_delet_height">24dp</dimen>
 
 
 </resources>

@@ -332,8 +332,8 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
                 myItem.item_show_iv = (CircleImageView) convertView
                         .findViewById(R.id.item_show_iv);
 
-                myItem.item_show_gooddetail = ViewHolder.get(convertView,
-                        R.id.item_show_gooddetail);
+//                myItem.item_show_gooddetail = ViewHolder.get(convertView,
+//                        R.id.item_show_gooddetail);
                 myItem.item_show_name = ViewHolder.get(convertView,
                         R.id.item_show_name);
                 myItem.item_show_txt_inf = ViewHolder.get(convertView,
@@ -467,11 +467,11 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
             CircleImageView item_show_iv;
             LinearLayout item_show_gooddetail_lay;// 查看show
             TextView item_show_name;// 名字
-            TextView item_show_gooddetail;// 查看详情//废弃
+//            TextView item_show_gooddetail;// 查看详情//废弃
             ImageView item_show_gooddetail_iv;// 查看详情
             TextView item_show_txt_inf;// 信息
             TextView item_show_time;// 时间
-            TextView item_show_delete_txt;// 删除
+            ImageView item_show_delete_txt;// 删除
             ImageView item_show_share_iv;// 分享
             TextView item_show_share_number;// 转发数量
             // 视频

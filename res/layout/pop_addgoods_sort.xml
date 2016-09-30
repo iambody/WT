@@ -200,6 +200,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/left_btn_select"
                 android:text="@string/cancle"
+                android:padding="@dimen/line_size5"
                 android:textColor="@color/black"/>
 
             <Button
@@ -209,6 +210,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/right_btn_select"
                 android:text="@string/queding"
+                android:padding="@dimen/line_size5"
                 android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>

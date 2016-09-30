@@ -169,7 +169,13 @@ public final class CaptureActivity extends ABase implements
 
 		inactivityTimer.onResume();
 	}
+	/**
+	 * 点击左侧按钮的监听事件
+	 */
 
+	public void title_left_bt(View v) {
+
+	}
 	@Override
 	protected void onPause() {
 		if (handler != null) {
