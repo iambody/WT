@@ -24,7 +24,10 @@ import io.vtown.WeiTangApp.adapter.ShowRecyclerAdapter;
 import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.othershow.BLOtherShowOut;
+import io.vtown.WeiTangApp.bean.bcomment.easy.othershow.BOtherShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -59,10 +62,12 @@ public class ARecyclerMyShow extends ATitleBase {
     private LinearLayoutManager MLinearLayoutManager;
     private boolean IsCanLoadMore = false;
     private boolean IsLoadingMore = false;
+    private View mRootView ;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_recycler_my_show);
+        this.mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_recycler_my_show,null);
         SetTitleHttpDataLisenter(this);
         String seller_id = getIntent().getStringExtra("seller_id");
         if (StrUtils.isEmpty(seller_id)) {
@@ -73,6 +78,7 @@ public class ARecyclerMyShow extends ATitleBase {
         user_get = Spuit.User_Get(BaseContext);
         bShop = Spuit.Shop_Get(BaseContext);
         IView();
+        ICache();
         IData(lastid, LOAD_INITIALIZE);
     }
 
@@ -93,7 +99,7 @@ public class ARecyclerMyShow extends ATitleBase {
         recyclerview_my_show = (RecyclerView) findViewById(R.id.recyclerview_my_show);
         recyclerview_my_show.setLayoutManager(MLinearLayoutManager);
         recyclerview_my_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
-        myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth,false);
+        myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth,mRootView,this,false);
 
 
         MyHeadAdapter = new HeaderViewRecyclerAdapter(myShowAdapter);
@@ -115,6 +121,38 @@ public class ARecyclerMyShow extends ATitleBase {
 
     }
 
+
+    private void ICache() {
+        String CacheStr = CacheUtil.MyShow_Get(BaseContext);
+        if (StrUtils.isEmpty(CacheStr)){
+            PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
+            return;
+        }
+
+        // 开始显示缓存数据
+
+        List<BShow> datas = new ArrayList<BShow>();
+        try {
+            datas = JSON.parseArray(CacheStr, BShow.class);
+
+        } catch (Exception e) {
+
+            return;
+        }
+//        center_show_head.setVisibility(View.VISIBLE);
+       // myshow_head_lay.setVisibility(View.VISIBLE);
+//        List<BLOtherShowOut> listDatas = datas.getShowinfo();
+//        if (listDatas.size() > 0)
+//            LastId = listDatas
+//                    .get(listDatas.size() - 1)
+//                    .getList()
+//                    .get(listDatas.get(listDatas.size() - 1).getList().size() - 1)
+//                    .getId();
+//        myshowscrollview.smoothScrollTo(0, 20);
+//        mCenterShowAp.FrashData(listDatas, datas);
+        myShowAdapter.FrashData(datas);
+    }
+
     /**
      * 开始显示
      */
@@ -134,15 +172,30 @@ public class ARecyclerMyShow extends ATitleBase {
     }
 
     private void IData(String lastid, int loadtype) {
-        if (LOAD_INITIALIZE == loadtype) {
-            PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-        }
+//        if (LOAD_INITIALIZE == loadtype) {
+//            PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
+//        }
 
         HashMap<String, String> map = new HashMap<>();
         map.put("seller_id", _seller_id);
         map.put("lastid", lastid);
         map.put("pagesize", Constants.PageSize + "");
         FBGetHttpData(map, Constants.Get_My_Show, Request.Method.GET, 0, loadtype);
+    }
+
+    /**
+     * 删除我自己的show
+     */
+
+    public void DeletMyShow(String ShowId,String seller_id) {
+        HashMap<String, String> mHashMap = new HashMap<String, String>();
+
+        mHashMap.put("id", ShowId);
+        mHashMap.put("seller_id", seller_id);
+
+        FBGetHttpData(mHashMap, Constants.MyShowDelete, Request.Method.DELETE, 91,
+                LOAD_INITIALIZE);
+
     }
 
     @Override
@@ -152,11 +205,21 @@ public class ARecyclerMyShow extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
+
+
         switch (Data.getHttpLoadType()) {
             case LOAD_INITIALIZE:
+                if (91 == Data.getHttpResultTage()) {// 删除
+                    PromptManager.ShowCustomToast(BaseContext, "删除成功");
+                    lastid = "";
+                    IData(lastid, LOAD_INITIALIZE);
+                    //return;
+                }
+
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     return;
                 }
+                CacheUtil.MyShow_Save(BaseContext,Data.getHttpResultStr());
                 List<BShow> datas = new ArrayList<BShow>();
                 datas = JSON.parseArray(Data.getHttpResultStr(), BShow.class);
                 lastid = datas.get(datas.size() - 1).getId();

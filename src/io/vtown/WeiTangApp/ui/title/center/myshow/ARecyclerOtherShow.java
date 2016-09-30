@@ -47,10 +47,12 @@ public class ARecyclerOtherShow extends ATitleBase {
     private boolean IsCanLoadMore = false;
     private boolean IsLoadingMore = false;
     private String lastid = "";
+    private View mRootView;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.acvitty_recycler_other_show);
+        this.mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.acvitty_recycler_other_show,null);
         SetTitleHttpDataLisenter(this);
         IBundlle();
         IHeaderView();
@@ -84,7 +86,7 @@ public class ARecyclerOtherShow extends ATitleBase {
         recyclerview_other_show = (RecyclerView) findViewById(R.id.recyclerview_other_show);
         recyclerview_other_show.setLayoutManager(mLinearLayoutManager);
         recyclerview_other_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
-        mShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth, false);
+        mShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth,mRootView,this,false);
         mHeadAdapter = new HeaderViewRecyclerAdapter(mShowAdapter);
         mHeadAdapter.addHeaderView(HeadView);
         recyclerview_other_show.setAdapter(mHeadAdapter);//myShowAdapter
@@ -117,6 +119,21 @@ public class ARecyclerOtherShow extends ATitleBase {
     }
 
     /**
+     * 删除我自己的show
+     */
+
+    public void DeletMyShow(String ShowId,String seller_id) {
+        HashMap<String, String> mHashMap = new HashMap<String, String>();
+
+        mHashMap.put("id", ShowId);
+        mHashMap.put("seller_id", seller_id);
+
+        FBGetHttpData(mHashMap, Constants.MyShowDelete, Request.Method.DELETE, 91,
+                LOAD_INITIALIZE);
+
+    }
+
+    /**
      * 开始显示
      */
     private void createLoadMoreView() {
@@ -142,8 +159,15 @@ public class ARecyclerOtherShow extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
+
+
         switch (Data.getHttpLoadType()) {
             case LOAD_INITIALIZE:
+                if (91 == Data.getHttpResultTage()) {// 删除
+                    PromptManager.ShowCustomToast(BaseContext, "删除成功");
+                    lastid = "";
+                    IData(lastid, LOAD_INITIALIZE);
+                }
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     return;
                 }

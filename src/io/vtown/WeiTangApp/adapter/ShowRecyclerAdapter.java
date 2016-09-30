@@ -32,11 +32,14 @@ import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.CopyTextView;
 import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
+import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
 
 /**
  * Created by Yihuihua on 2016/9/27.
@@ -72,13 +75,14 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     //是否可以加载更多
 //    private boolean IsCanLoadMore = false;
 
-    public ShowRecyclerAdapter(Context context, int screenWidth,boolean clickHeaderIv) {
+    public ShowRecyclerAdapter(Context context, int screenWidth,View Mybaseview,Activity activity,boolean clickHeaderIv) {
         super();
         this.mContext = context;
 //        this.mScreenWidth = screenWidth;
+        this.BaseView = Mybaseview;
+        this.SActivity = activity;
         this.mClickHeaderIv = clickHeaderIv;
         this.inflater = LayoutInflater.from(context);
-
     }
 
     public ShowRecyclerAdapter(Context context, int screenWidth, View Mybaseview, boolean isShowDetaiDate, Activity mActivity) {
@@ -156,6 +160,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 if (isMyShow(bShow.getSeller_id())) {
                     grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
+                    grid_item.my_show_item_delete_grid.setOnClickListener(new DeleteShowClick(datas.get(position)));
                 } else {
                     grid_item.my_show_item_delete_grid.setVisibility(View.GONE);
                 }
@@ -208,6 +213,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 if (isMyShow(bShow.getSeller_id())) {
                     video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
+                    video_item.my_show_item_delete_video.setOnClickListener(new DeleteShowClick(datas.get(position)));
                 } else {
                     video_item.my_show_item_delete_video.setVisibility(View.GONE);
                 }
@@ -245,6 +251,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 if (isMyShow(bShow.getSeller_id())) {
                     pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
+                    pic_item.my_show_item_delete_pic.setOnClickListener(new DeleteShowClick(datas.get(position)));
                 } else {
                     pic_item.my_show_item_delete_pic.setVisibility(View.GONE);
                 }
@@ -400,7 +407,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public void onClick(View v) {
             {
                 Intent intent = new Intent(SActivity,
-                        AOtherShow.class);
+                        ARecyclerOtherShow.class);
                 intent.putExtra(
                         "abasebeankey",
                         new BComment(
@@ -503,6 +510,57 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 
         }
+    }
+
+    class DeleteShowClick implements View.OnClickListener{
+        BShow DeleteBShow;
+        public DeleteShowClick(BShow myShareShow){
+            DeleteBShow = myShareShow;
+        }
+
+        @Override
+        public void onClick(View v) {
+            ShowCustomDialog(DeleteBShow.getId(),DeleteBShow.getSeller_id());
+        }
+    }
+
+    /**
+     * 删除show
+     *
+     * @param
+     * @param
+     * @param
+     * @param
+     */
+    private void ShowCustomDialog(final String ShowId,final String seller_id) {
+        final CustomDialog dialog = new CustomDialog(mContext,
+                R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "取消", "删除");
+        dialog.show();
+        dialog.setTitleText("是否删除该show?");
+        dialog.HindTitle2();
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setcancelListener(new CustomDialog.oncancelClick() {
+
+            @Override
+            public void oncancelClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setConfirmListener(new CustomDialog.onConfirmClick() {
+            @Override
+            public void onConfirmCLick(View v) {
+                dialog.dismiss();
+                if(SActivity instanceof ARecyclerMyShow){
+                    ((ARecyclerMyShow)SActivity).DeletMyShow(ShowId,seller_id);
+
+                }else if(SActivity instanceof ARecyclerOtherShow){
+                    ((ARecyclerOtherShow)SActivity).DeletMyShow(ShowId,seller_id);
+                }
+
+
+            }
+        });
     }
 
 
