@@ -131,14 +131,14 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dip"
-                    android:background="#fc49ae"
+                    android:background="@color/app_fen"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#fc49ae"
+
                         android:gravity="center"
                         android:orientation="vertical"
                         android:text="确定"
@@ -149,7 +149,7 @@
                         android:id="@+id/id_sel_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#fc49ae"
+
                         android:gravity="center"
                         android:orientation="vertical"
                         android:text=""
