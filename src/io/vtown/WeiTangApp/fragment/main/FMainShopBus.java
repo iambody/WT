@@ -115,8 +115,6 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         InItBaseView();
         SetTitleHttpDataLisenter(this);
         CachShopBus();
-
-
     }
 
     private void CachShopBus() {

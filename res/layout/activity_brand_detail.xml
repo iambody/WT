@@ -181,10 +181,10 @@
 
                         <!-- Banner图 -->
 
-                        <io.vtown.WeiTangApp.comment.view.ImageCycleView
+                      <!--  <io.vtown.WeiTangApp.comment.view.ImageCycleView
                             android:id="@+id/branddetail_banner"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"/>-->
 
                         <!-- Banner图***** -->
                         <!-- 品牌LOg*** -->

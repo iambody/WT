@@ -1174,7 +1174,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                 // AGoodShow.Tage_GoodSid, MyData.getBase().getId()));
 
                 if (null != MyData && !StrUtils.isEmpty(MyData.getBase().getId())) {
-                    Intent intent = new Intent(BaseActivity, AOtherShow.class);
+                    Intent intent = new Intent(BaseActivity, ARecyclerOtherShow.class);
                     intent.putExtra(BaseKey_Bean, new BComment(MyData.getBase()
                             .getId(), MyData.getBase().getCover(), MyData.getBase()
                             .getAvatar(), MyData.getBase().getSeller_name(), MyData

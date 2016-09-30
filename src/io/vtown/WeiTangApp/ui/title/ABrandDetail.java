@@ -70,6 +70,7 @@ import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -134,7 +135,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     /**
      * pager
      */
-    private ImageCycleView branddetail_banner;
+//    private ImageCycleView branddetail_banner;
 
     /**
      * 分页加载时候的当前页
@@ -187,7 +188,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 //        brand_detail_brand_sou_iv = (ImageView) findViewById(R.id.brand_detail_brand_sou_iv);
         brandscroll = (PullView) findViewById(R.id.brandscroll);
         brandscroll.setOnFooterRefreshListener(this);
-        branddetail_banner = (ImageCycleView) findViewById(R.id.branddetail_banner);
+//        branddetail_banner = (ImageCycleView) findViewById(R.id.branddetail_banner);
         brand_detail_out_lay = (LinearLayout) findViewById(R.id.brand_detail_out_lay);
         brand_detail_nodata_lay = findViewById(R.id.brand_detail_nodata_lay);
         brand_detail_nodata_lay.setOnClickListener(this);
@@ -459,7 +460,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
         }
 
         // 获取品牌信息
-        InItPaGeView(data.getRoll());
+//        InItPaGeView(data.getRoll());
         BShopBase bdComment = data.getBase();
         ImageLoaderUtil.Load(bdComment.getAvatar(), brand_detail_brand_iv,
                 R.drawable.error_iv2);
@@ -485,7 +486,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     @Override
     protected void onResume() {
         super.onResume();
-        branddetail_banner.startImageCycle();
+//        branddetail_banner.startImageCycle();
     }
 
     ;
@@ -493,13 +494,13 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     @Override
     protected void onPause() {
         super.onPause();
-        branddetail_banner.pushImageCycle();
+//        branddetail_banner.pushImageCycle();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        branddetail_banner.pushImageCycle();
+//        branddetail_banner.pushImageCycle();
     }
 
     @Override
@@ -523,11 +524,14 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     @Override
     protected void MyClick(View V) {
         switch (V.getId()) {
+            case R.id.brandshop_back_iv:
+                BaseActivity.finish();
+                break;
             case R.id.brand_detail_brand_lookshow_iv:// 品牌商铺的Show
                 if (null == mBComment)
                     return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AOtherShow.class).putExtra(BaseKey_Bean, new BComment(
+                        ARecyclerOtherShow.class).putExtra(BaseKey_Bean, new BComment(
                         mBComment.getBase().getId(),
                         mBComment.getBase().getCover(), mBComment.getBase()
                         .getAvatar(), mBComment.getBase().getSeller_name(),
@@ -594,15 +598,15 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 
     // ******************start*****************Banner*****************start********************
 
-    private void InItPaGeView(List<String> data) {
-        if (null == data || data.size() == 0) {
-            branddetail_banner.setVisibility(View.GONE);
-            return;
-        }
-        ArrayList<String> ddas = (ArrayList<String>) data;
-        branddetail_banner.setImageResources(ddas, ddas, mAdCycleViewListener,
-                screenWidth / 2);
-    }
+//    private void InItPaGeView(List<String> data) {
+//        if (null == data || data.size() == 0) {
+//            branddetail_banner.setVisibility(View.GONE);
+//            return;
+//        }
+//        ArrayList<String> ddas = (ArrayList<String>) data;
+//        branddetail_banner.setImageResources(ddas, ddas, mAdCycleViewListener,
+//                screenWidth / 2);
+//    }
 
     private ImageCycleViewListener mAdCycleViewListener = new ImageCycleViewListener() {
         @Override
