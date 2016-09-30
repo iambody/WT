@@ -1,5 +1,143 @@
 [
     {
+        "outputFile": "D:\\Wt\\WT\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-1920x1080\\values-1920x1080.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 58,
+                    "endOffset": 109
+                },
+                "from": {
+                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 321,
+                        "endColumn": 58,
+                        "endOffset": 375
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 114,
+                    "endColumn": 50,
+                    "endOffset": 160
+                },
+                "from": {
+                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 152,
+                        "endColumn": 50,
+                        "endOffset": 198
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 165,
+                    "endColumn": 54,
+                    "endOffset": 215
+                },
+                "from": {
+                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 265,
+                        "endColumn": 54,
+                        "endOffset": 315
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 220,
+                    "endColumn": 50,
+                    "endOffset": 266
+                },
+                "from": {
+                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 96,
+                        "endColumn": 50,
+                        "endOffset": 142
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 271,
+                    "endColumn": 53,
+                    "endOffset": 320
+                },
+                "from": {
+                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 381,
+                        "endColumn": 53,
+                        "endOffset": 430
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 325,
+                    "endColumn": 59,
+                    "endOffset": 380
+                },
+                "from": {
+                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 204,
+                        "endColumn": 59,
+                        "endOffset": 259
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 385,
+                    "endColumn": 48,
+                    "endOffset": 429
+                },
+                "from": {
+                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 436,
+                        "endColumn": 48,
+                        "endOffset": 480
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-1920x1080\\values-1920x1080.xml",
         "map": [
             {

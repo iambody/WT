@@ -37,7 +37,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/white"
             android:orientation="horizontal"
-            >
+            android:paddingTop="@dimen/line_size6" >
 
             <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton
                 android:id="@+id/maintab_home"
@@ -51,7 +51,8 @@
                 android:text="@string/main_shangcheng"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/main_tab_group_txt_size"
-                app:gradual_color="#f75151"/>
+                app:gradual_color="#f75151"
+              />
 
             <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton
                 android:id="@+id/maintab_shop"
@@ -74,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_tab_shopbus_margin_left"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="center_horizontal|bottom"
                 android:paddingBottom="@dimen/line_size4"
                 android:text="@string/main_shopbus"
                 android:textColor="@color/gray"

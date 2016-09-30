@@ -5,7 +5,7 @@
     android:versionName="2.5.2" >
 
     <uses-sdk
-        android:minSdkVersion="13"
+        android:minSdkVersion="15"
         android:targetSdkVersion="22" />
     <!-- 权限设置space -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -33,8 +33,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" >
-    </uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- 极光推送 -->
@@ -114,7 +113,6 @@
     -->
     <application
         android:name="io.vtown.WeiTangApp.BaseApplication"
-        android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
@@ -138,78 +136,63 @@
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.AMain"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.AShop"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.AShow"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.AShopBus"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.ACenter"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.ASouSouGood"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.ASouSouShop"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.ACommentList"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.ACommentGrad"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.AWeb"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.ABrandDetail"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.AGoodSort"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.afragment.AShopOderManage"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.afragment.AShopPurchase"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.APay"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.wxapi.WXPayEntryActivity"
             android:exported="true"
@@ -217,26 +200,22 @@
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.channel.AChannel"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.ABrandDaiLi"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.addgood.ANewAddGood"
             android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.addgood.AAddGoodRule"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.afragment.AShopGoodManger"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <!--
          <activity
              android:name=".comment.view.AVideoPlayerView"
@@ -246,57 +225,46 @@
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.channel.ABeJunior"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.channel.ADevelopJunior"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.channel.AInviteSuperior"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.channel.AInviteRecord"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.channel.AMySuperior"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.channel.AQRCode"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.AVidemplay"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.AShopDetail"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.afragment.ACenterOder"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <!--
          <activity
              android:name=".ui.title.center.wallet.AZiJinDetail"
@@ -306,113 +274,89 @@
         -->
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.ATiXian"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.AGoodDetail"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.ABankCardManager"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.APropertyDetail"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.AAddBankCard"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.AAlipayManager"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.AAddAliPay"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.AAboutWt"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.AAccountSafe"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.AAddConsigneeAddress"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.AAddressManage"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.AAuthentication"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.APersonalData"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.AResetPswStep1"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.AResetPswStep2"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.wxapi.AH5Pay"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.account.AOderBeing"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.center.AShopData"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.center.AShopDataEdit"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.AphotoPager"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.loginregist.ALogin"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.loginregist.AInviteAndApprove"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.odermanger.AOderDetail"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.odermanger.ADaifaOrderModify"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <!--
         <activity
             android:name=".ui.title.shop.odermanger.ADaifaSendOut"
@@ -422,302 +366,241 @@
         -->
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.odermanger.ADaifuOrderModify"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.ABrandJoin"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.AApplyProxy"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.loginregist.AInviteCode"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.account.ACashierDesk"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.addgood.AGoodPreview"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.ASelectBank"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.AModifyAlipay"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.wallet.ABankCardOperation"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.ALookAptitude"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.myorder.AApplyTuikuan"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.myshow.AMyShowDataSet"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.addgood.AAddGoodCategory"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.AEditAddress"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.AOpinionFeedback"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.im.AChat"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.account.AGoodsCheckList"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.mynew.ANew"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.set.ARealIdauthSucceed"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.ABrandShopInf"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.mynew.AItemNew"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.AEditInfBack"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.afragment.ASellStatistics"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.ALoadAd"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.odermanger.ASeleteLogistics"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.ABeQRCode"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.purchase.APurchaseDetail"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.im.AChatInf"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.comment.view.ShowSelectPic"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderDetail"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.AGoodVidoShare"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.AGoodShow"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderVido"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderVido"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderSuccess"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderNoPayDetail"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.odermanger.AEditGoodPrice"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.ANewHome"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.test.ATestView"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.APlayer"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.odermanger.AModifyDeliveryAddress"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.im.AChatLoad"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.purchase.APurchaseNoPayDetail"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.mynew.ANewInf"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyOutDataCoupons"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.ABrandCheck"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.center.myinvitecode.ABindCode"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.goodmanger.AAlterBrandNumber"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.ANull"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.order.AShopOrderManager"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.goodmanger.ABrandNumberEdit"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.order.AShopPurchaseOrder"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.ABrandList"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.comment.view.select_pic.PicSelActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Transparent" >
-        </activity>
+            android:theme="@style/Transparent" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.title.shop.goodmanger.ANewGoodMangerEdit"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="io.vtown.WeiTangApp.ui.comment.AShopGoodSou"
             android:launchMode="singleTask"
@@ -735,6 +618,18 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
+            android:name="io.vtown.WeiTangApp.ui.ui.ARecyclerShow"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="io.vtown.WeiTangApp.ui.title.AGoodPop"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -743,20 +638,19 @@
             android:name="io.vtown.WeiTangApp.ui.ui.AMainTab"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+
         <!-- activity的space************************************* -->
 
 
         <!-- 下载apk的服务 -->
-        <service android:name="io.vtown.WeiTangApp.service.DownloadService" >
-        </service>
+        <service android:name="io.vtown.WeiTangApp.service.DownloadService" />
 
         <!-- 极光推送 ************************************************************** -->
         <!-- Rich push 核心功能 since 2.0.6 -->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
             android:exported="false"
-            android:theme="@style/MyDialogStyle" >
-        </activity>
+            android:theme="@style/MyDialogStyle" />
 
         <!-- Required SDK核心功能 -->
         <activity
@@ -775,8 +669,7 @@
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false" >
-        </service>
+            android:exported="false" />
 
         <!-- Required SDK 核心功能 -->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
@@ -986,8 +879,7 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
-        </activity>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <!-- alipay sdk end -->
         <!-- 设置环信应用的*********************** -->

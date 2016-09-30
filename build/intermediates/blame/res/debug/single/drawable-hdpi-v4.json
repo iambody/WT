@@ -1,35 +1,31 @@
 [
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_title_bar.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_title_bar.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_send_unselected.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_send_unselected.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_oks_ptr_ptr.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\ssdk_oks_ptr_ptr.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_back_btn.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_back_btn.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\picseldel.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\picseldel.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatto_voice_playing_f3.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chatto_voice_playing_f3.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_preview_unselected.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_preview_unselected.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_send_focused.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_send_focused.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_xiangce_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\ic_xiangce_nor.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_addpic_unfocused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\multiphoto_icon_addpic_unfocused.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mzw_camera_open.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\mzw_camera_open.png"
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_xiangce_nor.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\ic_xiangce_nor.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_loading_not_selected.png",
@@ -40,12 +36,28 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_icon_confirm_focused.png"
     },
     {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plubin_camera_del_focused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plubin_camera_del_focused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_tag_selected.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\multiphoto_tag_selected.png"
+    },
+    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_05.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\record_animate_05.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\pictures_selected.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\pictures_selected.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_movie_add_shoot_select.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\bg_movie_add_shoot_select.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_del_focused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\multiphoto_icon_del_focused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\video_vertical_screen_bg.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\video_vertical_screen_bg.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_addpic_unfocused.png",
@@ -64,12 +76,24 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_preview_unselected.png"
     },
     {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_cancel.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_cancel.png"
+    },
+    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\pictures_no.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\pictures_no.png"
     },
     {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\souhu_player_silence.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\souhu_player_silence.png"
+    },
+    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_send_unselected.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_send_unselected.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\souhu_player_volume.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\souhu_player_volume.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_queding_focused.png",
@@ -80,12 +104,16 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\mark_arrow.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_baiseshousuo_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\ic_baiseshousuo_nor.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_confirm_unfocused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\multiphoto_icon_confirm_unfocused.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_quxiao_focused.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\icon_quxiao_focused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatto_voice_playing.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chatto_voice_playing.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_cancel_pressed.png",
@@ -94,6 +122,302 @@
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\loading.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\loading.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_back_btn.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_back_btn.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_oks_ptr_ptr.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\ssdk_oks_ptr_ptr.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_addpic_focused.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_icon_addpic_focused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_cancel_pressed.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_cancel_pressed.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_album_back.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_album_back.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_shanchu_focused.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\icon_shanchu_focused.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_del_focused.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_icon_del_focused.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_04.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\record_animate_04.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\msp_demo_title.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\msp_demo_title.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tabcent_pr.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\tabcent_pr.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_quxiao_unfocused.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\icon_quxiao_unfocused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_no_pictures.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_no_pictures.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mzw_camera_open.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\mzw_camera_open.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_movie_add_shoot.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\bg_movie_add_shoot.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_bottom_bar.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_bottom_bar.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\picseldel.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\picseldel.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatto_voice_playing_f2.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chatto_voice_playing_f2.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_loading_not_selected.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\icon_loading_not_selected.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_shanchu_unfocused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\icon_shanchu_unfocused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mzw_camera_close.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\mzw_camera_close.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\souhu_player_forward.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\souhu_player_forward.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\msp_demo_title.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\msp_demo_title.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\souhu_player_forward.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\souhu_player_forward.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\video_player.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\video_player.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\souhu_player_backward.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\souhu_player_backward.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_baiseshousuo_nor.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\ic_baiseshousuo_nor.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\progressbar.xml",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\progressbar.xml"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\arrow_up.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\arrow_up.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_quxiao_focused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\icon_quxiao_focused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\arrow_up.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\arrow_up.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_02.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\record_animate_02.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_del_unfocused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\multiphoto_icon_del_unfocused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\souhu_player_gesture_bg.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\souhu_player_gesture_bg.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chat_head_bg.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chat_head_bg.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatfrom_voice_playing_f1.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chatfrom_voice_playing_f1.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatto_voice_playing_f1.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chatto_voice_playing_f1.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_filenum.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_filenum.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\pictures_selected.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\pictures_selected.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_ziseshanchu_nor.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\ic_ziseshanchu_nor.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\arrow_right.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\arrow_right.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_addpic_focused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\multiphoto_icon_addpic_focused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_preview_pressed.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_preview_pressed.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_03.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\record_animate_03.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_tag_selected.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_tag_selected.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_choosed.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_choosed.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chat_bg.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chat_bg.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_bottom_bar.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_bottom_bar.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\msp_icon.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\msp_icon.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_movie_add_shoot.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\bg_movie_add_shoot.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_data_select.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\icon_data_select.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_bg_img.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\multiphoto_bg_img.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_confirm_focused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\multiphoto_icon_confirm_focused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_queding_unfocused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\icon_queding_unfocused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\msp_demo_title_bg.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\msp_demo_title_bg.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatfrom_voice_playing_f1.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chatfrom_voice_playing_f1.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\msp_icon.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\msp_icon.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_title_bar.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_title_bar.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_back_btn.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_back_btn.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\picseldel.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\picseldel.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatto_voice_playing_f3.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chatto_voice_playing_f3.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatfrom_voice_playing_f2.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chatfrom_voice_playing_f2.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_xiangce_nor.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\ic_xiangce_nor.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mzw_camera_open.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\mzw_camera_open.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_02.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\record_animate_02.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_shanchu_focused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\icon_shanchu_focused.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\pictures_selected.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\pictures_selected.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatfrom_voice_playing_f3.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chatfrom_voice_playing_f3.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\video_player.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\video_player.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_back_btn_pressed.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_back_btn_pressed.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\arrow_right.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\arrow_right.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_quxiao_unfocused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\icon_quxiao_unfocused.png"
+    },
+    {
+        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_baiseshousuo_nor.png",
+        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\ic_baiseshousuo_nor.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_queding_focused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\icon_queding_focused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_preview_focused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_preview_focused.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatfrom_voice_playing_f3.png",
@@ -108,16 +432,12 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\selpiccamera.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_addpic_focused.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_icon_addpic_focused.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\video_tab_back_off.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\video_tab_back_off.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_shanchu_focused.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\icon_shanchu_focused.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_icon_del_focused.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_icon_del_focused.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_04.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\record_animate_04.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_send_pressed.png",
@@ -132,12 +452,16 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_icon_confirm_unfocused.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_04.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\record_animate_04.png"
-    },
-    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\souhu_player_volume.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\souhu_player_volume.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_send_focused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_send_focused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_data_select.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\icon_data_select.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatto_voice_playing.png",
@@ -148,16 +472,24 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\record_animate_01.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_quxiao_unfocused.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\icon_quxiao_unfocused.png"
-    },
-    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatto_voice_playing_f2.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chatto_voice_playing_f2.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_bottom_bar.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_bottom_bar.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_del_unfocused.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_del_unfocused.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_title_bar.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_title_bar.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\selpiccamera.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\selpiccamera.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_01.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\record_animate_01.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatfrom_voice_playing_f2.png",
@@ -176,12 +508,20 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\record_animate_03.png"
     },
     {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\video_pauseer.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\video_pauseer.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mark_arrow.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\mark_arrow.png"
+    },
+    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tabcent_pr.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\tabcent_pr.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\msp_demo_title.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\msp_demo_title.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\xlistview_arrow.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\xlistview_arrow.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_album_back.png",
@@ -192,12 +532,8 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_icon_del_unfocused.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\souhu_player_forward.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\souhu_player_forward.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\video_player.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\video_player.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_05.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\record_animate_05.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatfrom_voice_playing.png",
@@ -208,24 +544,16 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_preview_pressed.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\progressbar.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\progressbar.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\arrow_up.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\arrow_up.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\record_animate_02.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\record_animate_02.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatfrom_voice_playing_f1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chatfrom_voice_playing_f1.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_choosed.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_choosed.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_choose_back.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_choose_back.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatfrom_voice_playing.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chatfrom_voice_playing.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_shanchu_unfocused.png",
@@ -240,8 +568,8 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_del_unfocused.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\arrow_right.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\arrow_right.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\pictures_no.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\pictures_no.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
@@ -260,6 +588,10 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\souhu_player_backward.png"
     },
     {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_send_pressed.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_send_pressed.png"
+    },
+    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\souhu_player_silence.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\souhu_player_silence.png"
     },
@@ -268,20 +600,24 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_filenum.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\multiphoto_tag_selected.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_tag_selected.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chat_bg.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chat_bg.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_choosed.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_choosed.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\loading.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\loading.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\mzw_camera_close.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\mzw_camera_close.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chat_bg.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\chat_bg.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\arrow_down.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\arrow_down.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\chatto_voice_playing_f3.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\chatto_voice_playing_f3.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\xlistview_arrow.png",
@@ -296,20 +632,20 @@
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\multiphoto_bg_img.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_movie_add_shoot.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\bg_movie_add_shoot.png"
-    },
-    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_cancel.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\plugin_camera_cancel.png"
+    },
+    {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\progressbar.xml",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\progressbar.xml"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\arrow_down.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\arrow_down.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_data_select.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\icon_data_select.png"
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_choose_back.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-hdpi\\plugin_camera_choose_back.png"
     },
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plugin_camera_preview_focused.png",
@@ -322,9 +658,5 @@
     {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\video_pauseer.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\video_pauseer.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\msp_icon.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-hdpi\\msp_icon.png"
     }
 ]

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher.png",
+        "source": "D:\\Wt\\WT\\res\\drawable-ldpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher.png",
         "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-ldpi\\ic_launcher.png"
     }

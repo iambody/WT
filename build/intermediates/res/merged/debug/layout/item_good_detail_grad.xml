@@ -8,13 +8,15 @@
 
     <TextView
         android:id="@+id/tv_good_detail_grad_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="2dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingTop="2dp"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:background="@drawable/shape_pop_gridview_txt_normal_bg"
         android:text="@string/nullstr"
         android:textColor="@color/grey" />
