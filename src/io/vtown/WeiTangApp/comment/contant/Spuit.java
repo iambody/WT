@@ -148,6 +148,7 @@ public class Spuit {
         User_Save(XX, new BUser());
         Shop_Save(XX, new BShop());
         Show_SaveStr(XX, "");
+        ShopBus_Save(XX,"");
         InvitationCode_Set(XX, false);
         //
         CacheUtil.ClearnCache(XX);// 清除列表的缓存
@@ -510,7 +511,7 @@ public class Spuit {
         SharedPreferences sp = PPContext.getSharedPreferences(ShopBus_Sp, Context.MODE_PRIVATE);
         return sp.getString("shopbusstr", "");
     }
-    public static void ShopBUs_Save(Context PPcContext,String shopbusdata){
+    public static void ShopBus_Save(Context PPcContext,String shopbusdata){
         SharedPreferences sp = PPcContext.getSharedPreferences(ShopBus_Sp,
                 Context.MODE_PRIVATE);
         Editor ed = sp.edit();

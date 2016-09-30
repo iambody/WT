@@ -6,9 +6,8 @@
           android:versionName="2.5.2">
 
     <uses-sdk
-        tools:overrideLibrary="com.wuxiaolong.pullloadmorerecyclerview"
-        android:minSdkVersion="15"
-        android:targetSdkVersion="22"
+        android:minSdkVersion="14"
+        android:targetSdkVersion="24"
         tools:ignore="OldTargetApi"
 
         />
