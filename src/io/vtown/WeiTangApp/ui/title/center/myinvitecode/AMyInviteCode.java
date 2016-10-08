@@ -73,7 +73,7 @@ public class AMyInviteCode extends ATitleBase {
 	/**
 	 * 邀请码描述
 	 */
-	private TextView tv_my_invite_code_desc;
+//	private TextView tv_my_invite_code_desc;
 	/**
 	 * 分享微信
 	 */
@@ -150,17 +150,17 @@ public class AMyInviteCode extends ATitleBase {
 				R.drawable.error_iv2);
 		tv_my_invite_code = (TextView) findViewById(R.id.tv_my_invite_code);
 //		tv_my_invite_code_copy = (TextView) findViewById(R.id.tv_my_invite_code_copy);
-		tv_my_invite_code_desc = (TextView) findViewById(R.id.tv_my_invite_code_desc);
+//		tv_my_invite_code_desc = (TextView) findViewById(R.id.tv_my_invite_code_desc);
 		ll_my_invite_code_share_to_wx = (LinearLayout) findViewById(R.id.ll_my_invite_code_share_to_wx);
 		ll_my_invite_code_share_to_frends = (LinearLayout) findViewById(R.id.ll_my_invite_code_share_to_frends);
 //		tv_my_invite_code_copy.setOnClickListener(this);
 		tv_my_invite_code_copy_iv.setOnClickListener(this);
 		ll_my_invite_code_share_to_wx.setOnClickListener(this);
 		ll_my_invite_code_share_to_frends.setOnClickListener(this);
-		tv_my_invite_code_desc.setText(getResources().getString(
-				R.string.share_quan_str));
-		//!!!!!!!!!!!!!!!!!!!!!显示后台数据
-		 StrUtils.SetColorsTxt(BaseContext,tv_my_invite_code_desc,R.color.red,"邀请好友注册各得","20元",",快快扫我吧") ;
+//		tv_my_invite_code_desc.setText(getResources().getString(
+//				R.string.share_quan_str));
+//		//!!!!!!!!!!!!!!!!!!!!!显示后台数据
+//		 StrUtils.SetColorsTxt(BaseContext,tv_my_invite_code_desc,R.color.red,"邀请好友注册各得","20元",",快快扫我吧") ;
 		// tv_my_invite_code_desc.setVisibility(View.GONE);
 		tv_my_invite_code.measure(0,0);
 		int height = tv_my_invite_code.getMeasuredHeight();

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.jauker.widget.BadgeView;
 
@@ -40,7 +41,10 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private FBase FMainHome, FMainShop, FMainShow, FMainShopBus, FMainCenter;
     private List<FBase> Fragments;
     private int CurrentPostion = 0;
-
+    /**
+     * 二次退出时候的时长标识
+     */
+    private long exitTime = 0;
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_maintab);
@@ -230,6 +234,26 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
                 break;
         }
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(event.getKeyCode()==KeyEvent.KEYCODE_BACK){if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                    Toast.LENGTH_SHORT).show();
+
+            exitTime = System.currentTimeMillis();
+            return true;
+        } else {
+            // Sputis.SaveFundListCondition(this, 0);
+            // Sputis.SaveFundListSort(this, 1);
+//                AppManager.getAppManager().AppExit(BaseCotext);
+            finish();
+            System.exit(0);
+        }}
+
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

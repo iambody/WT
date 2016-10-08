@@ -31,6 +31,7 @@ public abstract class BasAdapter extends BaseAdapter {
         //ddddddddddd
         //是是是是是是是是是是是是/ddddddddddd
         //中华人民共和国123456
+        //10.08 mmmmmmmmmmmmmssssssssssssssss
     }
 
 
