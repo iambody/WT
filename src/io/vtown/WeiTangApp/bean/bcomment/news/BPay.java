@@ -33,7 +33,7 @@ public class BPay extends BBase {
 	private String goods_id;
 	private String seller_id; 
 	
-	
+	private String is_brand;
 
 	public String getPay_url() {
 		return pay_url;
@@ -94,6 +94,14 @@ public class BPay extends BBase {
 	public BPay() {
 		super();
 
+	}
+
+	public String getIs_brand() {
+		return is_brand;
+	}
+
+	public void setIs_brand(String is_brand) {
+		this.is_brand = is_brand;
 	}
 
 	public String getPay() {

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp" >
+            android:padding="10dp" android:visibility="gone">
 
             <ImageView
                 android:id="@+id/iv_dialog_dismess"
@@ -25,14 +25,14 @@
                 android:src="@drawable/cha_iv"
                 android:visibility="invisible" />
 
-            <TextView
+          <!--  <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="提示"
                 android:textColor="@color/app_fen"
-                android:textSize="16sp" />
+                android:textSize="16sp" />-->
 
             <ImageView
                 android:id="@+id/iv_dialog_dismess_nouser"
@@ -84,7 +84,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/left_btn_select"
                 android:text="@string/nullstr"
-                android:textColor="@color/app_fen" />
+                android:textColor="@color/gray" />
 
             <Button
                 android:id="@+id/back_btn"

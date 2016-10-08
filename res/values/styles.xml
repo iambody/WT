@@ -245,7 +245,7 @@
 
     <style name="line1">
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">@dimen/line_size3</item>
+        <item name="android:layout_height">@dimen/line_size2</item>
         <item name="android:background">@color/app_line</item>
     </style>
 

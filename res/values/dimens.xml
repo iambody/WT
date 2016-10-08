@@ -587,11 +587,12 @@
     <dimen name="main_tab_showiv_height">42dp</dimen>
     <dimen name="main_tab_group_txt_size">12dp</dimen>
     <dimen name="show_up_top_height">70sp</dimen>
-    <dimen name="main_shopbus_sidewidth">50dp</dimen>
+    <dimen name="main_shopbus_sidewidth">80dp</dimen>
     <dimen name="new_show_item_headwidth">60dp</dimen>
     <dimen name="new_show_item_headwidth1">80dp</dimen>
     <dimen name="comment_othershow_head">80dp</dimen>
     <dimen name="item_show_delet_height">24dp</dimen>
+    <dimen name="sousou_historr_item_iv_height">20dp</dimen>
 
 
 </resources>

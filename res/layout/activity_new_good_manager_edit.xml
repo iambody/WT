@@ -46,6 +46,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="@string/newgoodedite_good_vidoo"
+                        android:layout_gravity="center_vertical"
                         android:textColor="@color/app_gray"
                         android:textSize="11sp"/>
 
@@ -55,7 +56,15 @@
                         android:layout_weight="1"/>
 
 
-                    <TextView
+                    <ImageView
+                        android:id="@+id/new_good_manager_ed_vid_add"
+                        android:layout_width="@dimen/shop_add_jia_height"
+                        android:layout_height="@dimen/shop_add_jia_height"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:src="@drawable/iv_add_jia"/>
+                 <!--   <TextView
                         android:id="@+id/new_good_manager_ed_vid_add"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -65,13 +74,14 @@
                         android:paddingRight="7dp"
                         android:paddingTop="4dp"
                         android:text="替换"
-                        android:textColor="@color/app_gray"/>
+                        android:textColor="@color/app_gray"/>-->
 
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/ui_10_dip">
 
                     <ImageView
                         android:id="@+id/new_good_manager_good_pics_pre"
@@ -123,6 +133,7 @@
                         android:layout_marginLeft="10dp"
                         android:text="@string/newgoodedit_good_roll"
                         android:textColor="@color/app_gray"
+                        android:layout_gravity="center_vertical"
                         android:textSize="11sp"/>
 
                     <TextView
@@ -130,8 +141,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
 
-
-                    <TextView
+                    <ImageView
+                        android:id="@+id/tv_good_pics"
+                        android:layout_width="@dimen/shop_add_jia_height"
+                        android:layout_height="@dimen/shop_add_jia_height"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:src="@drawable/iv_add_jia"/>
+                  <!--  <TextView
                         android:id="@+id/tv_good_pics"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -141,7 +159,7 @@
                         android:paddingRight="7dp"
                         android:paddingTop="4dp"
                         android:text="添加"
-                        android:textColor="@color/app_gray"/>
+                        android:textColor="@color/app_gray"/>-->
 
                 </LinearLayout>
 
@@ -182,6 +200,7 @@
                     android:layout_marginLeft="10dp"
                     android:text="@string/newgoodedit_good_desc_desc"
                     android:textColor="@color/app_gray"
+                    android:layout_gravity="center_vertical"
                     android:textSize="11sp"/>
 
                 <TextView
@@ -189,8 +208,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
+                <ImageView
+                    android:id="@+id/tv_good_desc"
+                    android:layout_width="@dimen/shop_add_jia_height"
+                    android:layout_height="@dimen/shop_add_jia_height"
 
-                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    android:src="@drawable/iv_add_jia"/>
+               <!-- <TextView
                     android:id="@+id/tv_good_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -200,7 +227,7 @@
                     android:paddingRight="7dp"
                     android:paddingTop="4dp"
                     android:text="添加"
-                    android:textColor="@color/app_gray"/>
+                    android:textColor="@color/app_gray"/>-->
 
             </LinearLayout>
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:imagecontrol="http://schemas.android.com/apk/io.vtown.WeiTangApp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_bg"
-    android:orientation="vertical" >
+              xmlns:imagecontrol="http://schemas.android.com/apk/io.vtown.WeiTangApp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:orientation="vertical">
 
     <include
         layout="@layout/titlebar"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
     <!--
          <LinearLayout
@@ -26,29 +26,29 @@
     <RelativeLayout
         android:id="@+id/gooddetails_outlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView
             android:id="@+id/good_detail_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none" >
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <!-- Banner图 -->
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <io.vtown.WeiTangApp.comment.view.ImageCycleView
                         android:id="@+id/gooddetail_banner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"/>
 
                     <!-- 视频的布局 -->
 
@@ -56,13 +56,13 @@
                         android:id="@+id/goodsdetail_vido_lay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="gone" >
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/goodsdetail_vido_lay_cover_iv"
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
-                            android:scaleType="fitXY" />
+                            android:scaleType="fitXY"/>
 
                         <ImageView
                             android:id="@+id/goodsdetail_vido_lay_controler_iv"
@@ -71,7 +71,7 @@
                             android:layout_centerInParent="true"
                             android:clickable="true"
                             android:focusable="true"
-                            android:src="@drawable/video_player" />
+                            android:src="@drawable/video_player"/>
                     </RelativeLayout>
 
                     <LinearLayout
@@ -84,12 +84,12 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="5dp"
-                        android:visibility="gone" >
+                        android:visibility="gone">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/center_iv8" />
+                            android:src="@drawable/center_iv8"/>
 
                         <TextView
                             android:id="@+id/gooddetail_random_message"
@@ -99,7 +99,7 @@
                             android:ellipsize="end"
                             android:singleLine="true"
                             android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"/>
                     </LinearLayout>
                 </RelativeLayout>
                 <!-- 视频的布局******************** -->
@@ -108,7 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -116,18 +116,18 @@
                         android:layout_marginRight="10dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:visibility="visible" >
+                        android:visibility="visible">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"/>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/goos_detail_icons_padding"
-                             >
+                            >
 
                             <ImageView
                                 android:id="@+id/good_detail_shopbus_log"
@@ -135,7 +135,7 @@
                                 android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
 
-                                android:src="@drawable/ic_gouwuche_nor_good_detail" />
+                                android:src="@drawable/ic_gouwuche_nor_good_detail"/>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -150,7 +150,7 @@
                                 android:layout_width="@dimen/goos_detail_icon_size"
                                 android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/ic_shoucang_nor_good_detail" />
+                                android:src="@drawable/ic_shoucang_nor_good_detail"/>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -158,14 +158,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/goos_detail_icons_padding"
-                             >
+                            >
 
                             <ImageView
                                 android:id="@+id/good_detail_lianxikefu_log"
                                 android:layout_width="@dimen/goos_detail_icon_size"
                                 android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/ic_lianxikefu_nor_good_detail" />
+                                android:src="@drawable/ic_lianxikefu_nor_good_detail"/>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -180,7 +180,7 @@
                                 android:layout_width="@dimen/goos_detail_icon_size"
                                 android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/ic_chakanshangpinshow_nor_good_detail" />
+                                android:src="@drawable/ic_chakanshangpinshow_nor_good_detail"/>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -188,21 +188,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/goos_detail_icons_padding"
-                             >
+                            >
 
                             <ImageView
                                 android:id="@+id/iv_show_share"
                                 android:layout_width="@dimen/goos_detail_icon_size"
                                 android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/ic_fenxiang_nor_good_detail" />
+                                android:src="@drawable/ic_fenxiang_nor_good_detail"/>
                         </RelativeLayout>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/tv_good_title"
@@ -213,73 +213,9 @@
                             android:layout_marginRight="16dp"
                             android:layout_marginTop="10dp"
                             android:layout_weight="1"
-                            android:textColor="@color/gray" />
+                            android:textColor="@color/gray"/>
                     </LinearLayout>
 
-                    <!--
-                    <RelativeLayout
-                        android:id="@+id/rl_look_show"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/select_fen_to_gray"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:padding="5dp" >
-
-                        <ImageView
-                            android:id="@+id/iv_show_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_chakanshangpinshow_nor" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"
-                            android:layout_toRightOf="@id/iv_show_icon"
-                            android:text="@string/chakanshow"
-                            android:textColor="@color/white" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:orientation="horizontal" >
-
-                            <TextView
-                                android:id="@+id/tv_show_count"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/nullstr"
-                                android:textColor="@color/white"
-                                android:visibility="gone" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/arrow_white_right" />
-                        </LinearLayout>
-                    </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    -->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -288,7 +224,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="0dp"
@@ -296,7 +232,7 @@
                             android:layout_weight="1"
                             android:gravity="left|center_vertical"
                             android:text="@string/jianyilingshou"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"/>
 
                         <TextView
                             android:id="@+id/tv_suggest_retail_price"
@@ -304,10 +240,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="30dp"
                             android:text="@string/nullstr"
-                            android:textColor="@color/app_fen" />
+                            android:textColor="@color/app_fen"/>
                     </LinearLayout>
 
-                    <View style="@style/line_left" />
+                    <View style="@style/line_left"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -316,7 +252,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="0dp"
@@ -324,17 +260,17 @@
                             android:layout_weight="1"
                             android:gravity="left|center_vertical"
                             android:text="@string/fahuodi"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"/>
 
                         <TextView
                             android:id="@+id/tv_send_address"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="50dp"
-                            android:text="@string/nullstr" />
+                            android:text="@string/nullstr"/>
                     </LinearLayout>
 
-                    <View style="@style/line_left" />
+                    <View style="@style/line_left"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -343,7 +279,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="0dp"
@@ -351,19 +287,19 @@
                             android:layout_weight="1"
                             android:gravity="left|center_vertical"
                             android:text="@string/yunfei"
-                            android:textColor="@color/grey" />
+                            android:textColor="@color/grey"/>
 
                         <TextView
                             android:id="@+id/tv_freight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="62dp" />
+                            android:layout_marginLeft="62dp"/>
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
-                        android:background="@color/app_bg" />
+                        android:background="@color/app_bg"/>
 
                     <LinearLayout
                         android:id="@+id/rl_seller"
@@ -374,7 +310,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <io.vtown.WeiTangApp.comment.view.CircleImageView
                             android:id="@+id/iv_seller_icon"
@@ -383,7 +319,7 @@
                             android:clickable="true"
                             android:src="@drawable/testiv"
                             imagecontrol:border_color="@color/white"
-                            imagecontrol:border_width="6" />
+                            imagecontrol:border_width="6"/>
 
                         <TextView
                             android:id="@+id/tv_seller_shop_name"
@@ -391,18 +327,18 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:text="@string/nullstr"
-                            android:textColor="@color/gray" />
+                            android:textColor="@color/gray"/>
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="5dp"
-                            android:src="@drawable/arrow_right" />
+                            android:src="@drawable/arrow_right"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -412,7 +348,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingBottom="5dp"
-                        android:paddingTop="5dp" >
+                        android:paddingTop="5dp">
 
                         <View
                             android:layout_width="0dp"
@@ -420,12 +356,12 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="16dp"
                             android:layout_weight="1"
-                            android:background="@color/app_gray" />
+                            android:background="@color/app_gray"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/tuwendetail" />
+                            android:text="@string/tuwendetail"/>
 
                         <View
                             android:layout_width="0dp"
@@ -433,25 +369,46 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="16dp"
                             android:layout_weight="1"
-                            android:background="@color/app_gray" />
+                            android:background="@color/app_gray"/>
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout 
+                <!-- 开始画质保圈圈-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!--外层圈圈 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/ui_10_dip"
+                        android:background="@drawable/shape_gooddetail_zhibao_quan"
+                        android:orientation="vertical">
+                        <!--内层圈圈 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/ui_10_dip"
+                            android:background="@drawable/shape_gooddetail_zhibao_quan"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/shop_log"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </RelativeLayout>
+                <!--开始画质保圈圈 -->
+                <LinearLayout
                     android:id="@+id/gooddetail_picview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     ></LinearLayout>
-                <!-- <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
-                    android:id="@+id/lv_pic_text_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:cacheColorHint="#00000000"
-                    android:divider="@null" android:visibility="gone">
 
-                </io.vtown.WeiTangApp.comment.view.custom.CompleteListView> -->
-                
             </LinearLayout>
         </io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView>
 
@@ -464,7 +421,7 @@
             android:layout_marginBottom="50dp"
             android:background="@drawable/select_show_up"
             android:padding="10dp"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -472,14 +429,14 @@
                 android:layout_centerInParent="true"
                 android:text="Top"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_buy"
@@ -490,12 +447,12 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="@string/buy"
-                android:textColor="@color/TextColorWhite" />
+                android:textColor="@color/TextColorWhite"/>
 
             <ImageView
                 android:layout_width="@dimen/line_size1"
                 android:layout_height="match_parent"
-                android:src="@color/app_line" />
+                android:src="@color/app_line"/>
 
             <TextView
                 android:id="@+id/tv_replace_sell"
@@ -506,7 +463,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="@string/yijiandaimai"
-                android:textColor="@color/TextColorWhite" />
+                android:textColor="@color/TextColorWhite"/>
         </LinearLayout>
     </RelativeLayout>
     <!-- </LinearLayout> -->
@@ -516,6 +473,6 @@
         layout="@layout/commentview_nodata"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
 </LinearLayout>

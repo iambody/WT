@@ -34,6 +34,7 @@ import io.vtown.WeiTangApp.ui.ABaseFragment;
  */
 public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTabPostion, View.OnClickListener {
     //    private ViewPager maintab_viewpager;
+
     private GradualRadioGroup maintab_radiobar;
     private GradualRadioButton maintab_home, maintab_shop, maintab_shopbus, maintab_center;
     private List<GradualRadioButton> RadioButtons;
@@ -45,6 +46,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
      * 二次退出时候的时长标识
      */
     private long exitTime = 0;
+
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_maintab);
@@ -121,19 +123,27 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     }
 
     @Override
-    protected void NetConnect() {
-
-        NetError.setVisibility(View.GONE);
+    protected void NetConnect() {//网络连接
+//        NetError.setVisibility(View.GONE);
+        NetFragmentChange(3);
     }
 
     @Override
-    protected void NetDisConnect() {
-        NetError.setVisibility(View.VISIBLE);
+    protected void NetDisConnect() {//网络断开
+//        NetError.setVisibility(View.VISIBLE);
+        NetFragmentChange(1);
     }
 
     @Override
-    protected void SetNetView() {
-        SetNetStatuse(NetError);
+    protected void SetNetView() {//
+//        SetNetStatuse(NetError);
+    }
+
+    private void NetFragmentChange(int Type) {
+
+        FMainHome.SetNetStatuse(Type);
+        FMainShow.SetNetStatuse(Type);
+        FMainShopBus.SetNetStatuse(Type);
     }
 
     @Override
@@ -237,19 +247,21 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(event.getKeyCode()==KeyEvent.KEYCODE_BACK){if ((System.currentTimeMillis() - exitTime) > 2000) {
-            Toast.makeText(getApplicationContext(), "再按一次退出程序",
-                    Toast.LENGTH_SHORT).show();
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                        Toast.LENGTH_SHORT).show();
 
-            exitTime = System.currentTimeMillis();
-            return true;
-        } else {
-            // Sputis.SaveFundListCondition(this, 0);
-            // Sputis.SaveFundListSort(this, 1);
+                exitTime = System.currentTimeMillis();
+                return true;
+            } else {
+                // Sputis.SaveFundListCondition(this, 0);
+                // Sputis.SaveFundListSort(this, 1);
 //                AppManager.getAppManager().AppExit(BaseCotext);
-            finish();
-            System.exit(0);
-        }}
+                finish();
+                System.exit(0);
+            }
+        }
 
         return super.onKeyDown(keyCode, event);
     }

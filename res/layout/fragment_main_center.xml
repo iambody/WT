@@ -38,9 +38,8 @@
                     android:id="@+id/maintab_center_myname"
                     style="@style/AudioFileInfoOverlayText1"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/center_myiv"
+                    android:layout_below="@+id/maintab_center_myiv"
                     android:gravity="center"
                     android:padding="10dp"
                     android:textColor="@color/white"

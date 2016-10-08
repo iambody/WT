@@ -12,7 +12,11 @@
         android:text="SHOW"
         android:textColor="@color/white"
         android:textSize="18dp"/>
-
+    <include
+        android:id="@+id/fragment_main_show_neterrorview"
+        layout="@layout/net_status_bar_info_top"
+        android:clickable="true"
+        android:visibility="gone"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

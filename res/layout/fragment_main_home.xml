@@ -71,7 +71,11 @@
                 android:src="@drawable/new1"/>
         </LinearLayout>
         <!-- title*** -->
-
+        <include
+            android:id="@+id/fragment_main_home_neterrorview"
+            layout="@layout/net_status_bar_info_top"
+            android:clickable="true"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout

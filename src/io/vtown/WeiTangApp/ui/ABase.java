@@ -227,11 +227,16 @@ public class ABase extends Activity {
                     BaseKey_Bean);
         }
     }
+
     /**
      * 获取Http数据的开启方法
      */
     public void FBGetHttpData(HashMap<String, String> Map, String Host,
                               int Method, final int Tage, final int LoadType) {
+        if (!NetUtil.isConnected(BaseContext)) {//检查网络 TODO需要无网络时候显示错误头像
+            PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
+            return;
+        }
         if (Method == com.android.volley.Request.Method.DELETE) {// Delete请求需要通过body体去操作
             NHttpDeletBaseStr mBaseStr = new NHttpDeletBaseStr(BaseContext);
             mBaseStr.setPostResult(new IHttpResult<String>() {

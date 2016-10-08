@@ -41,8 +41,8 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
     protected static final int LOADHind = 3;// 偷偷加载
 
 
-
-
+    //在首页几个fragment中 断网时候需要进行再fragment里面的title进行显示断网箭头view
+    protected View neterrorview;
     // 进入UI里面 展示动画的标识
     protected static final int NOVIEW_INITIALIZE = 10;// 初次进入时候
     protected static final int NOVIEW_RIGHT = 11;// 获取数据成功
@@ -72,7 +72,8 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
 
     protected int screenWidth;
     //fragment传递出去的包含在intent里面的bean
-    protected   String BaseKey_Bean = "abasebeankey";
+    protected String BaseKey_Bean = "abasebeankey";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,10 +95,35 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
 
     }
 
+    /**
+     * (maintab的几个页面)显示或者隐藏断网的View 1标识刚进来就无网络 2标识有网络变成无网络 3标识无网络变成有网络
+     */
+    public void SetNetStatuse(int Stattuse) {
+        if (null == neterrorview) return;
+        switch (Stattuse) {
+            case 1:
+                neterrorview.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                neterrorview.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                neterrorview.setVisibility(View.GONE);
+                break;
+        }
+    }
 
+    /**
+     * 刚进来时候需要判断是否有网络
+     */
+    public void CheckNet(){
+        if(null==neterrorview)return;
+        neterrorview.setVisibility(NetUtil.isConnected(BaseContext)?View.GONE:View.VISIBLE);
+    }
     public void callGoodHandle() {
 
     }
+
     /**
      * 获取数据前 加载图片
      */
@@ -235,7 +261,8 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
         return false;
 
     }
-    protected void ShowErrorCanLoad(String ErrorTxt ) {
+
+    protected void ShowErrorCanLoad(String ErrorTxt) {
         ((TextView) BaseView.findViewById(R.id.error_kong)).setText(ErrorTxt);
     }
 }

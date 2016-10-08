@@ -522,6 +522,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 //            aasv_add_sub.SetMinNumber(10);
 //        } else {
         aasv_add_sub.setNum(1);
+        aasv_add_sub.SetMinNumber(1);
 //        }
         goods_num = aasv_add_sub.getNum();
         tv_real_lib = (TextView) findViewById(R.id.tv_real_lib);

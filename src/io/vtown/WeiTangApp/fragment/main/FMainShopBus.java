@@ -36,6 +36,7 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.ViewUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.AddAndSubView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
@@ -128,6 +129,9 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     }
 
     private void InItBaseView() {
+        neterrorview = io.vtown.WeiTangApp.comment.util.ViewHolder.get(BaseView, R.id.fragment_main_shopbus_neterrorview);
+        neterrorview.setOnClickListener(this);
+        CheckNet();
         fragment_shopbus_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_shopbus_refrash);
         fragment_shopbus_refrash.setOnRefreshListener(this);
         fragment_shopbus_refrash.setCanLoadMore(false);
@@ -135,6 +139,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
 
         maintab_shopbus_left_txt = (TextView) BaseView.findViewById(R.id.maintab_shopbus_left_txt);
+        maintab_shopbus_left_txt.setOnClickListener(this);
         maintab_shopbus_Right_iv = (ImageView) BaseView.findViewById(R.id.maintab_shopbus_Right_iv);
 
 
@@ -351,7 +356,6 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         NoGood = false;
         IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_RIGHT);
         if (Type == REFRESHING) {
-//                    maintab_shopbus_ls.stopRefresh();
             fragment_shopbus_refrash.setRefreshing(false);
         }
 
@@ -376,6 +380,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
             busAdapter.FrashData(bComment.getPT());
             IsPu = true;
             maintab_shopbus_left_txt.setText("零售商品");
+
             maintab_shopbus_left_txt.setVisibility(View.GONE);
             maintab_shopbus_left_txt.setClickable(false);
             maintab_shopbus_Right_iv.setVisibility(View.VISIBLE);
@@ -421,6 +426,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
                 TypeShow = 1;
             if (TypeShow == 1) {
                 StrUtils.SetTxt(maintab_shopbus_left_txt, "零售商品");
+                ViewUtils.SetIvOnTextview(BaseContext,maintab_shopbus_left_txt,R.drawable.arrow_down,20);
                 busAdapter.FrashData(bComment.getPT());
                 IsPu = true;
             }
@@ -1097,6 +1103,11 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+
+            case R.id.fragment_main_shopbus_neterrorview:
+                PromptManager.GoToNetSeting(BaseActivity);
+
+                break;
             case R.id.maintab_shopbus_nodata_lay:
                 IData(INITIALIZE);
                 break;

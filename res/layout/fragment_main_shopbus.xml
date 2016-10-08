@@ -13,7 +13,8 @@
 
         <RelativeLayout
             android:layout_width="@dimen/main_shopbus_sidewidth"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
 
             <TextView
                 android:id="@+id/maintab_shopbus_left_txt"
@@ -21,7 +22,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:clickable="true"
-                android:focusable="true"/>
+                android:focusable="true"
+                android:textColor="@color/white"
+                />
         </RelativeLayout>
 
         <TextView
@@ -30,6 +33,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/tab_shopbus"
+            android:textStyle="bold"
+            android:textSize="@dimen/titlebar_size"
             android:textColor="@color/white"/>
 
         <RelativeLayout
@@ -48,7 +53,11 @@
                 android:src="@drawable/lajixiang_iv"/>
         </RelativeLayout>
     </LinearLayout>
-
+    <include
+        android:id="@+id/fragment_main_shopbus_neterrorview"
+        layout="@layout/net_status_bar_info_top"
+        android:clickable="true"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/maintab_shopbus_show_lay"

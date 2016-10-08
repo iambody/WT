@@ -150,6 +150,9 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
      * 初始化各种view
      */
     private void IBaseView() {
+        neterrorview = io.vtown.WeiTangApp.comment.util.ViewHolder.get(BaseView, R.id.fragment_main_show_neterrorview);
+        neterrorview.setOnClickListener(this);
+        CheckNet();
         fragment_show_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_show_refrash);
         fragment_show_refrash.setOnLoadListener(this);
         fragment_show_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
@@ -243,6 +246,9 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.fragment_main_show_neterrorview:
+                PromptManager.GoToNetSeting(BaseActivity);
+                break;
             case R.id.maintab_show_uptxt:
                 maintab_show_show_ls.smoothScrollToPosition(0);
                 break;

@@ -87,6 +87,10 @@ public class FMainHome extends FBase implements RefreshLayout.OnLoadListener, Vi
 
 
     private void IBaseView() {
+        neterrorview = io.vtown.WeiTangApp.comment.util.ViewHolder.get(BaseView, R.id.fragment_main_home_neterrorview);
+        neterrorview.setOnClickListener(this);
+        CheckNet();
+
         fragment_home_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_home_refrash);
         fragment_maintab_sao_iv = io.vtown.WeiTangApp.comment.util.ViewHolder.get(BaseView, R.id.fragment_maintab_sao_iv);
         fragment_maintab_new_iv = io.vtown.WeiTangApp.comment.util.ViewHolder.get(BaseView, R.id.fragment_maintab_new_iv);
@@ -102,7 +106,7 @@ public class FMainHome extends FBase implements RefreshLayout.OnLoadListener, Vi
         fragment_maintab_new_iv.setOnClickListener(this);
         fragment_maintab_sou_lay.setOnClickListener(this);
 
-        fragment_home_refrash.setColorSchemeResources(R.color.app_fen,R.color.app_fen1,R.color.app_fen2,R.color.app_fen3);
+        fragment_home_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
         fragment_maintab_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -162,6 +166,7 @@ public class FMainHome extends FBase implements RefreshLayout.OnLoadListener, Vi
         });
 
         ICacheData();
+
     }
 
     /**
@@ -220,6 +225,9 @@ public class FMainHome extends FBase implements RefreshLayout.OnLoadListener, Vi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.fragment_main_home_neterrorview:
+                PromptManager.GoToNetSeting(BaseActivity);
+                break;
             case R.id.fragment_maintab_sao_iv://扫码
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                         CaptureActivity.class));
@@ -476,6 +484,16 @@ public class FMainHome extends FBase implements RefreshLayout.OnLoadListener, Vi
 
     @Override
     public void onError(String error, int LoadType) {
+        switch (LoadType) {
+            case INITIALIZE:
+                break;
+            case LOADMOREING:
+                fragment_home_refrash.setLoading(false);
+                break;
+            case REFRESHING:
+                fragment_home_refrash.setRefreshing(false);
+                break;
 
+        }
     }
 }

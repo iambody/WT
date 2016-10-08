@@ -73,7 +73,7 @@ public class ANewGoodMangerEdit extends ATitleBase {
     private BGoodDetail datas;
 
     private boolean IsPic;
-    private TextView new_good_manager_ed_vid_add, tv_good_pics, tv_good_desc;
+    private ImageView new_good_manager_ed_vid_add, tv_good_pics, tv_good_desc;
     private CompleteGridView new_good_manager_good_pics_gridview, new_good_manager_good_desc_gridview;
 
     //    private List<PicImageItem> good_pics11 = new ArrayList<PicImageItem>();
@@ -104,15 +104,15 @@ public class ANewGoodMangerEdit extends ATitleBase {
         new_good_manager_good_pics_control_iv = (ImageView) findViewById(R.id.new_good_manager_good_pics_control_iv);
 
         new_good_manager_good_des_lay= (LinearLayout) findViewById(R.id.new_good_manager_good_des_lay);
-        new_good_manager_ed_vid_add = (TextView) findViewById(R.id.new_good_manager_ed_vid_add);
+        new_good_manager_ed_vid_add = (ImageView) findViewById(R.id.new_good_manager_ed_vid_add);
         new_good_manager_good_vido_lay = (LinearLayout) findViewById(R.id.new_good_manager_good_vido_lay);
         new_good_manager_good_pics_lay = (LinearLayout) findViewById(R.id.new_good_manager_good_pics_lay);
 
 
         screenWidth = screenWidth - DimensionPixelUtil.dip2px(BaseContext, 16);
         width = screenWidth / 3;
-        tv_good_pics = (TextView) findViewById(R.id.tv_good_pics);
-        tv_good_desc = (TextView) findViewById(R.id.tv_good_desc);
+        tv_good_pics = (ImageView) findViewById(R.id.tv_good_pics);
+        tv_good_desc = (ImageView) findViewById(R.id.tv_good_desc);
         new_good_manager_good_pics_gridview = (CompleteGridView) findViewById(R.id.new_good_manager_good_pics_gridview);
         new_good_manager_good_desc_gridview = (CompleteGridView) findViewById(R.id.new_good_manager_good_desc_gridview);
 

@@ -166,7 +166,7 @@ public class Constants {
 	/**
 	 * 获取热门搜索条目
 	 */
-	public static String SouGoodSize = "6";
+	public static String SouGoodSize = "8";
 	/**
 	 * 首页点击品牌进去的品牌详情页 Get
 	 */

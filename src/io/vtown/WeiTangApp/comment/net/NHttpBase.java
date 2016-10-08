@@ -70,6 +70,7 @@ public abstract class NHttpBase {
 
     public void getData(String url, final HashMap<String, String> map1,
                         final int method) {
+
 //		RequestQueue queue = VolleyHttps.newRequestQueue(context, null, true,
 //				R.raw.ssl);// Volley.newRequestQueue(context);
         // 添加标识

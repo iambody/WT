@@ -612,8 +612,14 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 
                             break;
                         case 20:// 已下架
-                            ShowReminder("确定修改库存?", Manger_Brand_Number,
-                                    mydatas.get(postion), postion);
+//                            ShowReminder("确定修改库存?", Manger_Brand_Number,
+//                                    mydatas.get(postion), postion);
+                            PromptManager.SkipActivity(BaseActivity,
+                                    new Intent(BaseContext,
+//                                            AGoodMangerEdit.class)
+                                            ANewGoodMangerEdit.class)
+                                            .putExtra("goodid",
+                                                    mBlComment.getId()));
                             break;
                         default:
                             break;
@@ -1253,7 +1259,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
         if (-1000 == Methode || null == Host)
             return;
         PromptManager.showLoading(BaseContext);
-        FBGetHttpData(map, Host, Methode, Type, INITIALIZE);
+        FBGetHttpData(map, Host, Methode, Type, LOADHind);
     }
 
     final static int Manger_Good_Attrs = 335;// 垃圾箱=》彻底删除
