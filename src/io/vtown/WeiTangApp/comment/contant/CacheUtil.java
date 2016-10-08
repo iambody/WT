@@ -83,6 +83,10 @@ public class CacheUtil {
 	 * 卡券的数据的缓存
 	 */
 	private final static String SP_My_Coupons = "coupons";
+	/**
+	 *  银行卡管理的数据的缓存
+	 */
+	private final static String SP_BankCard_Manage = "bankcardlist";
 
 	/**
 	 * 缓存首页数据
@@ -501,6 +505,28 @@ public class CacheUtil {
 				Context.MODE_PRIVATE);
 		Editor editor = Sp.edit();
 		editor.putString("invitcode", invitcodetr);
+		editor.commit();
+	}
+
+	/**
+	 * 银行卡列表的数据
+	 */
+	public static String Center_Wallet_BankCard_Get(Context mPContext) {
+		SharedPreferences Sp = mPContext.getSharedPreferences(SP_BankCard_Manage,
+				Context.MODE_PRIVATE);
+		return Sp.getString("bankcardlist", "");
+
+	}
+
+	/**
+	 *银行卡列表的保存呢
+	 */
+	public static void Center_Wallet_BankCard_Save(Context pContext,
+											  String banklist) {
+		SharedPreferences Sp = pContext.getSharedPreferences(SP_BankCard_Manage,
+				Context.MODE_PRIVATE);
+		Editor editor = Sp.edit();
+		editor.putString("bankcardlist", banklist);
 		editor.commit();
 	}
 

@@ -2,9 +2,9 @@ package io.vtown.WeiTangApp.ui.title.center.wallet;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.BDComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BCBankCardAndAlipayInfo;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLBankCardAndAlipayList;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -92,8 +92,8 @@ public class ATiXian extends ATitleBase {
 	 * 1:银行卡，2:支付宝
 	 */
 	private int fetch_type = 2;
-	private BLComment bank_list;
-	private BLComment alipay_list;
+	private BLBankCardAndAlipayList bank_list;
+	private BLBankCardAndAlipayList alipay_list;
 	/**
 	 * 没有银行卡时
 	 */
@@ -130,7 +130,7 @@ public class ATiXian extends ATitleBase {
 		SetTitleHttpDataLisenter(this);
 		IBase();
 
-		// getDefaultBankInfo();
+		 //getDefaultBankInfo();
 		IData();
 
 	}
@@ -152,7 +152,7 @@ public class ATiXian extends ATitleBase {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("member_id", user_Get.getId());
 		FBGetHttpData(map, Constants.Get_Tixian_Message, Method.GET, 0,
-				LOAD_REFRESHING);
+				LOAD_INITIALIZE);
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class ATiXian extends ATitleBase {
 	 * @param BL
 	 * @param money
 	 */
-	private void ApplyWithdraw(int fetch_type, BLComment BL, String money,
+	private void ApplyWithdraw(int fetch_type, BLBankCardAndAlipayList BL, String money,
 			String pay_password) {
 		PromptManager.showLoading(BaseContext);
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -246,7 +246,7 @@ public class ATiXian extends ATitleBase {
 	 * 
 	 * @param datas
 	 */
-	private void RefreshAlipayView(BDComment datas) {
+	private void RefreshAlipayView(BCBankCardAndAlipayInfo datas) {
 
 		if (datas.getBank_list() != null) {
 			bank_list = datas.getBank_list().get(0);
@@ -328,11 +328,11 @@ public class ATiXian extends ATitleBase {
 		case 0:
 
 			// BLComment datas = new BLComment();
-			BDComment datas = new BDComment();
+			BCBankCardAndAlipayInfo datas = new BCBankCardAndAlipayInfo();
 			try {
 
 				datas = JSON.parseObject(Data.getHttpResultStr(),
-						BDComment.class);
+						BCBankCardAndAlipayInfo.class);
 
 			} catch (Exception e) {
 				DataError("解析失败", 1);
@@ -471,7 +471,7 @@ public class ATiXian extends ATitleBase {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (1 == requestCode && resultCode == RESULT_OK) {
-			bank_list = (BLComment) data.getSerializableExtra("bankinfo");
+			bank_list = (BLBankCardAndAlipayList) data.getSerializableExtra("bankinfo");
 			ImageLoaderUtil.Load2(bank_list.getIcon(), iv_my_account_icon,
 					R.drawable.error_iv2);
 			StrUtils.SetTxt(tv_my_account_name, bank_list.getBank_name());

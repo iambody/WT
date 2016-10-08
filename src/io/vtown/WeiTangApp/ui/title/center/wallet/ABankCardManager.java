@@ -5,7 +5,9 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLBankCardAndAlipayList;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -60,7 +62,7 @@ public class ABankCardManager extends ATitleBase implements
 	 * AP
 	 */
 	private BankCardAdapter bankCardAdapter;
-	private List<BLComment> listdata;
+	private List<BLBankCardAndAlipayList> listdata;
 	private boolean isFinish;
 	/**
 	 * 布局View
@@ -113,6 +115,9 @@ public class ABankCardManager extends ATitleBase implements
 		EventBus.getDefault().register(this, "OnGetMessage", BMessage.class);
 		user_Get = Spuit.User_Get(BaseActivity);
 		IView();
+
+		ICache();
+
 		if(need_updata){
 			IData(LOAD_HindINIT);
 		}else{
@@ -121,12 +126,27 @@ public class ABankCardManager extends ATitleBase implements
 
 	}
 
-	private void IData(int type) {
-		if(type == LOAD_INITIALIZE){
-			PromptManager.showtextLoading(BaseContext,
-					getResources()
-							.getString(R.string.xlistview_header_hint_loading));
+	private void ICache() {
+		String banklist = CacheUtil.Center_Wallet_BankCard_Get(BaseContext);
+		if(!StrUtils.isEmpty(banklist)){
+			try{
+				listdata = JSON.parseArray(banklist,BLBankCardAndAlipayList.class);
+			}catch (Exception e){
+				return;
+			}
+			bankCardAdapter.FrashData(listdata);
+		}else{
+
+				PromptManager.showtextLoading(BaseContext,
+						getResources()
+								.getString(R.string.xlistview_header_hint_loading));
+
 		}
+
+	}
+
+	private void IData(int type) {
+
 
 
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -212,17 +232,19 @@ public class ABankCardManager extends ATitleBase implements
 
 						tv_add_bank_card.setVisibility(View.VISIBLE);
 					}
-					bankCardAdapter.FrashData(new ArrayList<BLComment>());
+
+					CacheUtil.Center_Wallet_BankCard_Save(BaseContext,Data.getHttpResultStr());
+					bankCardAdapter.FrashData(new ArrayList<BLBankCardAndAlipayList>());
 
 
 					return;
 				}
 
-				listdata = new ArrayList<BLComment>();
+				listdata = new ArrayList<BLBankCardAndAlipayList>();
 
 				try {
 					listdata = JSON.parseArray(Data.getHttpResultStr(),
-							BLComment.class);
+							BLBankCardAndAlipayList.class);
 
 				} catch (Exception e) {
 					DataError("解析失败", 1);
@@ -332,7 +354,7 @@ public class ABankCardManager extends ATitleBase implements
 		/**
 		 * 数据
 		 */
-		private List<BLComment> datas = new ArrayList<BLComment>();
+		private List<BLBankCardAndAlipayList> datas = new ArrayList<BLBankCardAndAlipayList>();
 
 		public BankCardAdapter(int ResourcesId) {
 			super();
@@ -351,7 +373,7 @@ public class ABankCardManager extends ATitleBase implements
 		 *
 		 * @param dass
 		 */
-		public void FrashData(List<BLComment> dass) {
+		public void FrashData(List<BLBankCardAndAlipayList> dass) {
 			this.datas = dass;
 			this.notifyDataSetChanged();
 		}
@@ -359,7 +381,7 @@ public class ABankCardManager extends ATitleBase implements
 		/**
 		 * 加载更多
 		 */
-		public void AddFrashData(List<BLComment> dass) {
+		public void AddFrashData(List<BLBankCardAndAlipayList> dass) {
 			this.datas.addAll(datas);
 			this.notifyDataSetChanged();
 		}
@@ -413,7 +435,7 @@ public class ABankCardManager extends ATitleBase implements
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		Intent intent = new Intent();
-		BLComment blComment = listdata.get(arg2);
+		BLBankCardAndAlipayList blComment = listdata.get(arg2);
 		intent.putExtra("bankinfo", blComment);
 		setResult(RESULT_OK, intent);
 		finish();

@@ -135,14 +135,13 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     private float QrscaleHeight;
 
 
-
     private View myView;
 
     @Override
     protected void InItBaseView() {
 
         setContentView(R.layout.activity_shop_center_shop_data);
-        myView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_shop_center_shop_data,null);
+        myView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_shop_center_shop_data, null);
         myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         user_Get = Spuit.User_Get(getApplicationContext());
         uBShop = Spuit.Shop_Get(getApplicationContext());
@@ -358,18 +357,15 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 
     /**
      * 分享店铺URL
-     *
-     * */
-    private void ShareShopUrl(){
+     */
+    private void ShareShopUrl() {
         BNew myBNwe = new BNew();
         myBNwe.setShare_log(Spuit.Shop_Get(getApplicationContext()).getAvatar());
         myBNwe.setShare_title(Spuit.Shop_Get(getApplicationContext()).getSeller_name());
         myBNwe.setShare_content(Spuit.Shop_Get(getApplicationContext()).getIntro());
         myBNwe.setShare_url(uBShop.getSeller_url());
-        ShowP(myView,myBNwe);
+        ShowP(myView, myBNwe);
     }
-
-
 
 
     @Override
@@ -432,7 +428,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
      * @param view
      */
     public void gallery() {
-        switch (show_type){
+        switch (show_type) {
             case 1:
                 tempFile = getFile(PHOTO_FILE_PATH + "/" + System.currentTimeMillis()
                         + PHOTO_FILE_COVER);
@@ -458,7 +454,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     public void camera() {
         // 判断存储卡是否可以用，可用进行存储
 
-        switch (show_type){
+        switch (show_type) {
             case 1:
 
                 tempFile = getFile(PHOTO_FILE_PATH + "/" + System.currentTimeMillis()
@@ -602,9 +598,9 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     public void UpdaIvTest(final File aa, byte[] bytes, String picname,
                            final ImageView Iv, final Bitmap bitmap, final int type) {
 
-       // NUpLoadUtils dLoadUtils = new NUpLoadUtils(BaseContext, bytes, picname);
+        // NUpLoadUtils dLoadUtils = new NUpLoadUtils(BaseContext, bytes, picname);
 
-        NUPLoadUtil dLoadUtils = new NUPLoadUtil(BaseContext, aa,picname);
+        NUPLoadUtil dLoadUtils = new NUPLoadUtil(BaseContext, aa, picname);
 //        dLoadUtils.SetUpResult(new UpResult() {
 //
 //            @Override
@@ -647,6 +643,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
                 LogUtils.i(Url);
 
                 // Iv.setImageBitmap(bitmap);
+                if (CheckNet(BaseContext)) return;
                 LoadIv(Iv, bitmap, HostUrl, type);
             }
         });

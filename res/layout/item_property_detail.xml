@@ -93,14 +93,51 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginRight="10dp"
+    android:layout_height="wrap_content">
+      <!--  <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+
+            android:layout_height="wrap_content">-->
+
         <TextView
             android:id="@+id/tv_record_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_gravity="right"
             android:text="@string/nullstr"
             android:textColor="@color/app_fen"
             android:textSize="@dimen/center_wallet_property_detail_inside_listview_money_txt_size" />
+
+          <!--  <TextView
+                android:id="@+id/tv_counter_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/nullstr"
+                android:visibility="gone"
+                android:textColor="@color/app_fen"
+                android:textSize="@dimen/center_wallet_property_detail_inside_listview_counter_fee_txt_size" />
+-->
+
+
+       <!-- </LinearLayout>-->
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/nullstr"
+android:layout_gravity="right"
+        android:textColor="@color/app_gray"
+         />
+
+
+</LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

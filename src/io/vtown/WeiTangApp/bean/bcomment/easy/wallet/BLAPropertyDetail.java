@@ -23,6 +23,16 @@ public class BLAPropertyDetail extends BBase {
 	private String title;// title=订单S2016072710257100401
 	private String type;// type=4
 	private String update_time;// update_time=0
+
+	private String bank_name;//"bank_name": "中国建设银行",
+	private String fetch_money;//"fetch_money": 9900,
+	private String fetch_type;//"fetch_type": 1,
+	private String counter_fee;//"counter_fee": 100,
+
+	private String direction;//"direction": 1,
+
+	private String alipay;//"alipay": "",
+	private String bank_card;//"bank_card": "1000089563333396",
 	public String getCapital_no() {
 		return capital_no;
 	}
@@ -113,6 +123,61 @@ public class BLAPropertyDetail extends BBase {
 	public void setUpdate_time(String update_time) {
 		this.update_time = update_time;
 	}
-	
-	
+
+
+	public String getBank_name() {
+		return bank_name;
+	}
+
+	public void setBank_name(String bank_name) {
+		this.bank_name = bank_name;
+	}
+
+	public String getFetch_money() {
+		return fetch_money;
+	}
+
+	public void setFetch_money(String fetch_money) {
+		this.fetch_money = fetch_money;
+	}
+
+	public String getFetch_type() {
+		return fetch_type;
+	}
+
+	public void setFetch_type(String fetch_type) {
+		this.fetch_type = fetch_type;
+	}
+
+	public String getCounter_fee() {
+		return counter_fee;
+	}
+
+	public void setCounter_fee(String counter_fee) {
+		this.counter_fee = counter_fee;
+	}
+
+	public String getAlipay() {
+		return alipay;
+	}
+
+	public void setAlipay(String alipay) {
+		this.alipay = alipay;
+	}
+
+	public String getBank_card() {
+		return bank_card;
+	}
+
+	public void setBank_card(String bank_card) {
+		this.bank_card = bank_card;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
 }

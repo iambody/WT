@@ -202,7 +202,7 @@
     <string name="alipay_real_name_format">真实姓名：%1$s</string>
     <string name="lable_alipay_numb_format">支付宝账号：%1$s</string>
     <string name="lable_bank_numb_format">尾号%1$s快捷</string>
-    <string name="lable_bank_numb_format_1">(尾号%1$s快捷)</string>
+    <string name="lable_bank_numb_format_1">(尾号%1$s)</string>
     <string name="property_detail_select_all">全部</string>
     <string name="property_detail_buy_good">购物</string>
     <string name="property_detail_top_up">退款</string>
@@ -495,6 +495,7 @@
     <string name="title_property_detail_top_up">退款资金明细</string>
     <string name="title_property_detail_withdraw">提现资金明细</string>
     <string name="title_property_detail_sell_record">销售资金明细</string>
+    <string name="counter_fee">(含手续费%1$s元)</string>
 
     <!-- 商品分享&&&&&&&&&&&&&&&& -->
     <string name="szhuan_saying">说点什么吧...</string>

@@ -514,6 +514,8 @@
     </dimen>
     <!-- 第二层listview的交易类型文字margin -->
     <dimen name="center_wallet_property_detail_inside_listview_money_txt_size">13sp</dimen>
+
+    <dimen name="center_wallet_property_detail_inside_listview_counter_fee_txt_size">10sp</dimen>
     <!-- **********end********** 资金明细  *********end********** -->
 
 
