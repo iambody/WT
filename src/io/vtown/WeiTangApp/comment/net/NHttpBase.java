@@ -76,7 +76,7 @@ public abstract class NHttpBase {
         // 添加标识
         map1.put("UUID", Constants.GetPhoneId(context));
         map1.put("source", 20 + "");
-        map1.put("api_version", Constants.Api_Version);
+//        map1.put("api_version", Constants.Api_Version);
         // 如果已经登录了就开始加Yoken&&登录后的Token不为空
         if (Spuit.IsLogin_Get(context) && !StrUtils.isEmpty(Spuit.User_Get(context).getToken())) {
             map1.put("token", Spuit.User_Get(context).getToken());

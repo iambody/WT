@@ -1,39 +1,5 @@
 package io.vtown.WeiTangApp.ui.comment.order;
 
-import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.adapter.BasAdapter;
-import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.BDComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
-import io.vtown.WeiTangApp.bean.bcomment.BUser;
-import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BLCenterOder;
-import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
-import io.vtown.WeiTangApp.comment.contant.CacheUtil;
-import io.vtown.WeiTangApp.comment.contant.Constants;
-import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.util.StrUtils;
-import io.vtown.WeiTangApp.comment.util.ViewHolder;
-import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
-import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
-import io.vtown.WeiTangApp.comment.view.listview.LListView;
-import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
-import io.vtown.WeiTangApp.event.interf.IDialogResult;
-import io.vtown.WeiTangApp.fragment.FCenterOder;
-import io.vtown.WeiTangApp.ui.ATitleBase;
-import io.vtown.WeiTangApp.ui.title.AGoodDetail;
-import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
-import io.vtown.WeiTangApp.ui.title.center.myorder.AApplyTuikuan;
-import io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderDetail;
-import io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderNoPayDetail;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.w3c.dom.Text;
-
-import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -51,6 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
@@ -59,14 +26,42 @@ import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 import com.lidroid.xutils.util.LogUtils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.adapter.BasAdapter;
+import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.BDComment;
+import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BLCenterOder;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
+import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
+import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
+import io.vtown.WeiTangApp.ui.title.center.myorder.AApplyTuikuan;
+import io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderDetail;
+import io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderNoPayDetail;
 
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
  * @version 创建时间：2016-8-18 下午1:37:57
  */
-public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
-        OnItemClickListener {
+public class ACenterMyOrder extends ATitleBase implements
+        OnItemClickListener, RefreshLayout.OnLoadListener {
     /**
      * 标记 分别是 全部，代付款，已付款，待收货，退货,关闭 订单状态 10:代付款 20:已付款 待发货 30:已发货 待收货 40:退款中
      * 50:仲裁处理中 100:已完成 110:已取消 60拒绝退款，70同意退款
@@ -92,7 +87,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
     /**
      * 我的订单列表
      */
-    private LListView fragment_center_order_ls;
+    private ListView fragment_center_order_ls;
     private View fragent_centeroder_nodata_lay;
     /**
      * 用户信息
@@ -139,6 +134,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
 
     private Drawable mDrawable;
     private TextView mTitle;
+    private RefreshLayout fragment_center_order_refrash;
 
     // @Override
     // public void InItView() {
@@ -191,11 +187,17 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
     private void IView() {
         fragent_centeroder_nodata_lay = findViewById(R.id.fragent_centeroder_nodata_lay1);
 
-        fragment_center_order_ls = (LListView) findViewById(R.id.fragment_center_order_ls1);
+
+        fragment_center_order_refrash = (RefreshLayout) findViewById(R.id.fragment_center_order_refrash);
+        fragment_center_order_refrash.setOnLoadListener(this);
+        fragment_center_order_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        fragment_center_order_refrash.setCanLoadMore(false);
+        fragment_center_order_ls = (ListView) findViewById(R.id.fragment_center_order_ls1);
         centerOrderOutsideAdapter = new CenterOrderOutsideAdapter(
                 R.layout.item_fragment_center_order_outside);
         centerOrderNoPayAdapter = new CenterOrderNoPayAdapter(
                 R.layout.item_center_order_no_pay_outside);
+        fragment_center_order_ls.setOnItemClickListener(this);
 
         fragment_center_order_ls.setAdapter(centerOrderOutsideAdapter);
 
@@ -217,10 +219,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
         fragment_center_order_ls.setOnItemClickListener(this);
         fragent_centeroder_nodata_lay.setOnClickListener(this);
 
-        fragment_center_order_ls.setPullRefreshEnable(true);
-        fragment_center_order_ls.setPullLoadEnable(true);
-        fragment_center_order_ls.setXListViewListener(this);
-        fragment_center_order_ls.hidefoot();
+
     }
 
     /**
@@ -434,6 +433,17 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
     public void RegetData() {
         last_id = "";
         IData(LOAD_INITIALIZE, order_status);
+    }
+
+    @Override
+    public void OnLoadMore() {
+        IData(LOAD_LOADMOREING, Ket_Tage + "");
+    }
+
+    @Override
+    public void OnFrash() {
+        last_id = "";
+        IData(LOAD_REFRESHING, Ket_Tage + "");
     }
 
     /**
@@ -1471,7 +1481,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
             int count = centerOrderOutsideAdapter.getCount();
             // if(count > 0){
             bl_data = (BLCenterOder) centerOrderOutsideAdapter
-                    .getItem(position - 1);
+                    .getItem(position);
 
             int order_status = Integer.parseInt(bl_data.getOrder_status());
             Intent intent = null;
@@ -1495,7 +1505,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
             int count = centerOrderNoPayAdapter.getCount();
             // if(count > 0){
             bl_data = (BLCenterOder) centerOrderNoPayAdapter
-                    .getItem(position - 1);
+                    .getItem(position);
             Intent intent = new Intent(BaseContext,
                     ACenterMyOrderNoPayDetail.class);
             intent.putExtra("order_sn", bl_data.getOrder_sn());
@@ -1508,16 +1518,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
 
     }
 
-    @Override
-    public void onRefresh() {
-        last_id = "";
-        IData(LOAD_REFRESHING, Ket_Tage + "");
-    }
 
-    @Override
-    public void onLoadMore() {
-        IData(LOAD_LOADMOREING, Ket_Tage + "");
-    }
 
     /**
      * 接收事件
@@ -1599,11 +1600,14 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
                         }
                     }
                     if (LOAD_LOADMOREING == Data.getHttpLoadType()) {
-                        fragment_center_order_ls.stopLoadMore();
+                        //fragment_center_order_ls.stopLoadMore();
+
                         PromptManager.ShowCustomToast(BaseContext, "没有更多订单哦");
+
+                        fragment_center_order_refrash.setLoading(false);
                     }
                     if (LOAD_REFRESHING == Data.getHttpLoadType()) {
-                        fragment_center_order_ls.stopRefresh();
+                        //fragment_center_order_ls.stopRefresh();
                         PromptManager.ShowCustomToast(BaseContext, "暂无订单");
                         if (PDaiFu == Ket_Tage) {
                             centerOrderNoPayAdapter
@@ -1640,10 +1644,18 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
                         } else {
                             centerOrderOutsideAdapter.RefreshData(order_list);
                         }
+                        fragment_center_order_refrash.setRefreshing(false);
+                        if (order_list.size() == Constants.PageSize)
+                            //fragment_center_order_ls.ShowFoot();
+                            fragment_center_order_refrash.setCanLoadMore(true);
+                        if (order_list.size() < Constants.PageSize)
+                            // fragment_center_order_ls.hidefoot();
+                            fragment_center_order_refrash.setCanLoadMore(false);
                         break;
 
                     case LOAD_REFRESHING:// 刷新数据
-                        fragment_center_order_ls.stopRefresh();
+                        fragment_center_order_refrash.setRefreshing(false);
+                        //fragment_center_order_ls.stopRefresh();
                         if (PDaiFu == Ket_Tage) {
                             centerOrderNoPayAdapter.RefreshData(order_list);
                         } else {
@@ -1651,13 +1663,16 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
                         }
 
                         if (order_list.size() == Constants.PageSize)
-                            fragment_center_order_ls.ShowFoot();
+                            //fragment_center_order_ls.ShowFoot();
+                            fragment_center_order_refrash.setCanLoadMore(true);
                         if (order_list.size() < Constants.PageSize)
-                            fragment_center_order_ls.hidefoot();
+                           // fragment_center_order_ls.hidefoot();
+                            fragment_center_order_refrash.setCanLoadMore(false);
                         break;
 
                     case LOAD_LOADMOREING:// 加载更多
-                        fragment_center_order_ls.stopLoadMore();
+                        fragment_center_order_refrash.setLoading(false);
+                       // fragment_center_order_ls.stopLoadMore();
                         if (PDaiFu == Ket_Tage) {
                             centerOrderNoPayAdapter.AddFrashData(order_list);
                         } else {
@@ -1665,9 +1680,14 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
                         }
 
                         if (order_list.size() == Constants.PageSize)
-                            fragment_center_order_ls.ShowFoot();
-                        if (order_list.size() < Constants.PageSize)
-                            fragment_center_order_ls.hidefoot();
+                            //fragment_center_order_ls.ShowFoot();
+                            fragment_center_order_refrash.setCanLoadMore(true);
+                        if (order_list.size() < Constants.PageSize){
+                            //fragment_center_order_ls.hidefoot();
+                            fragment_center_order_refrash.setCanLoadMore(false);
+
+                        }
+
                         break;
                 }
 
@@ -1726,11 +1746,11 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
                 ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
                 break;
             case LOAD_REFRESHING:// 刷新数据
-                fragment_center_order_ls.stopRefresh();
+               // fragment_center_order_ls.stopRefresh();
 
                 break;
             case LOAD_LOADMOREING:// 加载更多
-                fragment_center_order_ls.stopLoadMore();
+                //fragment_center_order_ls.stopLoadMore();
 
                 break;
         }
@@ -1746,6 +1766,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
     @Override
     protected void NetDisConnect() {
         NetError.setVisibility(View.VISIBLE);
+        closePopupWindow();
     }
 
     @Override
@@ -1757,6 +1778,7 @@ public class ACenterMyOrder extends ATitleBase implements IXListViewListener,
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.title:
+                if(CheckNet(BaseContext))return;
                 showPopupWindow(V);
                 break;
             case R.id.ll_center_order_all:

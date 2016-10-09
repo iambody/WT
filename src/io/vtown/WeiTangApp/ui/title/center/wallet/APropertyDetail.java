@@ -139,7 +139,8 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
         IDataView(center_my_property_detail_outlay, center_my_property_detail_nodata_lay, NOVIEW_INITIALIZE);
         property_detail_list_refrash = (RefreshLayout) findViewById(R.id.property_detail_list_refrash);
         property_detail_list_refrash.setOnLoadListener(this);
-
+        property_detail_list_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        property_detail_list_refrash.setCanLoadMore(false);
         lv_property_detail_list = (ListView) findViewById(R.id.lv_property_detail_list);
 
 
@@ -286,13 +287,17 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
         switch (LoadTyp) {
             case LOAD_INITIALIZE:
                 IDataView(center_my_property_detail_outlay, center_my_property_detail_nodata_lay, NOVIEW_ERROR);
+                property_detail_list_refrash.setCanLoadMore(false);
                 break;
             case LOAD_REFRESHING:// 刷新数据
                 //lv_property_detail_list.stopRefresh();
+                property_detail_list_refrash.setRefreshing(false);
 
                 break;
             case LOAD_LOADMOREING:// 加载更多
                 //lv_property_detail_list.stopLoadMore();
+                property_detail_list_refrash.setLoading(false);
+
 
                 break;
         }
@@ -320,6 +325,7 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.right_txt:
+                if(CheckNet(BaseContext))return;
                 IPopupWindow(V);
                 break;
 

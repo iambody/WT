@@ -4,6 +4,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLBankCardAndAlipayList;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BLSelectBank;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
@@ -67,7 +68,7 @@ public class ABankCardOperation extends ATitleBase {
     /**
      * 转入的数据
      */
-    private BLComment mBlcomment;
+    private BLBankCardAndAlipayList mBlcomment;
     /**
      * 选择银行
      */
@@ -126,7 +127,7 @@ public class ABankCardOperation extends ATitleBase {
      */
     private void IData() {
         Intent intent = getIntent();
-        mBlcomment = (BLComment) intent.getSerializableExtra("datas");
+        mBlcomment = (BLBankCardAndAlipayList) intent.getSerializableExtra("datas");
         isFinish = intent.getBooleanExtra("isFinish", false);
         ImageLoaderUtil.Load2(mBlcomment.getIcon(), iv_modify_bank_icon, R.drawable.error_iv2);
         StrUtils.SetTxt(tv_modify_bank_name, mBlcomment.getBank_name());
@@ -148,6 +149,7 @@ public class ABankCardOperation extends ATitleBase {
         map.put("bank_name", bank_name);
         map.put("name", name);
         map.put("bank_id", bank_id);
+        map.put("api_version", "2.0.1");//API版本上线2.0.1
         map.put("id", id);
         FBGetHttpData(map, Constants.Modify_Bank_Card, Method.PUT, 0, LOAD_INITIALIZE);
 

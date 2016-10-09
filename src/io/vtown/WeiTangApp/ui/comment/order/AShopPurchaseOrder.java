@@ -1,5 +1,35 @@
 package io.vtown.WeiTangApp.ui.comment.order;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
+import com.android.volley.Request.Method;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.adapter.BasAdapter;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
@@ -16,11 +46,10 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
-import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
-import io.vtown.WeiTangApp.fragment.FShopPurchase;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
@@ -28,44 +57,12 @@ import io.vtown.WeiTangApp.ui.title.center.myorder.AApplyTuikuan;
 import io.vtown.WeiTangApp.ui.title.shop.purchase.APurchaseDetail;
 import io.vtown.WeiTangApp.ui.title.shop.purchase.APurchaseNoPayDetail;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-
-import com.alibaba.fastjson.JSON;
-import com.android.volley.Request.Method;
-
-import de.greenrobot.event.EventBus;
-
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
  * @version 创建时间：2016-8-19 上午10:14:17
  * 
  */
-public class AShopPurchaseOrder extends ATitleBase implements
-		IXListViewListener, OnItemClickListener {
+public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListener, RefreshLayout.OnLoadListener {
 
 	/**
 	 * 传递tage的key
@@ -94,7 +91,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 	/**
 	 * Ls
 	 */
-	private LListView fragment_shop_purchase_ls;
+	private ListView fragment_shop_purchase_ls;
 
 	/**
 	 * 外层的Ap
@@ -137,6 +134,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 	private TextView tv_center_order_over;
 
 	private Drawable mDrawable;
+	private RefreshLayout shop_purchase_refrash;
 
 	@Override
 	protected void InItBaseView() {
@@ -304,11 +302,11 @@ public class AShopPurchaseOrder extends ATitleBase implements
 				}
 
 				if (LOAD_LOADMOREING == Data.getHttpLoadType()) {
-					fragment_shop_purchase_ls.stopLoadMore();
+					shop_purchase_refrash.setLoading(false);
 					PromptManager.ShowCustomToast(BaseContext, "没有更多订单哦");
 				}
 				if (LOAD_REFRESHING == Data.getHttpLoadType()) {
-					fragment_shop_purchase_ls.stopRefresh();
+					shop_purchase_refrash.setRefreshing(false);
 					PromptManager.ShowCustomToast(BaseContext, "暂无订单");
 					if (10 == Ket_Tage) {
 						purchaseOrderNoPayAdapter
@@ -343,25 +341,40 @@ public class AShopPurchaseOrder extends ATitleBase implements
 					} else {
 						lsAp.RefreshData(list_datas);
 					}
+					shop_purchase_refrash.setRefreshing(false);
+					//fragment_shop_purchase_ls.stopRefresh();
+
+					if (list_datas.size() == Constants.PageSize)
+						shop_purchase_refrash.setCanLoadMore(true);
+					//fragment_shop_purchase_ls.ShowFoot();
+					if (list_datas.size() < Constants.PageSize)
+						shop_purchase_refrash.setCanLoadMore(false);
+					//fragment_shop_purchase_ls.hidefoot();
 
 					break;
 
 				case LOAD_REFRESHING:// 刷新数据
-					fragment_shop_purchase_ls.stopRefresh();
+					shop_purchase_refrash.setRefreshing(false);
+					//fragment_shop_purchase_ls.stopRefresh();
 					lsAp.RefreshData(list_datas);
 					if (list_datas.size() == Constants.PageSize)
-						fragment_shop_purchase_ls.ShowFoot();
+						shop_purchase_refrash.setCanLoadMore(true);
+						//fragment_shop_purchase_ls.ShowFoot();
 					if (list_datas.size() < Constants.PageSize)
-						fragment_shop_purchase_ls.hidefoot();
+						shop_purchase_refrash.setCanLoadMore(false);
+						//fragment_shop_purchase_ls.hidefoot();
 					break;
 
 				case LOAD_LOADMOREING:// 加载更多
-					fragment_shop_purchase_ls.stopLoadMore();
+					shop_purchase_refrash.setLoading(false);
+					//fragment_shop_purchase_ls.stopLoadMore();
 					lsAp.AddFrashData(list_datas);
 					if (list_datas.size() == Constants.PageSize)
-						fragment_shop_purchase_ls.ShowFoot();
+						//fragment_shop_purchase_ls.ShowFoot();
+						shop_purchase_refrash.setCanLoadMore(true);
 					if (list_datas.size() < Constants.PageSize)
-						fragment_shop_purchase_ls.hidefoot();
+						//fragment_shop_purchase_ls.hidefoot();
+						shop_purchase_refrash.setCanLoadMore(false);
 					break;
 				}
 			}
@@ -415,16 +428,20 @@ public class AShopPurchaseOrder extends ATitleBase implements
 		PromptManager.ShowMyToast(BaseContext, error);
 		switch (LoadType) {
 		case LOAD_INITIALIZE:// ss
+			shop_purchase_refrash.setRefreshing(false);
 			fragent_purchase_nodata_lay.setVisibility(View.VISIBLE);
 			fragment_shop_purchase_ls.setVisibility(View.GONE);
 			fragent_purchase_nodata_lay.setClickable(true);
 			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 			break;
 		case LOAD_REFRESHING:// 刷新数据
-			fragment_shop_purchase_ls.stopRefresh();
+			//fragment_shop_purchase_ls.stopRefresh();
+			shop_purchase_refrash.setRefreshing(false);
+
 			break;
 		case LOAD_LOADMOREING:// 加载更多
-			fragment_shop_purchase_ls.stopLoadMore();
+			//fragment_shop_purchase_ls.stopLoadMore();
+			shop_purchase_refrash.setLoading(false);
 			break;
 		}
 		
@@ -440,6 +457,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 	@Override
 	protected void NetDisConnect() {
 		NetError.setVisibility(View.VISIBLE);
+		closePopupWindow();
 	}
 
 	@Override
@@ -451,6 +469,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 	protected void MyClick(View V) {
 		switch (V.getId()) {
 		case R.id.title:
+			if(CheckNet(BaseContext))return;
 			showPopupWindow(V);
 			break;
 		case R.id.ll_center_order_all:
@@ -611,11 +630,13 @@ public class AShopPurchaseOrder extends ATitleBase implements
 	private void ILs() {
 		fragent_purchase_nodata_lay = findViewById(R.id.shop_purchase_nodata_lay);
 
-		fragment_shop_purchase_ls = (LListView) findViewById(R.id.shop_purchase_ls);
-		fragment_shop_purchase_ls.setPullRefreshEnable(true);
-		fragment_shop_purchase_ls.setPullLoadEnable(true);
-		fragment_shop_purchase_ls.setXListViewListener(this);
-		fragment_shop_purchase_ls.hidefoot();
+		shop_purchase_refrash = (RefreshLayout) findViewById(R.id.shop_purchase_refrash);
+		shop_purchase_refrash.setOnLoadListener(this);
+		shop_purchase_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+		shop_purchase_refrash.setCanLoadMore(false);
+
+		fragment_shop_purchase_ls = (ListView) findViewById(R.id.shop_purchase_ls);
+
 
 		// 设置滚动时不从网上加载图片
 		fragment_shop_purchase_ls
@@ -642,6 +663,17 @@ public class AShopPurchaseOrder extends ATitleBase implements
 		fragment_shop_purchase_ls.setOnItemClickListener(this);
 		fragent_purchase_nodata_lay.setOnClickListener(this);
 		// fragent_purchase_nodata_lay.setEnabled(false);
+	}
+
+	@Override
+	public void OnLoadMore() {
+		IData(LOAD_LOADMOREING, Ket_Tage + "");
+	}
+
+	@Override
+	public void OnFrash() {
+		last_id = "";
+		IData(LOAD_REFRESHING, Ket_Tage + "");
 	}
 
 	/**
@@ -1604,7 +1636,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 			if (10 != Ket_Tage) {
 				// int count = lsAp.getCount();
 				// if (count > 0) {
-				bl_data = (BLShopPurchase) lsAp.getItem(arg2 - 1);
+				bl_data = (BLShopPurchase) lsAp.getItem(arg2);
 				if ("10".equals(bl_data.getOrder_status())) {
 					intent = new Intent(BaseContext, APurchaseNoPayDetail.class);
 					intent.putExtra("order_sn", bl_data.getOrder_sn());
@@ -1625,7 +1657,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 				int count = purchaseOrderNoPayAdapter.getCount();
 				// if (count > 0) {
 				bl_data = (BLShopPurchase) purchaseOrderNoPayAdapter
-						.getItem(arg2 - 1);
+						.getItem(arg2);
 				intent = new Intent(BaseContext, APurchaseNoPayDetail.class);
 				intent.putExtra("order_sn", bl_data.getOrder_sn());
 				intent.putExtra("member_id", bl_data.getMember_id());
@@ -1657,16 +1689,7 @@ public class AShopPurchaseOrder extends ATitleBase implements
 		}
 	}
 
-	@Override
-	public void onRefresh() {
-		last_id = "";
-		IData(LOAD_REFRESHING, Ket_Tage + "");
-	}
 
-	@Override
-	public void onLoadMore() {
-		IData(LOAD_LOADMOREING, Ket_Tage + "");
-	}
 
 	// @Override
 	// public void onClick(View v) {

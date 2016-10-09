@@ -42,7 +42,7 @@
             <LinearLayout
                 android:id="@+id/ll_pop_good_icon_price_store"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="@dimen/good_pop_price_store_height"
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:padding="10dp">
@@ -63,8 +63,9 @@
 
 
             <ScrollView
+                android:id="@+id/good_content_sv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/good_pop_content_scrollview_height"
                 android:background="@color/white"
                 android:paddingTop="10dp"
                 android:scrollbars="none">
@@ -176,7 +177,7 @@
                             <io.vtown.WeiTangApp.comment.view.listview.HorizontalListView
                                 android:id="@+id/hl_make_how_much"
                                 android:layout_width="match_parent"
-                                android:layout_height="30dp"
+                                android:layout_height="@dimen/good_pop_make_how_much_height"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
 
@@ -214,8 +215,8 @@
 
                         <io.vtown.WeiTangApp.comment.view.AddAndSubView
                             android:id="@+id/aasv_add_sub"
-                            android:layout_width="160dp"
-                            android:layout_height="40dp"
+                            android:layout_width="@dimen/good_pop_addandsubview_width"
+                            android:layout_height="@dimen/good_pop_addandsubview_height"
                             android:layout_marginLeft="15dp" />
                     </LinearLayout>
 
@@ -293,9 +294,9 @@
 
                         <EditText
                             android:id="@+id/pop_purchase_ed"
-                            android:layout_width="80dp"
-                            android:layout_height="35dp"
-                            android:layout_marginLeft="16dp"
+                            android:layout_width="@dimen/good_pop_edit_price_height"
+                            android:layout_height="@dimen/good_pop_edit_price_width"
+                            android:layout_marginLeft="@dimen/good_pop_edit_price_margin"
                             android:background="@drawable/shape_add_goods_edit_bg" />
                     </LinearLayout>
 

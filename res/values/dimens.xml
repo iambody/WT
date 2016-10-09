@@ -593,6 +593,14 @@
     <dimen name="comment_othershow_head">80dp</dimen>
     <dimen name="item_show_delet_height">24dp</dimen>
     <dimen name="sousou_historr_item_iv_height">20dp</dimen>
+    <dimen name="good_pop_content_scrollview_height">230dp</dimen>
+    <dimen name="good_pop_edit_price_height">80dp</dimen>
+    <dimen name="good_pop_edit_price_width">35dp</dimen>
+    <dimen name="good_pop_edit_price_margin">16dp</dimen>
+    <dimen name="good_pop_addandsubview_width">160dp</dimen>
+    <dimen name="good_pop_addandsubview_height">40dp</dimen>
+    <dimen name="good_pop_make_how_much_height">30dp</dimen>
+    <dimen name="good_pop_price_store_height">80dp</dimen>
 
 
 </resources>

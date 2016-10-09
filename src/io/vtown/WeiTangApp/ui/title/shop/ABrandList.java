@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import de.greenrobot.event.EventBus;
@@ -30,6 +31,7 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
 import io.vtown.WeiTangApp.ui.ATitleBase;
@@ -40,12 +42,12 @@ import io.vtown.WeiTangApp.ui.title.ABrandDetail;
  * @author 作者 易惠华 yihuihua@v-town.cc
  * @version 创建时间：2016-8-22 上午11:49:54
  */
-public class ABrandList extends ATitleBase implements IXListViewListener, AdapterView.OnItemClickListener {
+public class ABrandList extends ATitleBase implements AdapterView.OnItemClickListener, RefreshLayout.OnLoadListener {
 
     /**
      * 品牌列表
      */
-    private LListView shop_brands_list;
+    private ListView shop_brands_list;
     /**
      * AP
      */
@@ -56,6 +58,7 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
     private View shop_brand_nodata_lay;
 
     private int CurrentPage = 1;
+    private RefreshLayout shop_brands_refrash;
 
     @Override
     protected void InItBaseView() {
@@ -80,12 +83,13 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
 
     private void IView() {
         shop_brand_nodata_lay = findViewById(R.id.shop_brand_nodata_lay);
-        shop_brands_list = (LListView) findViewById(R.id.shop_brands_list);
+        shop_brands_refrash = (RefreshLayout) findViewById(R.id.shop_brands_refrash);
+        shop_brands_refrash.setOnLoadListener(this);
+        shop_brands_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        shop_brands_refrash.setCanLoadMore(false);
+        shop_brands_list = (ListView) findViewById(R.id.shop_brands_list);
         IDataView(shop_brands_list, shop_brand_nodata_lay, NOVIEW_INITIALIZE);
-        shop_brands_list.setPullRefreshEnable(true);
-        shop_brands_list.setPullLoadEnable(true);
-        shop_brands_list.setXListViewListener(this);
-        shop_brands_list.hidefoot();
+
         brandListAdapter = new BrandListAdapter(R.layout.item_shop_brands_list);
         shop_brands_list.setAdapter(brandListAdapter);
         shop_brands_list.setOnItemClickListener(this);
@@ -102,10 +106,12 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == 1) {
-                shop_brands_list.stopRefresh();
+                //shop_brands_list.stopRefresh();
+                shop_brands_refrash.setRefreshing(false);
             }
             if (msg.what == 2) {
-                shop_brands_list.stopLoadMore();
+                //shop_brands_list.stopLoadMore();
+                shop_brands_refrash.setLoading(false);
             }
         }
     };
@@ -126,11 +132,13 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
         switch (Data.getHttpLoadType()) {
             case LOAD_INITIALIZE:
             case LOAD_HindINIT:
+                shop_brands_refrash.setRefreshing(false);
                 brandListAdapter.FreshData(datas);
                 IDataView(shop_brands_list, shop_brand_nodata_lay, NOVIEW_RIGHT);
                 break;
 
             case LOAD_REFRESHING:
+
                 Message m = new Message();
                 m.what = 1;
                 mHandler.sendMessage(m);
@@ -138,6 +146,7 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
                 break;
 
             case LOAD_LOADMOREING:
+
                 Message mm = new Message();
                 mm.what = 2;
                 mHandler.sendMessage(mm);
@@ -146,15 +155,18 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
 
         }
         if (datas.size() < Constants.PageSize)
-            shop_brands_list.hidefoot();
+            //shop_brands_list.hidefoot();
+            shop_brands_refrash.setCanLoadMore(false);
         else
-            shop_brands_list.ShowFoot();
+            //shop_brands_list.ShowFoot();
+            shop_brands_refrash.setCanLoadMore(true);
     }
 
     @Override
     protected void DataError(String error, int LoadType) {
         switch (LoadType) {
             case LOAD_INITIALIZE:
+                shop_brands_refrash.setRefreshing(false);
                 PromptManager.ShowCustomToast(BaseContext, error);
                 IDataView(shop_brands_list, shop_brand_nodata_lay, NOVIEW_ERROR);
                 break;
@@ -207,18 +219,7 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
     protected void SaveBundle(Bundle bundle) {
     }
 
-    @Override
-    public void onRefresh() {
-        CurrentPage = 1;
-        IData(LOAD_REFRESHING, CurrentPage);
 
-    }
-
-    @Override
-    public void onLoadMore() {
-        CurrentPage = CurrentPage + 1;
-        IData(LOAD_LOADMOREING, CurrentPage);
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -228,6 +229,20 @@ public class ABrandList extends ATitleBase implements IXListViewListener, Adapte
                 BaseActivity, ABrandDetail.class).putExtra(
                 BaseKey_Bean, d));
     }
+
+    @Override
+    public void OnLoadMore() {
+        CurrentPage = CurrentPage + 1;
+        IData(LOAD_LOADMOREING, CurrentPage);
+    }
+
+    @Override
+    public void OnFrash() {
+        CurrentPage = 1;
+        IData(LOAD_REFRESHING, CurrentPage);
+    }
+
+
 
     class BrandListAdapter extends BaseAdapter {
 

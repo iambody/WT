@@ -105,6 +105,7 @@ public class ASelectBank extends ATitleBase {
 	protected void DataResult(int Code, String Msg, BComment Data) {
 
 		if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+			ShowErrorCanLoad(getResources().getString(R.string.error_null_bank_list_over));
 			return;
 		}
 
@@ -126,6 +127,7 @@ public class ASelectBank extends ATitleBase {
 		PromptManager.ShowMyToast(BaseContext, error);
 		if(LOAD_INITIALIZE == LoadType){
 			IDataView(center_wallet_select_bankcard_outlay, center_wallet_select_bankcard_nodata_lay, NOVIEW_ERROR);
+			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 		}
 	}
 

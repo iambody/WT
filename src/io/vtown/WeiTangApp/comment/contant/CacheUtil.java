@@ -89,6 +89,11 @@ public class CacheUtil {
 	private final static String SP_BankCard_Manage = "bankcardlist";
 
 	/**
+	 *  支付宝管理的数据的缓存
+	 */
+	private final static String SP_Alipay_Manage = "alipaylist";
+
+	/**
 	 * 缓存首页数据
 	 */
 	public static void Home_Save(Context pcContext, String HomeStr) {
@@ -529,6 +534,29 @@ public class CacheUtil {
 		editor.putString("bankcardlist", banklist);
 		editor.commit();
 	}
+
+	/**
+	 * 支付宝列表的数据
+	 */
+	public static String Center_Wallet_Alipay_Get(Context mPContext) {
+		SharedPreferences Sp = mPContext.getSharedPreferences(SP_Alipay_Manage,
+				Context.MODE_PRIVATE);
+		return Sp.getString("alipaylist", "");
+
+	}
+
+	/**
+	 *支付宝列表的保存呢
+	 */
+	public static void Center_Wallet_Alipay_Save(Context pContext,
+												   String alipaylist) {
+		SharedPreferences Sp = pContext.getSharedPreferences(SP_Alipay_Manage,
+				Context.MODE_PRIVATE);
+		Editor editor = Sp.edit();
+		editor.putString("alipaylist", alipaylist);
+		editor.commit();
+	}
+
 
 	// 折线图的数据缓存
 	/**

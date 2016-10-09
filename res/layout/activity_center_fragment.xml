@@ -3,25 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_bg"
-    android:orientation="vertical" >
-    <include layout="@layout/titlebar"/>
+    android:orientation="vertical">
 
-    <io.vtown.WeiTangApp.comment.view.listview.LListView
-        android:id="@+id/fragment_center_order_ls1"
+    <include layout="@layout/titlebar" />
+
+
+    <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+        android:id="@+id/fragment_center_order_refrash"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"
+        android:layout_height="0dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:cacheColorHint="#00000000"
-         android:listSelector="#00000000"
-        android:dividerHeight="10dp"
-        android:scrollbars="none" />
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        >
 
-     <include
+        <ListView
+            android:id="@+id/fragment_center_order_ls1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@color/app_bg"
+            android:dividerHeight="10dp"
+            android:listSelector="#00000000"
+            android:scrollbars="none" />
+    </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
+
+    <!-- <io.vtown.WeiTangApp.comment.view.listview.LListView
+         android:id="@+id/fragment_center_order_ls1"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:divider="@null"
+         android:layout_marginLeft="10dp"
+         android:layout_marginRight="10dp"
+         android:cacheColorHint="#00000000"
+          android:listSelector="#00000000"
+         android:dividerHeight="10dp"
+         android:scrollbars="none" />-->
+
+    <include
         android:id="@+id/fragent_centeroder_nodata_lay1"
         layout="@layout/commentview_nodata"
-     
+
         android:visibility="gone" />
 
 </LinearLayout>

@@ -147,11 +147,10 @@ public class ABankCardManager extends ATitleBase implements
 
 	private void IData(int type) {
 
-
-
 		HashMap<String, String> map = new HashMap<String, String>();
 		needShowErrorLayout = true;
 		map.put("member_id", user_Get.getId());
+		map.put("api_version", "2.0.1");//API版本上线2.0.1
 		FBGetHttpData(map, Constants.MY_BANK_LIST, Method.GET, 0,
 				type);
 
@@ -163,7 +162,8 @@ public class ABankCardManager extends ATitleBase implements
 	private void RemoveBankCard(String bank_id, String member_id,String id) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		needShowErrorLayout = false;
-		map.put("bank_id", bank_id);
+		//map.put("bank_id", bank_id);
+		map.put("api_version", "2.0.1");//API版本上线2.0.1
 		map.put("id",id);
 		map.put("member_id", member_id);
 		FBGetHttpData(map, Constants.Remove_Bank_Card, Method.DELETE, 1,
@@ -446,7 +446,7 @@ public class ABankCardManager extends ATitleBase implements
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
 								   long arg3) {
 
-		BLComment bl = (BLComment) arg0.getItemAtPosition(arg2);
+		BLBankCardAndAlipayList bl = (BLBankCardAndAlipayList) arg0.getItemAtPosition(arg2);
 
 		if (mPopupWindow == null) {
 			ShowPop(bl,
@@ -464,7 +464,7 @@ public class ABankCardManager extends ATitleBase implements
 	 * @param bl
 	 * @param v
 	 */
-	private void ShowPop(BLComment bl, View v) {
+	private void ShowPop(BLBankCardAndAlipayList bl, View v) {
 
 		View view = LayoutInflater.from(BaseContext).inflate(
 				R.layout.pop_bankcard_manage, null);
@@ -544,13 +544,13 @@ public class ABankCardManager extends ATitleBase implements
 //	}
 
 	class ShareClick implements OnClickListener {
-		private BLComment datBlComment = null;
+		private BLBankCardAndAlipayList datBlComment = null;
 
 		public ShareClick() {
 			super();
 		}
 
-		public ShareClick(BLComment datBlComment) {
+		public ShareClick(BLBankCardAndAlipayList datBlComment) {
 			super();
 			this.datBlComment = datBlComment;
 

@@ -577,6 +577,7 @@
     <string name="error_null_my_order_daishou">\"暂时没有待收货订单哦~~~\"</string>
     <string name="error_null_my_order_tuikuan">\"暂时没有退款/仲裁订单哦~~~\"</string>
     <string name="error_null_my_order_over">\"暂时没有已完成订单哦~~~\"</string>
+    <string name="error_null_bank_list_over">\"没有获取到您想要的银行哦，请稍后再试试吧~~~\"</string>
     <string name="no_goods">暂无商品哦</string>
     <string name="no_zaishou_brand">暂无在售品牌商品</string>
     <string name="no_zaishou_ziying">暂无在售自营商品</string>

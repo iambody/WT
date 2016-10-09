@@ -97,6 +97,7 @@ public class AAddBankCard extends ATitleBase {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("member_id", user_Get.getId());
 		map.put("seller_id", user_Get.getSeller_id());
+		map.put("api_version", "2.0.1");//API版本上线2.0.1
 		map.put("name", name);
 		map.put("bank_name", mBlComment.getBank_name());
 		map.put("bank_id", mBlComment.getBank_id());

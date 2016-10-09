@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -285,6 +286,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     private boolean IsCaiGou;
     private View mRootView;
     private TextView tv_gray_layout;
+    private ScrollView good_content_sv;
 
     @Override
     protected void InItBaseView() {
@@ -490,7 +492,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         pop_show_shangjia_cha.setOnClickListener(this);
         gv_net_content = (CompleteGridView) findViewById(R.id.pop_purchase_grid);
         gv_colors = (CompleteGridView) findViewById(R.id.gv_colors);
-
+        good_content_sv = (ScrollView) findViewById(R.id.good_content_sv);
+        good_content_sv.smoothScrollTo(0, 20);
         ll_pop_good_icon_price_store = (LinearLayout) findViewById(R.id.ll_pop_good_icon_price_store);
         iv_pop_goods_icon = (ImageView) findViewById(R.id.iv_pop_goods_icon);
 
