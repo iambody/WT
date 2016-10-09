@@ -1,5 +1,34 @@
 package io.vtown.WeiTangApp.ui.title;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
+import com.android.volley.Request.Method;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
@@ -12,17 +41,13 @@ import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.DateUtils;
-import io.vtown.WeiTangApp.comment.util.GoodsPollUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
-import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.ImageCycleView;
 import io.vtown.WeiTangApp.comment.view.ImageCycleView.ImageCycleViewListener;
 import io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView;
 import io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView.OnGetDistanceListener;
-import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
-import io.vtown.WeiTangApp.comment.view.load.ShapeLoadingDialog;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase.OnPopupStutaChangerListener;
 import io.vtown.WeiTangApp.ui.ATitleBase;
@@ -30,47 +55,8 @@ import io.vtown.WeiTangApp.ui.comment.AGoodShow;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
-import io.vtown.WeiTangApp.ui.ui.AMain;
 import io.vtown.WeiTangApp.ui.ui.AMainTab;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import com.alibaba.fastjson.JSON;
-import com.android.volley.Request.Method;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-
-import de.greenrobot.event.EventBus;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -79,6 +65,11 @@ import de.greenrobot.event.EventBus;
  */
 public class AGoodDetail extends ATitleBase {
 
+
+    @BindView(R.id.gooddetail_up_title_back)
+    ImageView gooddetailUpTitleBack;
+    @BindView(R.id.gooddetail_up_title)
+    TextView gooddetailUpTitle;
     /**
      * 购物车的log
      */
@@ -266,11 +257,16 @@ public class AGoodDetail extends ATitleBase {
      */
     private ScrollDistanceScrollView good_detail_scrollview;
 
+
+    private LinearLayout good_title_up;
+
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_gooddetail);
         mView = LayoutInflater.from(BaseContext).inflate(
                 R.layout.activity_gooddetail, null);
+        ButterKnife.bind(this);
+
         user_Get = Spuit.User_Get(BaseContext);
         IsCaiGou = getIntent().getBooleanExtra(Tage_CaiGou, false);
         EventBus.getDefault().register(this, "getReciverMsg", BMessage.class);
@@ -295,8 +291,6 @@ public class AGoodDetail extends ATitleBase {
         PromptManager.showtextLoading(BaseContext,
                 getResources()
                         .getString(R.string.xlistview_header_hint_loading));
-
-
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("goods_id", GoodsId);
         map.put("extend", "1");
@@ -328,6 +322,7 @@ public class AGoodDetail extends ATitleBase {
     }
 
     private void IBase() {
+        good_title_up = (LinearLayout) findViewById(R.id.good_title_up);
         gooddetail_picview = (LinearLayout) findViewById(R.id.gooddetail_picview);
         right_right_iv = (ImageView) findViewById(R.id.good_detail_lianxikefu_log);
         right_iv = (ImageView) findViewById(R.id.good_detail_shoucang_log);
@@ -356,42 +351,13 @@ public class AGoodDetail extends ATitleBase {
                     public void getDistance(int distance) {
                         if (distance < screenHeight) {
                             rl_to_top.setVisibility(View.GONE);
+                            good_title_up.setVisibility(View.GONE);
                         } else {
                             rl_to_top.setVisibility(View.VISIBLE);
+                            good_title_up.setVisibility(View.VISIBLE);
                         }
                     }
                 });
-
-        // good_detail_scrollview.setScrollBottomListener(new
-        // ScrollBottomListener() {
-        //
-        // @Override
-        // public void scrollBottom() {
-        // rl_to_top.setVisibility(View.VISIBLE);
-        // }
-        //
-        // @Override
-        // public void scrollUp() {
-        // rl_to_top.setVisibility(View.GONE);
-        // }
-        // });
-
-        // good_detail_scrollview.setOnTouchListener(new OnTouchListener() {
-        //
-        // @Override
-        // public boolean onTouch(View v, MotionEvent event) {
-        // if (event.getAction() == MotionEvent.ACTION_MOVE) {
-        // int scrollY = good_detail_scrollview.getScrollY();
-        // if(scrollY < screenHeight/2){
-        //
-        // }else{
-        //
-        //
-        // }
-        // }
-        // return false;
-        // }
-        // });
 
         // tv_show_count = (TextView) findViewById(R.id.tv_show_count);
         tv_suggest_retail_price = (TextView) findViewById(R.id.tv_suggest_retail_price);
@@ -417,20 +383,7 @@ public class AGoodDetail extends ATitleBase {
         right_iv.setEnabled(false);
         right_left_iv.setOnClickListener(this);
 
-        // lv_pic_text_detail.setOnItemClickListener(new OnItemClickListener() {
-        //
-        // @Override
-        // public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-        // long arg3) {
-        //
-        // List<String> daa = picTextDetailAdapter.GetResource();
-        //
-        // Intent mIntent = new Intent(BaseContext, AphotoPager.class);
-        // mIntent.putExtra("position", arg2);
-        // mIntent.putExtra("urls", StrUtils.LsToArray(daa));
-        // PromptManager.SkipActivity(BaseActivity, mIntent);
-        // }
-        // });
+
         ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 
     }
@@ -443,11 +396,6 @@ public class AGoodDetail extends ATitleBase {
 
     private void InItitle() {
 
-        // right_iv.setVisibility(View.VISIBLE);
-        // right_iv.setImageResource(R.drawable.ic_shoucang_nor);
-
-        // right_right_iv.setVisibility(View.VISIBLE);
-        // right_right_iv.setImageResource(R.drawable.ic_lianxikefu_nor);
 
     }
 
@@ -542,6 +490,8 @@ public class AGoodDetail extends ATitleBase {
      * 刷新页面控件数据
      */
     private void RefreshView(BGoodDetail datas) {
+//        StrUtils.SetTxt(gooddetailUpTitle,datas.getTitle());
+        StrUtils.SetTxt(gooddetailUpTitle, datas.getTitle());
         // InItitle();
         // 判断是否是图片还是视频
         IsPicDetail = datas.getGoods_info().getRtype().equals("0");
@@ -641,7 +591,7 @@ public class AGoodDetail extends ATitleBase {
                 myimage.setClickable(true);
                 myimage.setScaleType(ScaleType.FIT_XY);
                 myimage.setAdjustViewBounds(true);
-                LinearLayout.LayoutParams mLayoutParams = new LinearLayout.LayoutParams(
+                LayoutParams mLayoutParams = new LayoutParams(
                         screenWidth, LayoutParams.WRAP_CONTENT);
                 myimage.setLayoutParams(mLayoutParams);
                 ImageLoaderUtil.Load2(PicLs.get(i), myimage,
@@ -771,37 +721,8 @@ public class AGoodDetail extends ATitleBase {
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.tv_buy:
-//                Intent intent  = new Intent(BaseContext,AGoodPop.class);
-//                intent.putExtra("good_info",datas);
-//                intent.putExtra("Show_type",AGoodPop.TYPE_GOOD_DETAIL_BUY);
-//                intent.putExtra("GoodsId",GoodsId);
-//                intent.putExtra("IsCaiGou",IsCaiGou);
-//                startActivity(intent);
 
                 goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_BUY);
-//                PPurchase pShowVirtualLibGood1 = new PPurchase(BaseActivity,
-//                        BaseContext, 200, PPurchase.TYPE_GOOD_DETAIL_BUY, datas,
-//                        GoodsId, IsCaiGou);
-//                pShowVirtualLibGood1.showAtLocation(V, Gravity.CENTER, 0, 0);
-//
-//                pShowVirtualLibGood1
-//                        .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
-//
-//                            @Override
-//                            public void getPopupStuta(int stuta) {
-//                                switch (stuta) {
-//                                    case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
-//
-//                                        break;
-//                                    case PPurchase.TYPE_ADD_ONLINE:// 上架成功
-//
-//                                        break;
-//
-//                                    default:
-//                                        break;
-//                                }
-//                            }
-//                        });
 
                 break;
             case R.id.tv_replace_sell:
@@ -820,36 +741,6 @@ public class AGoodDetail extends ATitleBase {
                     }
                 }
 
-                //                        PPurchase pShowVirtualLibGood2 = new PPurchase(
-//                                BaseActivity, BaseContext, 200,
-//                                PPurchase.TYPE_GOOD_DETAIL_REPLACE_SELL, datas,
-//                                GoodsId, IsCaiGou);
-//                        pShowVirtualLibGood2
-//                                .showAtLocation(V, Gravity.CENTER, 0, 0);
-//                        pShowVirtualLibGood2
-//                                .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
-//
-//                                    @Override
-//                                    public void getPopupStuta(int stuta) {
-//                                        switch (stuta) {
-//                                            case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
-//
-//                                                break;
-//                                            case PPurchase.TYPE_ADD_ONLINE:// 上架成功
-//
-//                                                break;
-//
-//                                            default:
-//                                                break;
-//                                        }
-//                                    }
-//                                });
-//
-//                    } else {// 已经上架过不可以上架了
-//                        // tv_replace_sell.setVisibility(View.GONE);
-//                    }
-//
-//                }
 
                 break;
             case R.id.rl_look_share:// 分享
@@ -916,7 +807,7 @@ public class AGoodDetail extends ATitleBase {
             case R.id.good_detail_shopbus_log:
                 EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_four));
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                        AMainTab.class).putExtra("a","1"));
+                        AMainTab.class).putExtra("a", "1"));
 
                 break;
 
@@ -950,12 +841,12 @@ public class AGoodDetail extends ATitleBase {
     }
 
 
-    private void goPopActivity(int type){
-        Intent intent  = new Intent(BaseContext,AGoodPop.class);
-        intent.putExtra("good_info",datas);
-        intent.putExtra("Show_type",type);
-        intent.putExtra("GoodsId",GoodsId);
-        intent.putExtra("IsCaiGou",IsCaiGou);
+    private void goPopActivity(int type) {
+        Intent intent = new Intent(BaseContext, AGoodPop.class);
+        intent.putExtra("good_info", datas);
+        intent.putExtra("Show_type", type);
+        intent.putExtra("GoodsId", GoodsId);
+        intent.putExtra("IsCaiGou", IsCaiGou);
         startActivity(intent);
     }
 
@@ -1044,20 +935,20 @@ public class AGoodDetail extends ATitleBase {
         gooddetail_banner.pushImageCycle();
         runRandomMessage = false;
         mHandler.removeCallbacks(mRandomMessageTimerTask);
-        try{
+        try {
             EventBus.getDefault().unregister(this);
-        }catch (Exception e){
+        } catch (Exception e) {
             return;
         }
+
 
 //        GoodsPollUtils.stopPollingService(BaseContext);
     }
 
 
-
-    public void getReciverMsg(BMessage event){
+    public void getReciverMsg(BMessage event) {
         int msg_type = event.getMessageType();
-        switch (msg_type){
+        switch (msg_type) {
             case AGoodPop.TYPE_ADD_SHOPBUS:
 
                 break;
@@ -1067,164 +958,12 @@ public class AGoodDetail extends ATitleBase {
         }
     }
 
-    // ******************end*****************Banner*****************end********************
-
-    /**
-     * @author Yihuihua 图文详情AP
-     */
-    // class PicTextDetailAdapter extends BaseAdapter {
-    // private Context context;
-    // private int ResourseId;
-    // private LayoutInflater inflater;
-    // private List<String> datas = new ArrayList<String>();
-    //
-    // public PicTextDetailAdapter(Context context, int ResourseId,
-    // List<String> datas) {
-    // super();
-    // this.context = context;
-    // this.ResourseId = ResourseId;
-    // this.datas = datas;
-    // this.inflater = LayoutInflater.from(context);
-    //
-    // }
-    //
-    // public List<String> GetResource() {
-    // return datas;
-    //
-    // }
-    //
-    // @Override
-    // public int getCount() {
-    //
-    // return datas.size();
-    // }
-    //
-    // @Override
-    // public Object getItem(int position) {
-    //
-    // return datas.get(position);
-    // }
-    //
-    // @Override
-    // public long getItemId(int position) {
-    //
-    // return position;
-    // }
-    //
-    // @Override
-    // public View getView(final int position, View convertView,
-    // ViewGroup parent) {
-    // PicTextDetailItem picTextDetail = null;
-    // if (convertView == null) {
-    // picTextDetail = new PicTextDetailItem();
-    // convertView = inflater.inflate(ResourseId, null);
-    // picTextDetail.iv_good_detail_pic_text = ViewHolder.get(
-    // convertView, R.id.iv_good_detail_pic_text);
-    //
-    // convertView.setTag(picTextDetail);
-    //
-    // } else {
-    // picTextDetail = (PicTextDetailItem) convertView.getTag();
-    // }
-    // final PicTextDetailItem pic = picTextDetail;
-    // final int Mypostion = position;
-    // ViewGroup.LayoutParams lp = picTextDetail.iv_good_detail_pic_text
-    // .getLayoutParams();
-    // lp.width = screenWidth;
-    // lp.height = LayoutParams.WRAP_CONTENT;
-    // picTextDetail.iv_good_detail_pic_text.setLayoutParams(lp);
-    // picTextDetail.iv_good_detail_pic_text.setMaxWidth(screenWidth);
-    // picTextDetail.iv_good_detail_pic_text
-    // .setMaxHeight(screenWidth * 11);
-    //
-    // DisplayImageOptions options = new DisplayImageOptions.Builder()
-    // .showImageOnLoading(R.drawable.error_iv1)
-    // .showImageForEmptyUri(R.drawable.error_iv1)
-    // .showImageOnFail(R.drawable.error_iv1)
-    // .cacheOnDisc(true)
-    // .cacheInMemory(true)
-    // .cacheOnDisk(true)
-    // // .considerExifParams(true)
-    // // .displayer(new FadeInBitmapDisplayer(100))
-    // // .imageScaleType(ImageScaleType.NONE)
-    // .displayer(new SimpleBitmapDisplayer())
-    // .bitmapConfig(Bitmap.Config.RGB_565).build();
-    //
-    // String tag = (String) pic.iv_good_detail_pic_text.getTag();
-    //
-    // // picTextDetail.iv_good_detail_pic_text.setTag(datas.get(position))
-    //
-    // if (tag == null || !tag.equals(datas.get(position))) {
-    // ImageLoader.getInstance().displayImage(datas.get(position),
-    // picTextDetail.iv_good_detail_pic_text, options,
-    // new ImageLoadingListener() {
-    // @Override
-    // public void onLoadingStarted(String s, View view) {
-    //
-    // }
-    //
-    // @Override
-    // public void onLoadingFailed(String s, View view,
-    // FailReason failReason) {
-    //
-    // }
-    //
-    // @Override
-    // public void onLoadingComplete(String s, View view,
-    // Bitmap bitmap) {
-    // // if (bitmap != null) {
-    // // StrUtils.SetImageRoat(BaseContext,
-    // // pic.iv_good_detail_pic_text,
-    // // screenWidth, 100*(bitmap.getHeight()/
-    // // bitmap.getWidth()));
-    // // }
-    // view.setTag(datas.get(position));// 确保下载完成再打tag.
-    // }
-    //
-    // @Override
-    // public void onLoadingCancelled(String s, View view) {
-    //
-    // }
-    //
-    // });
-    // }
-    //
-    // return convertView;
-    // }
-    // }
 
     private Runnable mRandomMessageTimerTask = new Runnable() {
         @Override
         public void run() {
             GetInstantUsrInfo();
 
-            Log.i("详情页", "mRandomMessageTimerTask");
-            // Random random = new Random();
-            // int r = random.nextInt(119) + 1;
-            // Resources resources = getResources();
-            // String[] adress = resources.getStringArray(R.array.address);
-            // String[] usr = resources.getStringArray(R.array.usr);
-            // String[] sex = resources.getStringArray(R.array.sex);
-
-            // if (info != null &&
-            // !Order_Create_time.equals(info.getCreat_time())
-            // && !usrname.equals(info.getUsername())) {
-            // Order_Create_time = info.getCreat_time();
-            // usrname = info.getUsername();
-            // gooddetail_random_message.setText(String.format(
-            // "%1$s秒前 %2$s的%3$s%4$s购买", r + "", info.getProvince()
-            // + info.getCity(),
-            // StrUtils.getRealNameFormatString(info.getUsername()),
-            // sex[random.nextInt(sex.length)]));
-            //
-            // } else {
-            // gooddetail_random_message.setText(String.format(
-            // "%1$s秒前 %2$s的%3$s%4$s购买", r + "", adress[random
-            // .nextInt(adress.length)], StrUtils
-            // .getRealNameFormatString(usr[random
-            // .nextInt(usr.length)]), sex[random
-            // .nextInt(sex.length)]));
-            // }
 
             if (runRandomMessage) {
                 if (CheckNet(BaseContext))
@@ -1274,25 +1013,18 @@ public class AGoodDetail extends ATitleBase {
 
     private Handler mHandler = new Handler();
 
-//    @Override
-//    public void displayImage(String imageURL, ImageView imageView) {
-//        ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
-//    }
-//
-//    @Override
-//    public void onImageClick(int position, View imageView) {
-//        List<String> mStrings = gooddetail_banner.getMyImageUrlList();
-//        Intent mIntent = new Intent(BaseContext, AphotoPager.class);
-//        mIntent.putExtra("position", position);
-//        mIntent.putExtra("urls", StrUtils.LsToArray(mStrings));
-//        PromptManager.SkipActivity(BaseActivity, mIntent);
-//    }
 
-    /**
-     * @author Yihuihua 图文详情的Holder
-     */
-    class PicTextDetailItem {
-        public ImageView iv_good_detail_pic_text;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 
+
+    @OnClick(R.id.gooddetail_up_title_back)
+    public void onClick() {
+        BaseActivity.finish();
+        overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
+    }
 }

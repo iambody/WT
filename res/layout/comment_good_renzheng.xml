@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+    <!--外层圈圈 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ui_10_dip"
+        android:background="@drawable/shape_gooddetail_zhibao_quan"
+        android:orientation="vertical">
+        <!--内层圈圈 -->
+        <LinearLayout
+            android:id="@+id/comment_good_zhijian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/line_size4"
+            android:background="@drawable/shape_gooddetail_zhibao_quan"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/ui_10_dip"
+            android:paddingTop="@dimen/ui_10_dip">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/comment_good_renzheng_iv_height"
+                    android:layout_height="@dimen/comment_good_renzheng_iv_height"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/ui_10_dip"
+                    android:src="@drawable/commen_good_renzheng_1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/renzheng_zhengpin"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/comment_good_renzheng_txt_size"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/comment_good_renzheng_iv_height"
+                    android:layout_height="@dimen/comment_good_renzheng_iv_height"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/ui_10_dip"
+                    android:src="@drawable/commen_good_renzheng_2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/renzheng_qitian"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/comment_good_renzheng_txt_size"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/comment_good_renzheng_iv_height"
+                    android:layout_height="@dimen/comment_good_renzheng_iv_height"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/ui_10_dip"
+                    android:src="@drawable/commen_good_renzheng_3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/renzheng_shouquan"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/comment_good_renzheng_txt_size"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/comment_good_renzheng_iv_height"
+                    android:layout_height="@dimen/comment_good_renzheng_iv_height"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/ui_10_dip"
+                    android:src="@drawable/commen_good_renzheng_4"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/renzheng_haiwai"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/comment_good_renzheng_txt_size"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:padding="@dimen/line_size4"
+        android:text="@string/weitang_cheng"
+        android:textColor="@color/app_fen"/>
+
+
+</RelativeLayout>

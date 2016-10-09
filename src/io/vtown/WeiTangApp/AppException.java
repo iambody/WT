@@ -10,7 +10,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Date;
 
-import org.apache.http.HttpException;
+//import org.apache.http.HttpException;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -198,7 +198,7 @@ public class AppException extends Exception implements UncaughtExceptionHandler 
     public static AppException network(Exception e) {
         if (e instanceof UnknownHostException || e instanceof ConnectException) {
             return new AppException(TYPE_NETWORK, 0, e);
-        } else if (e instanceof HttpException) {
+        } else if (e instanceof Exception) {
             return http(e);
         } else if (e instanceof SocketException) {
             return socket(e);

@@ -74,7 +74,6 @@ import de.greenrobot.event.EventBus;
  *
  */
 public class ANewHome extends ATitileNoBase implements IXListViewListener {
-
 	/**
 	 * 积累的view
 	 */

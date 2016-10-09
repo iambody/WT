@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request;
-import com.chanven.lib.cptr.loadmore.SwipeRefreshHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;

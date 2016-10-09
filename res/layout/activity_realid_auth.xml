@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
 
-    <include layout="@layout/titlebar" />
+    <include layout="@layout/titlebar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,14 +20,15 @@
             android:background="@color/white"
             android:hint="@string/login_realid_hint_name"
             android:lines="1"
-            android:textColor="@color/gray" />
+            android:textColor="@color/app_gray"
+            android:textColorHint="@color/app_gray"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_size1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/app_fen" />
+            android:background="@color/app_fen"/>
     </LinearLayout>
 
     <LinearLayout
@@ -44,14 +45,16 @@
             android:background="@color/white"
             android:digits="0123456789xX"
             android:hint="@string/login_realid_hint_id"
-            android:maxLength="18" />
+            android:maxLength="18"
+            android:textColor="@color/app_gray"
+            android:textColorHint="@color/app_gray"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_size1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/app_fen" />
+            android:background="@color/app_fen"/>
     </LinearLayout>
 
     <TextView
@@ -63,6 +66,6 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/select_fen_to_gray"
         android:padding="10dp"
-        android:text="@string/submit_real_auth" />
+        android:text="@string/submit_real_auth"/>
 
 </LinearLayout>

@@ -272,6 +272,10 @@ public class ARealIdauth extends ATitleBase {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            if (from_where_value == 2) {//从我的进入
+                BaseActivity.finish();
+                return true;
+            }
             PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMain.class));
             BaseActivity.finish();
             return true;

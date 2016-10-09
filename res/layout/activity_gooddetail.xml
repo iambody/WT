@@ -10,23 +10,11 @@
         layout="@layout/titlebar"
         android:visibility="gone"/>
 
-    <!--
-         <LinearLayout
-        android:id="@+id/gooddetails_outlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >  
-
-
-
-
-
-    -->
-
     <RelativeLayout
         android:id="@+id/gooddetails_outlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView
             android:id="@+id/good_detail_scrollview"
@@ -319,7 +307,7 @@
                             android:clickable="true"
                             android:src="@drawable/testiv"
                             imagecontrol:border_color="@color/white"
-                            imagecontrol:border_width="6"/>
+                            />
 
                         <TextView
                             android:id="@+id/tv_seller_shop_name"
@@ -374,33 +362,7 @@
                 </LinearLayout>
 
                 <!-- 开始画质保圈圈-->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <!--外层圈圈 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/ui_10_dip"
-                        android:background="@drawable/shape_gooddetail_zhibao_quan"
-                        android:orientation="vertical">
-                        <!--内层圈圈 -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/ui_10_dip"
-                            android:background="@drawable/shape_gooddetail_zhibao_quan"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:src="@drawable/shop_log"/>
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </RelativeLayout>
+                <include layout="@layout/comment_good_renzheng"/>
                 <!--开始画质保圈圈 -->
                 <LinearLayout
                     android:id="@+id/gooddetail_picview"
@@ -411,6 +373,47 @@
 
             </LinearLayout>
         </io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView>
+
+        <LinearLayout
+            android:id="@+id/good_title_up"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/titlebarheingh"
+            android:layout_alignParentTop="true"
+            android:background="@color/app_fen2"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/gooddetail_up_title_back"
+                android:layout_width="@dimen/comment_good_renzheng_iv_height"
+                android:layout_height="@dimen/comment_good_renzheng_iv_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/ui_10_dip"
+                android:focusable="true"
+                android:clickable="true"
+                android:src="@drawable/arrow_back"/>
+
+            <TextView
+                android:id="@+id/gooddetail_up_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/ui_10_dip"
+                android:layout_marginRight="@dimen/ui_10_dip"
+                android:lines="1"
+                android:textColor="@color/white"
+                />
+
+            <ImageView
+
+                android:layout_width="@dimen/comment_good_renzheng_iv_height"
+                android:layout_height="@dimen/comment_good_renzheng_iv_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/ui_10_dip"
+                android:src="@drawable/arrow_back"
+                android:visibility="invisible"/>
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/rl_to_top"
