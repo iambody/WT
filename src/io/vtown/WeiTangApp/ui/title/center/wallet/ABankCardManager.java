@@ -218,8 +218,8 @@ public class ABankCardManager extends ATitleBase implements
             case 0:
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
 
-
-                    PromptManager.ShowMyToast(BaseContext, "您还没有绑定银行卡");
+                    CacheUtil.Center_Wallet_BankCard_Save(BaseContext, "");
+                    //PromptManager.ShowMyToast(BaseContext, "您还没有绑定银行卡");
                     if (!isFinish) {
 
                         tv_add_bank_card.setVisibility(View.VISIBLE);
