@@ -4,6 +4,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BCBankCardAndAlipayInfo;
 import io.vtown.WeiTangApp.bean.bcomment.easy.wallet.BDCenterWallet;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
@@ -91,7 +92,7 @@ private RefreshLayout center_wallter_refrash;
 	 * 获取到的数据
 	 */
 	private BDCenterWallet data = null;
-	private BDComment data1;
+	private BCBankCardAndAlipayInfo data1;
 
 	/**
 	 * 是否是获取页面数据
@@ -273,10 +274,10 @@ private RefreshLayout center_wallter_refrash;
 			break;
 
 		case 1:
-			data1 = new BDComment();
+			data1 = new BCBankCardAndAlipayInfo();
 			try {
 				data1 = JSON.parseObject(Data.getHttpResultStr(),
-						BDComment.class);
+						BCBankCardAndAlipayInfo.class);
 
 
 			} catch (Exception e) {
@@ -353,7 +354,7 @@ private RefreshLayout center_wallter_refrash;
 					ShowCustomDialog(2, "请先绑定银行卡或支付宝", "");
 				} else {
 					PromptManager.SkipActivity(BaseActivity, new Intent(
-							BaseActivity, ATiXian.class));
+							BaseActivity, ATiXian.class).putExtra("alipaybankinfo",data1));
 				}
 			}else{
 				PromptManager.ShowCustomToast(BaseContext,"正在努力获取数据，请稍候……");

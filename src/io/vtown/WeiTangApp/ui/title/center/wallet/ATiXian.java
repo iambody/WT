@@ -14,6 +14,7 @@ import io.vtown.WeiTangApp.comment.view.pop.PPassWord;
 import io.vtown.WeiTangApp.event.interf.OnPasswordInputFinish;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import android.content.Intent;
@@ -111,48 +112,50 @@ public class ATiXian extends ATitleBase {
 	 * 获取数据成功时显示的布局
 	 */
 	private LinearLayout center_wallet_tixian_outlay;
-	/**
-	 * 获取数据失败时显示的布局
-	 */
-	private View center_wallet_tixian_nodata_lay;
+
 	/**
 	 * 提示
 	 */
 	private TextView tv_bank_card_limit;
 	private View view;
 
+
+
 	@Override
 	protected void InItBaseView() {
+
+		setContentView(R.layout.activity_center_wallet_tixian);
 		view = LayoutInflater.from(BaseContext).inflate(R.layout.activity_center_wallet_tixian, null);
-		setContentView(view);
-		
 		user_Get = Spuit.User_Get(getApplicationContext());
 		SetTitleHttpDataLisenter(this);
 		IBase();
 
-		 //getDefaultBankInfo();
+
 		IData();
 
 	}
 
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-
-	}
 
 	/**
 	 * 获取支付宝
 	 */
 	private void IData() {
-		PromptManager.showtextLoading(BaseContext,
-				getResources()
-						.getString(R.string.xlistview_header_hint_loading));
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("member_id", user_Get.getId());
-		FBGetHttpData(map, Constants.Get_Tixian_Message, Method.GET, 0,
-				LOAD_INITIALIZE);
+//		PromptManager.showtextLoading(BaseContext,
+//				getResources()
+//						.getString(R.string.xlistview_header_hint_loading));
+//		HashMap<String, String> map = new HashMap<String, String>();
+//		//map.put("api_version", "2.0.1");//API版本上线2.0.1
+//		map.put("member_id", user_Get.getId());
+//		FBGetHttpData(map, Constants.Get_Tixian_Message, Method.GET, 0,
+//				LOAD_INITIALIZE);
+
+		BCBankCardAndAlipayInfo alipaybankinfo = (BCBankCardAndAlipayInfo) getIntent().getSerializableExtra("alipaybankinfo");
+		if(null == alipaybankinfo){
+			return;
+		}else{
+			RefreshAlipayView(alipaybankinfo);
+		}
+
 	}
 
 	/**
@@ -198,9 +201,8 @@ public class ATiXian extends ATitleBase {
 		tixianguize_txt = (TextView) findViewById(R.id.tixianguize_txt);
 		tv_bank_card_limit = (TextView) findViewById(R.id.tv_bank_card_limit);
 		center_wallet_tixian_outlay = (LinearLayout) findViewById(R.id.center_wallet_tixian_outlay);
-		center_wallet_tixian_nodata_lay = findViewById(R.id.center_wallet_tixian_nodata_lay);
-		IDataView(center_wallet_tixian_outlay, center_wallet_tixian_nodata_lay,
-				NOVIEW_INITIALIZE);
+
+
 
 		tixian_zhifubao = (TextView) findViewById(R.id.tixian_zhifubao);
 		tixian_yinhangka = (TextView) findViewById(R.id.tixian_yinhangka);
@@ -233,7 +235,7 @@ public class ATiXian extends ATitleBase {
 		tv_apply_withdraw_deposit.setOnClickListener(this);
 		no_alipay_account.setOnClickListener(this);
 		no_bank_card_account.setOnClickListener(this);
-		center_wallet_tixian_nodata_lay.setOnClickListener(this);
+
 	}
 
 	@Override
@@ -327,21 +329,21 @@ public class ATiXian extends ATitleBase {
 		switch (Data.getHttpResultTage()) {
 		case 0:
 
-			// BLComment datas = new BLComment();
-			BCBankCardAndAlipayInfo datas = new BCBankCardAndAlipayInfo();
-			try {
-
-				datas = JSON.parseObject(Data.getHttpResultStr(),
-						BCBankCardAndAlipayInfo.class);
-
-			} catch (Exception e) {
-				DataError("解析失败", 1);
-			}
-
-			IDataView(center_wallet_tixian_outlay,
-					center_wallet_tixian_nodata_lay, NOVIEW_RIGHT);
-
-			RefreshAlipayView(datas);
+//			// BLComment datas = new BLComment();
+//			BCBankCardAndAlipayInfo datas = new BCBankCardAndAlipayInfo();
+//			try {
+//
+//				datas = JSON.parseObject(Data.getHttpResultStr(),
+//						BCBankCardAndAlipayInfo.class);
+//
+//			} catch (Exception e) {
+//				DataError("解析失败", 1);
+//			}
+//
+//			IDataView(center_wallet_tixian_outlay,
+//					center_wallet_tixian_nodata_lay, NOVIEW_RIGHT);
+//
+//			RefreshAlipayView(datas);
 
 			break;
 
@@ -455,12 +457,6 @@ public class ATiXian extends ATitleBase {
 
 			break;
 
-		case R.id.center_wallet_tixian_nodata_lay:// 重新加载数据
-			if (CheckNet(BaseContext))
-				return;
-			IData();
-			// getDefaultBankInfo();
-			break;
 
 		default:
 			break;

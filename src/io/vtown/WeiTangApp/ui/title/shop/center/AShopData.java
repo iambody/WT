@@ -511,6 +511,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
                 if (null == bitmap) {
                     return;
                 }
+                if(CheckNet(BaseContext))return;
                 String picType = "";
                 switch (show_type) {
                     case 1:// 头像
@@ -529,10 +530,6 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 
                 }
 
-//				AddToResourcesList(tempFile);
-                // Toast.makeText(getApplicationContext(),
-                // tempFile.getAbsolutePath() + ",,--" + tempFile,
-                // 10 * 1000).show();
             } else {
                 Toast.makeText(getApplicationContext(), "截取图片失败",
                         Toast.LENGTH_SHORT).show();
@@ -598,33 +595,9 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     public void UpdaIvTest(final File aa, byte[] bytes, String picname,
                            final ImageView Iv, final Bitmap bitmap, final int type) {
 
-        // NUpLoadUtils dLoadUtils = new NUpLoadUtils(BaseContext, bytes, picname);
 
         NUPLoadUtil dLoadUtils = new NUPLoadUtil(BaseContext, aa, picname);
-//        dLoadUtils.SetUpResult(new UpResult() {
-//
-//            @Override
-//            public void Progress(String arg0, double arg1) {
-//            }
-//
-//            @Override
-//            public void Onerror() {
-//
-//                PromptManager.closeLoading();
-//            }
-//
-//            @Override
-//            public void Complete(String HostUrl, String Url) {
-//                PromptManager.closeLoading();
-//                LogUtils.i(Url);
-//
-//                // Iv.setImageBitmap(bitmap);
-//                LoadIv(Iv, bitmap, HostUrl, type);
-//
-//            }
-//        });
-//        PromptManager.showLoading(BaseContext);
-//        dLoadUtils.UpLoad();
+
 
         dLoadUtils.SetUpResult1(new NUPLoadUtil.UpResult1() {
             @Override
@@ -642,8 +615,6 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 
                 LogUtils.i(Url);
 
-                // Iv.setImageBitmap(bitmap);
-                if (CheckNet(BaseContext)) return;
                 LoadIv(Iv, bitmap, HostUrl, type);
             }
         });

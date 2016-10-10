@@ -3,53 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include layout="@layout/titlebar" />
 
-    <LinearLayout
-        android:id="@+id/center_wallet_bankcard_manage_outlay"
+    <ListView
+        android:id="@+id/lv_my_bank_card_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_marginLeft="@dimen/center_wallet_bankcard_manage_listview_margin"
+        android:layout_marginRight="@dimen/center_wallet_bankcard_manage_listview_margin"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:listSelector="#00000000"
+        android:scrollbars="none" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <ListView
-                android:id="@+id/lv_my_bank_card_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:cacheColorHint="#00000000"
-                android:divider="@null"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-
-                android:layout_marginLeft="@dimen/center_wallet_bankcard_manage_listview_margin"
-                android:layout_marginRight="@dimen/center_wallet_bankcard_manage_listview_margin"
-                android:listSelector="#00000000"
-                android:scrollbars="none"
-            />
-        </LinearLayout>
-         <Button
-        android:id="@+id/btn_add_new_bank_card1"
-        style="@style/build_two_dimension_code_btn_style_no_circular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="添加银行卡"
-        android:visibility="gone" />
-    </LinearLayout>
-
-   
-
-    <include
-        android:id="@+id/center_wallet_bankcard_manage_nodata_lay"
-        layout="@layout/commentview_nodata"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone" />
 
 </LinearLayout>

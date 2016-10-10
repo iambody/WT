@@ -47,12 +47,12 @@ import org.w3c.dom.Text;
  * @author 作者 易惠华 yihuihua@v-town.cc
  * @version 创建时间：2016-5-19 下午9:53:58 资产明细页面
  */
-public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadListener {
+public class APropertyDetail extends ATitleBase implements   IXListViewListener {
 
     /**
      * 明细列表
      */
-    private ListView lv_property_detail_list;
+    private LListView lv_property_detail_list;
     private PopupWindow popupWindow;
     /**
      * Ap
@@ -63,7 +63,6 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
      * 当前的页数
      */
     private int CurrentPage = 0;
-
 
 
     // 操作类别 1提现，2帐户充值，3销售，4购物
@@ -80,7 +79,7 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
     /**
      * 获取数据成功页面
      */
-    private LinearLayout center_my_property_detail_outlay;
+   // private LinearLayout center_my_property_detail_outlay;
     /**
      * 获取数据失败页面
      */
@@ -89,7 +88,9 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
      * 获取到的数据
      */
     private List<BLAPropertyList> dattaa;
-    private RefreshLayout property_detail_list_refrash;
+    //private RefreshLayout property_detail_list_refrash;
+
+    private String lastid = "";
 
     @Override
     protected void InItBaseView() {
@@ -98,19 +99,19 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
         IView();
         ICache();
         SetTitleHttpDataLisenter(this);
-        IData(CurrentPage, TAGE_ALL, LOAD_INITIALIZE);
+        IData(TAGE_ALL, LOAD_INITIALIZE);
     }
 
-    private void IData(int Page, int type, int LoadType) {
+    private void IData(int type, int LoadType) {
         if (LoadType == LOAD_INITIALIZE)
             PromptManager.showtextLoading(BaseContext,
                     getResources()
                             .getString(R.string.xlistview_header_hint_loading));
 
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("page_num",Constants.PageSize+"");
+        // map.put("page_num",Constants.PageSize+"");
         map.put("member_id", user_Get.getId());
-        map.put("last_id", "");
+        map.put("last_id", lastid);
         map.put("type", type + "");
         FBGetHttpData(map, Constants.ZiJinJiLu, Method.GET, 0, LoadType);
 
@@ -134,23 +135,23 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
 
     private void IView() {
 
-        center_my_property_detail_outlay = (LinearLayout) findViewById(R.id.center_my_property_detail_outlay);
-        center_my_property_detail_nodata_lay = findViewById(R.id.center_my_property_detail_nodata_lay);
-        IDataView(center_my_property_detail_outlay, center_my_property_detail_nodata_lay, NOVIEW_INITIALIZE);
-        property_detail_list_refrash = (RefreshLayout) findViewById(R.id.property_detail_list_refrash);
-        property_detail_list_refrash.setOnLoadListener(this);
-        property_detail_list_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
-        property_detail_list_refrash.setCanLoadMore(false);
-        lv_property_detail_list = (ListView) findViewById(R.id.lv_property_detail_list);
 
+        center_my_property_detail_nodata_lay = findViewById(R.id.center_my_property_detail_nodata_lay);
+
+//        property_detail_list_refrash = (RefreshLayout) findViewById(R.id.property_detail_list_refrash);
+//        property_detail_list_refrash.setOnLoadListener(this);
+//        property_detail_list_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+//        property_detail_list_refrash.setCanLoadMore(false);
+        lv_property_detail_list = (LListView) findViewById(R.id.lv_property_detail_list);
+        //IDataView(lv_property_detail_list, center_my_property_detail_nodata_lay, NOVIEW_INITIALIZE);
 
         LsAp = new PropertyAdapter(R.layout.item_property_detail_outside);
         lv_property_detail_list.setAdapter(LsAp);
 
-//		lv_property_detail_list.setPullRefreshEnable(true);
-//		lv_property_detail_list.setPullLoadEnable(true);
-//		lv_property_detail_list.setXListViewListener(this);
-//		lv_property_detail_list.hidefoot();
+		lv_property_detail_list.setPullRefreshEnable(true);
+		lv_property_detail_list.setPullLoadEnable(true);
+		lv_property_detail_list.setXListViewListener(this);
+		lv_property_detail_list.hidefoot();
     }
 
     @Override
@@ -167,7 +168,33 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
         switch (Data.getHttpLoadType()) {
             case LOAD_INITIALIZE:
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    PromptManager.ShowCustomToast(BaseContext, "记录为空");
+                    lv_property_detail_list.setVisibility(View.GONE);
+                    center_my_property_detail_nodata_lay.setVisibility(View.VISIBLE);
+                    center_my_property_detail_nodata_lay.setClickable(false);
+                    String error_tip = "";
+                    switch (CurrentType){
+                        case TAGE_ALL:
+                            error_tip = getResources().getString(R.string.error_null_property_list);
+                            break;
+
+                        case TAGE_RECHARGE:
+                            error_tip = getResources().getString(R.string.error_null_property_recharge);
+                            break;
+
+                        case TAGE_SELl:
+                            error_tip = getResources().getString(R.string.error_null_property_sell);
+                            break;
+
+                        case TAGE_SHOPPING:
+                            error_tip = getResources().getString(R.string.error_null_property_shopping);
+                            break;
+
+                        case TAGE_WITHDRAW:
+                            error_tip = getResources().getString(R.string.error_null_property_withdraw);
+                            break;
+                    }
+                    ShowErrorCanLoad(error_tip);
+                    //PromptManager.ShowCustomToast(BaseContext, "记录为空");
                     if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
                         if (CurrentType == TAGE_ALL) {
                             CacheUtil.Center_Wallet_Property_Save(getApplicationContext(), Data.getHttpResultStr());
@@ -184,28 +211,31 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
                 } catch (Exception e) {
                     DataError("解析错误", 1);
                 }
+                lv_property_detail_list.setVisibility(View.VISIBLE);
+                center_my_property_detail_nodata_lay.setVisibility(View.GONE);
 
-                IDataView(center_my_property_detail_outlay, center_my_property_detail_nodata_lay, NOVIEW_RIGHT);
-
+               List<BLAPropertyDetail> list = getAllPropertyDetailList(dattaa);
+                lastid = list.get(list.size() - 1).getId();
                 LsAp.FrashData(dattaa);
                 if (CurrentType == TAGE_ALL) {
                     CacheUtil.Center_Wallet_Property_Save(getApplicationContext(), Data.getHttpResultStr());
                 }
 
-                if (dattaa.size() == Constants.PageSize) {
-                    //lv_property_detail_list.ShowFoot();
-                    property_detail_list_refrash.setCanLoadMore(true);
+                if (list.size() == Constants.PageSize2) {
+                    lv_property_detail_list.ShowFoot();
+                    //property_detail_list_refrash.setCanLoadMore(true);
                 }
 
-                if (dattaa.size() < Constants.PageSize) {
-                    //lv_property_detail_list.hidefoot();
-                    property_detail_list_refrash.setCanLoadMore(false);
+                if (list.size() < Constants.PageSize2) {
+                    lv_property_detail_list.hidefoot();
+                    //property_detail_list_refrash.setCanLoadMore(false);
                 }
 
 
                 break;
             case LOAD_REFRESHING:
-                property_detail_list_refrash.setRefreshing(false);
+                //property_detail_list_refrash.setRefreshing(false);
+                lv_property_detail_list.stopRefresh();
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     return;
                 }
@@ -214,22 +244,25 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
                 } catch (Exception e) {
 
                 }
-
-                if (dattaa.size() == Constants.PageSize) {
-                    //lv_property_detail_list.ShowFoot();
-                    property_detail_list_refrash.setCanLoadMore(true);
-                }
-
-                if (dattaa.size() < Constants.PageSize) {
-                    //lv_property_detail_list.hidefoot();
-                    property_detail_list_refrash.setCanLoadMore(false);
-                }
                 LsAp.FrashData(dattaa);
+                List<BLAPropertyDetail> list1 = getAllPropertyDetailList(dattaa);
+                lastid = list1.get(list1.size() - 1).getId();
+                if (list1.size() == Constants.PageSize2) {
+                    lv_property_detail_list.ShowFoot();
+                    //property_detail_list_refrash.setCanLoadMore(true);
+
+                }
+
+                if (list1.size() < Constants.PageSize2) {
+                    lv_property_detail_list.hidefoot();
+                   // property_detail_list_refrash.setCanLoadMore(false);
+                }
 
 
                 break;
             case LOAD_LOADMOREING:
-                property_detail_list_refrash.setLoading(false);
+               // property_detail_list_refrash.setLoading(false);
+                lv_property_detail_list.stopLoadMore();
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     return;
                 }
@@ -238,46 +271,43 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
                 } catch (Exception e) {
 
                 }
-                if (dattaa.size() == Constants.PageSize) {
-                    //lv_property_detail_list.ShowFoot();
-                    property_detail_list_refrash.setCanLoadMore(true);
+
+                if (dattaa.get(0).getMonth().equals(LsAp.GetApData().get(LsAp.getCount() - 1).getMonth())) {
+                    LsAp.MergeFrashData(dattaa);
+                } else {
+                    LsAp.AddFrashData(dattaa);
                 }
 
-                if (dattaa.size() < Constants.PageSize) {
-                    //lv_property_detail_list.hidefoot();
-                    property_detail_list_refrash.setCanLoadMore(false);
+
+                List<BLAPropertyDetail> list2 = getAllPropertyDetailList(dattaa);
+                lastid = list2.get(list2.size() - 1).getId();
+
+                if (list2.size() == Constants.PageSize2) {
+                    lv_property_detail_list.ShowFoot();
+                    //property_detail_list_refrash.setCanLoadMore(true);
                 }
-                LsAp.AddFrashData(dattaa);
+
+                if (list2.size() < Constants.PageSize2) {
+                    lv_property_detail_list.hidefoot();
+                    //property_detail_list_refrash.setCanLoadMore(false);
+                }
+
 
                 break;
         }
 
 
-//        switch (Data.getHttpLoadType()) {
-//            case LOAD_INITIALIZE:// 初始化
-//
-//                break;
-//            case LOAD_REFRESHING:// 刷新数据
-//
-//                //lv_property_detail_list.stopRefresh();
-//                LsAp.FrashData(dattaa);
-//                if (dattaa.size() == Constants.PageSize)
-//                    //lv_property_detail_list.ShowFoot();
-//                    if (dattaa.size() < Constants.PageSize)
-//                        //lv_property_detail_list.hidefoot();
-//                        break;
-//            case LOAD_LOADMOREING:// 加载更多
-//                //lv_property_detail_list.stopLoadMore();
-//                LsAp.AddFrashData(dattaa);
-//                if (dattaa.size() == Constants.PageSize)
-//                    //lv_property_detail_list.ShowFoot();
-//                    if (dattaa.size() < Constants.PageSize)
-//                        //lv_property_detail_list.hidefoot();
-//                        break;
-//            default:
-//                break;
-//        }
 
+
+    }
+
+
+    private List<BLAPropertyDetail> getAllPropertyDetailList(List<BLAPropertyList> datas){
+        List<BLAPropertyDetail> details = new ArrayList<BLAPropertyDetail>();
+        for(int i = 0;i< datas.size();i++){
+            details.addAll(datas.get(i).getList());
+        }
+        return details;
     }
 
     @Override
@@ -286,17 +316,21 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
 
         switch (LoadTyp) {
             case LOAD_INITIALIZE:
-                IDataView(center_my_property_detail_outlay, center_my_property_detail_nodata_lay, NOVIEW_ERROR);
-                property_detail_list_refrash.setCanLoadMore(false);
+                lv_property_detail_list.setVisibility(View.GONE);
+                center_my_property_detail_nodata_lay.setVisibility(View.VISIBLE);
+                center_my_property_detail_nodata_lay.setClickable(true);
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+                //IDataView(lv_property_detail_list, center_my_property_detail_nodata_lay, NOVIEW_ERROR);
+               // property_detail_list_refrash.setCanLoadMore(false);
                 break;
             case LOAD_REFRESHING:// 刷新数据
-                //lv_property_detail_list.stopRefresh();
-                property_detail_list_refrash.setRefreshing(false);
+                lv_property_detail_list.stopRefresh();
+                //property_detail_list_refrash.setRefreshing(false);
 
                 break;
             case LOAD_LOADMOREING:// 加载更多
-                //lv_property_detail_list.stopLoadMore();
-                property_detail_list_refrash.setLoading(false);
+                lv_property_detail_list.stopLoadMore();
+               // property_detail_list_refrash.setLoading(false);
 
 
                 break;
@@ -306,8 +340,8 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
     @Override
     protected void NetConnect() {
         NetError.setVisibility(View.GONE);
-        CurrentPage = 0;
-        IData(CurrentPage, CurrentType, LOAD_REFRESHING);
+        lastid = "";
+        IData(CurrentType, LOAD_REFRESHING);
 
     }
 
@@ -325,7 +359,7 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.right_txt:
-                if(CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
                 IPopupWindow(V);
                 break;
 
@@ -333,7 +367,8 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
                 if (CurrentType != TAGE_ALL) {
                     SetTitleTxt(getResources().getString(R.string.title_property_detail_all));
                     CurrentType = TAGE_ALL;
-                    IData(CurrentPage, CurrentType, LOAD_INITIALIZE);
+                    lastid = "";
+                    IData(CurrentType, LOAD_INITIALIZE);
                     LsAp.Clearn();
                 }
                 popupWindow.dismiss();
@@ -342,7 +377,8 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
                 if (CurrentType != TAGE_SHOPPING) {
                     SetTitleTxt(getResources().getString(R.string.title_property_detail_buy_good));
                     CurrentType = TAGE_SHOPPING;
-                    IData(CurrentPage, TAGE_SHOPPING, LOAD_INITIALIZE);
+                    lastid = "";
+                    IData(TAGE_SHOPPING, LOAD_INITIALIZE);
                     LsAp.Clearn();
                 }
                 popupWindow.dismiss();
@@ -352,7 +388,8 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
                 if (CurrentType != TAGE_RECHARGE) {
                     SetTitleTxt(getResources().getString(R.string.title_property_detail_top_up));
                     CurrentType = TAGE_RECHARGE;
-                    IData(CurrentPage, TAGE_RECHARGE, LOAD_INITIALIZE);
+                    lastid = "";
+                    IData(TAGE_RECHARGE, LOAD_INITIALIZE);
                     LsAp.Clearn();
                 }
                 popupWindow.dismiss();
@@ -362,7 +399,8 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
                 if (CurrentType != TAGE_WITHDRAW) {
                     SetTitleTxt(getResources().getString(R.string.title_property_detail_withdraw));
                     CurrentType = TAGE_WITHDRAW;
-                    IData(CurrentPage, TAGE_WITHDRAW, LOAD_INITIALIZE);
+                    lastid = "";
+                    IData(TAGE_WITHDRAW, LOAD_INITIALIZE);
                     LsAp.Clearn();
                 }
                 popupWindow.dismiss();
@@ -372,7 +410,8 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
                 if (CurrentType != TAGE_SELl) {
                     SetTitleTxt(getResources().getString(R.string.title_property_detail_sell_record));
                     CurrentType = TAGE_SELl;
-                    IData(CurrentPage, TAGE_SELl, LOAD_INITIALIZE);
+                    lastid = "";
+                    IData(TAGE_SELl, LOAD_INITIALIZE);
                     LsAp.Clearn();
                 }
                 popupWindow.dismiss();
@@ -424,17 +463,26 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
     protected void SaveBundle(Bundle bundle) {
     }
 
-    @Override
-    public void OnLoadMore() {
-        CurrentPage += 1;
+//    @Override
+//    public void OnLoadMore() {
+//        IData(CurrentType, LOAD_LOADMOREING);
+//    }
+//
+//    @Override
+//    public void OnFrash() {
+//        lastid = "";
+//        IData(CurrentType, LOAD_REFRESHING);
+//    }
 
-        IData(CurrentPage, CurrentType, LOAD_LOADMOREING);
+    @Override
+    public void onRefresh() {
+        lastid = "";
+        IData(CurrentType, LOAD_REFRESHING);
     }
 
     @Override
-    public void OnFrash() {
-        CurrentPage = 0;
-        IData(CurrentPage, CurrentType, LOAD_REFRESHING);
+    public void onLoadMore() {
+        IData(CurrentType, LOAD_LOADMOREING);
     }
 
 
@@ -479,8 +527,21 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
          * 加载更多
          */
         public void AddFrashData(List<BLAPropertyList> dattaa) {
-            this.datas.addAll(datas);
+            this.datas.addAll(dattaa);
             this.notifyDataSetChanged();
+        }
+
+        public void MergeFrashData(List<BLAPropertyList> dattaa) {
+
+            this.datas.get(getCount() - 1).getList().addAll(dattaa.get(0).getList());
+            for (int i = 1; i < dattaa.size(); i++) {
+                this.datas.add(dattaa.get(i));
+            }
+            this.notifyDataSetChanged();
+        }
+
+        public List<BLAPropertyList> GetApData() {
+            return this.datas;
         }
 
         @Override
@@ -617,8 +678,8 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
 
                         int counter_fee = Integer.parseInt(data.get(arg0).getCounter_fee());
                         if (counter_fee > 0) {
-                           // item.tv_counter_fee.setVisibility(View.GONE);
-                           // item.tv_counter_fee.setText(String.format(getResources().getString(R.string.counter_fee),StrUtils.SetTextForMony(data.get(arg0).getCounter_fee())));
+                            // item.tv_counter_fee.setVisibility(View.GONE);
+                            // item.tv_counter_fee.setText(String.format(getResources().getString(R.string.counter_fee),StrUtils.SetTextForMony(data.get(arg0).getCounter_fee())));
                         } else {
                             //item.tv_counter_fee.setVisibility(View.GONE);
                             //item.tv_counter_fee.setText("免手续费");
@@ -630,12 +691,12 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
                     break;
 
                 case 2:
-                   // item.tv_counter_fee.setVisibility(View.GONE);
+                    // item.tv_counter_fee.setVisibility(View.GONE);
                     item.tv_trade_state.setText("帐户充值");
                     break;
 
                 case 3:
-                   // item.tv_counter_fee.setVisibility(View.GONE);
+                    // item.tv_counter_fee.setVisibility(View.GONE);
                     item.tv_trade_state.setText("销售");
 
                     item.tv_record_money.setText(String.format("+ %1$s元", StrUtils.SetTextForMony(data.get(arg0).getPrice())));
@@ -682,7 +743,7 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
 
             int status = Integer.parseInt(data.get(arg0).getStatus());
             String status_str = "";
-            switch (status){
+            switch (status) {
                 case 1:
                     status_str = "交易中";
                     break;
@@ -707,7 +768,7 @@ public class APropertyDetail extends ATitleBase implements RefreshLayout.OnLoadL
         }
 
         class PropertyItem {
-            TextView tv_data, tv_time, tv_record_desc, tv_trade_state,tv_status,
+            TextView tv_data, tv_time, tv_record_desc, tv_trade_state, tv_status,
                     tv_record_money;// tv_counter_fee;
             DotView dot_view;
         }

@@ -4,6 +4,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLBankCardAndAlipayList;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -80,7 +81,7 @@ public class AModifyAlipay extends ATitleBase {
 	 */
 	private void IData() {
 		Intent intent = getIntent();
-		BLComment alipay_info = (BLComment) intent.getSerializableExtra("alipay_info");
+		BLBankCardAndAlipayList alipay_info = (BLBankCardAndAlipayList) intent.getSerializableExtra("alipay_info");
 		StrUtils.SetTxt(tv_modify_real_alipay_name_before, alipay_info.getName());
 		StrUtils.SetTxt(tv_modify_alipay_id_before, alipay_info.getAlipay());
 		StrUtils.SetTxt(tv_modify_alipay_real_name, alipay_info.getName());

@@ -176,11 +176,6 @@
             android:textSize="@dimen/comment_label_txtsize" />
     </LinearLayout>
 
-    <include
-        android:id="@+id/center_wallet_tixian_nodata_lay"
-        layout="@layout/commentview_nodata"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone" />
+
 
 </LinearLayout>

@@ -103,8 +103,7 @@ public class AAlipayManager extends ATitleBase {
 
         center_wallet_alipay_manage_outlay = (LinearLayout) findViewById(R.id.center_wallet_alipay_manage_outlay);
         center_wallet_alipay_manage_nodata_lay = findViewById(R.id.center_wallet_alipay_manage_nodata_lay);
-        IDataView(center_wallet_alipay_manage_outlay,
-                center_wallet_alipay_manage_nodata_lay, NOVIEW_INITIALIZE);
+
 
         iv_alipay_icon = (ImageView) findViewById(R.id.iv_alipay_icon);
 
@@ -155,8 +154,8 @@ public class AAlipayManager extends ATitleBase {
 
         if (StrUtils.isEmpty(Data.getHttpResultStr())) {
             if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
-                IDataView(center_wallet_alipay_manage_outlay,
-                        center_wallet_alipay_manage_nodata_lay, NOVIEW_ERROR);
+                center_wallet_alipay_manage_outlay.setVisibility(View.GONE);
+                center_wallet_alipay_manage_nodata_lay.setVisibility(View.VISIBLE);
                 btn_add_new_alipay1.setVisibility(View.VISIBLE);
                 ShowErrorCanLoad(getResources().getString(R.string.error_null_alipay));
                 center_wallet_alipay_manage_nodata_lay.setClickable(false);
@@ -172,8 +171,8 @@ public class AAlipayManager extends ATitleBase {
         } catch (Exception e) {
             DataError("解析失败", 1);
         }
-        IDataView(center_wallet_alipay_manage_outlay,
-                center_wallet_alipay_manage_nodata_lay, NOVIEW_RIGHT);
+        center_wallet_alipay_manage_outlay.setVisibility(View.VISIBLE);
+        center_wallet_alipay_manage_nodata_lay.setVisibility(View.GONE);
 
         if (StrUtils.isEmpty(mDatas.getAlipay())) {// 说明没有进行过绑定
             ll_alipay_layout.setVisibility(View.GONE);
@@ -209,8 +208,8 @@ public class AAlipayManager extends ATitleBase {
     protected void DataError(String error, int LoadTyp) {
         PromptManager.ShowMyToast(BaseContext, error);
         if (LOAD_INITIALIZE == LoadTyp) {
-            IDataView(center_wallet_alipay_manage_outlay,
-                    center_wallet_alipay_manage_nodata_lay, NOVIEW_ERROR);
+            center_wallet_alipay_manage_outlay.setVisibility(View.GONE);
+            center_wallet_alipay_manage_nodata_lay.setVisibility(View.VISIBLE);
             btn_add_new_alipay1.setVisibility(View.VISIBLE);
             ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
             center_wallet_alipay_manage_nodata_lay.setClickable(true);

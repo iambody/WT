@@ -581,6 +581,7 @@ public class Constants {
 	public static String Get_Tixian_Message = Host
 			+ "/v1/pay/account/alipay-bank-list";
 
+
 	/**
 	 * 更新支付宝
 	 */
