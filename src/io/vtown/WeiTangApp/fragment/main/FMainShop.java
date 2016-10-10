@@ -319,39 +319,55 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
 
                 break;
             case R.id.fragment_main_tab_shop_good_fabu://发布商品
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                         ANewAddGood.class));
 
                 break;
             case R.id.fragment_main_tab_shop_good_oder_guanli://订单管理
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                         AShopOrderManager.class));
 
                 break;
             case R.id.fragment_main_tab_shop_good_qudao_guanli://渠道管理
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         AChannel.class));
                 break;
             case R.id.fragment_main_tab_shop_caigoudan://采购
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                         AShopPurchaseOrder.class));
 
                 break;
             case R.id.fragment_main_tab_shop_pinpaidaili://品牌代理
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                         ABrandDaiLi.class));
 
                 break;
             case R.id.fragment_main_tab_shop_good_good_guanli://商品管理
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                         AShopGoodManger.class));
                 break;
             case R.id.fragment_main_tab_shop_xiaoshoutongji://销售统计
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                         ASellStatistics.class));
 
                 break;
             case R.id.fragment_main_tab_shop_lookshop://查看店铺
+                if (CheckNet(BaseContext))
+                    return;
                 BComment mBComment = new BComment(Spuit.Shop_Get(BaseContext)
                         .getId(), Spuit.Shop_Get(BaseContext).getSeller_name());
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,

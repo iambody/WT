@@ -232,16 +232,6 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
         mHandler.sendMessage(m);
     }
 
-//    @Override
-//    public void onRefresh() {
-//        LastId = "";
-//        IData(LastId, REFRESHING);
-//    }
-//
-//    @Override
-//    public void onLoadMore() {
-//        IData(LastId, LOADMOREING);
-//    }
 
     @Override
     public void onClick(View v) {

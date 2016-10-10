@@ -3,31 +3,39 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_alignParentTop="true"
-              android:orientation="horizontal">
+              android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/fragment_newhome_iv_sao"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/fragment_newhome_iv_layaa"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/ui_10_dip"
-        android:src="@drawable/newhome_sao"/>
+        android:background="@color/app_fen"
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/fragment_newhome_iv_sao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ui_10_dip"
+            android:src="@drawable/newhome_sao"/>
 
-    <ImageView
-        android:id="@+id/fragment_newhome_iv_sou"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/ui_10_dip"
-        android:src="@drawable/newhome_sou"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
 
-    <ImageView
-        android:id="@+id/fragment_newhome_iv_new"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/ui_10_dip"
-        android:src="@drawable/newhome_news"/>
+        <ImageView
+            android:id="@+id/fragment_newhome_iv_sou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ui_10_dip"
+            android:src="@drawable/newhome_sou"/>
+
+        <ImageView
+            android:id="@+id/fragment_newhome_iv_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ui_10_dip"
+            android:src="@drawable/newhome_news"/>
+    </LinearLayout>
 </LinearLayout>

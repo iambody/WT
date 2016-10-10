@@ -19,6 +19,7 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
@@ -55,6 +56,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -73,12 +75,14 @@ import io.vtown.WeiTangApp.ui.title.shop.goodmanger.ANewGoodMangerEdit;
  * @author 商品管理的manger
  * @version 创建时间：2016-5-13 上午10:33:38
  */
-public class FShopGoodManger extends FBase implements IXListViewListener,
+public class FShopGoodManger extends FBase implements  RefreshLayout.OnLoadListener,
         OnClickListener {
+
     /**
      * 传递tage的key
      */
     public static final String Key_TageStr = "FShopgoodMangerkey";
+    private RefreshLayout fragment_goodmanger_refrash;
 
     /**
      * 横线滑动的ls只在品牌fragmen页面显示 其他页面隐藏 不做控制
@@ -91,7 +95,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
     /**
      * 在售中、已下架共同的ListView
      */
-    private LListView lv_comment_listview;
+    private  ListView lv_comment_listview;
 
     private TextView tv_add_item;
 
@@ -212,14 +216,20 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
         fragent_goodmanger_nodata_lay = BaseView
                 .findViewById(R.id.fragent_goodmanger_nodata_lay);
         fragent_goodmanger_nodata_lay.setOnClickListener(this);
-        lv_comment_listview = (LListView) BaseView
+
+        fragment_goodmanger_refrash= (RefreshLayout) BaseView.findViewById(R.id.fragment_goodmanger_refrash);
+        fragment_goodmanger_refrash.setOnLoadListener(this);
+        fragment_goodmanger_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+
+        lv_comment_listview = (ListView) BaseView
                 .findViewById(R.id.lv_comment_listview);
 
         tv_add_item = (TextView) BaseView.findViewById(R.id.tv_add_item);
-        lv_comment_listview.setPullRefreshEnable(true);
-        lv_comment_listview.setPullLoadEnable(true);
-        lv_comment_listview.setXListViewListener(this);
-        lv_comment_listview.hidefoot();
+
+//        lv_comment_listview.setPullRefreshEnable(true);
+//        lv_comment_listview.setPullLoadEnable(true);
+//        lv_comment_listview.setXListViewListener(this);
+//        lv_comment_listview.hidefoot();
         mycommentAdapter = new MYCommentAdapter(Sale_Status,
                 R.layout.item_selling_and_soldout);
         lv_comment_listview.setAdapter(mycommentAdapter);
@@ -229,7 +239,7 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
         brandAp = new BrandAp(R.layout.item_fragment_shop_good_manger_brand);
         fragment_shop_good_manger_brand_horizon_ls.setAdapter(brandAp);
         lv_comment_listview.setVisibility(View.VISIBLE);
-
+        tv_add_item.setVisibility(View.GONE);
         switch (Sale_Status) {
             case 100:// 在售中
 
@@ -239,12 +249,12 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                 break;
             case 0:// 品牌商品ss
                 fragment_isbrand_lay.setVisibility(View.GONE);
-//                tv_add_item.setVisibility(View.VISIBLE);
+                tv_add_item.setVisibility(View.VISIBLE);
                 fragment_shop_good_manger_brand_horizon_ls
                         .setVisibility(View.VISIBLE);
                 // lv_comment_listview.setPullRefreshEnable(false);
                 // lv_comment_listview.setPullLoadEnable(false);
-//                tv_add_item.setOnClickListener(this);
+                tv_add_item.setOnClickListener(this);
 
                 IGetBrands();// 获取品牌的列表
 
@@ -317,6 +327,18 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
         map.put("category_id", "");// 分类暂时没用 默认空
 
         FBGetHttpData(map, Constants.GOODS_MANAGE_LIST, Method.GET, 0, LoadType);
+    }
+
+    @Override
+    public void OnLoadMore() {
+        CurrentPage = CurrentPage + 1;
+        LoadData(CurrentPage, LOADMOREING);
+    }
+
+    @Override
+    public void OnFrash() {
+        CurrentPage = 1;
+        LoadData(CurrentPage, REFRESHING);
     }
 
     class MYCommentAdapter extends BaseAdapter {
@@ -978,20 +1000,26 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
 
 
                         if (dattaa.size() == Constants.PageSize)
-                            lv_comment_listview.ShowFoot();
+//                            lv_comment_listview.ShowFoot();
+                            fragment_goodmanger_refrash.setCanLoadMore(true);
                         if (dattaa.size() < Constants.PageSize)
-                            lv_comment_listview.hidefoot();
+//                            lv_comment_listview.hidefoot();
+                            fragment_goodmanger_refrash.setCanLoadMore(false);
                         if (Data.getHttpLoadType() == REFRESHING)
-                            lv_comment_listview.stopRefresh();
+//                            lv_comment_listview.stopRefresh();
+                            fragment_goodmanger_refrash.setRefreshing(false);
 
                         break;
                     case LOADMOREING:// 加载更多
                         mycommentAdapter.AddFrashData(dattaa);
                         if (dattaa.size() == Constants.PageSize)
-                            lv_comment_listview.ShowFoot();
+//                            lv_comment_listview.ShowFoot();
+                            fragment_goodmanger_refrash.setCanLoadMore(true);
                         if (dattaa.size() < Constants.PageSize)
-                            lv_comment_listview.hidefoot();
-                        lv_comment_listview.stopLoadMore();
+//                            lv_comment_listview.hidefoot();
+                            fragment_goodmanger_refrash.setCanLoadMore(false);
+//                        lv_comment_listview.stopLoadMore();
+                        fragment_goodmanger_refrash.setLoading(false);
                         break;
                 }
                 break;
@@ -1153,29 +1181,31 @@ public class FShopGoodManger extends FBase implements IXListViewListener,
                 fragent_goodmanger_nodata_lay.setVisibility(View.VISIBLE);
                 break;
             case REFRESHING:
-                lv_comment_listview.stopRefresh();
+//                lv_comment_listview.stopRefresh();
+                fragment_goodmanger_refrash.setRefreshing(false);
                 break;
             case LOADMOREING:
-                lv_comment_listview.stopLoadMore();
+//                lv_comment_listview.stopLoadMore();
+                fragment_goodmanger_refrash.setLoading(false);
                 break;
             default:
                 break;
         }
     }
 
-    @Override
-    public void onRefresh() {
-        CurrentPage = 1;
-        LoadData(CurrentPage, REFRESHING);
-        // IData(REFRESHING, Sale_Status, CurrentPage, 0, 0);
-    }
-
-    @Override
-    public void onLoadMore() {
-        CurrentPage = CurrentPage + 1;
-        LoadData(CurrentPage, LOADMOREING);
-        // IData(LOADMOREING, Sale_Status, CurrentPage, 0, 0);
-    }
+//    @Override
+//    public void onRefresh() {
+//        CurrentPage = 1;
+//        LoadData(CurrentPage, REFRESHING);
+//        // IData(REFRESHING, Sale_Status, CurrentPage, 0, 0);
+//    }
+//
+//    @Override
+//    public void onLoadMore() {
+//        CurrentPage = CurrentPage + 1;
+//        LoadData(CurrentPage, LOADMOREING);
+//        // IData(LOADMOREING, Sale_Status, CurrentPage, 0, 0);
+//    }
 
     final static int Manger_XiaJia = 301;// 在售中=》下架
     final static int Manger_ShanChu = 302;// 在售中=》删除

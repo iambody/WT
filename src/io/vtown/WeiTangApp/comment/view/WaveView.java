@@ -48,8 +48,8 @@ public class WaveView extends View {
     private static final float DEFAULT_WAVE_LENGTH_RATIO = 1.0f;
     private static final float DEFAULT_WAVE_SHIFT_RATIO = 0.0f;
 
-    public static final int DEFAULT_BEHIND_WAVE_COLOR = Color.parseColor("#28f16d7a");//Color.parseColor("#28FFFFFF");
-    public static final int DEFAULT_FRONT_WAVE_COLOR = Color.parseColor("#3cf16d7a");// Color.parseColor("#3CFFFFFF");
+    public static final int DEFAULT_BEHIND_WAVE_COLOR =  Color.parseColor("#f16d7a");//;//Color.parseColor("#28f16d7a");//Color.parseColor("#28FFFFFF");
+    public static final int DEFAULT_FRONT_WAVE_COLOR =Color.parseColor("#ffffff");//Color.parseColor("#3cf16d7a");// Color.parseColor("#3CFFFFFF");
     public static final ShapeType DEFAULT_WAVE_SHAPE = ShapeType.SQUARE;//CIRCLE;
 
     public enum ShapeType {

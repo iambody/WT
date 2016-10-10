@@ -83,7 +83,7 @@ public class AInviteSuperior extends ATitleBase {
 
 	@Override
 	protected void InitTile() {
-		SetTitleTxt(getResources().getString(R.string.invite_superior));
+		SetTitleTxt(getResources().getString(R.string.invite_superior));HindBackIv();
 	}
 
 	@Override

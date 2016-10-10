@@ -41,6 +41,7 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUPLoadUtil;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
+import io.vtown.WeiTangApp.comment.util.NetUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
@@ -721,6 +722,10 @@ public class ANewAddGood extends ATitleBase {
 
     //上传==>先上传商品描述==》如果图片上传轮播图&&如果视频上传视频
     private void BeginUpDatas() {
+        if (!NetUtil.isConnected(BaseContext)) {//检查网络
+            PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
+            return;
+        }
         DescPicNeedUpNumber = 0;
         DescPicCountNumber = 0;
 

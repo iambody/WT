@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_bg"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:orientation="vertical">
 
     <!-- 品牌商品显示品牌的横向列表 -->
 
@@ -11,11 +11,11 @@
         android:id="@+id/fragment_isbrand_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/line_size4"
         android:layout_marginLeft="@dimen/ui_10_dip"
         android:layout_marginRight="@dimen/ui_10_dip"
         android:layout_marginTop="@dimen/ui_10_dip"
-        android:layout_marginBottom="@dimen/line_size4"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/fragment_isbrand_ziying_txt"
@@ -28,7 +28,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="自营"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/fragment_isbrand_brand_txt"
@@ -41,7 +41,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="品牌"
-            android:textColor="@color/app_fen" />
+            android:textColor="@color/app_fen"/>
     </LinearLayout>
 
     <io.vtown.WeiTangApp.comment.view.listview.HorizontalListView
@@ -49,31 +49,33 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginTop="10dp"
-        android:visibility="gone" />
+        android:visibility="gone"/>
     <!-- 正常分页加载的列表 -->
-
-    <io.vtown.WeiTangApp.comment.view.listview.LListView
-        android:id="@+id/lv_comment_listview"
+    <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+        android:id="@+id/fragment_goodmanger_refrash"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-      
-        android:divider="@null"
-         
-        android:focusableInTouchMode="false"
-          android:cacheColorHint="#00000000"
-        android:listSelector="#00000000"
-        android:scrollbars="none"
-        android:visibility="gone" >
-    </io.vtown.WeiTangApp.comment.view.listview.LListView>
-    <!-- 品牌商品需要添加品牌时候的按钮 -->
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/lv_comment_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:focusableInTouchMode="false"
+            android:listSelector="#00000000"
+            android:scrollbars="none"
+            android:visibility="gone"/>
+        <!-- 品牌商品需要添加品牌时候的按钮 -->
+    </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
 
     <include
         android:id="@+id/fragent_goodmanger_nodata_lay"
         layout="@layout/commentview_nodata"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_add_item"

@@ -25,9 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
@@ -66,10 +64,8 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 public class AGoodDetail extends ATitleBase {
 
 
-    @BindView(R.id.gooddetail_up_title_back)
-    ImageView gooddetailUpTitleBack;
-    @BindView(R.id.gooddetail_up_title)
-    TextView gooddetailUpTitle;
+    ImageView gooddetail_up_title_back;
+    TextView gooddetail_up_title;
     /**
      * 购物车的log
      */
@@ -265,7 +261,7 @@ public class AGoodDetail extends ATitleBase {
         setContentView(R.layout.activity_gooddetail);
         mView = LayoutInflater.from(BaseContext).inflate(
                 R.layout.activity_gooddetail, null);
-        ButterKnife.bind(this);
+
 
         user_Get = Spuit.User_Get(BaseContext);
         IsCaiGou = getIntent().getBooleanExtra(Tage_CaiGou, false);
@@ -322,6 +318,10 @@ public class AGoodDetail extends ATitleBase {
     }
 
     private void IBase() {
+        gooddetail_up_title_back = (ImageView) findViewById(R.id.gooddetail_up_title_back);
+        gooddetail_up_title = (TextView) findViewById(R.id.gooddetail_up_title);
+        gooddetail_up_title_back.setOnClickListener(this);
+
         good_title_up = (LinearLayout) findViewById(R.id.good_title_up);
         gooddetail_picview = (LinearLayout) findViewById(R.id.gooddetail_picview);
         right_right_iv = (ImageView) findViewById(R.id.good_detail_lianxikefu_log);
@@ -491,7 +491,7 @@ public class AGoodDetail extends ATitleBase {
      */
     private void RefreshView(BGoodDetail datas) {
 //        StrUtils.SetTxt(gooddetailUpTitle,datas.getTitle());
-        StrUtils.SetTxt(gooddetailUpTitle, datas.getTitle());
+        StrUtils.SetTxt(gooddetail_up_title, datas.getTitle());
         // InItitle();
         // 判断是否是图片还是视频
         IsPicDetail = datas.getGoods_info().getRtype().equals("0");
@@ -720,13 +720,18 @@ public class AGoodDetail extends ATitleBase {
     @Override
     protected void MyClick(View V) {
         switch (V.getId()) {
+            case R.id.gooddetail_up_title_back:
+                BaseActivity.finish();
+                overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
+                break;
             case R.id.tv_buy:
-
+                if (CheckNet(BaseContext))
+                    return;
                 goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_BUY);
-
                 break;
             case R.id.tv_replace_sell:
-
+                if (CheckNet(BaseContext))
+                    return;
                 if (IsAgen) {// 品牌商品
 
                     if (IsDaiLi) {// 品牌商品可以代理
@@ -744,6 +749,8 @@ public class AGoodDetail extends ATitleBase {
 
                 break;
             case R.id.rl_look_share:// 分享
+                if (CheckNet(BaseContext))
+                    return;
                 // PromptManager.ShowCustomToast(BaseContext, "分享");
                 BNew mBNew = new BNew();
                 mBNew.setShare_url(datas.getGoods_url());
@@ -753,7 +760,8 @@ public class AGoodDetail extends ATitleBase {
                 ShowP(mView, mBNew);
                 break;
             case R.id.rl_look_show:
-
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         AGoodShow.class).putExtra(
                         AGoodShow.Tage_GoodSid,
@@ -761,6 +769,8 @@ public class AGoodDetail extends ATitleBase {
                                 .getGoods_sid()));
                 break;
             case R.id.rl_seller:
+                if (CheckNet(BaseContext))
+                    return;
                 if (null == datas)
                     BaseActivity.finish();
                 boolean isbrand = datas.getGoods_sid().equals("0")
@@ -774,15 +784,21 @@ public class AGoodDetail extends ATitleBase {
                                                 .getSeller_name())));
                 break;
             case R.id.gooddetail_nodata_lay:// 获取数据失败时候重新获取
+                if (CheckNet(BaseContext))
+                    return;
                 IData(GoodsId);
                 break;
 
             case R.id.good_detail_shoucang_log:
+                if (CheckNet(BaseContext))
+                    return;
                 isAttention = !isAttention;
                 AttentionGood(isAttention);
                 break;
 
             case R.id.good_detail_lianxikefu_log:
+                if (CheckNet(BaseContext))
+                    return;
                 // PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                 // AChat.class));
                 if (!StrUtils.isEmpty(datas.getSeller_id()))
@@ -798,6 +814,8 @@ public class AGoodDetail extends ATitleBase {
                                                     datas.getAvatar()));
                 break;
             case R.id.goodsdetail_vido_lay_controler_iv:// 控制播放
+                if (CheckNet(BaseContext))
+                    return;
                 // datas
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         AVidemplay.class).putExtra(AVidemplay.VidoKey, datas
@@ -1014,17 +1032,5 @@ public class AGoodDetail extends ATitleBase {
     private Handler mHandler = new Handler();
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
-
-    @OnClick(R.id.gooddetail_up_title_back)
-    public void onClick() {
-        BaseActivity.finish();
-        overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
-    }
 }

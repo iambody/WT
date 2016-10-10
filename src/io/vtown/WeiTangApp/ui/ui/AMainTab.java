@@ -8,18 +8,32 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.android.volley.Request;
 import com.jauker.widget.BadgeView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.comment.BUpData;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
+import io.vtown.WeiTangApp.comment.upgrade.UpdateManager;
+import io.vtown.WeiTangApp.comment.util.IMUtile;
+import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton;
 import io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioGroup;
+import io.vtown.WeiTangApp.event.interf.IHttpResult;
+import io.vtown.WeiTangApp.event.receiver.NewMessageBroadcastReceiver;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.fragment.main.FMainCenter;
 import io.vtown.WeiTangApp.fragment.main.FMainHome;
@@ -28,6 +42,7 @@ import io.vtown.WeiTangApp.fragment.main.FMainNewShow;
 import io.vtown.WeiTangApp.fragment.main.FMainShop;
 import io.vtown.WeiTangApp.fragment.main.FMainShopBus;
 import io.vtown.WeiTangApp.fragment.main.FMainShow;
+import io.vtown.WeiTangApp.service.DownloadService;
 import io.vtown.WeiTangApp.ui.ABaseFragment;
 
 /**
@@ -43,6 +58,13 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private FBase FMainHome, FMainShop, FMainShow, FMainShopBus, FMainCenter;
     private List<FBase> Fragments;
     private int CurrentPostion = 0;
+    //User
+    private BUser MBUser;
+    /**
+     * Tab中  IM注册
+     */
+    private NewMessageBroadcastReceiver msgReceiver;
+    private IMUtile imUtile;
     /**
      * 二次退出时候的时长标识
      */
@@ -52,9 +74,9 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     protected void InItBaseView() {
         setContentView(R.layout.activity_maintab);
         EventBus.getDefault().register(this, "ReciverChangMainTab", BMessage.class);
+        MBUser=Spuit.User_Get(this);
         FBaseInit();
         IBase();
-
         HindLoadData();
     }
 
@@ -64,8 +86,17 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private void HindLoadData() {
 
     }
+    private void InitIm() {
+        msgReceiver = new NewMessageBroadcastReceiver();
+        imUtile = new IMUtile(msgReceiver, this);
+        imUtile.Login(Constants.ImHost + MBUser.getSeller_id(),
+                Constants.ImPasd);
 
+    }
     private void FBaseInit() {
+        InitIm();
+        // 检测升级
+        UpCheck();
         Fragments = new ArrayList<FBase>();
         FMainHome = new FMainNewHome();//new FMainHome();
         FMainShop = new FMainShop();
@@ -267,6 +298,87 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         return super.onKeyDown(keyCode, event);
     }
 
+    /**
+     * 交互检测更新
+     */
+    private void UpCheck() {
+        NHttpBaseStr mBaseStr = new NHttpBaseStr(BaseContext);
+        mBaseStr.setPostResult(new IHttpResult<String>() {
+
+            @Override
+            public void onError(String error, int LoadType) {
+                LogUtils.i(error);
+            }
+
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
+                if (Code != 200 || StrUtils.isEmpty(Data)) {
+                    return;
+                }
+                BUpData data = JSON.parseObject(Data, BUpData.class);
+                if (data.getCode() > Constants.getVersionCode(BaseContext)) {// 需要升级
+
+                    // status 1强制升级2不强制升级
+                    switch (data.getStatus()) {
+                        case 1:// 强制升级
+                            UpdateManager m = new UpdateManager(BaseContext, data
+                                    .getUrl(), data.getDesc(), data.getVersion());// "产品进行了优化\n部分功能进行升级"
+                            m.UpDown();
+                            break;
+                        case 2:// 不强制升级
+                            ShowCustomDialog(data);
+                            break;
+                        default:
+                            break;
+                    }
+
+                } else {// 不需要升级
+                    return;
+                }
+
+            }
+        });
+        HashMap<String, String> map = new HashMap<String, String>();
+
+        // map.put("sellerid", mBUser.getSeller_id());
+        mBaseStr.getData(Constants.UpData, map, Request.Method.GET);
+
+    }
+
+    /**
+     * 左右选择弹出框的封装
+     */
+    public void ShowCustomDialog(final BUpData data) {
+        final CustomDialog dialog = new CustomDialog(BaseContext,
+                R.style.mystyle, R.layout.dialog_purchase_cancel, 1,
+                getResources().getString(R.string.hulie_version),
+                getResources().getString(R.string.updown_version));
+        dialog.show();
+        dialog.setTitleText(getResources()
+                .getString(R.string.check_new_version));
+        dialog.Settitles(getResources().getString(R.string.new_version)
+                + data.getVersion() + "\n" + data.getDesc());
+
+        dialog.setcancelListener(new CustomDialog.oncancelClick() {
+
+            @Override
+            public void oncancelClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setConfirmListener(new CustomDialog.onConfirmClick() {
+            @Override
+            public void onConfirmCLick(View v) {
+                dialog.dismiss();
+                Intent mIntent = new Intent(AMainTab.this, DownloadService.class);
+                mIntent.putExtra(DownloadService.INTENT_URL, data.getUrl());
+                mIntent.putExtra(DownloadService.Desc, data.getDesc());
+                startService(mIntent);
+
+            }
+        });
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
