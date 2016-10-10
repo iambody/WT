@@ -103,10 +103,8 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
     }
 
     private void IData(int type, int LoadType) {
-        if (LoadType == LOAD_INITIALIZE)
-            PromptManager.showtextLoading(BaseContext,
-                    getResources()
-                            .getString(R.string.xlistview_header_hint_loading));
+
+
 
         HashMap<String, String> map = new HashMap<String, String>();
         // map.put("page_num",Constants.PageSize+"");
@@ -119,17 +117,22 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
 
     private void ICache() {
         String center_Wallet_Property = CacheUtil.Center_Wallet_Property_Get(getApplicationContext());
-        if (StrUtils.isEmpty(center_Wallet_Property)) {
-            return;
+        if (!StrUtils.isEmpty(center_Wallet_Property)) {
+            //return;
+            try {
+                dattaa = JSON.parseArray(center_Wallet_Property, BLAPropertyList.class);
+            } catch (Exception e) {
+                return;
+            }
+            if (CurrentType == TAGE_ALL) {
+                LsAp.FrashData(dattaa);
+            }
+        }else{
+            PromptManager.showtextLoading(BaseContext,
+                    getResources()
+                            .getString(R.string.xlistview_header_hint_loading));
         }
-        try {
-            dattaa = JSON.parseArray(center_Wallet_Property, BLAPropertyList.class);
-        } catch (Exception e) {
-            return;
-        }
-        if (CurrentType == TAGE_ALL) {
-            LsAp.FrashData(dattaa);
-        }
+
 
     }
 
