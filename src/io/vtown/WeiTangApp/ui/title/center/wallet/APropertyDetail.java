@@ -118,7 +118,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
     private void ICache() {
         String center_Wallet_Property = CacheUtil.Center_Wallet_Property_Get(getApplicationContext());
         if (!StrUtils.isEmpty(center_Wallet_Property)) {
-            //return;
+
             try {
                 dattaa = JSON.parseArray(center_Wallet_Property, BLAPropertyList.class);
             } catch (Exception e) {

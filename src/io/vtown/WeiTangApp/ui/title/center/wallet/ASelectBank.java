@@ -4,6 +4,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BLSelectBank;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -50,7 +51,7 @@ public class ASelectBank extends ATitleBase {
 	/**
 	 * 获取到数据时显示的布局
 	 */
-	private LinearLayout center_wallet_select_bankcard_outlay;
+	//private LinearLayout center_wallet_select_bankcard_outlay;
 	/**
 	 * 获取数据失败时显示的布局
 	 */
@@ -60,14 +61,31 @@ public class ASelectBank extends ATitleBase {
 	protected void InItBaseView() {
 
 		setContentView(R.layout.activity_center_wallet_bankcard_manager_add_bankcard_select_bank);
+		SetTitleHttpDataLisenter(this);
 		IView();
+		ICache();
 		IData();
 	}
 
+	private void ICache() {
+
+		String bank_list = CacheUtil.Center_Wallet_Bank_List_Get(BaseContext);
+		if(!StrUtils.isEmpty(bank_list)){
+			try{
+				listdata = JSON.parseArray(bank_list,BLSelectBank.class);
+			}catch (Exception e){
+				return;
+			}
+			bankAdapter.FrashData(listdata);
+		}else{
+			PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
+		}
+	}
+
 	private void IView() {
-		center_wallet_select_bankcard_outlay = (LinearLayout) findViewById(R.id.center_wallet_select_bankcard_outlay);
+
 		center_wallet_select_bankcard_nodata_lay = findViewById(R.id.center_wallet_select_bankcard_nodata_lay);
-		IDataView(center_wallet_select_bankcard_outlay, center_wallet_select_bankcard_nodata_lay, NOVIEW_INITIALIZE);
+
 		center_wallet_select_bankcard_nodata_lay.setOnClickListener(this);
 		
 		lv_select_bank_card_list = (ListView) findViewById(R.id.lv_select_bank_card_list);
@@ -92,8 +110,8 @@ public class ASelectBank extends ATitleBase {
 	}
 
 	private void IData() {
-		PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-		SetTitleHttpDataLisenter(this);
+
+
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 
@@ -105,6 +123,9 @@ public class ASelectBank extends ATitleBase {
 	protected void DataResult(int Code, String Msg, BComment Data) {
 
 		if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+			lv_select_bank_card_list.setVisibility(View.GONE);
+			center_wallet_select_bankcard_nodata_lay.setVisibility(View.VISIBLE);
+			center_wallet_select_bankcard_nodata_lay.setClickable(false);
 			ShowErrorCanLoad(getResources().getString(R.string.error_null_bank_list_over));
 			return;
 		}
@@ -116,9 +137,11 @@ public class ASelectBank extends ATitleBase {
 					.parseArray(Data.getHttpResultStr(), BLSelectBank.class);
 			
 		} catch (Exception e) {
-			DataError("解析失败", 1);
+			//DataError("解析失败", 1);
 		}
-		IDataView(center_wallet_select_bankcard_outlay, center_wallet_select_bankcard_nodata_lay, NOVIEW_RIGHT);
+		CacheUtil.Center_Wallet_Bank_List_Save(BaseContext,Data.getHttpResultStr());
+		lv_select_bank_card_list.setVisibility(View.VISIBLE);
+		center_wallet_select_bankcard_nodata_lay.setVisibility(View.GONE);
 		bankAdapter.FrashData(listdata);
 	}
 
@@ -126,7 +149,9 @@ public class ASelectBank extends ATitleBase {
 	protected void DataError(String error, int LoadType) {
 		PromptManager.ShowMyToast(BaseContext, error);
 		if(LOAD_INITIALIZE == LoadType){
-			IDataView(center_wallet_select_bankcard_outlay, center_wallet_select_bankcard_nodata_lay, NOVIEW_ERROR);
+			lv_select_bank_card_list.setVisibility(View.GONE);
+			center_wallet_select_bankcard_nodata_lay.setVisibility(View.VISIBLE);
+			center_wallet_select_bankcard_nodata_lay.setClickable(true);
 			ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 		}
 	}

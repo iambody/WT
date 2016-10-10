@@ -94,6 +94,13 @@ public class CacheUtil {
 	private final static String SP_Alipay_Manage = "alipaylist";
 
 	/**
+	 *  银行列表的数据的缓存
+	 */
+	private final static String SP_Bank_List = "banklist";
+
+
+
+	/**
 	 * 缓存首页数据
 	 */
 	public static void Home_Save(Context pcContext, String HomeStr) {
@@ -554,6 +561,28 @@ public class CacheUtil {
 				Context.MODE_PRIVATE);
 		Editor editor = Sp.edit();
 		editor.putString("alipaylist", alipaylist);
+		editor.commit();
+	}
+
+	/**
+	 * 银行列表的数据
+	 */
+	public static String Center_Wallet_Bank_List_Get(Context mPContext) {
+		SharedPreferences Sp = mPContext.getSharedPreferences(SP_Bank_List,
+				Context.MODE_PRIVATE);
+		return Sp.getString("banklist", "");
+
+	}
+
+	/**
+	 *银行列表的保存呢
+	 */
+	public static void Center_Wallet_Bank_List_Save(Context pContext,
+												 String banklist) {
+		SharedPreferences Sp = pContext.getSharedPreferences(SP_Bank_List,
+				Context.MODE_PRIVATE);
+		Editor editor = Sp.edit();
+		editor.putString("banklist", banklist);
 		editor.commit();
 	}
 
