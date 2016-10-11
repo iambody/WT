@@ -48,6 +48,7 @@ import io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView;
 import io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView.OnGetDistanceListener;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase.OnPopupStutaChangerListener;
+import io.vtown.WeiTangApp.comment.view.pop.PReturnRule;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AGoodShow;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
@@ -255,6 +256,7 @@ public class AGoodDetail extends ATitleBase {
 
 
     private LinearLayout good_title_up;
+    private ImageView good_detail_fanyong_log;
 
     @Override
     protected void InItBaseView() {
@@ -333,7 +335,7 @@ public class AGoodDetail extends ATitleBase {
 
         gooddetail_random_message = (TextView) findViewById(R.id.gooddetail_random_message);
         ll_gooddetail_random_message = (LinearLayout) findViewById(R.id.ll_gooddetail_random_message);
-
+        good_detail_fanyong_log = (ImageView) findViewById(R.id.good_detail_fanyong_log);
         tv_good_title = (TextView) findViewById(R.id.tv_good_title);
         rl_look_show = (RelativeLayout) findViewById(R.id.rl_look_show);
         rl_look_share = (RelativeLayout) findViewById(R.id.rl_look_share);
@@ -382,6 +384,8 @@ public class AGoodDetail extends ATitleBase {
         // 初始化页面时关注设为不可用
         right_iv.setEnabled(false);
         right_left_iv.setOnClickListener(this);
+        good_detail_fanyong_log.setOnClickListener(this);
+
 
 
         ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
@@ -832,10 +836,19 @@ public class AGoodDetail extends ATitleBase {
             case R.id.rl_to_top:
                 good_detail_scrollview.fullScroll(View.FOCUS_UP);
                 break;
+
+            case R.id.good_detail_fanyong_log://返佣
+                showReturnPop();
+                break;
             default:
                 break;
         }
 
+    }
+
+    private void showReturnPop(){
+        PReturnRule pReturnRule = new PReturnRule(BaseContext);
+        pReturnRule.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
     }
 
     private void DaiLiGoods(String goods_id) {

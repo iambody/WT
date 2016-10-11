@@ -34,6 +34,7 @@ import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
+import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.center.myshow.AOtherShow;
@@ -230,6 +231,17 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                             video_item.item_recycler_my_show_vido_image, R.drawable.error_iv1);
                 } catch (Exception e) {
                 }
+               final String vid = bShow.getVid();
+                video_item.item_recycler_my_show_vido_control_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        PromptManager.SkipActivity(SActivity,
+                                new Intent(mContext,
+                                        AVidemplay.class).putExtra(
+                                        AVidemplay.VidoKey, vid));
+                    }
+                });
                 break;
 
             case Show_Pic:
@@ -257,11 +269,24 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 SetIntro(pic_item.my_show_content_single_pic_title, datas.get(position).getIntro());
 
                 StrUtils.SetTxt(pic_item.comment_show_transmit_numb_pic, "有" + (StrUtils.isEmpty(bShow.getSendnumber())?"0": bShow.getSendnumber())+ "人转发");
+                final List<String> urls = bShow.getImgarr();
                 try {
-                    ImageLoaderUtil.Load2(bShow.getImgarr().get(0),
+                    ImageLoaderUtil.Load2(urls.get(0),
                             pic_item.item_recycler_my_show_single_pic, R.drawable.error_iv1);
                 } catch (Exception e) {
                 }
+                pic_item.item_recycler_my_show_single_pic.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent mIntent = new Intent(mContext,
+                                AphotoPager.class);
+                        mIntent.putExtra("position", 0);
+                        mIntent.putExtra("urls",
+                                StrUtils.LsToArray(urls));
+                        PromptManager.SkipActivity(SActivity,
+                                mIntent);
+                    }
+                });
                 break;
 
         }

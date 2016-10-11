@@ -260,18 +260,23 @@ public class ATiXian extends ATitleBase {
 				"提现规则:", datas.getTixinarule());
 
 		if (alipay_list != null && !StrUtils.isEmpty(alipay_list.getAlipay())) {
+			tixian_zhifubao.setVisibility(View.VISIBLE);
+			tixian_yinhangka.setVisibility(View.VISIBLE);
 			if (datas.getBank_list() == null) {
 				tixian_yinhangka.setVisibility(View.GONE);
-				tixian_zhifubao.setBackground(getResources().getDrawable(
-						R.drawable.shape_fen_circular_bg));
-				tixian_zhifubao.setTextColor(getResources().getColor(
-						R.color.white));
-				tixian_zhifubao.setEnabled(false);
+				tixian_zhifubao.setVisibility(View.GONE);
+//				tixian_zhifubao.setBackground(getResources().getDrawable(
+//						R.drawable.shape_fen_circular_bg));
+//				tixian_zhifubao.setTextColor(getResources().getColor(
+//						R.color.white));
+//				tixian_zhifubao.setEnabled(false);
 				ll_bank_content.setVisibility(View.GONE);
 				ll_alipay_content.setVisibility(View.VISIBLE);
 				fetch_type = 2;
 			}
-			tixian_zhifubao.setVisibility(View.VISIBLE);
+
+
+
 			TextView tv_my_account_name = (TextView) alipay_account
 					.findViewById(R.id.tv_my_account_name);
 			TextView tv_my_account_number = (TextView) alipay_account
@@ -291,17 +296,18 @@ public class ATiXian extends ATitleBase {
 
 		if (datas.getBank_list() != null) {
 			if (StrUtils.isEmpty(alipay_list.getAlipay())) {
+				tixian_yinhangka.setVisibility(View.GONE);
 				tixian_zhifubao.setVisibility(View.GONE);
-				tixian_yinhangka.setBackground(getResources().getDrawable(
-						R.drawable.shape_fen_circular_bg));
-				tixian_yinhangka.setTextColor(getResources().getColor(
-						R.color.white));
-				tixian_yinhangka.setEnabled(false);
+//				tixian_yinhangka.setBackground(getResources().getDrawable(
+//						R.drawable.shape_fen_circular_bg));
+//				tixian_yinhangka.setTextColor(getResources().getColor(
+//						R.color.white));
+//				tixian_yinhangka.setEnabled(false);
 				ll_alipay_content.setVisibility(View.GONE);
 				ll_bank_content.setVisibility(View.VISIBLE);
 				fetch_type = 1;
 			}
-			tixian_yinhangka.setVisibility(View.VISIBLE);
+
 			iv_my_account_icon = (ImageView) bank_card_account
 					.findViewById(R.id.iv_my_account_icon);
 			tv_my_account_name = (TextView) bank_card_account

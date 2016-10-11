@@ -206,7 +206,6 @@ public class AAddressManage extends ATitleBase {
             });
         }
 
-
     }
 
     @Override

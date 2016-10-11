@@ -8,8 +8,8 @@
 
     <io.vtown.WeiTangApp.comment.view.CircleImageView
         android:id="@+id/my_show_item_icon"
-        android:layout_width="@dimen/main_shopbus_sidewidth"
-        android:layout_height="@dimen/main_shopbus_sidewidth"
+        android:layout_width="@dimen/item_show_iv_height"
+        android:layout_height="@dimen/item_show_iv_height"
         android:clickable="false"
         android:focusable="false"
         android:visibility="visible" />

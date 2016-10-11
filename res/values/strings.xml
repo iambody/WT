@@ -182,6 +182,7 @@
     <!-- 我的钱包 -->
     <string name="bank_card_manage">银行卡管理</string>
     <string name="alipay_manage">支付宝管理</string>
+    <string name="sbumit_tixian">提现</string>
     <string name="property_detail">资金明细</string>
     <string name="lable_bank_card_numb">卡号：</string>
     <string name="lable_alipay_numb">支付宝账号</string>

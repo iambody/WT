@@ -63,7 +63,7 @@ private RefreshLayout center_wallter_refrash;
 	/**
 	 * 提交按钮
 	 */
-	private TextView tv_btn_submit;
+	private View tv_btn_submit;
 	/**
 	 * 银行卡管理
 	 */
@@ -196,7 +196,7 @@ private RefreshLayout center_wallter_refrash;
 		tv_submit_balance = (TextView) findViewById(R.id.tv_submit_balance);
 		tv_trade_money = (TextView) findViewById(R.id.tv_trade_money);
 		tv_add_up_income = (TextView) findViewById(R.id.tv_add_up_income);
-		tv_btn_submit = (TextView) findViewById(R.id.tv_btn_submit);
+		tv_btn_submit = findViewById(R.id.tv_btn_submit);
 
 
 		bank_card_manage = findViewById(R.id.bank_card_manage);
@@ -206,6 +206,7 @@ private RefreshLayout center_wallter_refrash;
 		SetItemContent(bank_card_manage, R.string.bank_card_manage, "");
 		SetItemContent(alipay_manage, R.string.alipay_manage, "");
 		SetItemContent(property_detail, R.string.property_detail, "");
+		SetItemContent(tv_btn_submit, R.string.sbumit_tixian, "");
 
 		tv_btn_submit.setOnClickListener(this);
 		center_wallet_nodata_lay.setOnClickListener(this);

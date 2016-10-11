@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
 
         android:layout_above="@+id/show_share_cancel"
-android:layout_marginLeft="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="vertical"
         android:padding="@dimen/line_size1">
@@ -120,7 +120,7 @@ android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-       android:layout_margin="10dp"
+        android:layout_margin="10dp"
         android:background="@drawable/select_show_share_down_up"
         android:clickable="true"
         android:focusable="true"

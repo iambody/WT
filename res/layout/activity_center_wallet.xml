@@ -173,11 +173,21 @@
                     <include
                         android:id="@+id/property_detail"
                         layout="@layout/commentview_txtarrow" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/app_bg"
+                        android:layout_height="10dp"/>
+
+                    <include
+                        android:id="@+id/tv_btn_submit"
+
+                        layout="@layout/commentview_txtarrow" />
                 </LinearLayout>
             </ScrollView>
        </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/tv_btn_submit"
             style="@style/btnstyle"
             android:layout_width="match_parent"
@@ -185,7 +195,7 @@
             android:clickable="true"
             android:gravity="center"
             android:padding="@dimen/center_wallet_submit_padding"
-            android:text="提现" />
+            android:text="提现" />-->
     </LinearLayout>
 
     <include
