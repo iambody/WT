@@ -171,6 +171,8 @@ public class AMyCoupons extends ATitleBase {
             PromptManager.ShowCustomToast(BaseContext, "暂无优惠券");
             //IDataView(lv_my_conpons_list, center_my_coupons_nodata_lay,
             //		NOVIEW_ERROR);
+            myConpousAdapter.FrashData(new ArrayList<BLMyCoupons>());
+            CacheUtil.My_Coupons_Save(getApplicationContext(), "");
             return;
         }
 

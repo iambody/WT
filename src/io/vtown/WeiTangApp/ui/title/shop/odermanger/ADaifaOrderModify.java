@@ -1089,16 +1089,17 @@ public class ADaifaOrderModify extends ATitleBase {
 
             String goods_type = datas.get(arg0).getGoods_type();
             if ("0".equals(goods_type)) {
-                orderDetail.iv_order_manage_order_detail_goods_type
-                        .setVisibility(View.GONE);
+                StrUtils.SetTxt(
+                        orderDetail.tv_order_manage_order_detail_good_title, datas
+                                .get(arg0).getGoods_name());
             } else {
-                orderDetail.iv_order_manage_order_detail_goods_type
-                        .setVisibility(View.VISIBLE);
+                StrUtils.SetTxt(
+                        orderDetail.tv_order_manage_order_detail_good_title, datas
+                                .get(arg0).getGoods_name());
+                StrUtils.setTxtLeftDrawable(BaseContext,orderDetail.tv_order_manage_order_detail_good_title);
             }
 
-            StrUtils.SetTxt(
-                    orderDetail.tv_order_manage_order_detail_good_title, datas
-                            .get(arg0).getGoods_name());
+
             StrUtils.SetTxt(
                     orderDetail.tv_order_manage_order_detail_content_value,
                     datas.get(arg0).getGoods_standard());

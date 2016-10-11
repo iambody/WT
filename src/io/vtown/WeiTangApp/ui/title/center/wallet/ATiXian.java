@@ -306,6 +306,7 @@ public class ATiXian extends ATitleBase {
 				ll_alipay_content.setVisibility(View.GONE);
 				ll_bank_content.setVisibility(View.VISIBLE);
 				fetch_type = 1;
+				iv_arrow_right.setImageResource(R.drawable.arrow_right);
 			}
 
 			iv_my_account_icon = (ImageView) bank_card_account

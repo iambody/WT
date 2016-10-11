@@ -34,6 +34,7 @@
                 android:id="@+id/iv_purchese_detail_goods_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:src="@drawable/shopbus_item_log3" />
 
             <TextView

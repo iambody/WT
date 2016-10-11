@@ -1194,6 +1194,13 @@ public class StrUtils {
         return output;
     }
 
+
+    public static void setTxtLeftDrawable(Context context,TextView view){
+        Drawable good_type = context.getResources().getDrawable(R.drawable.shopbus_item_log3);
+        good_type.setBounds(0,0,good_type.getMinimumWidth(),good_type.getMinimumHeight());
+        view.setCompoundDrawables(good_type,null,null,null);
+    }
+
     /**
      * 让TextView有复制功能
      *

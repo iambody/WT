@@ -294,11 +294,13 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
                     }
                     if (LOAD_LOADMOREING == Data.getHttpLoadType()) {
                         //lv_fall_daifu_common.stopLoadMore();
-                        PromptManager.ShowCustomToast(BaseContext, "没有更多订单哦");
                         fragment_shop_order_refrash.setLoading(false);
+                        PromptManager.ShowCustomToast(BaseContext, "没有更多订单哦");
+
                     }
                     if (LOAD_REFRESHING == Data.getHttpLoadType()) {
                         //lv_fall_daifu_common.stopRefresh();
+                        fragment_shop_order_refrash.setRefreshing(false);
                         PromptManager.ShowCustomToast(BaseContext, "暂无订单");
                         myAdapter.FrashData(new ArrayList<BLShopOrderManage>());
                     }

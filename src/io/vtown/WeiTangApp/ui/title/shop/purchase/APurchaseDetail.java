@@ -1110,13 +1110,15 @@ public class APurchaseDetail extends ATitleBase {
 			String goods_type = data.get(arg0).getGoods_type();
 
 			if ("0".equals(goods_type)) {
-				item.iv_purchese_detail_goods_type.setVisibility(View.GONE);
+				StrUtils.SetTxt(item.tv_purchese_detail_good_title, data.get(arg0)
+						.getGoods_name());
 			} else {
-				item.iv_purchese_detail_goods_type.setVisibility(View.VISIBLE);
+				StrUtils.SetTxt(item.tv_purchese_detail_good_title, data.get(arg0)
+						.getGoods_name());
+				StrUtils.setTxtLeftDrawable(BaseContext,item.tv_purchese_detail_good_title);
 			}
 
-			StrUtils.SetTxt(item.tv_purchese_detail_good_title, data.get(arg0)
-					.getGoods_name());
+
 			StrUtils.SetTxt(item.tv_purchese_content_value, data.get(arg0)
 					.getGoods_standard());
 			String goods_price = String.format("￥%1$s",

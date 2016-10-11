@@ -57,68 +57,71 @@
                 android:id="@+id/fragment_purchase_order_arbitration_is_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_order_btn_gray_bg"
+
                 android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
                 android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
                 android:text="订单已取消"
-                android:textColor="@color/white"
+                android:textColor="@color/app_gray"
+                android:textSize="@dimen/order_list_button_txt"
                 android:visibility="gone" />
             
             <TextView
                 android:id="@+id/fragment_purchase_order_is_delay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_order_btn_gray_bg"
+
                 android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
                 android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
                 android:text="已延期收货"
-                android:textColor="@color/white"
+                android:textSize="@dimen/order_list_button_txt"
+                android:textColor="@color/app_gray"
                 android:visibility="gone" />
 
             <TextView
                 android:id="@+id/fragment_purchase_order_arbitration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_order_btn_gray_bg"
+
                 android:gravity="center"
                 android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
                 android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
                 android:text="仲裁中"
-                android:textColor="@color/white"
+                android:textSize="@dimen/order_list_button_txt"
+                android:textColor="@color/app_gray"
                 android:visibility="gone" />
 
             <TextView
                 android:id="@+id/fragment_purchase_order_is_over"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_order_btn_gray_bg"
                 android:gravity="center"
                 android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
                 android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
                 android:text="订单已完成"
-                android:textColor="@color/white"
+                android:textSize="@dimen/order_list_button_txt"
+                android:textColor="@color/app_gray"
                 android:visibility="gone" />
 
             <TextView
                 android:id="@+id/fragment_purchase_order_apply_refunding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_order_btn_gray_bg"
                 android:gravity="center"
                 android:paddingBottom="@dimen/order_list_button_txt_top_bottom_padding"
                 android:paddingLeft="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingRight="@dimen/order_list_button_txt_left_right_padding"
                 android:paddingTop="@dimen/order_list_button_txt_top_bottom_padding"
                 android:text="申请退款中"
-                android:textColor="@color/white"
+                android:textSize="@dimen/order_list_button_txt"
+                android:textColor="@color/app_gray"
                 android:visibility="gone" />
         </LinearLayout>
 

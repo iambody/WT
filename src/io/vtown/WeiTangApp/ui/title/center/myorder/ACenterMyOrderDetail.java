@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.method.ArrowKeyMovementMethod;
@@ -1055,16 +1056,21 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
 			String goods_type = data.get(arg0).getGoods_type();
 
-			if ("0".equals(goods_type)) {
-				item.iv_center_my_order_detail_goods_type
-						.setVisibility(View.GONE);
+			if ("1".equals(goods_type)) {
+//				item.iv_center_my_order_detail_goods_type
+//						.setVisibility(View.GONE);
+				StrUtils.SetTxt(item.tv_center_my_order_detail_good_title, data
+						.get(arg0).getGoods_name());
+				StrUtils.setTxtLeftDrawable(BaseContext,item.tv_center_my_order_detail_good_title);
+
 			} else {
-				item.iv_center_my_order_detail_goods_type
-						.setVisibility(View.VISIBLE);
+				//item.iv_center_my_order_detail_goods_type
+				//		.setVisibility(View.VISIBLE);
+				StrUtils.SetTxt(item.tv_center_my_order_detail_good_title, data
+						.get(arg0).getGoods_name());
 			}
 
-			StrUtils.SetTxt(item.tv_center_my_order_detail_good_title, data
-					.get(arg0).getGoods_name());
+
 			StrUtils.SetTxt(item.tv_center_my_order_content_value,
 					data.get(arg0).getGoods_standard());
 			String goods_price = String.format("￥%1$s元",
