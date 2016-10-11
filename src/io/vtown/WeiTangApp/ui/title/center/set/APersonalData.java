@@ -230,10 +230,10 @@ public class APersonalData extends ATitleBase implements
                         Spuit.Login_Out(BaseContext);
                         // 清理数据库
                         Spuit.Shop_Save(BaseContext, new BShop());
-                        PromptManager.ShowCustomToast(BaseContext, "退出成功");
+//                        PromptManager.ShowCustomToast(BaseContext, "退出成功");
                         PromptManager.SkipActivity(BaseActivity, new Intent(
                                 BaseContext, ALogin.class)
-                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
 
                     }
 

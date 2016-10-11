@@ -163,6 +163,9 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
                               int Method, final int Tage, final int LoadType) {
         if (!NetUtil.isConnected(BaseContext)) {//检查网络 TODO需要无网络时候显示错误头像
             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
+            mHttpDataLisenter.onError("网络断开", LoadType);
+            PromptManager.closeLoading();
+            PromptManager.closetextLoading();
             return;
         }
         if (Method == com.android.volley.Request.Method.DELETE) {

@@ -75,7 +75,7 @@ import io.vtown.WeiTangApp.ui.title.shop.goodmanger.ANewGoodMangerEdit;
  * @author 商品管理的manger
  * @version 创建时间：2016-5-13 上午10:33:38
  */
-public class FShopGoodManger extends FBase implements  RefreshLayout.OnLoadListener,
+public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListener,
         OnClickListener {
 
     /**
@@ -95,7 +95,7 @@ public class FShopGoodManger extends FBase implements  RefreshLayout.OnLoadListe
     /**
      * 在售中、已下架共同的ListView
      */
-    private  ListView lv_comment_listview;
+    private ListView lv_comment_listview;
 
     private TextView tv_add_item;
 
@@ -217,7 +217,7 @@ public class FShopGoodManger extends FBase implements  RefreshLayout.OnLoadListe
                 .findViewById(R.id.fragent_goodmanger_nodata_lay);
         fragent_goodmanger_nodata_lay.setOnClickListener(this);
 
-        fragment_goodmanger_refrash= (RefreshLayout) BaseView.findViewById(R.id.fragment_goodmanger_refrash);
+        fragment_goodmanger_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_goodmanger_refrash);
         fragment_goodmanger_refrash.setOnLoadListener(this);
         fragment_goodmanger_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
 
@@ -226,10 +226,7 @@ public class FShopGoodManger extends FBase implements  RefreshLayout.OnLoadListe
 
         tv_add_item = (TextView) BaseView.findViewById(R.id.tv_add_item);
 
-//        lv_comment_listview.setPullRefreshEnable(true);
-//        lv_comment_listview.setPullLoadEnable(true);
-//        lv_comment_listview.setXListViewListener(this);
-//        lv_comment_listview.hidefoot();
+
         mycommentAdapter = new MYCommentAdapter(Sale_Status,
                 R.layout.item_selling_and_soldout);
         lv_comment_listview.setAdapter(mycommentAdapter);
@@ -961,9 +958,10 @@ public class FShopGoodManger extends FBase implements  RefreshLayout.OnLoadListe
                     dattaa = JSON.parseArray(Data.getHttpResultStr(),
                             BLGoodManger.class);
                     fragent_goodmanger_nodata_lay.setVisibility(View.GONE);
+
                 }
 
-                if (StrUtils.isEmpty(Data.getHttpResultStr())||dattaa==null||dattaa.size()==0) {// 数据为空
+                if (StrUtils.isEmpty(Data.getHttpResultStr()) || dattaa == null || dattaa.size() == 0) {// 数据为空
 //                        if (Sale_Status != 0&&Data.getHttpLoadType()!=LOAD_LOADMOREING)
                     if (Data.getHttpLoadType() != LOADMOREING)
                         fragent_goodmanger_nodata_lay.setVisibility(View.VISIBLE);
@@ -971,16 +969,17 @@ public class FShopGoodManger extends FBase implements  RefreshLayout.OnLoadListe
                         switch (Sale_Status) {
                             case 100://在售商品
 
-                                ShowErrorCanLoad(getResources().getString(IsBrand?R.string.no_zaishou_brand:R.string.no_zaishou_ziying));
+                                ShowErrorCanLoad(getResources().getString(IsBrand ? R.string.no_zaishou_brand : R.string.no_zaishou_ziying));
                                 break;
                             case 20://下架商品
-                                ShowErrorCanLoad(getResources().getString(IsBrand?R.string.no_xiajia_brand:R.string.no_xiajia_ziying));
+                                ShowErrorCanLoad(getResources().getString(IsBrand ? R.string.no_xiajia_brand : R.string.no_xiajia_ziying));
                                 break;
-                            case  0://品牌详情
+                            case 0://品牌详情
                                 ShowErrorCanLoad(getResources().getString(R.string.no_brand_good));
+                                ShowErrorIv(R.drawable.ic_jiahao_nor);
                                 break;
                             case 1://垃圾箱
-                                ShowErrorCanLoad(getResources().getString(IsBrand?R.string.no_laji_brand:R.string.no_laji_ziying));
+                                ShowErrorCanLoad(getResources().getString(IsBrand ? R.string.no_laji_brand : R.string.no_laji_ziying));
 
                                 break;
                         }
@@ -1101,8 +1100,8 @@ public class FShopGoodManger extends FBase implements  RefreshLayout.OnLoadListe
 //                }
 //                final BLShow datBlComment = StrUtils.BDtoBL_BLShow(dattt);
                 BNew bnew = new BNew();
-                bnew.setShare_title(getResources().getString(R.string.share_app)+"  "+dattt.getTitle());//dattt.getSeller_name());
-                bnew.setShare_content(getResources().getString(R.string.share_app)+"  "+dattt.getTitle());
+                bnew.setShare_title(getResources().getString(R.string.share_app) + "  " + dattt.getTitle());//dattt.getSeller_name());
+                bnew.setShare_content(getResources().getString(R.string.share_app) + "  " + dattt.getTitle());
                 bnew.setShare_log(StrUtils.isEmpty(dattt.getCover()) ? dattt.getGoods_info().getIntro().get(0) : dattt.getCover());
                 bnew.setShare_url(dattt.getGoods_url());
                 PShowShare showShare = new PShowShare(BaseContext, bnew);
@@ -1368,7 +1367,11 @@ public class FShopGoodManger extends FBase implements  RefreshLayout.OnLoadListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fragent_goodmanger_nodata_lay:
-                CurrentPage=1;
+                if (Sale_Status == 0) {//品牌商品点击申请
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandList.class));
+                    return;
+                }
+                CurrentPage = 1;
                 LoadData(CurrentPage, INITIALIZE);
                 break;
             case R.id.tv_add_item:// ss

@@ -155,6 +155,8 @@ public class Constants {
 	public static int PageSize1 = 100;
 	public static int PageSize2= 20;
 //	public static int PageSize3 = 2000;
+	//搜素是 浏览记录的最大缓存条数
+public static int SouSouHeistory= 12;
 	/**
 	 * 店铺搜索接口 Get
 	 */

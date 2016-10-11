@@ -106,13 +106,15 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
         EventBus.getDefault().register(this, "MainShowReciverMessage", BMessage.class);
         IBaseView();
         ICacheLs();
-        IData(LastId, INITIALIZE);
+        fragment_show_refrash.setRefreshing(true);
+        IData(LastId, REFRESHING);
     }
 
     private void IData(String lastId, int initialize) {
         if (initialize == INITIALIZE && !IsCache)
             PromptManager.showtextLoading(BaseContext, getResources()
                     .getString(R.string.loading));
+
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("seller_id", MyUser.getSeller_id());
         map.put("lastid", LastId);
@@ -205,32 +207,8 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
         }
     }
 
-    Handler mHandler = new Handler() {
 
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == REFRESHING) {
-//                maintab_show_show_ls.stopRefresh();
-                fragment_show_refrash.setRefreshing(false);
-            }
-            if (msg.what == LOADMOREING) {
-//                maintab_show_show_ls.stopLoadMore();
-                fragment_show_refrash.setLoading(false);
-            }
-        }
-    };
 
-    /**
-     * 1=》停止刷新 ；；；；2=>停止加载更多
-     *
-     * @param Type
-     */
-    private void IsStopFresh(int Type) {
-        Message m = new Message();
-        m.what = Type;
-        mHandler.sendMessage(m);
-    }
 
 
     @Override
@@ -801,11 +779,13 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
                             onError(Constants.SucessToError, Data.getHttpLoadType());
                             break;
                         case REFRESHING:
-                            IsStopFresh(REFRESHING);
+
+                            fragment_show_refrash.setRefreshing(false);
                             onError(Constants.SucessToError, Data.getHttpLoadType());
                             break;
                         case LOADMOREING:
-                            IsStopFresh(LOADMOREING);
+//                            IsStopFresh(LOADMOREING);
+                            fragment_show_refrash.setLoading(false);
                             break;
                     }
                     return;
@@ -832,12 +812,13 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
                         break;
                     case REFRESHING:
                         showAp.FrashData(data);
-                        IsStopFresh(REFRESHING);
-
+//                        IsStopFresh(REFRESHING);
+                        fragment_show_refrash.setRefreshing(false);
                         break;
                     case LOADMOREING:
                         showAp.AddFrashData(data);
-                        IsStopFresh(LOADMOREING);
+//                        IsStopFresh(LOADMOREING);
+                        fragment_show_refrash.setLoading(false);
                         break;
                     default:
                         break;

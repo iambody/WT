@@ -354,7 +354,11 @@
         <!-- 模糊 -->
     </style>
 
-
+    <style name="AppTheme_yu" parent="@android:style/Theme.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:animationDuration">0</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
 
     <!-- <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>-->
 </resources>

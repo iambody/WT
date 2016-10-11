@@ -154,7 +154,6 @@ public class ASouSouGood extends ATitileNoBase {
         mDaoSouRecord = DaoSouRecord.getInstance(BaseContext);
         IView();
         ICacherRecommend();
-
     }
 
     /**
@@ -206,8 +205,8 @@ public class ASouSouGood extends ATitileNoBase {
         // }
         List<BSouRecord> sddss = mDaoSouRecord.findAll();
         List<BSouRecord> newlist = new ArrayList<BSouRecord>();
-        if (sddss.size() > 3) {// 超出规定条数
-            for (int i = sddss.size() - 1; i >= sddss.size() - 3; i--) {
+        if (sddss.size() > Constants.SouSouHeistory) {// 超出规定条数
+            for (int i = sddss.size() - 1; i >= sddss.size() -  Constants.SouSouHeistory; i--) {
                 newlist.add(sddss.get(i));
 
             }
@@ -366,7 +365,6 @@ public class ASouSouGood extends ATitileNoBase {
             @Override
             public void RightResult() {
                 DeletCacheData(da);
-                PromptManager.ShowCustomToast(BaseContext, "删除成功");
                 ICacheData();
             }
 
@@ -814,24 +812,7 @@ public class ASouSouGood extends ATitileNoBase {
             public void LeftResult() {
             }
         });
-        // final CustomDialog dialog = new CustomDialog(BaseContext,
-        // R.style.mystyle, R.layout.customdialog, 3, "取消", "确定");
-        // dialog.show();
-        // dialog.setTitleText("是否清除历史纪录");
-        // dialog.setConfirmListener(new onConfirmClick() {
-        // @Override
-        // public void onConfirmCLick(View v) {
-        // dialog.dismiss();
-        // IClreanAllCacheData();
-        //
-        // }
-        // });
-        // dialog.setcancelListener(new oncancelClick() {
-        // @Override
-        // public void oncancelClick(View v) {
-        // dialog.dismiss();
-        // }
-        // });
+
 
     }
 

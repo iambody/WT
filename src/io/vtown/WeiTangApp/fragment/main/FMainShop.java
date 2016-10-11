@@ -94,8 +94,11 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
         EventBus.getDefault().register(this, "OnMainTabShop", BMessage.class);
         SetTitleHttpDataLisenter(this);
         IBaseView();
-        IData(INITIALIZE);
+        IData(REFRESHING);
+
     }
+
+
 
     private void IBaseView() {
         fragment_shop_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_shop_refrash);
@@ -152,22 +155,12 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
         SetCommentIV(getResources().getString(R.string.grad8), R.drawable.shop_grad8, fragment_main_tab_shop_lookshop);
         SetCommentIV(getResources().getString(R.string.grad9), R.drawable.shop_grad9, fragment_main_tab_shop_ruzhu);
 
-//        fragment_main_shop_load_head_iv .setBackgroundResource(R.drawable.second_step_animation);
-//        secondAnimation = (AnimationDrawable) fragment_main_shop_load_head_iv.getBackground();
-//        fragment_main_shop_out_scrollview.setOnRefreshListener(new PullScrollView.onRefreshListener() {
-//
-//            @Override
-//            public void refresh() {
-//                secondAnimation.start();
-//                IData(REFRESHING);
-//            }
-//
-//        });
 
         ShowView(Spuit.Shop_Get(BaseContext));
     }
 
     private void IData(int Type) {
+        fragment_shop_refrash.setRefreshing(true);
         SetTitleHttpDataLisenter(this);
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());

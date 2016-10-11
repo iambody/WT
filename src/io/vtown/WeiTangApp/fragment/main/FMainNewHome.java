@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +63,9 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     @BindView(R.id.fragment_newhome_srollviw)
     SwipeRefreshLayout fragmentNewhomeSrollviw;
     @BindView(R.id.fragment_newhome_insrollviw)
-    HomeScrollView fragmentNewhomeInsrollviw;
+    HomeScrollView fragmentNewhomeInsrollviw;//内层监控滑动
+    @BindView(R.id.fragment_newhome_head_iv_level)
+    ImageView fragmentNewhomeHeadIvLevel;//等级的图片
 
     private LinearLayout fragmentNewhomeIvLaya;
     //上边的title
@@ -98,14 +99,14 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         SetDownTitle(fragment_newhome_jifen_lay, getResources().getString(R.string.newhome_myjifen));
         SetDownTitle(fragment_newhome_yongjin_lay, getResources().getString(R.string.newhome_fanyong));
         //下边布局
-        fragment_newhome_qian_lay= ViewHolder.get(BaseView, R.id.fragment_newhome_qian_lay);
-        fragment_newhome_yaoqing_lay= ViewHolder.get(BaseView, R.id.fragment_newhome_yaoqing_lay);
-        fragment_newhome_libao_lay= ViewHolder.get(BaseView, R.id.fragment_newhome_libao_lay);
-        fragment_newhome_temai_lay= ViewHolder.get(BaseView, R.id.fragment_newhome_temai_lay);
-        SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao),R.drawable.newhome_down_qian);
-        SetDownLay(fragment_newhome_yaoqing_lay, getResources().getString(R.string.newhome_yaoqing),R.drawable.newhome_down_freads);
-        SetDownLay(fragment_newhome_libao_lay, getResources().getString(R.string.newhome_libao),R.drawable.newhome_down_libao);
-        SetDownLay(fragment_newhome_temai_lay, getResources().getString(R.string.newhome_temai),R.drawable.newhome_down_temai);
+        fragment_newhome_qian_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_qian_lay);
+        fragment_newhome_yaoqing_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_yaoqing_lay);
+        fragment_newhome_libao_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_libao_lay);
+        fragment_newhome_temai_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_temai_lay);
+        SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian);
+        SetDownLay(fragment_newhome_yaoqing_lay, getResources().getString(R.string.newhome_yaoqing), R.drawable.newhome_down_freads);
+        SetDownLay(fragment_newhome_libao_lay, getResources().getString(R.string.newhome_libao), R.drawable.newhome_down_libao);
+        SetDownLay(fragment_newhome_temai_lay, getResources().getString(R.string.newhome_temai), R.drawable.newhome_down_temai);
 
         fragmentNewhomeHeadIv.setBorderWidth(10);
         fragmentNewhomeHeadIv.setBorderColor(getResources().getColor(R.color.transparent6));
@@ -118,7 +119,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         IWave();
         IBindData();
         //解决冲突
-        fragmentNewhomeSrollviw .setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        fragmentNewhomeSrollviw.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
         fragmentNewhomeInsrollviw.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
@@ -145,8 +146,9 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 break;
         }
     }
+
     //设置下边
-    private void SetDownLay(View V, String Downtitle,int ResouceId){
+    private void SetDownLay(View V, String Downtitle, int ResouceId) {
         V.setOnClickListener(this);
         ((TextView) V.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setText(Downtitle);
         ((ImageView) V.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(ResouceId);
@@ -257,7 +259,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             case R.id.fragment_newhome_yongjin_lay:
                 PromptManager.ShowCustomToast(BaseContext, "跳转佣金");
                 break;
-            case  R.id.fragment_newhome_temai_lay://特卖专区
+            case R.id.fragment_newhome_temai_lay://特卖专区
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
                 break;
 //            fragment_newhome_qian_lay, fragment_newhome_yaoqing_lay, fragment_newhome_libao_lay
@@ -265,7 +267,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 PromptManager.ShowCustomToast(BaseContext, "已签到");
                 break;
             case R.id.fragment_newhome_yaoqing_lay://邀请好友
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AMyInviteCode.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyInviteCode.class));
                 break;
             case R.id.fragment_newhome_libao_lay://激活礼包
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
@@ -286,7 +288,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //            PromptManager.ShowCustomToast(BaseContext, "数据" + scrollY);
 //            back.getBackground().setAlpha(255);
 //            shopping_cart.getBackground().setAlpha(255);
-        } else if (scrollY >= 100 && scrollY < 860) {//860
+//        } else if (scrollY >= 100 && scrollY < 860) {//860
+        } else if (scrollY >= 100) {//860
             fragmentNewhomeIvLaya.getBackground().setAlpha((scrollY));//scrollY-100
 //            PromptManager.ShowCustomToast(BaseContext, "数据" + scrollY);
 //            back.getBackground().setAlpha(255 - (scrollY-100)/3);
@@ -305,4 +308,11 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     }
 
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this, rootView);
+        return rootView;
+    }
 }

@@ -150,20 +150,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/login_dui"
-            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ui_10_dip"
             android:layout_gravity="center_vertical"
             android:text="@string/login_agreen_xieyi"
-            android:textColor="@color/app_gray"/>
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/login_aggren_size"/>
 
         <TextView
             android:id="@+id/verification_deal_txt"
@@ -175,7 +170,8 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="@string/app_xieyi"
-            android:textColor="@color/gray"/>
+            android:textSize="@dimen/login_aggren_size"
+            android:textColor="@color/app_fen1"/>
     </LinearLayout>
 
     <LinearLayout

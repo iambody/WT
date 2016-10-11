@@ -84,7 +84,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/left_btn_select"
                 android:text="@string/nullstr"
-                android:textColor="@color/gray" />
+                android:textColor="@color/app_fen2"  />
 
             <Button
                 android:id="@+id/back_btn"
@@ -102,7 +102,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/right_btn_select"
                 android:text="@string/nullstr"
-                android:textColor="@color/app_fen" />
+                android:textColor="@color/app_fen2" />
         </LinearLayout>
     </LinearLayout>
 

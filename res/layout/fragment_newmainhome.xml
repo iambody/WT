@@ -46,15 +46,29 @@
                             android:layout_height="140dp"
                             android:layout_centerHorizontal="true"/>
 
-                        <io.vtown.WeiTangApp.comment.view.CircleImageView
-                            android:id="@+id/fragment_newhome_head_iv"
+                        <RelativeLayout
                             android:layout_width="@dimen/shop_user_hright"
                             android:layout_height="@dimen/shop_user_hright"
-                            android:layout_centerInParent="true"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:longClickable="true"
-                            />
+                            android:layout_centerInParent="true">
+
+
+                            <io.vtown.WeiTangApp.comment.view.CircleImageView
+                                android:id="@+id/fragment_newhome_head_iv"
+                                android:layout_width="@dimen/shop_user_hright"
+                                android:layout_height="@dimen/shop_user_hright"
+                                android:layout_centerInParent="true"
+                                android:clickable="true"
+                                android:focusable="true"
+                                />
+
+                            <ImageView
+                                android:id="@+id/fragment_newhome_head_iv_level"
+                                android:layout_width="@dimen/fragment_newhome_level_height"
+                                android:layout_height="@dimen/fragment_newhome_level_height"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:src="@drawable/newhome_level2"/>
+                        </RelativeLayout>
                     </RelativeLayout>
 
                 </RelativeLayout>
@@ -63,7 +77,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/ui_10_dip"
+                    android:paddingRight="@dimen/ui_10_dip">
 
                     <include
                         android:id="@+id/fragment_newhome_renshu_lay"
@@ -91,13 +107,21 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <include android:id="@+id/fragment_newhome_qian_lay" layout="@layout/comment_fragment_newhome_downlay"/>
+                    <include
+                        android:id="@+id/fragment_newhome_qian_lay"
+                        layout="@layout/comment_fragment_newhome_downlay"/>
 
-                    <include android:id="@+id/fragment_newhome_yaoqing_lay" layout="@layout/comment_fragment_newhome_downlay"/>
+                    <include
+                        android:id="@+id/fragment_newhome_yaoqing_lay"
+                        layout="@layout/comment_fragment_newhome_downlay"/>
 
-                    <include android:id="@+id/fragment_newhome_libao_lay" layout="@layout/comment_fragment_newhome_downlay"/>
+                    <include
+                        android:id="@+id/fragment_newhome_libao_lay"
+                        layout="@layout/comment_fragment_newhome_downlay"/>
 
-                    <include android:id="@+id/fragment_newhome_temai_lay" layout="@layout/comment_fragment_newhome_downlay"/>
+                    <include
+                        android:id="@+id/fragment_newhome_temai_lay"
+                        layout="@layout/comment_fragment_newhome_downlay"/>
 
                 </LinearLayout>
                 <!-- 下边布局*** -->
