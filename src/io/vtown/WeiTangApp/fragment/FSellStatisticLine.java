@@ -120,20 +120,22 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
         // 为每个对应的i设置相应的label(显示在X轴)
         // }
         boolean IsNoData = true;
-        int MaxNumber = 0;
+        float MaxNumber = 0;
         int Sizeleght = 0;
         for (int i = 0; i < datass.size(); i++) {
 
             int MyValue = StrUtils.toInt(datass.get(i).getValue());
 
             mPointValues.add(new PointValue(i, IsPeople ? (int) MyValue
-                    : (float) (MyValue / 100)));
+                    : ((float) MyValue / 100)));
             if (IsPeople) {
                 if (MyValue >= MaxNumber)
                     MaxNumber = MyValue;
             } else {
-                if ((int) (MyValue / 100) >= MaxNumber)
-                    MaxNumber = (int) (MyValue / 100);
+                if (((float) MyValue / 100) >= MaxNumber)
+                    MaxNumber = (float) MyValue / 100;
+
+
             }
 
             if (MyValue > 0) {
@@ -143,9 +145,10 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
                     .getDate())));
         }
 
-        Sizeleght = StrUtils.toStr(MaxNumber).length();
+        Sizeleght = StrUtils.toStr1(MaxNumber).length();
         if (IsNoData == true) {
-            // sssss
+            ShowNoDsataShow();
+            // ssssss
             fragment_sellstatistics_line.setVisibility(View.GONE);
             fragment_shopline_nodata_lay.setVisibility(View.VISIBLE);
             return;
@@ -157,6 +160,7 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
                 getResources().getColor(R.color.app_fen)).setCubic(true);
         // line.setPointColor(getResources().getColor(R.color.gold));
         line.setShape(ValueShape.CIRCLE);
+
         line.setHasPoints(true);
 //        line.setFilled(true);
         line.setStrokeWidth(1);
@@ -233,17 +237,22 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
     // }
 
     /**
-     * 设置4个边距
+     * 设置无数据时候的提示语
      */
-    // private Viewport initViewPort() {
-    // Viewport viewport = new Viewport();
-    // viewport.top = 100;
-    // viewport.bottom = 40;
-    // viewport.left = -10;
-    // viewport.right = 90;
-    //
-    // return viewport;
-    // }
+    private void ShowNoDsataShow() {
+        switch (CurrentPage) {
+            case 0:
+                ShowErrorCanLoad(getResources().getString(R.string.noincome));
+                break;
+            case 1:
+                ShowErrorCanLoad(getResources().getString(R.string.nosell));
+                break;
+            case 2:
+                ShowErrorCanLoad(getResources().getString(R.string.nofangke));
+                break;
+        }
+    }
+
     private void TextClickControl(int Postion) {
 
         for (int i = 0; i < textViews.size(); i++) {
@@ -278,17 +287,18 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
             case R.id.fragment_sellstatistics_bt1:
                 CurrentPage = 0;
                 TextClickControl(CurrentPage);
-
+                IsPeople = false;
                 break;
             case R.id.fragment_sellstatistics_bt2:
                 CurrentPage = 1;
                 TextClickControl(CurrentPage);
-
+                IsPeople = false;
                 break;
             case R.id.fragment_sellstatistics_bt3:
                 CurrentPage = 2;
                 TextClickControl(CurrentPage);
 
+                IsPeople = true;
                 break;
             default:
                 break;

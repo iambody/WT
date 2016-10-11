@@ -9,7 +9,7 @@
         android:id="@+id/fragment_newhome_iv_layaa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/app_fen"
+        android:background="@color/red"
         android:orientation="horizontal">
 
         <ImageView

@@ -142,7 +142,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/line_size1</item>
         <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:src">@color/app_fen</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:src">@color/app_line</item>
     </style>
     <!-- Textview作为BT时候的btstlye（粉红色按钮） -->
     <style name="bt_textview">

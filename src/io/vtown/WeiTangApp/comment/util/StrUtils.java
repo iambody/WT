@@ -182,7 +182,10 @@ public class StrUtils {
 
         return tag + "";
     }
+    public static String toStr1(float tag) {
 
+        return tag + "";
+    }
     /**
      * 分时线的 时间节点数据解析
      */

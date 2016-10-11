@@ -38,7 +38,7 @@
     <string name="xlistview_header_hint_normal">下拉刷新</string>
     <string name="xlistview_header_last_time">上次更新时间:</string>
     <string name="xlistview_footer_hint_ready">查看更多</string>
-    <string name="xlistview_footer_hint_normal">更多</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_header_hint_ready">松开刷新数据</string>
     <string name="xlistview_header_hint_loading">加载中···</string>
     <string name="loading">加载中···</string>
@@ -595,7 +595,7 @@
     <string name="shop_no_good">暂无商品</string>
     <string name="newgoodedite_good_vidoo">(仅供商品详情页视频播放展示使用,请谨慎修改)</string>
     <string name="newgoodedit_good_roll">(仅供商品详情页面轮播图展示使用,请谨慎修改)</string>
-    <string name="no_shopbus">您的购物车空空如也,点我挑选商品吧</string>
+    <string name="no_shopbus">购物车无宝贝,点我挑选商品吧</string>
     <string name="error_fuwuqi1">服务器异常1</string>
     <string name="error_fuwuqi2">服务器异常2</string>
     <string name="error_fuwuqi3">服务器异常3</string>
@@ -631,6 +631,14 @@
     <string name="newhome_renshu">邀请人数</string>
     <string name="newhome_myjifen">我的积分</string>
     <string name="newhome_fanyong">返佣金额</string>
+    <string name="newhome_qiandao">今日签到</string>
+    <string name="newhome_yaoqing">邀请好友</string>
+    <string name="newhome_libao">激活礼包</string>
+    <string name="newhome_temai">特卖专区</string>
+    <string name="noincome">还没有收入哦</string>
+    <string name="nosell">没有销量,加油哦</string>
+    <string name="nofangke">没有访客哦</string>
+    <string name="sousoushop_nodata">暂未搜索到店铺</string>
 
 
 </resources>

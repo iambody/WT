@@ -74,7 +74,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     protected void InItBaseView() {
         setContentView(R.layout.activity_maintab);
         EventBus.getDefault().register(this, "ReciverChangMainTab", BMessage.class);
-        MBUser=Spuit.User_Get(this);
+        MBUser = Spuit.User_Get(this);
         FBaseInit();
         IBase();
         HindLoadData();
@@ -86,6 +86,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private void HindLoadData() {
 
     }
+
     private void InitIm() {
         msgReceiver = new NewMessageBroadcastReceiver();
         imUtile = new IMUtile(msgReceiver, this);
@@ -93,6 +94,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
                 Constants.ImPasd);
 
     }
+
     private void FBaseInit() {
         InitIm();
         // 检测升级
@@ -180,17 +182,14 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 
     @Override
     public void ListenerTabPostion(int postion) {
-        if (CurrentPostion == postion) {
-            PromptManager.ShowCustomToast(BaseContext, "无用");
-            return;
-        }
+
         if (postion == 2) {
             maintab_shopbus.SetIsShowTage(false);
         }
         if (CurrentPostion == 4) {//当前处于show的fragment
             maintab_show_iv.setImageResource(R.drawable.tab3_f_nor);
             switchContent(CurrentFragment, Fragments.get(postion), R.id.maintab_fragmentlay);
-//            CurrentFragment = Fragments.get(postion);
+
             CurrentPostion = postion;
             return;
         }
@@ -219,7 +218,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         }
         maintab_show_iv.setImageResource(R.drawable.tab3_f_pre);
         switchContent(CurrentFragment, FMainShow, R.id.maintab_fragmentlay);
-//        CurrentFragment = FMainShow;
+
         CurrentPostion = 4;
     }
 
@@ -242,9 +241,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
                 RadioButtons.get(1).setRadioButtonChecked(false);
                 RadioButtons.get(2).setRadioButtonChecked(true);
                 RadioButtons.get(3).setRadioButtonChecked(false);
-//                getSupportFragmentManager().beginTransaction().hide(CurrentFragment);
-//                switchContent1( Fragments.get(2), R.id.maintab_fragmentlay);
-//                CurrentFragment = FMainShopBus;
+
                 CurrentPostion = 2;
 
                 break;
@@ -379,6 +376,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
             }
         });
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

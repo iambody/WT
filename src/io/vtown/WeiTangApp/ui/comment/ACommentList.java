@@ -253,7 +253,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
 //
 //        acomment_list.hidefoot();
 
-        IDataView(acomment_list, comment_nodata_lay, NOVIEW_INITIALIZE);
+        IDataView(commengt_list_refrash, comment_nodata_lay, NOVIEW_INITIALIZE);
         comment_nodata_lay.setOnClickListener(this);
 
         // center的商品关注，店铺收藏，浏览记录的缓存
@@ -264,7 +264,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     // PromptManager.ShowCustomToast(BaseContext, "缓存商品");
                     List<BLComment> DATA = JSON.parseArray(GoodsStr,
                             BLComment.class);
-                    IDataView(acomment_list, comment_nodata_lay, NOVIEW_RIGHT);
+                    IDataView(commengt_list_refrash, comment_nodata_lay, NOVIEW_RIGHT);
                     commentAdapter.Refrsh(DATA);
 
                 }
@@ -276,7 +276,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     // PromptManager.ShowCustomToast(BaseContext, "缓存店铺");
                     List<BLComment> DATA = JSON.parseArray(ShopsStr,
                             BLComment.class);
-                    IDataView(acomment_list, comment_nodata_lay, NOVIEW_RIGHT);
+                    IDataView(commengt_list_refrash, comment_nodata_lay, NOVIEW_RIGHT);
                     commentAdapter.Refrsh(DATA);
                 }
 
@@ -288,7 +288,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
 
                     List<BLComment> DATA = JSON.parseArray(LiuLanStr,
                             BLComment.class);
-                    IDataView(acomment_list, comment_nodata_lay, NOVIEW_RIGHT);
+                    IDataView(commengt_list_refrash, comment_nodata_lay, NOVIEW_RIGHT);
                     commentAdapter.Refrsh(DATA);
                 }
                 break;
@@ -664,7 +664,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                 right_txt.setVisibility(View.GONE);
             }
 
-            IDataView(acomment_list, comment_nodata_lay, NOVIEW_ERROR);
+            IDataView(commengt_list_refrash, comment_nodata_lay, NOVIEW_ERROR);
             DataError(Constants.SucessToError, Data.getHttpLoadType());
             ShowErrorCanLoad(getResources().getString(R.string.no_doudou_goods));
 
@@ -710,7 +710,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     right_txt.setVisibility(View.VISIBLE);
                 }
 
-                IDataView(acomment_list, comment_nodata_lay, NOVIEW_RIGHT);
+                IDataView(commengt_list_refrash, comment_nodata_lay, NOVIEW_RIGHT);
                 break;
             case LOAD_REFRESHING:
                 Message m = new Message();
@@ -765,7 +765,12 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     if (!StrUtils.isEmpty(CacheUtil.Guanzhu_Good_Get(BaseContext)))
                         break;
                 }
-
+                if (Tage_SouGoodResultItem == Tage_Result) {//搜索无结果
+//                    IDataView(acomment_list, comment_nodata_lay, NOVIEW_ERROR);
+                    ShowErrorCanLoad(error);
+                            ShowErrorIv(R.drawable.error_sou);
+                    ShowErrorIv(R.drawable.error_sou);
+                }
                 if (Tage_Result == Tage_ACenterShopCollect) {// 店铺收藏
                     if (!StrUtils.isEmpty(CacheUtil.Guanzhu_Shop_Get(BaseContext)))
                         break;
@@ -784,7 +789,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                 }
 
                 PromptManager.ShowCustomToast(BaseContext, error);
-                IDataView(acomment_list, comment_nodata_lay, NOVIEW_ERROR);
+                IDataView(commengt_list_refrash, comment_nodata_lay, NOVIEW_ERROR);
                 break;
             case LOAD_REFRESHING:
                 Message m = new Message();
@@ -1140,7 +1145,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
 
 
 				/*
-				 * ImageLoaderUtil.Load2(data.getCover(),
+                 * ImageLoaderUtil.Load2(data.getCover(),
 				 * myJunior.rl_my_superior_item_bag, R.drawable.error_iv2);
 				 */
                     StrUtils.SetTxt(myJunior.tv_my_junior_shop_title,

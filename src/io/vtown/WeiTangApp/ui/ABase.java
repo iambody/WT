@@ -68,6 +68,7 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -235,6 +236,9 @@ public class ABase extends Activity {
                               int Method, final int Tage, final int LoadType) {
         if (!NetUtil.isConnected(BaseContext)) {//检查网络
             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
+            mHttpDataLisenter.onError("网络断开", LoadType);
+            PromptManager.closeLoading();
+            PromptManager.closetextLoading();
             return;
         }
         if (Method == com.android.volley.Request.Method.DELETE) {// Delete请求需要通过body体去操作
@@ -469,9 +473,12 @@ public class ABase extends Activity {
     }
 
     protected void ShowErrorCanLoad(String ErrorTxt) {
+        if(StrUtils.ISNullStr(ErrorTxt))return;
         ((TextView) findViewById(R.id.error_kong)).setText(ErrorTxt);
     }
-
+    protected void ShowErrorIv(int  ResouceId) {
+        ((ImageView) findViewById(R.id.iv_error)).setImageResource(ResouceId);
+    }
     /**
      * 左右选择弹出框的封装
      */

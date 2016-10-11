@@ -11,17 +11,21 @@
     >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/comment_fragment_newhome_downlay_iv"
+        android:layout_width="@dimen/fragment_newhome_downlayiv_height"
+        android:layout_height="@dimen/fragment_newhome_downlayiv_height"
         android:layout_gravity="center_horizontal"
+        android:padding="@dimen/line_size6"
         android:src="@drawable/newhome_down_qian"/>
 
     <TextView
+        android:id="@+id/comment_fragment_newhome_downlay_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/line_size6"
         android:text="签到"
-        android:textColor="@color/gray"/>
+        android:textColor="@color/gray"
+        android:textSize="@dimen/fragment_newhome_downlaytxt_size"/>
 
 </LinearLayout>

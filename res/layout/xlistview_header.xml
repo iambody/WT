@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#f2f2f2"
+    android:background="@color/white"
     android:gravity="bottom" >
 
     <RelativeLayout
@@ -49,8 +49,8 @@
 
         <io.vtown.WeiTangApp.comment.view.listview.SecondStepView
             android:id="@+id/second_step_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/xlistview_header_arrow"
             android:visibility="gone"
@@ -58,7 +58,7 @@
 
         <ImageView
             android:id="@+id/xlistview_header_arrow"
-            android:layout_width="wrap_content"
+            android:layout_width="16dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/xlistview_header_text"

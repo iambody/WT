@@ -73,7 +73,7 @@ public class LListViewHeader extends LinearLayout {
 		// mPBAnimation.setInterpolator(lin);
 
 		secondStepView = (SecondStepView) findViewById(R.id.second_step_view);
-		secondStepView.setBackgroundResource(R.drawable.second_step_animation);
+		secondStepView.setBackgroundResource(R.drawable.second_step_animation);//second_step_animation
 		secondAnimation = (AnimationDrawable) secondStepView.getBackground();
 
 		mRotateUpAnim = new RotateAnimation(0.0f, -180.0f,

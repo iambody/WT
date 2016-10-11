@@ -48,6 +48,7 @@ import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.account.AOderBeing;
+import io.vtown.WeiTangApp.ui.ui.ANewHome;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
@@ -236,6 +237,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
             maintab_shopbus_down_lay.setVisibility(View.GONE);
             IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
             ShowErrorCanLoad(getResources().getString(R.string.no_shopbus));
+            ShowErrorIv(R.drawable.error_shopbus);
             NoGood = true;
             if (Type == REFRESHING) {
 //                    maintab_shopbus_ls.stopRefresh();
@@ -262,6 +264,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
             Spuit.ShopBusNumber_Save(BaseContext, 0);
             Send(AllNumber);
             ShowErrorCanLoad(getResources().getString(R.string.no_shopbus));
+            ShowErrorIv(R.drawable.error_shopbus);
             NoGood = true;
         }
         if (bComment.getPT() != null && bComment.getCG() == null) {// 只有普通的没有采购的
@@ -1001,7 +1004,8 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
             case R.id.maintab_shopbus_nodata_lay:
                 if (NoGood) {//标识是没有商品
                     //TODO去跳转到新 商品首页的列表！！！！！！！！！！！！！！！！！！！！！
-                    PromptManager.ShowCustomToast(BaseContext,"跳转到商品列表");
+//                    PromptManager.ShowCustomToast(BaseContext,"跳转到商品列表");
+                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ANewHome.class));
                 } else
                     IData(INITIALIZE);
                 break;

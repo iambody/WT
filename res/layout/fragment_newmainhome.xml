@@ -91,13 +91,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <include layout="@layout/comment_fragment_newhome_downlay"/>
+                    <include android:id="@+id/fragment_newhome_qian_lay" layout="@layout/comment_fragment_newhome_downlay"/>
 
-                    <include layout="@layout/comment_fragment_newhome_downlay"/>
+                    <include android:id="@+id/fragment_newhome_yaoqing_lay" layout="@layout/comment_fragment_newhome_downlay"/>
 
-                    <include layout="@layout/comment_fragment_newhome_downlay"/>
+                    <include android:id="@+id/fragment_newhome_libao_lay" layout="@layout/comment_fragment_newhome_downlay"/>
 
-                    <include layout="@layout/comment_fragment_newhome_downlay"/>
+                    <include android:id="@+id/fragment_newhome_temai_lay" layout="@layout/comment_fragment_newhome_downlay"/>
 
                 </LinearLayout>
                 <!-- 下边布局*** -->

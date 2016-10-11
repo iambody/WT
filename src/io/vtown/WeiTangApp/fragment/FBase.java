@@ -26,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -266,7 +267,19 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
 
     }
 
+    /**
+     * 设置错误文字信息
+     * @param ErrorTxt
+     */
     protected void ShowErrorCanLoad(String ErrorTxt) {
         ((TextView) BaseView.findViewById(R.id.error_kong)).setText(ErrorTxt);
+    }
+
+    /**
+     * 显示错误或者空的信息
+     * @param ResouceId
+     */
+    protected void ShowErrorIv(int  ResouceId) {
+        ((ImageView) BaseView.findViewById(R.id.iv_error)).setImageResource(ResouceId);
     }
 }

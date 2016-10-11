@@ -176,7 +176,7 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
-                // TODO Auto-generated method stub
+
 
                 if (firstVisibleItem != 0) {
                     needToTop = true;

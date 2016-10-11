@@ -37,6 +37,7 @@ import android.widget.TextView;
  */
 public class ASouSouShop extends ATitileNoBase {
 	// private ImageView sousou_shop_iv;
+	private View shousoushop_show_nodata_lay;
 	private TextView sousou_shop_cancle_txt;
 	private EditText sousou_shop_ed;
 	// 数据源
@@ -89,6 +90,7 @@ public class ASouSouShop extends ATitileNoBase {
 	}
 
 	private void IView() {
+		shousoushop_show_nodata_lay=findViewById(R.id.shousoushop_show_nodata_lay);
 		soushop_outlay = (LinearLayout) findViewById(R.id.soushop_outlay);
 		soushop_outlay.setOnClickListener(this);
 		soushop_outlay.setVisibility(View.GONE);
@@ -100,7 +102,6 @@ public class ASouSouShop extends ATitileNoBase {
 		shop_sousou_name = (TextView) findViewById(R.id.shop_sousou_name);
 		shop_sousou_inf = (TextView) findViewById(R.id.shop_sousou_inf);
 
-//		shop_sousou_guanzhu = (TextView) findViewById(R.id.shop_sousou_guanzhu);
 
 	}
 
@@ -186,7 +187,11 @@ public class ASouSouShop extends ATitileNoBase {
 
 	@Override
 	protected void DataError(String error, int LoadTyp) {
-		PromptManager.ShowCustomToast(BaseContext, "暂未搜索到店铺");
+		PromptManager.ShowCustomToast(BaseContext,getResources().getString(R.string.sousoushop_nodata) );
+		ShowErrorCanLoad(getResources().getString(R.string.sousoushop_nodata) );
+		ShowErrorIv(R.drawable.error_sou);
+		IDataView(soushop_outlay, shousoushop_show_nodata_lay, NOVIEW_ERROR);
+
 	}
 
 	@Override

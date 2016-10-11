@@ -36,6 +36,7 @@ import io.vtown.WeiTangApp.comment.view.WaveView;
 import io.vtown.WeiTangApp.comment.view.custom.HomeScrollView;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
+import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.title.mynew.ANew;
 import io.vtown.WeiTangApp.ui.ui.ANewHome;
 import io.vtown.WeiTangApp.ui.ui.ASouSouGood;
@@ -71,6 +72,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     //邀请人数，我的积分，返佣金额
     private View fragment_newhome_renshu_lay, fragment_newhome_jifen_lay, fragment_newhome_yongjin_lay;
     private TextView Text_fragment_newhome_RenShu, Text_fragment_newhome_JiFen, Text_fragment_newhome_YongJin;
+    //签到,邀请，礼包,特卖
+    private View fragment_newhome_qian_lay, fragment_newhome_yaoqing_lay, fragment_newhome_libao_lay, fragment_newhome_temai_lay;
     //ButterKnife句柄
     private Unbinder unbinder;
     //WaveHelper句柄
@@ -86,6 +89,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     private void IBase() {
         fragmentNewhomeSrollviw.setOnRefreshListener(this);
         fragmentNewhomeInsrollviw.setScrolListener(this);
+        //上边布局
         fragment_newhome_putitle_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_renshu_lay);
         fragment_newhome_renshu_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_renshu_lay);
         fragment_newhome_jifen_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_jifen_lay);
@@ -93,21 +97,28 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         SetDownTitle(fragment_newhome_renshu_lay, getResources().getString(R.string.newhome_renshu));
         SetDownTitle(fragment_newhome_jifen_lay, getResources().getString(R.string.newhome_myjifen));
         SetDownTitle(fragment_newhome_yongjin_lay, getResources().getString(R.string.newhome_fanyong));
+        //下边布局
+        fragment_newhome_qian_lay= ViewHolder.get(BaseView, R.id.fragment_newhome_qian_lay);
+        fragment_newhome_yaoqing_lay= ViewHolder.get(BaseView, R.id.fragment_newhome_yaoqing_lay);
+        fragment_newhome_libao_lay= ViewHolder.get(BaseView, R.id.fragment_newhome_libao_lay);
+        fragment_newhome_temai_lay= ViewHolder.get(BaseView, R.id.fragment_newhome_temai_lay);
+        SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao),R.drawable.newhome_down_qian);
+        SetDownLay(fragment_newhome_yaoqing_lay, getResources().getString(R.string.newhome_yaoqing),R.drawable.newhome_down_freads);
+        SetDownLay(fragment_newhome_libao_lay, getResources().getString(R.string.newhome_libao),R.drawable.newhome_down_libao);
+        SetDownLay(fragment_newhome_temai_lay, getResources().getString(R.string.newhome_temai),R.drawable.newhome_down_temai);
+
+        fragmentNewhomeHeadIv.setBorderWidth(10);
+        fragmentNewhomeHeadIv.setBorderColor(getResources().getColor(R.color.transparent6));
+        //开始赋值
         Text_fragment_newhome_RenShu.setText("20");
         Text_fragment_newhome_JiFen.setText("4220");
         Text_fragment_newhome_YongJin.setText("42,10");
-        View VVV = ViewHolder.get(BaseView, R.id.fragment_newhome_putitle_lay);
-        fragmentNewhomeIvLaya = (LinearLayout) VVV.findViewById(R.id.fragment_newhome_iv_layaa);//ViewHolder.get(BaseView, R.id.fragment_newhome_iv_lay);
-        try {
-            fragmentNewhomeIvLaya.getBackground().setAlpha(0);
-        } catch (Exception e) {
-            Log.i("sss", e.toString());
-            Log.i("sss", e.toString());
-        }
-
+        fragmentNewhomeIvLaya = (LinearLayout) (ViewHolder.get(BaseView, R.id.fragment_newhome_putitle_lay)).findViewById(R.id.fragment_newhome_iv_layaa);//ViewHolder.get(BaseView, R.id.fragment_newhome_iv_lay);
+        fragmentNewhomeIvLaya.getBackground().setAlpha(0);
         IWave();
         IBindData();
         //解决冲突
+        fragmentNewhomeSrollviw .setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
         fragmentNewhomeInsrollviw.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
             public void onScrollChanged() {
@@ -117,7 +128,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     }
 
     /**
-     * 设置下边的标题
+     * 设置上边下边的标题
      */
     private void SetDownTitle(View V, String Downtitle) {
         V.setOnClickListener(this);
@@ -133,6 +144,12 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 Text_fragment_newhome_YongJin = (TextView) V.findViewById(R.id.comment_fragment_newhome_updatalay_uptxt);
                 break;
         }
+    }
+    //设置下边
+    private void SetDownLay(View V, String Downtitle,int ResouceId){
+        V.setOnClickListener(this);
+        ((TextView) V.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setText(Downtitle);
+        ((ImageView) V.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(ResouceId);
     }
 
     //设置banner
@@ -229,7 +246,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                         ANew.class));
                 break;
             case R.id.fragment_newhome_head_iv:
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
                 break;
             case R.id.fragment_newhome_renshu_lay:
                 PromptManager.ShowCustomToast(BaseContext, "跳转人数");
@@ -240,8 +257,19 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             case R.id.fragment_newhome_yongjin_lay:
                 PromptManager.ShowCustomToast(BaseContext, "跳转佣金");
                 break;
-
-
+            case  R.id.fragment_newhome_temai_lay://特卖专区
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
+                break;
+//            fragment_newhome_qian_lay, fragment_newhome_yaoqing_lay, fragment_newhome_libao_lay
+            case R.id.fragment_newhome_qian_lay://签到
+                PromptManager.ShowCustomToast(BaseContext, "已签到");
+                break;
+            case R.id.fragment_newhome_yaoqing_lay://邀请好友
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AMyInviteCode.class));
+                break;
+            case R.id.fragment_newhome_libao_lay://激活礼包
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
+                break;
         }
     }
 
@@ -258,8 +286,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //            PromptManager.ShowCustomToast(BaseContext, "数据" + scrollY);
 //            back.getBackground().setAlpha(255);
 //            shopping_cart.getBackground().setAlpha(255);
-        } else if (scrollY >= 100 && scrollY < 860) {
-            fragmentNewhomeIvLaya.getBackground().setAlpha((scrollY - 500));
+        } else if (scrollY >= 100 && scrollY < 860) {//860
+            fragmentNewhomeIvLaya.getBackground().setAlpha((scrollY));//scrollY-100
 //            PromptManager.ShowCustomToast(BaseContext, "数据" + scrollY);
 //            back.getBackground().setAlpha(255 - (scrollY-100)/3);
 //            shopping_cart.getBackground().setAlpha(255 - (scrollY-100)/3);
@@ -273,7 +301,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
     @Override
     public void onRefresh() {
-
+        fragmentNewhomeSrollviw.setRefreshing(false);
     }
 
 
