@@ -47,7 +47,7 @@ import org.w3c.dom.Text;
  * @author 作者 易惠华 yihuihua@v-town.cc
  * @version 创建时间：2016-5-19 下午9:53:58 资产明细页面
  */
-public class APropertyDetail extends ATitleBase implements   IXListViewListener {
+public class APropertyDetail extends ATitleBase implements IXListViewListener {
 
     /**
      * 明细列表
@@ -79,7 +79,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
     /**
      * 获取数据成功页面
      */
-   // private LinearLayout center_my_property_detail_outlay;
+    // private LinearLayout center_my_property_detail_outlay;
     /**
      * 获取数据失败页面
      */
@@ -105,7 +105,6 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
     private void IData(int type, int LoadType) {
 
 
-
         HashMap<String, String> map = new HashMap<String, String>();
         // map.put("page_num",Constants.PageSize+"");
         map.put("member_id", user_Get.getId());
@@ -127,7 +126,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
             if (CurrentType == TAGE_ALL) {
                 LsAp.FrashData(dattaa);
             }
-        }else{
+        } else {
             PromptManager.showtextLoading(BaseContext,
                     getResources()
                             .getString(R.string.xlistview_header_hint_loading));
@@ -151,10 +150,10 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
         LsAp = new PropertyAdapter(R.layout.item_property_detail_outside);
         lv_property_detail_list.setAdapter(LsAp);
 
-		lv_property_detail_list.setPullRefreshEnable(true);
-		lv_property_detail_list.setPullLoadEnable(true);
-		lv_property_detail_list.setXListViewListener(this);
-		lv_property_detail_list.hidefoot();
+        lv_property_detail_list.setPullRefreshEnable(true);
+        lv_property_detail_list.setPullLoadEnable(true);
+        lv_property_detail_list.setXListViewListener(this);
+        lv_property_detail_list.hidefoot();
     }
 
     @Override
@@ -175,7 +174,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
                     center_my_property_detail_nodata_lay.setVisibility(View.VISIBLE);
                     center_my_property_detail_nodata_lay.setClickable(false);
                     String error_tip = "";
-                    switch (CurrentType){
+                    switch (CurrentType) {
                         case TAGE_ALL:
                             error_tip = getResources().getString(R.string.error_null_property_list);
                             break;
@@ -217,7 +216,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
                 lv_property_detail_list.setVisibility(View.VISIBLE);
                 center_my_property_detail_nodata_lay.setVisibility(View.GONE);
 
-               List<BLAPropertyDetail> list = getAllPropertyDetailList(dattaa);
+                List<BLAPropertyDetail> list = getAllPropertyDetailList(dattaa);
                 lastid = list.get(list.size() - 1).getId();
                 LsAp.FrashData(dattaa);
                 if (CurrentType == TAGE_ALL) {
@@ -258,13 +257,13 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
 
                 if (list1.size() < Constants.PageSize2) {
                     lv_property_detail_list.hidefoot();
-                   // property_detail_list_refrash.setCanLoadMore(false);
+                    // property_detail_list_refrash.setCanLoadMore(false);
                 }
 
 
                 break;
             case LOAD_LOADMOREING:
-               // property_detail_list_refrash.setLoading(false);
+                // property_detail_list_refrash.setLoading(false);
                 lv_property_detail_list.stopLoadMore();
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     return;
@@ -300,14 +299,12 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
         }
 
 
-
-
     }
 
 
-    private List<BLAPropertyDetail> getAllPropertyDetailList(List<BLAPropertyList> datas){
+    private List<BLAPropertyDetail> getAllPropertyDetailList(List<BLAPropertyList> datas) {
         List<BLAPropertyDetail> details = new ArrayList<BLAPropertyDetail>();
-        for(int i = 0;i< datas.size();i++){
+        for (int i = 0; i < datas.size(); i++) {
             details.addAll(datas.get(i).getList());
         }
         return details;
@@ -324,7 +321,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
                 center_my_property_detail_nodata_lay.setClickable(true);
                 ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
                 //IDataView(lv_property_detail_list, center_my_property_detail_nodata_lay, NOVIEW_ERROR);
-               // property_detail_list_refrash.setCanLoadMore(false);
+                // property_detail_list_refrash.setCanLoadMore(false);
                 break;
             case LOAD_REFRESHING:// 刷新数据
                 lv_property_detail_list.stopRefresh();
@@ -333,7 +330,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
                 break;
             case LOAD_LOADMOREING:// 加载更多
                 lv_property_detail_list.stopLoadMore();
-               // property_detail_list_refrash.setLoading(false);
+                // property_detail_list_refrash.setLoading(false);
 
 
                 break;
@@ -633,6 +630,8 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
                 item.tv_trade_state = ViewHolder.get(arg1, R.id.tv_trade_state);
                 item.tv_record_money = ViewHolder.get(arg1,
                         R.id.tv_record_money);
+                item.vertical_line_top = arg1.findViewById(R.id.vertical_line_top);
+                item.vertical_line_bottom = arg1.findViewById(R.id.vertical_line_bottom);
                 item.dot_view = (DotView) arg1.findViewById(R.id.dot_view);
 
                 item.tv_data = (TextView) arg1.findViewById(R.id.tv_data);
@@ -644,6 +643,14 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
                 item = (PropertyItem) arg1.getTag();
             }
 
+            if (0 == arg0) {
+                item.vertical_line_top.setVisibility(View.INVISIBLE);
+                item.vertical_line_bottom.setVisibility(View.VISIBLE);
+            }
+            if (data.size() - 1 == arg0) {
+                item.vertical_line_top.setVisibility(View.VISIBLE);
+                item.vertical_line_bottom.setVisibility(View.INVISIBLE);
+            }
             item.dot_view.SetDotColor(getRandomColor());
 
             StrUtils.SetTxt(item.tv_data, data.get(arg0).getDateStr());
@@ -688,7 +695,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
                             //item.tv_counter_fee.setText("免手续费");
                         }
                     }
-                    item.tv_record_money.setTextColor(getResources().getColor(R.color.greenyellow));
+                    item.tv_record_money.setTextColor(getResources().getColor(R.color.forestgreen));
                     item.tv_record_money.setText(String.format("- %1$s元", StrUtils.SetTextForMony(data.get(arg0).getPrice())));
                     item.tv_trade_state.setText(content);
                     break;
@@ -708,7 +715,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
                 case 4:
                     //item.tv_counter_fee.setVisibility(View.GONE);
                     item.tv_trade_state.setText("购物");
-                    item.tv_record_money.setTextColor(getResources().getColor(R.color.greenyellow));
+                    item.tv_record_money.setTextColor(getResources().getColor(R.color.forestgreen));
                     item.tv_record_money.setText(String.format("- %1$s元", StrUtils.SetTextForMony(data.get(arg0).getPrice())));
                     break;
 
@@ -716,7 +723,7 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
                     //item.tv_counter_fee.setVisibility(View.GONE);
                     if ("1".equals(data.get(arg0).getDirection())) {
                         item.tv_trade_state.setText("销售退款");
-                        item.tv_record_money.setTextColor(getResources().getColor(R.color.greenyellow));
+                        item.tv_record_money.setTextColor(getResources().getColor(R.color.forestgreen));
                         item.tv_record_money.setText(String.format("- %1$s元", StrUtils.SetTextForMony(data.get(arg0).getPrice())));
                     } else {
                         item.tv_trade_state.setText("购买退款");
@@ -774,6 +781,8 @@ public class APropertyDetail extends ATitleBase implements   IXListViewListener 
             TextView tv_data, tv_time, tv_record_desc, tv_trade_state, tv_status,
                     tv_record_money;// tv_counter_fee;
             DotView dot_view;
+
+            View vertical_line_top, vertical_line_bottom;
         }
 
         /**

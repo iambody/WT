@@ -1179,11 +1179,13 @@ public class ADaifaOrderModify extends ATitleBase {
 
             if (0 == position) {
                 express.top_line.setVisibility(View.INVISIBLE);
+                express.bottom_line.setVisibility(View.VISIBLE);
             }
 
-            // if (datas.size() - 1 == position) {
-            // express.bottom_line.setVisibility(View.INVISIBLE);
-            // }
+             if (datas.size() - 1 == position) {
+                 express.top_line.setVisibility(View.VISIBLE);
+                 express.bottom_line.setVisibility(View.INVISIBLE);
+             }
 
             StrUtils.SetTxt(express.tv_express_state, datas.get(position)
                     .getContext());

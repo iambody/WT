@@ -1156,6 +1156,12 @@ public class ACenterMyOrderDetail extends ATitleBase {
 			LayoutParams params = express.dot_view_center_order.getLayoutParams();
 			if (0 == position) {
 				express.top_line.setVisibility(View.INVISIBLE);
+				express.bottom_line.setVisibility(View.VISIBLE);
+			}
+			if(datas.size()-1 == position){
+				express.top_line.setVisibility(View.VISIBLE);
+				express.bottom_line.setVisibility(View.INVISIBLE);
+
 			}
 			express.dot_view_center_order.setLayoutParams(params);
 			StrUtils.SetTxt(express.tv_center_my_order_express_state, datas
