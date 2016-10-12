@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <LinearLayout
+        android:layout_width="80dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_all_integral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/select_home_item"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="全部"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/tv_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/select_home_item"
+            android:clickable="true"
+            android:padding="5dp"
+            android:gravity="center"
+            android:text="系统赠送"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/tv_past"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:padding="5dp"
+            android:background="@drawable/select_home_item"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="每日签到"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/tv_invite_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:padding="5dp"
+            android:background="@drawable/select_home_item"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="邀请注册"
+            android:textColor="@color/white" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/white"
+            />
+        <TextView
+            android:id="@+id/tv_friend_activation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@drawable/select_home_item"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="下级激活"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/white"
+            />
+        <TextView
+            android:id="@+id/tv_own_buy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@drawable/select_home_item"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="我买商品"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/white"
+            />
+        <TextView
+            android:id="@+id/tv_friend_buy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@drawable/select_home_item"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="Ta买商品"
+            android:textColor="@color/white" />
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

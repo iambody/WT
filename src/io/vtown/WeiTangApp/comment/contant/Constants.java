@@ -890,6 +890,18 @@ public static int SouSouHeistory= 12;
 	 */
 	public static String Get_My_Show = Host
 			+ "/v1/show/show/myshowlist";
+
+	/**
+	 * 邀请直属下级列表
+	 */
+	public static String Invite_Friends = Host
+			+ "/v1/home/home/invitedlist";
+
+	/**
+	 * 积分明细
+	 */
+	public static String Integral_Detail = Host
+			+ "/v1/member/point/get-info";
 /**
  * 店铺内进行搜索
  */

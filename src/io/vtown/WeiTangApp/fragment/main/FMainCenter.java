@@ -32,6 +32,8 @@ import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
+import io.vtown.WeiTangApp.ui.title.AIntegralDetail;
+import io.vtown.WeiTangApp.ui.title.AInviteFriendRecord;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow;
@@ -39,6 +41,7 @@ import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
+import io.vtown.WeiTangApp.ui.title.shop.channel.AInviteRecord;
 import io.vtown.WeiTangApp.ui.ui.ARecyclerShow;
 
 /**
@@ -317,9 +320,10 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                         ACommentList.Tage_ACenterShopCollect));
                 break;
             case R.id.maintab_center_liulan_history://浏览记录
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
-                        ACommentList.Tage_ACenterGoodBrowseRecord));
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
+//                        ACommentList.Tage_ACenterGoodBrowseRecord));
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AIntegralDetail.class));
 
 
                 break;

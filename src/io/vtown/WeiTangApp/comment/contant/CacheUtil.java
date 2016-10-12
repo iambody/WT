@@ -97,6 +97,10 @@ public class CacheUtil {
 	 *  银行列表的数据的缓存
 	 */
 	private final static String SP_Bank_List = "banklist";
+	/**
+	 *  邀请好友的数据的缓存
+	 */
+	private final static String SP_My_Invite_Friend = "invitefriends";
 
 
 
@@ -369,6 +373,36 @@ public class CacheUtil {
 		Editor editor = Sp.edit();
 
 		editor.putString("my_coupons", cache);
+
+		editor.commit();
+	}
+
+
+	/**
+	 * 获取邀请好友列表缓存
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static String My_Invite_Friends_Get(Context context) {
+		SharedPreferences Sp = context.getSharedPreferences(
+				SP_My_Invite_Friend, Context.MODE_PRIVATE);
+		return Sp.getString("my_invite", "");
+	}
+
+	/**
+	 * 邀请好友列表
+	 *
+	 * @param pcContext
+	 * @param walletStr
+	 */
+	public static void My_Invite_Friends_Save(Context pcContext,
+									   String my_invite) {
+		SharedPreferences Sp = pcContext.getSharedPreferences(
+				SP_My_Invite_Friend, Context.MODE_PRIVATE);
+		Editor editor = Sp.edit();
+
+		editor.putString("my_invite", my_invite);
 
 		editor.commit();
 	}
