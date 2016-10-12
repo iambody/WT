@@ -15,6 +15,7 @@ import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.NetUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
@@ -141,8 +142,9 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
         user_Get = Spuit.User_Get(BaseContext);
         if (-1 == Sale_Status)
             return;
-        IView();
         SetTitleHttpDataLisenter(this);
+        IView();
+
         EventBus.getDefault().register(this, "DataNeddFrash", BMessage.class);
         LoadData(CurrentPage, INITIALIZE);
 
@@ -152,14 +154,8 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
     @Override
     public void onResume() {
         super.onResume();
-
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-
-        super.onViewCreated(view, savedInstanceState);
-    }
 
     // 加载列表
     private void LoadData(int page, int LoadType) {
@@ -236,7 +232,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
         brandAp = new BrandAp(R.layout.item_fragment_shop_good_manger_brand);
         fragment_shop_good_manger_brand_horizon_ls.setAdapter(brandAp);
         lv_comment_listview.setVisibility(View.VISIBLE);
-        tv_add_item.setVisibility(View.GONE);
+//        tv_add_item.setVisibility(View.GONE);
         switch (Sale_Status) {
             case 100:// 在售中
 
@@ -246,7 +242,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                 break;
             case 0:// 品牌商品ss
                 fragment_isbrand_lay.setVisibility(View.GONE);
-                tv_add_item.setVisibility(View.VISIBLE);
+//                tv_add_item.setVisibility(View.VISIBLE);
                 fragment_shop_good_manger_brand_horizon_ls
                         .setVisibility(View.VISIBLE);
                 // lv_comment_listview.setPullRefreshEnable(false);
@@ -958,6 +954,9 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                     dattaa = JSON.parseArray(Data.getHttpResultStr(),
                             BLGoodManger.class);
                     fragent_goodmanger_nodata_lay.setVisibility(View.GONE);
+                    if(Sale_Status==0){
+                        tv_add_item.setVisibility(View.VISIBLE);
+                    }
 
                 }
 
@@ -1171,8 +1170,6 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
 
     @Override
     public void onError(String error, int LoadType) {
-
-
         PromptManager.ShowCustomToast(BaseContext, error);
         switch (LoadType) {
             case INITIALIZE:

@@ -162,7 +162,7 @@ public class AInviteCode extends ATitleBase {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK ) {
-            PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity,AMain.class));
+            PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity,AMainTab.class));
             BaseActivity.finish();
             return true;
         }

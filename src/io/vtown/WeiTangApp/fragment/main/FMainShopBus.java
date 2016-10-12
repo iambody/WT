@@ -161,6 +161,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         maintab_shopbus_left_txt.setOnClickListener(this);
         maintab_shopbus_Right_iv.setOnClickListener(this);
         maintab_sopbus_bottom_jiesuan.setOnClickListener(this);
+        maintab_sopbus_bottom_select_iv.setOnClickListener(this);
     }
 
     public void ReciverBusMsg(BMessage MyMessage) {
@@ -661,8 +662,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         @Override
         public void onClick(View arg0) {
             SetIvSelect(MYvIEW, !busAdapter.getOutbooleans().get(Postion));
-            busAdapter.getOutbooleans().set(Postion,
-                    !busAdapter.getOutbooleans().get(Postion));
+            busAdapter.getOutbooleans().set(Postion, !busAdapter.getOutbooleans().get(Postion));
             for (int i = 0; i < busInAdapter.getCount(); i++) {
                 busInAdapter.getInSelect().set(i,
                         busAdapter.getOutbooleans().get(Postion));
@@ -1037,7 +1037,6 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         String AccountStr = "";
         String DeleteStr = "";
         // List<BLComment> ShopsLs = new ArrayList<BLComment>();
-
         List<BLShopBusIn> daComments = new ArrayList<BLShopBusIn>();
         for (int i = 0; i < busAdapter.getCount(); i++) {// 店铺的循环
             List<BLShopBusIn> inls = busAdapter.GetInAp().get(i).GetInLs();
@@ -1098,7 +1097,6 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         FBGetHttpData(map, Constants.ShopBus_Delete, Request.Method.DELETE, 1,
                 INITIALIZE);
     }
-
     /**
      * 删除购物车
      */
