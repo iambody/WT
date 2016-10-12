@@ -589,7 +589,7 @@
     <string name="no_zaishou_ziying">暂无在售自营商品</string>
     <string name="no_xiajia_brand">暂无下架品牌商品</string>
     <string name="no_xiajia_ziying">暂无下架自营商品</string>
-    <string name="no_brand_good">无品牌商品,点我申请品牌商吧</string>
+    <string name="no_brand_good">无品牌商品，点我申请代理品牌吧</string>
     <string name="no_laji_brand">暂无被删除品牌商品</string>
     <string name="no_laji_ziying">暂无被删除自营商品</string>
     <string name="shop_no_good">暂无商品</string>
@@ -639,6 +639,10 @@
     <string name="nosell">没有销量,加油哦</string>
     <string name="nofangke">没有访客哦</string>
     <string name="sousoushop_nodata">暂未搜索到店铺</string>
+    <string name="jifenguize">积分规则</string>
+    <string name="fanyongguize">返佣规则</string>
+    <string name="bindtag_yes">已绑定</string>
+    <string name="bindtag_no">未绑定</string>
 
     <!--邀请的好友-->
     <string name="invite_friends">邀请的好友</string>

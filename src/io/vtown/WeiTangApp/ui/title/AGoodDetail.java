@@ -917,8 +917,10 @@ public class AGoodDetail extends ATitleBase {
     private void InItPaGeView(List<String> data) {
         ArrayList<String> ssss = (ArrayList<String>) data;
         gooddetail_banner.setImageResources(ssss, ssss, new ImageCycleViewListener() {
+
+
                     @Override
-                    public void displayImage(String imageURL, ImageView imageView) {
+                    public void displayImage(String imageURL, ImageView imageView, int postion) {
                         ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
                     }
 

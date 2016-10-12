@@ -283,6 +283,11 @@ public class AGoodSort extends ATitleBase {
 
 	private ImageCycleViewListener mAdCycleViewListener = new ImageCycleViewListener() {
 		@Override
+		public void displayImage(String imageURL, ImageView imageView, int postion) {
+			ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
+		}
+
+		@Override
 		public void onImageClick(int position, View imageView) {
 
 			// PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
@@ -335,10 +340,10 @@ public class AGoodSort extends ATitleBase {
 
 		}
 
-		@Override
-		public void displayImage(String imageURL, ImageView imageView) {
-			ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
-		}
+//		@Override
+//		public void displayImage(String imageURL, ImageView imageView) {
+//			ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
+//		}
 	};
 
 	@Override

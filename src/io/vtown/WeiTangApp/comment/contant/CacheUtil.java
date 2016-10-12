@@ -93,10 +93,14 @@ public class CacheUtil {
 	 */
 	private final static String SP_Alipay_Manage = "alipaylist";
 
+    /**
+     * 银行列表的数据的缓存
+     */
+    private final static String SP_Bank_List = "banklist";
 	/**
 	 *  银行列表的数据的缓存
 	 */
-	private final static String SP_Bank_List = "banklist";
+//	private final static String SP_Bank_List = "banklist";
 	/**
 	 *  邀请好友的数据的缓存
 	 */

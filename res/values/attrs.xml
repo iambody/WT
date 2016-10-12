@@ -46,7 +46,10 @@
         <attr name="Dotradius" format="integer"></attr>
         <attr name="Dotcolor" format="color"></attr>
     </declare-styleable>
-
+    <declare-styleable name="RoundAngleImageView">
+        <attr name="roundWidth" format="dimension" />
+        <attr name="roundHeight" format="dimension" />
+    </declare-styleable>
     <string-array name="address">
         <item>北京</item>
         <item>柳州</item>

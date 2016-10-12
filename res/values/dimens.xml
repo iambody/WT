@@ -73,7 +73,7 @@
 
     <dimen name="item_my_new_head_iv_hright">40dip</dimen>
     <dimen name="ui_10_dip">10dip</dimen>
-
+    <dimen name="ui_20_dip">10dip</dimen>
     <!-- 活动专区 -->
     <dimen name="zhuanqu_item_height">180dp</dimen>
 
@@ -555,6 +555,7 @@
 
     <!-- 用户头像的宽高 -->
     <dimen name="shop_user_hright">46dp</dimen>
+    <dimen name="shop_user_width">34dp</dimen>
     <dimen name="shop_cover_height">180dp</dimen>
     <dimen name="shop_user_totop_hright">30dp</dimen>
 
@@ -609,6 +610,8 @@
     <dimen name="xls_foot_txt_size">12dp</dimen>
     <dimen name="login_aggren_size">12dp</dimen>
     <dimen name="fragment_newhome_level_height">25dp</dimen>
+    <dimen name="fragment_newhome_banner_title_size">24dp</dimen>
+    <dimen name="shop_user_hright_out">54dp</dimen>
 
 
 </resources>

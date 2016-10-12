@@ -954,7 +954,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                     dattaa = JSON.parseArray(Data.getHttpResultStr(),
                             BLGoodManger.class);
                     fragent_goodmanger_nodata_lay.setVisibility(View.GONE);
-                    if(Sale_Status==0){
+                    if (Sale_Status == 0) {
                         tv_add_item.setVisibility(View.VISIBLE);
                     }
 
@@ -967,17 +967,20 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                     if (Data.getHttpLoadType() == INITIALIZE) {
                         switch (Sale_Status) {
                             case 100://在售商品
-
+                                ShowErrorIv(R.drawable.error_goodmanger);
                                 ShowErrorCanLoad(getResources().getString(IsBrand ? R.string.no_zaishou_brand : R.string.no_zaishou_ziying));
                                 break;
                             case 20://下架商品
+                                ShowErrorIv(R.drawable.error_goodmanger);
                                 ShowErrorCanLoad(getResources().getString(IsBrand ? R.string.no_xiajia_brand : R.string.no_xiajia_ziying));
                                 break;
                             case 0://品牌详情
+
                                 ShowErrorCanLoad(getResources().getString(R.string.no_brand_good));
                                 ShowErrorIv(R.drawable.ic_jiahao_nor);
                                 break;
                             case 1://垃圾箱
+                                ShowErrorIv(R.drawable.error_goodmanger);
                                 ShowErrorCanLoad(getResources().getString(IsBrand ? R.string.no_laji_brand : R.string.no_laji_ziying));
 
                                 break;
@@ -1173,6 +1176,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
         PromptManager.ShowCustomToast(BaseContext, error);
         switch (LoadType) {
             case INITIALIZE:
+
                 ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
                 fragent_goodmanger_nodata_lay.setVisibility(View.VISIBLE);
                 break;
@@ -1365,6 +1369,10 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
         switch (v.getId()) {
             case R.id.fragent_goodmanger_nodata_lay:
                 if (Sale_Status == 0) {//品牌商品点击申请
+                    if (!NetUtil.isConnected(BaseContext)) {
+                        PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
+                        return;
+                    }
                     PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandList.class));
                     return;
                 }

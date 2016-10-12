@@ -149,6 +149,7 @@ public class Spuit {
         Shop_Save(XX, new BShop());
         Show_SaveStr(XX, "");
         ShopBus_Save(XX,"");
+        CacheUtil.NewHome_Save(XX,"");
         InvitationCode_Set(XX, false);
         //
         CacheUtil.ClearnCache(XX);// 清除列表的缓存

@@ -30,11 +30,13 @@ import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.ImagePathConfig;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.SdCardUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.PullScrollView;
+import io.vtown.WeiTangApp.comment.view.RoundAngleImageView;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.listview.SecondStepView;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
@@ -64,7 +66,7 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     //背景
     private ImageView fragment_main_iv_shop_cover;
     //头像
-    private CircleImageView fragment_main_tab_shop_iv;
+    private RoundAngleImageView fragment_main_tab_shop_iv;
     //店铺名字
     private TextView fragment_main_tab_shop_name;
     //店铺描述
@@ -108,13 +110,13 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
 //        fragment_main_shop_out_scrollview = (PullScrollView) BaseView.findViewById(R.id.fragment_main_shop_out_scrollview);
 //        fragment_main_shop_load_head_iv = (SecondStepView) BaseView.findViewById(R.id.fragment_main_shop_load_head_iv);
         fragment_main_iv_shop_cover = (ImageView) BaseView.findViewById(R.id.fragment_main_iv_shop_cover);
-        fragment_main_tab_shop_iv = (CircleImageView) BaseView.findViewById(R.id.fragment_main_tab_shop_iv);
+        fragment_main_tab_shop_iv = (RoundAngleImageView) BaseView.findViewById(R.id.fragment_main_tab_shop_iv);
         fragment_main_tab_shop_name = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_name);
         fragment_main_tab_shop_sign = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_sign);
 
 //设置头像的border
-        fragment_main_tab_shop_iv.setBorderWidth(10);
-        fragment_main_tab_shop_iv.setBorderColor(getResources().getColor(R.color.transparent6));
+//        fragment_main_tab_shop_iv.setBorderWidth(10);
+//        fragment_main_tab_shop_iv.setBorderColor(getResources().getColor(R.color.transparent6));
         fragment_main_tab_shop_iv.setOnClickListener(this);
         fragment_main_iv_shop_cover.setOnClickListener(this);
         //累计收入
@@ -215,6 +217,61 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     }
 
     public void OnMainTabShop(BMessage myMessage) {
+
+            // myBShop = ;
+            int messageType = myMessage.getMessageType();
+            // if (messageType == BMessage.getTageShopData()) {
+            // ShowView(myBShop);
+            //
+            // }
+            switch (messageType) {
+                case BMessage.Tage_Main_To_ShowGaoSi:
+                    if (!StrUtils.isEmpty(myBShop.getCover()))
+                        ImageLoaderUtil.LoadGaosi(BaseContext, myBShop.getCover(),
+                                fragment_main_tab_shop_iv, R.color.app_fen, 1);
+                    break;
+                case BMessage.Tage_Shop_data_shopname_change:
+
+                    StrUtils.SetTxt(fragment_main_tab_shop_name, Spuit.Shop_Get(BaseContext)
+                            .getSeller_name());
+
+                    break;
+                case BMessage.Tage_Shop_data_desc_change:
+
+                    StrUtils.SetTxt(fragment_main_tab_shop_sign, Spuit.Shop_Get(BaseContext)
+                            .getIntro());
+
+                    break;
+                case BMessage.Tage_Shop_data_cover_change:
+                    ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
+                            fragment_main_tab_shop_iv, R.drawable.testiv);
+
+                    ImageLoaderUtil.LoadGaosi(BaseContext,
+                            Spuit.Shop_Get(BaseContext).getAvatar(), new ImageView(BaseContext),
+                            R.drawable.error_iv1, 2);
+
+
+                    break;
+                case BMessage.Tage_Shop_data_background_change:
+//			ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
+//					.getCover(), iv_shop_cover, R.drawable.item_shangji_iv, 0);
+                    File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
+                    SdCardUtils.delFile(CoverFile.toString());
+                    if (CoverFile.exists()) {// 已经存在了
+                        fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
+                                .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
+                    } else {
+                        ImageLoaderUtil.LoadGaosi(BaseContext,
+                                StrUtils.NullToStr(myBShop.getCover()), fragment_main_iv_shop_cover,
+                                R.color.app_fen, 1);
+
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
     }
 
     @Override
@@ -283,7 +340,6 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
                 } else {// 未获取数据 开始请求
                     IData(INITIALIZE);
                 }
-
                 break;
             case R.id.fragment_main_tab_shop_all_income_lay://累计收入
                 boolean isLogin_RenZheng_Set = Spuit

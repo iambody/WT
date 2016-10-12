@@ -1,19 +1,24 @@
 package io.vtown.WeiTangApp.fragment.main;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.io.File;
+import com.alibaba.fastjson.JSON;
+import com.android.volley.Request;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,7 +27,11 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.comment.contant.ImagePathConfig;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BLBanner;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
+import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -34,7 +43,7 @@ import io.vtown.WeiTangApp.comment.view.ImageCycleView;
 import io.vtown.WeiTangApp.comment.view.WaveView;
 import io.vtown.WeiTangApp.comment.view.custom.HomeScrollView;
 import io.vtown.WeiTangApp.fragment.FBase;
-import io.vtown.WeiTangApp.ui.comment.AphotoPager;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.title.mynew.ANew;
 import io.vtown.WeiTangApp.ui.ui.ANewHome;
@@ -59,13 +68,26 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     @BindView(R.id.fragment_newhome_head_iv)
     CircleImageView fragmentNewhomeHeadIv;//头像
     @BindView(R.id.fragment_newhome_banner)
-    ImageCycleView fragmentNewhomeBanner;//Banner
+    ImageCycleView fragmentNewhomeBanner;//Banner的句柄
     @BindView(R.id.fragment_newhome_srollviw)
-    SwipeRefreshLayout fragmentNewhomeSrollviw;
+    SwipeRefreshLayout fragmentNewhomeSrollviw;//外层刷新句柄
     @BindView(R.id.fragment_newhome_insrollviw)
     HomeScrollView fragmentNewhomeInsrollviw;//内层监控滑动
     @BindView(R.id.fragment_newhome_head_iv_level)
     ImageView fragmentNewhomeHeadIvLevel;//等级的图片
+    @BindView(R.id.fragment_newhome_banner_title)
+    TextView fragmentNewhomeBannerTitle;//Bannerd的title
+    @BindView(R.id.fragment_newhome_banner_lay)
+    RelativeLayout fragmentNewhomeBannerLay;//Bannerd的布局
+    @BindView(R.id.fragment_newhome_bt_jifem)
+    Button fragmentNewhomeBtJifem;//积分规则
+    @BindView(R.id.fragment_newhome_bt_fanyong)
+    Button fragmentNewhomeBtFanyong;//粉红规则
+    @BindView(R.id.fragment_newhome_username)
+    TextView fragmentNewhomeUsername;//用户名
+    @BindView(R.id.fragment_newhome_usertag)
+    TextView fragmentNewhomeUsertag;//用户标签
+
 
     private LinearLayout fragmentNewhomeIvLaya;
     //上边的title
@@ -80,12 +102,112 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     //WaveHelper句柄
     private WaveHelper mWaveHelper;
 
+    //用户信息
+    private BUser MyUser;
+
     @Override
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_newmainhome, null);
         unbinder = ButterKnife.bind(this, BaseView);
+        MyUser = Spuit.User_Get(BaseContext);
+        SetTitleHttpDataLisenter(this);
         IBase();
     }
+
+    /**
+     * 开始处理缓存数据//if存在先显示数据后偷偷加载数据else直接显示数据
+     */
+    private void ICacheData() {//TODO添加缓存操作
+        String CacheData = CacheUtil.NewHome_Get(BaseContext);
+        if (StrUtils.isEmpty(CacheData)) {//没有缓存
+            INetData(INITIALIZE);
+        } else {//有缓存
+            BindHomeData(JSON.parseObject(CacheData, BNewHome.class));
+            INetData(REFRESHING);
+        }
+
+    }
+
+    /**
+     * 请求数据
+     */
+    private void INetData(int Type) {
+        PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.loading));
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("member_id", MyUser.getMember_id());
+        map.put("seller_id", MyUser.getSeller_id());
+        FBGetHttpData(map, Constants.NewHome, Request.Method.GET, 0, Type);
+    }
+
+    /**
+     * 填充数据
+     */
+    private void BindHomeData(final BNewHome Data) {
+        //上边赋值
+        ImageLoaderUtil.Load2(Data.getCover(), fragmentNewhomeBg, R.drawable.error_iv1);
+        ImageLoaderUtil.Load2(Data.getAvatar(), fragmentNewhomeHeadIv, R.drawable.error_iv2);
+        StrUtils.SetTxt(Text_fragment_newhome_RenShu, Data.getMySub());//邀请人数
+        StrUtils.SetTxt(Text_fragment_newhome_JiFen, Data.getMySub());//我的积分
+        StrUtils.SetTxt(Text_fragment_newhome_YongJin, Data.getRebate());//我的f返佣
+        IPage(Data.getBanner());
+        StrUtils.SetTxt(fragmentNewhomeBannerTitle, Data.getBanner().get(0).getTitle());
+        StrUtils.SetTxt(fragmentNewhomeUsername, Data.getSeller_name());
+        if (Data.getBindstatus() == 1) {//绑定
+            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.bindtag_yes));
+        } else {//未绑定
+            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.bindtag_no));
+        }
+        //下边赋值
+
+    }
+
+    /**
+     * 开始初始化banner
+     *
+     * @param banner
+     */
+    private void IPage(final List<BLBanner> banner) {
+
+        //Banner赋值
+        fragmentNewhomeBanner.setImageResources(ChangeLs(banner), ChangeLs(banner), new ImageCycleView.ImageCycleViewListener() {
+                    @Override
+                    public void displayImage(String imageURL, ImageView imageView, int postion) {
+                        ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
+//                        StrUtils.SetTxt(fragmentNewhomeBannerTitle, Data.getBanner().get(postion).getTitle());
+                    }
+
+                    @Override
+                    public void onImageClick(int position, View imageView) {
+
+                    }
+                },
+                screenWidth * 3 / 5);
+        //防止冲突
+        fragmentNewhomeBanner.GetPage().setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_MOVE:
+                        fragmentNewhomeSrollviw.setEnabled(false);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        fragmentNewhomeSrollviw.setEnabled(true);
+                        break;
+                }
+                return false;
+            }
+        });
+        fragmentNewhomeBanner.SetPageChangeListener(new ImageCycleView.onPageChange() {
+            @Override
+            public void onPagerPostion(int Postion) {
+                StrUtils.SetTxt(fragmentNewhomeBannerTitle, banner.get(Postion).getTitle());
+            }
+        });
+        if (fragmentNewhomeBannerLay.getVisibility() != View.VISIBLE)
+            fragmentNewhomeBannerLay.setVisibility(View.VISIBLE);
+    }
+
 
     private void IBase() {
         fragmentNewhomeSrollviw.setOnRefreshListener(this);
@@ -117,7 +239,6 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         fragmentNewhomeIvLaya = (LinearLayout) (ViewHolder.get(BaseView, R.id.fragment_newhome_putitle_lay)).findViewById(R.id.fragment_newhome_iv_layaa);//ViewHolder.get(BaseView, R.id.fragment_newhome_iv_lay);
         fragmentNewhomeIvLaya.getBackground().setAlpha(0);
         IWave();
-        IBindData();
         //解决冲突
         fragmentNewhomeSrollviw.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
         fragmentNewhomeInsrollviw.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
@@ -126,7 +247,9 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 fragmentNewhomeSrollviw.setEnabled(fragmentNewhomeInsrollviw.getScrollY() == 0);
             }
         });
+        ICacheData();
     }
+
 
     /**
      * 设置上边下边的标题
@@ -154,45 +277,6 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         ((ImageView) V.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(ResouceId);
     }
 
-    //设置banner
-    private void InItPaGeView(List<String> data) {
-        ArrayList<String> ssss = (ArrayList<String>) data;
-        fragmentNewhomeBanner.setImageResources(ssss, ssss, new ImageCycleView.ImageCycleViewListener() {
-                    @Override
-                    public void displayImage(String imageURL, ImageView imageView) {
-                        ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
-                    }
-
-                    @Override
-                    public void onImageClick(int position, View imageView) {
-                        List<String> mStrings = fragmentNewhomeBanner.getMyImageUrlList();
-                        Intent mIntent = new Intent(BaseContext, AphotoPager.class);
-                        mIntent.putExtra("position", position);
-                        mIntent.putExtra("urls", StrUtils.LsToArray(mStrings));
-                        PromptManager.SkipActivity(BaseActivity, mIntent);
-                    }
-                },
-                screenWidth);
-    }
-
-    private void IBindData() {
-        //开始加载头像
-        File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
-        ImageLoaderUtil.Load2(StrUtils.NullToStr(Spuit.Shop_Get(BaseContext).getAvatar()),
-                fragmentNewhomeHeadIv, R.drawable.testiv);
-        if (CoverFile.exists()) {// 已经存在了
-            fragmentNewhomeBg.setImageBitmap(BitmapFactory
-                    .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
-        } else {
-            ImageLoaderUtil.LoadGaosi(BaseContext,
-                    StrUtils.NullToStr(Spuit.Shop_Get(BaseContext).getCover()), fragmentNewhomeBg,
-                    R.color.app_fen, 1);
-        }
-        //加载结束
-        List<String> Url = new ArrayList<String>();
-        Url.add("http://img0.imgtn.bdimg.com/it/u=2153708940,56816496&fm=21&gp=0.jpg");
-        InItPaGeView(Url);
-    }
 
     private void IWave() {
         fragmentNewhomeWaveview.setBorder(0, getResources().getColor(R.color.transparent));
@@ -203,6 +287,13 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     public void onResume() {
         super.onResume();
         mWaveHelper.start();
+        fragmentNewhomeBanner.startImageCycle();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        fragmentNewhomeBanner.pushImageCycle();
     }
 
     @Override
@@ -210,6 +301,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         super.onDestroyView();
         mWaveHelper.cancel();
         unbinder.unbind();
+        fragmentNewhomeBanner.pushImageCycle();
     }
 
     @Override
@@ -225,15 +317,31 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
     @Override
     public void getResult(int Code, String Msg, BComment Data) {
+        switch (Data.getHttpResultTage()) {
+            case 0:
+                if (Data.getHttpLoadType() == REFRESHING) {
+                    fragmentNewhomeSrollviw.setRefreshing(false);
+                }
+                BNewHome MBNewHome = JSON.parseObject(Data.getHttpResultStr(), BNewHome.class);
+                BindHomeData(MBNewHome);
+                CacheUtil.New_Save(BaseContext, Data.getHttpResultStr());
+                break;
+        }
+
 
     }
 
     @Override
     public void onError(String error, int LoadType) {
+        PromptManager.ShowCustomToast(BaseContext, error);
+        if (LoadType == REFRESHING) {
+            fragmentNewhomeSrollviw.setRefreshing(false);
+        }
+
 
     }
 
-    @OnClick({R.id.fragment_newhome_iv_sao, R.id.fragment_newhome_iv_sou, R.id.fragment_newhome_iv_new, R.id.fragment_newhome_head_iv})
+    @OnClick({R.id.fragment_newhome_iv_sao, R.id.fragment_newhome_iv_sou, R.id.fragment_newhome_iv_new, R.id.fragment_newhome_head_iv, R.id.fragment_newhome_bt_jifem, R.id.fragment_newhome_bt_fanyong, R.id.fragment_newhome_usertag})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fragment_newhome_iv_sao:
@@ -272,15 +380,25 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             case R.id.fragment_newhome_libao_lay://激活礼包
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
                 break;
+            case R.id.fragment_newhome_bt_jifem://积分
+                PromptManager.SkipActivity(BaseActivity, new Intent(
+                        BaseActivity, AWeb.class).putExtra(
+                        AWeb.Key_Bean,
+                        new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+                break;
+            case R.id.fragment_newhome_bt_fanyong://返佣
+                PromptManager.SkipActivity(BaseActivity, new Intent(
+                        BaseActivity, AWeb.class).putExtra(
+                        AWeb.Key_Bean,
+                        new BComment(Constants.Homew_FanYong, getResources().getString(R.string.fanyongguize))));
+                break;
+            case R.id.fragment_newhome_usertag://标签
+
+                break;
         }
     }
 
 
-    //    @Override
-//    public void BeginFrash() {
-//
-//    }
-//
     @Override
     public void onScroll(int scrollY) {
         if (scrollY < 100) {
@@ -304,15 +422,23 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
     @Override
     public void onRefresh() {
+        INetData(REFRESHING);
         fragmentNewhomeSrollviw.setRefreshing(false);
     }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
+    /***
+     * banner开始转化
+     *
+     * @param data
+     */
+    private ArrayList<String> ChangeLs(List<BLBanner> data) {
+        ArrayList<String> Myls = new ArrayList<String>();
+        for (int i = 0; i < data.size(); i++) {
+            Myls.add(data.get(i).getPic_path());
+        }
+        return Myls;
     }
+
+
 }

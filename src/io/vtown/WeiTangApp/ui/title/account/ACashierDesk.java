@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.ui.title.account;
 
 import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
@@ -21,6 +22,7 @@ import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
 import io.vtown.WeiTangApp.ui.afragment.AShopOderManage;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
+import io.vtown.WeiTangApp.ui.title.loginregist.ALogin;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
 import io.vtown.WeiTangApp.ui.ui.CaptureActivity;
 
@@ -875,28 +877,45 @@ public class ACashierDesk extends ATitleBase {
 	 * @param aa
 	 */
 	private void ShowRealAuthDialog() {
-		final CustomDialog dialog = new CustomDialog(BaseContext,
-				R.style.mystyle, R.layout.customdialog, 1, "取消", "去认证");
-		dialog.show();
-		dialog.setTitleText("您还没有进行实名认证");
-		dialog.setConfirmListener(new onConfirmClick() {
-			@Override
-			public void onConfirmCLick(View v) {
-				int from_where = 10;
 
+		ShowCustomDialog("您还没有进行实名认证", "取消", "去认证", new IDialogResult() {
+			@Override
+			public void RightResult() {
+				int from_where = 10;
 				PromptManager.SkipActivity(BaseActivity, new Intent(
 						BaseContext, ARealIdauth.class).putExtra(
 						ARealIdauth.FROM_WHERE_KEY, from_where));
 
-				dialog.dismiss();
 			}
-		});
-		dialog.setcancelListener(new oncancelClick() {
-			@Override
-			public void oncancelClick(View v) {
 
-				dialog.dismiss();
+			@Override
+			public void LeftResult() {
 			}
 		});
+
+
+//		final CustomDialog dialog = new CustomDialog(BaseContext,
+//				R.style.mystyle, R.layout.customdialog, 1, "取消", "去认证");
+//		dialog.show();
+//		dialog.setTitleText("您还没有进行实名认证");
+//		dialog.setConfirmListener(new onConfirmClick() {
+//			@Override
+//			public void onConfirmCLick(View v) {
+//				int from_where = 10;
+//
+//				PromptManager.SkipActivity(BaseActivity, new Intent(
+//						BaseContext, ARealIdauth.class).putExtra(
+//						ARealIdauth.FROM_WHERE_KEY, from_where));
+//
+//				dialog.dismiss();
+//			}
+//		});
+//		dialog.setcancelListener(new oncancelClick() {
+//			@Override
+//			public void oncancelClick(View v) {
+//
+//				dialog.dismiss();
+//			}
+//		});
 	}
 }

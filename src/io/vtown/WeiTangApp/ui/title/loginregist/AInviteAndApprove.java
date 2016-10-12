@@ -287,7 +287,7 @@ public class AInviteAndApprove extends ATitleBase {
                         .setBackgroundResource(R.drawable.select_fen_to_gray);
                 verification_getcode_bt.setText(getResources().getString(
                         R.string.txtresuorce_getcode));
-                times = 60;
+                times = 30;
                 sendedAuthCode = false;
                 return;
             }

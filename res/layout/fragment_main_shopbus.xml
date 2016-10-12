@@ -33,9 +33,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/tab_shopbus"
-            android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="@dimen/titlebar_size"
-            android:textColor="@color/white"/>
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:layout_width="@dimen/main_shopbus_sidewidth"
@@ -53,6 +53,7 @@
                 android:src="@drawable/lajixiang_iv"/>
         </RelativeLayout>
     </LinearLayout>
+
     <include
         android:id="@+id/fragment_main_shopbus_neterrorview"
         layout="@layout/net_status_bar_info_top"
@@ -82,8 +83,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_size1"
-            android:src="@color/app_fen"
-            android:visibility="gone"/>
+            android:src="@color/app_line"/>
 
         <LinearLayout
             android:id="@+id/maintab_shopbus_down_lay"
