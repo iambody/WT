@@ -112,6 +112,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                     return;
                 }
                 datas = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
+                CacheUtil.My_Invite_Friends_Save(BaseContext,Data.getHttpResultStr());
                 invite_friends_refrash.setVisibility(View.VISIBLE);
                 invite_friends_nodata_lay.setVisibility(View.GONE);
                 invite_friends_refrash.setRefreshing(false);

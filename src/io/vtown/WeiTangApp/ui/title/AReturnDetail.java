@@ -16,10 +16,15 @@ public class AReturnDetail extends ATitleBase {
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_return_detail);
+        IView();
+    }
+
+    private void IView() {
     }
 
     @Override
     protected void InitTile() {
+        SetTitleTxt(getString(R.string.return_detail));
 
     }
 

@@ -669,8 +669,7 @@
     <string name="integral_title_friend_buy">Ta买商品积分</string>
     <string name="no_new_integral_detail">\"亲，没有新的积分了哦~~~\"</string>
     <string name="no_more_integral_detail">\"亲，没有更多积分了哦~~~\"</string>
-
-
+    <string name="return_detail">返佣明细</string>
 
 
 </resources>

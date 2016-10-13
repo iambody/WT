@@ -287,6 +287,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 if (!TYPE_ALL.equals(Current_Type)) {
                     Current_Type = TYPE_ALL;
                     SetTitleTxt(getResources().getString(R.string.integral_title_all));
+                    lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
                 }
@@ -296,6 +297,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 if (!TYPE_SYSTEM.equals(Current_Type)) {
                     Current_Type = TYPE_SYSTEM;
                     SetTitleTxt(getResources().getString(R.string.integral_title_system1));
+                    lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
                 }
@@ -305,6 +307,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 if (!TYPE_PAST.equals(Current_Type)) {
                     Current_Type = TYPE_PAST;
                     SetTitleTxt(getResources().getString(R.string.integral_title_past));
+                    lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
                 }
@@ -314,6 +317,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 if (!TYPE_INVITE.equals(Current_Type)) {
                     Current_Type = TYPE_INVITE;
                     SetTitleTxt(getResources().getString(R.string.integral_title_invite));
+                    lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
                 }
@@ -323,6 +327,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 if (!TYPE_ACTIVATION.equals(Current_Type)) {
                     Current_Type = TYPE_ACTIVATION;
                     SetTitleTxt(getResources().getString(R.string.integral_title_activation));
+                    lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
                 }
@@ -332,6 +337,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 if (!TYPE_BUY_OWN.equals(Current_Type)) {
                     Current_Type = TYPE_BUY_OWN;
                     SetTitleTxt(getResources().getString(R.string.integral_title_own_buy));
+                    lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
                 }
@@ -341,6 +347,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 if (!TYPE_BUY_FRIEND.equals(Current_Type)) {
                     Current_Type = TYPE_BUY_FRIEND;
                     SetTitleTxt(getResources().getString(R.string.integral_title_friend_buy));
+                    lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
                 }
