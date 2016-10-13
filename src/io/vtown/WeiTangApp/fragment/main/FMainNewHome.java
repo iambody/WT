@@ -153,7 +153,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     /**
      * 填充数据
      */
-    private void BindHomeData(final BNewHome Data) {
+    private void BindHomeData(BNewHome Data) {
         //上边赋值
         ImageLoaderUtil.Load2(Data.getSellerinfo().getCover(), fragmentNewhomeBg, R.drawable.error_iv1);
         ImageLoaderUtil.Load2(Data.getSellerinfo().getAvatar(), fragmentNewhomeHeadIv, R.drawable.error_iv2);
@@ -163,11 +163,9 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         IPage(Data.getBanner());
         StrUtils.SetTxt(fragmentNewhomeBannerTitle, Data.getBanner().get(0).getTitle());
         StrUtils.SetTxt(fragmentNewhomeUsername, Data.getSellerinfo().getSeller_name());
-        if (Data.getBindstatus() == 1) {//绑定
-            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.bindtag_yes));
-        } else {//未绑定
-            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.bindtag_no));
-        }
+        //开始进行level的判定和设置
+        LevelSet(Data);
+
         //下边赋值
 
     }
@@ -208,7 +206,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                             case 3:// 店铺详情页!!!!!!!!!!!!!!!!!!!!!!!!需要修改
                                 BComment mBComment = new BComment(MBNewHome.getBanner().get(position).getSource_id(), MBNewHome.getBanner().get(position)
                                         .getTitle());
-                                if (MBNewHome.getBanner().get(position).getIs_brand()==1 ) {// 品牌店铺
+                                if (MBNewHome.getBanner().get(position).getIs_brand() == 1) {// 品牌店铺
                                     PromptManager.SkipActivity(BaseActivity, new Intent(
                                             BaseActivity, ABrandDetail.class).putExtra(
                                             BaseKey_Bean, mBComment));
@@ -300,6 +298,32 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         ICacheData();
     }
 
+    /**
+     * 进行level设置
+     * BindStatus==>1标识未绑定状态，2标识绑定未激活状态，3标识绑定已激活状态
+     * IsStar===>1标识普通店铺，2标识明细店铺
+     */
+    private void LevelSet(BNewHome Data) {
+        //判断绑定 状态
+        if (Data.getBindstatus() == 1) {//绑定
+            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.bindtag_yes));
+        } else {//未绑定
+            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.bindtag_no));
+        }
+//是否激活状态
+        if (Data.getIs_activate() == 1) {//已经激活
+
+        } else {//未激活
+
+        }
+
+//判断是否明细店铺状态
+        if (Data.getIsstar() == 1) {//明星店铺
+        } else {
+
+        }
+
+    }
 
     /**
      * 设置上边下边的标题

@@ -14,9 +14,9 @@ public class BNewHome extends BBase {
 //    private String avatar;//":"http://fs.v-town.cc/DefaultSellerAvatar.jpg",
     private String member_level;//等级":0,
     private String integral;//积分":1000,
-    private String isstar;//是否是明星店铺":0,
+    private int isstar;//是否是明星店铺":0,
     private String rebate;//返佣金额":"0.00",
-    private String is_activate;//是否激活":0,
+    private int is_activate;//是否激活":0,
     private int bindstatus;//是否绑定":1,
     private String mySub;//我邀请的人数":13,
     private String activitydata;//激活礼包数据 ":"",
@@ -67,11 +67,11 @@ public class BNewHome extends BBase {
         this.integral = integral;
     }
 
-    public String getIsstar() {
+    public int getIsstar() {
         return isstar;
     }
 
-    public void setIsstar(String isstar) {
+    public void setIsstar(int isstar) {
         this.isstar = isstar;
     }
 
@@ -83,11 +83,11 @@ public class BNewHome extends BBase {
         this.rebate = rebate;
     }
 
-    public String getIs_activate() {
+    public int getIs_activate() {
         return is_activate;
     }
 
-    public void setIs_activate(String is_activate) {
+    public void setIs_activate(int is_activate) {
         this.is_activate = is_activate;
     }
 

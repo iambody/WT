@@ -8,6 +8,7 @@
 
 
     <dimen name="shop_user_hright">76dp</dimen>
+    <dimen name="shop_user_hright1">80dp</dimen>
     <dimen name="show_share_grad_delet_panding">5dp</dimen>
     <dimen name="newgoodedit_vido_height">160dp</dimen>
     <dimen name="good_upload_vido_iv_height">100dp</dimen>

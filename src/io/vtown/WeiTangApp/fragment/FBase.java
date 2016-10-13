@@ -52,7 +52,7 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
      * 获取HTtp数后的接口 供给子类暴露接口
      */
     protected IHttpResult<BComment> mHttpDataLisenter;
-
+    protected NHttpBaseStr mBaseStr;
     protected Context BaseContext;
 
     protected Activity BaseActivity;
@@ -99,6 +99,19 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
     @Override
     public void onPause() {
         super.onPause();
+        mBaseStr.CancleNet();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mBaseStr.CancleNet();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mBaseStr.CancleNet();
     }
 
     /**
@@ -122,10 +135,11 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
     /**
      * 刚进来时候需要判断是否有网络
      */
-    public void CheckNet(){
-        if(null==neterrorview)return;
-        neterrorview.setVisibility(NetUtil.isConnected(BaseContext)?View.GONE:View.VISIBLE);
+    public void CheckNet() {
+        if (null == neterrorview) return;
+        neterrorview.setVisibility(NetUtil.isConnected(BaseContext) ? View.GONE : View.VISIBLE);
     }
+
     public void callGoodHandle() {
 
     }
@@ -196,7 +210,7 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
             mBaseStr.getData(Host, Map, Method);
         } else {
 
-            NHttpBaseStr mBaseStr = new NHttpBaseStr(BaseContext);
+            mBaseStr = new NHttpBaseStr(BaseContext);
             mBaseStr.setPostResult(new IHttpResult<String>() {
                 @Override
                 public void onError(String error, int LoadTyp) {
@@ -277,6 +291,7 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
 
     /**
      * 设置错误文字信息
+     *
      * @param ErrorTxt
      */
     protected void ShowErrorCanLoad(String ErrorTxt) {
@@ -285,9 +300,10 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
 
     /**
      * 显示错误或者空的信息
+     *
      * @param ResouceId
      */
-    protected void ShowErrorIv(int  ResouceId) {
+    protected void ShowErrorIv(int ResouceId) {
         ((ImageView) BaseView.findViewById(R.id.iv_error)).setImageResource(ResouceId);
     }
 }

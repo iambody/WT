@@ -200,7 +200,7 @@ public class ImageCycleView extends LinearLayout {
     private void startImageTimerTask() {
         stopImageTimerTask();
         // 图片滚动
-        mHandler.postDelayed(mImageTimerTask, 8000);
+        mHandler.postDelayed(mImageTimerTask, 3000);
     }
 
     /**
