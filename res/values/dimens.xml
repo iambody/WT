@@ -555,6 +555,7 @@
 
     <!-- 用户头像的宽高 -->
     <dimen name="shop_user_hright">46dp</dimen>
+    <dimen name="invite_friend_hright">50dp</dimen>
     <dimen name="shop_user_width">34dp</dimen>
     <dimen name="shop_cover_height">180dp</dimen>
     <dimen name="shop_user_totop_hright">30dp</dimen>

@@ -275,7 +275,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 holder = (InviteFriendHolder) convertView.getTag();
             }
             StrUtils.SetTxt(holder.tv_invite_date, datas.get(position).getDate());
-            FriendsAdapter friendsAdapter = new FriendsAdapter(R.layout.item_invite_record, datas.get(position).getList());
+            FriendsAdapter friendsAdapter = new FriendsAdapter(R.layout.item_invite_friends_detail, datas.get(position).getList());
             holder.invite_friends_record_inside.setAdapter(friendsAdapter);
             return convertView;
         }
@@ -339,17 +339,17 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             int level = Integer.parseInt(friend.getMember_level());
             switch (level) {
                 case 0:
-                    holder.tv_lv.setText("lv1");
+                    holder.tv_lv.setText("Lv1");
                     holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv1));
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv1_top));
                     break;
                 case 1:
-                    holder.tv_lv.setText("lv2");
+                    holder.tv_lv.setText("Lv2");
                     holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv2));
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv2_top));
                     break;
                 case 2:
-                    holder.tv_lv.setText("lv3");
+                    holder.tv_lv.setText("Lv3");
                     holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3));
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3_top));
                     break;
