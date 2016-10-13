@@ -652,10 +652,25 @@
     <string name="invite_friend_shop_id">店铺号：%1$s</string>
 
     <!--积分明细-->
-    <string name="integral_detail">积分明细</string>
-    <string name="null_integral_detail">\"亲，您还没有积分明细哦~~~\"</string>
-    <string name="no_new_integral_detail">没有新的积分记录哦</string>
-    <string name="no_more_integral_detail">没有更多积分记录哦</string>
+
+    <string name="null_integral_detail">\"亲，您还没有积分哦~~~\"</string>
+    <string name="null_integral_system">\"亲，您还没有系统赠送的积分哦~~~\"</string>
+    <string name="null_integral_past">\"亲，您还没有签到积分哦~~~\n赶快去首页签到吧\"</string>
+    <string name="null_integral_invite">\"亲，您还没有邀请好友积分哦~~~\n戳我一下去邀请吧\"</string>
+    <string name="null_integral_activation">\"亲，您还没有下级激活积分哦~~~\"</string>
+    <string name="null_integral_own_buy">\"亲，您还没有自己购买积分哦~~~\n戳我一下,有秘密哟\"</string>
+    <string name="null_integral_friend_buy">\"亲，您还没有下级购买积分哦~~~\"</string>
+    <string name="integral_title_all">全部积分</string>
+    <string name="integral_title_system1">系统赠送积分</string>
+    <string name="integral_title_past">每日签到积分</string>
+    <string name="integral_title_invite">邀请注册积分</string>
+    <string name="integral_title_activation">下级激活积分</string>
+    <string name="integral_title_own_buy">我买商品积分</string>
+    <string name="integral_title_friend_buy">Ta买商品积分</string>
+    <string name="no_new_integral_detail">\"亲，没有新的积分了哦~~~\"</string>
+    <string name="no_more_integral_detail">\"亲，没有更多积分了哦~~~\"</string>
+
+
 
 
 </resources>

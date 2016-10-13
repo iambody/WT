@@ -106,6 +106,11 @@ public class CacheUtil {
      */
     private final static String SP_My_Invite_Friend = "invitefriends";
 
+    /**
+     * 积分明细的数据的缓存
+     */
+    private final static String SP_Integral_Detail = "integral";
+
     private final static String Sp_MynewHome = "mynewhome";
 
     /**
@@ -394,6 +399,36 @@ public class CacheUtil {
     }
 
     /**
+     * 积分明细列表
+     *
+     * @param pcContext
+     * @param walletStr
+     */
+    public static void Integral_Detail_Save(Context pcContext,
+                                              String integral) {
+        SharedPreferences Sp = pcContext.getSharedPreferences(
+                SP_Integral_Detail, Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+
+        editor.putString("integral", integral);
+
+        editor.commit();
+    }
+
+
+    /**
+     * 积分明细列表缓存
+     *
+     * @param context
+     * @return
+     */
+    public static String Integral_Detail_Get(Context context) {
+        SharedPreferences Sp = context.getSharedPreferences(
+                SP_Integral_Detail, Context.MODE_PRIVATE);
+        return Sp.getString("integral", "");
+    }
+
+    /**
      * 邀请好友列表
      *
      * @param pcContext
@@ -435,7 +470,7 @@ public class CacheUtil {
 
         My_Coupons_Save(mpContext,"");
         My_Invite_Friends_Save(mpContext,"");
-
+        Integral_Detail_Save(mpContext,"");
         Center_Wallet_Property_Save(mpContext, "");
         Center_Order_List_Save(mpContext, "");
         Shop_Order_List_Save(mpContext, "");

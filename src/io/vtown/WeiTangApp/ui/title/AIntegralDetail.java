@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,8 +20,10 @@ import java.util.List;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.wallet.BLAPropertyList;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.integral_detail.BCIntegralDetail;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.integral_detail.BLIntegralDetails;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -28,6 +31,8 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
+import io.vtown.WeiTangApp.ui.ui.ANewHome;
 
 /**
  * Created by Yihuihua on 2016/10/12.
@@ -53,6 +58,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
     private PopupWindow popupWindow;
     private IntegralOutsideAdapter mAdapter;
     private List<BCIntegralDetail> mDatas;
+    private int Click_Type = 0;
 
 
     @Override
@@ -63,7 +69,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
         mUser = Spuit.User_Get(BaseContext);
         IView();
         ICache();
-        IData(Current_Type,LOAD_INITIALIZE);
+        IData(Current_Type, LOAD_INITIALIZE);
 
     }
 
@@ -77,9 +83,24 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
         integral_detail_list.hidefoot();
         mAdapter = new IntegralOutsideAdapter(R.layout.item_integral_detail_outside);
         integral_detail_list.setAdapter(mAdapter);
+        integral_detail_nodata_lay.setOnClickListener(this);
     }
 
     private void ICache() {
+        String integral_cache = CacheUtil.Integral_Detail_Get(BaseContext);
+        if (StrUtils.isEmpty(integral_cache)) {
+            PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
+        } else {
+            try {
+                mDatas = JSON.parseArray(integral_cache, BCIntegralDetail.class);
+            } catch (Exception e) {
+                return;
+            }
+
+            if (TYPE_ALL.equals(Current_Type)) {
+                mAdapter.FreshData(mDatas);
+            }
+        }
     }
 
     private void IData(String type, int loadtype) {
@@ -94,7 +115,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
     @Override
     protected void InitTile() {
 
-        SetTitleTxt(getString(R.string.integral_detail));
+        SetTitleTxt(getString(R.string.integral_title_all));
         SetRightText(getResources().getString(R.string.txt_filter));
         right_txt.setOnClickListener(this);
     }
@@ -107,8 +128,33 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     integral_detail_list.setVisibility(View.GONE);
                     integral_detail_nodata_lay.setVisibility(View.VISIBLE);
                     integral_detail_nodata_lay.setClickable(false);
-                    ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
                     mAdapter.FreshData(new ArrayList<BCIntegralDetail>());
+
+                    if (TYPE_ALL.equals(Current_Type)) {
+                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
+                    }
+                    if (TYPE_SYSTEM.equals(Current_Type)) {
+                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_system));
+                    }
+                    if (TYPE_PAST.equals(Current_Type)) {
+                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_past));
+                    }
+                    if (TYPE_ACTIVATION.equals(Current_Type)) {
+                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_activation));
+                    }
+                    if (TYPE_INVITE.equals(Current_Type)) {
+                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_invite));
+                        integral_detail_nodata_lay.setClickable(true);
+                        Click_Type = 1;
+                    }
+                    if (TYPE_BUY_OWN.equals(Current_Type)) {
+                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_own_buy));
+                        integral_detail_nodata_lay.setClickable(true);
+                        Click_Type = 2;
+                    }
+                    if (TYPE_BUY_FRIEND.equals(Current_Type)) {
+                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_friend_buy));
+                    }
                     return;
                 }
                 integral_detail_list.setVisibility(View.VISIBLE);
@@ -116,7 +162,9 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 mDatas = new ArrayList<BCIntegralDetail>();
                 mDatas = JSON.parseArray(Data.getHttpResultStr(), BCIntegralDetail.class);
                 mAdapter.FreshData(mDatas);
-
+                if (TYPE_ALL.equals(Current_Type)) {
+                    CacheUtil.Integral_Detail_Save(BaseContext, Data.getHttpResultStr());
+                }
                 List<BLIntegralDetails> data = getAllIntegralDetailList(mDatas);
                 lastid = data.get(data.size() - 1).getId();
 
@@ -192,7 +240,23 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
     @Override
     protected void DataError(String error, int LoadType) {
+        switch (LoadType) {
+            case LOAD_INITIALIZE:
+                integral_detail_list.setVisibility(View.GONE);
+                integral_detail_nodata_lay.setVisibility(View.VISIBLE);
+                integral_detail_nodata_lay.setClickable(true);
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+                Click_Type = 3;
+                break;
 
+            case LOAD_REFRESHING:
+                integral_detail_list.stopRefresh();
+                break;
+
+            case LOAD_LOADMOREING:
+                integral_detail_list.stopLoadMore();
+                break;
+        }
     }
 
     @Override
@@ -218,6 +282,86 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 if (CheckNet(BaseContext)) return;
                 IPopupWindow(V);
                 break;
+
+            case R.id.tv_all_integral://全部
+                if (!TYPE_ALL.equals(Current_Type)) {
+                    Current_Type = TYPE_ALL;
+                    SetTitleTxt(getResources().getString(R.string.integral_title_all));
+                    IData(Current_Type, LOAD_INITIALIZE);
+                    mAdapter.Clearn();
+                }
+                popupWindow.dismiss();
+                break;
+            case R.id.tv_system://系统赠送
+                if (!TYPE_SYSTEM.equals(Current_Type)) {
+                    Current_Type = TYPE_SYSTEM;
+                    SetTitleTxt(getResources().getString(R.string.integral_title_system1));
+                    IData(Current_Type, LOAD_INITIALIZE);
+                    mAdapter.Clearn();
+                }
+                popupWindow.dismiss();
+                break;
+            case R.id.tv_past://每日签到
+                if (!TYPE_PAST.equals(Current_Type)) {
+                    Current_Type = TYPE_PAST;
+                    SetTitleTxt(getResources().getString(R.string.integral_title_past));
+                    IData(Current_Type, LOAD_INITIALIZE);
+                    mAdapter.Clearn();
+                }
+                popupWindow.dismiss();
+                break;
+            case R.id.tv_invite_register://邀请注册
+                if (!TYPE_INVITE.equals(Current_Type)) {
+                    Current_Type = TYPE_INVITE;
+                    SetTitleTxt(getResources().getString(R.string.integral_title_invite));
+                    IData(Current_Type, LOAD_INITIALIZE);
+                    mAdapter.Clearn();
+                }
+                popupWindow.dismiss();
+                break;
+            case R.id.tv_friend_activation://下级激活
+                if (!TYPE_ACTIVATION.equals(Current_Type)) {
+                    Current_Type = TYPE_ACTIVATION;
+                    SetTitleTxt(getResources().getString(R.string.integral_title_activation));
+                    IData(Current_Type, LOAD_INITIALIZE);
+                    mAdapter.Clearn();
+                }
+                popupWindow.dismiss();
+                break;
+            case R.id.tv_own_buy://我买东西
+                if (!TYPE_BUY_OWN.equals(Current_Type)) {
+                    Current_Type = TYPE_BUY_OWN;
+                    SetTitleTxt(getResources().getString(R.string.integral_title_own_buy));
+                    IData(Current_Type, LOAD_INITIALIZE);
+                    mAdapter.Clearn();
+                }
+                popupWindow.dismiss();
+                break;
+            case R.id.tv_friend_buy://Ta买商品
+                if (!TYPE_BUY_FRIEND.equals(Current_Type)) {
+                    Current_Type = TYPE_BUY_FRIEND;
+                    SetTitleTxt(getResources().getString(R.string.integral_title_friend_buy));
+                    IData(Current_Type, LOAD_INITIALIZE);
+                    mAdapter.Clearn();
+                }
+                popupWindow.dismiss();
+                break;
+            case R.id.integral_detail_nodata_lay:
+                if (CheckNet(BaseContext)) return;
+                switch (Click_Type){
+                    case 1://跳转邀请码页面
+                        PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AMyInviteCode.class));
+                        break;
+                    case 2://跳转购物商品
+                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
+                        break;
+                    case 3://刷新
+                        IData(Current_Type, LOAD_INITIALIZE);
+                        break;
+                }
+
+                break;
+
         }
 
     }
@@ -324,6 +468,11 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
         public void FreshDataAll(List<BCIntegralDetail> more_data) {
             this.datas.addAll(more_data);
+            this.notifyDataSetChanged();
+        }
+
+        public void Clearn() {
+            datas = new ArrayList<BCIntegralDetail>();
             this.notifyDataSetChanged();
         }
 
