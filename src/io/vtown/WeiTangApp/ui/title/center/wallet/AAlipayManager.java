@@ -105,7 +105,7 @@ public class AAlipayManager extends ATitleBase {
 
         center_wallet_alipay_manage_outlay = (LinearLayout) findViewById(R.id.center_wallet_alipay_manage_outlay);
         center_wallet_alipay_manage_nodata_lay = findViewById(R.id.center_wallet_alipay_manage_nodata_lay);
-
+        center_wallet_alipay_manage_outlay.setVisibility(View.GONE);
 
         iv_alipay_icon = (ImageView) findViewById(R.id.iv_alipay_icon);
 
