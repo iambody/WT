@@ -9,8 +9,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -106,6 +106,7 @@
                     android:id="@+id/tv_modify_alipay_real_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
                     android:layout_marginLeft="@dimen/center_wallet_modify_modify_layout_margin"
                     android:text="@string/nullstr"
                     android:textColor="@color/app_gray"
@@ -146,8 +147,15 @@
         style="@style/build_two_dimension_code_btn_style_no_circular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/comment_label_txtsize"
-        android:padding="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/select_white_to_fen1"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/gray"
+
         android:text="保存修改" />
 
 </LinearLayout>

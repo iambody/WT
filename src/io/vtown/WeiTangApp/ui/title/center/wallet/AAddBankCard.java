@@ -83,7 +83,7 @@ public class AAddBankCard extends ATitleBase {
 		tv_btn_submit_bank_card = (TextView) findViewById(R.id.tv_btn_submit_bank_card);
 		tv_bind_bank_card_real_name = (TextView) findViewById(R.id.tv_bind_bank_card_real_name);
 		StrUtils.SetColorsTxt(BaseContext, tv_bind_bank_card_real_name,
-				R.color.app_gray, "姓名：", user_Get.getName());
+				R.color.app_gray, "持卡人：", user_Get.getName());
 		SetItemContent(select_bank, R.string.select_bank, "");
 		tv_bank_transfer_agreement.setOnClickListener(this);
 		tv_btn_submit_bank_card.setOnClickListener(this);

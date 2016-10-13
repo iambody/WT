@@ -17,17 +17,17 @@
             android:id="@+id/ll_alipay_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/center_wallet_alipay_manage_margin"
+
             android:layout_marginBottom="@dimen/center_wallet_alipay_manage_top_bottom_margin"
             android:layout_marginTop="@dimen/center_wallet_alipay_manage_top_bottom_margin"
-            android:background="@drawable/shape_shop_circular_bg"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:padding="@dimen/center_wallet_alipay_manage_layout_padding" >
 
             <ImageView
                 android:id="@+id/iv_alipay_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/alipay_log" />
 
             <LinearLayout
@@ -62,6 +62,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
@@ -76,10 +77,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/nullstr"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:textColor="@color/app_gray"
                         android:textSize="@dimen/comment_label_txtsize" />
                 </LinearLayout>
             </LinearLayout>
+
+
         </LinearLayout>
 
         <TextView
@@ -96,16 +101,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+
             android:orientation="vertical" >
 
-            <Button
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/app_gray"
+                android:paddingLeft="10dp"
+                android:text="微糖承诺保证您的支付宝信息安全,请放心使用"
+                android:layout_height="wrap_content" />
+
+            <!--<Button
                 android:id="@+id/btn_add_or_modify_alipay"
                 style="@style/build_two_dimension_code_btn_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/center_wallet_alipay_manage_bottom_margin"
-                android:layout_marginRight="@dimen/center_wallet_alipay_manage_bottom_margin" />
+                android:layout_marginRight="@dimen/center_wallet_alipay_manage_bottom_margin" />-->
+
+            <TextView
+                android:id="@+id/btn_add_or_modify_alipay"
+                style="@style/build_two_dimension_code_btn_style_no_circular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/select_white_to_fen1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/gray"
+
+                />
         </LinearLayout>
     </LinearLayout>
 

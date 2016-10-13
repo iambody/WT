@@ -322,6 +322,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 holder.tv_friend_shop_id = (TextView) convertView.findViewById(R.id.tv_friend_shop_id);
                 holder.tv_lv = (TextView) convertView.findViewById(R.id.tv_lv);
                 holder.tv_lv_top = (TextView) convertView.findViewById(R.id.tv_lv_top);
+                holder.list_line = convertView.findViewById(R.id.list_line);
                 convertView.setTag(holder);
             } else {
                 holder = (FriendsHolder) convertView.getTag();
@@ -354,7 +355,11 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3_top));
                     break;
             }
-
+            if (friends_datas.size() - 1 == position) {
+                holder.list_line.setVisibility(View.GONE);
+            }else{
+                holder.list_line.setVisibility(View.VISIBLE);
+            }
             return convertView;
         }
     }
@@ -368,7 +373,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         CircleImageView iv_friend_icon;
         ImageView iv_friend_lv;
         TextView tv_friend_name, tv_friend_shop_id, tv_lv_top, tv_lv;
-
+        View list_line;
 
     }
 }

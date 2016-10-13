@@ -14,8 +14,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:scrollbars="none" >
 
         <LinearLayout
@@ -23,39 +23,20 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/app_gray"
+                android:text="请绑定你本人的支付宝"
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="vertical" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/center_wallet_add_alipay_name_padding" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lable_alipay_numb"
-                        android:textColor="@color/grey"
-                        android:textSize="@dimen/comment_label_txtsize" />
-
-                    <EditText
-                        android:id="@+id/et_alipay_numb"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/shape_add_goods_edit_bg"
-                        android:padding="@dimen/center_wallet_add_alipay_alipay_padding"
-                        android:paddingLeft="@dimen/center_wallet_add_alipay_alipay_padding"
-                        android:singleLine="true"
-                        android:textColor="@color/grey"
-                        android:textSize="@dimen/comment_label_txtsize" />
-                </LinearLayout>
-
-                <View style="@style/line_left" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -78,9 +59,42 @@
                         android:layout_marginLeft="@dimen/center_wallet_add_alipay_name_margin"
                         android:background="@null"
                         android:textColor="@color/app_gray"
+                        android:padding="@dimen/center_wallet_add_alipay_alipay_padding"
                         android:textSize="@dimen/comment_label_txtsize" />
                 </LinearLayout>
+                <View style="@style/line_left" />
             </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:padding="@dimen/center_wallet_add_alipay_name_padding" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lable_alipay_numb"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/comment_label_txtsize" />
+
+                    <EditText
+                        android:id="@+id/et_alipay_numb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@null"
+                        android:padding="@dimen/center_wallet_add_alipay_alipay_padding"
+                        android:paddingLeft="@dimen/center_wallet_add_alipay_alipay_padding"
+                        android:singleLine="true"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/comment_label_txtsize" />
+                </LinearLayout>
+
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,10 +137,15 @@
         style="@style/build_two_dimension_code_btn_style_no_circular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/select_white_to_fen1"
         android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
-        android:padding="@dimen/center_wallet_add_alipay_submit_padding"
+        android:padding="10dp"
+        android:textColor="@color/gray"
         android:text="提交"
-        android:textSize="@dimen/comment_label_txtsize" />
+         />
 
 </LinearLayout>

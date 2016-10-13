@@ -410,7 +410,7 @@
     <!-- 支付宝管理margin -->
     <dimen name="center_wallet_alipay_manage_margin">10dp</dimen>
     <!-- 支付宝管理上下margin -->
-    <dimen name="center_wallet_alipay_manage_top_bottom_margin">5dp</dimen>
+    <dimen name="center_wallet_alipay_manage_top_bottom_margin">10dp</dimen>
     <!-- 按钮margin -->
     <dimen name="center_wallet_alipay_manage_bottom_margin">10dp</dimen>
     <!-- 没有绑定支付宝时的提示padding -->
@@ -555,7 +555,7 @@
 
     <!-- 用户头像的宽高 -->
     <dimen name="shop_user_hright">46dp</dimen>
-    <dimen name="invite_friend_hright">50dp</dimen>
+    <dimen name="invite_friend_hright">55dp</dimen>
     <dimen name="shop_user_width">34dp</dimen>
     <dimen name="shop_cover_height">180dp</dimen>
     <dimen name="shop_user_totop_hright">30dp</dimen>

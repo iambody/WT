@@ -46,7 +46,7 @@ public class AAlipayManager extends ATitleBase {
     /**
      * 按钮
      */
-    private Button btn_add_or_modify_alipay;
+    private TextView btn_add_or_modify_alipay;
     /**
      * 没有支付宝下的提示
      */
@@ -68,6 +68,8 @@ public class AAlipayManager extends ATitleBase {
      * 获取数据为空时绑定支付宝按钮
      */
     private Button btn_add_new_alipay1;
+
+    private int BindAlipayType = 1;
 
     @Override
     protected void InItBaseView() {
@@ -111,7 +113,7 @@ public class AAlipayManager extends ATitleBase {
 
         tv_alipay_id = (TextView) findViewById(R.id.tv_alipay_id);
 
-        btn_add_or_modify_alipay = (Button) findViewById(R.id.btn_add_or_modify_alipay);
+        btn_add_or_modify_alipay = (TextView) findViewById(R.id.btn_add_or_modify_alipay);
 
         tv_no_alipay_desc = (TextView) findViewById(R.id.tv_no_alipay_desc);
 
@@ -156,9 +158,11 @@ public class AAlipayManager extends ATitleBase {
             if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
                 center_wallet_alipay_manage_outlay.setVisibility(View.GONE);
                 center_wallet_alipay_manage_nodata_lay.setVisibility(View.VISIBLE);
-                btn_add_new_alipay1.setVisibility(View.VISIBLE);
+                btn_add_new_alipay1.setVisibility(View.GONE);
                 ShowErrorCanLoad(getResources().getString(R.string.error_null_alipay));
-                center_wallet_alipay_manage_nodata_lay.setClickable(false);
+                center_wallet_alipay_manage_nodata_lay.setClickable(true);
+                ShowErrorIv(R.drawable.ic_jiahao_nor);
+                BindAlipayType = 1;
             }
             return;
         }
@@ -210,8 +214,9 @@ public class AAlipayManager extends ATitleBase {
         if (LOAD_INITIALIZE == LoadTyp) {
             center_wallet_alipay_manage_outlay.setVisibility(View.GONE);
             center_wallet_alipay_manage_nodata_lay.setVisibility(View.VISIBLE);
-            btn_add_new_alipay1.setVisibility(View.VISIBLE);
+            btn_add_new_alipay1.setVisibility(View.GONE);
             ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+            BindAlipayType = 2;
             center_wallet_alipay_manage_nodata_lay.setClickable(true);
         }
     }
@@ -262,15 +267,23 @@ public class AAlipayManager extends ATitleBase {
 
             case R.id.center_wallet_alipay_manage_nodata_lay:// 重新获取数据
                 if (CheckNet(BaseContext)) return;
-                IData();
+                if(1 == BindAlipayType){
+                    Intent intent = new Intent(BaseActivity, AAddAliPay.class);
+                    intent.putExtra("togo", 0);
+                    PromptManager.SkipActivity(BaseActivity, intent);
+                }
+                if(2 == BindAlipayType){
+                    IData();
+                }
+
                 break;
 
-            case R.id.btn_add_new_alipay1://绑定支付宝
-                if (CheckNet(BaseContext)) return;
-                Intent intent = new Intent(BaseActivity, AAddAliPay.class);
-                intent.putExtra("togo", 0);
-                PromptManager.SkipActivity(BaseActivity, intent);
-                break;
+//            case R.id.btn_add_new_alipay1://绑定支付宝
+//                if (CheckNet(BaseContext)) return;
+//                Intent intent = new Intent(BaseActivity, AAddAliPay.class);
+//                intent.putExtra("togo", 0);
+//                PromptManager.SkipActivity(BaseActivity, intent);
+//                break;
 
             default:
                 break;

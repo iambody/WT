@@ -427,6 +427,14 @@ public class CacheUtil {
         MyShow_Save(mpContext, "");
         Home_Save(mpContext, "");
         MyShow_Save(mpContext, "");
+        Center_Set_Initve_Save(mpContext, "");
+        Center_Wallet_Bank_List_Save(mpContext,"");
+
+        Center_Wallet_Alipay_Save(mpContext,"");
+        Center_Wallet_BankCard_Save(mpContext,"");
+
+        My_Coupons_Save(mpContext,"");
+        My_Invite_Friends_Save(mpContext,"");
 
         Center_Wallet_Property_Save(mpContext, "");
         Center_Order_List_Save(mpContext, "");
