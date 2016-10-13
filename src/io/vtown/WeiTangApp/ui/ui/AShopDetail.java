@@ -270,7 +270,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
      * 关注店铺
      */
     private void GuanZhuSho(String ShopId, boolean IsTOGuanzhu) {// CancleGuanZhuShop
-        PromptManager.showLoading(BaseContext);
+//        PromptManager.showLoading(BaseContext);
         // Tag_GuanZhu
         HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("seller_id", ShopId);// 所要关注的店铺的的店铺id

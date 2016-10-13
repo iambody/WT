@@ -1,6 +1,5 @@
 package io.vtown.WeiTangApp.ui.ui;
 
-import io.vtown.WeiTangApp.AppManager;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.comment.BUpData;

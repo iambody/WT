@@ -216,7 +216,7 @@
                             android:layout_marginRight="16dp"
                             android:layout_marginTop="10dp"
                             android:layout_weight="1"
-                            android:textColor="@color/gray"/>
+                            android:textColor="@color/black"/>
                     </LinearLayout>
 
 
@@ -270,7 +270,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="50dp"
-                            android:text="@string/nullstr"/>
+                            android:text="@string/nullstr"
+                            android:textColor="@drawable/gray"/>
                     </LinearLayout>
 
                     <View style="@style/line_left"/>
@@ -394,7 +395,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/titlebarheingh"
             android:layout_alignParentTop="true"
-            android:background="@color/app_fen2"
+            android:background="@color/app_fen"
             android:orientation="horizontal"
             android:visibility="gone">
 

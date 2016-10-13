@@ -15,7 +15,7 @@ public class BLBanner extends BBase {
     private String category_id;//":0,
     private String advert_type_str;//":"活动详情页",
     private int is_brand;//
-
+    private String source_id;//=1
     public String getId() {
         return id;
     }
@@ -78,5 +78,13 @@ public class BLBanner extends BBase {
 
     public void setIs_brand(int is_brand) {
         this.is_brand = is_brand;
+    }
+
+    public String getSource_id() {
+        return source_id;
+    }
+
+    public void setSource_id(String source_id) {
+        this.source_id = source_id;
     }
 }

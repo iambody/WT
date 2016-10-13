@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -60,8 +61,8 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
 
     @Override
     protected void InItBaseView() {
-
         setContentView(R.layout.activity_login);
+
         if (Spuit.IsLogin_Get(BaseContext)) {
 //			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 //					AMain.class));
@@ -310,6 +311,16 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
         // message.obj = arg0;
         message.what = 0;
         mHandler.sendMessage(message);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(event.getKeyCode()==KeyEvent.KEYCODE_BACK){
+            ALogin.this.finish();
+            EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
+            System.exit(0);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     /**

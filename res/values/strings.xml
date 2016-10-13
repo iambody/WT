@@ -178,7 +178,7 @@
     <string name="yunfei">运费：</string>
     <string name="jianyilingshou">售价:</string>
     <string name="chakanshow">查看商品show</string>
-    <string name="tuwendetail">图文详情</string>
+    <string name="tuwendetail">宝贝详情</string>
     <!-- 我的钱包 -->
     <string name="bank_card_manage">银行卡管理</string>
     <string name="alipay_manage">支付宝管理</string>
@@ -504,7 +504,7 @@
     <string name="shareshow">分享SHOW圈</string>
     <string name="show_share">Show分享</string>
     <string name="uploading">正在上传中</string>
-    <string name="kongkong">空空如也....</string>
+    <string name="kongkong">连接失败....</string>
     <string name="changesort">更改类目会删除已添加的规格</string>
     <string name="chongzhi_vido">是否重新录制？</string>
     <string name="shuruyunfei">请输入运费</string>

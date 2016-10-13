@@ -439,8 +439,8 @@ public class AGoodDetail extends ATitleBase {
             case 1:// 关注商品
                 right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
                         : R.drawable.ic_shoucang_nor_good_detail);
-                PromptManager.ShowMyToast(BaseContext, isAttention ? "关注商品成功"
-                        : "取消关注商品成功");
+//                PromptManager.ShowMyToast(BaseContext, isAttention ? "关注商品成功"
+//                        : "取消关注商品成功");
                 break;
 
             case 2:// 订单生成实时查询
@@ -898,21 +898,6 @@ public class AGoodDetail extends ATitleBase {
 
     }
 
-//    private ImageCycleViewListener mAdCycleViewListener = new ImageCycleViewListener() {
-//        @Override
-//        public void onImageClick(int position, View imageView) {
-//            List<String> mStrings = gooddetail_banner.getMyImageUrlList();
-//            Intent mIntent = new Intent(BaseContext, AphotoPager.class);
-//            mIntent.putExtra("position", position);
-//            mIntent.putExtra("urls", StrUtils.LsToArray(mStrings));
-//            PromptManager.SkipActivity(BaseActivity, mIntent);
-//        }
-//
-//        @Override
-//        public void displayImage(String imageURL, ImageView imageView) {
-//            ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
-//        }
-//    };
 
     private void InItPaGeView(List<String> data) {
         ArrayList<String> ssss = (ArrayList<String>) data;

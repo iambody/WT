@@ -136,7 +136,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.ui.AMain"
+        android:name=".ui.ui.AMain"
+        android:launchMode="singleTask"
+        android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ui.AExitNull"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
         <activity

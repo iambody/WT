@@ -72,6 +72,7 @@ public class ImageLoaderUtil {
 
     public static void Load2(String imgUrl, final ImageView imageView,
                              int defaultImg) {
+        if(StrUtils.isEmpty(imgUrl)){imageView.setImageResource(defaultImg);return;}
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .showImageOnLoading(defaultImg)
                 .considerExifParams(true)

@@ -24,6 +24,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -43,7 +44,7 @@ public class PShare extends PopupWindow implements OnClickListener {
 	/**
 	 * view
 	 */
-	private View pop_share_haoyou, pop_share_pyq;
+	private RelativeLayout pop_share_haoyou, pop_share_pyq;
 	private TextView pop_share_cancle;
 	/**
 	 * 回掉接口
@@ -83,32 +84,18 @@ public class PShare extends PopupWindow implements OnClickListener {
 		pop_share_pyq = ViewHolder.get(BaseView, R.id.pop_share_pyq);
 		pop_share_cancle = ViewHolder.get(BaseView, R.id.pop_share_cancle);
 		pop_share_cancle.setOnClickListener(this);
-		SetCommentIV("朋友圈", R.drawable.sharer_weixin, pop_share_pyq);
-		SetCommentIV("微信好友", R.drawable.share_wxpy, pop_share_haoyou);
-	}
-
-	/**
-	 * 上边是IV下边是文字的布局
-	 * 
-	 * @param title
-	 * @param IvRource
-	 * @param V
-	 */
-	public void SetCommentIV(String title, int IvRource, View V) {
-
-		((ImageView) V.findViewById(R.id.comment_ivtxt_iv))
-				.setBackgroundResource(IvRource);
-		((TextView) V.findViewById(R.id.comment_ivtxt_txt)).setText(title);
-		V.setOnClickListener(this);
+		pop_share_haoyou.setOnClickListener(this);
+		pop_share_pyq.setOnClickListener(this);
 
 	}
+
 
 	private void IPop() {
 		BaseView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.WRAP_CONTENT));
+				LayoutParams.MATCH_PARENT));
 		setContentView(BaseView);
 		setWidth(LayoutParams.MATCH_PARENT);
-		setHeight(LayoutParams.WRAP_CONTENT);
+		setHeight(LayoutParams.MATCH_PARENT);
 		this.setFocusable(true);
 		ColorDrawable dw = new ColorDrawable(0xb0000000);
 		setBackgroundDrawable(dw);

@@ -9,9 +9,9 @@ import io.vtown.WeiTangApp.bean.BBase;
  */
 
 public class BNewHome extends BBase {
-    private String seller_name;//":"wt02768841",
-    private String cover;//":"http://fs.v-town.cc/DefaultSellerCover.jpg",
-    private String avatar;//":"http://fs.v-town.cc/DefaultSellerAvatar.jpg",
+//    private String seller_name;//":"wt02768841",
+//    private String cover;//":"http://fs.v-town.cc/DefaultSellerCover.jpg",
+//    private String avatar;//":"http://fs.v-town.cc/DefaultSellerAvatar.jpg",
     private String member_level;//等级":0,
     private String integral;//积分":1000,
     private String isstar;//是否是明星店铺":0,
@@ -22,29 +22,33 @@ public class BNewHome extends BBase {
     private String activitydata;//激活礼包数据 ":"",
     private String is_attendance;//今天是否签到":1
     private List<BLBanner> banner;
+    private BNewShop sellerinfo=new BNewShop();
+    //激活专区
+    private String activityid;//=28
+    private String activitytitle;//=激活礼包3
 
-    public String getSeller_name() {
-        return seller_name;
+    public BNewShop getSellerinfo() {
+        return sellerinfo;
     }
 
-    public void setSeller_name(String seller_name) {
-        this.seller_name = seller_name;
+    public void setSellerinfo(BNewShop sellerinfo) {
+        this.sellerinfo = sellerinfo;
     }
 
-    public String getCover() {
-        return cover;
+    public String getActivityid() {
+        return activityid;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setActivityid(String activityid) {
+        this.activityid = activityid;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getActivitytitle() {
+        return activitytitle;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setActivitytitle(String activitytitle) {
+        this.activitytitle = activitytitle;
     }
 
     public String getMember_level() {

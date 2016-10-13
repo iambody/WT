@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui;
 
+
 import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -129,6 +130,7 @@ public abstract class ABaseFragment extends FragmentActivity {
 	 * 初始化基类的配置信息
 	 */
 	private void InItBaseConfig() {
+//		AppManager.getAppManager().addActivity(this);
 		screenWidth = getWindowManager().getDefaultDisplay().getWidth();
 		screenHeight = getWindowManager().getDefaultDisplay().getHeight();
 		BaseContext = ABaseFragment.this;
@@ -170,6 +172,7 @@ public abstract class ABaseFragment extends FragmentActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+//		AppManager.getAppManager().finishActivity(this);
 		try {
 			BaseReceiver.unbind(BaseContext);
 		} catch (Exception e) {

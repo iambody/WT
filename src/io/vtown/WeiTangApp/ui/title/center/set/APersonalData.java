@@ -1,5 +1,7 @@
 package io.vtown.WeiTangApp.ui.title.center.set;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,19 +10,24 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.DataCleanManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.view.custom.switchButtonView.EaseSwitchButton;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
+import io.vtown.WeiTangApp.ui.AExitNull;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.title.loginregist.ALogin;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
+import io.vtown.WeiTangApp.ui.ui.AMain;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
@@ -231,9 +238,17 @@ public class APersonalData extends ATitleBase implements
                         // 清理数据库
                         Spuit.Shop_Save(BaseContext, new BShop());
 //                        PromptManager.ShowCustomToast(BaseContext, "退出成功");
+//                        AppManager.getAppManager().AppExit(BaseContext);
+//                        ActivityManager activityMgr = (ActivityManager) BaseActivity.getSystemService(Context.ACTIVITY_SERVICE);
+//                        activityMgr.restartPackage(BaseActivity.getPackageName());
+//                        System.exit(0);
+
                         PromptManager.SkipActivity(BaseActivity, new Intent(
-                                BaseContext, ALogin.class)
-                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
+                                BaseActivity, ALogin.class));
+//                        EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
+                        BaseActivity.finish();
+//                        AppManager.getAppManager().finishAllActivity();
+//                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
 
                     }
 
@@ -273,9 +288,5 @@ public class APersonalData extends ATitleBase implements
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-    }
+
 }

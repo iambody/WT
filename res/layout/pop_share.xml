@@ -1,43 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
- 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="30dp"
+                android:background="@color/transparent"
+                android:orientation="vertical"
+                android:padding="@dimen/line_size1">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_above="@+id/pop_share_cancle"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:padding="@dimen/line_size1">
 
-        <include
+        <RelativeLayout
             android:id="@+id/pop_share_haoyou"
-            layout="@layout/commentview_ivtext" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_show_share_up"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp">
 
-        <ImageView
-            android:layout_width="@dimen/line_size1"
-            android:layout_height="match_parent"
-            android:src="@color/app_line" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/pop_share_center1"
+                android:src="@drawable/share_wxpy"/>
 
-        <include
+            <ImageView
+                android:id="@+id/pop_share_center1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/pop_share_center1"
+                android:text="分享好友"/>
+        </RelativeLayout>
+
+        <View style="@style/line"/>
+
+        <RelativeLayout
             android:id="@+id/pop_share_pyq"
-            layout="@layout/commentview_ivtext" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_show_share_down"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/pop_share_center2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/pop_share_center2"
+                android:src="@drawable/sharer_weixin"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/pop_share_center2"
+                android:text="分享朋友圈"/>
+        </RelativeLayout>
+
+
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/line_size1"
-        android:src="@color/app_line" />
 
     <TextView
         android:id="@+id/pop_share_cancle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/select_white_to_gray"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/select_show_share_down_up"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="取消" />
+        android:padding="14dp"
+        android:text="取消"/>
 
-</LinearLayout>
+</RelativeLayout>

@@ -269,6 +269,11 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
             case BMessage.Shop_Frash://购物车获取数据刷新后需要进行刷新
 //                Spuit.ShopBusNumber_Save(BaseCotext, Spuit.ShopBusNumber_Get(BaseCotext) + bMessage.getGood_numb());
 //                ShopBadgeView.setBadgeCount(Spuit.ShopBusNumber_Get(BaseCotext));
+                break;
+            case BMessage.Tage_Tab_Kill_Self:
+                AMainTab.this.finish();
+                break;
+
             default:
                 break;
         }

@@ -82,7 +82,6 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     private View fragment_main_tab_shop_good_fabu, fragment_main_tab_shop_good_oder_guanli, fragment_main_tab_shop_good_qudao_guanli, fragment_main_tab_shop_caigoudan,
             fragment_main_tab_shop_pinpaidaili, fragment_main_tab_shop_good_good_guanli, fragment_main_tab_shop_xiaoshoutongji, fragment_main_tab_shop_lookshop, fragment_main_tab_shop_ruzhu;
 
-
     /**
      * 相关联的数据
      */

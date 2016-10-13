@@ -94,13 +94,13 @@
                 <!-- 最新的用户头像    和个性签名布局  -->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="@dimen/shop_user_width_lay"
                     android:background="@color/white">
 
                     <ImageView
                         android:id="@+id/fragment_main_iv_shop_cover"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="@dimen/shop_user_width_lay"
                         android:clickable="true"
                         android:focusable="true"
                         android:scaleType="fitXY"/>
@@ -116,8 +116,8 @@
 
                         <io.vtown.WeiTangApp.comment.view.RoundAngleImageView
                             android:id="@+id/fragment_main_tab_shop_iv"
-                            android:layout_width="@dimen/shop_user_hright"
-                            android:layout_height="@dimen/shop_user_hright"
+                            android:layout_width="@dimen/shop_user_width"
+                            android:layout_height="@dimen/shop_user_width"
                             android:layout_marginLeft="@dimen/ui_10_dip"
                             android:scaleType="fitXY"
                             />
@@ -137,6 +137,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="bottom"
+                                android:textSize="@dimen/fragment_shop_shopname_size"
                                 android:textColor="@color/TextColorWhite"
                                 android:textStyle="bold"/>
 
@@ -150,6 +151,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:textSize="@dimen/fragment_shop_shoplog_size"
                                 android:gravity="center_vertical"
                                 android:textColor="@color/white"/>
                         </LinearLayout>

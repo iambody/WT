@@ -48,6 +48,7 @@ import io.vtown.WeiTangApp.ui.ui.ARecyclerShow;
  * Created by datutu on 2016/9/18.
  */
 public class FMainCenter extends FBase implements View.OnClickListener {
+    private ImageView maintab_tab_center_setting;
     private ImageView maintab_center_cover;
     private CircleImageView maintab_center_myiv;
     private TextView maintab_center_myname;
@@ -70,6 +71,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     }
 
     private void IBaseView() {
+        maintab_tab_center_setting = (ImageView) BaseView.findViewById(R.id.maintab_tab_center_setting);
         maintab_center_cover = (ImageView) BaseView.findViewById(R.id.maintab_center_cover);
         maintab_center_myiv = (CircleImageView) BaseView.findViewById(R.id.maintab_center_myiv);
         maintab_center_myname = (TextView) BaseView.findViewById(R.id.maintab_center_myname);
@@ -89,7 +91,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         maintab_center_myiv.setBorderWidth(10);
         maintab_center_myiv.setBorderColor(getResources().getColor(R.color.transparent6));
         maintab_center_myiv.setOnClickListener(this);
-
+        maintab_tab_center_setting.setOnClickListener(this);
 
 //图片处理
         if (CenterCoverFile.exists()) {
@@ -256,6 +258,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.maintab_center_myiv://头像
+            case R.id.maintab_tab_center_setting:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         APersonalData.class));
 
@@ -296,7 +299,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 //                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 //                        ACenterShow.class));
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ARecyclerMyShow.class).putExtra("seller_id",Spuit.User_Get(BaseContext).getSeller_id()));
+                        ARecyclerMyShow.class).putExtra("seller_id", Spuit.User_Get(BaseContext).getSeller_id()));
                 break;
             case R.id.maintab_center_invite_code://我的邀请码
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
@@ -323,7 +326,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 //                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 //                        ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
 //                        ACommentList.Tage_ACenterGoodBrowseRecord));
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AIntegralDetail.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AIntegralDetail.class));
 
 
                 break;

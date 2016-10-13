@@ -61,7 +61,7 @@ public class BMessage {
      * 支付完成后需要跳转相对应的订单界面 之前的activity都需要finsh==》通知
      */
     public static final int Tage_Kill_Self = 701;
-
+    public static final int Tage_Tab_Kill_Self = 7011;
     /**
      * 在选择图片界面 在退出时候需要 finshi掉其他的关联界面
      */
@@ -237,6 +237,7 @@ public class BMessage {
     public static final int Tage_Select_Address = 10010;
     private  List<String> address_infos;
 
+    //退出时候通知所有进行
     public BMessage() {
         super();
     }

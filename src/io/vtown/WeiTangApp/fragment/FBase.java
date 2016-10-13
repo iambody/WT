@@ -96,6 +96,11 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
     /**
      * (maintab的几个页面)显示或者隐藏断网的View 1标识刚进来就无网络 2标识有网络变成无网络 3标识无网络变成有网络
      */
