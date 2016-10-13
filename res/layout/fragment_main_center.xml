@@ -26,20 +26,37 @@
                     android:layout_height="@dimen/center_bg_height"
                     android:scaleType="fitXY"/>
 
-                <io.vtown.WeiTangApp.comment.view.CircleImageView
-                    android:id="@+id/maintab_center_myiv"
+                <RelativeLayout
+                    android:id="@+id/maintab_center_myiv_lay"
                     android:layout_width="@dimen/center_iv_height"
                     android:layout_height="@dimen/center_iv_height"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/center_iv_marg_top"
-                    android:clickable="true"/>
+                    android:focusable="true"
+                    android:clickable="true">
+
+                    <io.vtown.WeiTangApp.comment.view.CircleImageView
+                        android:id="@+id/maintab_center_myiv"
+                        android:layout_width="@dimen/center_iv_height"
+                        android:layout_height="@dimen/center_iv_height"
+                       />
+
+                    <ImageView
+                        android:id="@+id/maintab_tab_center_setting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:src="@drawable/center_iv_setting"/>
+                </RelativeLayout>
+
 
                 <TextView
                     android:id="@+id/maintab_center_myname"
                     style="@style/AudioFileInfoOverlayText1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/maintab_center_myiv"
+                    android:layout_below="@+id/maintab_center_myiv_lay"
                     android:gravity="center"
                     android:padding="10dp"
                     android:textColor="@color/white"
@@ -61,14 +78,7 @@
                         android:id="@+id/maintab_tab_center_walle"
                         layout="@layout/commentview_ivtext1"/>
                 </LinearLayout>
-                <ImageView
-                    android:id="@+id/maintab_tab_center_setting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/center_iv_setting"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_margin="@dimen/ui_20_dip"/>
+
             </RelativeLayout>
 
 
@@ -95,7 +105,6 @@
                         layout="@layout/commentview_center"/>
 
 
-
                     <ImageView style="@style/center_line"/>
 
                     <include
@@ -103,7 +112,6 @@
                         layout="@layout/commentview_center"/>
 
                     <ImageView style="@style/center_line"/>
-
 
 
                     <include

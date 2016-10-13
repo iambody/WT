@@ -48,7 +48,7 @@
 
                         <RelativeLayout
                             android:id="@+id/fragment_newhome_head_lay"
-                            android:layout_width="@dimen/shop_user_hright"
+                            android:layout_width="@dimen/shop_user_hright1"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true">
 
@@ -92,8 +92,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_toRightOf="@+id/fragment_newhome_username"
                             android:layout_marginLeft="@dimen/line_size6"
+                            android:layout_toRightOf="@+id/fragment_newhome_username"
                             android:background="@drawable/shap_home_bind"
                             android:paddingLeft="@dimen/line_size6"
                             android:paddingRight="@dimen/line_size6"
@@ -114,9 +114,21 @@
                         android:id="@+id/fragment_newhome_renshu_lay"
                         layout="@layout/comment_nfragment_newhome_updata"/>
 
+                    <ImageView
+                        android:layout_width="@dimen/line_size"
+                        android:layout_height="@dimen/ui_15_dip"
+                        android:layout_gravity="center_vertical"
+                        android:src="@color/app_line"/>
+
                     <include
                         android:id="@+id/fragment_newhome_jifen_lay"
                         layout="@layout/comment_nfragment_newhome_updata"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/line_size"
+                        android:layout_height="@dimen/ui_15_dip"
+                        android:layout_gravity="center_vertical"
+                        android:src="@color/app_line"/>
 
                     <include
                         android:id="@+id/fragment_newhome_yongjin_lay"
@@ -204,6 +216,7 @@
                         android:background="@drawable/select_newhome_fanyong"/>
 
                 </LinearLayout>
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/ui_20_dip"
