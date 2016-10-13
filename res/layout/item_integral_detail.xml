@@ -46,7 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="成功在微糖购买商品，恭喜您获得100积分"
+                android:text="成功在微糖购买商品，恭喜您获得1000积分"
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:background="@drawable/shape_integral_bg_white"
