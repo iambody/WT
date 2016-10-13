@@ -56,7 +56,7 @@
                     style="@style/AudioFileInfoOverlayText1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/maintab_center_myiv_lay"
+                    android:layout_below="@id/maintab_center_myiv_lay"
                     android:gravity="center"
                     android:padding="10dp"
                     android:textColor="@color/white"

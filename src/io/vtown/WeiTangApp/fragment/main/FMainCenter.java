@@ -49,7 +49,7 @@ import io.vtown.WeiTangApp.ui.ui.ARecyclerShow;
  * Created by datutu on 2016/9/18.
  */
 public class FMainCenter extends FBase implements View.OnClickListener {
-private RelativeLayout maintab_center_myiv_lay;
+    private RelativeLayout maintab_center_myiv_lay;
     private ImageView maintab_center_cover;
     private CircleImageView maintab_center_myiv;
     private TextView maintab_center_myname;
@@ -72,7 +72,7 @@ private RelativeLayout maintab_center_myiv_lay;
     }
 
     private void IBaseView() {
-        maintab_center_myiv_lay= (RelativeLayout) BaseView.findViewById(R.id.maintab_center_myiv_lay);
+        maintab_center_myiv_lay = (RelativeLayout) BaseView.findViewById(R.id.maintab_center_myiv_lay);
         maintab_center_cover = (ImageView) BaseView.findViewById(R.id.maintab_center_cover);
         maintab_center_myiv = (CircleImageView) BaseView.findViewById(R.id.maintab_center_myiv);
         maintab_center_myname = (TextView) BaseView.findViewById(R.id.maintab_center_myname);
@@ -131,6 +131,7 @@ private RelativeLayout maintab_center_myiv_lay;
 
     @Override
     public void InitCreate(Bundle d) {
+
     }
 
     public void OnMainCenterGetMessage(BMessage mymessage) {
@@ -259,8 +260,7 @@ private RelativeLayout maintab_center_myiv_lay;
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.maintab_center_myiv_lay:
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        APersonalData.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, APersonalData.class));
                 break;
             case R.id.maintab_tab_center_oder://我的订单
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,

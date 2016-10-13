@@ -92,12 +92,9 @@ public class APersonalData extends ATitleBase implements
         if (!StrUtils.isEmpty(phone)) {
             StrUtils.SetTxt(tv_phone_numb, phone.substring(0, 3) + "****"
                     + phone.substring(7));
-        }
-
+        } 
         ICache();
-
         switch_delete_cache.setOnCheckedChangeListener(this);
-
     }
 
     @Override

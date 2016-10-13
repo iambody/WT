@@ -271,7 +271,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 //                ShopBadgeView.setBadgeCount(Spuit.ShopBusNumber_Get(BaseCotext));
                 break;
             case BMessage.Tage_Tab_Kill_Self:
-                AMainTab.this.finish();
+//                AMainTab.this.finish();
                 break;
 
             default:

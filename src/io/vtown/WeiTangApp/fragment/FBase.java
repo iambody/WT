@@ -99,18 +99,21 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
     @Override
     public void onPause() {
         super.onPause();
+        if(mBaseStr!=null)
         mBaseStr.CancleNet();
     }
 
-    @Override
+//    @Override
     public void onDestroyView() {
         super.onDestroyView();
+        if(mBaseStr!=null)
         mBaseStr.CancleNet();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if(mBaseStr!=null)
         mBaseStr.CancleNet();
     }
 
