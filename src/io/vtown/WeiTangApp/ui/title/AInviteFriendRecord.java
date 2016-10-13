@@ -1,9 +1,11 @@
 package io.vtown.WeiTangApp.ui.title;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -28,9 +30,11 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
+import io.vtown.WeiTangApp.comment.view.circlescroll.CircleLayout;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
  * Created by Yihuihua on 2016/10/12.
@@ -235,6 +239,8 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
         private LayoutInflater inflater;
 
+        private int mPosition;
+
         public InviteFriendAdapter(int ResourseId) {
             super();
             this.ResourseId = ResourseId;
@@ -275,12 +281,30 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             } else {
                 holder = (InviteFriendHolder) convertView.getTag();
             }
+
+            mPosition = position;
+            final BCInviteFriends bcInviteFriends = datas.get(mPosition);
             StrUtils.SetTxt(holder.tv_invite_date, datas.get(position).getDate());
             FriendsAdapter friendsAdapter = new FriendsAdapter(R.layout.item_invite_friends_detail, datas.get(position).getList());
             holder.invite_friends_record_inside.setAdapter(friendsAdapter);
+            holder.invite_friends_record_inside.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                   BLInviteFriends friend =  bcInviteFriends.getList().get(position);
+                    BComment mBComment = new BComment(friend.getSeller_id(), friend
+                            .getSeller_name());
+                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                            BaseActivity, AShopDetail.class).putExtra(
+                            BaseKey_Bean, mBComment));
+
+
+                }
+            });
             return convertView;
         }
     }
+
+
 
 
     class FriendsAdapter extends BaseAdapter {
