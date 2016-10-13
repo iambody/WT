@@ -890,10 +890,10 @@ public static int SouSouHeistory= 12;
      */
     public static String Get_My_Show = Host
             + "/v1/show/show/myshowlist";
-    /**
-     * 店铺内进行搜索
-     */
-    public static String ShopGoodSou = Host + "/v1/goods/goods/search";
+//    /**
+//     * 店铺内进行搜索
+//     */
+//    public static String ShopGoodSou = Host + "/v1/goods/goods/search";
 
     // 3.0API*******************************************************************
     public static String NewHome = Host + "/v1/home/home/index";
@@ -905,28 +905,6 @@ public static int SouSouHeistory= 12;
      * 返佣
      */
     public static String Homew_FanYong =Host +"/rebaterule.html";
-
-
-    // 其他参数*******************************************************************
-    // 其他参数*******************************************************************
-    // 其他参数*******************************************************************
-    /**
-     * 签名时候的key  开发环境
-     */
-    public static String SignKey = "GriE93gIGp$5bDjQ4rc20FzxWGghTIau";
-    /**
-     * 测试环境
-     */
-    //public static String SignKey = "3vh4xN3@G02ixajB*^@PHkxfz88AKk%O";
-    /**
-     * 正式环境的key
-     */
-    //	public static String SignKey = "hkf%t5SMv1HtrVS!Y%B!NPNS!!0cWgy";
-	/**
-	 * 我的Show列表
-	 */
-	public static String Get_My_Show = Host
-			+ "/v1/show/show/myshowlist";
 
 	/**
 	 * 邀请直属下级列表
@@ -950,7 +928,7 @@ public static int SouSouHeistory= 12;
 	/**
 	 * 签名时候的key  开发环境
 	 */
-	  public static String SignKey = "GriE93gIGp$5bDjQ4rc20FzxWGghTIau";
+	  public static String SignKey  = "GriE93gIGp$5bDjQ4rc20FzxWGghTIau";
 	/**
 	 * 测试环境
 	 */

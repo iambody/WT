@@ -61,6 +61,13 @@
                         android:id="@+id/maintab_tab_center_walle"
                         layout="@layout/commentview_ivtext1"/>
                 </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/center_iv_setting"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="@dimen/ui_10_dip"/>
             </RelativeLayout>
 
 

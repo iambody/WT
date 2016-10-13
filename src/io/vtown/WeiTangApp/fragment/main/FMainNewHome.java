@@ -44,7 +44,11 @@ import io.vtown.WeiTangApp.comment.view.WaveView;
 import io.vtown.WeiTangApp.comment.view.custom.HomeScrollView;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.title.AIntegralDetail;
+import io.vtown.WeiTangApp.ui.title.AInviteFriendRecord;
+import io.vtown.WeiTangApp.ui.title.AReturnDetail;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
+import io.vtown.WeiTangApp.ui.title.loginregist.AInviteAndApprove;
 import io.vtown.WeiTangApp.ui.title.mynew.ANew;
 import io.vtown.WeiTangApp.ui.ui.ANewHome;
 import io.vtown.WeiTangApp.ui.ui.ASouSouGood;
@@ -324,7 +328,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 }
                 BNewHome MBNewHome = JSON.parseObject(Data.getHttpResultStr(), BNewHome.class);
                 BindHomeData(MBNewHome);
-                CacheUtil.New_Save(BaseContext, Data.getHttpResultStr());
+                CacheUtil.NewHome_Save(BaseContext, Data.getHttpResultStr());
                 break;
         }
 
@@ -359,13 +363,14 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
                 break;
             case R.id.fragment_newhome_renshu_lay:
-                PromptManager.ShowCustomToast(BaseContext, "跳转人数");
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AInviteFriendRecord.class));
+
                 break;
             case R.id.fragment_newhome_jifen_lay:
-                PromptManager.ShowCustomToast(BaseContext, "跳转积分");
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AIntegralDetail.class));
                 break;
             case R.id.fragment_newhome_yongjin_lay:
-                PromptManager.ShowCustomToast(BaseContext, "跳转佣金");
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AReturnDetail.class));
                 break;
             case R.id.fragment_newhome_temai_lay://特卖专区
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
