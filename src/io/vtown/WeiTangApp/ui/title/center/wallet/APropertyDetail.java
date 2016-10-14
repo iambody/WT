@@ -341,7 +341,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
     protected void NetConnect() {
         NetError.setVisibility(View.GONE);
         lastid = "";
-        IData(CurrentType, LOAD_REFRESHING);
+        IData(CurrentType, LOAD_INITIALIZE);
 
     }
 

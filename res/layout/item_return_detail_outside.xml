@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/integral_month"
+        android:id="@+id/return_month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -13,7 +13,7 @@
         android:textColor="@color/grey" />
 
     <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
-        android:id="@+id/lv_integral_list_outside"
+        android:id="@+id/lv_return_list_outside"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:cacheColorHint="#00000000"

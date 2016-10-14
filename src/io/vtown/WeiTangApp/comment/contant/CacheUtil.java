@@ -114,6 +114,11 @@ public class CacheUtil {
     private final static String Sp_MynewHome = "mynewhome";
 
     /**
+     * 返佣明细的数据的缓存
+     */
+    private final static String SP_Return_Detail = "returndetail";
+
+    /**
      * 缓存首页数据
      */
     public static void Home_Save(Context pcContext, String HomeStr) {
@@ -238,6 +243,34 @@ public class CacheUtil {
         Editor editor = Sp.edit();
 
         editor.putString("wallet_cache", walletStr);
+
+        editor.commit();
+    }
+
+    /**
+     * 返佣明细
+     *
+     * @param context
+     * @return
+     */
+    public static String Home_Return_Detail_Get(Context context) {
+        SharedPreferences Sp = context.getSharedPreferences(SP_Return_Detail,
+                Context.MODE_PRIVATE);
+        return Sp.getString("return_detail", "");
+    }
+
+    /**
+     * 保存返佣明细
+     *
+     * @param pcContext
+     * @param walletStr
+     */
+    public static void Home_Return_Detail_Save(Context pcContext, String detail) {
+        SharedPreferences Sp = pcContext.getSharedPreferences(SP_Return_Detail,
+                Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+
+        editor.putString("return_detail", detail);
 
         editor.commit();
     }
@@ -467,7 +500,7 @@ public class CacheUtil {
 
         Center_Wallet_Alipay_Save(mpContext,"");
         Center_Wallet_BankCard_Save(mpContext,"");
-
+        Home_Return_Detail_Save(mpContext,"");
         My_Coupons_Save(mpContext,"");
         My_Invite_Friends_Save(mpContext,"");
         Integral_Detail_Save(mpContext,"");

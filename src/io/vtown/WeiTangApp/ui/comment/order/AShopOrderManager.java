@@ -283,6 +283,7 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
                                 break;
 
                         }
+                        ShowErrorIv(R.drawable.pic_maidedingdankongbaiyemian);
                         fragent_oder_nodata_lay.setVisibility(View.VISIBLE);
                         fragent_oder_nodata_lay.setClickable(false);
                         lv_fall_daifu_common.setVisibility(View.GONE);

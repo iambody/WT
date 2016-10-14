@@ -286,6 +286,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
 							break;
 
 					}
+					ShowErrorIv(R.drawable.pic_caigoukongbaiyemian);
 					fragent_purchase_nodata_lay.setVisibility(View.VISIBLE);
 					fragent_purchase_nodata_lay.setClickable(false);
 					fragment_shop_purchase_ls.setVisibility(View.GONE);

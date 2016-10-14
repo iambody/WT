@@ -1582,7 +1582,7 @@ public class ACenterMyOrder extends ATitleBase implements
                                 break;
 
                         }
-
+                        ShowErrorIv(R.drawable.pic_maidongxikongbaiyemian);
                         fragent_centeroder_nodata_lay.setVisibility(View.VISIBLE);
                         fragent_centeroder_nodata_lay.setClickable(false);
                         fragment_center_order_ls.setVisibility(View.GONE);
