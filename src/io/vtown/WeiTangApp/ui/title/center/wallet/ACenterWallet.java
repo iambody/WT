@@ -149,11 +149,9 @@ private RefreshLayout center_wallter_refrash;
 
 	@Override
 	protected void onResume() {
-
 		super.onResume();
 		IData(LOAD_INITIALIZE);
 		ITiXianData();
-		
 	}
 
 	/**

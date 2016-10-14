@@ -54,6 +54,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
     private final static String TYPE_ACTIVATION = "4";
     private final static String TYPE_BUY_OWN = "5";
     private final static String TYPE_BUY_FRIEND = "6";
+    private final static String TYPE_CONSUME = "7";
     private String Current_Type = TYPE_ALL;
     private PopupWindow popupWindow;
     private IntegralOutsideAdapter mAdapter;
@@ -154,6 +155,11 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     }
                     if (TYPE_BUY_FRIEND.equals(Current_Type)) {
                         ShowErrorCanLoad(getResources().getString(R.string.null_integral_friend_buy));
+                    }
+
+                    if (TYPE_CONSUME.equals(Current_Type)) {
+                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_consume));
+
                     }
                     return;
                 }
@@ -353,11 +359,24 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 }
                 popupWindow.dismiss();
                 break;
+
+
+            case R.id.tv_consume:
+                if (!TYPE_CONSUME.equals(Current_Type)) {
+                    Current_Type = TYPE_CONSUME;
+                    SetTitleTxt(getResources().getString(R.string.integral_title_concume));
+                    lastid = "";
+                    IData(Current_Type, LOAD_INITIALIZE);
+                    mAdapter.Clearn();
+                }
+                popupWindow.dismiss();
+
+                break;
             case R.id.integral_detail_nodata_lay:
                 if (CheckNet(BaseContext)) return;
-                switch (Click_Type){
+                switch (Click_Type) {
                     case 1://跳转邀请码页面
-                        PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AMyInviteCode.class));
+                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMyInviteCode.class));
                         break;
                     case 2://跳转购物商品
                         PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
@@ -416,6 +435,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
         TextView tv_friend_activation = (TextView) view.findViewById(R.id.tv_friend_activation);
         TextView tv_own_buy = (TextView) view.findViewById(R.id.tv_own_buy);
         TextView tv_friend_buy = (TextView) view.findViewById(R.id.tv_friend_buy);
+        TextView tv_consume = (TextView) view.findViewById(R.id.tv_consume);
 
 
         tv_all_integral.setOnClickListener(this);
@@ -425,6 +445,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
         tv_friend_activation.setOnClickListener(this);
         tv_own_buy.setOnClickListener(this);
         tv_friend_buy.setOnClickListener(this);
+        tv_consume.setOnClickListener(this);
 
 
         popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT,
