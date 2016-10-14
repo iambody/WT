@@ -59,7 +59,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     private RefreshLayout fragment_shopbus_refrash;
 
     private TextView maintab_shopbus_left_txt;
-    private ImageView maintab_shopbus_Right_iv;
+    private ImageView maintab_shopbus_right_iv;
 
 
     //外层包裹布局
@@ -76,8 +76,8 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     private TextView maintab_sopbus_bottom_jiesuan;
     //错误的view
     private View maintab_shopbus_nodata_lay;
-
-
+    //右上角完成
+    private TextView maintab_shopbus_right_txt;
     private MainShopBusAp busAdapter;
 //数据**********************************
 
@@ -130,6 +130,9 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     }
 
     private void InItBaseView() {
+        maintab_shopbus_right_txt= (TextView) BaseView.findViewById(R.id.maintab_shopbus_right_txt);
+        maintab_shopbus_right_txt.setOnClickListener(this);
+
         neterrorview = io.vtown.WeiTangApp.comment.util.ViewHolder.get(BaseView, R.id.fragment_main_shopbus_neterrorview);
         neterrorview.setOnClickListener(this);
         CheckNet();
@@ -141,7 +144,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
         maintab_shopbus_left_txt = (TextView) BaseView.findViewById(R.id.maintab_shopbus_left_txt);
         maintab_shopbus_left_txt.setOnClickListener(this);
-        maintab_shopbus_Right_iv = (ImageView) BaseView.findViewById(R.id.maintab_shopbus_Right_iv);
+        maintab_shopbus_right_iv = (ImageView) BaseView.findViewById(R.id.maintab_shopbus_right_iv);
 
 
         maintab_shopbus_show_lay = (LinearLayout) BaseView.findViewById(R.id.maintab_shopbus_show_lay);
@@ -159,7 +162,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 //        maintab_shopbus_ls.hidefoot();
         maintab_shopbus_nodata_lay.setOnClickListener(this);
         maintab_shopbus_left_txt.setOnClickListener(this);
-        maintab_shopbus_Right_iv.setOnClickListener(this);
+        maintab_shopbus_right_iv.setOnClickListener(this);
         maintab_sopbus_bottom_jiesuan.setOnClickListener(this);
         maintab_sopbus_bottom_select_iv.setOnClickListener(this);
     }
@@ -186,10 +189,12 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         IsAllSelectIv = false;
         IsJeiSuan = true;
         maintab_shopbus_left_txt.setVisibility(View.GONE);
-        maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.drawable.shoubus_ok// R.drawable.center_iv2
-                : R.drawable.lajixiang_iv);
+//        maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.drawable.shoubus_ok// R.drawable.center_iv2
+//                : R.drawable.lajixiang_iv);
+        maintab_shopbus_right_iv.setVisibility(IsJeiSuan?View.VISIBLE:View.GONE);
+        maintab_shopbus_right_txt.setVisibility(!IsJeiSuan?View.VISIBLE:View.GONE);
         SetIvSelect(maintab_sopbus_bottom_select_iv, IsAllSelectIv);
-        maintab_shopbus_Right_iv.setVisibility(View.GONE);
+        maintab_shopbus_right_iv.setVisibility(View.GONE);
         // 开始获取数据
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("member_id", MyUser.getId());
@@ -214,8 +219,11 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
                 break;
             case 1:// 删除购物车
                 IsJeiSuan = !IsJeiSuan;
-                maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.color.transparent
-                        : R.drawable.lajixiang_iv);
+//                maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.color.transparent
+//                        : R.drawable.lajixiang_iv);
+                maintab_shopbus_right_iv.setVisibility(IsJeiSuan?View.VISIBLE:View.GONE);
+                maintab_shopbus_right_txt.setVisibility(!IsJeiSuan?View.VISIBLE:View.GONE);
+
                 StrUtils.SetTxt(maintab_sopbus_bottom_jiesuan, IsJeiSuan ? "结算" : "删除");
                 PromptManager.ShowCustomToast(BaseContext, "删除成功");
                 IData(INITIALIZE);
@@ -234,7 +242,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     private void SetShopView(String ShopData, int Type) {
         if (StrUtils.isEmpty(ShopData)) {
             onError(Constants.SucessToError, Type);
-            maintab_shopbus_Right_iv.setVisibility(View.GONE);
+            maintab_shopbus_right_iv.setVisibility(View.GONE);
             maintab_shopbus_down_lay.setVisibility(View.GONE);
             IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
             ShowErrorCanLoad(getResources().getString(R.string.no_shopbus));
@@ -258,7 +266,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
 
         if (bComment.getPT() == null && bComment.getCG() == null) {// 没有普通也没有采购的
-            maintab_shopbus_Right_iv.setVisibility(View.GONE);
+            maintab_shopbus_right_iv.setVisibility(View.GONE);
             maintab_shopbus_down_lay.setVisibility(View.GONE);
             IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
             AllNumber = 0;
@@ -277,7 +285,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
             maintab_shopbus_left_txt.setVisibility(View.GONE);
             maintab_shopbus_left_txt.setClickable(false);
-            maintab_shopbus_Right_iv.setVisibility(View.VISIBLE);
+            maintab_shopbus_right_iv.setVisibility(View.VISIBLE);
             AllNumber = 0;
 
             for (int i = 0; i < bComment.getPT().size(); i++) {
@@ -352,18 +360,37 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     @Override
     public void onError(String error, int LoadType) {
 
-
-        if (LoadType == INITIALIZE) {
-            IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
-            ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
-        }
-
         NoGood = false;
-        if (LoadType == REFRESHING) {
-            fragment_shopbus_refrash.setRefreshing(false);
-            return;
+        switch (LoadType) {
+            case INITIALIZE:
+                IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+                break;
+            case REFRESHING:
+                fragment_shopbus_refrash.setRefreshing(false);
+
+                break;
+            case DELETE:
+                break;
+
         }
         PromptManager.ShowCustomToast(BaseContext, StrUtils.NullToStr(error));
+
+//if(DELETE==LoadType){
+//    PromptManager.ShowCustomToast(BaseContext, StrUtils.NullToStr(error));
+//    return;
+//}
+//        if (LoadType == INITIALIZE) {
+//            IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
+//            ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+//        }
+//
+//        NoGood = false;
+//        if (LoadType == REFRESHING) {
+//            fragment_shopbus_refrash.setRefreshing(false);
+//            return;
+//        }
+//        PromptManager.ShowCustomToast(BaseContext, StrUtils.NullToStr(error));
 
     }
 
@@ -451,7 +478,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
                 BusInAdapters.add(data);
             }
             if (dass.size() > 0) {
-                maintab_shopbus_Right_iv.setVisibility(View.VISIBLE);
+                maintab_shopbus_right_iv.setVisibility(View.VISIBLE);
             }
             ShowAllMony();
             this.notifyDataSetChanged();
@@ -996,7 +1023,6 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
             case R.id.fragment_main_shopbus_neterrorview:
                 PromptManager.GoToNetSeting(BaseActivity);
 
@@ -1005,18 +1031,29 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
                 if (NoGood) {//标识是没有商品
                     //TODO去跳转到新 商品首页的列表！！！！！！！！！！！！！！！！！！！！！
 //                    PromptManager.ShowCustomToast(BaseContext,"跳转到商品列表");
-                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ANewHome.class));
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
                 } else
                     IData(INITIALIZE);
                 break;
             case R.id.maintab_shopbus_left_txt://切换
                 ShowSelect(maintab_shopbus_left_txt);
                 break;
-            case R.id.maintab_shopbus_Right_iv://删除
+            case R.id.maintab_shopbus_right_txt:
                 IsJeiSuan = !IsJeiSuan;
                 busAdapter.FrashData(busAdapter.GetDatas());
-                maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.drawable.shoubus_ok// R.drawable.center_iv2
-                        : R.drawable.lajixiang_iv);
+                maintab_shopbus_right_txt.setVisibility(View.GONE);
+                maintab_shopbus_right_iv.setVisibility(View.VISIBLE);
+//                maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.drawable.shoubus_ok// R.drawable.center_iv2
+//                        : R.drawable.lajixiang_iv);
+                StrUtils.SetTxt(maintab_sopbus_bottom_jiesuan, IsJeiSuan ? "结算" : "删除");
+                break;
+            case R.id.maintab_shopbus_right_iv://删除
+                IsJeiSuan = !IsJeiSuan;
+                busAdapter.FrashData(busAdapter.GetDatas());
+                maintab_shopbus_right_txt.setVisibility(View.VISIBLE);
+                maintab_shopbus_right_iv.setVisibility(View.GONE);
+//                maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.drawable.shoubus_ok// R.drawable.center_iv2
+//                        : R.drawable.lajixiang_iv);
                 StrUtils.SetTxt(maintab_sopbus_bottom_jiesuan, IsJeiSuan ? "结算" : "删除");
                 break;
             case R.id.maintab_sopbus_bottom_select_iv://全选
@@ -1095,8 +1132,9 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         map.put("member_id", MyUser.getId());
         map.put("cid", Cids);
         FBGetHttpData(map, Constants.ShopBus_Delete, Request.Method.DELETE, 1,
-                INITIALIZE);
+                DELETE);
     }
+
     /**
      * 删除购物车
      */

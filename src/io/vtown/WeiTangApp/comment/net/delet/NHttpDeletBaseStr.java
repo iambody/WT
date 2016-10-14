@@ -68,7 +68,7 @@ public class NHttpDeletBaseStr extends NDeletHttpBase    {
 	public void myonErrorResponse(VolleyError arg0) {
 
 		if (postResult != null)
-			postResult.onError(arg0.getLocalizedMessage(), 0);
+			postResult.onError("服务器繁忙", 0);
 	}
 
 }

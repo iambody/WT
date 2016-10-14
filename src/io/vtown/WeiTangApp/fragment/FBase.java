@@ -40,7 +40,7 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
     protected static final int REFRESHING = 1;// 刷新
     protected static final int LOADMOREING = 2;// 加载更多
     protected static final int LOADHind = 3;// 偷偷加载
-
+    protected static final int DELETE = 4;// 偷偷加载
 
     //在首页几个fragment中 断网时候需要进行再fragment里面的title进行显示断网箭头view
     protected View neterrorview;
@@ -99,22 +99,22 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
     @Override
     public void onPause() {
         super.onPause();
-        if(mBaseStr!=null)
-        mBaseStr.CancleNet();
+        if (mBaseStr != null)
+            mBaseStr.CancleNet();
     }
 
-//    @Override
+    //    @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if(mBaseStr!=null)
-        mBaseStr.CancleNet();
+        if (mBaseStr != null)
+            mBaseStr.CancleNet();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(mBaseStr!=null)
-        mBaseStr.CancleNet();
+        if (mBaseStr != null)
+            mBaseStr.CancleNet();
     }
 
     /**
@@ -191,11 +191,11 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
             return;
         }
         if (Method == com.android.volley.Request.Method.DELETE) {
-            NHttpDeletBaseStr mBaseStr = new NHttpDeletBaseStr(BaseContext);
-            mBaseStr.setPostResult(new IHttpResult<String>() {
+            NHttpDeletBaseStr mBasedelStrs = new NHttpDeletBaseStr(BaseContext);
+            mBasedelStrs.setPostResult(new IHttpResult<String>() {
 
                 @Override
-                public void onError(String error, int LoadType) {
+                public void onError(String error, int LoadTypea) {
                     mHttpDataLisenter.onError(error, LoadType);
                 }
 
@@ -210,10 +210,10 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
                                 LoadType));
                 }
             });
-            mBaseStr.getData(Host, Map, Method);
+            mBasedelStrs.getData(Host, Map, Method);
         } else {
-
-            mBaseStr = new NHttpBaseStr(BaseContext);
+            if (mBaseStr == null)
+                mBaseStr = new NHttpBaseStr(BaseContext);
             mBaseStr.setPostResult(new IHttpResult<String>() {
                 @Override
                 public void onError(String error, int LoadTyp) {

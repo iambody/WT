@@ -672,6 +672,8 @@
 
     <!--返佣明细-->
     <string name="return_detail">返佣明细</string>
+    <string name="wancheng">完成</string>
+
     <string name="null_return_detail">\"亲，您暂时还没有返佣记录哦~~~\"</string>
 
 </resources>

@@ -186,16 +186,16 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
             return;
         ImageLoaderUtil.Load2(StrUtils.NullToStr(myBShop.getAvatar()),
                 fragment_main_tab_shop_iv, R.drawable.testiv);
-        File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
-        if (CoverFile.exists()) {// 已经存在了
-            fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
-                    .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
-        } else {
+//        File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
+//        if (CoverFile.exists()) {// 已经存在了
+//            fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
+//                    .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
+//        } else {
             ImageLoaderUtil.LoadGaosi(BaseContext,
                     StrUtils.NullToStr(myBShop.getCover()), fragment_main_iv_shop_cover,
                     R.color.app_fen, 1);
 
-        }
+//        }
 
         StrUtils.SetTxt(fragment_main_tab_shop_today_income,
                 StrUtils.SetTextForMony(myBShop.getTodayIncome()));
@@ -217,12 +217,9 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
 
     public void OnMainTabShop(BMessage myMessage) {
 
-            // myBShop = ;
+
             int messageType = myMessage.getMessageType();
-            // if (messageType == BMessage.getTageShopData()) {
-            // ShowView(myBShop);
-            //
-            // }
+
             switch (messageType) {
                 case BMessage.Tage_Main_To_ShowGaoSi:
                     if (!StrUtils.isEmpty(myBShop.getCover()))
@@ -236,7 +233,6 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
 
                     break;
                 case BMessage.Tage_Shop_data_desc_change:
-
                     StrUtils.SetTxt(fragment_main_tab_shop_sign, Spuit.Shop_Get(BaseContext)
                             .getIntro());
 
@@ -254,17 +250,17 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
                 case BMessage.Tage_Shop_data_background_change:
 //			ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
 //					.getCover(), iv_shop_cover, R.drawable.item_shangji_iv, 0);
-                    File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
-                    SdCardUtils.delFile(CoverFile.toString());
-                    if (CoverFile.exists()) {// 已经存在了
-                        fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
-                                .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
-                    } else {
+//                    File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
+//                    SdCardUtils.delFile(CoverFile.toString());
+//                    if (CoverFile.exists()) {// 已经存在了
+//                        fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
+//                                .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
+//                    } else {
                         ImageLoaderUtil.LoadGaosi(BaseContext,
-                                StrUtils.NullToStr(myBShop.getCover()), fragment_main_iv_shop_cover,
+                                StrUtils.NullToStr(Spuit.Shop_Get(BaseContext).getCover()), fragment_main_iv_shop_cover,
                                 R.color.app_fen, 1);
 
-                    }
+//                    }
                     break;
 
                 default:

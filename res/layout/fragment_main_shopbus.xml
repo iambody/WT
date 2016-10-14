@@ -42,7 +42,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/maintab_shopbus_Right_iv"
+                android:id="@+id/maintab_shopbus_right_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -51,6 +51,20 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/lajixiang_iv"/>
+            <TextView
+                android:id="@+id/maintab_shopbus_right_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/TextColorWhite"
+                android:textSize="@dimen/ui_18_dip"
+                android:padding="@dimen/line_size6"
+                android:clickable="true"
+                android:text="@string/wancheng"
+                android:visibility="gone"
+                android:focusable="true" />
         </RelativeLayout>
     </LinearLayout>
 

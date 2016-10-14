@@ -618,6 +618,7 @@
     <dimen name="fragment_shop_shopname_size">18dp</dimen>
     <dimen name="fragment_shop_shoplog_size">13dp</dimen>
     <dimen name="shop_user_width_lay">80dp</dimen>
+    <dimen name="ui_18_dip">18dp</dimen>
 
 
 </resources>
