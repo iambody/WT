@@ -164,7 +164,6 @@ public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnS
 
     /**
      * 是否是上拉操作
-     *
      * @return
      */
     private boolean isPullUp() {

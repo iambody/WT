@@ -149,6 +149,7 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
         if (IsNoData == true) {
             ShowNoDsataShow();
             // ssssss
+
             fragment_sellstatistics_line.setVisibility(View.GONE);
             fragment_shopline_nodata_lay.setVisibility(View.VISIBLE);
             return;
@@ -240,9 +241,11 @@ public class FSellStatisticLine extends FBase implements OnClickListener {
      * 设置无数据时候的提示语
      */
     private void ShowNoDsataShow() {
+        ShowErrorIv(R.drawable.error_tongji_iv);
         switch (CurrentPage) {
             case 0:
                 ShowErrorCanLoad(getResources().getString(R.string.noincome));
+
                 break;
             case 1:
                 ShowErrorCanLoad(getResources().getString(R.string.nosell));

@@ -677,5 +677,7 @@
     <string name="wancheng">完成</string>
 
     <string name="null_return_detail">\"亲，您暂时还没有返佣记录哦~~~\"</string>
+    <string name="bangding_tishi">微糖商城智能保障您的个人信息隐私</string>
+    <string name="bangding_bindtishi">请绑定用户个人信息</string>
 
 </resources>

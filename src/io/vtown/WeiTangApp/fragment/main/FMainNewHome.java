@@ -281,9 +281,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         fragmentNewhomeHeadIv.setBorderWidth(10);
         fragmentNewhomeHeadIv.setBorderColor(getResources().getColor(R.color.transparent6));
         //开始赋值
-        Text_fragment_newhome_RenShu.setText("20");
-        Text_fragment_newhome_JiFen.setText("4220");
-        Text_fragment_newhome_YongJin.setText("42,10");
+
         fragmentNewhomeIvLaya = (LinearLayout) (ViewHolder.get(BaseView, R.id.fragment_newhome_putitle_lay)).findViewById(R.id.fragment_newhome_iv_layaa);//ViewHolder.get(BaseView, R.id.fragment_newhome_iv_lay);
         fragmentNewhomeIvLaya.getBackground().setAlpha(0);
         IWave();

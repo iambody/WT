@@ -73,7 +73,6 @@ public class ARealIdauth extends ATitleBase {
         realid_identityid_ed = (EditText) findViewById(R.id.realid_identityid_ed);
         realid_submint_bt = (TextView) findViewById(R.id.realid_submint_bt);
         realid_submint_bt.setOnClickListener(this);
-
         from_where_value = getIntent().getIntExtra(FROM_WHERE_KEY, 0);
     }
 
@@ -205,13 +204,14 @@ public class ARealIdauth extends ATitleBase {
                 } else {
                     if (!Psd.equals(getStrPassword)) {
                         PromptManager.ShowCustomToast(BaseContext, "密码不一致重新输入");
+                        pp.dismiss();
                         ToSetPassd(0);
                         return;
                     } else {// 第二次 输入成功可以进行提交
 
                         BUser mBUser = Spuit.User_Get(BaseContext);
 
-                        ApproveSubmit(mBUser.getId(), realid_identityid_ed
+                        ApproveSubmit(pp, mBUser.getId(), realid_identityid_ed
                                         .getText().toString().trim(),
                                 mBUser.getSeller_id(), realid_name_ed.getText()
                                         .toString().trim(), Psd, Psd);
@@ -243,7 +243,7 @@ public class ARealIdauth extends ATitleBase {
      * @param password
      * @param password2
      */
-    private void ApproveSubmit(String member_id, String identity_card,
+    private void ApproveSubmit(PPassWord myPP, String member_id, String identity_card,
                                String seller_id, String name, String password, String password2) {
         SetTitleHttpDataLisenter(this);
         PromptManager.showLoading(BaseContext);
@@ -256,7 +256,7 @@ public class ARealIdauth extends ATitleBase {
         String pasdd = Constants.RSA(password, BaseContext);
         map.put("password", pasdd);
         map.put("password2", pasdd);
-
+        myPP.dismiss();
         FBGetHttpData(map, Constants.Login_Real_RenZheng, Method.POST, 0,
                 LOAD_INITIALIZE);
     }

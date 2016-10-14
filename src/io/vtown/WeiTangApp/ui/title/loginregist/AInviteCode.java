@@ -88,7 +88,7 @@ public class AInviteCode extends ATitleBase {
 
             BaseActivity.finish();
         } else {// 没认证过
-            PromptManager.ShowCustomToast(BaseContext, "认证成功");
+            PromptManager.ShowCustomToast(BaseContext, "绑定成功");
             PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                     ARealIdauth.class).putExtra(ARealIdauth.FROM_WHERE_KEY, 1));
             BaseActivity.finish();
