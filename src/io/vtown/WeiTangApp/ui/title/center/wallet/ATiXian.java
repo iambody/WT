@@ -118,7 +118,7 @@ public class ATiXian extends ATitleBase {
 	 */
 	private TextView tv_bank_card_limit;
 	private View view;
-
+	private View tixian_nodata_lay;
 
 
 	@Override
@@ -140,21 +140,25 @@ public class ATiXian extends ATitleBase {
 	 * 获取支付宝
 	 */
 	private void IData() {
-//		PromptManager.showtextLoading(BaseContext,
-//				getResources()
-//						.getString(R.string.xlistview_header_hint_loading));
-//		HashMap<String, String> map = new HashMap<String, String>();
-//		//map.put("api_version", "2.0.1");//API版本上线2.0.1
-//		map.put("member_id", user_Get.getId());
-//		FBGetHttpData(map, Constants.Get_Tixian_Message, Method.GET, 0,
-//				LOAD_INITIALIZE);
 
 		BCBankCardAndAlipayInfo alipaybankinfo = (BCBankCardAndAlipayInfo) getIntent().getSerializableExtra("alipaybankinfo");
 		if(null == alipaybankinfo){
-			return;
+			GetData();
 		}else{
 			RefreshAlipayView(alipaybankinfo);
 		}
+
+	}
+
+	private void GetData(){
+				PromptManager.showtextLoading(BaseContext,
+				getResources()
+						.getString(R.string.xlistview_header_hint_loading));
+		HashMap<String, String> map = new HashMap<String, String>();
+		//map.put("api_version", "2.0.1");//API版本上线2.0.1
+		map.put("member_id", user_Get.getId());
+		FBGetHttpData(map, Constants.Get_Tixian_Message, Method.GET, 0,
+				LOAD_INITIALIZE);
 
 	}
 
@@ -201,8 +205,8 @@ public class ATiXian extends ATitleBase {
 		tixianguize_txt = (TextView) findViewById(R.id.tixianguize_txt);
 		tv_bank_card_limit = (TextView) findViewById(R.id.tv_bank_card_limit);
 		center_wallet_tixian_outlay = (LinearLayout) findViewById(R.id.center_wallet_tixian_outlay);
-
-
+		center_wallet_tixian_outlay.setVisibility(View.GONE);
+		tixian_nodata_lay = findViewById(R.id.tixian_nodata_lay);
 
 		tixian_zhifubao = (TextView) findViewById(R.id.tixian_zhifubao);
 		tixian_yinhangka = (TextView) findViewById(R.id.tixian_yinhangka);
@@ -249,7 +253,8 @@ public class ATiXian extends ATitleBase {
 	 * @param datas
 	 */
 	private void RefreshAlipayView(BCBankCardAndAlipayInfo datas) {
-
+		center_wallet_tixian_outlay.setVisibility(View.VISIBLE);
+		tixian_nodata_lay.setVisibility(View.GONE);
 		if (datas.getBank_list() != null) {
 			bank_list = datas.getBank_list().get(0);
 		}
@@ -337,21 +342,18 @@ public class ATiXian extends ATitleBase {
 		switch (Data.getHttpResultTage()) {
 		case 0:
 
-//			// BLComment datas = new BLComment();
-//			BCBankCardAndAlipayInfo datas = new BCBankCardAndAlipayInfo();
-//			try {
-//
-//				datas = JSON.parseObject(Data.getHttpResultStr(),
-//						BCBankCardAndAlipayInfo.class);
-//
-//			} catch (Exception e) {
-//				DataError("解析失败", 1);
-//			}
-//
-//			IDataView(center_wallet_tixian_outlay,
-//					center_wallet_tixian_nodata_lay, NOVIEW_RIGHT);
-//
-//			RefreshAlipayView(datas);
+			// BLComment datas = new BLComment();
+			BCBankCardAndAlipayInfo datas = new BCBankCardAndAlipayInfo();
+			try {
+
+				datas = JSON.parseObject(Data.getHttpResultStr(),
+						BCBankCardAndAlipayInfo.class);
+
+			} catch (Exception e) {
+				DataError("解析失败", 1);
+			}
+
+			RefreshAlipayView(datas);
 
 			break;
 
@@ -369,10 +371,11 @@ public class ATiXian extends ATitleBase {
 	protected void DataError(String error, int LoadTyp) {
 		tv_apply_withdraw_deposit.setEnabled(true);
 		PromptManager.ShowMyToast(BaseContext, error);
-		// if(LOAD_INITIALIZE == LoadTyp){
-		// IDataView(center_wallet_tixian_outlay,
-		// center_wallet_tixian_nodata_lay, NOVIEW_ERROR);
-		// }
+		 if(LOAD_INITIALIZE == LoadTyp){
+			 center_wallet_tixian_outlay.setVisibility(View.GONE);
+			 tixian_nodata_lay.setVisibility(View.VISIBLE);
+
+		 }
 		switch (LoadTyp) {
 		case LOAD_REFRESHING:// 获取支付宝失败===》默认未绑定支付宝
 

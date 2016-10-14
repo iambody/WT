@@ -89,7 +89,6 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
 
     private void IData(int LoadType) {
 
-
         HashMap<String, String> map = new HashMap<String, String>();
         // map.put("page_num",Constants.PageSize+"");
         map.put("member_id", mUser.getId());
@@ -247,8 +246,6 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
     @Override
     protected void NetConnect() {
         NetError.setVisibility(View.GONE);
-        lastid = "";
-        IData(LOAD_INITIALIZE);
 
     }
 

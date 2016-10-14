@@ -261,17 +261,17 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
     @Override
     protected void NetConnect() {
-
+        NetError.setVisibility(View.GONE);
     }
 
     @Override
     protected void NetDisConnect() {
-
+        NetError.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void SetNetView() {
-
+        SetNetStatuse(NetError);
     }
 
     @Override

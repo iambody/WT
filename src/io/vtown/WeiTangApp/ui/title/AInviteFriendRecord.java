@@ -30,11 +30,12 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
-import io.vtown.WeiTangApp.comment.view.circlescroll.CircleLayout;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
+
 
 /**
  * Created by Yihuihua on 2016/10/12.
@@ -49,6 +50,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private int page = 1;
     private List<BCInviteFriends> datas = new ArrayList<BCInviteFriends>();
     private InviteFriendAdapter mAdapter;
+    private int click_type = 0;
 
     @Override
     protected void InItBaseView() {
@@ -68,6 +70,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         invite_friends_refrash.setCanLoadMore(false);
         invite_friends_record_list = (ListView) findViewById(R.id.invite_friends_record_list);
         invite_friends_nodata_lay = findViewById(R.id.invite_friends_nodata_lay);
+        invite_friends_nodata_lay.setOnClickListener(this);
         mAdapter = new InviteFriendAdapter(R.layout.item_invite_friends_outside);
         invite_friends_record_list.setAdapter(mAdapter);
     }
@@ -109,14 +112,15 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     invite_friends_refrash.setVisibility(View.GONE);
                     invite_friends_nodata_lay.setVisibility(View.VISIBLE);
-                    invite_friends_nodata_lay.setClickable(false);
+                    invite_friends_nodata_lay.setClickable(true);
                     ShowErrorCanLoad(getString(R.string.null_invite_friend));
+                    click_type = 1;
                     datas = new ArrayList<BCInviteFriends>();
                     mAdapter.notifyDataSetChanged();
                     return;
                 }
                 datas = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-                CacheUtil.My_Invite_Friends_Save(BaseContext,Data.getHttpResultStr());
+                CacheUtil.My_Invite_Friends_Save(BaseContext, Data.getHttpResultStr());
                 invite_friends_refrash.setVisibility(View.VISIBLE);
                 invite_friends_nodata_lay.setVisibility(View.GONE);
                 invite_friends_refrash.setRefreshing(false);
@@ -179,6 +183,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 invite_friends_refrash.setVisibility(View.GONE);
                 invite_friends_nodata_lay.setVisibility(View.VISIBLE);
                 invite_friends_nodata_lay.setClickable(true);
+                click_type = 2;
                 ShowErrorCanLoad(getString(R.string.error_null_noda));
                 invite_friends_refrash.setRefreshing(false);
                 break;
@@ -193,22 +198,33 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
     @Override
     protected void NetConnect() {
-
+        NetError.setVisibility(View.GONE);
     }
 
     @Override
     protected void NetDisConnect() {
-
+        NetError.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void SetNetView() {
-
+        SetNetStatuse(NetError);
     }
 
     @Override
     protected void MyClick(View V) {
-
+        switch (V.getId()) {
+            case R.id.invite_friends_nodata_lay:
+                if(CheckNet(BaseContext))return;
+                if (1 == click_type) {
+                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AMyInviteCode.class));
+                }
+                if (2 == click_type) {
+                    page = 1;
+                    IData(page,LOAD_INITIALIZE);
+                }
+                break;
+        }
     }
 
     @Override
@@ -290,7 +306,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             holder.invite_friends_record_inside.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                   BLInviteFriends friend =  bcInviteFriends.getList().get(position);
+                    BLInviteFriends friend = bcInviteFriends.getList().get(position);
                     BComment mBComment = new BComment(friend.getSeller_id(), friend
                             .getSeller_name());
                     PromptManager.SkipActivity(BaseActivity, new Intent(
@@ -303,8 +319,6 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             return convertView;
         }
     }
-
-
 
 
     class FriendsAdapter extends BaseAdapter {
@@ -382,7 +396,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             }
             if (friends_datas.size() - 1 == position) {
                 holder.list_line.setVisibility(View.GONE);
-            }else{
+            } else {
                 holder.list_line.setVisibility(View.VISIBLE);
             }
             return convertView;
