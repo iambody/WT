@@ -1,11 +1,5 @@
 package io.vtown.WeiTangApp.ui.title.center.set;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import com.android.volley.Request.Method;
-
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +7,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -22,6 +15,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.android.volley.Request.Method;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
@@ -34,7 +33,6 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.view.pop.PAddSelect;
 import io.vtown.WeiTangApp.comment.view.pop.PAddSelect.AddSelectInterface;
-
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
 /**

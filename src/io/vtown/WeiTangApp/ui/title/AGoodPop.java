@@ -287,6 +287,9 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     private View mRootView;
     private TextView tv_gray_layout;
     private ScrollView good_content_sv;
+    private LinearLayout ll_return_and_integral;
+    private TextView tv_return_money;
+    private TextView tv_good_integral;
 
     @Override
     protected void InItBaseView() {
@@ -496,6 +499,9 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         good_content_sv.smoothScrollTo(0, 20);
         ll_pop_good_icon_price_store = (LinearLayout) findViewById(R.id.ll_pop_good_icon_price_store);
         iv_pop_goods_icon = (ImageView) findViewById(R.id.iv_pop_goods_icon);
+        ll_return_and_integral = (LinearLayout) findViewById(R.id.ll_return_and_integral);
+        tv_return_money = (TextView) findViewById(R.id.tv_return_money);
+        tv_good_integral = (TextView) findViewById(R.id.tv_good_integral);
 
         ImageLoaderUtil.Load2(databean.getCover(), iv_pop_goods_icon,
                 R.drawable.error_iv2);
@@ -504,6 +510,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         pop_purchase_price = (TextView) findViewById(R.id.pop_purchase_price);
         pop_purchase_kucun = (TextView) findViewById(R.id.pop_purchase_kucun);
         pop_purchase_price.setVisibility(View.GONE);
+        ll_return_and_integral.setVisibility(View.GONE);
 
         // 默认显示商品的名字
         StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
@@ -546,7 +553,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
         switch (ShowType) {
             case TYPE_SHOP_GOOD_MANAGER_CAIGOU:
-                ll_real_virtual.setVisibility(View.VISIBLE);
+                ll_real_virtual.setVisibility(View.GONE);
                 ll_counts.setVisibility(View.VISIBLE);
                 ll_price.setVisibility(View.GONE);
                 break;
@@ -628,6 +635,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                         // + da.getAttr_map().getV1());
                         StrUtils.SetTxt(et_price, "");
                         pop_purchase_price.setVisibility(View.GONE);
+                        ll_return_and_integral.setVisibility(View.GONE);
                         pop_purchase_kucun.setVisibility(View.VISIBLE);
                         StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
                         break;
@@ -685,6 +693,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
                         StrUtils.SetTxt(et_price, "");
                         pop_purchase_price.setVisibility(View.GONE);
+                        ll_return_and_integral.setVisibility(View.GONE);
                         pop_purchase_kucun.setVisibility(View.VISIBLE);
                         StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
 
@@ -722,12 +731,20 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
         if (blComment != null) {
             pop_purchase_price.setVisibility(View.VISIBLE);
+            if(TYPE_GOOD_DETAIL_BUY == ShowType && "1".equals(databean.getIs_fee())){
+                ll_return_and_integral.setVisibility(View.VISIBLE);
+                StrUtils.SetColorsTxt(BaseContext,tv_return_money,R.color.app_fen,"返佣金额：",StrUtils.SetTextForMony(blComment.getFee())+"元");
+                StrUtils.SetColorsTxt(BaseContext,tv_good_integral,R.color.app_fen,"获得积分：",blComment.getScore()+"分");
+            }else{
+                ll_return_and_integral.setVisibility(View.GONE);
+            }
 
-            String format_price = String.format("￥%1$s元",
+            String format_price = String.format("%1$s元",
                     StrUtils.SetTextForMony(blComment.getSell_price()));
             StrUtils.SetTxt(pop_purchase_price, format_price);
             StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle() + " "
                     + blComment.getAttr_name());
+
             if (null != makeMoneyAdapter && ShowType == TYPE_GOOD_DETAIL_REPLACE_SELL) {
                 BDComment item = (BDComment) makeMoneyAdapter.getItem(mPostion);
                 float showMoney = 0.0f;
@@ -936,7 +953,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         switch (ShowType) {
             case TYPE_SHOP_GOOD_MANAGER_CAIGOU:
 
-                break;
+
             case TYPE_GOOD_DETAIL_BUY:
 
                 AddGoodBus();
@@ -1251,6 +1268,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                 gv_colors.setAdapter(myDownAdapter);
                 et_price.setText("");
                 pop_purchase_price.setVisibility(View.GONE);
+                ll_return_and_integral.setVisibility(View.GONE);
                 pop_purchase_kucun.setVisibility(View.VISIBLE);
                 StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
 

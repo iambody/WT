@@ -631,30 +631,32 @@ public class AGoodDetail extends ATitleBase {
 
             } else {// 自营品牌商品
                 if (IsShangJia) {// 可以上架
-                    PPurchase pShowVirtualLibGood2 = new PPurchase(
-                            BaseActivity, BaseContext, 200,
-                            PPurchase.TYPE_GOOD_DETAIL_REPLACE_SELL, datas,
-                            GoodsId, IsCaiGou);
-                    pShowVirtualLibGood2.showAtLocation(mView, Gravity.CENTER,
-                            0, 0);
-                    pShowVirtualLibGood2
-                            .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
 
-                                @Override
-                                public void getPopupStuta(int stuta) {
-                                    switch (stuta) {
-                                        case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
-
-                                            break;
-                                        case PPurchase.TYPE_ADD_ONLINE:// 上架成功
-
-                                            break;
-
-                                        default:
-                                            break;
-                                    }
-                                }
-                            });
+                    goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_REPLACE_SELL);
+//                    PPurchase pShowVirtualLibGood2 = new PPurchase(
+//                            BaseActivity, BaseContext, 200,
+//                            PPurchase.TYPE_GOOD_DETAIL_REPLACE_SELL, datas,
+//                            GoodsId, IsCaiGou);
+//                    pShowVirtualLibGood2.showAtLocation(mView, Gravity.CENTER,
+//                            0, 0);
+//                    pShowVirtualLibGood2
+//                            .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
+//
+//                                @Override
+//                                public void getPopupStuta(int stuta) {
+//                                    switch (stuta) {
+//                                        case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
+//
+//                                            break;
+//                                        case PPurchase.TYPE_ADD_ONLINE:// 上架成功
+//
+//                                            break;
+//
+//                                        default:
+//                                            break;
+//                                    }
+//                                }
+//                            });
 
                 } else {// 已经上架过不可以上架了
                     // tv_replace_sell.setVisibility(View.GONE);
@@ -664,27 +666,28 @@ public class AGoodDetail extends ATitleBase {
         }
 
         if (IsCaiGou) {
-            PPurchase pShowVirtualLibGood1 = new PPurchase(BaseActivity,
-                    BaseContext, 200, PPurchase.TYPE_GOOD_DETAIL_BUY, datas,
-                    GoodsId, IsCaiGou);
-            pShowVirtualLibGood1.showAtLocation(mView, Gravity.CENTER, 0, 0);
-            pShowVirtualLibGood1
-                    .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
-                        @Override
-                        public void getPopupStuta(int stuta) {
-                            switch (stuta) {
-                                case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
-
-                                    break;
-                                case PPurchase.TYPE_ADD_ONLINE:// 上架成功
-
-                                    break;
-
-                                default:
-                                    break;
-                            }
-                        }
-                    });
+            goPopActivity(AGoodPop.TYPE_SHOP_GOOD_MANAGER_CAIGOU);
+ //           PPurchase pShowVirtualLibGood1 = new PPurchase(BaseActivity,
+//                    BaseContext, 200, PPurchase.TYPE_GOOD_DETAIL_BUY, datas,
+//                    GoodsId, IsCaiGou);
+//            pShowVirtualLibGood1.showAtLocation(mView, Gravity.CENTER, 0, 0);
+//            pShowVirtualLibGood1
+//                    .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
+//                        @Override
+//                        public void getPopupStuta(int stuta) {
+//                            switch (stuta) {
+//                                case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
+//
+//                                    break;
+//                                case PPurchase.TYPE_ADD_ONLINE:// 上架成功
+//
+//                                    break;
+//
+//                                default:
+//                                    break;
+//                            }
+//                        }
+//                    });
         }
         // 判断是否在售中************************************
         if (!StrUtils.isEmpty(datas.getSale_status())

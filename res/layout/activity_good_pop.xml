@@ -89,9 +89,9 @@
                             android:id="@+id/tv_good_standard_lable1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                           android:paddingLeft="10dp"
-                            android:paddingBottom="10dp"
                             android:lines="1"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
                             android:text="@string/nullstr"
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
@@ -124,9 +124,9 @@
                             android:id="@+id/tv_good_standard_lable2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="10dp"
-                            android:paddingBottom="10dp"
                             android:lines="1"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
                             android:text="@string/nullstr"
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
@@ -168,8 +168,8 @@
                                 android:id="@+id/tv_good_standard_lable3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:paddingLeft="10dp"
                                 android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
                                 android:text="赚到"
                                 android:textColor="@color/grey"
                                 android:textSize="@dimen/comment_label_txtsize" />
@@ -219,7 +219,6 @@
                             android:layout_height="@dimen/good_pop_addandsubview_height"
                             android:layout_marginLeft="15dp" />
                     </LinearLayout>
-
 
 
                     <LinearLayout
@@ -339,7 +338,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
 
             android:orientation="horizontal">
 
@@ -365,13 +364,13 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
 
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
-android:layout_marginTop="5dp"
                 android:padding="10dp">
 
 
@@ -394,6 +393,29 @@ android:layout_marginTop="5dp"
 
                     android:textColor="@color/app_fen"
                     android:textSize="@dimen/comment_label_txtsize" />
+
+                <LinearLayout
+                    android:id="@+id/ll_return_and_integral"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_return_money"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textColor="@color/app_gray"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/tv_good_integral"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textColor="@color/app_gray"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
 
             </LinearLayout>
 

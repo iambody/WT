@@ -397,11 +397,20 @@
     <!-- A dark Holo shade of blue -->
     <color name="holo_blue_dark">#ff0099cc</color>
     <!--Lv1,Lv2,Lv3-->
-    <color name="lv1">#ffa815</color>
+    <color name="lv1">#ffa819</color>
     <color name="lv1_top">#f59a04</color>
-    <color name="lv2">#91bb19</color>
-    <color name="lv2_top">#82a814</color>
-    <color name="lv3">#8aa4ea</color>
-    <color name="lv3_top">#728dd7</color>
+    <color name="lv2">#8aa4ea</color>
+    <color name="lv2_top">#728dd7</color>
+    <color name="lv3">#91bb19</color>
+    <color name="lv3_top">#82a814</color>
+    <color name="lv4">#eb9200</color>
+    <color name="lv4_top">#d88601</color>
+    <color name="lv5">#728dd7</color>
+    <color name="lv5_top">#5c7bd0</color>
+    <color name="lv6">#82a814</color>
+    <color name="lv6_top">#799b15</color>
+    <color name="lv7">#ff4777</color>
+    <color name="lv7_top">#f13264</color>
+
 
 </resources>

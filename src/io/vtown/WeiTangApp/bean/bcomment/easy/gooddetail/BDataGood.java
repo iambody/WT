@@ -17,6 +17,8 @@ public class BDataGood extends BBase {
 	private String Odlestore;
 	private String goods_sid;// ": 515,
 	private String attr_name;
+	private String fee;
+	private String score;
 	private BLDataGood attr_map=new BLDataGood();
 	public String getAttr_id() {
 		return attr_id;
@@ -78,6 +80,21 @@ public class BDataGood extends BBase {
 	public void setOdlestore(String odlestore) {
 		Odlestore = odlestore;
 	}
-	
-	
+
+
+	public String getFee() {
+		return fee;
+	}
+
+	public void setFee(String fee) {
+		this.fee = fee;
+	}
+
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
+	}
 }

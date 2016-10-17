@@ -370,6 +370,11 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                     lastid = "";
                     IData(CurrentType, LOAD_INITIALIZE);
                     LsAp.Clearn();
+                    lv_property_detail_list.hidefoot();
+                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
+                    PromptManager.showtextLoading(BaseContext,
+                            getResources()
+                                    .getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -380,6 +385,11 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                     lastid = "";
                     IData(TAGE_SHOPPING, LOAD_INITIALIZE);
                     LsAp.Clearn();
+                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
+                    lv_property_detail_list.hidefoot();
+                    PromptManager.showtextLoading(BaseContext,
+                            getResources()
+                                    .getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -391,6 +401,11 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                     lastid = "";
                     IData(TAGE_RECHARGE, LOAD_INITIALIZE);
                     LsAp.Clearn();
+                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
+                    lv_property_detail_list.hidefoot();
+                    PromptManager.showtextLoading(BaseContext,
+                            getResources()
+                                    .getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -402,6 +417,11 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                     lastid = "";
                     IData(TAGE_WITHDRAW, LOAD_INITIALIZE);
                     LsAp.Clearn();
+                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
+                    lv_property_detail_list.hidefoot();
+                    PromptManager.showtextLoading(BaseContext,
+                            getResources()
+                                    .getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -413,6 +433,12 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                     lastid = "";
                     IData(TAGE_SELl, LOAD_INITIALIZE);
                     LsAp.Clearn();
+                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
+                    lv_property_detail_list.hidefoot();
+                    PromptManager.showtextLoading(BaseContext,
+                            getResources()
+                                    .getString(R.string.xlistview_header_hint_loading));
+
                 }
                 popupWindow.dismiss();
                 break;
@@ -651,6 +677,10 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                 item.vertical_line_top.setVisibility(View.VISIBLE);
                 item.vertical_line_bottom.setVisibility(View.INVISIBLE);
             }
+            if(data.size() == 1){
+                item.vertical_line_top.setVisibility(View.INVISIBLE);
+                item.vertical_line_bottom.setVisibility(View.INVISIBLE);
+            }
             item.dot_view.SetDotColor(getRandomColor());
 
             StrUtils.SetTxt(item.tv_data, data.get(arg0).getDateStr());
@@ -708,7 +738,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                 case 3:
                     // item.tv_counter_fee.setVisibility(View.GONE);
                     item.tv_trade_state.setText("销售");
-
+                    item.tv_record_money.setTextColor(getResources().getColor(R.color.app_fen));
                     item.tv_record_money.setText(String.format("+ %1$s元", StrUtils.SetTextForMony(data.get(arg0).getPrice())));
                     break;
 

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -62,7 +61,6 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
         IView();
         ICache();
         IData(page, LOAD_INITIALIZE);
-
     }
 
 
@@ -141,7 +139,6 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
                     //invite_friends_refrash.setCanLoadMore(true);
                     invite_friends_record_list.ShowFoot();
                 }
-
                 if (allInviteDetailList.size() < Constants.PageSize) {
                     //invite_friends_refrash.setCanLoadMore(false);
                     invite_friends_record_list.hidefoot();
@@ -179,10 +176,8 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
                     PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.no_nore_invite_friend));
                     return;
                 }
-
                 datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
                 //invite_friends_refrash.setLoading(false);
-
                 if (datass.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
                     mAdapter.MergeFrashData(datass);
                 } else {
@@ -193,7 +188,6 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
                     //invite_friends_refrash.setCanLoadMore(true);
                     invite_friends_record_list.ShowFoot();
                 }
-
                 if (allInviteDetailList2.size() < Constants.PageSize) {
                     //invite_friends_refrash.setCanLoadMore(false);
                     invite_friends_record_list.hidefoot();
@@ -278,7 +272,7 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
     @Override
     public void OnLoadMore() {
         page++;
-        IData(page, LOAD_REFRESHING);
+        IData(page, LOAD_LOADMOREING);
     }
 
     @Override
@@ -299,7 +293,7 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
     @Override
     public void onLoadMore() {
         page++;
-        IData(page, LOAD_REFRESHING);
+        IData(page, LOAD_LOADMOREING);
     }
 
     class InviteFriendAdapter extends BaseAdapter {
@@ -463,6 +457,30 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
                     holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3));
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3_top));
                     break;
+                case 3:
+                    holder.tv_lv.setText("Lv4");
+                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv4));
+                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv4_top));
+                    break;
+
+                case 4:
+                    holder.tv_lv.setText("Lv5");
+                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv5));
+                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv5_top));
+                    break;
+
+                case 5:
+                    holder.tv_lv.setText("Lv6");
+                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv6));
+                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv6_top));
+                    break;
+
+                case 6:
+                    holder.tv_lv.setText("Lv7");
+                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv7));
+                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv7_top));
+                    break;
+
             }
             if (friends_datas.size() - 1 == position) {
                 holder.list_line.setVisibility(View.GONE);

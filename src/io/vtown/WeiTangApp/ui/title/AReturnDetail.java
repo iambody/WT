@@ -126,6 +126,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                 } catch (Exception e) {
                     DataError("解析错误", 1);
                 }
+                CacheUtil.Home_Return_Detail_Save(BaseContext, Data.getHttpResultStr());
                 retrunDetailList.setVisibility(View.VISIBLE);
                 retrun_detail_nodata_lay.setVisibility(View.GONE);
 
@@ -134,7 +135,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                 mAdapter.FrashData(dattaa);
 
                 //CacheUtil.Center_Wallet_Property_Save(getApplicationContext(), Data.getHttpResultStr());
-                CacheUtil.Home_Return_Detail_Save(BaseContext, Data.getHttpResultStr());
+
 
                 if (list.size() == Constants.PageSize2) {
                     retrunDetailList.ShowFoot();

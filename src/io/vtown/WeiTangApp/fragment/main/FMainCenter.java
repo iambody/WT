@@ -322,11 +322,9 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                         ACommentList.Tage_ACenterShopCollect));
                 break;
             case R.id.maintab_center_liulan_history://浏览记录
-//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-//                        ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
-//                        ACommentList.Tage_ACenterGoodBrowseRecord));
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AIntegralDetail.class));
-
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                        ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
+                        ACommentList.Tage_ACenterGoodBrowseRecord));
 
                 break;
         }
