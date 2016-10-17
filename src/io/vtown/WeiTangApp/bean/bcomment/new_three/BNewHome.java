@@ -20,7 +20,7 @@ public class BNewHome extends BBase {
     private int bindstatus;//是否绑定":1,
     private String mySub;//我邀请的人数":13,
     private String activitydata;//激活礼包数据 ":"",
-    private String is_attendance;//今天是否签到":1
+    private int is_attendance;//今天是否签到":1
     private List<BLBanner> banner;
     private BNewShop sellerinfo=new BNewShop();
     //激活专区
@@ -115,11 +115,11 @@ public class BNewHome extends BBase {
         this.activitydata = activitydata;
     }
 
-    public String getIs_attendance() {
+    public int getIs_attendance() {
         return is_attendance;
     }
 
-    public void setIs_attendance(String is_attendance) {
+    public void setIs_attendance(int is_attendance) {
         this.is_attendance = is_attendance;
     }
 

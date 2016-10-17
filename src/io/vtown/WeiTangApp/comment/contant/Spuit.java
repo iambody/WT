@@ -97,7 +97,15 @@ public class Spuit {
     /**
      * 购物车数据的缓存
      */
-    private static final String ShopBus_Sp="shopbus_sp";
+    private static final String ShopBus_Sp = "shopbus_sp";
+    /**
+     * 是否已经绑定标识
+     */
+    private static final String BindUser_Sp = "binduser_sp";
+    /**
+     * 是否已经激活状态标识
+     */
+    private static final String Active_Sp="active_sp";
 
     /**
      * 获取是否已经登录过的标识
@@ -148,11 +156,8 @@ public class Spuit {
         User_Save(XX, new BUser());
         Shop_Save(XX, new BShop());
         Show_SaveStr(XX, "");
-        ShopBus_Save(XX,"");
-        CacheUtil.NewHome_Save(XX,"");
-
-
-
+        ShopBus_Save(XX, "");
+        CacheUtil.NewHome_Save(XX, "");
         InvitationCode_Set(XX, false);
         //
         CacheUtil.ClearnCache(XX);// 清除列表的缓存
@@ -511,16 +516,42 @@ public class Spuit {
     /**
      * 购物车的数据缓存ShopBus_Sp
      */
-    public static String ShopBus_Get(Context PPContext){
+    public static String ShopBus_Get(Context PPContext) {
         SharedPreferences sp = PPContext.getSharedPreferences(ShopBus_Sp, Context.MODE_PRIVATE);
         return sp.getString("shopbusstr", "");
     }
-    public static void ShopBus_Save(Context PPcContext,String shopbusdata){
+
+    public static void ShopBus_Save(Context PPcContext, String shopbusdata) {
         SharedPreferences sp = PPcContext.getSharedPreferences(ShopBus_Sp,
                 Context.MODE_PRIVATE);
         Editor ed = sp.edit();
         ed.putString("shopbusstr", shopbusdata);
         ed.commit();
+    }
+
+    //需要判断是否绑定标
+    public static void IsHaveBind_Set(Context Pcontext, Boolean IsBind) {
+        SharedPreferences Sp = Pcontext.getSharedPreferences(BindUser_Sp, Context.MODE_PRIVATE);
+        Editor ed = Sp.edit();
+        ed.putBoolean("isbind", IsBind);
+        ed.commit();
+    }
+
+    public static boolean IsHaveBind_Get(Context PPcontext) {
+        SharedPreferences Sp = PPcontext.getSharedPreferences(BindUser_Sp, Context.MODE_PRIVATE);
+        return Sp.getBoolean("isbind", false);
+    }
+//需要判断是否已经激活（只有激活状态才能进行邀请好友）
+
+    public static void IsHaveActive_Set (Context Pcontext, Boolean IsBind) {
+        SharedPreferences Sp = Pcontext.getSharedPreferences(Active_Sp, Context.MODE_PRIVATE);
+        Editor ed = Sp.edit();
+        ed.putBoolean("isactive", IsBind);
+        ed.commit();
+    }
+    public static boolean IsHaveActive_Get(Context PPcontext) {
+        SharedPreferences Sp = PPcontext.getSharedPreferences(Active_Sp, Context.MODE_PRIVATE);
+        return Sp.getBoolean("isactive", false);
     }
 
 }

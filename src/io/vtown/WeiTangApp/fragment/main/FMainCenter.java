@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.fragment.main;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,23 +33,27 @@ import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.AIntegralDetail;
 import io.vtown.WeiTangApp.ui.title.AInviteFriendRecord;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
+import io.vtown.WeiTangApp.ui.title.center.myinvitecode.ABindCode;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.title.shop.channel.AInviteRecord;
 import io.vtown.WeiTangApp.ui.ui.ARecyclerShow;
 
 /**
  * Created by datutu on 2016/9/18.
  */
-public class FMainCenter extends FBase implements View.OnClickListener {
+public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRefreshLayout.OnRefreshListener{
+    private SwipeRefreshLayout fragment_center_out;
     private RelativeLayout maintab_center_myiv_lay;
     private ImageView maintab_center_cover;
     private CircleImageView maintab_center_myiv;
@@ -72,6 +77,10 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     }
 
     private void IBaseView() {
+        fragment_center_out= (SwipeRefreshLayout) BaseView.findViewById(R.id.fragment_center_out);
+        fragment_center_out.setOnRefreshListener(this);
+        fragment_center_out .setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        //
         maintab_center_myiv_lay = (RelativeLayout) BaseView.findViewById(R.id.maintab_center_myiv_lay);
         maintab_center_cover = (ImageView) BaseView.findViewById(R.id.maintab_center_cover);
         maintab_center_myiv = (CircleImageView) BaseView.findViewById(R.id.maintab_center_myiv);
@@ -94,14 +103,17 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 //        maintab_center_myiv.setOnClickListener(this);
         maintab_center_myiv_lay.setOnClickListener(this);
 
-//图片处理
-        if (CenterCoverFile.exists()) {
-            maintab_center_cover.setImageBitmap(BitmapFactory
-                    .decodeFile(ImagePathConfig.CenterCoverPath(BaseContext)));
-        } else {
-            ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
-                    .getAvatar(), maintab_center_cover, R.drawable.item_shangji_iv, 2);
-        }
+//        //图片处理
+//        if (CenterCoverFile.exists()) {
+//            maintab_center_cover.setImageBitmap(BitmapFactory
+//                    .decodeFile(ImagePathConfig.CenterCoverPath(BaseContext)));
+//        } else {
+//            ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
+//                    .getAvatar(), maintab_center_cover, R.drawable.item_shangji_iv, 2);
+//        }
+//        ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
+//                maintab_center_myiv, R.drawable.error_iv2);
+
         ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
                 maintab_center_myiv, R.drawable.error_iv2);
 
@@ -110,8 +122,6 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         //Native处理
         SetItemContent(maintab_center_show, R.string.center_show, R.drawable.center_iv1);
 
-        SetItemContent(maintab_center_invite_code, R.string.center_yaoqingma,
-                R.drawable.center_iv3);
 
         SetItemContent(maintab_center_card, R.string.center_kaquan,
                 R.drawable.center_iv5);
@@ -123,10 +133,9 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         SetItemContent(maintab_center_liulan_history, R.string.center_jilu,
                 R.drawable.center_iv8);
         // 上边两个
-
         SetCommentIV("我的订单", R.drawable.shop_grad2, maintab_tab_center_oder);
         SetCommentIV("我的钱包", R.drawable.center_wallet, maintab_tab_center_walle);
-
+        MyResume();
     }
 
     @Override
@@ -197,12 +206,44 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+        } else {
+            MyResume();
+        }
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+//        if (isVisibleToUser) {
+//            MyResume();
+//        } else {
+//            //相当于Fragment的onPause
+//        }
+    }
+
+    public void MyResume() {
+        int ShowBindTitle;
+        if (!Spuit.IsHaveBind_Get(BaseActivity)) {//未绑定
+            ShowBindTitle = R.string.bind_yaoqing;//"绑定邀请码";
+        } else if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {//已绑定未激活==》跳转激活界面
+            ShowBindTitle = R.string.bind_jihuo;//"请激活";
+        } else {//已激活==》跳转邀请界面
+            ShowBindTitle = R.string.bind_yaoqinghaoyou;//"邀请好友";
+        }
+        SetItemContent(maintab_center_invite_code, ShowBindTitle,
+                R.drawable.center_iv3);
         if (StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getAvatar())
                 && StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getId())) {
             IData(INITIALIZE);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     /**
@@ -301,8 +342,21 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                         ARecyclerMyShow.class).putExtra("seller_id", Spuit.User_Get(BaseContext).getSeller_id()));
                 break;
             case R.id.maintab_center_invite_code://我的邀请码
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                        AMyInviteCode.class));
+                //买东西前提是先绑定，绑定后需要先激活在进行邀请
+
+                if (!Spuit.IsHaveBind_Get(BaseActivity)) {//未绑定
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                            ANewBindCode.class));
+                } else if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {//已绑定未激活==》跳转激活界面
+                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                            BaseActivity, AWeb.class).putExtra(
+                            AWeb.Key_Bean,
+                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+                } else {//已激活==》跳转邀请界面
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                            AMyInviteCode.class));
+                }
+
                 break;
             case R.id.maintab_center_card://卡券
 
@@ -339,5 +393,9 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         } catch (Exception e) {
         }
 
+    }
+    @Override
+    public void onRefresh() {
+        fragment_center_out.setRefreshing(false);
     }
 }

@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/line_size2"
-        android:src="@color/app_line"/>
+              android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/xlistview_footer_content"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/app_line1">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/xlistview_footer_hint_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:padding="@dimen/line_size6"
+            android:padding="@dimen/ui_10_dip"
             android:text="@string/xlistview_footer_hint_normal"
             android:textColor="@color/app_gray"
-            android:textSize="@dimen/xls_foot_txt_size"
             />
 
         <ImageView

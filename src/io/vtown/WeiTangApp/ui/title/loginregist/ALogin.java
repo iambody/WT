@@ -17,10 +17,13 @@ import io.vtown.WeiTangApp.ui.ui.AMain;
 import java.util.HashMap;
 import java.util.Set;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -44,7 +47,7 @@ import io.vtown.WeiTangApp.ui.ui.AMainTab;
  * @author 作者 大兔兔 wangyongkui@v-town.cc
  * @version 创建时间：2016-5-27 上午9:52:44 登录界面
  */
-public class ALogin extends ATitleBase implements PlatformActionListener {
+public class ALogin extends Activity implements View.OnClickListener, PlatformActionListener {
     /**
      * logo
      */
@@ -58,11 +61,24 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
      * 手机号登录
      */
     private TextView login_phone_login;
+    private Context BaseContext;
+    private Activity BaseActivity;
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//    }
 
     @Override
-    protected void InItBaseView() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+//        if (!getIntent().getBooleanExtra("isexit", false)) {
+//            EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
+//        }
 
+
+        BaseContext = this;
+        BaseActivity = this;
         if (Spuit.IsLogin_Get(BaseContext)) {
 //			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 //					AMain.class));
@@ -75,6 +91,7 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
         EventBus.getDefault().register(this, "LoginSuccesKill", BMessage.class);
         Ibase();
     }
+
 
     private void Ibase() {
         login_logo = (ImageView) findViewById(R.id.login_logo);
@@ -174,63 +191,63 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
 
     }
 
-    @Override
-    protected void InitTile() {
-        SetTitleTxt("");
-    }
-
-
-    @Override
-    protected void DataResult(int Code, String Msg, BComment Data) {
-        // if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-        // PromptManager.ShowCustomToast(BaseContext, Msg);
-        // return;
-        // }
-        //
-        // if (Muser.getIs_new().equals("1")) {// 绑定过手机号的直接跳转到主界面
-        // PromptManager.ShowCustomToast(BaseContext, "登陆成功");
-        //
-        // } else {
-        //
-        // }
-    }
-
-    @Override
-    protected void DataError(String error, int LoadType) {
-    }
-
-    @Override
-    protected void NetConnect() {
-    }
-
-    @Override
-    protected void NetDisConnect() {
-    }
-
-    @Override
-    protected void SetNetView() {
-    }
-
-    @Override
-    protected void MyClick(View V) {
-        switch (V.getId()) {
-            case R.id.login_wx_login:
-                if (!Constants.isWeixinAvilible(BaseContext)) {
-                    PromptManager.ShowCustomToast(BaseContext, "请安装微信客户端");
-                    return;
-                }
-                WxAuth();
-
-                break;
-            case R.id.login_phone_login:
-                PromptManager.SkipActivityUpToTpo(BaseActivity, new Intent(BaseActivity,
-                        AInviteAndApprove.class).putExtra("iswx", false));
-
-                break;
-            default:
-                break;
-        }
-    }
+//    @Override
+//    protected void InitTile() {
+//        SetTitleTxt("");
+//    }
+//
+//
+//    @Override
+//    protected void DataResult(int Code, String Msg, BComment Data) {
+//        // if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+//        // PromptManager.ShowCustomToast(BaseContext, Msg);
+//        // return;
+//        // }
+//        //
+//        // if (Muser.getIs_new().equals("1")) {// 绑定过手机号的直接跳转到主界面
+//        // PromptManager.ShowCustomToast(BaseContext, "登陆成功");
+//        //
+//        // } else {
+//        //
+//        // }
+//    }
+//
+//    @Override
+//    protected void DataError(String error, int LoadType) {
+//    }
+//
+//    @Override
+//    protected void NetConnect() {
+//    }
+//
+//    @Override
+//    protected void NetDisConnect() {
+//    }
+//
+//    @Override
+//    protected void SetNetView() {
+//    }
+//
+//    @Override
+//    protected void MyClick(View V) {
+//        switch (V.getId()) {
+//            case R.id.login_wx_login:
+//                if (!Constants.isWeixinAvilible(BaseContext)) {
+//                    PromptManager.ShowCustomToast(BaseContext, "请安装微信客户端");
+//                    return;
+//                }
+//                WxAuth();
+//
+//                break;
+//            case R.id.login_phone_login:
+//                PromptManager.SkipActivityUpToTpo(BaseActivity, new Intent(BaseActivity,
+//                        AInviteAndApprove.class).putExtra("iswx", false));
+//
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
     Handler mHandler = new Handler() {
 
@@ -277,13 +294,6 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
 
     }
 
-    @Override
-    protected void InItBundle(Bundle bundle) {
-    }
-
-    @Override
-    protected void SaveBundle(Bundle bundle) {
-    }
 
     @Override
     public void onCancel(Platform arg0, int arg1) {
@@ -315,7 +325,7 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(event.getKeyCode()==KeyEvent.KEYCODE_BACK){
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
             ALogin.this.finish();
             EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
             System.exit(0);
@@ -333,4 +343,47 @@ public class ALogin extends ATitleBase implements PlatformActionListener {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.login_wx_login:
+                if (!Constants.isWeixinAvilible(BaseContext)) {
+                    PromptManager.ShowCustomToast(BaseContext, "请安装微信客户端");
+                    return;
+                }
+                WxAuth();
+
+                break;
+            case R.id.login_phone_login:
+                PromptManager.SkipActivityUpToTpo(BaseActivity, new Intent(BaseActivity,
+                        AInviteAndApprove.class).putExtra("iswx", false));
+
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    /**
+     * 初始化极光推送
+     */
+    public void InitJPush() {
+        boolean isLogin_Get = Spuit.IsLogin_Get(getApplicationContext());
+        if (isLogin_Get) {
+            BUser user_Get = Spuit.User_Get(getApplicationContext());
+            String member_id = user_Get.getMember_id();
+            JPushInterface.setDebugMode(false);
+
+            JPushInterface.init(getApplicationContext());
+            JPushInterface.setAliasAndTags(getApplicationContext(), member_id,
+                    null, new TagAliasCallback() {
+
+                        @Override
+                        public void gotResult(int arg0, String arg1,
+                                              Set<String> arg2) {
+                        }
+                    });
+        }
+    }
 }

@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.ui.ui;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -55,7 +56,8 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private GradualRadioButton maintab_home, maintab_shop, maintab_shopbus, maintab_center;
     private List<GradualRadioButton> RadioButtons;
     private ImageView maintab_show_iv;
-    private FBase FMainHome, FMainShop, FMainShow, FMainShopBus, FMainCenter;
+    private FBase FMainHome, FMainShop, FMainShow, FMainShopBus;//
+    private  FMainCenter     FMainCenter;
     private List<FBase> Fragments;
     private int CurrentPostion = 0;
     //User
@@ -196,7 +198,9 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         switchContent(CurrentFragment, Fragments.get(postion), R.id.maintab_fragmentlay);
 
         CurrentPostion = postion;
-
+//        if(postion==3){
+//            FMainCenter.MyResume();
+//        }
     }
 
 
@@ -271,7 +275,8 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 //                ShopBadgeView.setBadgeCount(Spuit.ShopBusNumber_Get(BaseCotext));
                 break;
             case BMessage.Tage_Tab_Kill_Self:
-//                AMainTab.this.finish();
+                AMainTab.this.finish();
+                Log.i("AMainTab","接受到消息广播");
                 break;
 
             default:
@@ -385,6 +390,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.i("AMainTab","接受到消息广播后执行onDestroy");
         try {
             EventBus.getDefault().unregister(this);
         } catch (Exception e) {

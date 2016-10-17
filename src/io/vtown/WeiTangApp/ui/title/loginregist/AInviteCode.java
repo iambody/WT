@@ -80,7 +80,6 @@ public class AInviteCode extends ATitleBase {
             BaseActivity.finish();
             return;
         }
-
         if (Spuit.IsLogin_RenZheng_Set(BaseContext)) {// 认证过了
             PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 //                    AMain.class));
@@ -141,7 +140,6 @@ public class AInviteCode extends ATitleBase {
                 break;
         }
     }
-
     private void BindCode(String invite_code) {
         if (!StrUtils.isEmpty(mBUser.getInvite_code())
                 && mBUser.getInvite_code().equals(invite_code)) {

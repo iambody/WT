@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:orientation="vertical">
+
+    <include layout="@layout/titlebar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ui_20_dip"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/ui_10_dip"
+            android:text="@string/bindcode_up_txt"
+            android:textColor="@color/gray"/>
+
+
+        <!--  -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/line_size"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/center_wallet_add_bankcarde_padding"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yaoqingmaa"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/comment_label_txtsize"/>
+
+            <ImageView
+                android:layout_width="@dimen/line_size"
+                android:layout_height="match_parent"
+                android:src="@color/app_line"
+                android:layout_marginLeft="@dimen/line_size5"
+                 />
+
+            <EditText
+                android:id="@+id/new_bindcode_ed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/center_wallet_add_bankcard_name_margin"
+                android:background="@color/white"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/app_gray"
+                android:textSize="@dimen/comment_label_txtsize"/>
+        </LinearLayout>
+        <!-- -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_size"
+            android:src="@color/app_line"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_10_dip"
+
+            android:text="@string/bindcode_down_txt"
+            android:textSize="@dimen/ui_12_dip"
+            android:background="@color/white"
+            android:textColor="@color/gray"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/new_bindcode_submint_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/select_white_to_fen1"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="提交绑定"
+        android:textColor="@color/gray" />
+</LinearLayout>

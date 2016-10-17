@@ -900,11 +900,11 @@ public static int SouSouHeistory= 12;
     /**
      * 积分
      */
-    public static String Homew_JiFen =Host +"/intergralrule.html";
+    public static String Homew_JiFen ="http://www.v-town.cc/intergralrule.html";
     /**
      * 返佣
      */
-    public static String Homew_FanYong =Host +"/rebaterule.html";
+    public static String Homew_FanYong ="http://www.v-town.cc/rebaterule.html";
 
 	/**
 	 * 邀请直属下级列表
@@ -921,6 +921,10 @@ public static int SouSouHeistory= 12;
  * 店铺内进行搜索
  */
 	public static String ShopGoodSou=Host+"/v1/goods/goods/search";
+	/**
+	 * 首页签到
+	 */
+	public static String NewHomeSign=Host+"/v1/home/home/attendance";
 	// 其他参数*******************************************************************
 	// 其他参数*******************************************************************
 	// 其他参数*******************************************************************

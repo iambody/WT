@@ -178,4 +178,6 @@ public class GradualRadioButton extends RadioButton {
     public void SetTageNumbe (int tageNumber){
         Number=tageNumber;
     }
+
+
 }

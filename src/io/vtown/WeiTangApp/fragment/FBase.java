@@ -309,4 +309,6 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
     protected void ShowErrorIv(int ResouceId) {
         ((ImageView) BaseView.findViewById(R.id.iv_error)).setImageResource(ResouceId);
     }
+
+
 }

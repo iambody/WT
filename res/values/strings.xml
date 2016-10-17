@@ -632,6 +632,7 @@
     <string name="newhome_myjifen">我的积分</string>
     <string name="newhome_fanyong">返佣金额</string>
     <string name="newhome_qiandao">今日签到</string>
+    <string name="newhome_qiandao1">已经签到</string>
     <string name="newhome_yaoqing">邀请好友</string>
     <string name="newhome_libao">激活礼包</string>
     <string name="newhome_temai">特卖专区</string>
@@ -679,5 +680,15 @@
     <string name="null_return_detail">\"亲，您暂时还没有返佣记录哦~~~\"</string>
     <string name="bangding_tishi">微糖商城智能保障您的个人信息隐私</string>
     <string name="bangding_bindtishi">请绑定用户个人信息</string>
+    <string name="yijihuo">已激活</string>
+    <string name="weijihuo">未激活</string>
+    <string name="center_tobind">绑定邀请码</string>
+    <string name="bindcode_up_txt">微糖商城,新的赚钱之道</string>
+    <string name="yaoqingmaa">邀请码</string>
+    <string name="bindcode_down_txt">加入微糖大家庭的邀请函,保证渠道正规安全</string>
+    <string name="Bindcode">邀请码绑定</string>
+    <string name="bind_yaoqing">绑定邀请码</string>
+    <string name="bind_jihuo">激活账户</string>
+    <string name="bind_yaoqinghaoyou">邀请好友</string>
 
 </resources>

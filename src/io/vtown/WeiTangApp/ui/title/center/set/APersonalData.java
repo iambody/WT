@@ -4,6 +4,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -82,6 +83,8 @@ public class APersonalData extends ATitleBase implements
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_center_set_personal_data);
+//        Log.i("AMainTab","在个人界面开始发送广播");
+//        EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
         IView();
         IData();
     }
@@ -239,11 +242,13 @@ public class APersonalData extends ATitleBase implements
 //                        ActivityManager activityMgr = (ActivityManager) BaseActivity.getSystemService(Context.ACTIVITY_SERVICE);
 //                        activityMgr.restartPackage(BaseActivity.getPackageName());
 //                        System.exit(0);
-
-                        PromptManager.SkipActivity(BaseActivity, new Intent(
-                                BaseActivity, ALogin.class));
 //                        EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
-                        BaseActivity.finish();
+//                        PromptManager.SkipActivity(BaseActivity, new Intent(
+//                                BaseActivity, ALogin.class).putExtra("isexit",true));
+                        System.exit(0);
+//                        ScreenAppManager.getScreenManager().popAllActivityExceptOne(APersonalData.class);
+//                        BaseActivity.finish();
+//                        BaseActivity.finish();
 //                        AppManager.getAppManager().finishAllActivity();
 //                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
 

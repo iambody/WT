@@ -4,161 +4,168 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-
-    <ScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/fragment_center_out"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="none">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:scrollbars="none">
 
-            <!-- 上部分 -->
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/center_bg_height">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/maintab_center_cover"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/center_bg_height"
-                    android:scaleType="fitXY"/>
-
+                <!-- 上部分 -->
                 <RelativeLayout
-                    android:id="@+id/maintab_center_myiv_lay"
-                    android:layout_width="@dimen/center_iv_height"
-                    android:layout_height="@dimen/center_iv_height"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/center_iv_marg_top"
-                    android:focusable="true"
-                    android:clickable="true">
-
-                    <io.vtown.WeiTangApp.comment.view.CircleImageView
-                        android:id="@+id/maintab_center_myiv"
-                        android:layout_width="@dimen/center_iv_height"
-                        android:layout_height="@dimen/center_iv_height"
-                       />
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/center_bg_height">
 
                     <ImageView
-                        android:id="@+id/maintab_tab_center_setting"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/maintab_center_cover"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/center_bg_height"
+                        android:scaleType="fitXY"
+                        android:background="@color/app_fen1"/>
+
+                    <RelativeLayout
+                        android:id="@+id/maintab_center_myiv_lay"
+                        android:layout_width="@dimen/center_iv_height"
+                        android:layout_height="@dimen/center_iv_height"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/center_iv_marg_top"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <io.vtown.WeiTangApp.comment.view.CircleImageView
+                            android:id="@+id/maintab_center_myiv"
+                            android:layout_width="@dimen/center_iv_height"
+                            android:layout_height="@dimen/center_iv_height"
+                            />
+
+                        <ImageView
+                            android:id="@+id/maintab_tab_center_setting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/center_iv_setting"/>
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:id="@+id/maintab_center_myname"
+                        style="@style/AudioFileInfoOverlayText1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/maintab_center_myiv_lay"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:id="@+id/maintab_cente_up_lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:src="@drawable/center_iv_setting"/>
+                        android:background="@color/transparent"
+                        android:orientation="horizontal">
+
+                        <include
+                            android:id="@+id/maintab_tab_center_oder"
+                            layout="@layout/commentview_ivtext1"/>
+
+                        <include
+                            android:id="@+id/maintab_tab_center_walle"
+                            layout="@layout/commentview_ivtext1"/>
+                    </LinearLayout>
+
                 </RelativeLayout>
 
 
-                <TextView
-                    android:id="@+id/maintab_center_myname"
-                    style="@style/AudioFileInfoOverlayText1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/maintab_center_myiv_lay"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-
                 <LinearLayout
-                    android:id="@+id/maintab_cente_up_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:background="@color/transparent"
+                    android:layout_margin="10dp"
                     android:orientation="horizontal">
 
-                    <include
-                        android:id="@+id/maintab_tab_center_oder"
-                        layout="@layout/commentview_ivtext1"/>
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_center"/>
 
-                    <include
-                        android:id="@+id/maintab_tab_center_walle"
-                        layout="@layout/commentview_ivtext1"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <include
+                            android:id="@+id/maintab_center_show"
+                            layout="@layout/commentview_center"/>
+
+
+                        <ImageView style="@style/center_line"/>
+
+                        <include
+                            android:id="@+id/maintab_center_invite_code"
+                            layout="@layout/commentview_center"/>
+
+                        <ImageView style="@style/center_line"/>
+
+
+                        <include
+                            android:id="@+id/maintab_center_card"
+                            layout="@layout/commentview_center"/>
+                    </LinearLayout>
                 </LinearLayout>
-
-            </RelativeLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="6dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/shape_center"/>
+                <!-- 上部分****************** -->
+                <!-- 下部分 -->
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-                    <include
-                        android:id="@+id/maintab_center_show"
-                        layout="@layout/commentview_center"/>
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shap_centera"/>
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="vertical">
 
-                    <ImageView style="@style/center_line"/>
+                        <include
+                            android:id="@+id/maintab_center_oder_guanzhu"
+                            layout="@layout/commentview_center"/>
 
-                    <include
-                        android:id="@+id/maintab_center_invite_code"
-                        layout="@layout/commentview_center"/>
+                        <ImageView style="@style/center_line"/>
 
-                    <ImageView style="@style/center_line"/>
+                        <include
+                            android:id="@+id/maintab_center_shop_collect"
+                            layout="@layout/commentview_center"/>
 
+                        <ImageView style="@style/center_line"/>
 
-                    <include
-                        android:id="@+id/maintab_center_card"
-                        layout="@layout/commentview_center"/>
+                        <include
+                            android:id="@+id/maintab_center_liulan_history"
+                            layout="@layout/commentview_center"/>
+                    </LinearLayout>
                 </LinearLayout>
+                <!-- 下部分****************** -->
             </LinearLayout>
-            <!-- 上部分****************** -->
-            <!-- 下部分 -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="6dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/shap_centera"/>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:orientation="vertical">
-
-                    <include
-                        android:id="@+id/maintab_center_oder_guanzhu"
-                        layout="@layout/commentview_center"/>
-
-                    <ImageView style="@style/center_line"/>
-
-                    <include
-                        android:id="@+id/maintab_center_shop_collect"
-                        layout="@layout/commentview_center"/>
-
-                    <ImageView style="@style/center_line"/>
-
-                    <include
-                        android:id="@+id/maintab_center_liulan_history"
-                        layout="@layout/commentview_center"/>
-                </LinearLayout>
-            </LinearLayout>
-            <!-- 下部分****************** -->
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>
