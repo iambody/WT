@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_bg"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:orientation="vertical">
 
-    <include layout="@layout/titlebar" />
+    <include layout="@layout/titlebar"/>
 
     <LinearLayout
         android:id="@+id/center_wallet_outlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
             android:id="@+id/center_wallter_refrash"
@@ -24,22 +24,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
-                android:scrollbars="none" >
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/white"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
-                        android:text="总资产(元)"
+                        android:text="总资产"
                         android:textColor="@color/grey"
-                        android:textSize="@dimen/comment_label_txtsize" />
+                        android:textSize="@dimen/comment_label_txtsize"/>
 
                     <TextView
                         android:id="@+id/tv_my_property"
@@ -50,20 +50,25 @@
                         android:text="@string/nullstr"
                         android:textColor="@color/app_fen"
                         android:textSize="@dimen/center_wallet_total_money_txt_size"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ui_20_dip"
+                        android:src="@color/white"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/center_wallet_margin"
                         android:background="@drawable/shap_corner_white"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/center_wallet_subprogect_height"
+                            android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/tv_submit_balance"
@@ -72,12 +77,14 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="@string/nullstr"
-                                android:textColor="@color/app_fen" />
+                                android:paddingTop="@dimen/ui_10_dip"
+                                android:paddingBottom="@dimen/ui_10_dip"
+                                android:textColor="@color/app_fen"/>
 
                             <View
                                 android:layout_width="0.5dp"
                                 android:layout_height="match_parent"
-                                android:background="@color/app_gray" />
+                                android:background="@color/app_gray"/>
 
                             <TextView
                                 android:id="@+id/tv_trade_money"
@@ -86,12 +93,12 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="@string/nullstr"
-                                android:textColor="@color/app_fen" />
+                                android:textColor="@color/app_fen"/>
 
                             <View
                                 android:layout_width="0.5dp"
                                 android:layout_height="match_parent"
-                                android:background="@color/app_gray" />
+                                android:background="@color/app_gray"/>
 
                             <TextView
                                 android:id="@+id/tv_add_up_income"
@@ -100,19 +107,19 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="@string/nullstr"
-                                android:textColor="@color/app_fen" />
+                                android:textColor="@color/app_fen"/>
                         </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="0.5dp"
-                            android:background="@color/app_gray" />
+                            android:background="@color/app_gray"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/center_wallet_subprogect_height"
                             android:gravity="center"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="0dp"
@@ -121,12 +128,12 @@
                                 android:gravity="center"
                                 android:text="可提现余额"
                                 android:textColor="@color/grey"
-                                android:textSize="@dimen/center_wallet_subprogect_txt_size" />
+                                android:textSize="@dimen/center_wallet_subprogect_txt_size"/>
 
                             <View
                                 android:layout_width="0.5dp"
                                 android:layout_height="match_parent"
-                                android:background="@color/app_gray" />
+                                android:background="@color/app_gray"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -135,12 +142,12 @@
                                 android:gravity="center"
                                 android:text="交易中金额"
                                 android:textColor="@color/grey"
-                                android:textSize="@dimen/center_wallet_subprogect_txt_size" />
+                                android:textSize="@dimen/center_wallet_subprogect_txt_size"/>
 
                             <View
                                 android:layout_width="0.5dp"
                                 android:layout_height="match_parent"
-                                android:background="@color/app_gray" />
+                                android:background="@color/app_gray"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -149,53 +156,53 @@
                                 android:gravity="center"
                                 android:text="累计收入"
                                 android:textColor="@color/grey"
-                                android:textSize="@dimen/center_wallet_subprogect_txt_size" />
+                                android:textSize="@dimen/center_wallet_subprogect_txt_size"/>
                         </LinearLayout>
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/insulate_view_height"
-                        android:background="@color/app_bg" />
+                        android:background="@color/app_bg"/>
 
                     <include
                         android:id="@+id/alipay_manage"
-                        layout="@layout/commentview_txtarrow" />
+                        layout="@layout/commentview_txtarrow"/>
 
                     <View style="@style/line_left"/>
 
                     <include
                         android:id="@+id/bank_card_manage"
-                        layout="@layout/commentview_txtarrow" />
+                        layout="@layout/commentview_txtarrow"/>
 
-                   <View style="@style/line_left"/>
+                    <View style="@style/line_left"/>
 
                     <include
                         android:id="@+id/property_detail"
-                        layout="@layout/commentview_txtarrow" />
+                        layout="@layout/commentview_txtarrow"/>
 
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/app_bg"
-                        android:layout_height="10dp"/>
+                        android:layout_height="10dp"
+                        android:background="@color/app_bg"/>
 
                     <include
                         android:id="@+id/tv_btn_submit"
 
-                        layout="@layout/commentview_txtarrow" />
+                        layout="@layout/commentview_txtarrow"/>
                 </LinearLayout>
             </ScrollView>
-       </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
+        </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
 
-       <!-- <TextView
-            android:id="@+id/tv_btn_submit"
-            style="@style/btnstyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:gravity="center"
-            android:padding="@dimen/center_wallet_submit_padding"
-            android:text="提现" />-->
+        <!-- <TextView
+             android:id="@+id/tv_btn_submit"
+             style="@style/btnstyle"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:clickable="true"
+             android:gravity="center"
+             android:padding="@dimen/center_wallet_submit_padding"
+             android:text="提现" />-->
     </LinearLayout>
 
     <include
@@ -203,6 +210,6 @@
         layout="@layout/commentview_nodata"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
 </LinearLayout>

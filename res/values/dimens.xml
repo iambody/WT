@@ -25,7 +25,7 @@
     <dimen name="comment_txtarrow_txtsize">16dp</dimen>
 
     <!-- TextView,EditText 的标签 -->
-    <dimen name="comment_label_txtsize">15sp</dimen>
+    <dimen name="comment_label_txtsize">12sp</dimen>
 
     <!-- 品牌详情 -->
     <dimen name="brand_detail_brand_iv">70dp</dimen>
@@ -41,7 +41,7 @@
     <!-- 我的里面 -->
     <dimen name="center_comment_iv_height">16dip</dimen>
     <dimen name="center_comment_arrow_height">16dip</dimen>
-    <dimen name="center_bg_height">220dp</dimen>
+    <dimen name="center_bg_height">200dp</dimen>
     <dimen name="center_iv_height">70dp</dimen>
     <dimen name="center_iv_marg_top">20dp</dimen>
     <!-- 我的show -->
@@ -75,6 +75,7 @@
     <dimen name="ui_10_dip">10dip</dimen>
     <dimen name="ui_20_dip">20dip</dimen>
     <dimen name="ui_15_dip">15dip</dimen>
+    <dimen name="ui_5_dip">5dip</dimen>
     <!-- 活动专区 -->
     <dimen name="zhuanqu_item_height">180dp</dimen>
 
@@ -357,7 +358,7 @@
 
     <!-- **********start********** 我的钱包页面  *********start********** -->
     <!-- 总资产字体大小 -->
-    <dimen name="center_wallet_total_money_txt_size">20sp</dimen>
+    <dimen name="center_wallet_total_money_txt_size">24dp</dimen>
     <!-- margin -->
     <dimen name="center_wallet_margin">10dp</dimen>
     <!-- padding -->
@@ -582,7 +583,7 @@
     <dimen name="good_upload_vido_iv_height">100dp</dimen>
     <dimen name="pop_addcatory_margitop">40dp</dimen>
     <dimen name="vidoshare_height">170dp</dimen>
-    <dimen name="oderbeing_buyer_txt_size">15dp</dimen>
+    <dimen name="oderbeing_buyer_txt_size">12dp</dimen>
     <dimen name="shop_add_jia_height">36dp</dimen>
     <dimen name="shopdetail_sou_iv_height">30dp</dimen>
     <dimen name="main_tab_group_height">48dp</dimen>
@@ -620,6 +621,7 @@
     <dimen name="shop_user_width_lay">80dp</dimen>
     <dimen name="ui_18_dip">18dp</dimen>
     <dimen name="ui_12_dip">12dp</dimen>
+    <dimen name="ui_30_dip">30dp</dimen>
 
 
 </resources>

@@ -50,7 +50,7 @@ public class APersonalData extends ATitleBase implements
     /**
      * 地址管理
      */
-    private View address_manage;
+//    private View address_manage;
     /**
      * 账户安全
      */
@@ -142,7 +142,7 @@ public class APersonalData extends ATitleBase implements
         authentication = findViewById(R.id.authentication);
         comment_txtarrow_content = (TextView) authentication
                 .findViewById(R.id.comment_txtarrow_content);
-        address_manage = findViewById(R.id.address_manage);
+//        address_manage = findViewById(R.id.address_manage);
         account_safe = findViewById(R.id.account_safe);
         about_w_town = findViewById(R.id.about_w_town);
         tv_cache_size = (TextView) findViewById(R.id.tv_cache_size);
@@ -150,7 +150,7 @@ public class APersonalData extends ATitleBase implements
         btn_quit = (Button) findViewById(R.id.btn_quit);
         btn_quit.setOnClickListener(this);
         SetItemContent(authentication, R.string.authentication, "未认证");
-        SetItemContent(address_manage, R.string.address_manage, "");
+//        SetItemContent(address_manage, R.string.address_manage, "");
         SetItemContent(account_safe, R.string.account_safe, "");
         SetItemContent(about_w_town, R.string.about_w_town, "");
 
@@ -210,14 +210,14 @@ public class APersonalData extends ATitleBase implements
 
                 break;
 
-            case R.id.address_manage:
-                if (CheckNet(BaseContext))
-                    return;
-                Intent intent = new Intent(BaseActivity, AAddressManage.class);
-                intent.putExtra("NeedFinish", false);
-                PromptManager.SkipActivity(BaseActivity, intent);
-
-                break;
+//            case R.id.address_manage:
+//                if (CheckNet(BaseContext))
+//                    return;
+//                Intent intent = new Intent(BaseActivity, AAddressManage.class);
+//                intent.putExtra("NeedFinish", false);
+//                PromptManager.SkipActivity(BaseActivity, intent);
+//
+//                break;
 
             case R.id.account_safe:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,

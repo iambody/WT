@@ -10,11 +10,12 @@
         android:id="@+id/newinf_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:padding="10dp"
         android:gravity="center"
         android:textSize="18dp"
-        android:textColor="@color/grey"
-        android:textStyle="bold" />
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        android:background="@color/white"/>
 
     <TextView
         android:id="@+id/newinf_content"
@@ -22,8 +23,9 @@
         android:layout_height="match_parent"
         android:padding="10dp"
          android:textSize="14dp"
-        android:background="@color/lightyellow"
+        android:background="@color/white"
         android:lineSpacingExtra="5dp"
-        android:textColor="@color/grey" />
+        android:textColor="@color/gray"
+        android:layout_marginTop="@dimen/line_size"/>
 
 </LinearLayout>

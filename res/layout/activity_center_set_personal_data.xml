@@ -50,11 +50,11 @@
             android:layout_height="@dimen/insulate_view_height"
             android:background="@color/app_bg"/>
 
-        <include
+      <!--  <include
             android:id="@+id/address_manage"
             layout="@layout/commentview_txtarrow"/>
 
-        <View style="@style/line_left"/>
+        <View style="@style/line_left"/>-->
 
         <include
             android:id="@+id/account_safe"

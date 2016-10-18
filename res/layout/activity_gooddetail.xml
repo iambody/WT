@@ -10,6 +10,15 @@
         layout="@layout/titlebar"
         android:visibility="gone"/>
 
+    <!-- </LinearLayout> -->
+
+    <include
+        android:id="@+id/gooddetail_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"/>
+
     <RelativeLayout
         android:id="@+id/gooddetails_outlay"
         android:layout_width="match_parent"
@@ -122,8 +131,8 @@
                                 android:layout_width="@dimen/goos_detail_icon_size"
                                 android:layout_height="@dimen/goos_detail_icon_size"
                                 android:layout_centerInParent="true"
-
-                                android:src="@drawable/ic_fanyong_nor"/>
+                                android:src="@drawable/ic_fanyong_nor"
+                                android:visibility="gone"/>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -405,18 +414,19 @@
                 android:layout_height="@dimen/comment_good_renzheng_iv_height"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/ui_10_dip"
-                android:focusable="true"
                 android:clickable="true"
+                android:focusable="true"
                 android:src="@drawable/arrow_back"/>
 
             <TextView
                 android:id="@+id/gooddetail_up_title"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/ui_10_dip"
                 android:layout_marginRight="@dimen/ui_10_dip"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:lines="1"
                 android:textColor="@color/white"
                 />
@@ -485,13 +495,5 @@
                 android:textColor="@color/TextColorWhite"/>
         </LinearLayout>
     </RelativeLayout>
-    <!-- </LinearLayout> -->
-
-    <include
-        android:id="@+id/gooddetail_nodata_lay"
-        layout="@layout/commentview_nodata"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone"/>
 
 </LinearLayout>

@@ -106,7 +106,6 @@ public class AAddressManage extends ATitleBase {
     }
 
     private void IData() {
-
         PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
 
         isGetList = true;

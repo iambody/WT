@@ -42,6 +42,7 @@ import io.vtown.WeiTangApp.ui.title.center.myinvitecode.ABindCode;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
+import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
 import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
@@ -52,16 +53,16 @@ import io.vtown.WeiTangApp.ui.ui.ARecyclerShow;
 /**
  * Created by datutu on 2016/9/18.
  */
-public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRefreshLayout.OnRefreshListener{
-    private SwipeRefreshLayout fragment_center_out;
+public class FMainCenter extends FBase implements View.OnClickListener {
+
     private RelativeLayout maintab_center_myiv_lay;
     private ImageView maintab_center_cover;
     private CircleImageView maintab_center_myiv;
     private TextView maintab_center_myname;
     //我的订单，，我的钱包
     private View maintab_tab_center_oder, maintab_tab_center_walle;
-    //我的show,邀请码，卡券
-    private View maintab_center_show, maintab_center_invite_code, maintab_center_card;
+    //我的show,邀请码，卡券,我的地址
+    private View maintab_center_show, maintab_center_invite_code, maintab_center_card, maintab_center_address;
     //商品关注，店铺收藏，浏览记录
     private View maintab_center_oder_guanzhu, maintab_center_shop_collect, maintab_center_liulan_history;
     //高斯图片的路径文件
@@ -77,9 +78,6 @@ public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRef
     }
 
     private void IBaseView() {
-        fragment_center_out= (SwipeRefreshLayout) BaseView.findViewById(R.id.fragment_center_out);
-        fragment_center_out.setOnRefreshListener(this);
-        fragment_center_out .setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
         //
         maintab_center_myiv_lay = (RelativeLayout) BaseView.findViewById(R.id.maintab_center_myiv_lay);
         maintab_center_cover = (ImageView) BaseView.findViewById(R.id.maintab_center_cover);
@@ -88,17 +86,17 @@ public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRef
         //我的订单，，我的钱包
         maintab_tab_center_oder = BaseView.findViewById(R.id.maintab_tab_center_oder);
         maintab_tab_center_walle = BaseView.findViewById(R.id.maintab_tab_center_walle);
-        //我的show,邀请码，卡券
+        //我的show,邀请码，卡券地址
         maintab_center_show = BaseView.findViewById(R.id.maintab_center_show);
         maintab_center_invite_code = BaseView.findViewById(R.id.maintab_center_invite_code);
         maintab_center_card = BaseView.findViewById(R.id.maintab_center_card);
-
+        maintab_center_address = BaseView.findViewById(R.id.maintab_center_address);
         //商品关注，店铺收藏，浏览记录
         maintab_center_oder_guanzhu = BaseView.findViewById(R.id.maintab_center_oder_guanzhu);
         maintab_center_shop_collect = BaseView.findViewById(R.id.maintab_center_shop_collect);
         maintab_center_liulan_history = BaseView.findViewById(R.id.maintab_center_liulan_history);
         //设置属性
-        maintab_center_myiv.setBorderWidth(10);
+        maintab_center_myiv.setBorderWidth(5);
         maintab_center_myiv.setBorderColor(getResources().getColor(R.color.transparent6));
 //        maintab_center_myiv.setOnClickListener(this);
         maintab_center_myiv_lay.setOnClickListener(this);
@@ -125,6 +123,9 @@ public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRef
 
         SetItemContent(maintab_center_card, R.string.center_kaquan,
                 R.drawable.center_iv5);
+        SetItemContent(maintab_center_address, R.string.myaddress,
+                R.drawable.address_iv);
+
         //Native下边
         SetItemContent(maintab_center_oder_guanzhu, R.string.center_good_guanzhu,
                 R.drawable.center_iv6);
@@ -144,37 +145,39 @@ public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRef
     }
 
     public void OnMainCenterGetMessage(BMessage mymessage) {
-        {
 
-            int messageType = mymessage.getMessageType();
-            BShop myBShop = Spuit.Shop_Get(BaseContext);
-            switch (messageType) {
-                case BMessage.Tage_Main_To_ShowGaoSi:
-                    if (!StrUtils.isEmpty(myBShop.getCover()))
-                        ImageLoaderUtil.LoadGaosi(BaseContext,
-                                Spuit.Shop_Get(BaseContext).getAvatar(), maintab_center_cover,
-                                R.drawable.item_shangji_iv, 2);
+        int messageType = mymessage.getMessageType();
+        BShop myBShop = Spuit.Shop_Get(BaseContext);
+        switch (messageType) {
+            case BMessage.Tage_Main_To_ShowGaoSi:
+//                    if (!StrUtils.isEmpty(myBShop.getCover()))
+//                        ImageLoaderUtil.LoadGaosi(BaseContext,
+//                                Spuit.Shop_Get(BaseContext).getAvatar(), maintab_center_cover,
+//                                R.drawable.item_shangji_iv, 2);
 
 
-                case BMessage.Tage_Shop_data_cover_change:
-                    if (!StrUtils.isEmpty(myBShop.getAvatar())) {
-                        ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
-                                maintab_center_myiv, R.drawable.testiv);
-                        ImageLoaderUtil.LoadGaosi(BaseContext,
-                                Spuit.Shop_Get(BaseContext).getAvatar(), maintab_center_cover,
-                                R.drawable.error_iv1, 2);
-                    }
-                    break;
-                case BMessage.Tage_Shop_data_shopname_change:
-                    StrUtils.SetTxt(maintab_center_myname, Spuit.Shop_Get(BaseContext)
-                            .getSeller_name());
+            case BMessage.Tage_Shop_data_cover_change:
+                if (!StrUtils.isEmpty(myBShop.getAvatar())) {
+                    ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
+                            maintab_center_myiv, R.drawable.testiv);
+//                        ImageLoaderUtil.LoadGaosi(BaseContext,
+//                                Spuit.Shop_Get(BaseContext).getAvatar(), maintab_center_cover,
+//                                R.drawable.error_iv1, 2);
+                }
+                break;
+            case BMessage.Tage_Shop_data_shopname_change:
+                StrUtils.SetTxt(maintab_center_myname, Spuit.Shop_Get(BaseContext)
+                        .getSeller_name());
 
-                    break;
+                break;
+            case BMessage.Fragment_Center_ChangStatus:
 
-                default:
-                    break;
-            }
+                MyResume();
+                break;
+            default:
+                break;
         }
+
     }
 
     private void SetItemContent(View VV, int ResourceTitle, int ResourceIvId) {
@@ -197,8 +200,8 @@ public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRef
         ((ImageView) V.findViewById(R.id.comment_ivtxt_iv))
                 .setBackgroundResource(IvRource);
         ((TextView) V.findViewById(R.id.comment_ivtxt_txt)).setText(title);
-        ((TextView) V.findViewById(R.id.comment_ivtxt_txt)).setTextAppearance(
-                BaseContext, R.style.AudioFileInfoOverlayText1);
+//        ((TextView) V.findViewById(R.id.comment_ivtxt_txt)).setTextAppearance(
+//                BaseContext, R.style.AudioFileInfoOverlayText1);
 
         // style="@style/AudioFileInfoOverlayText"
         V.setOnClickListener(this);
@@ -210,6 +213,7 @@ public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRef
         super.onHiddenChanged(hidden);
         if (hidden) {
         } else {
+            Log.i("test", "centter开始显示");
             MyResume();
         }
     }
@@ -363,6 +367,13 @@ public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRef
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         AMyCoupons.class));
                 break;
+            case R.id.maintab_center_address://我的地址
+                if (CheckNet(BaseContext))
+                    return;
+                Intent intentss = new Intent(BaseActivity, AAddressManage.class);
+                intentss.putExtra("NeedFinish", false);
+                PromptManager.SkipActivity(BaseActivity, intentss);
+                break;
             case R.id.maintab_center_oder_guanzhu://商品关注
                 Intent intent = new Intent(BaseActivity, ACommentList.class);
                 intent.putExtra(ACommentList.Tage_ResultKey,
@@ -394,8 +405,6 @@ public class FMainCenter extends FBase implements View.OnClickListener ,SwipeRef
         }
 
     }
-    @Override
-    public void onRefresh() {
-        fragment_center_out.setRefreshing(false);
-    }
+
+
 }

@@ -31,10 +31,7 @@ import io.vtown.WeiTangApp.ui.ui.AMainTab;
 public class AInviteCode extends ATitleBase {
     // 输入验证码
     private EditText invitecode_ed;
-    // CheckBox
-    private CheckBox invitecode_agreen;
-    // 用户条款
-    private TextView invitecode_clause;
+
     // 下一步
     private TextView invitecode_submint_bt;
 
@@ -52,14 +49,10 @@ public class AInviteCode extends ATitleBase {
         mBUser = Spuit.User_Get(BaseContext);
         IBase();
     }
-
     private void IBase() {
         invitecode_ed = (EditText) findViewById(R.id.invitecode_ed);
-        invitecode_agreen = (CheckBox) findViewById(R.id.invitecode_agreen);
-        invitecode_clause = (TextView) findViewById(R.id.invitecode_clause);
         invitecode_submint_bt = (TextView) findViewById(R.id.invitecode_submint_bt);
         invitecode_submint_bt.setOnClickListener(this);
-        invitecode_agreen.setOnClickListener(this);
     }
 
     @Override
@@ -140,6 +133,7 @@ public class AInviteCode extends ATitleBase {
                 break;
         }
     }
+
     private void BindCode(String invite_code) {
         if (!StrUtils.isEmpty(mBUser.getInvite_code())
                 && mBUser.getInvite_code().equals(invite_code)) {
@@ -159,8 +153,8 @@ public class AInviteCode extends ATitleBase {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK ) {
-            PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity,AMainTab.class));
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMainTab.class));
             BaseActivity.finish();
             return true;
         }

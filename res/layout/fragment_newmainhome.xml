@@ -229,6 +229,7 @@
     <!--title-->
     <include
         android:id="@+id/fragment_newhome_putitle_lay"
-        layout="@layout/comment_fragment_newhome_title"/>
+        layout="@layout/comment_fragment_newhome_title"
+        />
 
 </RelativeLayout>

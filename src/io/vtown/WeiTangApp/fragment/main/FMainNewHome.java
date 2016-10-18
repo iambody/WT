@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.fragment.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,11 +26,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BLBanner;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -120,6 +123,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     @Override
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_newmainhome, null);
+        EventBus.getDefault().register(this, "ReceverBrod", BMessage.class);
         unbinder = ButterKnife.bind(this, BaseView);
         MyUser = Spuit.User_Get(BaseContext);
         SetTitleHttpDataLisenter(this);
@@ -292,7 +296,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         SetDownLay(fragment_newhome_libao_lay, getResources().getString(R.string.newhome_libao), R.drawable.newhome_down_libao);
         SetDownLay(fragment_newhome_temai_lay, getResources().getString(R.string.newhome_temai), R.drawable.newhome_down_temai);
 
-        fragmentNewhomeHeadIv.setBorderWidth(10);
+        fragmentNewhomeHeadIv.setBorderWidth(5);
         fragmentNewhomeHeadIv.setBorderColor(getResources().getColor(R.color.transparent6));
         //开始赋值
 
@@ -316,12 +320,6 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
      * IsStar===>1标识普通店铺，2标识明细店铺
      */
     private void LevelSet(BNewHome Data) {
-        //判断绑定 状态
-        if (Data.getBindstatus() == 1) {//绑定
-            Spuit.IsHaveBind_Set(BaseContext, true);
-        } else {//未绑定
-            Spuit.IsHaveBind_Set(BaseContext, false);
-        }
         //是否激活状态
         if (Data.getIs_activate() == 1) {//已经激活
             StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.yijihuo));
@@ -329,6 +327,14 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         } else {//未激活
             StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.weijihuo));
             Spuit.IsHaveActive_Set(BaseContext, false);
+        }
+
+        //判断绑定 状态
+        if (Data.getBindstatus() == 1) {//绑定
+            Spuit.IsHaveBind_Set(BaseContext, true);
+        } else {//未绑定
+            Spuit.IsHaveBind_Set(BaseContext, false);
+            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.nobind));
         }
 
 //判断是否明细店铺状态
@@ -512,18 +518,21 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
     @Override
     public void onScroll(int scrollY) {
-        if (scrollY < 100) {
+        if (scrollY < 20) {
             fragmentNewhomeIvLaya.getBackground().setAlpha(0);
 //            PromptManager.ShowCustomToast(BaseContext, "数据" + scrollY);
 //            back.getBackground().setAlpha(255);
 //            shopping_cart.getBackground().setAlpha(255);
 //        } else if (scrollY >= 100 && scrollY < 860) {//860
-        } else if (scrollY >= 100) {//860
-            fragmentNewhomeIvLaya.getBackground().setAlpha((scrollY));//scrollY-100
+            Log.i("homejuli", "小于100==>" + scrollY);
+        } else if (scrollY >= 20 && scrollY < 160) {//860
+            Log.i("homejuli", "大于100小于160==>" + scrollY);
+            fragmentNewhomeIvLaya.getBackground().setAlpha((scrollY + 50));//scrollY-100
 //            PromptManager.ShowCustomToast(BaseContext, "数据" + scrollY);
 //            back.getBackground().setAlpha(255 - (scrollY-100)/3);
 //            shopping_cart.getBackground().setAlpha(255 - (scrollY-100)/3);
         } else {
+            Log.i("homejuli", "大于160==>" + scrollY);
             fragmentNewhomeIvLaya.getBackground().setAlpha(255);
 //            back.getBackground().setAlpha(0);
 //            shopping_cart.getBackground().setAlpha(0);
@@ -551,5 +560,23 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         return Myls;
     }
 
+    /**
+     * 接受广播通知
+     */
+    public void ReceverBrod(BMessage Bmesage) {
 
+        switch (Bmesage.getMessageType()) {
+            case BMessage.Fragment_Home_Bind://绑定状态
+
+                INetData(LOADHind);
+
+
+
+                break;
+
+
+        }
+
+
+    }
 }

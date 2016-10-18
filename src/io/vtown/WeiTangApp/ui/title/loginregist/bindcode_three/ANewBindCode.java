@@ -12,9 +12,11 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -38,6 +40,7 @@ public class ANewBindCode extends ATitleBase {
         MyUser = Spuit.User_Get(this);
         ButterKnife.bind(this);
         SetTitleHttpDataLisenter(this);
+//
     }
 
     @Override
@@ -47,14 +50,18 @@ public class ANewBindCode extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
-        Spuit.IsHaveActive_Set(BaseContext, true);
-        PromptManager.ShowCustomToast(BaseContext,"已绑定");
+        Spuit.IsHaveBind_Set(BaseContext, true);
+        PromptManager.ShowCustomToast(BaseContext, "已绑定");
+//通知个人中心刷新数据
+        EventBus.getDefault().post(new BMessage(BMessage.Fragment_Center_ChangStatus));
+        //通知首页修改状态
+        EventBus.getDefault().post(new BMessage(BMessage.Fragment_Home_Bind));
         BaseActivity.finish();
     }
 
     @Override
     protected void DataError(String error, int LoadType) {
-
+        PromptManager.ShowCustomToast(BaseContext, error);
     }
 
     @Override

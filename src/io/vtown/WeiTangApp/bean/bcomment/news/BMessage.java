@@ -52,6 +52,7 @@ public class BMessage {
     public static final int Tage_Updata_Brand_list = 1178;
 
 
+
     /**
      * 修改商品价格事件标识
      */
@@ -236,6 +237,14 @@ public class BMessage {
     //选择好地址后返回
     public static final int Tage_Select_Address = 10010;
     private  List<String> address_infos;
+
+    //3.0版本************************************************************************************************************
+    //绑定页面绑定成功后刷新个人中心的绑定状态
+    public static final int Fragment_Center_ChangStatus=670;
+    //绑定页面绑定成功后刷新首页的绑定
+    public static final int Fragment_Home_Bind=671;
+
+
 
     //退出时候通知所有进行
     public BMessage() {

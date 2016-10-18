@@ -2,10 +2,12 @@ package io.vtown.WeiTangApp.ui.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -57,7 +59,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private List<GradualRadioButton> RadioButtons;
     private ImageView maintab_show_iv;
     private FBase FMainHome, FMainShop, FMainShow, FMainShopBus;//
-    private  FMainCenter     FMainCenter;
+    private FMainCenter FMainCenter;
     private List<FBase> Fragments;
     private int CurrentPostion = 0;
     //User
@@ -75,6 +77,10 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_maintab);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
         EventBus.getDefault().register(this, "ReciverChangMainTab", BMessage.class);
         MBUser = Spuit.User_Get(this);
         FBaseInit();
@@ -276,7 +282,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
                 break;
             case BMessage.Tage_Tab_Kill_Self:
                 AMainTab.this.finish();
-                Log.i("AMainTab","接受到消息广播");
+                Log.i("AMainTab", "接受到消息广播");
                 break;
 
             default:
@@ -390,7 +396,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i("AMainTab","接受到消息广播后执行onDestroy");
+        Log.i("AMainTab", "接受到消息广播后执行onDestroy");
         try {
             EventBus.getDefault().unregister(this);
         } catch (Exception e) {

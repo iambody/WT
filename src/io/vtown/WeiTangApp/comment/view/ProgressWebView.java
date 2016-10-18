@@ -6,6 +6,7 @@ package io.vtown.WeiTangApp.comment.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.webkit.WebView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
  
 /**
@@ -21,7 +22,7 @@ public class ProgressWebView extends WebView {
 	    public ProgressWebView(Context context, AttributeSet attrs) {
 	        super(context, attrs);
 	        progressbar = new ProgressBar(context, null, android.R.attr.progressBarStyleHorizontal);
-	        progressbar.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, 20, 0, 0));
+	        progressbar.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, 10, 0, 0));
 	        addView(progressbar);
 	        //        setWebViewClient(new WebViewClient(){});
 	        setWebChromeClient(new WebChromeClient());

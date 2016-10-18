@@ -42,8 +42,8 @@ public class BGoodDetail extends BBase {
     private String seller_name;// =蜜趣杂货铺
     private String slevel;// =0
     private String title;// =盘子
-    private String is_fee;
-
+//    private String is_fee;
+    private int is_fee;//=1
 
     private String is_dasell;//品牌商是否可以代理！！！！！！！！！！！！！！！！！！！！！=0
 
@@ -263,11 +263,11 @@ public class BGoodDetail extends BBase {
         this.title = title;
     }
 
-    public String getIs_fee() {
+    public int getIs_fee() {
         return is_fee;
     }
 
-    public void setIs_fee(String is_fee) {
+    public void setIs_fee(int is_fee) {
         this.is_fee = is_fee;
     }
 }

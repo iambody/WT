@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 
 
-
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
@@ -52,6 +51,7 @@ import io.vtown.WeiTangApp.comment.view.pop.PReturnRule;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AGoodShow;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.ui.AMainTab;
@@ -387,7 +387,6 @@ public class AGoodDetail extends ATitleBase {
         good_detail_fanyong_log.setOnClickListener(this);
 
 
-
         ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 
     }
@@ -495,6 +494,8 @@ public class AGoodDetail extends ATitleBase {
      */
     private void RefreshView(BGoodDetail datas) {
 //        StrUtils.SetTxt(gooddetailUpTitle,datas.getTitle());
+
+        good_detail_fanyong_log.setVisibility(datas.getIs_fee() == 1 ? View.VISIBLE : View.GONE);
         StrUtils.SetTxt(gooddetail_up_title, datas.getTitle());
         // InItitle();
         // 判断是否是图片还是视频
@@ -633,30 +634,6 @@ public class AGoodDetail extends ATitleBase {
                 if (IsShangJia) {// 可以上架
 
                     goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_REPLACE_SELL);
-//                    PPurchase pShowVirtualLibGood2 = new PPurchase(
-//                            BaseActivity, BaseContext, 200,
-//                            PPurchase.TYPE_GOOD_DETAIL_REPLACE_SELL, datas,
-//                            GoodsId, IsCaiGou);
-//                    pShowVirtualLibGood2.showAtLocation(mView, Gravity.CENTER,
-//                            0, 0);
-//                    pShowVirtualLibGood2
-//                            .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
-//
-//                                @Override
-//                                public void getPopupStuta(int stuta) {
-//                                    switch (stuta) {
-//                                        case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
-//
-//                                            break;
-//                                        case PPurchase.TYPE_ADD_ONLINE:// 上架成功
-//
-//                                            break;
-//
-//                                        default:
-//                                            break;
-//                                    }
-//                                }
-//                            });
 
                 } else {// 已经上架过不可以上架了
                     // tv_replace_sell.setVisibility(View.GONE);
@@ -667,27 +644,6 @@ public class AGoodDetail extends ATitleBase {
 
         if (IsCaiGou) {
             goPopActivity(AGoodPop.TYPE_SHOP_GOOD_MANAGER_CAIGOU);
- //           PPurchase pShowVirtualLibGood1 = new PPurchase(BaseActivity,
-//                    BaseContext, 200, PPurchase.TYPE_GOOD_DETAIL_BUY, datas,
-//                    GoodsId, IsCaiGou);
-//            pShowVirtualLibGood1.showAtLocation(mView, Gravity.CENTER, 0, 0);
-//            pShowVirtualLibGood1
-//                    .setOnPopupStutaChangerListener(new OnPopupStutaChangerListener() {
-//                        @Override
-//                        public void getPopupStuta(int stuta) {
-//                            switch (stuta) {
-//                                case PPurchase.TYPE_ADD_SHOPBUS:// 加入购物车成功
-//
-//                                    break;
-//                                case PPurchase.TYPE_ADD_ONLINE:// 上架成功
-//
-//                                    break;
-//
-//                                default:
-//                                    break;
-//                            }
-//                        }
-//                    });
         }
         // 判断是否在售中************************************
         if (!StrUtils.isEmpty(datas.getSale_status())
@@ -849,9 +805,14 @@ public class AGoodDetail extends ATitleBase {
 
     }
 
-    private void showReturnPop(){
-        PReturnRule pReturnRule = new PReturnRule(BaseContext);
-        pReturnRule.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
+    private void showReturnPop() {
+        //返佣规则
+        PromptManager.SkipActivity(BaseActivity, new Intent(
+                BaseActivity, AWeb.class).putExtra(
+                AWeb.Key_Bean,
+                new BComment(Constants.Homew_FanYong, getResources().getString(R.string.fanyongguize))));
+//        PReturnRule pReturnRule = new PReturnRule(BaseContext);
+//        pReturnRule.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
     }
 
     private void DaiLiGoods(String goods_id) {
@@ -1033,7 +994,6 @@ public class AGoodDetail extends ATitleBase {
     }
 
     private Handler mHandler = new Handler();
-
 
 
 }

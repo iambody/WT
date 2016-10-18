@@ -157,6 +157,7 @@ public class AZhuanQu extends ATitleBase {
     @Override
     protected void DataError(String error, int LoadType) {
         IDataView(zhuanqu_scrollview, zhuan_nodata_lay, NOVIEW_ERROR);
+        ShowErrorCanLoad(error);
     }
 
     @Override

@@ -2,13 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:clipToPadding="true"
+              android:fitsSystemWindows="true"
               android:orientation="vertical">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/fragment_center_out"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -29,8 +26,8 @@
                         android:id="@+id/maintab_center_cover"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/center_bg_height"
-                        android:scaleType="fitXY"
-                        android:background="@color/app_fen1"/>
+                        android:background="@color/app_fen2"
+                        android:scaleType="fitXY"/>
 
                     <RelativeLayout
                         android:id="@+id/maintab_center_myiv_lay"
@@ -73,12 +70,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:background="@color/transparent"
+                        android:background="@color/white"
                         android:orientation="horizontal">
 
                         <include
                             android:id="@+id/maintab_tab_center_oder"
                             layout="@layout/commentview_ivtext1"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/line_size1"
+                            android:layout_height="match_parent"
+                            android:src="@color/app_line"/>
 
                         <include
                             android:id="@+id/maintab_tab_center_walle"
@@ -91,13 +93,17 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/ui_5_dip"
+                    android:paddingRight="@dimen/ui_5_dip"
+                    >
 
-                    <View
-                        android:layout_width="6dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shape_center"/>
+                    <!-- <View
+                         android:layout_width="6dp"
+                         android:layout_height="match_parent"
+                         android:background="@drawable/shape_center"/>-->
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -110,7 +116,6 @@
                             android:id="@+id/maintab_center_show"
                             layout="@layout/commentview_center"/>
 
-
                         <ImageView style="@style/center_line"/>
 
                         <include
@@ -119,10 +124,14 @@
 
                         <ImageView style="@style/center_line"/>
 
-
                         <include
                             android:id="@+id/maintab_center_card"
                             layout="@layout/commentview_center"/>
+                        <ImageView style="@style/center_line"/>
+                        <include
+                            android:id="@+id/maintab_center_address"
+                            layout="@layout/commentview_center"/>
+
                     </LinearLayout>
                 </LinearLayout>
                 <!-- 上部分****************** -->
@@ -131,14 +140,17 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/ui_5_dip"
+                    android:paddingRight="@dimen/ui_5_dip">
 
-                    <View
-                        android:layout_width="6dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shap_centera"/>
-
+                    <!--   <View
+                           android:layout_width="6dp"
+                           android:layout_height="match_parent"
+                           android:background="@drawable/shap_centera"/>
+   -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -166,6 +178,5 @@
                 <!-- 下部分****************** -->
             </LinearLayout>
         </ScrollView>
-    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

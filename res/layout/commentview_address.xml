@@ -76,7 +76,10 @@
                     android:layout_height="wrap_content"
                     android:text="联系电话："
                     android:textColor="@color/grey"
-                    android:textSize="@dimen/comment_label_txtsize" />
+                    android:textSize="@dimen/comment_label_txtsize" />
+
+
+
             -->
 
 
@@ -87,18 +90,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <TextView
+               <!-- <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="收货地址："
+                    android:text="收货地址:"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:textColor="@color/grey"
-                    android:textSize="@dimen/comment_label_txtsize" />
+                    android:textSize="@dimen/comment_label_txtsize" />-->
 
                 <TextView
                     android:id="@+id/commentview_add_address"
                     android:layout_width="wrap_content"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/nullstr"
                     android:textColor="@color/app_gray"

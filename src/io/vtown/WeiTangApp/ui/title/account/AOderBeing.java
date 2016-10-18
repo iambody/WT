@@ -498,8 +498,9 @@ public class AOderBeing extends ATitleBase {
             }
             StrUtils.SetTxt(oderOutItem.item_oderbeing_out_shoptxt,
                     iBlComment.getSeller_name());
-            StrUtils.SetTxt(oderOutItem.item_oderbeing_out_yunfei, "￥"
-                    + StrUtils.SetTextForMony(iBlComment.getPostage()));
+//            StrUtils.SetTxt(oderOutItem.item_oderbeing_out_yunfei, "￥"
+//                    + StrUtils.SetTextForMony(iBlComment.getPostage()));
+            StrUtils.SetColorsTxt(BaseContext,oderOutItem.item_oderbeing_out_yunfei,R.color.app_fen1,"运费:","￥"+StrUtils.SetTextForMony(iBlComment.getPostage()));
             StrUtils.SetTxt(oderOutItem.item_oderbeing_out_mony,
                     iBlComment.getAll_money());
             StrUtils.SetColorsTxt(BaseContext,
@@ -749,11 +750,10 @@ public class AOderBeing extends ATitleBase {
             ll_address_info.setVisibility(View.VISIBLE);
             StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
                     R.color.app_gray,
-                    getResources().getString(R.string.shouhuoren),
+                     getResources().getString(R.string.shouhuoren),
                     addressBldComment2.getName());
             StrUtils.SetTxt(
                     commentview_add_address,
-
                     addressBldComment2.getProvince()
                             + addressBldComment2.getCity()
                             + addressBldComment2.getCounty()

@@ -149,7 +149,7 @@
     <string name="zhifubao">支付宝</string>
     <string name="yinhangka">银行卡</string>
     <!-- 我的show圈 -->
-    <string name="center_show">我的SHOW圈</string>
+    <string name="center_show">SHOW圈</string>
     <string name="center_oder">我的订单</string>
     <string name="center_yaoqingma">我的邀请码</string>
     <string name="center_wallet">我的钱包</string>
@@ -397,7 +397,7 @@
     <string name="lijian">立减:</string>
     <string name="needpay">还需支付:</string>
     <string name="address">收货地址:</string>
-    <string name="shouhuoren">收  货  人 ：</string>
+    <string name="shouhuoren">收货人名:</string>
     <string name="phone">电话:</string>
     <string name="querendizhi">请确定收货地址</string>
     <string name="nocoup">暂无卡券</string>
@@ -565,25 +565,25 @@
     <string name="nomoregood">没有更多商品了</string>
     <string name="add_good_exit_note">确定退出编辑</string>
     <string name="error_null_noda">网络调皮,点我刷新</string>
-    <string name="buyer_liuyan">买家留言</string>
+    <string name="buyer_liuyan">买家留言:</string>
     <string name="hint_buyer_liuyan">选填:对本次交易说明</string>
     <string name="brand_sousou">搜索店铺内商品</string>
     <string name="error_fuwuqi">服务器异常</string>
-    <string name="error_null_address">\"您还没有添加地址哦~~~\"</string>
-    <string name="error_null_alipay">\"您还没有绑定支付宝哦~点我进行绑定吧\"</string>
-    <string name="error_null_search_result">\"没有搜到您想要的商品，再试试吧~~~\"</string>
-    <string name="error_null_my_order_all">\"暂时没有订单哦~~~\"</string>
-    <string name="error_null_my_order_no_pay">\"暂时没有待付款订单哦~~~\"</string>
-    <string name="error_null_my_order_daifa">\"暂时没有待发货订单哦~~~\"</string>
-    <string name="error_null_my_order_daishou">\"暂时没有待收货订单哦~~~\"</string>
-    <string name="error_null_my_order_tuikuan">\"暂时没有退款/仲裁订单哦~~~\"</string>
-    <string name="error_null_my_order_over">\"暂时没有已完成订单哦~~~\"</string>
-    <string name="error_null_bank_list_over">\"没有获取到您想要的银行哦，请稍后再试试吧~~~\"</string>
-    <string name="error_null_property_list">\"亲~暂时还没有您的资金明细哟~~~\"</string>
-    <string name="error_null_property_shopping">\"亲~暂时还没有购物资金明细哟~~~\"</string>
-    <string name="error_null_property_recharge">\"亲~暂时还没有退款资金明细哟~~~\"</string>
-    <string name="error_null_property_withdraw">\"亲~暂时还没有提现资金明细哟~~~\"</string>
-    <string name="error_null_property_sell">\"亲~暂时还没有销售资金明细哟~~~\"</string>
+    <string name="error_null_address">还没有添加地址哦</string>
+    <string name="error_null_alipay">您还没有绑定支付宝哦~点我进行绑定吧</string>
+    <string name="error_null_search_result">没搜到您想要的商品</string>
+    <string name="error_null_my_order_all">没有订单哦</string>
+    <string name="error_null_my_order_no_pay">无待付款订单</string>
+    <string name="error_null_my_order_daifa">无待发货订单</string>
+    <string name="error_null_my_order_daishou">无待收货订单</string>
+    <string name="error_null_my_order_tuikuan">无退款/仲裁订单</string>
+    <string name="error_null_my_order_over">没有已完成订单</string>
+    <string name="error_null_bank_list_over">无获取到您想要的银行哦，请稍后再试试吧~~~\"</string>
+    <string name="error_null_property_list">无资金明细</string>
+    <string name="error_null_property_shopping">无购物资金明细</string>
+    <string name="error_null_property_recharge">无退款资金明细</string>
+    <string name="error_null_property_withdraw">无提现资金明细</string>
+    <string name="error_null_property_sell">无销售资金明细</string>
     <string name="no_goods">暂无商品哦</string>
     <string name="no_zaishou_brand">暂无在售品牌商品</string>
     <string name="no_zaishou_ziying">暂无在售自营商品</string>
@@ -654,14 +654,14 @@
 
     <!--积分明细-->
 
-    <string name="null_integral_detail">\"亲，您还没有积分哦~~~\"</string>
-    <string name="null_integral_system">\"亲，您还没有系统赠送的积分哦~~~\"</string>
-    <string name="null_integral_past">\"亲，您还没有签到积分哦~~~\n赶快去首页签到吧\"</string>
-    <string name="null_integral_invite">\"亲，您还没有邀请好友积分哦~~~\n戳我一下去邀请吧\"</string>
-    <string name="null_integral_activation">\"亲，您还没有下级激活积分哦~~~\"</string>
-    <string name="null_integral_own_buy">\"亲，您还没有自己购买积分哦~~~\n戳我一下,有秘密哟\"</string>
-    <string name="null_integral_friend_buy">\"亲，您还没有下级购买积分哦~~~\"</string>
-    <string name="null_integral_consume">\"亲，暂时您还没有消耗积分哦~~~\"</string>
+    <string name="null_integral_detail">没有积分哦</string>
+    <string name="null_integral_system">还没有系统赠送的积分</string>
+    <string name="null_integral_past">还没有签到积分\n赶快去首页签到吧\"</string>
+    <string name="null_integral_invite">还没有邀请好友积分哦\n戳我一下去邀请吧\"</string>
+    <string name="null_integral_activation">还没有下级激活积分</string>
+    <string name="null_integral_own_buy">还没有自己购买积分哦\n戳我一下,有秘密哟\"</string>
+    <string name="null_integral_friend_buy">没有下级购买积分</string>
+    <string name="null_integral_consume">\"暂时未消耗积分</string>
     <string name="integral_title_all">全部积分</string>
     <string name="integral_title_system1">系统赠送积分</string>
     <string name="integral_title_past">每日签到积分</string>
@@ -670,14 +670,14 @@
     <string name="integral_title_own_buy">我买商品积分</string>
     <string name="integral_title_friend_buy">Ta买商品积分</string>
     <string name="integral_title_concume">每日消耗积分</string>
-    <string name="no_new_integral_detail">\"亲，没有新的积分了哦~~~\"</string>
-    <string name="no_more_integral_detail">\"亲，没有更多积分了哦~~~\"</string>
+    <string name="no_new_integral_detail">没有新的积分</string>
+    <string name="no_more_integral_detail">没有更多积分了</string>
 
     <!--返佣明细-->
     <string name="return_detail">返佣明细</string>
     <string name="wancheng">完成</string>
 
-    <string name="null_return_detail">\"亲，您暂时还没有返佣记录哦~~~\"</string>
+    <string name="null_return_detail">\"暂时还没有返佣记录"</string>
     <string name="bangding_tishi">微糖商城智能保障您的个人信息隐私</string>
     <string name="bangding_bindtishi">请绑定用户个人信息</string>
     <string name="yijihuo">已激活</string>
@@ -685,10 +685,12 @@
     <string name="center_tobind">绑定邀请码</string>
     <string name="bindcode_up_txt">微糖商城,新的赚钱之道</string>
     <string name="yaoqingmaa">邀请码</string>
-    <string name="bindcode_down_txt">加入微糖大家庭的邀请函,保证渠道正规安全</string>
+    <string name="bindcode_down_txt">为保证渠道安全,请先绑定你的邀请码</string>
     <string name="Bindcode">邀请码绑定</string>
     <string name="bind_yaoqing">绑定邀请码</string>
     <string name="bind_jihuo">激活账户</string>
     <string name="bind_yaoqinghaoyou">邀请好友</string>
+    <string name="nobind">未绑定</string>
+    <string name="myaddress">我的地址</string>
 
 </resources>
