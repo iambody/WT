@@ -2,15 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:orientation="horizontal" >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/center_address_manager_name_phone_top_buttom_margin"
+       android:paddingTop="@dimen/center_address_manager_name_phone_top_buttom_margin"
         android:paddingBottom="@dimen/center_address_manager_name_phone_top_buttom_margin"
-        android:layout_marginTop="@dimen/center_address_manager_name_phone_top_buttom_margin"
-        android:background="@drawable/shape_shopmanger_circular_bg"
+
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -18,7 +20,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/center_address_manager_name_phone_top_buttom_margin"
             android:layout_marginLeft="@dimen/center_address_manager_name_phone_left_right_margin"
-            android:layout_marginRight="@dimen/center_address_manager_name_phone_left_right_margin"
             android:layout_marginTop="@dimen/center_address_manager_name_phone_top_buttom_margin" >
 
             <TextView
@@ -35,7 +36,8 @@
                 android:id="@+id/tv_usr_phone_numb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tv_usr_name"
+                android:paddingLeft="20dp"
                 android:text="@string/nullstr"
                 android:textColor="@color/app_gray"
                 android:textSize="@dimen/comment_label_txtsize" />
@@ -47,12 +49,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/center_address_manager_delivery_address_top_buttom_margin"
             android:layout_marginLeft="@dimen/center_address_manager_delivery_address_left_right_margin"
-            android:layout_marginRight="@dimen/center_address_manager_delivery_address_left_right_margin"
+
             android:text="@string/delivery_address"
             android:textColor="@color/grey"
             android:textSize="@dimen/comment_label_txtsize" />
 
-        <View style="@style/line"/>
+        <View style="@style/line"
+            android:visibility="gone"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -60,6 +64,7 @@
             android:layout_marginBottom="@dimen/center_address_manager_delivery_address_top_buttom_margin"
             android:layout_marginLeft="@dimen/center_address_manager_delivery_address_left_right_margin"
             android:gravity="center_vertical"
+            android:visibility="gone"
             android:layout_marginRight="@dimen/center_address_manager_delivery_address_left_right_margin"
             android:layout_marginTop="@dimen/center_address_manager_delivery_address_top_buttom_margin" >
 
@@ -119,5 +124,12 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_address_manager_arrow"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_tiaozhuan_nor"
+        android:layout_marginRight="@dimen/center_address_manager_delivery_address_left_right_margin"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
