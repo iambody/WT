@@ -77,19 +77,12 @@ public class AAddressManage extends ATitleBase {
      */
     private boolean needFinish;
 
-    /**
-     * 获取数据成功显示的布局
-     */
-    private LinearLayout center_address_manage_outlay;
+
     /**
      * 获取数据失败显示的布局
      */
     private View center_address_manage_nodata_lay;
 
-    /**
-     * 新建收货人按钮
-     */
-    private Button btn_add_new_consignee_address1;
 
     private boolean isGetList = false;
 
@@ -106,7 +99,7 @@ public class AAddressManage extends ATitleBase {
     }
 
     private void IData() {
-        PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
+
 
         isGetList = true;
         String id = user_Get.getId();
@@ -146,14 +139,14 @@ public class AAddressManage extends ATitleBase {
     private void ICache() {
         String center_Set_Address = CacheUtil.Center_Set_Address_Get(BaseContext);
         if (StrUtils.isEmpty(center_Set_Address)) {
-            return;
+            PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
         }
         try {
             BD = JSON.parseObject(center_Set_Address, BDComment.class);
         } catch (Exception e) {
             return;
         }
-        addressAdapter.FrashData(BD.getList(), BD.getDefault_id());
+        addressAdapter.FrashData(BD.getList());
     }
 
     /**
@@ -169,18 +162,11 @@ public class AAddressManage extends ATitleBase {
     }
 
     private void IView() {
-
-        center_address_manage_outlay = (LinearLayout) findViewById(R.id.center_address_manage_outlay);
         center_address_manage_nodata_lay = findViewById(R.id.center_address_manage_nodata_lay);
-        btn_add_new_consignee_address1 = (Button) center_address_manage_nodata_lay.findViewById(R.id.btn_add_new_consignee_address1);
-        IDataView(center_address_manage_outlay, center_address_manage_nodata_lay, NOVIEW_INITIALIZE);
-        btn_add_new_consignee_address1.setVisibility(View.GONE);
         lv_address_list = (ListView) findViewById(R.id.lv_address_list);
         btn_add_new_consignee_address = (Button) findViewById(R.id.btn_add_new_consignee_address);
         btn_add_new_consignee_address.setOnClickListener(this);
         center_address_manage_nodata_lay.setOnClickListener(this);
-        btn_add_new_consignee_address1.setOnClickListener(this);
-
         IList();
     }
 
@@ -188,28 +174,60 @@ public class AAddressManage extends ATitleBase {
         addressAdapter = new AddressAdapter(R.layout.item_address_manage);
         lv_address_list.setAdapter(addressAdapter);
 
-        if (needFinish) {
+
             lv_address_list.setOnItemClickListener(new OnItemClickListener() {
 
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                         long arg3) {
-
+                    if (needFinish) {
                     BLComment bl = (BLComment) addressAdapter.getItem(arg2);
                     Intent intent = new Intent();
                     intent.putExtra("AddressInfo", bl);
                     setResult(RESULT_OK, intent);
                     AAddressManage.this.finish();
+                    }else{
 
+                        PromptManager.SkipResultActivity(BaseActivity, new Intent(
+                                BaseActivity, AEditAddress.class).putExtra("data",
+                                BD.getList().get(arg2)), 100);
+                    }
+                }
+            });
+
+        if(!needFinish){
+            lv_address_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view,final int position, long id) {
+
+
+                    ShowCustomDialog("确认删除收货地址？", "取消", "确认", new IDialogResult() {
+                        @Override
+                        public void RightResult() {
+                            if (CheckNet(BaseContext)) return;
+                            AddressSet(user_Get.getId(), BD.getList().get(position)
+                                    .getAddress_id(), 2);
+
+                        }
+
+                        @Override
+                        public void LeftResult() {
+                        }
+                    });
+                    return true;
                 }
             });
         }
+
+
 
     }
 
     @Override
     protected void InitTile() {
         SetTitleTxt(getString(R.string.address_manage));
+        SetRightIv(R.drawable.ic_jiahao_add);
+        right_iv.setOnClickListener(this);
     }
 
     @Override
@@ -220,11 +238,12 @@ public class AAddressManage extends ATitleBase {
             case 0:// 获取列表
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
-                        IDataView(center_address_manage_outlay, center_address_manage_nodata_lay, NOVIEW_ERROR);
-                        btn_add_new_consignee_address1.setVisibility(View.VISIBLE);
-                        DataError(getResources().getString(R.string.error_null_address), Data.getHttpLoadType());
+                        CacheUtil.Center_Set_Address_Save(BaseContext, "");
+                        center_address_manage_nodata_lay.setVisibility(View.VISIBLE);
+                        lv_address_list.setVisibility(View.GONE);
                         ShowErrorCanLoad(getResources().getString(R.string.error_null_address));
                         center_address_manage_nodata_lay.setClickable(false);
+                        addressAdapter.FrashData(new ArrayList<BLComment>());
                     }
                     CacheUtil.Center_Set_Address_Save(BaseContext, Data.getHttpResultStr());
                     //DataError(Msg, Data.getHttpLoadType());
@@ -237,19 +256,21 @@ public class AAddressManage extends ATitleBase {
                     DataError("解析失败", 1);
                 }
                 CacheUtil.Center_Set_Address_Save(BaseContext, Data.getHttpResultStr());
-                IDataView(center_address_manage_outlay, center_address_manage_nodata_lay, NOVIEW_RIGHT);
-                addressAdapter.FrashData(BD.getList(), BD.getDefault_id());
+                center_address_manage_nodata_lay.setVisibility(View.GONE);
+                lv_address_list.setVisibility(View.VISIBLE);
+                addressAdapter.FrashData(BD.getList());
                 break;
             case 1:// 设置默认地址
                 PromptManager.ShowMyToast(BaseContext, "设置成功");
-               // IData();
-                addressAdapter.RefreshPosition(pos,2);
+                // IData();
+                addressAdapter.RefreshPosition(pos);
 
                 break;
 
             case 2:// 删除地址
                 PromptManager.ShowMyToast(BaseContext, "删除成功");
-                addressAdapter.RefreshPosition(pos,1);
+               // addressAdapter.RefreshPosition(pos);
+                IData();
                 break;
 
             case 3:
@@ -268,8 +289,8 @@ public class AAddressManage extends ATitleBase {
         PromptManager.ShowMyToast(BaseActivity, error);
         if (LOAD_INITIALIZE == LoadTyp && isGetList) {
             ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
-            IDataView(center_address_manage_outlay, center_address_manage_nodata_lay, NOVIEW_ERROR);
-            btn_add_new_consignee_address1.setVisibility(View.VISIBLE);
+            center_address_manage_nodata_lay.setVisibility(View.VISIBLE);
+            lv_address_list.setVisibility(View.GONE);
             center_address_manage_nodata_lay.setClickable(true);
         }
     }
@@ -295,13 +316,13 @@ public class AAddressManage extends ATitleBase {
 
         switch (V.getId()) {
             case R.id.btn_add_new_consignee_address:
-            case R.id.btn_add_new_consignee_address1://没有获取到数据情况下的新建收货人地址按钮
+            case R.id.right_iv:
                 PromptManager.SkipResultActivity(BaseActivity, new Intent(
                         BaseActivity, AAddConsigneeAddress.class), 100);
                 break;
 
             case R.id.center_address_manage_nodata_lay://重新加载数据
-                btn_add_new_consignee_address1.setVisibility(View.GONE);
+
                 IData();
                 break;
         }
@@ -339,7 +360,7 @@ public class AAddressManage extends ATitleBase {
          */
         private List<BLComment> datas = new ArrayList<BLComment>();
 
-        private List<Boolean> mBooleans = new ArrayList<Boolean>();
+        //private List<Boolean> mBooleans = new ArrayList<Boolean>();
 
         private int position = 0;
 
@@ -363,15 +384,15 @@ public class AAddressManage extends ATitleBase {
          *
          * @param dass
          */
-        public void FrashData(List<BLComment> dass, int postion) {
-            this.position = postion;
+        public void FrashData(List<BLComment> dass) {
+            //           this.position = postion;
             this.datas = dass;
-            for (BLComment blComment : dass) {
-                if (postion == dass.indexOf(blComment)) {
-                    mBooleans.add(true);
-                }
-                mBooleans.add(false);
-            }
+//            for (BLComment blComment : dass) {
+//                if (postion == dass.indexOf(blComment)) {
+//                    mBooleans.add(true);
+//                }
+//                mBooleans.add(false);
+//            }
             this.notifyDataSetChanged();
         }
 
@@ -397,32 +418,15 @@ public class AAddressManage extends ATitleBase {
 
         //局部刷新的代码
 
-        /**
-         * @param position
-         * @param Type==1标识除去item Type==2 品牌列表==》上架成功
-         */
-        public void RefreshPosition(int position, int Type) {//
 
-            switch (Type) {
-                case 1://删除某一个item
+        public void RefreshPosition(int position) {//
+            if (datas.size() > 0) {
 
-                    if(datas.size()>0){
-                        if(this.position == Integer.parseInt(datas.get(position).getAddress_id())){
-                            this.position = Integer.parseInt(datas.get(0).getAddress_id());
-                        }
-                        datas.remove(position);
-                        FrashData(datas,this.position);
-                    }
-
-                    break;
-
-                case 2://设置
-
-                    FrashData(datas,Integer.parseInt(datas.get(position).getAddress_id()));
-                   // notifyDataSetChanged();
-                    break;
+                datas.remove(position);
+                FrashData(datas);
+            }else{
+                IData();
             }
-
         }
 
         @Override
@@ -444,28 +448,40 @@ public class AAddressManage extends ATitleBase {
                 item.iv_quan_select = ViewHolder.get(arg1, R.id.iv_quan_select);
                 item.ll_select_default = ViewHolder.get(arg1,
                         R.id.ll_select_default);
+                item.iv_address_manager_arrow = ViewHolder.get(arg1,R.id.iv_address_manager_arrow);
 
                 arg1.setTag(item);
 
             } else {
                 item = (AddressItem) arg1.getTag();
             }
-            map.put(arg0,item);
-
-            int address_id = Integer.parseInt(datas.get(arg0).getAddress_id());
-            if (position == address_id) {
-                item.iv_quan_select.setImageResource(R.drawable.quan_select_3);
-                item.tv_default_address.setTextColor(getResources().getColor(
-                        R.color.app_fen));
-            } else {
-                item.iv_quan_select.setImageResource(R.drawable.quan_select_1);
-                item.tv_default_address.setTextColor(getResources().getColor(
-                        R.color.grey));
+            if(needFinish){
+                item.iv_address_manager_arrow.setVisibility(View.GONE);
+            }else{
+                item.iv_address_manager_arrow.setVisibility(View.VISIBLE);
             }
+//            map.put(arg0,item);
+//
+//            int address_id = Integer.parseInt(datas.get(arg0).getAddress_id());
+//            if (position == address_id) {
+//                item.iv_quan_select.setImageResource(R.drawable.quan_select_3);
+//                item.tv_default_address.setTextColor(getResources().getColor(
+//                        R.color.app_fen));
+//            } else {
+//                item.iv_quan_select.setImageResource(R.drawable.quan_select_1);
+//                item.tv_default_address.setTextColor(getResources().getColor(
+//                        R.color.grey));
+//            }
             BLComment blComment = datas.get(arg0);
-            StrUtils.SetColorsTxt(BaseContext, item.tv_usr_name, R.color.app_gray, "收货人：", datas.get(arg0).getName());
+//            StrUtils.SetColorsTxt(BaseContext, item.tv_usr_name, R.color.app_gray, "收货人：", datas.get(arg0).getName());
+//
+//            StrUtils.SetColorsTxt(BaseContext, item.tv_delivery_address, R.color.app_gray, "详细地址：", blComment.getProvince() + blComment.getCity()
+//                    + blComment.getCounty()
+//                    + blComment.getAddress());
+
+            StrUtils.SetTxt(item.tv_usr_name,datas.get(arg0).getName());
             StrUtils.SetTxt(item.tv_usr_phone_numb, datas.get(arg0).getMobile());
-            StrUtils.SetColorsTxt(BaseContext, item.tv_delivery_address, R.color.app_gray, "详细地址：", blComment.getProvince() + blComment.getCity()
+            StrUtils.SetTxt(item.tv_delivery_address,blComment.getProvince() + blComment.getCity()
                     + blComment.getCounty()
                     + blComment.getAddress());
 
@@ -531,7 +547,7 @@ public class AAddressManage extends ATitleBase {
         class AddressItem {
             TextView tv_usr_name, tv_usr_phone_numb, tv_delivery_address,
                     tv_default_address, tv_edit, tv_delete;
-            ImageView iv_quan_select;
+            ImageView iv_quan_select,iv_address_manager_arrow;
 
             LinearLayout ll_select_default;
         }

@@ -328,7 +328,7 @@
     <string name="select_coupons_count">已选用2张</string>
     <string name="deduction_how_money">可抵扣￥400.00元</string>
     <string name="coupons_confirm">确认</string>
-    <string name="delivery_address">收货地址：%1$s</string>
+    <string name="delivery_address">%1$s</string>
     <string name="my_coupons_validity">%1$s至%2$s</string>
 
     <!-- 店铺品牌代理页面 -->

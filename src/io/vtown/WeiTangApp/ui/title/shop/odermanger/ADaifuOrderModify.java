@@ -231,9 +231,7 @@ public class ADaifuOrderModify extends ATitleBase {
 	 */
 	private void RefreshView(BDShopOrderDetail data2) {
 
-		StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
-				R.color.app_gray, getString(R.string.tv_commentview_name),
-				data2.getUsername());
+		StrUtils.SetTxt(commentview_add_name, data2.getUsername());
 
 		StrUtils.SetTxt(commentview_add_phone, data2.getMobile());
 		StrUtils.SetTxt(
@@ -503,10 +501,7 @@ public class ADaifuOrderModify extends ATitleBase {
 			if (bundle != null) {
 				isModifyAddress = true;
 
-				StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
-						R.color.app_gray,
-						getString(R.string.tv_commentview_name),
-						bundle.getString("name"));
+				StrUtils.SetTxt(commentview_add_name, bundle.getString("name"));
 
 				StrUtils.SetTxt(commentview_add_phone,
 						bundle.getString("mobile"));

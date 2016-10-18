@@ -614,9 +614,10 @@ public class ACenterMyOrderDetail extends ATitleBase {
 			}
 		}
 
-		StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
-				R.color.app_gray, getString(R.string.tv_commentview_name),
-				order_detail2.getUsername());
+//		StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
+//				R.color.app_gray, getString(R.string.tv_commentview_name),
+//				order_detail2.getUsername());
+		StrUtils.SetTxt(commentview_add_name,order_detail2.getUsername());
 
 		StrUtils.SetTxt(commentview_add_phone, order_detail2.getMobile());
 		StrUtils.SetTxt(commentview_add_address, order_detail2.getProvince()
@@ -959,9 +960,10 @@ public class ACenterMyOrderDetail extends ATitleBase {
 		if (REQUEST_CODE_ADDRESS == requestCode && RESULT_OK == resultCode) {
 			BLComment bl = (BLComment) data.getSerializableExtra("AddressInfo");
 			if (bl != null) {
-				StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
-						R.color.app_gray,
-						getString(R.string.tv_commentview_name), bl.getName());
+//				StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
+//						R.color.app_gray,
+//						getString(R.string.tv_commentview_name), bl.getName());
+				StrUtils.SetTxt(commentview_add_name,bl.getName());
 
 				StrUtils.SetTxt(commentview_add_phone, bl.getMobile());
 				StrUtils.SetTxt(

@@ -286,12 +286,10 @@ public class APurchaseNoPayDetail extends ATitleBase {
 	}
 
 	private void RefreshView(BDPurchaseNoPayDetail data) {
-		String name = getResources().getString(R.string.consignee_name_order);
-		StrUtils.SetTxt(commentview_add_name,
-				String.format(name, data.getUsername()));
+
+		StrUtils.SetTxt(commentview_add_name, data.getUsername());
 		StrUtils.SetTxt(commentview_add_phone, data.getMobile());
-		String address = getResources().getString(
-				R.string.consignee_detail_address);
+
 		StrUtils.SetTxt(
 				commentview_add_address,
 				data.getProvince() + data.getCity() + data.getArea()

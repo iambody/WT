@@ -748,10 +748,7 @@ public class AOderBeing extends ATitleBase {
             // addressBldComment = mBdComment.getAddress();
             tv_no_address_info_title.setVisibility(View.GONE);
             ll_address_info.setVisibility(View.VISIBLE);
-            StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
-                    R.color.app_gray,
-                     getResources().getString(R.string.shouhuoren),
-                    addressBldComment2.getName());
+            StrUtils.SetTxt(commentview_add_name, addressBldComment2.getName());
             StrUtils.SetTxt(
                     commentview_add_address,
                     addressBldComment2.getProvince()

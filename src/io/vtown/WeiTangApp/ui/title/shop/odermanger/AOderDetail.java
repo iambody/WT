@@ -469,7 +469,7 @@ public class AOderDetail extends ATitleBase {
 		
 		//String name = getResources().getString(R.string.consignee_name_order);
 
-		StrUtils.SetColorsTxt(BaseContext,commentview_add_name,R.color.app_gray,getString(R.string.tv_commentview_name),bdComment.getUsername());
+		StrUtils.SetTxt(commentview_add_name,bdComment.getUsername());
 		
 		StrUtils.SetTxt(commentview_add_phone, bdComment.getMobile());
 		StrUtils.SetTxt(commentview_add_address,bdComment.getProvince() + bdComment.getCity() + bdComment.getArea()

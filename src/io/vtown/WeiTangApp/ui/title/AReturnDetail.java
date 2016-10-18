@@ -91,7 +91,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
 
         HashMap<String, String> map = new HashMap<String, String>();
         // map.put("page_num",Constants.PageSize+"");
-        map.put("member_id", mUser.getId());
+        map.put("member_id", "10014952");//mUser.getId()
         map.put("last_id", lastid);
         map.put("type", "6");
         FBGetHttpData(map, Constants.ZiJinJiLu, Request.Method.GET, 0, LoadType);
@@ -116,6 +116,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                     retrunDetailList.setVisibility(View.GONE);
                     retrun_detail_nodata_lay.setVisibility(View.VISIBLE);
                     retrun_detail_nodata_lay.setClickable(false);
+                    ShowErrorIv(R.drawable.pic_fanyongjine);
                     String error_tip = getResources().getString(R.string.null_return_detail);
                     ShowErrorCanLoad(error_tip);
                     return;
@@ -217,6 +218,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                 retrunDetailList.setVisibility(View.GONE);
                 retrun_detail_nodata_lay.setVisibility(View.VISIBLE);
                 retrun_detail_nodata_lay.setClickable(true);
+                ShowErrorIv(R.drawable.pic_fanyongjine);
                 ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
                 //IDataView(lv_property_detail_list, center_my_property_detail_nodata_lay, NOVIEW_ERROR);
                 // property_detail_list_refrash.setCanLoadMore(false);

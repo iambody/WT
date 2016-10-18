@@ -561,13 +561,10 @@ public class APurchaseDetail extends ATitleBase {
 
 		StrUtils.SetTxt(tv_purchase_detail_shop_name, data2.getSeller_name());
 
-		String name = getResources().getString(R.string.consignee_name_order);
 
 		StrUtils.SetTxt(commentview_add_name,
-				String.format(name, data2.getUsername()));
+				data2.getUsername());
 		StrUtils.SetTxt(commentview_add_phone, data2.getMobile());
-		String address = getResources().getString(
-				R.string.consignee_detail_address);
 		StrUtils.SetTxt(
 				commentview_add_address,
 				data2.getProvince() + data2.getCity() + data2.getArea()
@@ -1009,10 +1006,7 @@ public class APurchaseDetail extends ATitleBase {
 		if (REQUEST_CODE_ADDRESS == requestCode && RESULT_OK == resultCode) {
 			BLComment bl = (BLComment) data.getSerializableExtra("AddressInfo");
 			if (bl != null) {
-				StrUtils.SetTxt(
-						commentview_add_name,
-						String.format(getString(R.string.tv_commentview_name)
-								+ "%1$s", bl.getName()));
+				StrUtils.SetTxt(commentview_add_name, bl.getName());
 				StrUtils.SetTxt(commentview_add_phone, bl.getMobile());
 				StrUtils.SetTxt(
 						commentview_add_address,

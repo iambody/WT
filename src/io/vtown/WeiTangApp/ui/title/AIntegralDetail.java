@@ -131,6 +131,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     integral_detail_list.setVisibility(View.GONE);
                     integral_detail_nodata_lay.setVisibility(View.VISIBLE);
+                    ShowErrorIv(R.drawable.pic_jifenmingxi);
                     integral_detail_nodata_lay.setClickable(false);
                     mAdapter.FreshData(new ArrayList<BCIntegralDetail>());
 
@@ -253,6 +254,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             case LOAD_INITIALIZE:
                 integral_detail_list.setVisibility(View.GONE);
                 integral_detail_nodata_lay.setVisibility(View.VISIBLE);
+                ShowErrorIv(R.drawable.pic_jifenmingxi);
                 integral_detail_nodata_lay.setClickable(true);
                 ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
                 Click_Type = 3;

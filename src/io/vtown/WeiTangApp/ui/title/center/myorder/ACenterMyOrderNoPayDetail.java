@@ -212,11 +212,8 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 	 */
 	private void RefreshView(BDCenterOrderNoPayDetail data2) {
 
-		String name = getResources().getString(R.string.consignee_name_order);
 
-		StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
-				R.color.app_gray, getString(R.string.tv_commentview_name),
-				data2.getUsername());
+		StrUtils.SetTxt(commentview_add_name, data2.getUsername());
 
 		StrUtils.SetTxt(commentview_add_phone, data2.getMobile());
 		StrUtils.SetTxt(
@@ -439,9 +436,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 			BLComment bl = (BLComment) data.getSerializableExtra("AddressInfo");
 			if (bl != null) {
 
-				StrUtils.SetColorsTxt(BaseContext, commentview_add_name,
-						R.color.app_gray,
-						getString(R.string.tv_commentview_name), bl.getName());
+				StrUtils.SetTxt(commentview_add_name, bl.getName());
 
 				StrUtils.SetTxt(commentview_add_phone, bl.getMobile());
 				StrUtils.SetTxt(

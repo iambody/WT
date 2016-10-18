@@ -22,14 +22,6 @@
         android:textColor="@color/gray"
         android:paddingTop="6dp" />
 
-    <Button
-        android:id="@+id/btn_add_new_consignee_address1"
-        style="@style/build_two_dimension_code_btn_style_no_circular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/new_consignee_address"
-         android:visibility="gone" />
     
     <Button
         android:id="@+id/btn_add_new_bank_card"
