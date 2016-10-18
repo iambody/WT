@@ -293,6 +293,11 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     private LinearLayout ll_return_and_integral;
     private TextView tv_return_money;
     private TextView tv_good_integral;
+    private String fee;
+    private String score;
+    private String mSell_price;
+    private String c1;
+    private String c2;
 
     @Override
     protected void InItBaseView() {
@@ -637,6 +642,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                         // PromptManager.ShowCustomToast(pContext, "上边的规格："
                         // + da.getAttr_map().getV1());
                         StrUtils.SetTxt(et_price, "");
+                       // aasv_add_sub.setNum(1);
+                        //aasv_add_sub.SetMinNumber(1);
                         pop_purchase_price.setVisibility(View.GONE);
                         ll_return_and_integral.setVisibility(View.GONE);
                         pop_purchase_kucun.setVisibility(View.VISIBLE);
@@ -695,6 +702,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 //							+ da.getAttr_map().getV2());
 
                         StrUtils.SetTxt(et_price, "");
+                        //aasv_add_sub.setNum(1);
                         pop_purchase_price.setVisibility(View.GONE);
                         ll_return_and_integral.setVisibility(View.GONE);
                         pop_purchase_kucun.setVisibility(View.VISIBLE);
@@ -728,23 +736,30 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
      * 刷新布局
      */
     private void IFView() {
+aasv_add_sub.setNum(1);
+        aasv_add_sub.SetMinNumber(1);
 
         BDataGood blComment = (LastClickIsUp ? myUpAdapter : myDownAdapter)
                 .GetDataResource().get(LastClickItem);
-
+        c1 = blComment.getAttr_map().getC1();
+        c2 = blComment.getAttr_map().getC2();
         if (blComment != null) {
-            pop_purchase_price.setVisibility(View.VISIBLE);
-            if(TYPE_GOOD_DETAIL_BUY == ShowType && "1".equals(databean.getIs_fee())){
-                ll_return_and_integral.setVisibility(View.VISIBLE);
-                StrUtils.SetColorsTxt(BaseContext,tv_return_money,R.color.app_fen,"返佣金额：",StrUtils.SetTextForMony(blComment.getFee())+"元");
-                StrUtils.SetColorsTxt(BaseContext,tv_good_integral,R.color.app_fen,"获得积分：",blComment.getScore()+"分");
-            }else{
-                ll_return_and_integral.setVisibility(View.GONE);
-            }
-            int _sell_price = Integer.parseInt(blComment.getSell_price())*goods_num;
-            String format_price = String.format("%1$s元",
-                    StrUtils.SetTextForMony(_sell_price+""));
-            StrUtils.SetTxt(pop_purchase_price, format_price);
+           pop_purchase_price.setVisibility(View.VISIBLE);
+//            if(TYPE_GOOD_DETAIL_BUY == ShowType && "1".equals(databean.getIs_fee())){
+//                ll_return_and_integral.setVisibility(View.VISIBLE);
+                fee = blComment.getFee();
+                score = blComment.getScore();
+//                StrUtils.SetColorsTxt(BaseContext,tv_return_money,R.color.app_fen,"返佣金额：",StrUtils.SetTextForMony(fee)+"元");
+//                StrUtils.SetColorsTxt(BaseContext,tv_good_integral,R.color.app_fen,"获得积分：",score+"分");
+//
+//            }else{
+//                ll_return_and_integral.setVisibility(View.GONE);
+//            }
+            mSell_price = blComment.getSell_price();
+//            String format_price = String.format("%1$s元",
+//                    StrUtils.SetTextForMony(mSell_price +""));
+ //           StrUtils.SetTxt(pop_purchase_price, format_price);
+            setHeaderData(mSell_price,fee,score);
             StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle() + " "
                     + blComment.getAttr_name());
 
@@ -894,10 +909,6 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
      */
     private void AddGoodBus() {
 
-        String c1 = (LastClickIsUp ? myUpAdapter : myDownAdapter)
-                .GetDataResource().get(LastClickItem).getAttr_map().getC1();
-        String c2 = (LastClickIsUp ? myUpAdapter : myDownAdapter)
-                .GetDataResource().get(LastClickItem).getAttr_map().getC2();
         if (-1 == UpPostion) {
             PromptManager.ShowMyToast(BaseContext, "请选择" + c1);
             return;
@@ -999,16 +1010,70 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
     @Override
     public void onNumChange(View view, int num) {
+        if (-1 == UpPostion) {
+            PromptManager.ShowMyToast(BaseContext, "请选择您要购买的商品规格");
+            aasv_add_sub.setEnabled(false);
+            return;
+        }
+        if (-1 == DownPostion) {
+            PromptManager.ShowMyToast(BaseContext, "请选择您要购买的商品规格");
+            aasv_add_sub.setEnabled(false);
+            return;
+        }
+        aasv_add_sub.setEnabled(true);
         goods_num = num;
-        mHandler.sendEmptyMessage(0);
+        if(goods_num >1){
+            mHandler.sendEmptyMessage(0);
+        }else{
+            setHeaderData(mSell_price,fee,score);
+        }
+
     }
 
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            IFView();
+
+
+//            String format_price = String.format("%1$s元",
+//                    StrUtils.SetTextForMony(sell_price*goods_num +""));
+//            StrUtils.SetTxt(pop_purchase_price, format_price);
+//            if(TYPE_GOOD_DETAIL_BUY == ShowType && "1".equals(databean.getIs_fee())){
+//                ll_return_and_integral.setVisibility(View.VISIBLE);
+//
+//                StrUtils.SetColorsTxt(BaseContext,tv_return_money,R.color.app_fen,"返佣金额：",StrUtils.SetTextForMony(Integer.parseInt(fee)*goods_num+"")+"元");
+//                StrUtils.SetColorsTxt(BaseContext,tv_good_integral,R.color.app_fen,"获得积分：",Integer.parseInt(score)*goods_num+"分");
+//
+//            }else{
+//                ll_return_and_integral.setVisibility(View.GONE);
+
+//            }
+
+            setHeaderData(Integer.parseInt(mSell_price)*goods_num +"",StrUtils.isEmpty(fee)?"":Integer.parseInt(fee)*goods_num+"",StrUtils.isEmpty(score)?"":Integer.parseInt(score)*goods_num+"");
         }
     };
+
+
+    private void setHeaderData(String price,String _fee,String _score ){
+        String format_price = String.format("%1$s元",
+                StrUtils.SetTextForMony(price));
+        StrUtils.SetTxt(pop_purchase_price, format_price);
+
+            if(TYPE_GOOD_DETAIL_BUY == ShowType && "1".equals(databean.getIs_fee())){
+                if(!StrUtils.isEmpty(_fee)&& !StrUtils.isEmpty(_score)){
+                    ll_return_and_integral.setVisibility(View.VISIBLE);
+
+                    StrUtils.SetColorsTxt(BaseContext,tv_return_money,R.color.app_fen,"返佣金额：",StrUtils.SetTextForMony(_fee)+"元");
+                    StrUtils.SetColorsTxt(BaseContext,tv_good_integral,R.color.app_fen,"获得积分：",_score+"分");
+                }
+
+
+            }else{
+                ll_return_and_integral.setVisibility(View.GONE);
+            }
+
+
+    }
 
     /**
      * 含净量的adapter
@@ -1276,6 +1341,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                 gv_net_content.setAdapter(myUpAdapter);
                 gv_colors.setAdapter(myDownAdapter);
                 et_price.setText("");
+                aasv_add_sub.setNum(1);
+                aasv_add_sub.SetMinNumber(1);
                 pop_purchase_price.setVisibility(View.GONE);
                 ll_return_and_integral.setVisibility(View.GONE);
                 pop_purchase_kucun.setVisibility(View.VISIBLE);
