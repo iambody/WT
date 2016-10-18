@@ -138,10 +138,12 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
                 if (allInviteDetailList.size() == Constants.PageSize) {
                     //invite_friends_refrash.setCanLoadMore(true);
                     invite_friends_record_list.ShowFoot();
+                    invite_friends_record_list.setPullLoadEnable(true);
                 }
                 if (allInviteDetailList.size() < Constants.PageSize) {
                     //invite_friends_refrash.setCanLoadMore(false);
                     invite_friends_record_list.hidefoot();
+                    invite_friends_record_list.setPullLoadEnable(false);
                 }
 
                 break;
@@ -162,11 +164,13 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
                 if (allInviteDetailList1.size() == Constants.PageSize) {
                     //invite_friends_refrash.setCanLoadMore(true);
                     invite_friends_record_list.ShowFoot();
+                    invite_friends_record_list.setPullLoadEnable(true);
                 }
 
                 if (allInviteDetailList1.size() < Constants.PageSize) {
                     //invite_friends_refrash.setCanLoadMore(false);
                     invite_friends_record_list.hidefoot();
+                    invite_friends_record_list.setPullLoadEnable(false);
                 }
                 break;
 
@@ -187,10 +191,12 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
                 if (allInviteDetailList2.size() == Constants.PageSize) {
                     //invite_friends_refrash.setCanLoadMore(true);
                     invite_friends_record_list.ShowFoot();
+                    invite_friends_record_list.setPullLoadEnable(true);
                 }
                 if (allInviteDetailList2.size() < Constants.PageSize) {
                     //invite_friends_refrash.setCanLoadMore(false);
                     invite_friends_record_list.hidefoot();
+                    invite_friends_record_list.setPullLoadEnable(false);
                 }
                 break;
         }
@@ -214,7 +220,7 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
                 invite_friends_nodata_lay.setVisibility(View.VISIBLE);
                 invite_friends_nodata_lay.setClickable(true);
                 click_type = 2;
-                ShowErrorCanLoad(getString(R.string.error_null_noda));
+                ShowErrorCanLoad(error);
                 //invite_friends_refrash.setRefreshing(false);
                 break;
             case LOAD_REFRESHING:

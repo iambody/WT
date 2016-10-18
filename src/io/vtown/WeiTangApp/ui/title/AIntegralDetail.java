@@ -178,12 +178,14 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 List<BLIntegralDetails> data = getAllIntegralDetailList(mDatas);
                 lastid = data.get(data.size() - 1).getId();
 
-                if (mDatas.size() == Constants.PageSize) {
+                if (data.size() == Constants.PageSize) {
                     integral_detail_list.ShowFoot();
+                    integral_detail_list.setPullLoadEnable(true);
                 }
 
-                if (mDatas.size() < Constants.PageSize) {
+                if (data.size() < Constants.PageSize) {
                     integral_detail_list.hidefoot();
+                    integral_detail_list.setPullLoadEnable(false);
                 }
 
                 break;
@@ -196,17 +198,19 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     return;
                 }
 
-                mDatas = new ArrayList<BCIntegralDetail>();
+
                 mDatas = JSON.parseArray(Data.getHttpResultStr(), BCIntegralDetail.class);
                 mAdapter.FreshData(mDatas);
                 List<BLIntegralDetails> data1 = getAllIntegralDetailList(mDatas);
                 lastid = data1.get(data1.size() - 1).getId();
-                if (mDatas.size() == Constants.PageSize) {
+                if (data1.size() == Constants.PageSize) {
                     integral_detail_list.ShowFoot();
+                    integral_detail_list.setPullLoadEnable(true);
                 }
 
-                if (mDatas.size() < Constants.PageSize) {
+                if (data1.size() < Constants.PageSize) {
                     integral_detail_list.hidefoot();
+                    integral_detail_list.setPullLoadEnable(false);
                 }
                 break;
 
@@ -217,10 +221,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     // ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
                     return;
                 }
-
-                mDatas = new ArrayList<BCIntegralDetail>();
                 mDatas = JSON.parseArray(Data.getHttpResultStr(), BCIntegralDetail.class);
-
                 if (mDatas.get(0).getMonth().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getMonth())) {
                     mAdapter.MergeFrashData(mDatas);
                 } else {
@@ -229,12 +230,14 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
                 List<BLIntegralDetails> data2 = getAllIntegralDetailList(mDatas);
                 lastid = data2.get(data2.size() - 1).getId();
-                if (mDatas.size() == Constants.PageSize) {
+                if (data2.size() == Constants.PageSize) {
                     integral_detail_list.ShowFoot();
+                    integral_detail_list.setPullLoadEnable(true);
                 }
 
-                if (mDatas.size() < Constants.PageSize) {
+                if (data2.size() < Constants.PageSize) {
                     integral_detail_list.hidefoot();
+                    integral_detail_list.setPullLoadEnable(false);
                 }
                 break;
         }
@@ -256,7 +259,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 integral_detail_nodata_lay.setVisibility(View.VISIBLE);
                 ShowErrorIv(R.drawable.pic_jifenmingxi);
                 integral_detail_nodata_lay.setClickable(true);
-                ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+                ShowErrorCanLoad(error);
                 Click_Type = 3;
                 break;
 

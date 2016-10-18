@@ -140,12 +140,12 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
 
                 if (list.size() == Constants.PageSize2) {
                     retrunDetailList.ShowFoot();
-
+                    retrunDetailList.setPullLoadEnable(true);
                 }
 
                 if (list.size() < Constants.PageSize2) {
                     retrunDetailList.hidefoot();
-
+                    retrunDetailList.setPullLoadEnable(false);
                 }
 
 
@@ -166,10 +166,11 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                 lastid = list1.get(list1.size() - 1).getId();
                 if (list1.size() == Constants.PageSize2) {
                     retrunDetailList.ShowFoot();
+                    retrunDetailList.setPullLoadEnable(true);
                 }
                 if (list1.size() < Constants.PageSize2) {
                     retrunDetailList.hidefoot();
-
+                    retrunDetailList.setPullLoadEnable(false);
                 }
 
                 break;
@@ -197,10 +198,12 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
 
                 if (list2.size() == Constants.PageSize2) {
                     retrunDetailList.ShowFoot();
+                    retrunDetailList.setPullLoadEnable(true);
                 }
 
                 if (list2.size() < Constants.PageSize2) {
                     retrunDetailList.hidefoot();
+                    retrunDetailList.setPullLoadEnable(false);
                 }
 
 

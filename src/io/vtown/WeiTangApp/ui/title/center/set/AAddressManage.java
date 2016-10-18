@@ -441,13 +441,9 @@ public class AAddressManage extends ATitleBase {
                         R.id.tv_usr_phone_numb);
                 item.tv_delivery_address = ViewHolder.get(arg1,
                         R.id.tv_delivery_address);
-                item.tv_default_address = ViewHolder.get(arg1,
-                        R.id.tv_default_address);
-                item.tv_edit = ViewHolder.get(arg1, R.id.tv_edit);
-                item.tv_delete = ViewHolder.get(arg1, R.id.tv_delete);
-                item.iv_quan_select = ViewHolder.get(arg1, R.id.iv_quan_select);
-                item.ll_select_default = ViewHolder.get(arg1,
-                        R.id.ll_select_default);
+
+
+
                 item.iv_address_manager_arrow = ViewHolder.get(arg1,R.id.iv_address_manager_arrow);
 
                 arg1.setTag(item);
@@ -485,71 +481,18 @@ public class AAddressManage extends ATitleBase {
                     + blComment.getCounty()
                     + blComment.getAddress());
 
-            onClickEvent(item, datas, arg0);
+
 
             return arg1;
         }
 
-        private void onClickEvent(final AddressItem item,
-                                  final List<BLComment> datas2, final int click_position) {
-            item.ll_select_default.setOnClickListener(new OnClickListener() {
 
-                @Override
-                public void onClick(View arg0) {
-                    if (CheckNet(BaseContext)) return;
-                    AddressSet(user_Get.getId(), datas2.get(click_position)
-                            .getAddress_id(), 1);
-
-                    pos = click_position;
-
-//                    int address_id = Integer.parseInt(datas2.get(pos).getAddress_id());
-//                    Message msg = Message.obtain();
-//                    msg.what = address_id;
-//                    myHandler.sendMessage(msg);
-                }
-            });
-
-            item.tv_edit.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View arg0) {
-                    PromptManager.SkipResultActivity(BaseActivity, new Intent(
-                            BaseActivity, AEditAddress.class).putExtra("data",
-                            datas2.get(click_position)), 100);
-
-                }
-            });
-
-            item.tv_delete.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View arg0) {
-
-                    ShowCustomDialog("确认删除收货地址？", "取消", "确认", new IDialogResult() {
-                        @Override
-                        public void RightResult() {
-                            if (CheckNet(BaseContext)) return;
-                            AddressSet(user_Get.getId(), datas2.get(click_position)
-                                    .getAddress_id(), 2);
-                            pos = click_position;
-                        }
-
-                        @Override
-                        public void LeftResult() {
-                        }
-                    });
-
-
-                }
-            });
-        }
 
         class AddressItem {
-            TextView tv_usr_name, tv_usr_phone_numb, tv_delivery_address,
-                    tv_default_address, tv_edit, tv_delete;
-            ImageView iv_quan_select,iv_address_manager_arrow;
+            TextView tv_usr_name, tv_usr_phone_numb, tv_delivery_address;
+            ImageView iv_address_manager_arrow;
 
-            LinearLayout ll_select_default;
+
         }
 
     }
