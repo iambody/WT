@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_phone_numb"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/comment_txtarrow_txtsize"/>
+                android:textSize="@dimen/comment_label_txtsize"/>
 
             <TextView
                 android:id="@+id/tv_phone_numb"
@@ -99,14 +99,14 @@
                 android:contentDescription="@null"/>
         </LinearLayout>
 
-        <View
+       <!-- <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/insulate_view_height"
-            android:background="@color/app_bg"/>
+            android:background="@color/app_bg"/>-->
 
-        <include
+       <!-- <include
             android:id="@+id/about_w_town"
-            layout="@layout/commentview_txtarrow"/>
+            layout="@layout/commentview_txtarrow"/>-->
     </LinearLayout>
 
     <Button

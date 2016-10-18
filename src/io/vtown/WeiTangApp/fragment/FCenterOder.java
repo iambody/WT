@@ -17,7 +17,6 @@ import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
-import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
@@ -56,7 +55,7 @@ import de.greenrobot.event.EventBus;
  * @version 创建时间：2016-5-19 下午1:46:37 我的里面进入的订单
  */
 public class FCenterOder extends FBase implements OnItemClickListener,
-		IXListViewListener, OnClickListener {
+		LListView.IXListViewListener, OnClickListener {
 
 	/**
 	 * 标记 分别是 全部，代付款，已付款，待收货，退货,关闭 订单状态 10:代付款 20:已付款 待发货 30:已发货 待收货 40:退款中

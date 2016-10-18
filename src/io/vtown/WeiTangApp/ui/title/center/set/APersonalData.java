@@ -58,7 +58,7 @@ public class APersonalData extends ATitleBase implements
     /**
      * 关于微糖
      */
-    private View about_w_town;
+//    private View about_w_town;
     /**
      * 退出按钮
      */
@@ -144,7 +144,7 @@ public class APersonalData extends ATitleBase implements
                 .findViewById(R.id.comment_txtarrow_content);
 //        address_manage = findViewById(R.id.address_manage);
         account_safe = findViewById(R.id.account_safe);
-        about_w_town = findViewById(R.id.about_w_town);
+//        about_w_town = findViewById(R.id.about_w_town);
         tv_cache_size = (TextView) findViewById(R.id.tv_cache_size);
         switch_delete_cache = (EaseSwitchButton) findViewById(R.id.switch_delete_cache);
         btn_quit = (Button) findViewById(R.id.btn_quit);
@@ -152,7 +152,7 @@ public class APersonalData extends ATitleBase implements
         SetItemContent(authentication, R.string.authentication, "未认证");
 //        SetItemContent(address_manage, R.string.address_manage, "");
         SetItemContent(account_safe, R.string.account_safe, "");
-        SetItemContent(about_w_town, R.string.about_w_town, "");
+//        SetItemContent(about_w_town, R.string.about_w_town, "");
 
     }
 
@@ -224,10 +224,10 @@ public class APersonalData extends ATitleBase implements
                         AAccountSafe.class));
                 break;
 
-            case R.id.about_w_town:
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AAboutWt.class));
-                break;
+//            case R.id.about_w_town:
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        AAboutWt.class));
+//                break;
 
             case R.id.btn_quit:// 推出
                 // 提示对话框

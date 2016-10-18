@@ -42,6 +42,7 @@ import io.vtown.WeiTangApp.ui.title.center.myinvitecode.ABindCode;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
+import io.vtown.WeiTangApp.ui.title.center.set.AAboutWt;
 import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
 import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
@@ -65,6 +66,8 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     private View maintab_center_show, maintab_center_invite_code, maintab_center_card, maintab_center_address;
     //商品关注，店铺收藏，浏览记录
     private View maintab_center_oder_guanzhu, maintab_center_shop_collect, maintab_center_liulan_history;
+    //关于我们
+    private View  maintab_center_oder_about;
     //高斯图片的路径文件
     private File CenterCoverFile;
 
@@ -95,6 +98,8 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         maintab_center_oder_guanzhu = BaseView.findViewById(R.id.maintab_center_oder_guanzhu);
         maintab_center_shop_collect = BaseView.findViewById(R.id.maintab_center_shop_collect);
         maintab_center_liulan_history = BaseView.findViewById(R.id.maintab_center_liulan_history);
+        //关于我们
+        maintab_center_oder_about = BaseView.findViewById(R.id.maintab_center_oder_about);
         //设置属性
         maintab_center_myiv.setBorderWidth(5);
         maintab_center_myiv.setBorderColor(getResources().getColor(R.color.transparent6));
@@ -133,6 +138,10 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 R.drawable.center_iv7);
         SetItemContent(maintab_center_liulan_history, R.string.center_jilu,
                 R.drawable.center_iv8);
+        //底部
+        SetItemContent(maintab_center_oder_about, R.string.about_w_town,
+                R.drawable.login_my_log);//login_my_log
+
         // 上边两个
         SetCommentIV("我的订单", R.drawable.shop_grad2, maintab_tab_center_oder);
         SetCommentIV("我的钱包", R.drawable.center_wallet, maintab_tab_center_walle);
@@ -391,6 +400,10 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                         ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterGoodBrowseRecord));
 
+                break;
+            case R.id.maintab_center_oder_about:
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                        AAboutWt.class));
                 break;
         }
 

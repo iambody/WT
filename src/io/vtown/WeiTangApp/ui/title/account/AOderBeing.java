@@ -500,7 +500,7 @@ public class AOderBeing extends ATitleBase {
                     iBlComment.getSeller_name());
 //            StrUtils.SetTxt(oderOutItem.item_oderbeing_out_yunfei, "￥"
 //                    + StrUtils.SetTextForMony(iBlComment.getPostage()));
-            StrUtils.SetColorsTxt(BaseContext,oderOutItem.item_oderbeing_out_yunfei,R.color.app_fen1,"运费:","￥"+StrUtils.SetTextForMony(iBlComment.getPostage()));
+            StrUtils.SetColorsTxt(BaseContext,oderOutItem.item_oderbeing_out_yunfei,R.color.gray,R.color.app_fen,"运费:","￥"+StrUtils.SetTextForMony(iBlComment.getPostage()));
             StrUtils.SetTxt(oderOutItem.item_oderbeing_out_mony,
                     iBlComment.getAll_money());
             StrUtils.SetColorsTxt(BaseContext,

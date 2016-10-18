@@ -25,7 +25,7 @@
     <dimen name="comment_txtarrow_txtsize">16dp</dimen>
 
     <!-- TextView,EditText 的标签 -->
-    <dimen name="comment_label_txtsize">12sp</dimen>
+    <dimen name="comment_label_txtsize">14sp</dimen>
 
     <!-- 品牌详情 -->
     <dimen name="brand_detail_brand_iv">70dp</dimen>

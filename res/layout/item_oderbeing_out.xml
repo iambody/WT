@@ -133,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:padding="10dp"
+
             android:text="@string/nullstr" />
         <TextView
             android:id="@+id/item_oderbeing_out_number_down"
@@ -143,6 +143,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:padding="5dp"
+            android:textColor="@color/gray"
             android:text="@string/nullstr" />
 
         <TextView

@@ -295,7 +295,7 @@
     <string name="login">登录</string>
     <string name="submit_real_auth">提交认证</string>
     <string name="wanchengyanzheng">完成验证</string>
-    <string name="txtresuorce_phoneerror">你猜你输入的手机号正确么( ˇˍˇ )</string>
+    <string name="txtresuorce_phoneerror">手机号格式错误</string>
     <string name="txtresuorce_getcode">获取验证码</string>
     <string name="txtresuorce_seconde">秒</string>
     <string name="txtresuorce_getcodeerror">获取验证码失败</string>

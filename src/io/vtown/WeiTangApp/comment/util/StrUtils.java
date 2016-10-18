@@ -141,9 +141,11 @@ public class StrUtils {
     public static String TextStrGet(TextView tview) {
         return StrUtils.isEmpty(tview.getText().toString()) ? "" : tview.getText().toString().trim();
     }
+
     public static String EdStrGet(EditText tview) {
         return StrUtils.isEmpty(tview.getText().toString()) ? "" : tview.getText().toString().trim();
     }
+
     /**
      * 判断给定字符串是否空白串 空白串是指由空格、制表符、回车符、换行符组成的字符串 若输入字符串为null或空字符串，返回true z
      *
@@ -182,10 +184,12 @@ public class StrUtils {
 
         return tag + "";
     }
+
     public static String toStr1(float tag) {
 
         return tag + "";
     }
+
     /**
      * 分时线的 时间节点数据解析
      */
@@ -499,7 +503,6 @@ public class StrUtils {
     }
 
 
-
     public static String StrSort(String data) {
         char[] s1 = data.toCharArray();
         System.out.println(s1);
@@ -529,9 +532,11 @@ public class StrUtils {
     public static void SetTxt(TextView T, String Str) {
         T.setText(NullToStr1(Str));
     }
+
     public static void SetEdTxt(EditText T, String Str) {
         T.setText(NullToStr1(Str));
     }
+
     /**
      * 设置字体库的字体
      */
@@ -563,6 +568,26 @@ public class StrUtils {
                                     int RightColor, String left, String right) {
         String AllStr = left + right;
         SpannableString spsString = new SpannableString(AllStr);
+        spsString
+                .setSpan(
+                        new ForegroundColorSpan(XX.getResources().getColor(
+                                RightColor)), left.length(), AllStr.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(spsString);
+    }
+
+    /**
+     * 进行颜色字体的混淆 默认是前边黑色后边红色
+     */
+    public static void SetColorsTxt(Context XX, TextView textView,
+                                    int LeftColor, int RightColor, String left, String right) {
+        String AllStr = left + right;
+        SpannableString spsString = new SpannableString(AllStr);
+        spsString
+                .setSpan(
+                        new ForegroundColorSpan(XX.getResources().getColor(
+                                LeftColor)), 0, left.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         spsString
                 .setSpan(
                         new ForegroundColorSpan(XX.getResources().getColor(
@@ -1195,10 +1220,10 @@ public class StrUtils {
     }
 
 
-    public static void setTxtLeftDrawable(Context context,TextView view){
+    public static void setTxtLeftDrawable(Context context, TextView view) {
         Drawable good_type = context.getResources().getDrawable(R.drawable.shopbus_item_log3);
-        good_type.setBounds(0,0,good_type.getMinimumWidth(),good_type.getMinimumHeight());
-        view.setCompoundDrawables(good_type,null,null,null);
+        good_type.setBounds(0, 0, good_type.getMinimumWidth(), good_type.getMinimumHeight());
+        view.setCompoundDrawables(good_type, null, null, null);
     }
 
     /**
