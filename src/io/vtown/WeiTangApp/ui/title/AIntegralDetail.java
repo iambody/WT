@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request;
+import com.mob.tools.utils.Data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +29,7 @@ import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
@@ -106,7 +109,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
     private void IData(String type, int loadtype) {
         HashMap<String, String> map = new HashMap<>();
-        map.put("member_id", mUser.getMember_id());
+        map.put("member_id", "10014952");//mUser.getMember_id()
         map.put("type", type);
         map.put("page_num", Constants.PageSize + "");
         map.put("last_id", lastid);
@@ -292,10 +295,13 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             case R.id.tv_all_integral://全部
                 if (!TYPE_ALL.equals(Current_Type)) {
                     Current_Type = TYPE_ALL;
+
                     SetTitleTxt(getResources().getString(R.string.integral_title_all));
                     lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
+                    integral_detail_nodata_lay.setVisibility(View.GONE);
+                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -306,6 +312,8 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
+                    integral_detail_nodata_lay.setVisibility(View.GONE);
+                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -316,6 +324,8 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
+                    integral_detail_nodata_lay.setVisibility(View.GONE);
+                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -326,6 +336,8 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
+                    integral_detail_nodata_lay.setVisibility(View.GONE);
+                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -336,6 +348,8 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
+                    integral_detail_nodata_lay.setVisibility(View.GONE);
+                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -346,6 +360,8 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
+                    integral_detail_nodata_lay.setVisibility(View.GONE);
+                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -356,6 +372,8 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
+                    integral_detail_nodata_lay.setVisibility(View.GONE);
+                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
                 break;
@@ -368,6 +386,8 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     lastid = "";
                     IData(Current_Type, LOAD_INITIALIZE);
                     mAdapter.Clearn();
+                    integral_detail_nodata_lay.setVisibility(View.GONE);
+                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
                 }
                 popupWindow.dismiss();
 
@@ -568,7 +588,9 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 holder.tv_integral_day = (TextView) convertView.findViewById(R.id.tv_integral_day);
                 holder.tv_integral_time = (TextView) convertView.findViewById(R.id.tv_integral_time);
                 holder.tv_integral_content = (TextView) convertView.findViewById(R.id.tv_integral_content);
+                holder.ll_integral_point_and_status = (LinearLayout) convertView.findViewById(R.id.ll_integral_point_and_status);
                 holder.tv_integral_point = (TextView) convertView.findViewById(R.id.tv_integral_point);
+                holder.tv_integral_status = (TextView) convertView.findViewById(R.id.tv_integral_status) ;
                 convertView.setTag(holder);
             } else {
                 holder = (IntegralInsideHolder) convertView.getTag();
@@ -578,13 +600,47 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             StrUtils.SetTxt(holder.tv_integral_time, data.getDate());
             StrUtils.SetTxt(holder.tv_integral_content, data.getTitle());
 
+            int point = Integer.parseInt(data.getPoint());
+           if(point >9999){
+                holder.tv_integral_point.setTextSize(12);
+            }else if(point >999 && point <10000){
+               holder.tv_integral_point.setTextSize(14);
+           }else{
+               holder.tv_integral_point.setTextSize(15);
+           }
+            if(TYPE_CONSUME.equals(data.getType())){
+                holder.ll_integral_point_and_status.setBackgroundResource(R.drawable.shape_integral_bg_green);
+                StrUtils.SetTxt(holder.tv_integral_point, "-"+point);
+                holder.tv_integral_status.setVisibility(View.GONE);
+            }else{
+                holder.ll_integral_point_and_status.setBackgroundResource(R.drawable.shape_integral_bg_fen);
+                StrUtils.SetTxt(holder.tv_integral_point, "+"+point);
+                holder.tv_integral_status.setVisibility(View.VISIBLE);
+            }
+
+            int status = Integer.parseInt(data.getStatus());
+            String status_str = "";
+            switch (status){
+                case 1:
+                    status_str = "正在到账";
+                    break;
+                case 2:
+                    status_str = "到账成功";
+                    break;
+                case 3:
+                    status_str = "到账失败";
+                    break;
+            }
+            StrUtils.SetTxt(holder.tv_integral_status,status_str);
+
             return convertView;
         }
     }
 
 
     class IntegralInsideHolder {
-        TextView tv_integral_day, tv_integral_time, tv_integral_content, tv_integral_point;
+        TextView tv_integral_day, tv_integral_time, tv_integral_content, tv_integral_point,tv_integral_status;
+        LinearLayout ll_integral_point_and_status;
     }
 
     class IntegralOutsideHoler {

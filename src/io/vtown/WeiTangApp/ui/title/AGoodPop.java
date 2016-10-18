@@ -3,6 +3,8 @@ package io.vtown.WeiTangApp.ui.title;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
 
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
@@ -738,9 +741,9 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
             }else{
                 ll_return_and_integral.setVisibility(View.GONE);
             }
-
+            int _sell_price = Integer.parseInt(blComment.getSell_price())*goods_num;
             String format_price = String.format("%1$s元",
-                    StrUtils.SetTextForMony(blComment.getSell_price()));
+                    StrUtils.SetTextForMony(_sell_price+""));
             StrUtils.SetTxt(pop_purchase_price, format_price);
             StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle() + " "
                     + blComment.getAttr_name());
@@ -997,7 +1000,15 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     @Override
     public void onNumChange(View view, int num) {
         goods_num = num;
+        mHandler.sendEmptyMessage(0);
     }
+
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            IFView();
+        }
+    };
 
     /**
      * 含净量的adapter
@@ -1250,8 +1261,6 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                     }
 
                 }
-
-                System.out.println(mPostion);
                 IsFristClick = 0;
                 // 记录是否上边下边已经点击过了
                 UpPostion = -1;

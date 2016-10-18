@@ -916,7 +916,7 @@ public static int SouSouHeistory= 12;
 	 * 积分明细
 	 */
 	public static String Integral_Detail = Host
-			+ "/v1/member/point/get-info";
+			+ "/v1/member/point/list";
 /**
  * 店铺内进行搜索
  */

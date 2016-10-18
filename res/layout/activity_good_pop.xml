@@ -201,7 +201,7 @@
                         android:background="@color/white"
                         android:orientation="horizontal"
                         android:paddingBottom="10dp"
-                        android:paddingLeft="16dp"
+                        android:paddingLeft="20dp"
                         android:paddingRight="16dp"
                         android:paddingTop="10dp">
 
@@ -210,6 +210,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:text="数量"
+
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
 
@@ -280,7 +281,7 @@
                         android:background="@color/white"
                         android:orientation="horizontal"
                         android:paddingBottom="10dp"
-                        android:paddingLeft="16dp"
+                        android:paddingLeft="20dp"
                         android:paddingRight="16dp"
                         android:paddingTop="10dp">
 
