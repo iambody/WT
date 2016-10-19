@@ -48,6 +48,7 @@ import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.account.AOderBeing;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.ui.ANewHome;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
@@ -130,7 +131,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     }
 
     private void InItBaseView() {
-        maintab_shopbus_right_txt= (TextView) BaseView.findViewById(R.id.maintab_shopbus_right_txt);
+        maintab_shopbus_right_txt = (TextView) BaseView.findViewById(R.id.maintab_shopbus_right_txt);
         maintab_shopbus_right_txt.setOnClickListener(this);
 
         neterrorview = io.vtown.WeiTangApp.comment.util.ViewHolder.get(BaseView, R.id.fragment_main_shopbus_neterrorview);
@@ -191,8 +192,8 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         maintab_shopbus_left_txt.setVisibility(View.GONE);
 //        maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.drawable.shoubus_ok// R.drawable.center_iv2
 //                : R.drawable.lajixiang_iv);
-        maintab_shopbus_right_iv.setVisibility(IsJeiSuan?View.VISIBLE:View.GONE);
-        maintab_shopbus_right_txt.setVisibility(!IsJeiSuan?View.VISIBLE:View.GONE);
+        maintab_shopbus_right_iv.setVisibility(IsJeiSuan ? View.VISIBLE : View.GONE);
+        maintab_shopbus_right_txt.setVisibility(!IsJeiSuan ? View.VISIBLE : View.GONE);
         SetIvSelect(maintab_sopbus_bottom_select_iv, IsAllSelectIv);
         maintab_shopbus_right_iv.setVisibility(View.GONE);
         // 开始获取数据
@@ -221,8 +222,8 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
                 IsJeiSuan = !IsJeiSuan;
 //                maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.color.transparent
 //                        : R.drawable.lajixiang_iv);
-                maintab_shopbus_right_iv.setVisibility(IsJeiSuan?View.VISIBLE:View.GONE);
-                maintab_shopbus_right_txt.setVisibility(!IsJeiSuan?View.VISIBLE:View.GONE);
+                maintab_shopbus_right_iv.setVisibility(IsJeiSuan ? View.VISIBLE : View.GONE);
+                maintab_shopbus_right_txt.setVisibility(!IsJeiSuan ? View.VISIBLE : View.GONE);
 
                 StrUtils.SetTxt(maintab_sopbus_bottom_jiesuan, IsJeiSuan ? "结算" : "删除");
                 PromptManager.ShowCustomToast(BaseContext, "删除成功");
@@ -1095,6 +1096,26 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
             DeleteStr = DeleteStr + h.getCid() + ",";
         }
         if (IsAccount) {// 结算按钮操作
+
+            //如果没绑定邀请码就先绑定
+            if (!Spuit.IsHaveBind_Get(BaseContext)) {
+                ShowCustomDialog("请先绑定邀请码", getResources().getString(R.string.cancle),
+                        getResources().getString(R.string.queding),
+                        new IDialogResult() {
+
+                            @Override
+                            public void RightResult() {
+                                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                        ANewBindCode.class));
+                            }
+
+                            @Override
+                            public void LeftResult() {
+                            }
+                        });
+                return;
+            }
+
             if (!StrUtils.isEmpty(AccountStr)) {// 已经选择了
                 AccountStr = AccountStr.substring(0, AccountStr.length() - 1);
             } else {// 没有选择

@@ -462,8 +462,12 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+        if (hidden) {
+            fragmentNewhomeIvLaya.getBackground().setAlpha(255);
+        }else{
+            fragmentNewhomeIvLaya.getBackground().setAlpha(0);
+        }
 
-        fragmentNewhomeIvLaya.getBackground().setAlpha(0);
     }
 
     @OnClick({R.id.fragment_newhome_iv_sao, R.id.fragment_newhome_iv_sou, R.id.fragment_newhome_iv_new, R.id.fragment_newhome_head_iv, R.id.fragment_newhome_bt_jifem, R.id.fragment_newhome_bt_fanyong, R.id.fragment_newhome_usertag})
