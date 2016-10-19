@@ -14,14 +14,18 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_shopmanger_circular_bg"
         android:orientation="vertical"
-        android:padding="@dimen/order_list_txt_padding" >
+         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:padding="@dimen/order_list_outside_layout_padding" >
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+             >
 
             <TextView
                 android:id="@+id/fragment_center_order_shopname"
@@ -33,7 +37,7 @@
                 android:singleLine="true"
                 android:text="阿迪达斯"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/comment_label_txtsize" />
+                android:textSize="@dimen/order_list_inside_price_size" />
 
             
 
@@ -170,43 +174,49 @@
                 android:visibility="gone" />
         </LinearLayout>
 
-        <View style="@style/line_left_right" />
+        <View style="@style/line1" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/order_list_txt_padding" >
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingRight="@dimen/order_list_txt_padding"
+            android:paddingLeft="@dimen/order_list_txt_padding" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/order_list_txt_padding"
                 android:text="订单编号："
-                android:textColor="@color/slategrey" 
-                android:textSize="@dimen/comment_label_txtsize" />
+
+                android:textColor="@color/slategrey"
+                android:textSize="@dimen/order_list_inside_price_size" />
 
             <TextView
                 android:id="@+id/tv_center_my_order_seller_order_sn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nullstr"
-                android:textColor="@color/slategrey" 
-                android:textSize="@dimen/comment_label_txtsize" />
+                android:textColor="@color/slategrey"
+                android:textSize="@dimen/order_list_inside_price_size"/>
         </LinearLayout>
 
-        <View style="@style/line_left_right" />
+       <!-- <View style="@style/line_left_right" />-->
 
         <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
             android:id="@+id/item_fragment_center_order_ls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@null"
+            android:dividerHeight="3dp"
+
+            android:divider="@color/white"
              />
         <!-- 下部分的Title -->
 
-        <View style="@style/line_left_right" />
+        <!--<View style="@style/line_left_right" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -214,39 +224,51 @@
             android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/order_list_outside_layout_padding" >
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/item_fragment_center_order_allnum"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+
                 android:text="@string/nullstr"
-                android:textColor="@color/slategrey" 
-                android:textSize="@dimen/order_list_good_number" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/order_list_inside_price_size" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="总价:"
-                android:textSize="@dimen/order_list_wait_pay"
-                android:textColor="@color/slategrey"  />
+                android:text="合计:"
+                android:textSize="@dimen/order_list_inside_price_size"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/grey"  />
 
             <TextView
                 android:id="@+id/item_fragment_center_order_allmoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nullstr"
+                android:layout_marginLeft="5dp"
                 android:textColor="@color/app_fen"
-                android:textSize="@dimen/order_list_total_money" />
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/item_fragment_center_order_postage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nullstr"
-                android:textColor="@color/app_fen"
-                android:textSize="@dimen/order_list_poseage" />
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/order_list_inside_price_size" />
         </LinearLayout>
     </LinearLayout>
 

@@ -71,6 +71,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
     private static final int TAGE_RECHARGE = 5;
     private static final int TAGE_SELl = 3;
     private static final int TAGE_SHOPPING = 4;
+    private static final int TAGE_RETURN = 6;
     private int CurrentType = TAGE_ALL;
     /**
      * 用户相关信息
@@ -364,86 +365,46 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                 break;
 
             case R.id.tv_select_all://全部
-                if (CurrentType != TAGE_ALL) {
-                    SetTitleTxt(getResources().getString(R.string.title_property_detail_all));
-                    CurrentType = TAGE_ALL;
-                    lastid = "";
-                    IData(CurrentType, LOAD_INITIALIZE);
-                    LsAp.Clearn();
-                    lv_property_detail_list.hidefoot();
-                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
-                    PromptManager.showtextLoading(BaseContext,
-                            getResources()
-                                    .getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                detailSwitch(TAGE_ALL,getResources().getString(R.string.title_property_detail_all));
                 break;
             case R.id.tv_buy_good:// 购买
-                if (CurrentType != TAGE_SHOPPING) {
-                    SetTitleTxt(getResources().getString(R.string.title_property_detail_buy_good));
-                    CurrentType = TAGE_SHOPPING;
-                    lastid = "";
-                    IData(TAGE_SHOPPING, LOAD_INITIALIZE);
-                    LsAp.Clearn();
-                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
-                    lv_property_detail_list.hidefoot();
-                    PromptManager.showtextLoading(BaseContext,
-                            getResources()
-                                    .getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                detailSwitch(TAGE_SHOPPING,getResources().getString(R.string.title_property_detail_buy_good));
                 break;
 
             case R.id.tv_top_up:// 退款
-                if (CurrentType != TAGE_RECHARGE) {
-                    SetTitleTxt(getResources().getString(R.string.title_property_detail_top_up));
-                    CurrentType = TAGE_RECHARGE;
-                    lastid = "";
-                    IData(TAGE_RECHARGE, LOAD_INITIALIZE);
-                    LsAp.Clearn();
-                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
-                    lv_property_detail_list.hidefoot();
-                    PromptManager.showtextLoading(BaseContext,
-                            getResources()
-                                    .getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                detailSwitch(TAGE_RECHARGE,getResources().getString(R.string.title_property_detail_top_up));
                 break;
 
             case R.id.tv_withdraw:// 提现
-                if (CurrentType != TAGE_WITHDRAW) {
-                    SetTitleTxt(getResources().getString(R.string.title_property_detail_withdraw));
-                    CurrentType = TAGE_WITHDRAW;
-                    lastid = "";
-                    IData(TAGE_WITHDRAW, LOAD_INITIALIZE);
-                    LsAp.Clearn();
-                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
-                    lv_property_detail_list.hidefoot();
-                    PromptManager.showtextLoading(BaseContext,
-                            getResources()
-                                    .getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                detailSwitch(TAGE_WITHDRAW,getResources().getString(R.string.title_property_detail_withdraw));
                 break;
 
             case R.id.tv_sell_record:// 销售
-                if (CurrentType != TAGE_SELl) {
-                    SetTitleTxt(getResources().getString(R.string.title_property_detail_sell_record));
-                    CurrentType = TAGE_SELl;
-                    lastid = "";
-                    IData(TAGE_SELl, LOAD_INITIALIZE);
-                    LsAp.Clearn();
-                    center_my_property_detail_nodata_lay.setVisibility(View.GONE);
-                    lv_property_detail_list.hidefoot();
-                    PromptManager.showtextLoading(BaseContext,
-                            getResources()
-                                    .getString(R.string.xlistview_header_hint_loading));
-
-                }
-                popupWindow.dismiss();
+                detailSwitch(TAGE_SELl,getResources().getString(R.string.title_property_detail_sell_record));
                 break;
 
+            case R.id.tv_user_return://返佣
+                detailSwitch(TAGE_RETURN,getResources().getString(R.string.title_property_detail_return));
+
         }
+    }
+
+
+    private void detailSwitch(int type,String titlename){
+        if (CurrentType != type) {
+            SetTitleTxt(titlename);
+            CurrentType = type;
+            lastid = "";
+            IData(type, LOAD_INITIALIZE);
+            LsAp.Clearn();
+            center_my_property_detail_nodata_lay.setVisibility(View.GONE);
+            lv_property_detail_list.hidefoot();
+            PromptManager.showtextLoading(BaseContext,
+                    getResources()
+                            .getString(R.string.xlistview_header_hint_loading));
+
+        }
+        popupWindow.dismiss();
     }
 
     /**
@@ -467,11 +428,14 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
         TextView tv_select_all = (TextView) view.findViewById(R.id.tv_select_all);
         TextView tv_sell_record = (TextView) view
                 .findViewById(R.id.tv_sell_record);
+
+        TextView tv_user_return = (TextView)view.findViewById(R.id.tv_user_return) ;
         tv_buy_good.setOnClickListener(this);
         tv_top_up.setOnClickListener(this);
         tv_withdraw.setOnClickListener(this);
         tv_sell_record.setOnClickListener(this);
         tv_select_all.setOnClickListener(this);
+        tv_user_return.setOnClickListener(this);
 
         popupWindow = new PopupWindow(view, LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT);
@@ -761,6 +725,13 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                         item.tv_record_money.setText(String.format("+ %1$s元", StrUtils.SetTextForMony(data.get(arg0).getPrice())));
 
                     }
+
+                    break;
+
+                case 6:
+                    item.tv_trade_state.setText("返佣");
+                    item.tv_record_money.setTextColor(getResources().getColor(R.color.app_fen));
+                    item.tv_record_money.setText(String.format("+ %1$s元", StrUtils.SetTextForMony(data.get(arg0).getPrice())));
 
                     break;
 

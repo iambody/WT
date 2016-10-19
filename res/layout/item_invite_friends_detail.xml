@@ -17,8 +17,10 @@
             android:layout_width="@dimen/invite_friend_hright"
             android:layout_height="@dimen/invite_friend_hright"
             android:layout_gravity="center_vertical"
-
-            android:layout_margin="16dp" />
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp" />
 
 
         <LinearLayout
@@ -64,6 +66,29 @@
                             android:textColor="@color/grey" />
                     </LinearLayout>
 
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_shoujihao_nor" />
+
+                        <TextView
+                            android:id="@+id/tv_invite_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="123456789"
+                            android:textColor="@color/app_gray"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
                     <TextView
                         android:id="@+id/tv_friend_shop_id"
                         android:layout_width="wrap_content"
@@ -72,9 +97,12 @@
                         android:text="@string/invite_friend_shop_id"
                         android:textColor="@color/app_gray"
                         android:textSize="12sp" />
+
+
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_invite_point_and_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -91,7 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:background="@color/lv1"
+
                         android:paddingBottom="15dp"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
@@ -102,8 +130,20 @@
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
+
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/tv_invite_no_activate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="未激活"
+                    android:textColor="@color/app_gray"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
             </LinearLayout>
 

@@ -55,26 +55,27 @@
                 />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/return_point_width"
                 android:orientation="vertical"
                 android:background="@drawable/shape_integral_bg_fen"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="10dp"
-                android:gravity="center_vertical"
-                android:padding="10dp"
+                android:gravity="center"
+
                 android:layout_height="match_parent">
                 <TextView
                     android:id="@+id/tv_return_point"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
+                    android:text="+12345元"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                    />
 
                 <TextView
                     android:id="@+id/tv_return_status"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="11sp"
                     android:gravity="center"

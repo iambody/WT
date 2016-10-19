@@ -2,9 +2,15 @@ package io.vtown.WeiTangApp.ui.comment.order;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -831,6 +837,9 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.item_fragment_center_order_postage,
                     postageF == 0.0f ? "(免邮费)" : String.format("(含运费%1$s元)",
                             StrUtils.SetTextForMony(postageF + "")));
+            String str = StrUtils.SetTextForMony(data
+                    .getOrder_total_price());
+
 
             myItem.item_fragment_center_order_ls
                     .setAdapter(new CenterOrderInsideAdapter(
@@ -1104,10 +1113,10 @@ public class ACenterMyOrder extends ATitleBase implements
                     .get(position).getGoods_name());
             StrUtils.SetTxt(
                     myItem.item_fragment_center_order_in_price,
-                    String.format("%1$s元", StrUtils.SetTextForMony(datas.get(
+                    String.format("￥%1$s元", StrUtils.SetTextForMony(datas.get(
                             position).getGoods_price())));
             StrUtils.SetTxt(myItem.item_fragment_center_order_in_number, String
-                    .format("X%1$s", datas.get(position).getGoods_number()));
+                    .format("x%1$s", datas.get(position).getGoods_number()));
 
             return convertView;
 

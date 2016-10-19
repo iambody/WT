@@ -209,6 +209,7 @@
     <string name="property_detail_top_up">退款</string>
     <string name="property_detail_withdraw">提现</string>
     <string name="property_detail_sell_record">销售</string>
+    <string name="property_detail_usr_return">返佣</string>
 
     <!-- 个人资料 -->
     <string name="personal_data">个人资料</string>
@@ -496,6 +497,7 @@
     <string name="title_property_detail_top_up">退款资金明细</string>
     <string name="title_property_detail_withdraw">提现资金明细</string>
     <string name="title_property_detail_sell_record">销售资金明细</string>
+    <string name="title_property_detail_return">返佣资金明细</string>
     <string name="counter_fee">(含手续费%1$s元)</string>
 
     <!-- 商品分享&&&&&&&&&&&&&&&& -->

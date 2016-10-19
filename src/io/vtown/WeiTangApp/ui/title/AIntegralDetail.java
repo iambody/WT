@@ -595,7 +595,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 holder.tv_integral_content = (TextView) convertView.findViewById(R.id.tv_integral_content);
                 holder.ll_integral_point_and_status = (LinearLayout) convertView.findViewById(R.id.ll_integral_point_and_status);
                 holder.tv_integral_point = (TextView) convertView.findViewById(R.id.tv_integral_point);
-                holder.tv_integral_status = (TextView) convertView.findViewById(R.id.tv_integral_status) ;
+                holder.tv_integral_status = (TextView) convertView.findViewById(R.id.tv_integral_status);
                 convertView.setTag(holder);
             } else {
                 holder = (IntegralInsideHolder) convertView.getTag();
@@ -606,26 +606,28 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             StrUtils.SetTxt(holder.tv_integral_content, data.getTitle());
 
             int point = Integer.parseInt(data.getPoint());
-           if(point >9999){
+            if (point > 9999 && point < 100000) {
                 holder.tv_integral_point.setTextSize(12);
-            }else if(point >999 && point <10000){
-               holder.tv_integral_point.setTextSize(14);
-           }else{
-               holder.tv_integral_point.setTextSize(15);
-           }
-            if(TYPE_CONSUME.equals(data.getType())){
+            } else if (point > 999 && point < 10000) {
+                holder.tv_integral_point.setTextSize(14);
+            } else if (point > 99999) {
+                holder.tv_integral_point.setTextSize(11);
+            } else {
+                holder.tv_integral_point.setTextSize(15);
+            }
+            if (TYPE_CONSUME.equals(data.getType())) {
                 holder.ll_integral_point_and_status.setBackgroundResource(R.drawable.shape_integral_bg_green);
-                StrUtils.SetTxt(holder.tv_integral_point, "-"+point);
+                StrUtils.SetTxt(holder.tv_integral_point, "-" + point);
                 holder.tv_integral_status.setVisibility(View.GONE);
-            }else{
+            } else {
                 holder.ll_integral_point_and_status.setBackgroundResource(R.drawable.shape_integral_bg_fen);
-                StrUtils.SetTxt(holder.tv_integral_point, "+"+point);
+                StrUtils.SetTxt(holder.tv_integral_point, "+" + point);
                 holder.tv_integral_status.setVisibility(View.VISIBLE);
             }
 
             int status = Integer.parseInt(data.getStatus());
             String status_str = "";
-            switch (status){
+            switch (status) {
                 case 1:
                     status_str = "正在到账";
                     break;
@@ -636,7 +638,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     status_str = "到账失败";
                     break;
             }
-            StrUtils.SetTxt(holder.tv_integral_status,status_str);
+            StrUtils.SetTxt(holder.tv_integral_status, status_str);
 
             return convertView;
         }
@@ -644,7 +646,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
 
     class IntegralInsideHolder {
-        TextView tv_integral_day, tv_integral_time, tv_integral_content, tv_integral_point,tv_integral_status;
+        TextView tv_integral_day, tv_integral_time, tv_integral_content, tv_integral_point, tv_integral_status;
         LinearLayout ll_integral_point_and_status;
     }
 

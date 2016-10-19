@@ -3,20 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="@dimen/center_wallet_property_detail_inside_listview_data_time_width"
             android:layout_height="match_parent"
             android:layout_marginRight="@dimen/center_wallet_property_detail_inside_listview_data_time_margin"
             android:gravity="right|center_vertical"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_data"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/center_wallet_property_detail_inside_listview_data_time_vertical_line_margin"
             android:gravity="center_horizontal"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <View
                 android:id="@+id/vertical_line_top"
@@ -64,10 +64,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:orientation="vertical" >
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_record_desc"
@@ -89,56 +90,52 @@
                 android:textSize="@dimen/center_wallet_property_detail_inside_listview_content_trade_type_txt_size" />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="0dp"
+
+        <LinearLayout
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <!--  <LinearLayout
+                  android:layout_width="match_parent"
+                  android:orientation="horizontal"
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginRight="10dp"
-    android:layout_height="wrap_content">
-      <!--  <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
+                  android:layout_height="wrap_content">-->
 
-            android:layout_height="wrap_content">-->
-
-        <TextView
-            android:id="@+id/tv_record_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="@string/nullstr"
-            android:textColor="@color/app_fen"
-            android:textSize="@dimen/center_wallet_property_detail_inside_listview_money_txt_size" />
-
-          <!--  <TextView
-                android:id="@+id/tv_counter_fee"
+            <TextView
+                android:id="@+id/tv_record_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:text="@string/nullstr"
-                android:visibility="gone"
                 android:textColor="@color/app_fen"
-                android:textSize="@dimen/center_wallet_property_detail_inside_listview_counter_fee_txt_size" />
--->
+                android:textSize="@dimen/center_wallet_property_detail_inside_listview_money_txt_size" />
+
+            <!--  <TextView
+                  android:id="@+id/tv_counter_fee"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+
+                  android:text="@string/nullstr"
+                  android:visibility="gone"
+                  android:textColor="@color/app_fen"
+                  android:textSize="@dimen/center_wallet_property_detail_inside_listview_counter_fee_txt_size" />
+  -->
 
 
-       <!-- </LinearLayout>-->
-    <TextView
-        android:id="@+id/tv_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            <!-- </LinearLayout>-->
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        android:text="@string/nullstr"
-android:layout_gravity="right"
-        android:textColor="@color/app_gray"
-         />
+                android:text="@string/nullstr"
+                android:textColor="@color/app_gray"
+                android:textSize="11sp" />
 
 
-</LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

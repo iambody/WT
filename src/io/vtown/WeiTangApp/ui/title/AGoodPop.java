@@ -304,7 +304,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         setContentView(R.layout.activity_good_pop);
         getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_good_pop, null);
-       overridePendingTransition(R.anim.slide_in,0);
+        overridePendingTransition(R.anim.slide_in, 0);
 
         SetTitleHttpDataLisenter(this);
         IData();
@@ -381,14 +381,14 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
     private void IData() {
         Intent intent = getIntent();
-        databean = (BGoodDetail)intent.getSerializableExtra("good_info");
+        databean = (BGoodDetail) intent.getSerializableExtra("good_info");
         goods_id = intent.getStringExtra("GoodsId");
-        ShowType = intent.getIntExtra("Show_type",0);
-        IsCaiGou = intent.getBooleanExtra("IsCaiGou",false);
+        ShowType = intent.getIntExtra("Show_type", 0);
+        IsCaiGou = intent.getBooleanExtra("IsCaiGou", false);
         user_Get = Spuit.User_Get(BaseContext);
         MyChannel = IsCaiGou ? "CG" : "PT";
 
-        if(databean == null){
+        if (databean == null) {
             return;
         }
         this.data = databean.getGoods_attr();
@@ -642,7 +642,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                         // PromptManager.ShowCustomToast(pContext, "上边的规格："
                         // + da.getAttr_map().getV1());
                         StrUtils.SetTxt(et_price, "");
-                       // aasv_add_sub.setNum(1);
+                        // aasv_add_sub.setNum(1);
                         //aasv_add_sub.SetMinNumber(1);
                         pop_purchase_price.setVisibility(View.GONE);
                         ll_return_and_integral.setVisibility(View.GONE);
@@ -736,7 +736,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
      * 刷新布局
      */
     private void IFView() {
-aasv_add_sub.setNum(1);
+        aasv_add_sub.setNum(1);
         aasv_add_sub.SetMinNumber(1);
 
         BDataGood blComment = (LastClickIsUp ? myUpAdapter : myDownAdapter)
@@ -744,11 +744,11 @@ aasv_add_sub.setNum(1);
         c1 = blComment.getAttr_map().getC1();
         c2 = blComment.getAttr_map().getC2();
         if (blComment != null) {
-           pop_purchase_price.setVisibility(View.VISIBLE);
+            pop_purchase_price.setVisibility(View.VISIBLE);
 //            if(TYPE_GOOD_DETAIL_BUY == ShowType && "1".equals(databean.getIs_fee())){
 //                ll_return_and_integral.setVisibility(View.VISIBLE);
-                fee = blComment.getFee();
-                score = blComment.getScore();
+            fee = blComment.getFee();
+            score = blComment.getScore();
 //                StrUtils.SetColorsTxt(BaseContext,tv_return_money,R.color.app_fen,"返佣金额：",StrUtils.SetTextForMony(fee)+"元");
 //                StrUtils.SetColorsTxt(BaseContext,tv_good_integral,R.color.app_fen,"获得积分：",score+"分");
 //
@@ -758,8 +758,8 @@ aasv_add_sub.setNum(1);
             mSell_price = blComment.getSell_price();
 //            String format_price = String.format("%1$s元",
 //                    StrUtils.SetTextForMony(mSell_price +""));
- //           StrUtils.SetTxt(pop_purchase_price, format_price);
-            setHeaderData(mSell_price,fee,score);
+            //           StrUtils.SetTxt(pop_purchase_price, format_price);
+            setHeaderData(mSell_price, fee, score);
             StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle() + " "
                     + blComment.getAttr_name());
 
@@ -838,7 +838,7 @@ aasv_add_sub.setNum(1);
                 break;
 
             case 2:
-               // if (null != popupListener)
+                // if (null != popupListener)
                 //    popupListener.getPopupStuta(TYPE_ADD_ONLINE);
                 EventBus.getDefault().post(new BMessage(TYPE_ADD_ONLINE));
                 this.finish();
@@ -901,7 +901,7 @@ aasv_add_sub.setNum(1);
 
     @Override
     protected void DataError(String error, int LoadType) {
-
+        PromptManager.ShowCustomToast(BaseContext, error);
     }
 
     /**
@@ -944,7 +944,7 @@ aasv_add_sub.setNum(1);
         switch (V.getId()) {
 
             case R.id.pop_purchase_cha:
-                overridePendingTransition(0,R.anim.slide_out);
+                overridePendingTransition(0, R.anim.slide_out);
                 this.finish();
                 break;
 
@@ -1022,10 +1022,10 @@ aasv_add_sub.setNum(1);
         }
         aasv_add_sub.setEnabled(true);
         goods_num = num;
-        if(goods_num >1){
+        if (goods_num > 1) {
             mHandler.sendEmptyMessage(0);
-        }else{
-            setHeaderData(mSell_price,fee,score);
+        } else {
+            setHeaderData(mSell_price, fee, score);
         }
 
     }
@@ -1049,28 +1049,28 @@ aasv_add_sub.setNum(1);
 
 //            }
 
-            setHeaderData(Integer.parseInt(mSell_price)*goods_num +"",StrUtils.isEmpty(fee)?"":Integer.parseInt(fee)*goods_num+"",StrUtils.isEmpty(score)?"":Integer.parseInt(score)*goods_num+"");
+            setHeaderData(Integer.parseInt(mSell_price) * goods_num + "", StrUtils.isEmpty(fee) ? "" : Integer.parseInt(fee) * goods_num + "", StrUtils.isEmpty(score) ? "" : Integer.parseInt(score) * goods_num + "");
         }
     };
 
 
-    private void setHeaderData(String price,String _fee,String _score ){
+    private void setHeaderData(String price, String _fee, String _score) {
         String format_price = String.format("%1$s元",
                 StrUtils.SetTextForMony(price));
         StrUtils.SetTxt(pop_purchase_price, format_price);
 
-            if(TYPE_GOOD_DETAIL_BUY == ShowType && 1==databean.getIs_fee()){
-                if(!StrUtils.isEmpty(_fee)&& !StrUtils.isEmpty(_score)){
-                    ll_return_and_integral.setVisibility(View.VISIBLE);
+        if (TYPE_GOOD_DETAIL_BUY == ShowType && 1 == databean.getIs_fee()) {
+            if (!StrUtils.isEmpty(_fee) && !StrUtils.isEmpty(_score)) {
+                ll_return_and_integral.setVisibility(View.VISIBLE);
 
-                    StrUtils.SetColorsTxt(BaseContext,tv_return_money,R.color.app_fen,"返佣金额：",StrUtils.SetTextForMony(_fee)+"元");
-                    StrUtils.SetColorsTxt(BaseContext,tv_good_integral,R.color.app_fen,"获得积分：",_score+"分");
-                }
-
-
-            }else{
-                ll_return_and_integral.setVisibility(View.GONE);
+                StrUtils.SetColorsTxt(BaseContext, tv_return_money, R.color.app_fen, "返佣金额：", StrUtils.SetTextForMony(_fee) + "元");
+                StrUtils.SetColorsTxt(BaseContext, tv_good_integral, R.color.app_fen, "获得积分：", _score + "分");
             }
+
+
+        } else {
+            ll_return_and_integral.setVisibility(View.GONE);
+        }
 
 
     }
@@ -1355,20 +1355,20 @@ aasv_add_sub.setNum(1);
     @Override
     protected void onPause() {
         super.onPause();
-        overridePendingTransition(0,R.anim.slide_out);
+        overridePendingTransition(0, R.anim.slide_out);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        overridePendingTransition(0,R.anim.slide_out);
+        overridePendingTransition(0, R.anim.slide_out);
 
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(0,R.anim.slide_out);
+        overridePendingTransition(0, R.anim.slide_out);
     }
 
     /**

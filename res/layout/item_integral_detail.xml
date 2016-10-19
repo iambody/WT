@@ -56,7 +56,7 @@
 
         <LinearLayout
             android:id="@+id/ll_integral_point_and_status"
-            android:layout_width="60dp"
+            android:layout_width="@dimen/integral_point_width"
             android:orientation="vertical"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"

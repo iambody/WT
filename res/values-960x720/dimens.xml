@@ -14,4 +14,6 @@
   <dimen name="good_upload_vido_iv_height">100dp</dimen>
   <dimen name="pop_addcatory_margitop">40dp</dimen>
   <dimen name="vidoshare_height">170dp</dimen>
+  <dimen name="return_point_width">60dp</dimen>
+  <dimen name="integral_point_width">60dp</dimen>
 </resources>
