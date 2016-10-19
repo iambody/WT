@@ -47,17 +47,14 @@
                             android:layout_centerHorizontal="true"/>
 
 
-
-                            <io.vtown.WeiTangApp.comment.view.CircleImageView
-                                android:id="@+id/fragment_newhome_head_iv"
-                                android:layout_width="@dimen/shop_user_hright"
-                                android:layout_height="@dimen/shop_user_hright"
-                                android:layout_centerInParent="true"
-                                android:clickable="true"
-                                android:focusable="true"
-                                />
-
-
+                        <io.vtown.WeiTangApp.comment.view.CircleImageView
+                            android:id="@+id/fragment_newhome_head_iv"
+                            android:layout_width="@dimen/shop_user_hright"
+                            android:layout_height="@dimen/shop_user_hright"
+                            android:layout_centerInParent="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            />
 
 
                     </RelativeLayout>

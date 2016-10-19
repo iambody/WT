@@ -26,7 +26,10 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BMyShop;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.ImagePathConfig;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -53,6 +56,7 @@ import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.title.shop.channel.AInviteRecord;
+import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
 import io.vtown.WeiTangApp.ui.ui.ARecyclerShow;
 
 /**
@@ -97,10 +101,10 @@ public class FMainCenter extends FBase implements View.OnClickListener {
             }
             if (IsUpAlpha) {
                 BgAlpha = BgAlpha + 5;
-                if(BgAlpha>255)BgAlpha=255;
+                if (BgAlpha > 255) BgAlpha = 255;
             } else {
                 BgAlpha = BgAlpha - 5;
-                if(BgAlpha<0)BgAlpha=0;
+                if (BgAlpha < 0) BgAlpha = 0;
             }
             Log.i("center", "色值==》" + BgAlpha);
             maintab_center_cover.getBackground().setAlpha(BgAlpha);
@@ -122,6 +126,8 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         maintab_center_myiv_lay = (RelativeLayout) BaseView.findViewById(R.id.maintab_center_myiv_lay);
         maintab_center_cover = (ImageView) BaseView.findViewById(R.id.maintab_center_cover);
         maintab_center_myiv = (CircleImageView) BaseView.findViewById(R.id.maintab_center_myiv);
+
+
         maintab_center_myname = (TextView) BaseView.findViewById(R.id.maintab_center_myname);
         //我的订单，，我的钱包
         maintab_tab_center_oder = BaseView.findViewById(R.id.maintab_tab_center_oder);
@@ -154,7 +160,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 //        ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
 //                maintab_center_myiv, R.drawable.error_iv2);
 
-        ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
+        ImageLoaderUtil.Load2(JSON.parseObject( CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getSellerinfo().getAvatar(),
                 maintab_center_myiv, R.drawable.error_iv2);
 
         StrUtils.SetTxt(maintab_center_myname, Spuit.Shop_Get(BaseContext)
@@ -263,13 +269,13 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 timer.cancel();
                 timer = null;
             }
-            BgAlpha=254;
+            BgAlpha = 254;
             maintab_center_cover.getBackground().setAlpha(BgAlpha);
         } else {
 //            if (timer == null) {
-                  timer = new Timer();
+            timer = new Timer();
 //            }
-              task = new TimerTask() {
+            task = new TimerTask() {
                 public void run() {
                     Message message = new Message();
                     message.what = 1;
@@ -277,7 +283,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 }
             };
             timer.schedule(task, 120, 120);
-        MyResume();
+            MyResume();
         }
     }
 
@@ -302,10 +308,10 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         }
         SetItemContent(maintab_center_invite_code, ShowBindTitle,
                 R.drawable.center_iv3);
-        if (StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getAvatar())
-                && StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getId())) {
-            IData(INITIALIZE);
-        }
+//        if (StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getAvatar())
+//                && StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getId())) {
+//            IData(INITIALIZE);
+//        }
     }
 
     @Override
@@ -316,47 +322,46 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     /**
      * 获取商铺的信息
      */
-    private void IData(int Type) {
-        SetTitleHttpDataLisenter(this);
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());
-        FBGetHttpData(map, Constants.MyShop, Request.Method.GET, 0, Type);
-    }
-
+//    private void IData(int Type) {
+//        SetTitleHttpDataLisenter(this);
+//        HashMap<String, String> map = new HashMap<String, String>();
+//        map.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());
+//        FBGetHttpData(map, Constants.MyShop, Request.Method.GET, 0, Type);
+//    }
     @Override
     public void getResult(int Code, String Msg, BComment Data) {
-        {
-            if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                onError(Msg, Data.getHttpLoadType());
-                return;
-            }
-
-            BMyShop mBShop = new BMyShop();
-            mBShop = JSON.parseObject(Data.getHttpResultStr(), BMyShop.class);
-            BShop MyBShop = mBShop.getBase();
-            MyBShop.setSubCounter(mBShop.getSubCounter());
-            MyBShop.setTeamCounter(mBShop.getTeamCounter());
-            MyBShop.setTodayVisitor(mBShop.getTodayVisitor());
-            MyBShop.setTodayIncome(mBShop.getTodayIncome());
-            MyBShop.setTodaySales(mBShop.getTodaySales());
-            MyBShop.setTotalIncome(mBShop.getTotalIncome());
-            Spuit.Shop_Save(BaseContext, MyBShop);
-            ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
-                    maintab_center_myiv, R.drawable.testiv);
-
-            // File CenterCoverFile = new
-            // File(ImagePathConfig.CenterCoverPath(BaseContext));
-            if (CenterCoverFile.exists()) {
-                maintab_center_cover.setImageBitmap(BitmapFactory
-                        .decodeFile(ImagePathConfig.CenterCoverPath(BaseContext)));
-            } else {
-                ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
-                        .getAvatar(), maintab_center_cover, R.drawable.item_shangji_iv, 2);
-            }
-
-            StrUtils.SetTxt(maintab_center_myname, Spuit.Shop_Get(BaseContext)
-                    .getSeller_name());
-        }
+//        {
+//            if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+//                onError(Msg, Data.getHttpLoadType());
+//                return;
+//            }
+//
+//            BMyShop mBShop = new BMyShop();
+//            mBShop = JSON.parseObject(Data.getHttpResultStr(), BMyShop.class);
+//            BShop MyBShop = mBShop.getBase();
+//            MyBShop.setSubCounter(mBShop.getSubCounter());
+//            MyBShop.setTeamCounter(mBShop.getTeamCounter());
+//            MyBShop.setTodayVisitor(mBShop.getTodayVisitor());
+//            MyBShop.setTodayIncome(mBShop.getTodayIncome());
+//            MyBShop.setTodaySales(mBShop.getTodaySales());
+//            MyBShop.setTotalIncome(mBShop.getTotalIncome());
+//            Spuit.Shop_Save(BaseContext, MyBShop);
+//            ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
+//                    maintab_center_myiv, R.drawable.testiv);
+//
+//            // File CenterCoverFile = new
+//            // File(ImagePathConfig.CenterCoverPath(BaseContext));
+//            if (CenterCoverFile.exists()) {
+//                maintab_center_cover.setImageBitmap(BitmapFactory
+//                        .decodeFile(ImagePathConfig.CenterCoverPath(BaseContext)));
+//            } else {
+//                ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
+//                        .getAvatar(), maintab_center_cover, R.drawable.item_shangji_iv, 2);
+//            }
+//
+//            StrUtils.SetTxt(maintab_center_myname, Spuit.Shop_Get(BaseContext)
+//                    .getSeller_name());
+//        }
     }
 
     @Override
@@ -366,7 +371,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        BgAlpha=254;
+        BgAlpha = 254;
         maintab_center_cover.getBackground().setAlpha(BgAlpha);
         if (timer != null) {// 停止timer
             timer.cancel();
@@ -421,10 +426,32 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                     PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                             ANewBindCode.class));
                 } else if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {//已绑定未激活==》跳转激活界面
-                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseActivity, AWeb.class).putExtra(
-                            AWeb.Key_Bean,
-                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                    ShowCustomDialog("请先激活账户",
+                            "查看规则", "去激活",
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                            maxtive.getActivitytitle());
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                            mBCommentss));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, AWeb.class).putExtra(
+                                            AWeb.Key_Bean,
+                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+
+                                }
+                            });
+
+
                 } else {//已激活==》跳转邀请界面
                     PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                             AMyInviteCode.class));

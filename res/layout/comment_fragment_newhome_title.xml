@@ -3,6 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_alignParentTop="true"
+              android:focusable="true"
               android:orientation="vertical"
     >
 
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/app_fen"
+        android:focusable="true"
         android:orientation="horizontal">
 
         <ImageView
@@ -18,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/ui_10_dip"
+            android:focusable="true"
             android:src="@drawable/newhome_sao"/>
 
         <TextView
@@ -30,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/ui_10_dip"
+            android:focusable="true"
             android:src="@drawable/newhome_sou"/>
 
         <ImageView
@@ -37,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/ui_10_dip"
+            android:focusable="true"
             android:src="@drawable/newhome_news"/>
     </LinearLayout>
 </LinearLayout>

@@ -242,10 +242,19 @@ public class APersonalData extends ATitleBase implements
 //                        ActivityManager activityMgr = (ActivityManager) BaseActivity.getSystemService(Context.ACTIVITY_SERVICE);
 //                        activityMgr.restartPackage(BaseActivity.getPackageName());
 //                        System.exit(0);
-//                        EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
+                        BaseActivity.finish();
+                        EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
 //                        PromptManager.SkipActivity(BaseActivity, new Intent(
-//                                BaseActivity, ALogin.class).putExtra("isexit",true));
-                        System.exit(0);
+//                                BaseActivity, AMainTab.class).putExtra("isexit",true));
+//                        try {
+//                            android.os.Process.killProcess(android.os.Process.myPid());System.exit(0);
+//                            ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+//                            manager.killBackgroundProcesses(getPackageName());
+//                        } catch (Exception e) {
+//
+//                            return;
+//                        }
+
 //                        ScreenAppManager.getScreenManager().popAllActivityExceptOne(APersonalData.class);
 //                        BaseActivity.finish();
 //                        BaseActivity.finish();

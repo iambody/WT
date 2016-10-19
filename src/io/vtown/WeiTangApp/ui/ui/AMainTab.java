@@ -103,6 +103,14 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 
     }
 
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//        super.onNewIntent(intent);
+//        PromptManager.ShowCustomToast(BaseContext,"onNewIntent");
+////        finish();
+////        System.exit(0);
+//    }
+
     private void FBaseInit() {
         InitIm();
         // 检测升级
@@ -281,6 +289,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 //                ShopBadgeView.setBadgeCount(Spuit.ShopBusNumber_Get(BaseCotext));
                 break;
             case BMessage.Tage_Tab_Kill_Self:
+                System.exit(0);
                 AMainTab.this.finish();
                 Log.i("AMainTab", "接受到消息广播");
                 break;
@@ -289,6 +298,17 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
                 break;
         }
     }
+
+
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        if(CurrentPostion==0) {
+//
+//            EventBus.getDefault().post(new BMessage(BMessage.Fragment_home_pause));
+//        }
+//    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -901,7 +901,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
     @Override
     protected void DataError(String error, int LoadType) {
-        PromptManager.ShowCustomToast(BaseContext, error);
+
     }
 
     /**

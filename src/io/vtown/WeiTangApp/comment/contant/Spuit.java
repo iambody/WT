@@ -5,6 +5,7 @@ package io.vtown.WeiTangApp.comment.contant;
 
 import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
 import io.vtown.WeiTangApp.comment.util.IMUtile;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 
@@ -109,7 +110,7 @@ public class Spuit {
     /**
      * 今日是否签到
      */
-//    private static final String Homew_Signe = "home_sign_sp";
+    private static final String Homew_Jihuo = "home_jihuo_sp";
 
     /**
      * 获取是否已经登录过的标识
@@ -571,4 +572,64 @@ public class Spuit {
 //        SharedPreferences Sp = PPcontext.getSharedPreferences(Homew_Signe, Context.MODE_PRIVATE);
 //        return Sp.getBoolean("istodaysign", false);
 //    }
+
+    public static BActive Jihuo_get(Context PPcontext) {
+
+        SharedPreferences sp = PPcontext.getSharedPreferences(Active_Sp,
+                Context.MODE_PRIVATE);
+        BActive bactive = new BActive();
+
+        Class<? extends BActive> clazz = bactive.getClass();
+        Field[] arrFiled = clazz.getDeclaredFields();
+        try {
+            for (Field f : arrFiled) {
+                int type = TYPES.get(f.getType());
+                switch (type) {
+                    case CLZ_STRING:
+                        String str = sp.getString(f.getName(), null);
+                        f.set(bactive, str);
+                        break;
+                }
+
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return bactive;
+
+    }
+
+    public static void Jihuo_set(Context Pcontext, BActive myactive) {
+
+        SharedPreferences sp = Pcontext.getSharedPreferences(Active_Sp,
+                Context.MODE_PRIVATE);
+        Editor ed = sp.edit();
+        Class<? extends BActive> clazz = myactive.getClass();
+        Field[] arrFiled = clazz.getDeclaredFields();
+        try {
+            for (Field f : arrFiled) {
+                int type = TYPES.get(f.getType());
+                switch (type) {
+                    case CLZ_STRING:
+                        ed.putString(f.getName(), (String) f.get(myactive));
+                        ed.commit();
+                        break;
+
+                }
+            }
+
+        } catch (IllegalArgumentException e) {
+
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+
+            e.printStackTrace();
+        }
+        ed.commit();
+
+
+    }
+
 }

@@ -52,7 +52,6 @@ public class BMessage {
     public static final int Tage_Updata_Brand_list = 1178;
 
 
-
     /**
      * 修改商品价格事件标识
      */
@@ -214,7 +213,6 @@ public class BMessage {
     private List<String> tmpArrayList;
 
 
-
     public static final int Tage_Select_Pic_Show = 7788;
     public static final int Tage_Select_Pic_Good_Pics = 7789;
     public static final int Tage_Select_Pic_Good_Desc = 7790;
@@ -222,8 +220,7 @@ public class BMessage {
     public static final int Tage_Select_Pic_ID_Back = 7792;
     //新创建的首页的四个fragment之间的信息传递
     //在首页fragment获取数据后 刷新购物车数量的提示
-    public static final int Tage_MainTab_ShopBus=853;
-
+    public static final int Tage_MainTab_ShopBus = 853;
 
 
     //添加商品时候填写商品标题后
@@ -236,14 +233,15 @@ public class BMessage {
 
     //选择好地址后返回
     public static final int Tage_Select_Address = 10010;
-    private  List<String> address_infos;
+    private List<String> address_infos;
 
     //3.0版本************************************************************************************************************
     //绑定页面绑定成功后刷新个人中心的绑定状态
-    public static final int Fragment_Center_ChangStatus=670;
+    public static final int Fragment_Center_ChangStatus = 670;
     //绑定页面绑定成功后刷新首页的绑定
-    public static final int Fragment_Home_Bind=671;
-
+    public static final int Fragment_Home_Bind = 671;
+    //首页不可见
+    public static final int Fragment_home_pause = 673;
 
 
     //退出时候通知所有进行
@@ -283,7 +281,6 @@ public class BMessage {
     public void setGoodMangeAlterPostion(int goodMangeAlterPostion) {
         GoodMangeAlterPostion = goodMangeAlterPostion;
     }
-
 
 
     public static int getTageOrderManageUpdata() {
@@ -397,4 +394,6 @@ public class BMessage {
     public void setAddress_infos(List<String> address_infos) {
         this.address_infos = address_infos;
     }
+
+
 }

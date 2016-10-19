@@ -5,6 +5,7 @@ import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
@@ -59,6 +60,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
 import de.greenrobot.event.EventBus;
@@ -107,7 +109,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
      * 用户信息
      */
     private BUser user_Get;
-    private BShop uBShop;
+//    private BShop uBShop;
 
     /**
      * 存放图片和视频的集合
@@ -136,7 +138,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 
 
     private View myView;
-
+    private BNewHome MBNewHome;
     @Override
     protected void InItBaseView() {
 
@@ -144,23 +146,24 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
         myView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_shop_center_shop_data, null);
         myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         user_Get = Spuit.User_Get(getApplicationContext());
-        uBShop = Spuit.Shop_Get(getApplicationContext());
+//        uBShop = Spuit.Shop_Get(getApplicationContext());
+        MBNewHome = JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class);
         IView();
-        ShowView(Spuit.Shop_Get(getApplicationContext()));
+        ShowView(MBNewHome );
     }
 
-    private void ShowView(BShop shop_Get) {
+    private void ShowView(BNewHome shop_Get) {
 
-        StrUtils.SetTxt(shop_data_name, uBShop.getSeller_name());
-        ImageLoaderUtil.Load2(shop_Get.getAvatar(), tab_shop_iv,
+        StrUtils.SetTxt(shop_data_name, MBNewHome.getSellerinfo().getSeller_name());
+        ImageLoaderUtil.Load2(shop_Get.getSellerinfo().getAvatar(), tab_shop_iv,
                 R.drawable.testiv);
-        StrUtils.SetTxt(tv_shop_id, uBShop.getSeller_no());
+        StrUtils.SetTxt(tv_shop_id, MBNewHome.getSellerinfo().getSeller_no());
         SetItemContent(shop_another_name, R.string.shop_another_name,
-                shop_Get.getSeller_name(), 1);
+                shop_Get.getSellerinfo().getSeller_name(), 1);
         SetItemContent(
                 shop_introduce,
                 R.string.shop_introduce,
-                StrUtils.isEmpty(shop_Get.getIntro()) ? "您还未描述店铺" : shop_Get
+                StrUtils.isEmpty(shop_Get.getSellerinfo().getIntro()) ? "您还未描述店铺" : shop_Get.getSellerinfo()
                         .getIntro(), 2);
     }
 
@@ -186,17 +189,9 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 
     // 设置二维码的图片
     private void IItCodeIv() {
-        // LinearLayout.LayoutParams ivParams = new LayoutParams(screenWidth /
-        // 2,
-        // screenWidth / 2);
-        // ivParams.setMargins(screenWidth / 4, 0, screenWidth / 4, 0);
-        // shop_qr_code_iv.setLayoutParams(ivParams);
 
-        // String Path = getFileRoot(BaseContext) + File.separator + "qr_"
-        // + "Shopcode" + ".jpg";
-        // String Path=Constants.PicQrCach+"Shopcode.jpg";
         String Path = SdCardUtils.CodePath(BaseContext) + "shopcode.jpg";
-        CreatQ(uBShop.getSeller_url(), Path);
+        CreatQ(MBNewHome.getSellerinfo().getSeller_url(), Path);
     }
 
     private void CreatQ(final String seller_url, final String path2) {
@@ -363,7 +358,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
         myBNwe.setShare_log(Spuit.Shop_Get(getApplicationContext()).getAvatar());
         myBNwe.setShare_title(Spuit.Shop_Get(getApplicationContext()).getSeller_name());
         myBNwe.setShare_content(Spuit.Shop_Get(getApplicationContext()).getIntro());
-        myBNwe.setShare_url(uBShop.getSeller_url());
+        myBNwe.setShare_url(MBNewHome.getSellerinfo().getSeller_url());
         ShowP(myView, myBNwe);
     }
 
@@ -382,10 +377,9 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     /**
      * 对话框测试
      *
-     * @param aa
+     * @param
      */
     private void DialogTest(int type) {
-
         ShowCustomDialog(type == 1 ? "修改头像" : "修改封面", "图库", "相机",
                 new IDialogResult() {
                     @Override
@@ -425,7 +419,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     /**
      * 从相册获取
      *
-     * @param view
+     * @param
      */
     public void gallery() {
         switch (show_type) {
@@ -449,7 +443,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     /**
      * 从相机获取
      *
-     * @param view
+     * @param
      */
     public void camera() {
         // 判断存储卡是否可以用，可用进行存储
@@ -644,6 +638,9 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
             @Override
             public void getResult(int Code, String Msg, String Data) {
                 if (Code == 200) {
+                    EventBus.getDefault().post(
+                            new BMessage(
+                                    BMessage.Fragment_Home_Bind));
 
                     if (1 == Type) {
                         Iv.setImageBitmap(bitmap);

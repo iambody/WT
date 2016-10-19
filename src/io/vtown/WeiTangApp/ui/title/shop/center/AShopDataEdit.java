@@ -160,7 +160,9 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 	protected void DataResult(int Code, String Msg, BComment Data) {
 		if (Code == 200) {
 			String content = et_content.getText().toString().trim();
-
+			EventBus.getDefault().post(
+					new BMessage(
+							BMessage.Fragment_Home_Bind));
 			switch (type) {
 			case 1:// 保存名称到SP
 				Spuit.Save_Shop_Nickname(getApplicationContext(), content);
