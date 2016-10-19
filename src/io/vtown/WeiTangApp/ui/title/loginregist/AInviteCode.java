@@ -12,9 +12,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -70,6 +72,11 @@ public class AInviteCode extends ATitleBase {
     protected void DataResult(int Code, String Msg, BComment Data) {
         Spuit.InvitationCode_Set(BaseActivity, true);
         if (IsFromCenter) {
+            PromptManager.ShowCustomToast(BaseContext, "已绑定");
+            //通知个人中心刷新数据
+            EventBus.getDefault().post(new BMessage(BMessage.Fragment_Center_ChangStatus));
+            //通知首页修改状态
+            EventBus.getDefault().post(new BMessage(BMessage.Fragment_Home_Bind));
             BaseActivity.finish();
             return;
         }
@@ -154,6 +161,11 @@ public class AInviteCode extends ATitleBase {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+
+            if (IsFromCenter) {
+                BaseActivity.finish();
+                return true;
+            }
             PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMainTab.class));
             BaseActivity.finish();
             return true;

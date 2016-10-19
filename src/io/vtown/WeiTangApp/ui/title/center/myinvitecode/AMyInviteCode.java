@@ -89,7 +89,7 @@ public class AMyInviteCode extends ATitleBase {
 	private ClipboardManager myClipboard;
 	private BUser bUser;
 
-	private TextView right_txt;
+//	private TextView right_txt;
 
 	// 分享的地址*****************************http://dev.vt.m.v-town.cn/member/invite/index*************************后边get请求+我的邀请码
 	// ******************http://dev.vt.m.v-town.cn/member/invite/index?inviteCode=L38NDK****************************************************
@@ -233,7 +233,7 @@ public class AMyInviteCode extends ATitleBase {
 		right_txt = (TextView) findViewById(R.id.right_txt);
 		right_txt.setOnClickListener(this);
 
-		SetRightText("邀请码");
+		SetRightText("绑定邀请码");
 
 	}
 

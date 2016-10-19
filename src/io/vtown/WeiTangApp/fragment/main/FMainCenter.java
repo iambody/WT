@@ -3,6 +3,8 @@ package io.vtown.WeiTangApp.fragment.main;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +18,8 @@ import com.android.volley.Request;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
@@ -67,9 +71,42 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     //商品关注，店铺收藏，浏览记录
     private View maintab_center_oder_guanzhu, maintab_center_shop_collect, maintab_center_liulan_history;
     //关于我们
-    private View  maintab_center_oder_about;
+    private View maintab_center_oder_about;
     //高斯图片的路径文件
     private File CenterCoverFile;
+
+    //定时任务进行背景设置********************
+    private int BgAlpha = 0;
+    private boolean IsUpAlpha = true;
+    Timer timer = new Timer();
+    TimerTask task = new TimerTask() {
+        public void run() {
+            Message message = new Message();
+            message.what = 1;
+            myhandler.sendMessage(message);
+        }
+    };
+    Handler myhandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (BgAlpha >= 255) {
+                IsUpAlpha = false;
+            }
+            if (BgAlpha <= 0) {
+                IsUpAlpha = true;
+            }
+            if (IsUpAlpha) {
+                BgAlpha = BgAlpha + 5;
+                if(BgAlpha>255)BgAlpha=255;
+            } else {
+                BgAlpha = BgAlpha - 5;
+                if(BgAlpha<0)BgAlpha=0;
+            }
+            Log.i("center", "色值==》" + BgAlpha);
+            maintab_center_cover.getBackground().setAlpha(BgAlpha);
+            super.handleMessage(msg);
+        }
+    };
 
     @Override
     public void InItView() {
@@ -77,7 +114,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         CenterCoverFile = new File(ImagePathConfig.CenterCoverPath(BaseContext));
         EventBus.getDefault().register(this, "OnMainCenterGetMessage", BMessage.class);
         IBaseView();
-
+        timer.schedule(task, 120, 120);
     }
 
     private void IBaseView() {
@@ -140,7 +177,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 R.drawable.center_iv8);
         //底部
         SetItemContent(maintab_center_oder_about, R.string.about_w_town,
-                R.drawable.login_my_log);//login_my_log
+                R.drawable.tab1_nor);//login_my_log
 
         // 上边两个
         SetCommentIV("我的订单", R.drawable.shop_grad2, maintab_tab_center_oder);
@@ -217,13 +254,30 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 
     }
 
+
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (hidden) {
+            if (timer != null) {// 停止timer
+                timer.cancel();
+                timer = null;
+            }
+            BgAlpha=254;
+            maintab_center_cover.getBackground().setAlpha(BgAlpha);
         } else {
-            Log.i("test", "centter开始显示");
-            MyResume();
+//            if (timer == null) {
+                  timer = new Timer();
+//            }
+              task = new TimerTask() {
+                public void run() {
+                    Message message = new Message();
+                    message.what = 1;
+                    myhandler.sendMessage(message);
+                }
+            };
+            timer.schedule(task, 120, 120);
+        MyResume();
         }
     }
 
@@ -312,6 +366,12 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        BgAlpha=254;
+        maintab_center_cover.getBackground().setAlpha(BgAlpha);
+        if (timer != null) {// 停止timer
+            timer.cancel();
+            timer = null;
+        }
         switch (v.getId()) {
             case R.id.maintab_center_myiv_lay:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, APersonalData.class));

@@ -105,7 +105,11 @@ public class Spuit {
     /**
      * 是否已经激活状态标识
      */
-    private static final String Active_Sp="active_sp";
+    private static final String Active_Sp = "active_sp";
+    /**
+     * 今日是否签到
+     */
+//    private static final String Homew_Signe = "home_sign_sp";
 
     /**
      * 获取是否已经登录过的标识
@@ -543,15 +547,28 @@ public class Spuit {
     }
 //需要判断是否已经激活（只有激活状态才能进行邀请好友）
 
-    public static void IsHaveActive_Set (Context Pcontext, Boolean IsBind) {
+    public static void IsHaveActive_Set(Context Pcontext, Boolean IsBind) {
         SharedPreferences Sp = Pcontext.getSharedPreferences(Active_Sp, Context.MODE_PRIVATE);
         Editor ed = Sp.edit();
         ed.putBoolean("isactive", IsBind);
         ed.commit();
     }
+
     public static boolean IsHaveActive_Get(Context PPcontext) {
         SharedPreferences Sp = PPcontext.getSharedPreferences(Active_Sp, Context.MODE_PRIVATE);
         return Sp.getBoolean("isactive", false);
     }
 
+//    //今日是否签到
+//    public static void IsTodySign_Save(Context PPcontext, boolean IsSign) {
+//        SharedPreferences Sp = PPcontext.getSharedPreferences(Homew_Signe, Context.MODE_PRIVATE);
+//        Editor ed = Sp.edit();
+//        ed.putBoolean("istodaysign", IsSign);
+//        ed.commit();
+//    }
+//
+//    public boolean IsTodySign_Get(Context PPcontext) {
+//        SharedPreferences Sp = PPcontext.getSharedPreferences(Homew_Signe, Context.MODE_PRIVATE);
+//        return Sp.getBoolean("istodaysign", false);
+//    }
 }

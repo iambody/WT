@@ -9,12 +9,12 @@ import io.vtown.WeiTangApp.bean.BBase;
  */
 
 public class BNewHome extends BBase {
-//    private String seller_name;//":"wt02768841",
+    //    private String seller_name;//":"wt02768841",
 //    private String cover;//":"http://fs.v-town.cc/DefaultSellerCover.jpg",
 //    private String avatar;//":"http://fs.v-town.cc/DefaultSellerAvatar.jpg",
-    private String member_level;//等级":0,
+    private int member_level;//等级":0,
     private String integral;//积分":1000,
-    private int isstar;//是否是明星店铺":0,
+    //    private int isstar;//是否是明星店铺":0,
     private String rebate;//返佣金额":"0.00",
     private int is_activate;//是否激活":0,
     private int bindstatus;//是否绑定":1,
@@ -22,10 +22,13 @@ public class BNewHome extends BBase {
     private String activitydata;//激活礼包数据 ":"",
     private int is_attendance;//今天是否签到":1
     private List<BLBanner> banner;
-    private BNewShop sellerinfo=new BNewShop();
+    private BNewShop sellerinfo = new BNewShop();
     //激活专区
     private String activityid;//=28
     private String activitytitle;//=激活礼包3
+    //等级
+//    private int  member_level;//=0
+    private String member_level_name;//=青铜店铺
 
     public BNewShop getSellerinfo() {
         return sellerinfo;
@@ -51,11 +54,11 @@ public class BNewHome extends BBase {
         this.activitytitle = activitytitle;
     }
 
-    public String getMember_level() {
+    public int getMember_level() {
         return member_level;
     }
 
-    public void setMember_level(String member_level) {
+    public void setMember_level(int member_level) {
         this.member_level = member_level;
     }
 
@@ -67,13 +70,13 @@ public class BNewHome extends BBase {
         this.integral = integral;
     }
 
-    public int getIsstar() {
-        return isstar;
-    }
-
-    public void setIsstar(int isstar) {
-        this.isstar = isstar;
-    }
+//    public int getIsstar() {
+//        return isstar;
+//    }
+//
+//    public void setIsstar(int isstar) {
+//        this.isstar = isstar;
+//    }
 
     public String getRebate() {
         return rebate;
@@ -129,5 +132,13 @@ public class BNewHome extends BBase {
 
     public void setBanner(List<BLBanner> banner) {
         this.banner = banner;
+    }
+
+    public String getMember_level_name() {
+        return member_level_name;
+    }
+
+    public void setMember_level_name(String member_level_name) {
+        this.member_level_name = member_level_name;
     }
 }

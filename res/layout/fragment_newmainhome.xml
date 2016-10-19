@@ -46,11 +46,7 @@
                             android:layout_height="140dp"
                             android:layout_centerHorizontal="true"/>
 
-                        <RelativeLayout
-                            android:id="@+id/fragment_newhome_head_lay"
-                            android:layout_width="@dimen/shop_user_hright1"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true">
+
 
                             <io.vtown.WeiTangApp.comment.view.CircleImageView
                                 android:id="@+id/fragment_newhome_head_iv"
@@ -61,14 +57,7 @@
                                 android:focusable="true"
                                 />
 
-                            <ImageView
-                                android:id="@+id/fragment_newhome_head_iv_level"
-                                android:layout_width="@dimen/fragment_newhome_level_height"
-                                android:layout_height="@dimen/fragment_newhome_level_height"
-                                android:layout_alignParentRight="true"
-                                android:layout_alignParentTop="true"
-                                android:src="@drawable/newhome_level2"/>
-                        </RelativeLayout>
+
 
 
                     </RelativeLayout>
