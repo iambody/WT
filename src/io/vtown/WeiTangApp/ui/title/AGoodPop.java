@@ -1059,7 +1059,7 @@ aasv_add_sub.setNum(1);
                 StrUtils.SetTextForMony(price));
         StrUtils.SetTxt(pop_purchase_price, format_price);
 
-            if(TYPE_GOOD_DETAIL_BUY == ShowType && "1".equals(databean.getIs_fee())){
+            if(TYPE_GOOD_DETAIL_BUY == ShowType && 1==databean.getIs_fee()){
                 if(!StrUtils.isEmpty(_fee)&& !StrUtils.isEmpty(_score)){
                     ll_return_and_integral.setVisibility(View.VISIBLE);
 
