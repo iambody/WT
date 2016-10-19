@@ -913,6 +913,12 @@ public static int SouSouHeistory= 12;
 			+ "/v1/home/home/invitedlist";
 
 	/**
+	 * 获取店铺等级列表
+	 */
+	public static String Shop_lv_list = Host
+			+ "/v1/home/home/getlevelname";
+
+	/**
 	 * 积分明细
 	 */
 	public static String Integral_Detail = Host

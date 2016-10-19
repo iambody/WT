@@ -11,7 +11,7 @@
     <io.vtown.WeiTangApp.comment.view.listview.LListView
         android:id="@+id/integral_detail_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:cacheColorHint="#00000000"
         android:divider="@null"

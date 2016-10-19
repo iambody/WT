@@ -109,7 +109,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
     private void IData(String type, int loadtype) {
         HashMap<String, String> map = new HashMap<>();
-        map.put("member_id", "10014952");//mUser.getMember_id()
+        map.put("member_id", mUser.getMember_id());//"10014952"
         map.put("type", type);
         map.put("page_num", Constants.PageSize + "");
         map.put("last_id", lastid);

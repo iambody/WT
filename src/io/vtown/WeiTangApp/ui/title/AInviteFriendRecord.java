@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.ui.title;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -41,7 +43,7 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * Created by Yihuihua on 2016/10/12.
  */
 
-public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.OnLoadListener, LListView.IXListViewListener {
+public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnLoadListener, LListView.IXListViewListener {
 
     private RefreshLayout invite_friends_refrash11;
     private LListView invite_friends_record_list;
@@ -52,6 +54,17 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
     private InviteFriendAdapter mAdapter;
     private int click_type = 0;
     private TextView tv_invite_date_current;
+    private PopupWindow mPopupWindow;
+    List<String> lv_list = new ArrayList<String>();
+    private final String Shop_All_Lv = "";
+    private final String Shop_Lv1 = "0";
+    private final String Shop_Lv2 = "1";
+    private final String Shop_Lv3 = "2";
+    private final String Shop_Lv4 = "3";
+    private final String Shop_Lv5 = "4";
+    private final String Shop_Lv6 = "5";
+
+    private String Current_Lv = Shop_All_Lv;
 
     @Override
     protected void InItBaseView() {
@@ -60,10 +73,9 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
         bUser = Spuit.User_Get(BaseContext);
         IView();
         ICache();
+        ILvData();
         IData(page, LOAD_INITIALIZE);
     }
-
-
 
 
     private void IView() {
@@ -86,6 +98,7 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
 
     private void ICache() {
         String invite_friends = CacheUtil.My_Invite_Friends_Get(BaseContext);
+
         if (StrUtils.isEmpty(invite_friends)) {
             PromptManager.showtextLoading(BaseContext, getResources()
                     .getString(R.string.loading));
@@ -99,108 +112,184 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
         }
     }
 
+    private void ILvData() {
+        FBGetHttpData(new HashMap<String, String>(), Constants.Shop_lv_list, Request.Method.GET, 1, LOAD_INITIALIZE);
+    }
+
     private void IData(int page, int loadtype) {
         HashMap<String, String> map = new HashMap<>();
         map.put("member_id", "10014952");//bUser.getMember_id()
         map.put("seller_id", "1014719");//bUser.getSeller_id()
         map.put("page", page + "");
         map.put("pagesize", Constants.PageSize + "");
+        if(!Shop_All_Lv.equals(Current_Lv)){
+            map.put("member_level",Current_Lv);
+        }
         FBGetHttpData(map, Constants.Invite_Friends, Request.Method.GET, 0, loadtype);
     }
 
     @Override
     protected void InitTile() {
         SetTitleTxt(getString(R.string.invite_friends));
+        SetRightText(getResources().getString(R.string.txt_filter));
+        right_txt.setOnClickListener(this);
+
+        String shop_lvs = CacheUtil.Shop_Lv_Get(BaseContext);
+        if(!StrUtils.isEmpty(shop_lvs)){
+            right_txt.setVisibility(View.VISIBLE);
+            lv_list = JSON.parseArray(shop_lvs,String.class);
+        }else{
+            right_txt.setVisibility(View.GONE);
+        }
     }
+
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
+        switch (Data.getHttpResultTage()) {
+            case 0:
+                switch (Data.getHttpLoadType()) {
+                    case LOAD_INITIALIZE:
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            invite_friends_record_list.setVisibility(View.GONE);
+                            invite_friends_nodata_lay.setVisibility(View.VISIBLE);
+                            invite_friends_nodata_lay.setClickable(true);
+                            ShowErrorCanLoad(getString(R.string.null_invite_friend));
+                            click_type = 1;
 
-        switch (Data.getHttpLoadType()) {
-            case LOAD_INITIALIZE:
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    invite_friends_record_list.setVisibility(View.GONE);
-                    invite_friends_nodata_lay.setVisibility(View.VISIBLE);
-                    invite_friends_nodata_lay.setClickable(true);
-                    ShowErrorCanLoad(getString(R.string.null_invite_friend));
-                    click_type = 1;
+                            mAdapter.FreshData(new ArrayList<BCInviteFriends>());
+                            return;
+                        }
+                        datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
+                        CacheUtil.My_Invite_Friends_Save(BaseContext, Data.getHttpResultStr());
+                        invite_friends_record_list.setVisibility(View.VISIBLE);
+                        invite_friends_nodata_lay.setVisibility(View.GONE);
+                        //invite_friends_refrash.setRefreshing(false);
+                        mAdapter.FreshData(datass);
+                        List<BLInviteFriends> allInviteDetailList = getAllInviteDetailList(datass);
+                        if (allInviteDetailList.size() == Constants.PageSize) {
+                            //invite_friends_refrash.setCanLoadMore(true);
+                            invite_friends_record_list.ShowFoot();
+                            invite_friends_record_list.setPullLoadEnable(true);
+                        }
+                        if (allInviteDetailList.size() < Constants.PageSize) {
+                            //invite_friends_refrash.setCanLoadMore(false);
+                            invite_friends_record_list.hidefoot();
+                            invite_friends_record_list.setPullLoadEnable(false);
+                        }
 
-                    mAdapter.FreshData(new ArrayList<BCInviteFriends>());
-                    return;
-                }
-                datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-                CacheUtil.My_Invite_Friends_Save(BaseContext, Data.getHttpResultStr());
-                invite_friends_record_list.setVisibility(View.VISIBLE);
-                invite_friends_nodata_lay.setVisibility(View.GONE);
-               //invite_friends_refrash.setRefreshing(false);
-                mAdapter.FreshData(datass);
-                List<BLInviteFriends> allInviteDetailList = getAllInviteDetailList(datass);
-                if (allInviteDetailList.size() == Constants.PageSize) {
-                    //invite_friends_refrash.setCanLoadMore(true);
-                    invite_friends_record_list.ShowFoot();
-                    invite_friends_record_list.setPullLoadEnable(true);
-                }
-                if (allInviteDetailList.size() < Constants.PageSize) {
-                    //invite_friends_refrash.setCanLoadMore(false);
-                    invite_friends_record_list.hidefoot();
-                    invite_friends_record_list.setPullLoadEnable(false);
-                }
+                        break;
 
+                    case LOAD_REFRESHING:
+                        invite_friends_record_list.stopRefresh();
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.no_fresh_invite_friend));
+                            return;
+                        }
+                        datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
+
+                        //invite_friends_refrash.setRefreshing(false);
+
+                        mAdapter.FreshData(datass);
+
+                        List<BLInviteFriends> allInviteDetailList1 = getAllInviteDetailList(datass);
+                        if (allInviteDetailList1.size() == Constants.PageSize) {
+                            //invite_friends_refrash.setCanLoadMore(true);
+                            invite_friends_record_list.ShowFoot();
+                            invite_friends_record_list.setPullLoadEnable(true);
+                        }
+
+                        if (allInviteDetailList1.size() < Constants.PageSize) {
+                            //invite_friends_refrash.setCanLoadMore(false);
+                            invite_friends_record_list.hidefoot();
+                            invite_friends_record_list.setPullLoadEnable(false);
+                        }
+                        break;
+
+                    case LOAD_LOADMOREING:
+                        invite_friends_record_list.stopLoadMore();
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.no_nore_invite_friend));
+                            return;
+                        }
+                        datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
+                        //invite_friends_refrash.setLoading(false);
+                        if (datass.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
+                            mAdapter.MergeFrashData(datass);
+                        } else {
+                            mAdapter.FreshAllData(datass);
+                        }
+                        List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(datass);
+                        if (allInviteDetailList2.size() == Constants.PageSize) {
+                            //invite_friends_refrash.setCanLoadMore(true);
+                            invite_friends_record_list.ShowFoot();
+                            invite_friends_record_list.setPullLoadEnable(true);
+                        }
+                        if (allInviteDetailList2.size() < Constants.PageSize) {
+                            //invite_friends_refrash.setCanLoadMore(false);
+                            invite_friends_record_list.hidefoot();
+                            invite_friends_record_list.setPullLoadEnable(false);
+                        }
+                        break;
+                }
                 break;
+            case 1:
 
-            case LOAD_REFRESHING:
-                invite_friends_record_list.stopRefresh();
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.no_fresh_invite_friend));
-                    return;
-                }
-                datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-
-                //invite_friends_refrash.setRefreshing(false);
-
-                mAdapter.FreshData(datass);
-
-                List<BLInviteFriends> allInviteDetailList1 = getAllInviteDetailList(datass);
-                if (allInviteDetailList1.size() == Constants.PageSize) {
-                    //invite_friends_refrash.setCanLoadMore(true);
-                    invite_friends_record_list.ShowFoot();
-                    invite_friends_record_list.setPullLoadEnable(true);
+                lv_list = JSON.parseArray(Data.getHttpResultStr(), String.class);
+                CacheUtil.Shop_Lv_Save(BaseContext,Data.getHttpResultStr());
+                if (lv_list.size() > 0) {
+                    right_txt.setVisibility(View.VISIBLE);
                 }
 
-                if (allInviteDetailList1.size() < Constants.PageSize) {
-                    //invite_friends_refrash.setCanLoadMore(false);
-                    invite_friends_record_list.hidefoot();
-                    invite_friends_record_list.setPullLoadEnable(false);
-                }
-                break;
-
-            case LOAD_LOADMOREING:
-                invite_friends_record_list.stopLoadMore();
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.no_nore_invite_friend));
-                    return;
-                }
-                datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-                //invite_friends_refrash.setLoading(false);
-                if (datass.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
-                    mAdapter.MergeFrashData(datass);
-                } else {
-                    mAdapter.FreshAllData(datass);
-                }
-                List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(datass);
-                if (allInviteDetailList2.size() == Constants.PageSize) {
-                    //invite_friends_refrash.setCanLoadMore(true);
-                    invite_friends_record_list.ShowFoot();
-                    invite_friends_record_list.setPullLoadEnable(true);
-                }
-                if (allInviteDetailList2.size() < Constants.PageSize) {
-                    //invite_friends_refrash.setCanLoadMore(false);
-                    invite_friends_record_list.hidefoot();
-                    invite_friends_record_list.setPullLoadEnable(false);
-                }
                 break;
         }
 
+
+    }
+
+    private void showLvPop(View V,List<String> lv_list) {
+        View view = LayoutInflater.from(BaseContext).inflate(R.layout.pop_shop_filter, null);
+        TextView tv_shop_all = (TextView) view.findViewById(R.id.tv_shop_all);
+        TextView tv_shop_lv1 = (TextView) view.findViewById(R.id.tv_shop_lv1);
+        TextView tv_shop_lv2 = (TextView) view.findViewById(R.id.tv_shop_lv2);
+        TextView tv_shop_lv3 = (TextView) view.findViewById(R.id.tv_shop_lv3);
+        TextView tv_shop_lv4 = (TextView) view.findViewById(R.id.tv_shop_lv4);
+        TextView tv_shop_lv5 = (TextView) view.findViewById(R.id.tv_shop_lv5);
+        TextView tv_shop_lv6 = (TextView) view.findViewById(R.id.tv_shop_lv6);
+
+        tv_shop_lv1.setText(lv_list.get(0));
+        tv_shop_lv2.setText(lv_list.get(1));
+        tv_shop_lv3.setText(lv_list.get(2));
+        tv_shop_lv4.setText(lv_list.get(3));
+        tv_shop_lv5.setText(lv_list.get(4));
+        tv_shop_lv6.setText(lv_list.get(5));
+
+        tv_shop_all.setOnClickListener(this);
+        tv_shop_lv1.setOnClickListener(this);
+        tv_shop_lv2.setOnClickListener(this);
+        tv_shop_lv3.setOnClickListener(this);
+        tv_shop_lv4.setOnClickListener(this);
+        tv_shop_lv5.setOnClickListener(this);
+        tv_shop_lv6.setOnClickListener(this);
+
+        mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        mPopupWindow.setFocusable(true);
+        ColorDrawable dw = new ColorDrawable(0xb0000000);
+        mPopupWindow.setBackgroundDrawable(dw);
+        mPopupWindow.showAsDropDown(V, 0, 30);
+
+    }
+
+    /**
+     * 控制PopupWindow
+     */
+    private void IPopupWindow(View V) {
+        if (mPopupWindow != null && mPopupWindow.isShowing()) {
+            mPopupWindow.dismiss();
+        } else {
+            showLvPop(V,lv_list);
+        }
     }
 
 
@@ -253,16 +342,57 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.invite_friends_nodata_lay:
-                if(CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
                 if (1 == click_type) {
-                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AMyInviteCode.class));
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMyInviteCode.class));
                 }
                 if (2 == click_type) {
                     page = 1;
-                    IData(page,LOAD_INITIALIZE);
+                    IData(page, LOAD_INITIALIZE);
                 }
                 break;
+
+            case R.id.right_txt:
+                if(CheckNet(BaseContext))return;
+                IPopupWindow(V);
+                break;
+
+            case R.id.tv_shop_all:
+                LvSwitch(Shop_All_Lv);
+                break;
+
+            case R.id.tv_shop_lv1:
+                LvSwitch(Shop_Lv1);
+                break;
+            case R.id.tv_shop_lv2:
+                LvSwitch(Shop_Lv2);
+                break;
+            case R.id.tv_shop_lv3:
+                LvSwitch(Shop_Lv3);
+                break;
+            case R.id.tv_shop_lv4:
+                LvSwitch(Shop_Lv4);
+                break;
+            case R.id.tv_shop_lv5:
+                LvSwitch(Shop_Lv5);
+                break;
+            case R.id.tv_shop_lv6:
+                LvSwitch(Shop_Lv6);
+                break;
         }
+    }
+
+    private void LvSwitch(String switch_type){
+        if(!switch_type.equals(Current_Lv)){
+            Current_Lv = switch_type;
+            page = 1;
+            IData(page,LOAD_INITIALIZE);
+            mAdapter.Clearn();
+            invite_friends_nodata_lay.setVisibility(View.GONE);
+            invite_friends_record_list.hidefoot();
+            PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
+        }
+        mPopupWindow.dismiss();
     }
 
     @Override
@@ -288,8 +418,6 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
     }
 
 
-
-
     @Override
     public void onRefresh() {
         page = 1;
@@ -303,7 +431,7 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
     }
 
     class InviteFriendAdapter extends BaseAdapter {
-       private  List<BCInviteFriends> datas = new ArrayList<BCInviteFriends>();
+        private List<BCInviteFriends> datas = new ArrayList<BCInviteFriends>();
         private int ResourseId;
 
         private LayoutInflater inflater;
@@ -316,6 +444,11 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
             this.inflater = LayoutInflater.from(BaseContext);
         }
 
+        public void Clearn() {
+            datas = new ArrayList<BCInviteFriends>();
+            this.notifyDataSetChanged();
+        }
+
         @Override
         public int getCount() {
             return this.datas.size();
@@ -324,6 +457,7 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
         public List<BCInviteFriends> GetApData() {
             return this.datas;
         }
+
         @Override
         public Object getItem(int position) {
             return this.datas.get(position);
@@ -334,7 +468,7 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
             return position;
         }
 
-        public void FreshData(List<BCInviteFriends> datas1){
+        public void FreshData(List<BCInviteFriends> datas1) {
             this.datas = datas1;
             this.notifyDataSetChanged();
         }
@@ -449,43 +583,44 @@ public class AInviteFriendRecord extends ATitleBase implements  RefreshLayout.On
             int level = Integer.parseInt(friend.getMember_level());
             switch (level) {
                 case 0:
-                    holder.tv_lv.setText("Lv1");
-                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv1));
+                    holder.tv_lv.setText(friend.getMember_level_name());
+                    //holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv1));
+                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_1);
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv1_top));
                     break;
                 case 1:
-                    holder.tv_lv.setText("Lv2");
-                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv2));
+                    holder.tv_lv.setText(friend.getMember_level_name());
+                    // holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv2));
+                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_2);
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv2_top));
                     break;
                 case 2:
-                    holder.tv_lv.setText("Lv3");
-                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3));
+                    holder.tv_lv.setText(friend.getMember_level_name());
+                    //holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3));
+                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_3);
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3_top));
                     break;
                 case 3:
-                    holder.tv_lv.setText("Lv4");
-                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv4));
+                    holder.tv_lv.setText(friend.getMember_level_name());
+                    //holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv4));
+                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_4);
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv4_top));
                     break;
 
                 case 4:
-                    holder.tv_lv.setText("Lv5");
-                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv5));
+                    holder.tv_lv.setText(friend.getMember_level_name());
+                    // holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv5));
+                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_5);
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv5_top));
                     break;
 
                 case 5:
-                    holder.tv_lv.setText("Lv6");
-                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv6));
+                    holder.tv_lv.setText(friend.getMember_level_name());
+                    // holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv6));
+                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_6);
                     holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv6_top));
                     break;
 
-                case 6:
-                    holder.tv_lv.setText("Lv7");
-                    holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv7));
-                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv7_top));
-                    break;
 
             }
             if (friends_datas.size() - 1 == position) {

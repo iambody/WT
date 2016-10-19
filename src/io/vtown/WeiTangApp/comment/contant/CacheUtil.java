@@ -111,6 +111,11 @@ public class CacheUtil {
      */
     private final static String SP_Integral_Detail = "integral";
 
+    /**
+     * 店铺等级的数据的缓存
+     */
+    private final static String SP_Shop_Lv = "shoplv";
+
     private final static String Sp_MynewHome = "mynewhome";
 
     /**
@@ -480,6 +485,37 @@ public class CacheUtil {
 
 
     /**
+     * 店铺等级列表
+     *
+     * @param pcContext
+     * @param walletStr
+     */
+    public static void Shop_Lv_Save(Context pcContext,
+                                            String integral) {
+        SharedPreferences Sp = pcContext.getSharedPreferences(
+                SP_Shop_Lv, Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+
+        editor.putString("shoplv", integral);
+
+        editor.commit();
+    }
+
+
+    /**
+     * 店铺等级列表缓存
+     *
+     * @param context
+     * @return
+     */
+    public static String Shop_Lv_Get(Context context) {
+        SharedPreferences Sp = context.getSharedPreferences(
+                SP_Shop_Lv, Context.MODE_PRIVATE);
+        return Sp.getString("shoplv", "");
+    }
+
+
+    /**
      * 清除所有的sp缓存数据
      */
     public static void ClearnCache(Context mpContext) {
@@ -497,7 +533,7 @@ public class CacheUtil {
         MyShow_Save(mpContext, "");
         Center_Set_Initve_Save(mpContext, "");
         Center_Wallet_Bank_List_Save(mpContext,"");
-
+        Shop_Lv_Save(mpContext,"");
         Center_Wallet_Alipay_Save(mpContext,"");
         Center_Wallet_BankCard_Save(mpContext,"");
         Home_Return_Detail_Save(mpContext,"");
