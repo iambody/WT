@@ -108,7 +108,10 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             } catch (Exception e) {
                 return;
             }
-            mAdapter.FreshData(datass);
+            if(Current_Lv.equals(Shop_All_Lv)){
+                mAdapter.FreshData(datass);
+            }
+
         }
     }
 
@@ -118,8 +121,8 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
     private void IData(int page, int loadtype) {
         HashMap<String, String> map = new HashMap<>();
-        map.put("member_id", "10014952");//bUser.getMember_id()
-        map.put("seller_id", "1014719");//bUser.getSeller_id()
+        map.put("member_id", bUser.getMember_id());//"10014952"
+        map.put("seller_id", bUser.getSeller_id());//"1014719"
         map.put("page", page + "");
         map.put("pagesize", Constants.PageSize + "");
         if(!Shop_All_Lv.equals(Current_Lv)){
@@ -161,7 +164,10 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                             return;
                         }
                         datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-                        CacheUtil.My_Invite_Friends_Save(BaseContext, Data.getHttpResultStr());
+                        if(Shop_All_Lv.equals(Current_Lv)){
+                            CacheUtil.My_Invite_Friends_Save(BaseContext, Data.getHttpResultStr());
+                        }
+
                         invite_friends_record_list.setVisibility(View.VISIBLE);
                         invite_friends_nodata_lay.setVisibility(View.GONE);
                         //invite_friends_refrash.setRefreshing(false);
@@ -171,6 +177,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                             //invite_friends_refrash.setCanLoadMore(true);
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
+
                         }
                         if (allInviteDetailList.size() < Constants.PageSize) {
                             //invite_friends_refrash.setCanLoadMore(false);

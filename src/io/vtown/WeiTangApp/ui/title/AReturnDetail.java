@@ -91,7 +91,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
 
         HashMap<String, String> map = new HashMap<String, String>();
         // map.put("page_num",Constants.PageSize+"");
-        map.put("member_id", "10014952");//mUser.getId()
+        map.put("member_id", mUser.getId());//"10014952"
         map.put("last_id", lastid);
         map.put("type", "6");
         FBGetHttpData(map, Constants.ZiJinJiLu, Request.Method.GET, 0, LoadType);
@@ -413,6 +413,27 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
             StrUtils.SetTxt(holder.tvReturnTime, data.getDate());
             StrUtils.SetTxt(holder.tvReturnContent, data.getTitle());
             StrUtils.SetTxt(holder.tvReturnPoint, String.format("+ %1$s元", StrUtils.SetTextForMony(StrUtils.SetTextForMony(data.getPrice()))));
+            int status = Integer.parseInt(data.getStatus());
+            String status_str = "";
+            switch (status) {
+                case 1:
+                    status_str = "交易中";
+                    break;
+                case 2:
+                    status_str = "交易成功";
+                    break;
+                case 3:
+                    status_str = "交易失败";
+                    break;
+                case 4:
+                    status_str = "交易取消";
+                    break;
+                case 5:
+                    status_str = "已退款";
+                    break;
+            }
+
+            holder.tvReturnStatus.setText(status_str);
             return convertView;
         }
 
@@ -439,6 +460,8 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
         TextView tvReturnContent;
         @BindView(R.id.tv_return_point)
         TextView tvReturnPoint;
+        @BindView(R.id.tv_return_status)
+        TextView tvReturnStatus;
 
         ReturnInsideViewHolder(View view) {
             ButterKnife.bind(this, view);

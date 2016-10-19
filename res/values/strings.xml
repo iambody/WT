@@ -647,7 +647,7 @@
 
     <!--邀请的好友-->
     <string name="invite_friends">邀请的好友</string>
-    <string name="null_invite_friend">\"亲，你还没有邀请过好友哦~~~\n戳我一下去邀请吧\"</string>
+    <string name="null_invite_friend">\"亲，你没有邀请对应好友哦~~~\n戳我一下去邀请吧\"</string>
     <string name="no_nore_invite_friend">没有更多了哦，亲</string>
     <string name="no_fresh_invite_friend">没有新的邀请记录哦</string>
     <string name="invite_friend_shop_id">店铺号：%1$s</string>

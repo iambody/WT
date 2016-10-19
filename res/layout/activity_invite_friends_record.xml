@@ -33,8 +33,8 @@
     <io.vtown.WeiTangApp.comment.view.listview.LListView
         android:id="@+id/invite_friends_record_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+
         android:cacheColorHint="#00000000"
         android:divider="@null"
         android:focusable="false"
