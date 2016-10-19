@@ -905,7 +905,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     }
 
     /**
-     * 添加到购物车
+     * 添加到购物车sssss
      */
     private void AddGoodBus() {
 
