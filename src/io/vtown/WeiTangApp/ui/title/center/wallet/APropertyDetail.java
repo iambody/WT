@@ -195,6 +195,10 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                         case TAGE_WITHDRAW:
                             error_tip = getResources().getString(R.string.error_null_property_withdraw);
                             break;
+
+                        case TAGE_RETURN:
+                            error_tip = getResources().getString(R.string.error_null_property_return);
+                            break;
                     }
                     ShowErrorCanLoad(error_tip);
                     //PromptManager.ShowCustomToast(BaseContext, "记录为空");

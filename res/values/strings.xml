@@ -586,6 +586,7 @@
     <string name="error_null_property_recharge">无退款资金明细</string>
     <string name="error_null_property_withdraw">无提现资金明细</string>
     <string name="error_null_property_sell">无销售资金明细</string>
+    <string name="error_null_property_return">无返佣资金明细</string>
     <string name="no_goods">暂无商品哦</string>
     <string name="no_zaishou_brand">暂无在售品牌商品</string>
     <string name="no_zaishou_ziying">暂无在售自营商品</string>
