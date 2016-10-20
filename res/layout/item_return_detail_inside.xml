@@ -1,93 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/app_bg"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:paddingTop="5dp"
-            android:layout_height="wrap_content">
-            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/shape_integral_bg_white"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_return_day"
                 android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical"
-                android:background="@drawable/shape_integral_bg_white"
-                android:padding="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tv_return_day"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_gray" />
 
-                    android:textColor="@color/app_gray"
-                    android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_return_time"
+                android:layout_width="wrap_content"
 
-                <TextView
-                    android:id="@+id/tv_return_time"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/app_gray"
+                android:textSize="11sp" />
 
-                    android:textSize="11sp"
-                    android:layout_marginTop="3dp"
-                    android:textColor="@color/app_gray"
-                    android:layout_height="wrap_content" />
+        </LinearLayout>
 
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_integral_bg_white"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
+
 
             <TextView
                 android:id="@+id/tv_return_content"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-
-                android:maxLines="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:background="@drawable/shape_integral_bg_white"
-                android:textSize="13sp"
+                android:maxLines="2"
                 android:textColor="@color/gray"
-                android:padding="10dp"
-                android:gravity="center_vertical"
+                android:textSize="12sp"
+
+
                 />
 
-            <LinearLayout
-                android:layout_width="@dimen/return_point_width"
-                android:orientation="vertical"
-                android:background="@drawable/shape_integral_bg_fen"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
+            <TextView
+                android:id="@+id/tv_return_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:gravity="center"
+                android:textColor="@color/app_gray"
+                android:textSize="11sp"
 
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/tv_return_point"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="+12345元"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                   />
+                />
 
-                <TextView
-                    android:id="@+id/tv_return_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:gravity="center"
+        </LinearLayout>
 
-                    android:textColor="@color/white"
 
-                    />
+        <LinearLayout
+            android:layout_width="@dimen/return_point_width"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_integral_bg_fen"
+            android:gravity="center"
 
-            </LinearLayout>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_return_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
