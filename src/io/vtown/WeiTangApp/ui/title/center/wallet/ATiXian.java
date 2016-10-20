@@ -372,8 +372,8 @@ public class ATiXian extends ATitleBase {
 		tv_apply_withdraw_deposit.setEnabled(true);
 		PromptManager.ShowMyToast(BaseContext, error);
 		 if(LOAD_INITIALIZE == LoadTyp){
-			 center_wallet_tixian_outlay.setVisibility(View.GONE);
-			 tixian_nodata_lay.setVisibility(View.VISIBLE);
+			 center_wallet_tixian_outlay.setVisibility(View.VISIBLE);
+			 tixian_nodata_lay.setVisibility(View.GONE);
 
 		 }
 		switch (LoadTyp) {
@@ -561,6 +561,7 @@ public class ATiXian extends ATitleBase {
 			@Override
 			public void Cancle() {
 				p.dismiss();
+				tv_apply_withdraw_deposit.setEnabled(true);
 			}
 		});
 		p.showAtLocation(view, Gravity.CENTER, 0, 0);

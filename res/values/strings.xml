@@ -648,8 +648,13 @@
     <string name="bindtag_no">未绑定</string>
 
     <!--邀请的好友-->
-    <string name="invite_friends">邀请的好友</string>
-    <string name="null_invite_friend">\"亲，你没有邀请对应好友哦~~~\n戳我一下去邀请吧\"</string>
+    <string name="invite_friends">全部店铺</string>
+    <string name="invite_friends_no_activites">未激活店铺</string>
+
+
+
+
+    <string name="null_invite_friend">\"亲，你没有邀请对应好友哦~~~"</string>
     <string name="no_nore_invite_friend">没有更多了哦，亲</string>
     <string name="no_fresh_invite_friend">没有新的邀请记录哦</string>
     <string name="invite_friend_shop_id">店铺号：%1$s</string>
@@ -659,9 +664,9 @@
     <string name="null_integral_detail">没有积分哦</string>
     <string name="null_integral_system">还没有系统赠送的积分</string>
     <string name="null_integral_past">还没有签到积分\n赶快去首页签到吧\"</string>
-    <string name="null_integral_invite">还没有邀请好友积分哦\n戳我一下去邀请吧\"</string>
+    <string name="null_integral_invite">还没有邀请好友积分哦\"</string>
     <string name="null_integral_activation">还没有下级激活积分</string>
-    <string name="null_integral_own_buy">还没有自己购买积分哦\n戳我一下,有秘密哟\"</string>
+    <string name="null_integral_own_buy">还没有自己购买积分哦"</string>
     <string name="null_integral_friend_buy">没有下级购买积分</string>
     <string name="null_integral_consume">\"暂时未消耗积分</string>
     <string name="integral_title_all">全部积分</string>

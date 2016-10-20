@@ -1431,12 +1431,12 @@ public class ACenterMyOrder extends ATitleBase implements
                     innerMost_data.get(position).getGoods_name());
             StrUtils.SetTxt(
                     centerOrderNoPayInnerMost.item_fragment_center_order_no_pay_in_price,
-                    String.format("%1$s元", StrUtils
+                    String.format("￥%1$s", StrUtils
                             .SetTextForMony(innerMost_data.get(position)
                                     .getGoods_money())));
             StrUtils.SetTxt(
                     centerOrderNoPayInnerMost.item_fragment_center_order_no_pay_in_number,
-                    String.format("X%1$s", innerMost_data.get(position)
+                    String.format("x%1$s", innerMost_data.get(position)
                             .getGoods_number()));
             return convertView;
         }

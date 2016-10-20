@@ -62,7 +62,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
     private PopupWindow popupWindow;
     private IntegralOutsideAdapter mAdapter;
     private List<BCIntegralDetail> mDatas;
-    private int Click_Type = 0;
+
 
 
     @Override
@@ -149,13 +149,10 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     }
                     if (TYPE_INVITE.equals(Current_Type)) {
                         ShowErrorCanLoad(getResources().getString(R.string.null_integral_invite));
-                        integral_detail_nodata_lay.setClickable(true);
-                        Click_Type = 1;
+
                     }
                     if (TYPE_BUY_OWN.equals(Current_Type)) {
                         ShowErrorCanLoad(getResources().getString(R.string.null_integral_own_buy));
-                        integral_detail_nodata_lay.setClickable(true);
-                        Click_Type = 2;
                     }
                     if (TYPE_BUY_FRIEND.equals(Current_Type)) {
                         ShowErrorCanLoad(getResources().getString(R.string.null_integral_friend_buy));
@@ -260,7 +257,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 ShowErrorIv(R.drawable.pic_jifenmingxi);
                 integral_detail_nodata_lay.setClickable(true);
                 ShowErrorCanLoad(error);
-                Click_Type = 3;
+
                 break;
 
             case LOAD_REFRESHING:
@@ -298,123 +295,56 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 break;
 
             case R.id.tv_all_integral://全部
-                if (!TYPE_ALL.equals(Current_Type)) {
-                    Current_Type = TYPE_ALL;
-
-                    SetTitleTxt(getResources().getString(R.string.integral_title_all));
-                    lastid = "";
-                    IData(Current_Type, LOAD_INITIALIZE);
-                    mAdapter.Clearn();
-                    integral_detail_nodata_lay.setVisibility(View.GONE);
-                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                IntegralSwitch(TYPE_ALL,getResources().getString(R.string.integral_title_all));
                 break;
             case R.id.tv_system://系统赠送
-                if (!TYPE_SYSTEM.equals(Current_Type)) {
-                    Current_Type = TYPE_SYSTEM;
-                    SetTitleTxt(getResources().getString(R.string.integral_title_system1));
-                    lastid = "";
-                    IData(Current_Type, LOAD_INITIALIZE);
-                    mAdapter.Clearn();
-                    integral_detail_nodata_lay.setVisibility(View.GONE);
-                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                IntegralSwitch(TYPE_SYSTEM,getResources().getString(R.string.integral_title_system1));
                 break;
             case R.id.tv_past://每日签到
-                if (!TYPE_PAST.equals(Current_Type)) {
-                    Current_Type = TYPE_PAST;
-                    SetTitleTxt(getResources().getString(R.string.integral_title_past));
-                    lastid = "";
-                    IData(Current_Type, LOAD_INITIALIZE);
-                    mAdapter.Clearn();
-                    integral_detail_nodata_lay.setVisibility(View.GONE);
-                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                IntegralSwitch(TYPE_PAST,getResources().getString(R.string.integral_title_past));
                 break;
             case R.id.tv_invite_register://邀请注册
-                if (!TYPE_INVITE.equals(Current_Type)) {
-                    Current_Type = TYPE_INVITE;
-                    SetTitleTxt(getResources().getString(R.string.integral_title_invite));
-                    lastid = "";
-                    IData(Current_Type, LOAD_INITIALIZE);
-                    mAdapter.Clearn();
-                    integral_detail_nodata_lay.setVisibility(View.GONE);
-                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                IntegralSwitch(TYPE_INVITE,getResources().getString(R.string.integral_title_invite));
                 break;
             case R.id.tv_friend_activation://下级激活
-                if (!TYPE_ACTIVATION.equals(Current_Type)) {
-                    Current_Type = TYPE_ACTIVATION;
-                    SetTitleTxt(getResources().getString(R.string.integral_title_activation));
-                    lastid = "";
-                    IData(Current_Type, LOAD_INITIALIZE);
-                    mAdapter.Clearn();
-                    integral_detail_nodata_lay.setVisibility(View.GONE);
-                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                IntegralSwitch(TYPE_ACTIVATION,getResources().getString(R.string.integral_title_activation));
                 break;
             case R.id.tv_own_buy://我买东西
-                if (!TYPE_BUY_OWN.equals(Current_Type)) {
-                    Current_Type = TYPE_BUY_OWN;
-                    SetTitleTxt(getResources().getString(R.string.integral_title_own_buy));
-                    lastid = "";
-                    IData(Current_Type, LOAD_INITIALIZE);
-                    mAdapter.Clearn();
-                    integral_detail_nodata_lay.setVisibility(View.GONE);
-                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                IntegralSwitch(TYPE_BUY_OWN,getResources().getString(R.string.integral_title_own_buy));
                 break;
             case R.id.tv_friend_buy://Ta买商品
-                if (!TYPE_BUY_FRIEND.equals(Current_Type)) {
-                    Current_Type = TYPE_BUY_FRIEND;
-                    SetTitleTxt(getResources().getString(R.string.integral_title_friend_buy));
-                    lastid = "";
-                    IData(Current_Type, LOAD_INITIALIZE);
-                    mAdapter.Clearn();
-                    integral_detail_nodata_lay.setVisibility(View.GONE);
-                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
+                IntegralSwitch(TYPE_BUY_FRIEND,getResources().getString(R.string.integral_title_friend_buy));
                 break;
 
 
-            case R.id.tv_consume:
-                if (!TYPE_CONSUME.equals(Current_Type)) {
-                    Current_Type = TYPE_CONSUME;
-                    SetTitleTxt(getResources().getString(R.string.integral_title_concume));
-                    lastid = "";
-                    IData(Current_Type, LOAD_INITIALIZE);
-                    mAdapter.Clearn();
-                    integral_detail_nodata_lay.setVisibility(View.GONE);
-                    PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
-                }
-                popupWindow.dismiss();
-
+            case R.id.tv_consume://每日消耗
+                IntegralSwitch(TYPE_CONSUME,getResources().getString(R.string.integral_title_concume));
                 break;
             case R.id.integral_detail_nodata_lay:
                 if (CheckNet(BaseContext)) return;
-                switch (Click_Type) {
-                    case 1://跳转邀请码页面
-                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMyInviteCode.class));
-                        break;
-                    case 2://跳转购物商品
-                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
-                        break;
-                    case 3://刷新
-                        IData(Current_Type, LOAD_INITIALIZE);
-                        break;
-                }
+
+                lastid = "";
+                IData(Current_Type, LOAD_INITIALIZE);
+
 
                 break;
 
         }
 
+    }
+
+    private void IntegralSwitch(String type,String titlename){
+        if (!type.equals(Current_Type)) {
+            Current_Type = type;
+            SetTitleTxt(titlename);
+            lastid = "";
+            IData(Current_Type, LOAD_INITIALIZE);
+            mAdapter.Clearn();
+            integral_detail_nodata_lay.setVisibility(View.GONE);
+            integral_detail_list.hidefoot();
+            PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
+        }
+        popupWindow.dismiss();
     }
 
     @Override

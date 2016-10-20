@@ -92,10 +92,10 @@
     <dimen name="show_play_height">30dp</dimen>
 
     <!-- 订单管理，我的订单，采购单，总价金额字体大小 -->
-    <dimen name="order_list_total_money">18sp</dimen>
+    <dimen name="order_list_total_money">15dp</dimen>
 
     <!-- 订单管理，我的订单，采购单，运费字体大小 -->
-    <dimen name="order_list_poseage">10sp</dimen>
+    <dimen name="order_list_poseage">13sp</dimen>
 
     <!-- 订单管理，我的订单，采购单，订单编号字体大小 -->
     <dimen name="order_list_order_sn">13sp</dimen>
@@ -624,6 +624,7 @@
     <dimen name="ui_30_dip">30dp</dimen>
     <dimen name="return_point_width">60dp</dimen>
     <dimen name="integral_point_width">60dp</dimen>
+    <dimen name="commentview_address_view_height">60dp</dimen>
 
 
 </resources>

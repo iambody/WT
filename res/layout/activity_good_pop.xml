@@ -407,6 +407,7 @@
                         android:layout_weight="1"
                         android:textSize="11sp"
                         android:textColor="@color/app_gray"
+                        android:visibility="gone"
                         android:layout_height="match_parent" />
 
                     <TextView

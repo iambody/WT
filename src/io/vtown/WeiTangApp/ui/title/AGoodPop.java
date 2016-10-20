@@ -296,8 +296,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     private String fee;
     private String score;
     private String mSell_price;
-    private String c1;
-    private String c2;
+
 
     @Override
     protected void InItBaseView() {
@@ -647,6 +646,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                         pop_purchase_price.setVisibility(View.GONE);
                         ll_return_and_integral.setVisibility(View.GONE);
                         pop_purchase_kucun.setVisibility(View.VISIBLE);
+                        DownPostion = -1;
                         StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
                         break;
                     case 2:// 下边的gradview已经点击过了===》
@@ -706,6 +706,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                         pop_purchase_price.setVisibility(View.GONE);
                         ll_return_and_integral.setVisibility(View.GONE);
                         pop_purchase_kucun.setVisibility(View.VISIBLE);
+                        UpPostion = -1;
                         StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
 
                         break;
@@ -741,8 +742,6 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
         BDataGood blComment = (LastClickIsUp ? myUpAdapter : myDownAdapter)
                 .GetDataResource().get(LastClickItem);
-        c1 = blComment.getAttr_map().getC1();
-        c2 = blComment.getAttr_map().getC2();
         if (blComment != null) {
             pop_purchase_price.setVisibility(View.VISIBLE);
 //            if(TYPE_GOOD_DETAIL_BUY == ShowType && "1".equals(databean.getIs_fee())){
@@ -908,7 +907,10 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
      * 添加到购物车sssss
      */
     private void AddGoodBus() {
-
+        BDataGood blComment = (LastClickIsUp ? myUpAdapter : myDownAdapter)
+                .GetDataResource().get(LastClickItem);
+        String c1 = blComment.getAttr_map().getC1();
+        String c2 = blComment.getAttr_map().getC2();
         if (-1 == UpPostion) {
             PromptManager.ShowMyToast(BaseContext, "请选择" + c1);
             return;

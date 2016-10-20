@@ -23,4 +23,5 @@
     <dimen name="good_pop_price_store_height">80dp</dimen>
     <dimen name="return_point_width">60dp</dimen>
     <dimen name="integral_point_width">60dp</dimen>
+    <dimen name="commentview_address_view_height">60dp</dimen>
 </resources>

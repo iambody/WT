@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/commentview_address_view_height"
     android:background="@drawable/select_white_to_gray"
     android:clickable="true"
     android:focusable="true"
     android:orientation="horizontal"
-    android:padding="10dp" >
+    android:gravity="center_vertical"
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/commentview_add_iv"
@@ -20,24 +21,32 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical" >
+
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_no_address_info_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="请点击设置收货地址"
             android:textColor="@color/grey"
-            android:textSize="@dimen/comment_label_txtsize"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:textSize="@dimen/comment_label_txtsize" />
 
 
+        <LinearLayout
+            android:id="@+id/ll_address_info"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/commentview_add_name"
@@ -60,60 +69,65 @@
                     android:textColor="@color/app_gray"
                     android:textSize="@dimen/comment_label_txtsize" />
             </LinearLayout>
-            <!--
-                 <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="联系电话："
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/comment_label_txtsize" />
-
-
-
-            -->
-
-
-            <!-- </LinearLayout> -->
-        <LinearLayout
-            android:id="@+id/ll_address_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical" >
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
 
-                <!-- <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="收货地址:"
-                     android:paddingTop="5dp"
-                     android:paddingBottom="5dp"
-                     android:textColor="@color/grey"
-                     android:textSize="@dimen/comment_label_txtsize" />-->
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/commentview_add_address"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/nullstr"
-                    android:textColor="@color/grey"
-                    android:layout_gravity="center_vertical"
-                    android:textSize="@dimen/comment_label_txtsize" />
-            </LinearLayout>
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal">
 
+                    <!-- <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="收货地址:"
+                         android:paddingTop="5dp"
+                         android:paddingBottom="5dp"
+                         android:textColor="@color/grey"
+                         android:textSize="@dimen/comment_label_txtsize" />-->
+
+                    <TextView
+                        android:id="@+id/commentview_add_address"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:text="@string/nullstr"
+                        android:textColor="@color/grey"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/comment_label_txtsize" />
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
+
+        <!--
+             <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系电话："
+                android:textColor="@color/grey"
+                android:textSize="@dimen/comment_label_txtsize" />
+
+
+
+        -->
+
+
+        <!-- </LinearLayout> -->
+
     </LinearLayout>
 
     <ImageView

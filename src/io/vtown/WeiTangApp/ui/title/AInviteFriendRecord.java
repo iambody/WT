@@ -51,9 +51,10 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private View invite_friends_nodata_lay;
     private BUser bUser;
     private int page = 1;
+
     private List<BCInviteFriends> datass = new ArrayList<BCInviteFriends>();
     private InviteFriendAdapter mAdapter;
-    private int click_type = 0;
+
     private TextView tv_invite_date_current;
     private PopupWindow mPopupWindow;
     List<String> lv_list = new ArrayList<String>();
@@ -64,6 +65,19 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private final String Shop_Lv4 = "3";
     private final String Shop_Lv5 = "4";
     private final String Shop_Lv6 = "5";
+    private final String Shop_No_Activice = "";
+
+    private final int Type_All = 0;
+    private final int Type_Activites = 1;
+    private final int Type_Lv1 = 2;
+    private final int Type_Lv2 = 3;
+    private final int Type_Lv3 = 4;
+    private final int Type_Lv4 = 5;
+    private final int Type_Lv5 = 6;
+    private final int Type_Lv6 = 7;
+    private int click_type = Type_All;
+
+
 
     private String Current_Lv = Shop_All_Lv;
 
@@ -109,7 +123,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             } catch (Exception e) {
                 return;
             }
-            if(Current_Lv.equals(Shop_All_Lv)){
+            if (Current_Lv.equals(Shop_All_Lv)) {
                 mAdapter.FreshData(datass);
             }
 
@@ -126,9 +140,17 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         map.put("seller_id", bUser.getSeller_id());//"1014719"
         map.put("page", page + "");
         map.put("pagesize", Constants.PageSize + "");
-        if(!Shop_All_Lv.equals(Current_Lv)){
-            map.put("member_level",Current_Lv);
+        if (!Shop_All_Lv.equals(Current_Lv)) {
+
+            map.put("member_level", Current_Lv);
+            map.put("is_activate", "1");
+        } else {
+            if (click_type == Type_Activites) {
+                map.put("is_activate", "0");
+            }
         }
+
+
         FBGetHttpData(map, Constants.Invite_Friends, Request.Method.GET, 0, loadtype);
     }
 
@@ -139,10 +161,10 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         right_txt.setOnClickListener(this);
 
         String shop_lvs = CacheUtil.Shop_Lv_Get(BaseContext);
-        if(!StrUtils.isEmpty(shop_lvs)){
+        if (!StrUtils.isEmpty(shop_lvs)) {
             right_txt.setVisibility(View.VISIBLE);
-            lv_list = JSON.parseArray(shop_lvs,String.class);
-        }else{
+            lv_list = JSON.parseArray(shop_lvs, String.class);
+        } else {
             right_txt.setVisibility(View.GONE);
         }
     }
@@ -157,15 +179,15 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                         if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                             invite_friends_record_list.setVisibility(View.GONE);
                             invite_friends_nodata_lay.setVisibility(View.VISIBLE);
-                            invite_friends_nodata_lay.setClickable(true);
+                            invite_friends_nodata_lay.setClickable(false);
                             ShowErrorCanLoad(getString(R.string.null_invite_friend));
-                            click_type = 1;
+
 
                             mAdapter.FreshData(new ArrayList<BCInviteFriends>());
                             return;
                         }
                         datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-                        if(Shop_All_Lv.equals(Current_Lv)){
+                        if (Shop_All_Lv.equals(Current_Lv)) {
                             CacheUtil.My_Invite_Friends_Save(BaseContext, Data.getHttpResultStr());
                         }
 
@@ -244,7 +266,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             case 1:
 
                 lv_list = JSON.parseArray(Data.getHttpResultStr(), String.class);
-                CacheUtil.Shop_Lv_Save(BaseContext,Data.getHttpResultStr());
+                CacheUtil.Shop_Lv_Save(BaseContext, Data.getHttpResultStr());
                 if (lv_list.size() > 0) {
                     right_txt.setVisibility(View.VISIBLE);
                 }
@@ -255,7 +277,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
     }
 
-    private void showLvPop(View V,List<String> lv_list) {
+    private void showLvPop(View V, List<String> lv_list) {
         View view = LayoutInflater.from(BaseContext).inflate(R.layout.pop_shop_filter, null);
         TextView tv_shop_all = (TextView) view.findViewById(R.id.tv_shop_all);
         TextView tv_shop_lv1 = (TextView) view.findViewById(R.id.tv_shop_lv1);
@@ -264,6 +286,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         TextView tv_shop_lv4 = (TextView) view.findViewById(R.id.tv_shop_lv4);
         TextView tv_shop_lv5 = (TextView) view.findViewById(R.id.tv_shop_lv5);
         TextView tv_shop_lv6 = (TextView) view.findViewById(R.id.tv_shop_lv6);
+        TextView tv_shop_no_activate = (TextView) view.findViewById(R.id.tv_shop_no_activate);
 
         tv_shop_lv1.setText(lv_list.get(0));
         tv_shop_lv2.setText(lv_list.get(1));
@@ -279,6 +302,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         tv_shop_lv4.setOnClickListener(this);
         tv_shop_lv5.setOnClickListener(this);
         tv_shop_lv6.setOnClickListener(this);
+        tv_shop_no_activate.setOnClickListener(this);
 
         mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -296,7 +320,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         if (mPopupWindow != null && mPopupWindow.isShowing()) {
             mPopupWindow.dismiss();
         } else {
-            showLvPop(V,lv_list);
+            showLvPop(V, lv_list);
         }
     }
 
@@ -316,7 +340,6 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 invite_friends_nodata_lay.setVisibility(View.GONE);
                 invite_friends_nodata_lay.setVisibility(View.VISIBLE);
                 invite_friends_nodata_lay.setClickable(true);
-                click_type = 2;
                 ShowErrorCanLoad(error);
                 //invite_friends_refrash.setRefreshing(false);
                 break;
@@ -351,50 +374,48 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         switch (V.getId()) {
             case R.id.invite_friends_nodata_lay:
                 if (CheckNet(BaseContext)) return;
-                if (1 == click_type) {
-                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMyInviteCode.class));
-                }
-                if (2 == click_type) {
-                    page = 1;
-                    IData(page, LOAD_INITIALIZE);
-                }
+                page = 1;
+                IData(page, LOAD_INITIALIZE);
                 break;
 
             case R.id.right_txt:
-                if(CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
                 IPopupWindow(V);
                 break;
-
             case R.id.tv_shop_all:
-                LvSwitch(Shop_All_Lv);
+                LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends),Type_All);
                 break;
-
             case R.id.tv_shop_lv1:
-                LvSwitch(Shop_Lv1);
+                LvSwitch(Shop_Lv1, lv_list.get(0),Type_Lv1);
                 break;
             case R.id.tv_shop_lv2:
-                LvSwitch(Shop_Lv2);
+                LvSwitch(Shop_Lv2, lv_list.get(1),Type_Lv2);
                 break;
             case R.id.tv_shop_lv3:
-                LvSwitch(Shop_Lv3);
+                LvSwitch(Shop_Lv3, lv_list.get(2),Type_Lv3);
                 break;
             case R.id.tv_shop_lv4:
-                LvSwitch(Shop_Lv4);
+                LvSwitch(Shop_Lv4, lv_list.get(3),Type_Lv4);
                 break;
             case R.id.tv_shop_lv5:
-                LvSwitch(Shop_Lv5);
+                LvSwitch(Shop_Lv5, lv_list.get(4),Type_Lv5);
                 break;
             case R.id.tv_shop_lv6:
-                LvSwitch(Shop_Lv6);
+                LvSwitch(Shop_Lv6, lv_list.get(5),Type_Lv6);
+                break;
+            case R.id.tv_shop_no_activate:
+                LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends_no_activites),Type_Activites);
                 break;
         }
     }
 
-    private void LvSwitch(String switch_type){
-        if(!switch_type.equals(Current_Lv)){
+    private void LvSwitch(String switch_type, String titlename,int type) {
+        if(type != click_type){
+            click_type = type;
             Current_Lv = switch_type;
             page = 1;
-            IData(page,LOAD_INITIALIZE);
+            SetTitleTxt(titlename);
+            IData(page, LOAD_INITIALIZE);
             mAdapter.Clearn();
             invite_friends_nodata_lay.setVisibility(View.GONE);
             invite_friends_record_list.hidefoot();
@@ -571,11 +592,11 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 holder.iv_friend_lv = (ImageView) convertView.findViewById(R.id.iv_friend_lv);
                 holder.tv_friend_name = (TextView) convertView.findViewById(R.id.tv_friend_name);
                 holder.tv_friend_shop_id = (TextView) convertView.findViewById(R.id.tv_friend_shop_id);
-                holder.tv_invite_phone = (TextView) convertView.findViewById(R.id.tv_invite_phone) ;
-                holder.ll_invite_point_and_status = (LinearLayout)convertView.findViewById(R.id.ll_invite_point_and_status) ;
+                holder.tv_invite_phone = (TextView) convertView.findViewById(R.id.tv_invite_phone);
+                holder.ll_invite_point_and_status = (LinearLayout) convertView.findViewById(R.id.ll_invite_point_and_status);
                 holder.tv_lv = (TextView) convertView.findViewById(R.id.tv_lv);
                 holder.tv_lv_top = (TextView) convertView.findViewById(R.id.tv_lv_top);
-                holder.tv_invite_no_activate = (TextView)convertView.findViewById(R.id.tv_invite_no_activate) ;
+                holder.tv_invite_no_activate = (TextView) convertView.findViewById(R.id.tv_invite_no_activate);
                 holder.list_line = convertView.findViewById(R.id.list_line);
                 convertView.setTag(holder);
             } else {
@@ -583,11 +604,11 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             }
             BLInviteFriends friend = friends_datas.get(position);
             ImageLoaderUtil.Load2(friend.getAvatar(), holder.iv_friend_icon, R.drawable.error_iv2);
-            if("0".equals(friend.getIs_activate())){
+            if ("0".equals(friend.getIs_activate())) {
                 holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_putongdianpuxiaotubiao_nor));
                 holder.ll_invite_point_and_status.setVisibility(View.GONE);
                 holder.tv_invite_no_activate.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 if ("0".equals(friend.getIsstar())) {
                     holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_putongdianpuxiaotubiao_nor));
                 } else {
@@ -600,7 +621,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             StrUtils.SetTxt(holder.tv_friend_name, friend.getSeller_name());
             String shop_id = BaseContext.getResources().getString(R.string.invite_friend_shop_id);
             StrUtils.SetTxt(holder.tv_friend_shop_id, String.format(shop_id, friend.getSeller_no()));
-            StrUtils.SetTxt(holder.tv_invite_phone,friend.getPhone());
+            StrUtils.SetTxt(holder.tv_invite_phone, friend.getPhone());
             int level = Integer.parseInt(friend.getMember_level());
             switch (level) {
                 case 0:
@@ -661,7 +682,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     class FriendsHolder {
         CircleImageView iv_friend_icon;
         ImageView iv_friend_lv;
-        TextView tv_friend_name, tv_friend_shop_id, tv_lv_top, tv_lv,tv_invite_phone,tv_invite_no_activate;
+        TextView tv_friend_name, tv_friend_shop_id, tv_lv_top, tv_lv, tv_invite_phone, tv_invite_no_activate;
         View list_line;
 
         LinearLayout ll_invite_point_and_status;
