@@ -65,7 +65,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private final String Shop_Lv4 = "3";
     private final String Shop_Lv5 = "4";
     private final String Shop_Lv6 = "5";
-    private final String Shop_No_Activice = "";
+    private String Current_Lv = Shop_All_Lv;
 
     private final int Type_All = 0;
     private final int Type_Activites = 1;
@@ -78,8 +78,6 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private int click_type = Type_All;
 
 
-
-    private String Current_Lv = Shop_All_Lv;
 
     @Override
     protected void InItBaseView() {

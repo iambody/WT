@@ -900,7 +900,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
     @Override
     protected void DataError(String error, int LoadType) {
-
+        PromptManager.ShowCustomToast(BaseContext, error);
     }
 
     /**
@@ -985,7 +985,6 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         switch (ShowType) {
             case TYPE_SHOP_GOOD_MANAGER_CAIGOU:
 
-                break;
             case TYPE_GOOD_DETAIL_BUY:
 
                 this.finish();

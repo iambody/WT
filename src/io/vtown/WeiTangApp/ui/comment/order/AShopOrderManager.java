@@ -926,12 +926,13 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
             StrUtils.SetTxt(outside.tv_shop_order_nanage_order_sn_numb,
                     seller_order_sn);
             StrUtils.SetTxt(outside.tv_order_numb, seller_order_sn);
-            float total_price = Float.parseFloat(datas.get(arg0)
-                    .getGoods_price())
-                    + Float.parseFloat(datas.get(arg0).getPostage());
-            String price = String.format("%1$s元",
-                    StrUtils.SetTextForMony(total_price + ""));
-            StrUtils.SetTxt(outside.tv_good_price, price);
+//            float total_price = Float.parseFloat(datas.get(arg0)
+//                    .getGoods_price())
+//                    + Float.parseFloat(datas.get(arg0).getPostage());
+//            String price = String.format("%1$s元",
+//                    StrUtils.SetTextForMony(total_price + ""));
+//            StrUtils.SetTxt(outside.tv_good_price, price);
+            StrUtils.SetMoneyFormat(BaseContext,outside.tv_good_price,datas.get(arg0).getGoods_price(),20);
             String number = String.format("共%1$s件商品", datas.get(arg0)
                     .getNumber());
             StrUtils.SetTxt(outside.tv_goods_count_desc, number);

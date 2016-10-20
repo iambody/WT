@@ -259,9 +259,9 @@ public class ATiXian extends ATitleBase {
 			bank_list = datas.getBank_list().get(0);
 		}
 		alipay_list = datas.getAlipay_list();
-		StrUtils.SetColorsTxt(BaseContext, tixianguize_txt, R.color.app_red,
+		StrUtils.SetColorsTxt_lettersize(BaseContext, tixianguize_txt, R.color.app_fen1,
 				"提现规则:", datas.getTixinarule());
-		StrUtils.SetColorsTxt(BaseContext, tv_bank_card_limit, R.color.app_red,
+		StrUtils.SetColorsTxt_lettersize(BaseContext, tv_bank_card_limit, R.color.app_fen1,
 				"提现规则:", datas.getTixinarule());
 
 		if (alipay_list != null && !StrUtils.isEmpty(alipay_list.getAlipay())) {

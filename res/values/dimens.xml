@@ -116,10 +116,10 @@
     <dimen name="order_listview_margin">5dp</dimen>
 
     <!-- 订单管理，我的订单，采购单，商品个数字体大小 -->
-    <dimen name="order_list_good_number">15sp</dimen>
+    <dimen name="order_list_good_number">13sp</dimen>
 
     <!-- 订单管理，我的订单，采购单，"待付款"字体大小 -->
-    <dimen name="order_list_wait_pay">15sp</dimen>
+    <dimen name="order_list_wait_pay">13sp</dimen>
 
     <!-- 订单管理，我的订单，采购单，按钮margin -->
     <dimen name="order_list_button_margin">10dp</dimen>
@@ -140,7 +140,7 @@
     <dimen name="order_list_inside_price_size">13sp</dimen>
 
     <!-- 订单管理，我的订单，采购单，第二层ListView中商品总价格字体大小 -->
-    <dimen name="order_list_inside_total_price_size">15sp</dimen>
+    <dimen name="order_list_inside_total_price_size">14sp</dimen>
 
     <!-- 订单管理，我的订单，采购单，第二层ListView中商品数量字体大小 -->
     <dimen name="order_list_inside_number_size">13sp</dimen>
@@ -152,7 +152,7 @@
     <dimen name="order_list_inside_top_bottom_padding">4dp</dimen>
 
     <!-- 订单管理，我的订单，采购单，第二层ListView布局padding -->
-    <dimen name="order_list_inside_layout_padding">10dp</dimen>
+    <dimen name="order_list_inside_layout_padding">5dp</dimen>
 
     <!-- 所有页面隔断高度 -->
     <dimen name="insulate_view_height">8dp</dimen>

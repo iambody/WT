@@ -575,7 +575,30 @@ public class StrUtils {
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.setText(spsString);
     }
+    /**
+     * 进行颜色字体的混淆 默认是前边黑色后边红色
+     */
+    public static void SetColorsTxt_lettersize(Context XX, TextView textView,
+                                    int RightColor, String left, String right) {
+        String AllStr = left + right;
+        SpannableString spsString = new SpannableString(AllStr);
+        spsString
+                .setSpan(
+                        new ForegroundColorSpan(XX.getResources().getColor(
+                                RightColor)), left.length(), AllStr.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spsString.setSpan(new AbsoluteSizeSpan(DimensionPixelUtil.dip2px(XX,12f)),  left.length(), AllStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(spsString);
+    }
 
+    public static void SetMoneyFormat(Context context,TextView view,String money,int dp){
+        String s = SetTextForMony(money);
+        String[] ss = s.split("\\.");
+        String allstr = ss[0]+"."+ss[1];
+        SpannableString spsString = new SpannableString(allstr);
+        spsString.setSpan(new AbsoluteSizeSpan(DimensionPixelUtil.dip2px(context,dp)),0, ss[0].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        view.setText(spsString);
+    }
     /**
      * 进行颜色字体的混淆 默认是前边黑色后边红色
      */

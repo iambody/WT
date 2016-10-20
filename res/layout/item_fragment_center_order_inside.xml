@@ -45,7 +45,7 @@
                 android:layout_weight="1"
                 android:textSize="@dimen/order_list_inside_price_size"
                 android:text="@string/error_network"
-                android:textColor="@color/app_gray" />
+                android:textColor="@color/grey" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
