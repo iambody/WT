@@ -95,7 +95,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/shop_user_width_lay"
-                    android:background="@color/white">
+                    android:background="@color/app_fen">
 
                     <ImageView
                         android:id="@+id/fragment_main_iv_shop_cover"
@@ -103,7 +103,8 @@
                         android:layout_height="@dimen/shop_user_width_lay"
                         android:clickable="true"
                         android:focusable="true"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:background="@color/app_fen"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -159,21 +160,16 @@
                     </LinearLayout>
                 </RelativeLayout>
                 <!-- 最新的用户头像 和个性签名布局******  -->
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/ui_10_dip"
-                    android:background="@color/app_bg"/>
 
-                <include
-                    android:id="@+id/fragment_main_tab_shop_all_income_lay"
-                    layout="@layout/commentview_txtarrow"/>
+
+
                 <!-- 数量分析 -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/ui_10_dip"
-                    android:layout_marginTop="@dimen/ui_10_dip"
+
                     android:background="@drawable/shape_shop_circular_bg"
                     android:orientation="vertical">
 
@@ -257,7 +253,13 @@
                 </LinearLayout>
                 <!-- 数量分析** -->
                 <!-- 团队和下级的布局 -->
-
+                <include
+                    android:id="@+id/fragment_main_tab_shop_all_income_lay"
+                    layout="@layout/commentview_txtarrow"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_size"
+                    android:src="@color/app_line1"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

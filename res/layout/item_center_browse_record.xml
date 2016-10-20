@@ -17,6 +17,7 @@
                 android:id="@+id/iv_center_browse_record_icon"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:scaleType="fitXY"
                  />
         </RelativeLayout>
 

@@ -2,6 +2,7 @@ package io.vtown.WeiTangApp.ui.title.loginregist;
 
 import java.util.HashMap;
 
+import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
 import android.content.Intent;
@@ -16,7 +17,9 @@ import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -49,6 +52,7 @@ public class AInviteCode extends ATitleBase {
         setContentView(R.layout.activity_invitecode);
         IsFromCenter = getIntent().getBooleanExtra("isfromcenter", false);
         mBUser = Spuit.User_Get(BaseContext);
+
         IBase();
     }
     private void IBase() {

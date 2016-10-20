@@ -89,8 +89,8 @@
 
             <ImageView
                 android:id="@+id/item_show_oneiv"
-                android:layout_width="@dimen/show_oneiv_height"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/show_oneiv_height"
                 android:adjustViewBounds="true"
                 android:clickable="true"
                 android:focusable="true"

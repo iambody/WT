@@ -65,11 +65,12 @@
             android:layout_height="@dimen/line_size"
             android:src="@color/app_line"/>
         <TextView
+            android:id="@+id/new_bindcode_connect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/ui_10_dip"
 
-            android:text="@string/bindcode_down_txt"
+            android:text="@string/loginin_bindcode_down_txt"
             android:textSize="@dimen/ui_10_dip"
             android:background="@color/white"
             android:textColor="@color/gray"/>

@@ -13,7 +13,7 @@ public class BNewHome extends BBase {
 //    private String cover;//":"http://fs.v-town.cc/DefaultSellerCover.jpg",
 //    private String avatar;//":"http://fs.v-town.cc/DefaultSellerAvatar.jpg",
     private int member_level;//等级":0,
-    private String integral;//积分":1000,
+    private int integral;//积分":1000,
     //    private int isstar;//是否是明星店铺":0,
     private String rebate;//返佣金额":"0.00",
     private int is_activate;//是否激活":0,
@@ -62,11 +62,11 @@ public class BNewHome extends BBase {
         this.member_level = member_level;
     }
 
-    public String getIntegral() {
+    public int getIntegral() {
         return integral;
     }
 
-    public void setIntegral(String integral) {
+    public void setIntegral(int integral) {
         this.integral = integral;
     }
 

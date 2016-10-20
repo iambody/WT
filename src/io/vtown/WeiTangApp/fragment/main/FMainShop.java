@@ -64,7 +64,7 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     //    private SecondStepView fragment_main_shop_load_head_iv;
 //    private AnimationDrawable secondAnimation;
     //背景
-    private ImageView fragment_main_iv_shop_cover;
+//    private ImageView fragment_main_iv_shop_cover;
     //头像
     private RoundAngleImageView fragment_main_tab_shop_iv;
     //店铺名字
@@ -108,7 +108,7 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
         fragment_shop_refrash .setColorSchemeResources(R.color.app_fen,R.color.app_fen1,R.color.app_fen2,R.color.app_fen3);
 //        fragment_main_shop_out_scrollview = (PullScrollView) BaseView.findViewById(R.id.fragment_main_shop_out_scrollview);
 //        fragment_main_shop_load_head_iv = (SecondStepView) BaseView.findViewById(R.id.fragment_main_shop_load_head_iv);
-        fragment_main_iv_shop_cover = (ImageView) BaseView.findViewById(R.id.fragment_main_iv_shop_cover);
+//        fragment_main_iv_shop_cover = (ImageView) BaseView.findViewById(R.id.fragment_main_iv_shop_cover);
         fragment_main_tab_shop_iv = (RoundAngleImageView) BaseView.findViewById(R.id.fragment_main_tab_shop_iv);
         fragment_main_tab_shop_name = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_name);
         fragment_main_tab_shop_sign = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_sign);
@@ -117,7 +117,7 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
 //        fragment_main_tab_shop_iv.setBorderWidth(10);
 //        fragment_main_tab_shop_iv.setBorderColor(getResources().getColor(R.color.transparent6));
         fragment_main_tab_shop_iv.setOnClickListener(this);
-        fragment_main_iv_shop_cover.setOnClickListener(this);
+//        fragment_main_iv_shop_cover.setOnClickListener(this);
         //累计收入
         fragment_main_tab_shop_all_income_lay = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_all_income_lay);
         //总收入
@@ -191,9 +191,9 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
 //            fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
 //                    .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
 //        } else {
-            ImageLoaderUtil.LoadGaosi(BaseContext,
-                    StrUtils.NullToStr(myBShop.getCover()), fragment_main_iv_shop_cover,
-                    R.color.app_fen, 1);
+//            ImageLoaderUtil.LoadGaosi(BaseContext,
+//                    StrUtils.NullToStr(myBShop.getCover()), fragment_main_iv_shop_cover,
+//                    R.color.app_fen, 1);
 
 //        }
 
@@ -247,21 +247,21 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
 
 
                     break;
-                case BMessage.Tage_Shop_data_background_change:
-//			ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
-//					.getCover(), iv_shop_cover, R.drawable.item_shangji_iv, 0);
-//                    File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
-//                    SdCardUtils.delFile(CoverFile.toString());
-//                    if (CoverFile.exists()) {// 已经存在了
-//                        fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
-//                                .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
-//                    } else {
-                        ImageLoaderUtil.LoadGaosi(BaseContext,
-                                StrUtils.NullToStr(Spuit.Shop_Get(BaseContext).getCover()), fragment_main_iv_shop_cover,
-                                R.color.app_fen, 1);
-
-//                    }
-                    break;
+//                case BMessage.Tage_Shop_data_background_change:
+////			ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
+////					.getCover(), iv_shop_cover, R.drawable.item_shangji_iv, 0);
+////                    File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
+////                    SdCardUtils.delFile(CoverFile.toString());
+////                    if (CoverFile.exists()) {// 已经存在了
+////                        fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
+////                                .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
+////                    } else {
+//                        ImageLoaderUtil.LoadGaosi(BaseContext,
+//                                StrUtils.NullToStr(Spuit.Shop_Get(BaseContext).getCover()), fragment_main_iv_shop_cover,
+//                                R.color.app_fen, 1);
+//
+////                    }
+//                    break;
 
                 default:
                     break;

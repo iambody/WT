@@ -43,7 +43,7 @@ public class WaveView extends View {
      * |                        |  |
      * +------------------------+__|____
      */
-    private static final float DEFAULT_AMPLITUDE_RATIO = 0.05f;
+    private static final float DEFAULT_AMPLITUDE_RATIO = 0.2f;
     private static final float DEFAULT_WATER_LEVEL_RATIO = 0.5f;
     private static final float DEFAULT_WAVE_LENGTH_RATIO = 1.0f;
     private static final float DEFAULT_WAVE_SHIFT_RATIO = 0.0f;
