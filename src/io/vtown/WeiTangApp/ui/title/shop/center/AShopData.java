@@ -196,17 +196,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 
     private void CreatQ(final String seller_url, final String path2) {
 
-//		File mFile = new File(path2);
-//		if (mFile.exists()) {
-//			// 如果存在就直接显示
-//			qrBitmap = BitmapFactory.decodeFile(path2);
-//			shop_qr_code_iv.setImageBitmap(qrBitmap);
-//			shop_qr_code_iv.setVisibility(View.VISIBLE);
-//
-//			QrscaleWidth = 2;
-//			QrscaleHeight = (screenHeight * 2 / screenWidth);
-//			return;
-//		}
+
         // 如果不存在就进行吹
 
         new Thread(new Runnable() {
@@ -474,16 +464,14 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == 100 && resultCode == RESULT_CODE) {
             String result = data.getStringExtra("content");
-
             StrUtils.SetTxt(tv_conment1, result);
+            StrUtils.SetTxt(shop_data_name, result);
         }
 
         if (requestCode == 101 && resultCode == RESULT_CODE) {
             String result = data.getStringExtra("content");
-
             StrUtils.SetTxt(tv_conment2, result);
         }
 
@@ -684,58 +672,9 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
         mBaseStr.getData(myUrl, map, Method.PUT);
     }
 
-    /**
-     * 把图片和视频对象放到ResourcesList
-     *
-     * @param tempFile2
-     */
-//	private void AddToResourcesList(File tempFile2) {
-//		if (tempFile2 != null) {
-//			BLComment blComment = null;
-//			byte[] file2byte = File2byte(tempFile2);
-//			String pathStr = tempFile2.getAbsolutePath();
-//
-//			Bitmap bitmap = decodeUriAsBitmap(Uri.fromFile(tempFile2));
-//			File file = tempFile2.getAbsoluteFile();
-//			blComment = new BLComment(bitmap, file, pathStr, file2byte);
-//			blComment.setPicBitmap(bitmap);
-//			blComment.setPicFile(file);
-//
-//			blComment.setPicFileStr(pathStr);
-//			blComment.setFileByte(file2byte);
-//
-//			if (!ResourcesList.contains(blComment)) {
-//				ResourcesList.add(blComment);
-//			}
-//		}
-//	}
 
-    /**
-     * File转成byte[]
-     *
-     * @param tempFile2
-     * @return
-     */
-    public byte[] File2byte(File tempFile2) {
-        byte[] buffer = null;
-        try {
-            FileInputStream fis = new FileInputStream(tempFile2);
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            byte[] b = new byte[1024];
-            int n;
-            while ((n = fis.read(b)) != -1) {
-                bos.write(b, 0, n);
-            }
-            fis.close();
-            bos.close();
-            buffer = bos.toByteArray();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return buffer;
-    }
+
+
 
     @Override
     public boolean onLongClick(View v) {

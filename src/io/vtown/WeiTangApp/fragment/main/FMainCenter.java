@@ -269,6 +269,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         }
     }
 
+   
 
     public void MyResume() {
         int ShowBindTitle;

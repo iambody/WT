@@ -128,6 +128,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     //判断是否邀请过好友 没有邀请过就直接跳转到邀请界面
     private boolean IsHaveXiaji;
 
+    private boolean IShow = true;
+
     @Override
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_newmainhome, null);
@@ -423,14 +425,40 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     @Override
     public void onResume() {
         super.onResume();
-        mWaveHelper.start();
-        fragmentNewhomeBanner.startImageCycle();
+        if (IShow) {
+            Log.i("homewave", "显示");
+            mWaveHelper.start();
+            fragmentNewhomeBanner.startImageCycle();
+        }
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        fragmentNewhomeBanner.pushImageCycle();
+        if (IShow) {
+            Log.i("homewave", "隐藏");
+            mWaveHelper.cancel();
+            fragmentNewhomeBanner.pushImageCycle();
+        }
+
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            Log.i("homewave", "隐藏");
+            mWaveHelper.cancel();
+            fragmentNewhomeBanner.pushImageCycle();
+            IShow = false;
+        } else {
+            Log.i("homewave", "显示");
+            mWaveHelper.start();
+            fragmentNewhomeBanner.startImageCycle();
+            IShow = true;
+        }
+
     }
 
     @Override
@@ -719,7 +747,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     @Override
     public void onRefresh() {
         INetData(REFRESHING);
-        fragmentNewhomeSrollviw.setRefreshing(false);
+//        fragmentNewhomeSrollviw.setRefreshing(false);
     }
 
 

@@ -181,7 +181,6 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 
 			Intent intent = new Intent();
 			intent.putExtra("content", content);
-
 			setResult(RESULT_CODE, intent);
 
 			PromptManager.ShowMyToast(BaseContext, "修改成功");
