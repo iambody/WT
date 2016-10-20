@@ -81,6 +81,14 @@
         <item name="android:layout_weight">1</item>
         <item name="android:padding">6dp</item>
     </style>
+    <style name="fragment_shop_up_lay_txt_pading_lay">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/fragment_shop_up_lay_up_textsize</item>
+        <item name="android:paddingTop">@dimen/fragment_shop_up_lay_txt_pading</item>
+        <item name="android:paddingBottom">@dimen/fragment_shop_up_lay_txt_pading</item>
+    </style>
     <!-- 首页图片 -->
     <style name="home_good">
         <item name="android:layout_width">wrap_content</item>
@@ -378,4 +386,5 @@
         <item name="android:background">@color/app_fen2</item>
     </style>-->
     <!-- <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>-->
+    <dimen name="fragment_shop_up_lay_up_textsize">22dp</dimen>
 </resources>

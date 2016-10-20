@@ -107,7 +107,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 if (BgAlpha < 0) BgAlpha = 0;
             }
             Log.i("center", "色值==》" + BgAlpha);
-            maintab_center_cover.getBackground().setAlpha(BgAlpha);
+            maintab_center_cover.getBackground().mutate().setAlpha(BgAlpha);
             super.handleMessage(msg);
         }
     };
@@ -149,16 +149,6 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 //        maintab_center_myiv.setOnClickListener(this);
         maintab_center_myiv_lay.setOnClickListener(this);
 
-//        //图片处理
-//        if (CenterCoverFile.exists()) {
-//            maintab_center_cover.setImageBitmap(BitmapFactory
-//                    .decodeFile(ImagePathConfig.CenterCoverPath(BaseContext)));
-//        } else {
-//            ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
-//                    .getAvatar(), maintab_center_cover, R.drawable.item_shangji_iv, 2);
-//        }
-//        ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
-//                maintab_center_myiv, R.drawable.error_iv2);
 
         ImageLoaderUtil.Load2(JSON.parseObject( CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getSellerinfo().getAvatar(),
                 maintab_center_myiv, R.drawable.error_iv2);
@@ -201,20 +191,12 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         int messageType = mymessage.getMessageType();
         BShop myBShop = Spuit.Shop_Get(BaseContext);
         switch (messageType) {
-            case BMessage.Tage_Main_To_ShowGaoSi:
-//                    if (!StrUtils.isEmpty(myBShop.getCover()))
-//                        ImageLoaderUtil.LoadGaosi(BaseContext,
-//                                Spuit.Shop_Get(BaseContext).getAvatar(), maintab_center_cover,
-//                                R.drawable.item_shangji_iv, 2);
 
 
             case BMessage.Tage_Shop_data_cover_change:
                 if (!StrUtils.isEmpty(myBShop.getAvatar())) {
                     ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
                             maintab_center_myiv, R.drawable.testiv);
-//                        ImageLoaderUtil.LoadGaosi(BaseContext,
-//                                Spuit.Shop_Get(BaseContext).getAvatar(), maintab_center_cover,
-//                                R.drawable.error_iv1, 2);
                 }
                 break;
             case BMessage.Tage_Shop_data_shopname_change:
@@ -270,7 +252,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 timer = null;
             }
             BgAlpha = 254;
-            maintab_center_cover.getBackground().setAlpha(BgAlpha);
+            maintab_center_cover.getBackground().mutate().setAlpha(BgAlpha);
         } else {
 //            if (timer == null) {
             timer = new Timer();
@@ -287,15 +269,6 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-//        if (isVisibleToUser) {
-//            MyResume();
-//        } else {
-//            //相当于Fragment的onPause
-//        }
-    }
 
     public void MyResume() {
         int ShowBindTitle;
@@ -308,10 +281,6 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         }
         SetItemContent(maintab_center_invite_code, ShowBindTitle,
                 R.drawable.center_iv3);
-//        if (StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getAvatar())
-//                && StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getId())) {
-//            IData(INITIALIZE);
-//        }
     }
 
     @Override
@@ -319,49 +288,9 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         super.onResume();
     }
 
-    /**
-     * 获取商铺的信息
-     */
-//    private void IData(int Type) {
-//        SetTitleHttpDataLisenter(this);
-//        HashMap<String, String> map = new HashMap<String, String>();
-//        map.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());
-//        FBGetHttpData(map, Constants.MyShop, Request.Method.GET, 0, Type);
-//    }
+
     @Override
     public void getResult(int Code, String Msg, BComment Data) {
-//        {
-//            if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-//                onError(Msg, Data.getHttpLoadType());
-//                return;
-//            }
-//
-//            BMyShop mBShop = new BMyShop();
-//            mBShop = JSON.parseObject(Data.getHttpResultStr(), BMyShop.class);
-//            BShop MyBShop = mBShop.getBase();
-//            MyBShop.setSubCounter(mBShop.getSubCounter());
-//            MyBShop.setTeamCounter(mBShop.getTeamCounter());
-//            MyBShop.setTodayVisitor(mBShop.getTodayVisitor());
-//            MyBShop.setTodayIncome(mBShop.getTodayIncome());
-//            MyBShop.setTodaySales(mBShop.getTodaySales());
-//            MyBShop.setTotalIncome(mBShop.getTotalIncome());
-//            Spuit.Shop_Save(BaseContext, MyBShop);
-//            ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
-//                    maintab_center_myiv, R.drawable.testiv);
-//
-//            // File CenterCoverFile = new
-//            // File(ImagePathConfig.CenterCoverPath(BaseContext));
-//            if (CenterCoverFile.exists()) {
-//                maintab_center_cover.setImageBitmap(BitmapFactory
-//                        .decodeFile(ImagePathConfig.CenterCoverPath(BaseContext)));
-//            } else {
-//                ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
-//                        .getAvatar(), maintab_center_cover, R.drawable.item_shangji_iv, 2);
-//            }
-//
-//            StrUtils.SetTxt(maintab_center_myname, Spuit.Shop_Get(BaseContext)
-//                    .getSeller_name());
-//        }
     }
 
     @Override
@@ -371,8 +300,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        BgAlpha = 254;
-        maintab_center_cover.getBackground().setAlpha(BgAlpha);
+
         if (timer != null) {// 停止timer
             timer.cancel();
             timer = null;

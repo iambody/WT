@@ -66,11 +66,11 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     //背景
 //    private ImageView fragment_main_iv_shop_cover;
     //头像
-    private RoundAngleImageView fragment_main_tab_shop_iv;
+//    private RoundAngleImageView fragment_main_tab_shop_iv;
     //店铺名字
     private TextView fragment_main_tab_shop_name;
     //店铺描述
-    private TextView fragment_main_tab_shop_sign;
+//    private TextView fragment_main_tab_shop_sign;
     //累计收入的view
     private View fragment_main_tab_shop_all_income_lay;
     private TextView All_InCome;
@@ -100,25 +100,19 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     }
 
 
-
     private void IBaseView() {
         fragment_shop_refrash = (RefreshLayout) BaseView.findViewById(R.id.fragment_shop_refrash);
         fragment_shop_refrash.setCanLoadMore(false);
         fragment_shop_refrash.setOnRefreshListener(this);
-        fragment_shop_refrash .setColorSchemeResources(R.color.app_fen,R.color.app_fen1,R.color.app_fen2,R.color.app_fen3);
-//        fragment_main_shop_out_scrollview = (PullScrollView) BaseView.findViewById(R.id.fragment_main_shop_out_scrollview);
-//        fragment_main_shop_load_head_iv = (SecondStepView) BaseView.findViewById(R.id.fragment_main_shop_load_head_iv);
-//        fragment_main_iv_shop_cover = (ImageView) BaseView.findViewById(R.id.fragment_main_iv_shop_cover);
-        fragment_main_tab_shop_iv = (RoundAngleImageView) BaseView.findViewById(R.id.fragment_main_tab_shop_iv);
+        fragment_shop_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+//        fragment_main_tab_shop_iv = (RoundAngleImageView) BaseView.findViewById(R.id.fragment_main_tab_shop_iv);
         fragment_main_tab_shop_name = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_name);
-        fragment_main_tab_shop_sign = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_sign);
+//        fragment_main_tab_shop_sign = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_sign);
 
 //设置头像的border
 //        fragment_main_tab_shop_iv.setBorderWidth(10);
 //        fragment_main_tab_shop_iv.setBorderColor(getResources().getColor(R.color.transparent6));
-        fragment_main_tab_shop_iv.setOnClickListener(this);
-//        fragment_main_iv_shop_cover.setOnClickListener(this);
-        //累计收入
+//        fragment_main_tab_shop_iv.setOnClickListener(this);
         fragment_main_tab_shop_all_income_lay = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_all_income_lay);
         //总收入
         All_InCome = (TextView) fragment_main_tab_shop_all_income_lay.findViewById(R.id.comment_txtarrow_content);
@@ -184,18 +178,9 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     private void ShowView(BShop myBShop) {
         if (StrUtils.isEmpty(myBShop.getSeller_name()))// 没有缓存数据
             return;
-        ImageLoaderUtil.Load2(StrUtils.NullToStr(myBShop.getAvatar()),
-                fragment_main_tab_shop_iv, R.drawable.testiv);
-//        File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
-//        if (CoverFile.exists()) {// 已经存在了
-//            fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
-//                    .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
-//        } else {
-//            ImageLoaderUtil.LoadGaosi(BaseContext,
-//                    StrUtils.NullToStr(myBShop.getCover()), fragment_main_iv_shop_cover,
-//                    R.color.app_fen, 1);
+//        ImageLoaderUtil.Load2(StrUtils.NullToStr(myBShop.getAvatar()),
+//                fragment_main_tab_shop_iv, R.drawable.testiv);
 
-//        }
 
         StrUtils.SetTxt(fragment_main_tab_shop_today_income,
                 StrUtils.SetTextForMony(myBShop.getTodayIncome()));
@@ -207,65 +192,25 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
         // tab_shop_name = (TextView) findViewById(R.id.tab_shop_name);
         // tab_shop_sign
         StrUtils.SetTxt(fragment_main_tab_shop_name, myBShop.getSeller_name());
-        StrUtils.SetTxt(
-                fragment_main_tab_shop_sign,
-                StrUtils.isEmpty(myBShop.getIntro()) ? "您还未描述店铺" : myBShop
-                        .getIntro());
+//        StrUtils.SetTxt(
+//                fragment_main_tab_shop_sign,
+//                StrUtils.isEmpty(myBShop.getIntro()) ? "您还未描述店铺" : myBShop
+//                        .getIntro());
         StrUtils.SetTxt(All_InCome,
                 StrUtils.SetTextForMony(myBShop.getTotalIncome()) + "元");
     }
 
     public void OnMainTabShop(BMessage myMessage) {
+        int messageType = myMessage.getMessageType();
+        switch (messageType) {
+            case BMessage.Tage_Shop_data_shopname_change:
+                StrUtils.SetTxt(fragment_main_tab_shop_name, Spuit.Shop_Get(BaseContext)
+                        .getSeller_name());
+                break;
 
-
-            int messageType = myMessage.getMessageType();
-
-            switch (messageType) {
-                case BMessage.Tage_Main_To_ShowGaoSi:
-                    if (!StrUtils.isEmpty(myBShop.getCover()))
-                        ImageLoaderUtil.LoadGaosi(BaseContext, myBShop.getCover(),
-                                fragment_main_tab_shop_iv, R.color.app_fen, 1);
-                    break;
-                case BMessage.Tage_Shop_data_shopname_change:
-
-                    StrUtils.SetTxt(fragment_main_tab_shop_name, Spuit.Shop_Get(BaseContext)
-                            .getSeller_name());
-
-                    break;
-                case BMessage.Tage_Shop_data_desc_change:
-                    StrUtils.SetTxt(fragment_main_tab_shop_sign, Spuit.Shop_Get(BaseContext)
-                            .getIntro());
-
-                    break;
-                case BMessage.Tage_Shop_data_cover_change:
-                    ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),
-                            fragment_main_tab_shop_iv, R.drawable.testiv);
-
-                    ImageLoaderUtil.LoadGaosi(BaseContext,
-                            Spuit.Shop_Get(BaseContext).getAvatar(), new ImageView(BaseContext),
-                            R.drawable.error_iv1, 2);
-
-
-                    break;
-//                case BMessage.Tage_Shop_data_background_change:
-////			ImageLoaderUtil.LoadGaosi(BaseContext, Spuit.Shop_Get(BaseContext)
-////					.getCover(), iv_shop_cover, R.drawable.item_shangji_iv, 0);
-////                    File CoverFile = new File(ImagePathConfig.ShopCoverPath(BaseContext));
-////                    SdCardUtils.delFile(CoverFile.toString());
-////                    if (CoverFile.exists()) {// 已经存在了
-////                        fragment_main_iv_shop_cover.setImageBitmap(BitmapFactory
-////                                .decodeFile(ImagePathConfig.ShopCoverPath(BaseContext)));
-////                    } else {
-//                        ImageLoaderUtil.LoadGaosi(BaseContext,
-//                                StrUtils.NullToStr(Spuit.Shop_Get(BaseContext).getCover()), fragment_main_iv_shop_cover,
-//                                R.color.app_fen, 1);
-//
-////                    }
-//                    break;
-
-                default:
-                    break;
-            }
+            default:
+                break;
+        }
 
     }
 
@@ -312,7 +257,6 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     }
 
 
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -327,15 +271,15 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fragment_main_tab_shop_iv://跳转到我的店铺板块
-            case R.id.fragment_main_iv_shop_cover:
-                if (!StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getSeller_name())) {// 已经获取数据
-                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseContext, AShopData.class));
-                } else {// 未获取数据 开始请求
-                    IData(INITIALIZE);
-                }
-                break;
+//            case R.id.fragment_main_tab_shop_iv://跳转到我的店铺板块
+////            case R.id.fragment_main_iv_shop_cover:
+//                if (!StrUtils.isEmpty(Spuit.Shop_Get(BaseContext).getSeller_name())) {// 已经获取数据
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                            BaseContext, AShopData.class));
+//                } else {// 未获取数据 开始请求
+//                    IData(INITIALIZE);
+//                }
+//                break;
             case R.id.fragment_main_tab_shop_all_income_lay://累计收入
                 boolean isLogin_RenZheng_Set = Spuit
                         .IsLogin_RenZheng_Set(BaseContext);

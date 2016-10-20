@@ -625,6 +625,9 @@
     <dimen name="return_point_width">60dp</dimen>
     <dimen name="integral_point_width">60dp</dimen>
     <dimen name="commentview_address_view_height">60dp</dimen>
+    <dimen name="fragment_up_lay_height">100dp</dimen>
+    <dimen name="fragment_up_lay_margintop_height">60dp</dimen>
+    <dimen name="fragment_shop_up_lay_txt_pading">12dp</dimen>
 
 
 </resources>
