@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
     <!-- 修改、发货、修改订单按钮的背景 -->
     
-    <corners android:radius="0dp"/>
+    <corners android:radius="2dp"/>
     <solid android:color="@color/white" />
     
      <stroke

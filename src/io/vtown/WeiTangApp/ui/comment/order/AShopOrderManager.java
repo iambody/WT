@@ -932,7 +932,8 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
 //            String price = String.format("%1$s元",
 //                    StrUtils.SetTextForMony(total_price + ""));
 //            StrUtils.SetTxt(outside.tv_good_price, price);
-            StrUtils.SetMoneyFormat(BaseContext,outside.tv_good_price,datas.get(arg0).getGoods_price(),20);
+            int total_price = Integer.parseInt(datas.get(arg0).getGoods_price())+Integer.parseInt(datas.get(arg0).getPostage());
+            StrUtils.SetMoneyFormat(BaseContext,outside.tv_good_price,total_price+"",17);
             String number = String.format("共%1$s件商品", datas.get(arg0)
                     .getNumber());
             StrUtils.SetTxt(outside.tv_goods_count_desc, number);
@@ -1183,7 +1184,7 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
 
                 StrUtils.SetTxt(inside.tv_order_manage_good_title,
                         data.get(arg0).getGoods_name());
-                String goods_price = String.format("%1$s元", StrUtils
+                String goods_price = String.format("￥%1$s", StrUtils
                         .SetTextForMony(data.get(arg0).getGoods_price()));
                 StrUtils.SetTxt(inside.tv_order_manage_good_price, goods_price);
 

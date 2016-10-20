@@ -8,17 +8,21 @@
         android:id="@+id/tv_purchase_order_no_pay_seller_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="KOBE"
-        android:textColor="@color/slategrey"
-        android:textSize="@dimen/comment_label_txtsize" />
+        android:textColor="@color/grey"
+        android:textSize="@dimen/order_list_inside_price_size" />
 
-    <View style="@style/line_left_right" />
+
 
     <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
         android:id="@+id/item_fragment_purchase_order_no_pay_inside"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@null" />
+        android:dividerHeight="3dp"
+        android:divider="@color/white" />
 
 </LinearLayout>

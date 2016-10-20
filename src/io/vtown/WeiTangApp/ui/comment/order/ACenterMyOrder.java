@@ -829,9 +829,12 @@ public class ACenterMyOrder extends ATitleBase implements
                     String.format("共%1$s件商品", data.getNumber()));
             // float total_price = Float.parseFloat(data.getGoods_price())
             // + Float.parseFloat(data.getPostage());
-            StrUtils.SetTxt(myItem.item_fragment_center_order_allmoney, String
-                    .format("%1$s元", StrUtils.SetTextForMony(data
-                            .getOrder_total_price())));
+//            StrUtils.SetTxt(myItem.item_fragment_center_order_allmoney, String
+//                    .format("%1$s元", StrUtils.SetTextForMony(data
+//                            .getOrder_total_price())));
+
+            StrUtils.SetMoneyFormat(BaseContext,myItem.item_fragment_center_order_allmoney,data.getOrder_total_price(),17);
+
             float postageF = Float.parseFloat(data.getPostage());
             StrUtils.SetTxt(
                     myItem.item_fragment_center_order_postage,
@@ -1219,10 +1222,13 @@ public class ACenterMyOrder extends ATitleBase implements
             // float total_price =
             // Float.parseFloat(datas.get(position).getOrder_total_price())
             // + Float.parseFloat(datas.get(position).getPostage_money());
-            StrUtils.SetTxt(
-                    centerOrderNoPay.item_fragment_center_order_no_pay_allmoney,
-                    String.format("%1$s元", StrUtils.SetTextForMony(datas.get(
-                            position).getOrder_total_price())));
+//            StrUtils.SetTxt(
+//                    centerOrderNoPay.item_fragment_center_order_no_pay_allmoney,
+//                    String.format("%1$s元", StrUtils.SetTextForMony(datas.get(
+//                            position).getOrder_total_price())));
+
+            StrUtils.SetMoneyFormat(BaseContext,centerOrderNoPay.item_fragment_center_order_no_pay_allmoney,datas.get(
+                    position).getOrder_total_price(),17);
             float postage_moneyF = Float.parseFloat(datas.get(position)
                     .getPostage_money());
             StrUtils.SetTxt(

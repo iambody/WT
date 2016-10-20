@@ -594,7 +594,7 @@ public class StrUtils {
     public static void SetMoneyFormat(Context context,TextView view,String money,int dp){
         String s = SetTextForMony(money);
         String[] ss = s.split("\\.");
-        String allstr = ss[0]+"."+ss[1];
+        String allstr = ss[0]+"."+ss[1]+"元";
         SpannableString spsString = new SpannableString(allstr);
         spsString.setSpan(new AbsoluteSizeSpan(DimensionPixelUtil.dip2px(context,dp)),0, ss[0].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         view.setText(spsString);

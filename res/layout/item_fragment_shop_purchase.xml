@@ -9,7 +9,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/order_list_txt_padding"
         android:background="@drawable/shape_shopmanger_circular_bg"
         android:orientation="vertical" >
 
@@ -21,7 +20,10 @@
             android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/order_list_outside_layout_padding" >
+            android:paddingBottom="6dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="6dp" >
 
             <TextView
                 android:id="@+id/fragment_shop_purchase_shopname"
@@ -30,7 +32,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/comment_label_txtsize"
+                android:textSize="@dimen/order_list_inside_price_size"
                 android:textStyle="bold" />
 
             <TextView
@@ -66,7 +68,7 @@
                 android:textColor="@color/app_gray"
                 android:textSize="@dimen/order_list_button_txt"
                 android:visibility="gone" />
-            
+
             <TextView
                 android:id="@+id/fragment_purchase_order_is_delay"
                 android:layout_width="wrap_content"
@@ -125,7 +127,7 @@
                 android:visibility="gone" />
         </LinearLayout>
 
-        <View style="@style/line_left_right" />
+        <View style="@style/line1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,19 +141,20 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:text="订单编号："
-                android:textColor="@color/slategrey" 
-                android:textSize="@dimen/comment_label_txtsize" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/order_list_inside_price_size"
+                android:id="@+id/textView2" />
 
             <TextView
                 android:id="@+id/tv_purchase_seller_order_sn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nullstr"
-                android:textColor="@color/slategrey" 
-                android:textSize="@dimen/comment_label_txtsize" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/order_list_inside_price_size" />
         </LinearLayout>
 
-        <View style="@style/line_left_right" />
+
 
         <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
             android:id="@+id/item_fragment_shop_purchase_ls"
@@ -160,13 +163,17 @@
             android:divider="@null" />
         <!-- 下部分的Title -->
 
-       <View style="@style/line_left_right" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:padding="@dimen/order_list_outside_layout_padding" >
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/item_fragment_shop_purchase_allnum"
@@ -176,13 +183,15 @@
                 android:layout_weight="1"
                 android:text="共四件产品"
                 android:textSize="@dimen/order_list_good_number"
+                android:gravity="right"
                 android:textColor="@color/grey" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="总价："
+                android:text="合计："
+                android:layout_marginLeft="10dp"
                 android:textSize="@dimen/order_list_wait_pay"
                 android:textColor="@color/grey" />
 
@@ -192,6 +201,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/app_fen"
+                android:layout_marginLeft="3dp"
                 android:textSize="@dimen/order_list_total_money" />
 
             <TextView
@@ -199,8 +209,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
                 android:text="@string/nullstr"
-                android:textColor="@color/app_fen"
+                android:textColor="@color/grey"
                 android:textSize="@dimen/order_list_poseage" />
         </LinearLayout>
     </LinearLayout>

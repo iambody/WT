@@ -42,11 +42,23 @@
 
             <TextView
                 android:id="@+id/tv_order_manage_good_title"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/nullstr"
                 android:textSize="@dimen/order_list_inside_price_size"
                 android:textColor="@color/grey" />
+            <TextView
+                android:id="@+id/tv_order_manage_good_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/nullstr"
+                android:textColor="@color/salmon"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:textSize="@dimen/order_list_inside_price_size" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -54,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:paddingTop="@dimen/order_list_inside_layout_padding" >
 
             <TextView
@@ -70,6 +83,16 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/app_gray"
                 android:textSize="@dimen/order_list_inside_price_size" />
+            <TextView
+                android:id="@+id/tv_order_manage_good_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_gray"
+
+                android:gravity="right"
+                android:textSize="@dimen/order_list_inside_number_size" />
+
         </LinearLayout>
 
 
@@ -81,31 +104,16 @@
         android:orientation="vertical"
         >
 
-        <TextView
-            android:id="@+id/tv_order_manage_good_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:text="@string/nullstr"
-            android:textColor="@color/salmon"
-            android:textStyle="bold"
-            android:gravity="right"
-            android:textSize="@dimen/order_list_inside_price_size" />
 
-        <TextView
-            android:id="@+id/tv_order_manage_good_count"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/nullstr"
-            android:textColor="@color/app_gray"
-            android:gravity="right"
-            android:textSize="@dimen/order_list_inside_number_size" />
+
 
         <TextView
             android:id="@+id/tv_order_namage_good_total_money"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:visibility="gone"
             android:textColor="@color/salmon"
             android:textSize="@dimen/order_list_inside_total_price_size" />
     </LinearLayout>

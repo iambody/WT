@@ -4,20 +4,24 @@
     android:layout_height="match_parent"
     android:background="@drawable/shape_shopmanger_circular_bg"
     android:descendantFocusability="blocksDescendants"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_shopmanger_circular_bg"
         android:orientation="vertical"
-        android:padding="5dp" >
+
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp" >
+            android:paddingBottom="6dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="6dp">
 
             <TextView
                 android:id="@+id/tv_purchase_order_no_pay_order_sn"
@@ -25,37 +29,36 @@
                 android:layout_height="wrap_content"
                 android:text="@string/nullstr"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/comment_label_txtsize" />
+                android:textSize="@dimen/order_list_inside_price_size" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-           
 
             <TextView
                 android:id="@+id/fragment_purchase_order_no_pay_pay_to"
                 style="@style/bt_textview"
-                
+
                 android:text="去付款" />
-            
-             <TextView
+
+            <TextView
                 android:id="@+id/fragment_purchase_order_no_pay_cancel_order"
                 style="@style/bt_textview"
                 android:layout_marginLeft="10dp"
                 android:text="取消订单" />
         </LinearLayout>
 
-        <View style="@style/line_left_right" />
+        <View style="@style/line1" />
 
         <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
             android:id="@+id/item_fragment_purchase_order_no_pay_outside"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:divider="@null" />
 
-        <View style="@style/line_left_right" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,39 +66,47 @@
             android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="10dp" >
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/item_fragment_purchase_order_no_pay_allnum"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="right"
                 android:textColor="@color/grey"
-                android:textSize="15sp" />
+                android:textSize="@dimen/order_list_inside_price_size" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="需付款:"
-                android:textColor="@color/slategrey"
-                android:textSize="@dimen/comment_label_txtsize" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/order_list_inside_price_size" />
 
             <TextView
                 android:id="@+id/item_fragment_purchase_order_no_pay_allmoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
                 android:text="@string/nullstr"
                 android:textColor="@color/app_fen"
-                android:textSize="20sp" />
+                android:textSize="@dimen/order_list_inside_price_size" />
 
             <TextView
                 android:id="@+id/item_fragment_purchase_order_no_pay_postage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
                 android:text="@string/nullstr"
-                android:textColor="@color/app_fen"
-                android:textSize="10sp" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/order_list_inside_price_size" />
         </LinearLayout>
     </LinearLayout>
 

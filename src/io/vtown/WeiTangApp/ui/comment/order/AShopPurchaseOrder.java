@@ -797,13 +797,14 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
 
 			StrUtils.SetTxt(myItem.item_fragment_shop_purchase_allnum,
 					String.format("共%1$s件商品", datas.get(position).getNumber()));
-			float total_price = Float.parseFloat(datas.get(position)
+			int total_price = Integer.parseInt(datas.get(position)
 					.getGoods_price())
-					+ Float.parseFloat(datas.get(position).getPostage());
-			StrUtils.SetTxt(
-					myItem.item_fragment_shop_purchase_allmoney,
-					String.format("%1$s元",
-							StrUtils.SetTextForMony(total_price + "")));
+					+ Integer.parseInt(datas.get(position).getPostage());
+//			StrUtils.SetTxt(
+//					myItem.item_fragment_shop_purchase_allmoney,
+//					String.format("%1$s元",
+//							StrUtils.SetTextForMony(total_price + "")));
+			StrUtils.SetMoneyFormat(BaseContext,myItem.item_fragment_shop_purchase_allmoney,total_price+"",17);
 			float postageF = Float.parseFloat(datas.get(position).getPostage());
 
 			StrUtils.SetTxt(
@@ -1248,10 +1249,10 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
 					.get(position).getGoods_name());
 			StrUtils.SetTxt(
 					myItem.item_fragment_shop_purchase_in_price,
-					String.format("￥%1$s元", StrUtils.SetTextForMony(datas.get(
+					String.format("￥%1$s", StrUtils.SetTextForMony(datas.get(
 							position).getGoods_price())));
 			StrUtils.SetTxt(myItem.item_fragment_shop_purchase_in_number,
-					String.format("X%1$s", datas.get(position)
+					String.format("x%1$s", datas.get(position)
 							.getGoods_number()));
 			StrUtils.SetTxt(myItem.item_fragment_shop_purchase_in_content,
 					String.format("规格：%1$s", datas.get(position)
@@ -1353,16 +1354,12 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
 							position).getSon_order());
 			centerOrderNoPay.item_fragment_purchase_order_no_pay_outside
 					.setAdapter(centerOrderNoPayInside);
-			StrUtils.SetTxt(centerOrderNoPay.tv_purchase_order_no_pay_order_sn,
-					datas.get(position).getOrder_sn());
+			StrUtils.SetTxt(centerOrderNoPay.tv_purchase_order_no_pay_order_sn,String.format("%1$s",datas.get(position).getOrder_sn()));
 
 			// float total_price =
 			// Float.parseFloat(datas.get(position).getOrder_total_price())
 			// + Float.parseFloat(datas.get(position).getPostage_money());
-			StrUtils.SetTxt(
-					centerOrderNoPay.item_fragment_purchase_order_no_pay_allmoney,
-					String.format("%1$s元", StrUtils.SetTextForMony(datas.get(
-							position).getOrder_total_price())));
+			StrUtils.SetMoneyFormat(BaseContext,centerOrderNoPay.item_fragment_purchase_order_no_pay_allmoney,datas.get(position).getOrder_total_price(),17);
 			float postageF = Float.parseFloat(datas.get(position)
 					.getPostage_money());
 			StrUtils.SetTxt(
@@ -1571,12 +1568,12 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
 					innerMost_data.get(position).getGoods_name());
 			StrUtils.SetTxt(
 					centerOrderNoPayInnerMost.item_fragment_purchase_order_no_pay_in_price,
-					String.format("%1$s元", StrUtils
+					String.format("￥%1$s", StrUtils
 							.SetTextForMony(innerMost_data.get(position)
 									.getGoods_money())));
 			StrUtils.SetTxt(
 					centerOrderNoPayInnerMost.item_fragment_purchase_order_no_pay_in_number,
-					String.format("X%1$s", innerMost_data.get(position)
+					String.format("x%1$s", innerMost_data.get(position)
 							.getGoods_number()));
 			return convertView;
 		}
