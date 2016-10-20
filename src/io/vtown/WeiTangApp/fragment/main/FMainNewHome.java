@@ -92,8 +92,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     HomeScrollView fragmentNewhomeInsrollviw;//内层监控滑动
     //    @BindView(R.id.fragment_newhome_head_iv_level)
 //    ImageView fragmentNewhomeHeadIvLevel;//等级的图片
-    @BindView(R.id.fragment_newhome_banner_title)
-    TextView fragmentNewhomeBannerTitle;//Bannerd的title
+//    @BindView(R.id.fragment_newhome_banner_title)
+//    TextView fragmentNewhomeBannerTitle;//Bannerd的title
     @BindView(R.id.fragment_newhome_banner_lay)
     RelativeLayout fragmentNewhomeBannerLay;//Bannerd的布局
     @BindView(R.id.fragment_newhome_bt_jifem)
@@ -184,11 +184,11 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         ImageLoaderUtil.Load2(Data.getSellerinfo().getCover(), fragmentNewhomeBg, R.drawable.error_iv1);
         ImageLoaderUtil.Load2(Data.getSellerinfo().getAvatar(), fragmentNewhomeHeadIv, R.drawable.error_iv2);
         StrUtils.SetTxt(Text_fragment_newhome_RenShu, Data.getMySub());//邀请人数
-        StrUtils.SetTxt(Text_fragment_newhome_JiFen, Data.getIntegral());//我的积分
+        StrUtils.SetTxt(Text_fragment_newhome_JiFen, Data.getIntegral() + "");//我的积分
         StrUtils.SetTxt(Text_fragment_newhome_YongJin, StrUtils.SetTextForMony(Data.getRebate()));//我的f返佣
         IsHaveXiaji = Data.getMySub().equals("0") ? false : true;
         IPage(Data.getBanner());
-        StrUtils.SetTxt(fragmentNewhomeBannerTitle, Data.getBanner().get(0).getTitle());
+//        StrUtils.SetTxt(fragmentNewhomeBannerTitle, Data.getBanner().get(0).getTitle());
         StrUtils.SetTxt(fragmentNewhomeUsername, Data.getSellerinfo().getSeller_name());
         //开始进行level的判定和设置
         LevelSet(Data);
@@ -257,7 +257,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                                 // default时候直接展示大图
                                 break;
                         }
-                        fragmentNewhomeIvLaya.getBackground().setAlpha(255);
+//                        fragmentNewhomeIvLaya.getBackground().setAlpha(255);
                     }
                 },
                 screenWidth * 3 / 5);
@@ -280,7 +280,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         fragmentNewhomeBanner.SetPageChangeListener(new ImageCycleView.onPageChange() {
             @Override
             public void onPagerPostion(int Postion) {
-                StrUtils.SetTxt(fragmentNewhomeBannerTitle, banner.get(Postion).getTitle());
+//                StrUtils.SetTxt(fragmentNewhomeBannerTitle, banner.get(Postion).getTitle());
             }
         });
         if (fragmentNewhomeBannerLay.getVisibility() != View.VISIBLE)
@@ -314,7 +314,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         //开始赋值
 
         fragmentNewhomeIvLaya = (LinearLayout) (ViewHolder.get(BaseView, R.id.fragment_newhome_putitle_lay)).findViewById(R.id.fragment_newhome_iv_layaa);//ViewHolder.get(BaseView, R.id.fragment_newhome_iv_lay);
-        fragmentNewhomeIvLaya.getBackground().setAlpha(0);
+        fragmentNewhomeIvLaya.getBackground().mutate().setAlpha(0);
         IWave();
         //解决冲突
         fragmentNewhomeSrollviw.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
@@ -338,10 +338,25 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.yijihuo));
             Spuit.IsHaveActive_Set(BaseContext, true);
             StrUtils.SetTxt(fragmentNewhomeUsertag, Data.getMember_level_name());
-
+            //设置shape的背景色和字体颜色
+            UiHelper.SetShapeColor(fragmentNewhomeUsertag, getResources().getColor(R.color.app_fen1));
+            fragmentNewhomeUsertag.setTextColor(getResources().getColor(R.color.white));
+//激活才能邀请好友未激活不能邀请好友
+            ((ImageView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(R.drawable.newhome_down_qian);
+            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.gray));
         } else {//未激活
+            //设置shape的背景色和字体颜色
+            UiHelper.SetShapeColor(fragmentNewhomeUsertag, getResources().getColor(R.color.app_line));
+            fragmentNewhomeUsertag.setTextColor(getResources().getColor(R.color.gray));
+
+
             StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.weijihuo));
             Spuit.IsHaveActive_Set(BaseContext, false);
+            //激活才能邀请好友未激活不能邀请好友
+            ((ImageView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(R.drawable.newhome_down_qian_pre);
+            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.app_gray));
+
+
         }
 
         //判断绑定 状态
@@ -363,9 +378,11 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         if (Data.getIs_attendance() == 1) {// 已经签到
             IsHomeSign = true;
             SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
+            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.app_gray));
         } else {
             IsHomeSign = false;
             SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian);
+            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.gray));
         }
 
     }
@@ -450,7 +467,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 IsHomeSign = true;
                 SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
                 //需要进行缓存本地
-
+                INetData(LOADHind);
                 break;
         }
 
@@ -465,16 +482,16 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         }
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (hidden) {
-            fragmentNewhomeIvLaya.getBackground().setAlpha(255);
-        } else {
-            fragmentNewhomeIvLaya.getBackground().setAlpha(0);
-        }
-
-    }
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (hidden) {
+//            fragmentNewhomeIvLaya.getBackground().setAlpha(255);
+//        } else {
+//            fragmentNewhomeIvLaya.getBackground().setAlpha(0);
+//        }
+//
+//    }
 
     @OnClick({R.id.fragment_newhome_iv_sao, R.id.fragment_newhome_iv_sou, R.id.fragment_newhome_iv_new, R.id.fragment_newhome_head_iv, R.id.fragment_newhome_bt_jifem, R.id.fragment_newhome_bt_fanyong, R.id.fragment_newhome_usertag})
     public void onClick(View view) {
@@ -510,8 +527,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 }
 
                 if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {
-                    ShowCustomDialog("请先激活账户",
-                            "查看规则", "去激活",
+                    ShowCustomDialog(getResources().getString(R.string.to_Jihuo),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo),
                             new IDialogResult() {
                                 @Override
                                 public void RightResult() {
@@ -536,15 +553,6 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 }
 
 
-//                if(Spuit.IsHaveActive_Get(BaseContext)){}
-//
-//                else if (!Spuit.IsHaveActive_Get(BaseContext)) {//激活状态
-//                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-//                            ANewBindCode.class));
-//                } else {
-//                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-//                            AMyInviteCode.class));
-//                }
                 break;
             case R.id.fragment_newhome_jifen_lay:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AIntegralDetail.class));
@@ -557,10 +565,102 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 break;
 //            fragment_newhome_qian_lay, fragment_newhome_yaoqing_lay, fragment_newhome_libao_lay
             case R.id.fragment_newhome_qian_lay://签到
-//                PromptManager.ShowCustomToast(BaseContext, "已签到");
-                BeginSign();
+                if (!Spuit.IsHaveBind_Get(BaseContext)) {//未绑定邀请码
+                    ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                            getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                            ANewBindCode.class));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                }
+                            });
+                    return;
+                }
+                if (Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                    ShowCustomDialog(getResources().getString(R.string.to_Jihuo_toqiandao),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                            maxtive.getActivitytitle());
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                            mBCommentss));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, AWeb.class).putExtra(
+                                            AWeb.Key_Bean,
+                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                                }
+                            });
+
+                    return;
+                }
+
+                if (Spuit.IsHaveActive_Get(BaseContext)) {//已经激活
+                    BeginSign();
+                    return;
+                }
+
                 break;
             case R.id.fragment_newhome_yaoqing_lay://邀请好友
+                if (!Spuit.IsHaveBind_Get(BaseContext)) {//未绑定邀请码
+                    ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                            getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                            ANewBindCode.class));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+
+                                }
+                            });
+
+                    return;
+                }
+                if (Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                    ShowCustomDialog(getResources().getString(R.string.jihuo_canto_ibit),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                            maxtive.getActivitytitle());
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                            mBCommentss));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, AWeb.class).putExtra(
+                                            AWeb.Key_Bean,
+                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                                }
+                            });
+
+                    return;
+                }
+
+
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyInviteCode.class));
                 break;
             case R.id.fragment_newhome_libao_lay://激活礼包
@@ -588,14 +688,14 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 break;
         }
 //        fragmentNewhomeIvLaya.setVisibility(View.GONE);
-        fragmentNewhomeIvLaya.getBackground().setAlpha(255);
+//        fragmentNewhomeIvLaya.getBackground().setAlpha(255);
     }
 
 
     @Override
     public void onScroll(int scrollY) {
         if (scrollY < 20) {
-            fragmentNewhomeIvLaya.getBackground().setAlpha(0);
+            fragmentNewhomeIvLaya.getBackground().mutate().setAlpha(0);
 //            PromptManager.ShowCustomToast(BaseContext, "数据" + scrollY);
 //            back.getBackground().setAlpha(255);
 //            shopping_cart.getBackground().setAlpha(255);
@@ -603,13 +703,13 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             Log.i("homejuli", "小于100==>" + scrollY);
         } else if (scrollY >= 20 && scrollY < 160) {//860
             Log.i("homejuli", "大于100小于160==>" + scrollY);
-            fragmentNewhomeIvLaya.getBackground().setAlpha((scrollY + 50));//scrollY-100
+            fragmentNewhomeIvLaya.getBackground().mutate().setAlpha((scrollY + 50));//scrollY-100
 //            PromptManager.ShowCustomToast(BaseContext, "数据" + scrollY);
 //            back.getBackground().setAlpha(255 - (scrollY-100)/3);
 //            shopping_cart.getBackground().setAlpha(255 - (scrollY-100)/3);
         } else {
             Log.i("homejuli", "大于160==>" + scrollY);
-            fragmentNewhomeIvLaya.getBackground().setAlpha(255);
+            fragmentNewhomeIvLaya.getBackground().mutate().setAlpha(255);
 //            back.getBackground().setAlpha(0);
 //            shopping_cart.getBackground().setAlpha(0);
         }

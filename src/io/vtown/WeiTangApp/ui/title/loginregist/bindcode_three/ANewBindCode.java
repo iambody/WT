@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.im.AChatInf;
 
 /**
  * Created by datutu on 2016/10/17.
@@ -32,6 +34,8 @@ public class ANewBindCode extends ATitleBase {
     EditText newBindcodeEd;
     @BindView(R.id.new_bindcode_submint_bt)
     TextView newBindcodeSubmintBt;
+    @BindView(R.id.new_bindcode_connect)
+    TextView newBindcodeConnect;
     private BUser MyUser;
 
     @Override
@@ -106,8 +110,26 @@ public class ANewBindCode extends ATitleBase {
                 LOAD_INITIALIZE);
     }
 
-    @OnClick(R.id.new_bindcode_submint_bt)
-    public void onClick() {
-        BindCode(newBindcodeEd.getText().toString().trim());
+    @OnClick({R.id.new_bindcode_submint_bt, R.id.new_bindcode_connect})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.new_bindcode_submint_bt:
+                BindCode(newBindcodeEd.getText().toString().trim());
+                break;
+            case R.id.new_bindcode_connect:
+                Intent intent = new Intent(BaseActivity, AChatInf.class);
+                // holder.name.setText(ReciverName);
+                intent.putExtra("tagname", Constants.WtHelper);
+                String ReciverName = Constants.WtHelper;
+
+                intent.putExtra("title","微糖客服" );
+                intent.putExtra("iv","" );
+                intent.putExtra("ishepler", true);
+                startActivity(intent);
+                break;
+        }
+
     }
+
+
 }

@@ -63,7 +63,7 @@
     <string name="shop_tody_incom">今日收入</string>
     <string name="shop_tody_number">今日销量</string>
     <string name="shop_tody_inverstor">今日访客</string>
-    <string name="shop_all_income">累计收入(元)</string>
+    <string name="shop_all_income">累计收入</string>
     <string name="shop_tuandui_num">团队人数</string>
     <string name="shop_tuandui_inf">团队信息</string>
     <string name="shop_xiaji_num">下级人数</string>
@@ -634,7 +634,7 @@
     <string name="newhome_myjifen">我的积分</string>
     <string name="newhome_fanyong">返佣金额</string>
     <string name="newhome_qiandao">今日签到</string>
-    <string name="newhome_qiandao1">已经签到</string>
+    <string name="newhome_qiandao1">已签到</string>
     <string name="newhome_yaoqing">邀请好友</string>
     <string name="newhome_libao">激活礼包</string>
     <string name="newhome_temai">特卖专区</string>
@@ -692,12 +692,20 @@
     <string name="center_tobind">绑定邀请码</string>
     <string name="bindcode_up_txt">微糖商城,新的赚钱之道</string>
     <string name="yaoqingmaa">邀请码</string>
-    <string name="bindcode_down_txt">为保证渠道安全,请先绑定你的邀请码</string>
+    <string name="bindcode_down_txt">定后即可进行购买返佣等操作。如尚未获得邀请码，可联系官方客服获取。</string>
+    <string name="loginin_bindcode_down_txt">定后即可进行购买返佣等操作。如尚未获得邀请码，点我联系官方客服获取</string>
     <string name="Bindcode">邀请码绑定</string>
     <string name="bind_yaoqing">绑定邀请码</string>
     <string name="bind_jihuo">激活账户</string>
     <string name="bind_yaoqinghaoyou">邀请好友</string>
     <string name="nobind">未绑定</string>
     <string name="myaddress">我的地址</string>
+    <string name="no_bind_code">去绑定邀请码</string>
+    <string name="bind_code">绑定</string>
+    <string name="to_Jihuo">请先激活账户</string>
+    <string name="look_guize">查看规则</string>
+    <string name="to_jihuo">去激活</string>
+    <string name="jihuo_canto_ibit">激活后才能邀请好友哦</string>
+    <string name="to_Jihuo_toqiandao">激活后才能签到哦</string>
 
 </resources>

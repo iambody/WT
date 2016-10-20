@@ -134,7 +134,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
-                    <TextView
+                  <!--  <TextView
                         android:id="@+id/fragment_newhome_banner_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
                         android:gravity="center"
                         android:padding="@dimen/ui_10_dip"
                         android:textColor="@color/TextColorWhite"
-                        android:textSize="@dimen/fragment_newhome_banner_title_size"/>
+                        android:textSize="@dimen/fragment_newhome_banner_title_size"/>-->
                 </RelativeLayout>
                 <!--我的banner*** -->
                 <!-- 下边布局 -->

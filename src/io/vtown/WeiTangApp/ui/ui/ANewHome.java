@@ -182,7 +182,7 @@ public class ANewHome extends ATitileNoBase implements RefreshLayout.OnLoadListe
     }
 
     private void IUpView() {
-        activity_home_refrash= (RefreshLayout) findViewById(R.id.activity_home_refrash);
+        activity_home_refrash = (RefreshLayout) findViewById(R.id.activity_home_refrash);
         activity_home_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
         activity_home_refrash.setOnLoadListener(this);
 
@@ -203,7 +203,6 @@ public class ANewHome extends ATitileNoBase implements RefreshLayout.OnLoadListe
             newhome_new_iv.setImageDrawable(getResources().getDrawable(
                     R.drawable.new1));
         }
-
 
 
         newhome_ls.setAdapter(newHoemAp);
@@ -410,7 +409,7 @@ public class ANewHome extends ATitileNoBase implements RefreshLayout.OnLoadListe
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                         CaptureActivity.class));
             /*
-			 * PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+             * PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
 			 * ATestView.class));
 			 */
                 break;
@@ -542,7 +541,6 @@ public class ANewHome extends ATitileNoBase implements RefreshLayout.OnLoadListe
                 mStrings.add(daass.get(i).getPic_path());
             }
             return mStrings;
-
         }
 
     }

@@ -33,6 +33,7 @@ import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.channl.BChannl;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -94,7 +95,7 @@ public class AMyInviteCode extends ATitleBase {
 	// 分享的地址*****************************http://dev.vt.m.v-town.cn/member/invite/index*************************后边get请求+我的邀请码
 	// ******************http://dev.vt.m.v-town.cn/member/invite/index?inviteCode=L38NDK****************************************************
 	private String InItCode;
-	private BShop mBShop;
+//	private BShop mBShop;
 
 	// 分享的数据
 	private BChannl myBChannl;
@@ -102,14 +103,14 @@ public class AMyInviteCode extends ATitleBase {
 	private int ShareType;
 
 	private Bitmap MyBitMap;
-
+	private BNewHome MBNewHome;
 	@Override
 	protected void InItBaseView() {
 		setContentView(R.layout.activity_center_my_invite_code);
 		myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
 		bUser = Spuit.User_Get(getApplicationContext());
-		mBShop = Spuit.Shop_Get(getApplicationContext());
-
+//		mBShop = Spuit.Shop_Get(getApplicationContext());
+		  	MBNewHome= JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class);
 		// 缓存处理
 		ICache();
 		// 获取邀请码数据
@@ -146,7 +147,7 @@ public class AMyInviteCode extends ATitleBase {
 		my_invite_code_iv = (ImageView) findViewById(R.id.my_invite_code_iv);
 		my_invite_code_iv.setOnClickListener(this);
 		iv_my_invite_code_icon = (CircleImageView) findViewById(R.id.iv_my_invite_code_icon);
-		ImageLoaderUtil.Load2(mBShop.getAvatar(), iv_my_invite_code_icon,
+		ImageLoaderUtil.Load2(MBNewHome.getSellerinfo().getAvatar(), iv_my_invite_code_icon,
 				R.drawable.error_iv2);
 		tv_my_invite_code = (TextView) findViewById(R.id.tv_my_invite_code);
 //		tv_my_invite_code_copy = (TextView) findViewById(R.id.tv_my_invite_code_copy);
