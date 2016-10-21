@@ -465,13 +465,14 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     public void onDestroyView() {
         super.onDestroyView();
         mWaveHelper.cancel();
-        unbinder.unbind();
+//        unbinder.unbind();
         fragmentNewhomeBanner.pushImageCycle();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         unbinder.unbind();
     }
 

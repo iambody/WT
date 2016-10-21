@@ -628,6 +628,7 @@
     <dimen name="fragment_up_lay_height">100dp</dimen>
     <dimen name="fragment_up_lay_margintop_height">60dp</dimen>
     <dimen name="fragment_shop_up_lay_txt_pading">12dp</dimen>
+    <dimen name="pop_intgraldetail_width">100dp</dimen>
 
 
 </resources>

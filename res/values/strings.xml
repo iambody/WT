@@ -674,9 +674,9 @@
     <string name="integral_title_system1">系统赠送积分</string>
     <string name="integral_title_past">每日签到积分</string>
     <string name="integral_title_invite">邀请注册积分</string>
-    <string name="integral_title_activation">下级激活积分</string>
-    <string name="integral_title_own_buy">我买商品积分</string>
-    <string name="integral_title_friend_buy">Ta买商品积分</string>
+    <string name="integral_title_activation">下级购物积分</string>
+    <string name="integral_title_own_buy">我的购物积分</string>
+    <string name="integral_title_friend_buy">下级购买积分</string>
     <string name="integral_title_concume">每日消耗积分</string>
     <string name="no_new_integral_detail">没有新的积分</string>
     <string name="no_more_integral_detail">没有更多积分了</string>

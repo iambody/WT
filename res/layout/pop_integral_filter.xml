@@ -6,7 +6,7 @@
 
 
     <LinearLayout
-        android:layout_width="80dp"
+        android:layout_width="@dimen/pop_intgraldetail_width"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
@@ -106,7 +106,7 @@
             android:background="@drawable/select_home_item"
             android:clickable="true"
             android:gravity="center"
-            android:text="我买商品"
+            android:text="我的购物"
             android:textColor="@color/white" />
 
         <View
@@ -122,7 +122,7 @@
             android:background="@drawable/select_home_item"
             android:clickable="true"
             android:gravity="center"
-            android:text="Ta买商品"
+            android:text="下级购物"
             android:textColor="@color/white" />
 
         <View

@@ -79,7 +79,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/line_size6"
-                            android:layout_toRightOf="@+id/fragment_newhome_username"
+                            android:layout_toRightOf="@id/fragment_newhome_username"
                             android:background="@drawable/shap_home_bind"
                             android:paddingLeft="@dimen/line_size6"
                             android:paddingRight="@dimen/line_size6"

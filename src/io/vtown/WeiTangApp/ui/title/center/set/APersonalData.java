@@ -95,7 +95,7 @@ public class APersonalData extends ATitleBase implements
         if (!StrUtils.isEmpty(phone)) {
             StrUtils.SetTxt(tv_phone_numb, phone.substring(0, 3) + "****"
                     + phone.substring(7));
-        } 
+        }
         ICache();
         switch_delete_cache.setOnCheckedChangeListener(this);
     }
@@ -234,26 +234,27 @@ public class APersonalData extends ATitleBase implements
                 ShowCustomDialog("确定退出该账号?", "取消", "退出", new IDialogResult() {
                     @Override
                     public void RightResult() {
+
+//                        PromptManager.ShowCustomToast(BaseContext, "退出成功");
+//                        AppManager.getAppManager().AppExit(BaseContext);
+//                        EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
                         Spuit.Login_Out(BaseContext);
                         // 清理数据库
                         Spuit.Shop_Save(BaseContext, new BShop());
-//                        PromptManager.ShowCustomToast(BaseContext, "退出成功");
-//                        AppManager.getAppManager().AppExit(BaseContext);
+//                        BaseActivity.finish();
 //                        ActivityManager activityMgr = (ActivityManager) BaseActivity.getSystemService(Context.ACTIVITY_SERVICE);
 //                        activityMgr.restartPackage(BaseActivity.getPackageName());
 //                        System.exit(0);
-                        BaseActivity.finish();
-                        EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
 //                        PromptManager.SkipActivity(BaseActivity, new Intent(
 //                                BaseActivity, AMainTab.class).putExtra("isexit",true));
-//                        try {
-//                            android.os.Process.killProcess(android.os.Process.myPid());System.exit(0);
-//                            ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-//                            manager.killBackgroundProcesses(getPackageName());
-//                        } catch (Exception e) {
-//
-//                            return;
-//                        }
+                        try {
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(0);
+                            ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+                            manager.killBackgroundProcesses(getPackageName());
+                        } catch (Exception e) {
+                            return;
+                        }
 
 //                        ScreenAppManager.getScreenManager().popAllActivityExceptOne(APersonalData.class);
 //                        BaseActivity.finish();
