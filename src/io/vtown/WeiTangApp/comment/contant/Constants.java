@@ -905,7 +905,10 @@ public static int SouSouHeistory= 12;
      * 返佣
      */
     public static String Homew_FanYong ="http://www.v-town.cc/rebaterule.html";
-
+/**
+ * 等级
+ */
+	public static String Home_Level="http://www.v-town.cc/levelrule.html";
 	/**
 	 * 邀请直属下级列表
 	 */

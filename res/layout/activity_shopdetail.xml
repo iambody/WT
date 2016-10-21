@@ -169,7 +169,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:background="@color/transparent5"
+
                         android:orientation="horizontal"
                         android:padding="5dp">
 
@@ -207,9 +207,8 @@
                         <TextView
                             android:id="@+id/line_1"
                             android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_height="@dimen/ui_10_dip"
+                           android:layout_gravity="center_vertical"
                             android:background="@color/white"/>
 
 
@@ -245,9 +244,9 @@
                         <TextView
                             android:id="@+id/line_2"
                             android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_height="@dimen/ui_10_dip"
+                            android:layout_gravity="center_vertical"
+
                             android:background="@color/white"/>
 
 
@@ -282,9 +281,8 @@
                         <TextView
                             android:id="@+id/line_3"
                             android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_height="@dimen/ui_10_dip"
+                           android:layout_gravity="center_vertical"
                             android:background="@color/white"/>
 
 

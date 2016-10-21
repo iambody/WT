@@ -156,6 +156,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:src="@color/app_bg" />
+            <include
+                android:id="@+id/shop_guize"
+                layout="@layout/commentview_txtarrow" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:src="@color/app_bg" />
         </LinearLayout>
     </ScrollView>
 

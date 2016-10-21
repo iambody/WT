@@ -75,7 +75,7 @@
     <string name="grad6">商品管理</string>
     <string name="grad7">销售统计</string>
     <string name="grad8">店铺预览</string>
-    <string name="grad9">品牌入驻</string>
+    <string name="grad9">我要合作</string>
     <!-- 搜索 界面 -->
     <string name="sousou_hint">搜索微糖商品</string>
     <string name="sousou_shop_hint">搜索微糖店铺</string>
@@ -708,5 +708,9 @@
     <string name="to_jihuo">去激活</string>
     <string name="jihuo_canto_ibit">激活后才能邀请好友哦</string>
     <string name="to_Jihuo_toqiandao">激活后才能签到哦</string>
+    <string name="noshow">暂无SHOW</string>
+    <string name="dengjiguize">等级规则</string>
+    <string name="contact_dengjiguize">店铺等级规则</string>
+    <string name="function_guanyuwomen">关于微糖</string>
 
 </resources>

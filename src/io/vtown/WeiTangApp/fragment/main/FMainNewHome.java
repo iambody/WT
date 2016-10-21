@@ -380,7 +380,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         if (Data.getIs_attendance() == 1) {// 已经签到
             IsHomeSign = true;
             SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
-            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.app_gray));
+            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.app_line));
         } else {
             IsHomeSign = false;
             SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian);
@@ -713,7 +713,10 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                         new BComment(Constants.Homew_FanYong, getResources().getString(R.string.fanyongguize))));
                 break;
             case R.id.fragment_newhome_usertag://标签
-
+                PromptManager.SkipActivity(BaseActivity, new Intent(
+                        BaseActivity, AWeb.class).putExtra(
+                        AWeb.Key_Bean,
+                        new BComment(Constants.Home_Level, getResources().getString(R.string.dengjiguize))));
                 break;
         }
 //        fragmentNewhomeIvLaya.setVisibility(View.GONE);
