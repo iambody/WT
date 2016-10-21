@@ -412,7 +412,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
             StrUtils.SetTxt(holder.tvReturnDay, data.getDateStr());
             StrUtils.SetTxt(holder.tvReturnTime, data.getDate());
             StrUtils.SetTxt(holder.tvReturnContent, data.getTitle());
-            StrUtils.SetTxt(holder.tvReturnPoint, String.format("+ %1$s元", StrUtils.SetTextForMony(StrUtils.SetTextForMony(data.getPrice()))));
+            StrUtils.SetTxt(holder.tvReturnPoint, String.format("+ %1$s元", StrUtils.SetTextForMony(data.getPrice())));
             int status = Integer.parseInt(data.getStatus());
             String status_str = "";
             switch (status) {
