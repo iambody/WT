@@ -244,8 +244,8 @@
     <string name="shop_id">店铺号</string>
     <string name="long_click_copy">(通过店铺号搜索到您的店铺，长按复制)</string>
     <string name="shop_cover">店铺封面</string>
-    <string name="shop_another_name">店铺名称</string>
-    <string name="shop_introduce">店铺介绍</string>
+    <string name="shop_another_name">店铺昵称</string>
+    <string name="shop_introduce">个性签名</string>
     <string name="goods_count">共%1$d件商品</string>
     <string name="good_price">￥%1$.2f</string>
     <string name="post_price">(含运费￥%1$.2f)</string>
