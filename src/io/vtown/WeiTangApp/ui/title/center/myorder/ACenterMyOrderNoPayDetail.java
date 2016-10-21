@@ -232,10 +232,12 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 			ll_center_order_no_pay_used_balance_and_coupons.setVisibility(View.GONE);
 		}
 
-		StrUtils.SetTxt(
-				tv_center_my_order_no_pay_total_price,
-				String.format("￥%1$s",
-						StrUtils.SetTextForMony(data2.getOrder_total_price())));
+//		StrUtils.SetTxt(
+//				tv_center_my_order_no_pay_total_price,
+//				String.format("￥%1$s",
+//						StrUtils.SetTextForMony(data2.getOrder_total_price())));
+
+		StrUtils.SetMoneyFormat(BaseContext,tv_center_my_order_no_pay_total_price,data2.getOrder_total_price(),17);
 
 		StrUtils.SetTxt(tv_ordering_time,
 				StrUtils.longtostr(Long.parseLong(data2.getCreate_time())));

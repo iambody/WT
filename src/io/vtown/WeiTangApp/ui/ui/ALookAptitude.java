@@ -203,6 +203,8 @@ public class ALookAptitude extends ATitleBase {
 
 						@Override
 						public void onClick(View v) {
+							if (CheckNet(BaseContext))
+								return;
 							if (dddaa.getIs_brand().equals("1")) {// 跳转到品牌店铺首页
 								BComment mBComment = new BComment(
 										dddaa.getId(), dddaa.getSeller_name());

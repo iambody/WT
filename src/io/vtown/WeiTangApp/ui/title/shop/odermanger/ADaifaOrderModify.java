@@ -207,7 +207,7 @@ public class ADaifaOrderModify extends ATitleBase {
     /**
      * 商品总的信息
      */
-    private RelativeLayout rl_order_goods_message;
+    private LinearLayout rl_order_goods_message;
     /**
      * 物流进度
      */
@@ -493,7 +493,7 @@ public class ADaifaOrderModify extends ATitleBase {
         ll_express_message = (LinearLayout) findViewById(R.id.ll_express_message);
         tv_order_express_numb = (CopyTextView) findViewById(R.id.tv_order_express_numb);
         tv_order_express_name = (TextView) findViewById(R.id.tv_order_express_name);
-        rl_order_goods_message = (RelativeLayout) findViewById(R.id.rl_order_goods_message);
+        rl_order_goods_message = (LinearLayout) findViewById(R.id.rl_order_goods_message);
         lv_order_good_express_speed = (CompleteListView) findViewById(R.id.lv_order_good_express_speed);
 
 
@@ -765,11 +765,13 @@ public class ADaifaOrderModify extends ATitleBase {
             String number = String.format("共%1$s件商品", data2.getGoods().size()
                     + "");
             StrUtils.SetTxt(tv_daifa_good_count, number);
-            float price = Float.parseFloat(data2.getGoods_price())
-                    + Float.parseFloat(data2.getPostage());
-            String total_price = String.format("%1$s元",
-                    StrUtils.SetTextForMony(price + ""));
-            StrUtils.SetTxt(tv_daifa_total_price, total_price);
+            int price = Integer.parseInt(data2.getGoods_price())
+                    + Integer.parseInt(data2.getPostage());
+//            String total_price = String.format("%1$s元",
+//                    StrUtils.SetTextForMony(price + ""));
+//            StrUtils.SetTxt(tv_daifa_total_price, total_price);
+
+            StrUtils.SetMoneyFormat(BaseContext,tv_daifa_total_price,price+"",17);
             float postageF = Float.parseFloat(data2.getPostage());
             String postage = String.format("(含运费%1$s元)",
                     StrUtils.SetTextForMony(postageF + ""));
@@ -1098,7 +1100,7 @@ public class ADaifaOrderModify extends ATitleBase {
             StrUtils.SetTxt(
                     orderDetail.tv_order_manage_order_detail_content_value,
                     datas.get(arg0).getGoods_standard());
-            String goods_price = String.format("%1$s元",
+            String goods_price = String.format("￥%1$s",
                     StrUtils.SetTextForMony(datas.get(arg0).getGoods_price()));
             StrUtils.SetTxt(
                     orderDetail.tv_order_manage_order_detail_good_price,

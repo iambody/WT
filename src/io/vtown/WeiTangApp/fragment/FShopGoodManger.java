@@ -1,49 +1,6 @@
 package io.vtown.WeiTangApp.fragment;
 
-import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.BDComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLComment;
-import io.vtown.WeiTangApp.bean.bcomment.BUser;
-import io.vtown.WeiTangApp.bean.bcomment.easy.BGoodDetail;
-import io.vtown.WeiTangApp.bean.bcomment.easy.BLGoodManger;
-import io.vtown.WeiTangApp.bean.bcomment.easy.BLShopDaiLi;
-import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
-import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
-import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
-import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
-import io.vtown.WeiTangApp.comment.contant.Constants;
-import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.util.NetUtil;
-import io.vtown.WeiTangApp.comment.util.StrUtils;
-import io.vtown.WeiTangApp.comment.util.ViewHolder;
-import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
-import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
-import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
-import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
-import io.vtown.WeiTangApp.comment.view.listview.LListView;
-import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
-import io.vtown.WeiTangApp.comment.view.pop.PShare;
-import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
-import io.vtown.WeiTangApp.event.interf.IDialogResult;
-import io.vtown.WeiTangApp.ui.ANull;
-import io.vtown.WeiTangApp.ui.comment.ACommentList;
-import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
-import io.vtown.WeiTangApp.ui.title.AGoodDetail;
-import io.vtown.WeiTangApp.ui.title.shop.ABrandDaiLi;
-import io.vtown.WeiTangApp.ui.title.shop.ABrandList;
-import io.vtown.WeiTangApp.ui.title.shop.goodmanger.AAlterBrandNumber;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TimerTask;
-
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -55,20 +12,47 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BGoodDetail;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLGoodManger;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLShopDaiLi;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
+import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
+import io.vtown.WeiTangApp.comment.util.NetUtil;
+import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
+import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
+import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
+import io.vtown.WeiTangApp.comment.view.pop.PShare;
+import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
+import io.vtown.WeiTangApp.event.interf.IHttpResult;
+import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
+import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.shop.ABrandList;
+import io.vtown.WeiTangApp.ui.title.shop.goodmanger.AAlterBrandNumber;
 import io.vtown.WeiTangApp.ui.title.shop.goodmanger.ANewGoodMangerEdit;
 
 /**
@@ -98,7 +82,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
      */
     private ListView lv_comment_listview;
 
-    private TextView tv_add_item;
+//    private TextView tv_add_item;
 
     // 未获取到数据时候需要进行的
     private View fragent_goodmanger_nodata_lay;
@@ -172,7 +156,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                 /**
                  * 获取品牌的列表
                  */
-                // IData(LoadType, 100, page, 1, 0);
+//                 IData(LoadType, 100, page, 1, 0);
 
                 GetBrandLs(LoadType, page);// 获取品牌商品的列表
                 break;
@@ -195,8 +179,36 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
         map.put("seller_id", user_Get.getSeller_id());
         map.put("page", "1");
         map.put("pagesize", "100");
-        FBGetHttpData(map, Constants.SHOP_BRAND_AGENT, Method.GET, 55,
-                INITIALIZE);
+
+
+        NHttpBaseStr mBaseStr = new NHttpBaseStr(BaseContext);
+        mBaseStr.setPostResult(new IHttpResult<String>() {
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
+                if(Code!=200)return;
+                List<BLShopDaiLi> mBlShopDaiLis = new ArrayList<BLShopDaiLi>();
+                if (StrUtils.isEmpty(Data)) {
+                    return;
+                } else {
+                    fragment_shop_good_manger_brand_horizon_ls.setVisibility(View.VISIBLE);
+                    mBlShopDaiLis = JSON.parseArray(Data,
+                            BLShopDaiLi.class);
+                    List<BLShopDaiLi> datss = new ArrayList<BLShopDaiLi>();
+                    datss.add(new BLShopDaiLi("", "全部商品"));
+                    datss.addAll(mBlShopDaiLis);
+
+                    brandAp.Refrsh(datss);
+                }
+            }
+
+            @Override
+            public void onError(String error, int LoadType) {
+
+            }
+        });
+        mBaseStr.getData(Constants.SHOP_BRAND_AGENT, map, Method.GET);
+//        FBGetHttpData(map, Constants.SHOP_BRAND_AGENT, Method.GET, 555,
+//                INITIALIZE);
     }
 
     private void IView() {
@@ -220,7 +232,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
         lv_comment_listview = (ListView) BaseView
                 .findViewById(R.id.lv_comment_listview);
 
-        tv_add_item = (TextView) BaseView.findViewById(R.id.tv_add_item);
+//        tv_add_item = (TextView) BaseView.findViewById(R.id.tv_add_item);
 
 
         mycommentAdapter = new MYCommentAdapter(Sale_Status,
@@ -242,13 +254,9 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                 break;
             case 0:// 品牌商品ss
                 fragment_isbrand_lay.setVisibility(View.GONE);
-//                tv_add_item.setVisibility(View.VISIBLE);
-                fragment_shop_good_manger_brand_horizon_ls
-                        .setVisibility(View.VISIBLE);
-                // lv_comment_listview.setPullRefreshEnable(false);
-                // lv_comment_listview.setPullLoadEnable(false);
-                tv_add_item.setOnClickListener(this);
 
+//                tv_add_item.setOnClickListener(this);
+//                SetTitleHttpDataLisenter(this);
                 IGetBrands();// 获取品牌的列表
 
                 break;
@@ -954,9 +962,9 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                     dattaa = JSON.parseArray(Data.getHttpResultStr(),
                             BLGoodManger.class);
                     fragent_goodmanger_nodata_lay.setVisibility(View.GONE);
-                    if (Sale_Status == 0) {
-                        tv_add_item.setVisibility(View.VISIBLE);
-                    }
+//                    if (Sale_Status == 0) {
+//                        tv_add_item.setVisibility(View.VISIBLE);
+//                    }
 
                 }
 
@@ -1149,22 +1157,21 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                 showShare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
 
                 break;
-            case 55:// 获取品牌的列表
-
-                List<BLShopDaiLi> mBlShopDaiLis = new ArrayList<BLShopDaiLi>();
-
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    return;
-                } else {
-                    mBlShopDaiLis = JSON.parseArray(Data.getHttpResultStr(),
-                            BLShopDaiLi.class);
-                    List<BLShopDaiLi> datss = new ArrayList<BLShopDaiLi>();
-                    datss.add(new BLShopDaiLi("", "全部商品"));
-                    datss.addAll(mBlShopDaiLis);
-
-                    brandAp.Refrsh(datss);
-                }
-                break;
+//            case 555:// 获取品牌的列表
+//                List<BLShopDaiLi> mBlShopDaiLis = new ArrayList<BLShopDaiLi>();
+//                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+//                    return;
+//                } else {
+//                    fragment_shop_good_manger_brand_horizon_ls.setVisibility(View.VISIBLE);
+//                    mBlShopDaiLis = JSON.parseArray(Data.getHttpResultStr(),
+//                            BLShopDaiLi.class);
+//                    List<BLShopDaiLi> datss = new ArrayList<BLShopDaiLi>();
+//                    datss.add(new BLShopDaiLi("", "全部商品"));
+//                    datss.addAll(mBlShopDaiLis);
+//
+//                    brandAp.Refrsh(datss);
+//                }
+//                break;
             default:
                 break;
         }
@@ -1379,10 +1386,10 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                 CurrentPage = 1;
                 LoadData(CurrentPage, INITIALIZE);
                 break;
-            case R.id.tv_add_item:// ss
-
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandList.class));
-                break;
+//            case R.id.tv_add_item:// ss
+//
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandList.class));
+//                break;
 
             case R.id.fragment_isbrand_brand_txt:// 品牌
                 if (!IsBrand) {

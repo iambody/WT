@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:text="@string/nullstr"
             android:textColor="@color/grey"
-            android:textSize="@dimen/comment_label_txtsize" />
+            android:textSize="@dimen/order_list_inside_total_price_size" />
 
         <LinearLayout
             android:id="@+id/ll_center_my_order_no_pay_contact_seller"
@@ -31,20 +31,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
+                android:layout_marginLeft="5dp"
                 android:text="联系卖家"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/comment_label_txtsize" />
+                android:textSize="@dimen/order_list_inside_total_price_size" />
         </LinearLayout>
     </RelativeLayout>
 
-    <View style="@style/line_left_right" />
+
 
     <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
         android:id="@+id/item_fragment_center_order_no_pay_detail_outside"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@null" />
+        android:dividerHeight="3dp"
+        android:divider="@color/white" />
     
    
     

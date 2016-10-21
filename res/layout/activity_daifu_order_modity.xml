@@ -57,6 +57,8 @@
                     android:id="@+id/lv_daifu_common_goods"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:dividerHeight="3dp"
+                    android:divider="@color/white"
                     android:layout_marginTop="@dimen/insulate_view_height" />
                 <!--
                      android:cacheColorHint="#00000000"
@@ -67,24 +69,27 @@
 
                 -->
 
-                <View style="@style/line" />
 
-                <RelativeLayout
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/order_detail_layout_padding"
                     android:background="@color/white" >
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|right"
                         android:orientation="horizontal"
-                        android:padding="@dimen/order_detail_layout_padding" >
+                        >
 
                         <io.vtown.WeiTangApp.comment.view.DotView
                             android:id="@+id/dot_view"
                             android:layout_width="@dimen/order_detail_dot_size"
+                            android:visibility="gone"
                             android:layout_height="@dimen/order_detail_dot_size" />
 
                         <TextView
@@ -93,23 +98,24 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/order_detail_margin"
                             android:text="@string/nullstr"
-                            android:textColor="@color/app_gray"
+                            android:textColor="@color/grey"
                             android:textSize="@dimen/order_detail_goods_number_txt_size" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
+                        android:layout_height="match_parent"
+                       android:layout_gravity="center_vertical"
+                       android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:padding="@dimen/order_detail_layout_padding" >
+                         >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/daifu_total_price"
-                            android:textColor="@color/app_gray"
+                            android:textColor="@color/grey"
                             android:textSize="@dimen/order_detail_goods_total_price_lable_size" />
 
                         <TextView
@@ -117,6 +123,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/nullstr"
+                            android:layout_marginLeft="3dp"
                             android:textColor="@color/app_fen"
                             android:textSize="@dimen/order_detail_goods_total_price_size" />
 
@@ -125,10 +132,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/nullstr"
-                            android:textColor="@color/app_fen"
-                            android:textSize="@dimen/order_detail_goods_postage_size" />
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/order_detail_goods_total_price_size" />
                     </LinearLayout>
-                </RelativeLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

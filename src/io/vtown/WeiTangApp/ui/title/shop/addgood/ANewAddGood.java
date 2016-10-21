@@ -710,6 +710,8 @@ public class ANewAddGood extends ATitleBase {
             ));
             return;
         }
+        if (CheckNet(BaseContext))
+            return;
         PromptManager.showtextLoading3(this, getResources().getString(R.string.addgooding));
         //开始上传图片
         BeginUpDatas();

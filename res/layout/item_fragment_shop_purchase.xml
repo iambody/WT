@@ -160,7 +160,8 @@
             android:id="@+id/item_fragment_shop_purchase_ls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@null" />
+            android:dividerHeight="3dp"
+            android:divider="@color/white" />
         <!-- 下部分的Title -->
 
 

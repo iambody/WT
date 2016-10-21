@@ -84,6 +84,7 @@
                             android:paddingLeft="@dimen/line_size6"
                             android:paddingRight="@dimen/line_size6"
                             android:textColor="@color/gray"
+                            android:clickable="true"
                             android:textSize="10dp"/>
                     </RelativeLayout>
                 </RelativeLayout>

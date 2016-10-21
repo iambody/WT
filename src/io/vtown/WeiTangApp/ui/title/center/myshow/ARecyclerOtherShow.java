@@ -169,6 +169,7 @@ public class ARecyclerOtherShow extends ATitleBase {
                     IData(lastid, LOAD_INITIALIZE);
                 }
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                    PromptManager.ShowCustomToast(BaseContext,getResources().getString(R.string.noshow));
                     return;
                 }
                 List<BShow> datas = new ArrayList<BShow>();

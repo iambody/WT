@@ -7,9 +7,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/item_bg"
         android:orientation="horizontal"
-        android:padding="@dimen/order_detail_listview_padding" >
+        android:paddingLeft="10dp"
+
+        android:paddingRight="10dp"
+        android:paddingTop="5dp" >
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -19,20 +22,21 @@
             <ImageView
                 android:id="@+id/iv_daifu_good_icon"
                 android:layout_width="@dimen/item_shop_purchase_height"
+                android:scaleType="fitXY"
                 android:layout_height="@dimen/item_shop_purchase_height" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+
             android:layout_marginLeft="@dimen/order_detail_listview_margin"
             android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+
                 android:orientation="horizontal" >
 
                 <ImageView
@@ -43,16 +47,52 @@
 
                 <TextView
                     android:id="@+id/tv_daifu_good_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                      android:textColor="@color/grey"
+                    android:textSize="@dimen/order_detail_goods_total_price_lable_size"
                     android:text="@string/nullstr" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_daifu_good_total_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textStyle="bold"
+                        android:text="@string/nullstr"
+                        android:textSize="@dimen/order_detail_goods_total_price_lable_size"
+
+                        android:textColor="@color/salmon"  />
+                    <TextView
+                        android:id="@+id/tv_daifu_good_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nullstr"
+                        android:gravity="right"
+                        android:visibility="gone"
+                        android:textSize="@dimen/order_detail_goods_total_price_lable_size"
+                        android:textColor="@color/salmon"  />
+
+
+
+                </LinearLayout>
+
+
+
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/order_detail_listview_margin"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -61,61 +101,52 @@
                     android:layout_height="wrap_content"
                     android:text="@string/daifu_good_standard"
                     android:textColor="@color/app_gray"
-                    android:textSize="@dimen/order_detail_standard_lable_size" />
+                    android:textSize="@dimen/order_detail_goods_total_price_lable_size" />
 
                 <TextView
                     android:id="@+id/tv_daifu_content_value"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/nullstr"
                     android:textColor="@color/app_gray"
-                    android:textSize="@dimen/order_detail_standard_size" />
+                    android:textSize="@dimen/order_detail_goods_total_price_lable_size" />
+
+
+
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/tv_daifu_edit"
+                    android:id="@+id/tv_daifu_good_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:background="@drawable/shape_daifu_daifa_btn_bg"
-                    android:padding="@dimen/order_detail_listview_margin"
-                    android:textColor="@color/app_fen"
-                    android:text="@string/daifu_edit" />
+                    android:layout_marginLeft="@dimen/order_detail_listview_padding"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/order_detail_goods_total_price_lable_size"
+                    android:text="@string/nullstr" />
+
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/order_detail_listview_margin"
+                android:gravity="right"
                 android:orientation="horizontal" >
 
-                <TextView
-                    android:id="@+id/tv_daifu_good_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nullstr"
-                    android:textColor="@color/salmon"  />
+
 
                 <TextView
-                    android:id="@+id/tv_daifu_good_count"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/order_detail_listview_padding"
-                     android:textColor="@color/grey"
-                    android:text="@string/nullstr" />
-
-                <TextView
-                    android:id="@+id/tv_daifu_good_total_money"
+                    android:id="@+id/tv_daifu_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="@string/nullstr"
-                    android:textColor="@color/salmon"  />
+
+                    android:background="@drawable/shape_daifu_daifa_btn_bg"
+                    android:padding="@dimen/order_detail_listview_margin"
+                    android:textColor="@color/app_fen"
+                    android:text="@string/daifu_edit" />
+
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

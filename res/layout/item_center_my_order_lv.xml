@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
+    android:layout_height="wrap_content"
+
     android:orientation="horizontal"
-    android:padding="@dimen/order_detail_listview_padding">
+    android:background="@color/item_bg"
+    android:paddingLeft="10dp"
+
+    android:paddingTop="5dp"
+    android:paddingRight="10dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -15,6 +19,7 @@
             android:id="@+id/iv_center_my_order_detail_good_icon"
             android:layout_width="@dimen/item_shop_purchase_height"
             android:layout_height="@dimen/item_shop_purchase_height"
+            android:scaleType="fitXY"
             />
     </RelativeLayout>
 
@@ -44,11 +49,22 @@
 
               <TextView
                   android:id="@+id/tv_center_my_order_detail_good_title"
-                  android:layout_width="match_parent"
+                  android:layout_width="0dp"
+                  android:layout_weight="1"
                   android:layout_height="wrap_content"
-
+                  android:textSize="@dimen/order_detail_listview_goods_total_price_size"
                   android:textColor="@color/grey"
                   android:text="@string/nullstr" />
+
+            <TextView
+                android:id="@+id/tv_center_my_order_detail_good_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/nullstr"
+                android:textStyle="bold"
+                android:textColor="@color/app_fen"
+                android:textSize="@dimen/order_detail_listview_goods_total_price_size" />
             
         </LinearLayout>
 
@@ -67,46 +83,30 @@
                 android:layout_height="wrap_content"
                 android:text="净含量："
                 android:textColor="@color/app_gray"
-                android:textSize="@dimen/order_detail_standard_lable_size" />
+                android:textSize="@dimen/order_detail_listview_goods_total_price_size" />
 
             <TextView
                 android:id="@+id/tv_center_my_order_content_value"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/nullstr"
                 android:textColor="@color/app_gray"
-                android:textSize="@dimen/order_detail_standard_size" />
-        </LinearLayout>
-        
-        <TextView 
-          android:layout_width="match_parent"
-          android:layout_height="0dp"
-          android:layout_weight="1"
-          />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-             >
-
-            <TextView
-                android:id="@+id/tv_center_my_order_detail_good_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/nullstr"
-                android:textColor="@color/app_fen"
                 android:textSize="@dimen/order_detail_listview_goods_total_price_size" />
 
             <TextView
                 android:id="@+id/tv_center_my_order_detail_good_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:textColor="@color/grey"
+
+                android:textColor="@color/app_gray"
+                android:textSize="@dimen/order_detail_listview_goods_total_price_size"
                 android:text="@string/nullstr" />
-        </RelativeLayout>
+
+        </LinearLayout>
+        
+
+
 
      
     </LinearLayout>

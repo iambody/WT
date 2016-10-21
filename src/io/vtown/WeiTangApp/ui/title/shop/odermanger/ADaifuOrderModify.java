@@ -6,6 +6,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shoporder.BDShopOrderDetail;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
@@ -19,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -162,6 +164,8 @@ public class ADaifuOrderModify extends ATitleBase {
 	 *使用卡券
 	 */
 	private TextView tv_order_manager_daifu_detail_used_coupons;
+	private float total_price_old;
+	private int total_price_set;
 
 
 	@Override
@@ -256,12 +260,15 @@ public class ADaifuOrderModify extends ATitleBase {
 
 		String count = String.format("共%1$s件商品", data2.getGoods().size() + "");
 		StrUtils.SetTxt(tv_daifu_good_count, count);
-		float total_price = Float.parseFloat(data2.getGoods_price())
-				+ Float.parseFloat(data2.getPostage());
-		StrUtils.SetTxt(
-				tv_daifu_total_price,
-				String.format("%1$s元",
-						StrUtils.SetTextForMony(total_price + "")));
+		total_price_set = Integer.parseInt(data2.getGoods_price())
+				+ Integer.parseInt(data2.getPostage());
+		//total_price_old = total_price_set;
+//		StrUtils.SetTxt(
+//				tv_daifu_total_price,
+//				String.format("%1$s元",
+//						StrUtils.SetTextForMony(total_price + "")));
+
+		StrUtils.SetMoneyFormat(BaseContext,tv_daifu_total_price, total_price_set + "",17);
 		float postageF = Float.parseFloat(data2.getPostage());
 		StrUtils.SetTxt(
 				tv_daifu_post_price,
@@ -608,15 +615,23 @@ public class ADaifuOrderModify extends ATitleBase {
 			}
 			StrUtils.SetTxt(item.tv_daifu_content_value, datas.get(arg0)
 					.getGoods_standard());
-			String goods_price = String.format("￥%1$s元",
+			String goods_price = String.format("￥%1$s",
 					StrUtils.SetTextForMony(datas.get(arg0).getGoods_price()));
 			StrUtils.SetTxt(item.tv_daifu_good_price, goods_price);
+			if(isModifyPrice){
+				item.tv_daifu_good_price.setVisibility(View.VISIBLE);
+				item.tv_daifu_good_price.setTextColor(getResources().getColor(R.color.app_gray));
+				item.tv_daifu_good_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+			}else{
+				item.tv_daifu_good_price.setVisibility(View.GONE);
+			}
 			String goods_number = String.format("x%1$s", datas.get(arg0)
 					.getGoods_number());
 			StrUtils.SetTxt(item.tv_daifu_good_count, goods_number);
+
 			StrUtils.SetTxt(
 					item.tv_daifu_good_total_money,
-					String.format("￥%1$s元",
+					String.format("￥%1$s",
 							StrUtils.SetTextForMony(prices.get(arg0))));
 
 			BLComment blComment = datas.get(arg0);
@@ -669,7 +684,7 @@ public class ADaifuOrderModify extends ATitleBase {
 		public void handleMessage(android.os.Message msg) {
 			String goods_price = StrUtils.SetTextForMony(data.getGoods_price());
 			StrUtils.SetTxt(tv_daifu_total_price,
-					String.format("￥%1$s", goods_price));
+					String.format("%1$s", goods_price));
 		};
 	};
 	
@@ -682,6 +697,7 @@ public class ADaifuOrderModify extends ATitleBase {
 	public void OnGetMessage(BMessage event) {
 		float total_price = 0;
 		float good_price = 0;
+
 		if (event.getMessageType() == 251) {
 			good_price = event.getTageEditGoodPrice();
 			StrUtils.SetTextForMony(good_price + "");
@@ -690,19 +706,31 @@ public class ADaifuOrderModify extends ATitleBase {
 					String price_before = prices.get(pricePosition);
 					float price_before_F = Float.parseFloat(price_before);
 					total_price = good_price - price_before_F;
+
 					prices.remove(pricePosition);
 					prices.add(pricePosition, good_price + "");
 					myAdapter.notifyDataSetChanged();
 					isModifyPrice = true;
 				}
 			}
-			float old_total_price = Float.parseFloat(data.getGoods_price());
-			total_price += old_total_price;
-			StrUtils.SetTxt(tv_daifu_total_price, String.format(
-					"￥%1$s",
-					StrUtils.SetTextForMony(total_price
-							+ Float.parseFloat(data.getPostage()) + "")));
+			LogUtils.i("*****************total_price***************"+total_price);
+			LogUtils.i("*****************good_price***************"+good_price);
+			int old_total_price = Integer.parseInt(data.getGoods_price());
+			old_total_price += Math.abs(total_price)-Math.abs(total_price_old);
+			//String text = tv_daifu_total_price.getText().toString();
+
+
+			//total_price_set += (int)(good_price-total_price_old);
+
+
+//			StrUtils.SetTxt(tv_daifu_total_price, String.format(
+//					"￥%1$s",
+//					StrUtils.SetTextForMony(total_price
+//							+ Integer.parseInt(data.getPostage()) + "")));
+
+			StrUtils.SetMoneyFormat(BaseContext,tv_daifu_total_price,old_total_price + Integer.parseInt(data.getPostage())+ "",17);
 		}
+		total_price_old = total_price;
 	}
 
 	@Override
