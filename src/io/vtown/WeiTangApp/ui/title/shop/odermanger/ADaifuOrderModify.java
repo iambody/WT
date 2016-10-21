@@ -716,7 +716,7 @@ public class ADaifuOrderModify extends ATitleBase {
 			LogUtils.i("*****************total_price***************"+total_price);
 			LogUtils.i("*****************good_price***************"+good_price);
 			int old_total_price = Integer.parseInt(data.getGoods_price());
-			old_total_price += total_price-total_price_old;
+			old_total_price += Math.abs(total_price)-Math.abs(total_price_old);
 			//String text = tv_daifu_total_price.getText().toString();
 
 
