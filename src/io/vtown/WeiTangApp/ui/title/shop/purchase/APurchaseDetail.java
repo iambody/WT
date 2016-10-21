@@ -610,8 +610,10 @@ public class APurchaseDetail extends ATitleBase {
 		// Float.parseFloat(data2.getGoods_price())+Float.parseFloat(data2.getPostage());
 
 		if (FShopPurchase.PDaiFu == Order_status) {
-			StrUtils.SetTxt(tv_purchase_total_price, String.format("%1$s元",
-					StrUtils.SetTextForMony(data2.getOrder_total_price())));
+//			StrUtils.SetTxt(tv_purchase_total_price, String.format("%1$s元",
+//					StrUtils.SetTextForMony(data2.getOrder_total_price())));
+
+			StrUtils.SetMoneyFormat(BaseContext,tv_purchase_total_price,data2.getOrder_total_price(),17);
 			// StrUtils.SetTxt(tv_ordering_time,
 			// StrUtils.longtostr(Long.parseLong(data2.getCreate_time())));
 			float postage_moneyF = Float.parseFloat(data2.getPostage_money());
@@ -620,10 +622,12 @@ public class APurchaseDetail extends ATitleBase {
 			StrUtils.SetTxt(tv_purchase_post_price,
 					postage_moneyF == 0.0f ? "(免邮费)" : postage);
 		} else {
-			StrUtils.SetTxt(
-					tv_purchase_total_price,
-					String.format("%1$s元",
-							StrUtils.SetTextForMony(data2.getGoods_price())));
+//			StrUtils.SetTxt(
+//					tv_purchase_total_price,
+//					String.format("%1$s元",
+//							StrUtils.SetTextForMony(data2.getGoods_price())));
+
+			StrUtils.SetMoneyFormat(BaseContext,tv_purchase_total_price,data2.getGoods_price(),17);
 			float postage_moneyF = Float.parseFloat(data2.getPostage());
 			String postage = String.format("(含运费%1$s元)",
 					StrUtils.SetTextForMony(postage_moneyF + ""));

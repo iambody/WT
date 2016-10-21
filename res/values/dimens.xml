@@ -164,13 +164,13 @@
     <dimen name="order_detail_layout_top_bottom_padding">5dp</dimen>
 
     <!-- 订单管理，我的订单，采购单，详情里的几件商品字体大小 -->
-    <dimen name="order_detail_goods_number_txt_size">12sp</dimen>
+    <dimen name="order_detail_goods_number_txt_size">13sp</dimen>
 
     <!-- 订单管理，我的订单，采购单，详情里的价格标题字体大小 -->
-    <dimen name="order_detail_goods_total_price_lable_size">12sp</dimen>
+    <dimen name="order_detail_goods_total_price_lable_size">13sp</dimen>
 
     <!-- 订单管理，我的订单，采购单，详情里的价格字体大小 -->
-    <dimen name="order_detail_goods_total_price_size">18sp</dimen>
+    <dimen name="order_detail_goods_total_price_size">13sp</dimen>
 
     <!-- 订单管理，我的订单，采购单，详情里的运费字体大小 -->
     <dimen name="order_detail_goods_postage_size">10sp</dimen>
@@ -207,7 +207,7 @@
     <!-- 订单管理，我的订单，采购单，详情商品ListView中商品数量字体大小 -->
     <dimen name="order_detail_number_size">13sp</dimen>
     <!-- 订单管理，我的订单，采购单，详情里listview的价格字体大小 -->
-    <dimen name="order_detail_listview_goods_total_price_size">18sp</dimen>
+    <dimen name="order_detail_listview_goods_total_price_size">13sp</dimen>
     <!-- 订单管理，我的订单，采购单，详情商品ListView中padding -->
     <dimen name="order_detail_listview_padding">10dp</dimen>
     <!-- 订单管理，我的订单，采购单，详情商品ListView中margin -->

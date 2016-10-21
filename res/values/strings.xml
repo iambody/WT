@@ -258,7 +258,7 @@
     <string name="daifu_create_time">下单时间：</string>
     <string name="daifu_order_id">订单编号：</string>
     <string name="daifu_order_detail">订单详情</string>
-    <string name="daifu_total_price">总价</string>
+    <string name="daifu_total_price">合计：</string>
     <string name="faifu_order_modity">修改订单</string>
     <string name="faifu_order_modity_before_count">修改前数量：X%1$s</string>
     <string name="faifu_order_modity_after_count">修改后数量：X%1$s</string>
@@ -278,7 +278,7 @@
     <string name="consignee_detail_address">收货地址：%1$s</string>
     <string name="confirm_order">确认订单</string>
     <string name="send_out_good_title">发货</string>
-    <string name="total_price">总价</string>
+    <string name="total_price">合计：</string>
     <string name="fast_send_out">快些发货……</string>
     <string name="buyer_message">买家留言</string>
     <string name="no_logistics_send_out">无需物流发货</string>

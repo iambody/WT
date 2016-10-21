@@ -633,8 +633,10 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
 		// float price =
 		// Float.parseFloat(order_detail.getGoods_price())+Float.parseFloat(order_detail.getPostage());
-		StrUtils.SetTxt(tv_center_my_order_total_price, String.format("%1$s元",
-				StrUtils.SetTextForMony(order_detail2.getOrder_total_price())));
+//		StrUtils.SetTxt(tv_center_my_order_total_price, String.format("%1$s元",
+//				StrUtils.SetTextForMony(order_detail2.getOrder_total_price())));
+
+		StrUtils.SetMoneyFormat(BaseContext,tv_center_my_order_total_price,order_detail2.getOrder_total_price(),17);
 		float postageF = Float.parseFloat(order_detail2.getPostage());
 		String postage = String.format("(含运费%1$s元)",
 				StrUtils.SetTextForMony(postageF + ""));

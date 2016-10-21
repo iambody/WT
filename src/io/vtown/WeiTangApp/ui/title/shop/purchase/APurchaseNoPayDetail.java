@@ -307,10 +307,12 @@ public class APurchaseNoPayDetail extends ATitleBase {
 			ll_shop_purchase_no_pay_used_balance_and_coupons.setVisibility(View.GONE);
 		}
 
-		StrUtils.SetTxt(
-				tv_shop_purchase_my_order_no_pay_total_price,
-				String.format("￥%1$s",
-						StrUtils.SetTextForMony(data.getOrder_total_price())));
+//		StrUtils.SetTxt(
+//				tv_shop_purchase_my_order_no_pay_total_price,
+//				String.format("￥%1$s",
+//						StrUtils.SetTextForMony(data.getOrder_total_price())));
+
+		StrUtils.SetMoneyFormat(BaseContext,tv_shop_purchase_my_order_no_pay_total_price,data.getOrder_total_price(),17);
 
 		StrUtils.SetTxt(tv_ordering_time,
 				StrUtils.longtostr(Long.parseLong(data.getCreate_time())));
@@ -566,7 +568,7 @@ public class APurchaseNoPayDetail extends ATitleBase {
 									.getGoods_money())));
 			StrUtils.SetTxt(
 					centerOrderNoPayInnerMost.item_purchase_order_no_pay_detail_in_number,
-					String.format("X%1$s", innerMost_data.get(position)
+					String.format("x%1$s", innerMost_data.get(position)
 							.getGoods_number()));
 			return convertView;
 		}

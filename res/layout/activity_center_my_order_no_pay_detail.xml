@@ -79,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:divider="@null" />
                     
-                    <View style="@style/line"/>
+
                     
                     <RelativeLayout
                         android:layout_width="match_parent"

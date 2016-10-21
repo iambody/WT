@@ -513,9 +513,11 @@ public class AOderDetail extends ATitleBase {
 		String count = getResources().getString(R.string.goods_count);
 		StrUtils.SetTxt(tv_good_count,
 				String.format(count, bdComment.getGoods().size()));
-		float price = Float.parseFloat(bdComment.getGoods_price())+Float.parseFloat(bdComment.getPostage());
-		StrUtils.SetTxt(tv_total_price,
-				String.format("%1$s元", StrUtils.SetTextForMony(price+"")));
+		int price = Integer.parseInt(bdComment.getGoods_price())+Integer.parseInt(bdComment.getPostage());
+//		StrUtils.SetTxt(tv_total_price,
+//				String.format("%1$s元", StrUtils.SetTextForMony(price+"")));
+
+		StrUtils.SetMoneyFormat(BaseContext,tv_total_price,price+"",17);
 		float postageF = Float.parseFloat(bdComment.getPostage());
 		String postage = String.format("(含运费%1$s元)", StrUtils.SetTextForMony(postageF+""));
 		StrUtils.SetTxt(tv_post_price, postageF == 0.0f ?"(免邮费)":postage);
