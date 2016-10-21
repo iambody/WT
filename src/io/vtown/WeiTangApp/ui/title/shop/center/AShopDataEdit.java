@@ -39,7 +39,7 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 	private static final int RESULT_CODE = 111;
 	private int type;
 	private String seller_id;
-	private TextView right_txt;
+
 	private TextView tv_modify_desc;
 	private TextView tv_content_count;
 	
@@ -54,6 +54,7 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 	private int ed_end;
 	// 记录下数据 供返回
 	private String editContent;
+	private TextView tv_name_or_desc;
 
 	private void IData() {
 		Intent intent = getIntent();
@@ -94,22 +95,25 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 		tv_modify_desc = (TextView) findViewById(R.id.tv_modify_desc);
 		
 		tv_content_count = (TextView) findViewById(R.id.tv_content_count);
-		
-		
-		
+
+		tv_name_or_desc = (TextView) findViewById(R.id.tv_name_or_desc);
+
 		if (StrUtils.isEmpty(content)) {
 			et_content.setHint("请添加描述");
 		} else {
 			et_content.setText(content);
+			et_content.setSelection(content.length());
 		}
 		switch (type) {
 		case 1:
-			tv_modify_desc.setText("好店铺名称可以让你的店铺更加瞩目");
+			tv_name_or_desc.setText("昵称");
+			tv_modify_desc.setText("好昵称可以让你的店铺更加瞩目");
 			tv_content_count.setVisibility(View.GONE);
 			break;
 
 		case 2:
-			tv_modify_desc.setText("填写店铺介绍，你的店铺与众不同");
+			tv_name_or_desc.setVisibility(View.GONE);
+			tv_modify_desc.setText("填写个性签名，你的店铺与众不同");
 			MaxNumber = 20;
 			et_content.clearFocus();
 			et_content.addTextChangedListener(this);
@@ -137,22 +141,18 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
 		String title = "";
 		switch (type) {
 		case 1:
-			title = "更改店铺名称";
+			title = "修改昵称";
 			break;
 
 		case 2:
-			title = "更改店铺介绍";
+			title = "修改个性签名";
 			break;
 
 		default:
 			break;
 		}
 		SetTitleTxt(title);
-		right_txt = (TextView) findViewById(R.id.right_txt);
-		right_txt.setVisibility(View.VISIBLE);
-		right_txt.setText("完成");
-		right_txt.setTextColor(getResources().getColor(R.color.white));
-		right_txt.setBackgroundResource(R.drawable.select_white_to_fen);
+		SetRightText("完成");
 		right_txt.setOnClickListener(this);
 	}
 
