@@ -7,7 +7,9 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    android:padding="6dp" >
+  android:paddingTop="@dimen/ui_15_dip"
+  android:paddingBottom="@dimen/ui_15_dip"
+    >
 
     <ImageView
         android:id="@+id/comment_ivtxt_iv"

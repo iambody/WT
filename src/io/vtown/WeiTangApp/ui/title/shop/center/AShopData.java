@@ -64,6 +64,7 @@ import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
@@ -92,6 +93,10 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
      * 店铺昵称
      */
     private View shop_another_name;
+    /**
+     * 店铺规则
+     */
+    private View shop_guize;
     /**
      * 店铺介绍
      */
@@ -181,7 +186,11 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
         ll_shop_id = (LinearLayout) findViewById(R.id.ll_shop_id);
         rl_set_icon.setOnClickListener(this);
         ll_shop_id.setOnLongClickListener(this);
+
+        shop_guize = findViewById(R.id.shop_guize);
         SetItemContent(shop_cover, R.string.shop_cover, "", 0);
+        SetItemContent(shop_guize, R.string.contact_dengjiguize, "", -1);
+
         IItCodeIv();
         shop_qr_code_iv.setOnClickListener(this);
         share_my_shop_url.setOnClickListener(this);
@@ -289,6 +298,12 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     protected void MyClick(View V) {
 
         switch (V.getId()) {
+            case R.id.shop_guize://等级规则
+                PromptManager.SkipActivity(BaseActivity, new Intent(
+                        BaseActivity, AWeb.class).putExtra(
+                        AWeb.Key_Bean,
+                        new BComment(Constants.Home_Level, getResources().getString(R.string.dengjiguize))));
+                break;
             case R.id.shop_qr_code_iv:
                 if (null != qrBitmap)
                     new ImagViewDialog(BaseContext, qrBitmap, screenWidth, 1)
