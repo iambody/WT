@@ -181,12 +181,10 @@ public class ADaifuOrderModify extends ATitleBase {
 	}
 
 	private void IView() {
-
 		daifu_order_modify_outlay = (LinearLayout) findViewById(R.id.daifu_order_modify_outlay);
 		daifu_order_modify_nodata_lay = findViewById(R.id.daifu_order_modify_nodata_lay);
 		IDataView(daifu_order_modify_outlay, daifu_order_modify_nodata_lay,
 				NOVIEW_INITIALIZE);
-
 		daifu_address_message = findViewById(R.id.daifu_address_message);
 		commentview_add_name = (TextView) daifu_address_message
 				.findViewById(R.id.commentview_add_name);
@@ -197,10 +195,8 @@ public class ADaifuOrderModify extends ATitleBase {
 		commentview_add_iv = (ImageView) daifu_address_message
 				.findViewById(R.id.commentview_add_iv);
 		commentview_add_iv.setVisibility(View.VISIBLE);
-		
 		ll_order_manager_daifu_detail_used_coupons = (LinearLayout) findViewById(R.id.ll_order_manager_daifu_detail_used_coupons);
 		tv_order_manager_daifu_detail_used_coupons = (TextView) findViewById(R.id.tv_order_manager_daifu_detail_used_coupons);
-
 		lv_daifu_common_goods = (CompleteListView) findViewById(R.id.lv_daifu_common_goods);
 
 		tv_daifu_good_count = (TextView) findViewById(R.id.tv_daifu_good_count);
@@ -236,13 +232,11 @@ public class ADaifuOrderModify extends ATitleBase {
 	private void RefreshView(BDShopOrderDetail data2) {
 
 		StrUtils.SetTxt(commentview_add_name, data2.getUsername());
-
 		StrUtils.SetTxt(commentview_add_phone, data2.getMobile());
 		StrUtils.SetTxt(
 				commentview_add_address,
 				data2.getProvince() + data2.getCity() + data2.getArea()
 						+ data2.getAddress());
-		
 		StrUtils.SetColorsTxt(BaseContext, tv_order_manager_daifu_detail_used_coupons, R.color.app_gray, "使用卡券：", String.format("%1$s元",StrUtils.SetTextForMony(data2.getCoupons_price())));
 		//显示使用余额和卡券，只有金额不为0的时候才显示
 		if(0 != Integer.parseInt(data2.getCoupons_price())){
@@ -251,7 +245,6 @@ public class ADaifuOrderModify extends ATitleBase {
 		}else{
 			ll_order_manager_daifu_detail_used_coupons.setVisibility(View.GONE);
 		}
-
 		StrUtils.SetTxt(tv_daifu_order_id, data2.getOrder_sn());
 		StrUtils.SetTxt(tv_daifu_create_time,
 				StrUtils.longtostr(Long.parseLong(data2.getCreate_time())));
@@ -679,14 +672,6 @@ public class ADaifuOrderModify extends ATitleBase {
 		boolean IsExpends = false;
 
 	}
-
-	Handler mHandler = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			String goods_price = StrUtils.SetTextForMony(data.getGoods_price());
-			StrUtils.SetTxt(tv_daifu_total_price,
-					String.format("%1$s", goods_price));
-		};
-	};
 	
 	/**
 	 * 接收事件

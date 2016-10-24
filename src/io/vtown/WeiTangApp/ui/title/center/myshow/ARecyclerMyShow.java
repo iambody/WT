@@ -97,7 +97,6 @@ public class ARecyclerMyShow extends ATitleBase {
         recyclerview_my_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
         myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth,mRootView,this,false);
 
-
         MyHeadAdapter = new HeaderViewRecyclerAdapter(myShowAdapter);
         MyHeadAdapter.addHeaderView(HeadView);
         recyclerview_my_show.setAdapter(MyHeadAdapter);//myShowAdapter
@@ -213,6 +212,8 @@ public class ARecyclerMyShow extends ATitleBase {
                 }
 
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                    CacheUtil.MyShow_Save(BaseContext,"");
+                    myShowAdapter.FrashData(new ArrayList<BShow>());
                     return;
                 }
                 CacheUtil.MyShow_Save(BaseContext,Data.getHttpResultStr());
