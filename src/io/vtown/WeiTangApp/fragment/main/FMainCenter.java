@@ -148,9 +148,9 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 //        maintab_center_myiv.setOnClickListener(this);
         maintab_center_myiv_lay.setOnClickListener(this);
 
-        if(!StrUtils.isEmpty( CacheUtil.NewHome_Get(BaseContext)))
-        ImageLoaderUtil.Load2(JSON.parseObject( CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getSellerinfo().getAvatar(),
-                maintab_center_myiv, R.drawable.error_iv2);
+        if (!StrUtils.isEmpty(CacheUtil.NewHome_Get(BaseContext)))
+            ImageLoaderUtil.Load2(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getSellerinfo().getAvatar(),
+                    maintab_center_myiv, R.drawable.error_iv2);
 
         StrUtils.SetTxt(maintab_center_myname, Spuit.Shop_Get(BaseContext)
                 .getSeller_name());
@@ -267,8 +267,6 @@ public class FMainCenter extends FBase implements View.OnClickListener {
             MyResume();
         }
     }
-
-   
 
     public void MyResume() {
         int ShowBindTitle;

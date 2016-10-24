@@ -476,7 +476,7 @@ public final class CaptureActivity extends ABase implements
 
         HashMap<String, String> map = new HashMap<String, String>();
         BUser bUser = Spuit.User_Get(BaseContext);
-//		map.put("token", token);
+		map.put("api_version", "2.0.1");
         map.put("trade_token", token);
         map.put("member_id", bUser.getId());
         map.put("order_sn", order_sn);

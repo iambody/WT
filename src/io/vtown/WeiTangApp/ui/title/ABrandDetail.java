@@ -271,15 +271,6 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     @Override
     protected void InitTile() {
         SetTitleTxt(baseBcBComment.getTitle());
-//        brand_detail_brand_collect_iv = (ImageView) findViewById(R.id.brand_detail_brand_collect_iv);
-//        brand_detail_brand_collect_iv.setVisibility(View.VISIBLE);
-//        brand_detail_brand_collect_iv.setOnClickListener(this);
-//
-//        right_right_iv = (ImageView) findViewById(R.id.right_right_iv);
-//        right_right_iv.setImageResource(R.drawable.ic_lianxikefu_nor);
-//        right_right_iv.setOnClickListener(this);
-//        brand_detail_brand_sou_iv.setOnClickListener(this);
-        // SetTitleTxt(getResources().getString(R.string.brand_detail_title_txt));
     }
 
     @Override

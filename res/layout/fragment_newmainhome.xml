@@ -5,7 +5,8 @@
                 android:background="@color/app_bg"
                 android:orientation="vertical">
 
-    <android.support.v4.widget.SwipeRefreshLayout
+   <!-- <android.support.v4.widget.SwipeRefreshLayout-->
+    <io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh
         android:id="@+id/fragment_newhome_srollviw"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -212,7 +213,8 @@
                 <!-- 下边按钮 -->
             </LinearLayout>
         </io.vtown.WeiTangApp.comment.view.custom.HomeScrollView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh>
+   <!-- </android.support.v4.widget.SwipeRefreshLayout>-->
     <!--title-->
     <include
         android:id="@+id/fragment_newhome_putitle_lay"

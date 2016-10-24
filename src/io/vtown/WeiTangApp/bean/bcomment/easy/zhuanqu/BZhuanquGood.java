@@ -7,7 +7,7 @@ import io.vtown.WeiTangApp.bean.BBase;
  */
 public class BZhuanquGood extends BBase {
 
-    private String  id;//": 129,
+    private String id;//": 129,
     private String sell_price;//": 11500,
     private String cover;//": "",
     private String title;//": "日本VAPE3倍无毒无味电子驱蚊器（150日）（特价）",
@@ -17,7 +17,8 @@ public class BZhuanquGood extends BBase {
     private String create_time;//": 1470653681,
     private String is_delete;//": 0,
     private String activity_category_id;//": 20
-
+    //原价
+    private String orig_price;
 
     public String getId() {
         return id;
@@ -97,5 +98,13 @@ public class BZhuanquGood extends BBase {
 
     public void setActivity_category_id(String activity_category_id) {
         this.activity_category_id = activity_category_id;
+    }
+
+    public String getOrig_price() {
+        return orig_price;
+    }
+
+    public void setOrig_price(String orig_price) {
+        this.orig_price = orig_price;
     }
 }

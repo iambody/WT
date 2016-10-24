@@ -48,6 +48,7 @@ import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.ImageCycleView;
 import io.vtown.WeiTangApp.comment.view.WaveView;
 import io.vtown.WeiTangApp.comment.view.custom.HomeScrollView;
+import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
@@ -87,7 +88,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     @BindView(R.id.fragment_newhome_banner)
     ImageCycleView fragmentNewhomeBanner;//Banner的句柄
     @BindView(R.id.fragment_newhome_srollviw)
-    SwipeRefreshLayout fragmentNewhomeSrollviw;//外层刷新句柄
+    CustomSwipeToRefresh fragmentNewhomeSrollviw;//外层刷新句柄
     @BindView(R.id.fragment_newhome_insrollviw)
     HomeScrollView fragmentNewhomeInsrollviw;//内层监控滑动
     //    @BindView(R.id.fragment_newhome_head_iv_level)
@@ -269,11 +270,15 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_MOVE:
+                    case MotionEvent.ACTION_DOWN:
                         fragmentNewhomeSrollviw.setEnabled(false);
+//                        fragmentNewhomeSrollviw.setEnabled(false);
+                        fragmentNewhomeInsrollviw.setEnabled(false);
                         break;
                     case MotionEvent.ACTION_UP:
                     case MotionEvent.ACTION_CANCEL:
                         fragmentNewhomeSrollviw.setEnabled(true);
+                        fragmentNewhomeInsrollviw.setEnabled(true);
                         break;
                 }
                 return false;
@@ -324,6 +329,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             @Override
             public void onScrollChanged() {
                 fragmentNewhomeSrollviw.setEnabled(fragmentNewhomeInsrollviw.getScrollY() == 0);
+
             }
         });
         ICacheData();

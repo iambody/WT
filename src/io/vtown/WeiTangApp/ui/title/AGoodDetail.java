@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.ui.title;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -107,6 +108,10 @@ public class AGoodDetail extends ATitleBase {
      * 建议零售价
      */
     private TextView tv_suggest_retail_price;
+    /**
+     * 原价
+     */
+    private TextView tv_suggest_retail_orig_price;
     /**
      * 发货地址
      */
@@ -320,6 +325,7 @@ public class AGoodDetail extends ATitleBase {
     }
 
     private void IBase() {
+        tv_suggest_retail_orig_price = (TextView) findViewById(R.id.tv_suggest_retail_orig_price);
         gooddetail_up_title_back = (ImageView) findViewById(R.id.gooddetail_up_title_back);
         gooddetail_up_title = (TextView) findViewById(R.id.gooddetail_up_title);
         gooddetail_up_title_back.setOnClickListener(this);
@@ -412,8 +418,7 @@ public class AGoodDetail extends ATitleBase {
                     // DataError(Msg, Data.getHttpLoadType());
 //                    BaseActivity.finish();
 //                    PromptManager.ShowCustomToast(BaseContext, Msg);
-
-                    DataError("网络异常", LOAD_INITIALIZE);
+                    DataError("暂无商品信息", LOAD_INITIALIZE);
                     return;
                 }
 
@@ -493,8 +498,15 @@ public class AGoodDetail extends ATitleBase {
      * 刷新页面控件数据
      */
     private void RefreshView(BGoodDetail datas) {
-//        StrUtils.SetTxt(gooddetailUpTitle,datas.getTitle());
-
+//        StrUtils.SetTxt(gooddetailUpTitle,datas.getTitle());tv_suggest_retail_orig_price
+        if ( !StrUtils.isEmpty(datas.getOrig_price()) && !datas.getOrig_price().equals("0")) {
+            findViewById(R.id.gooddetail_price_zhonglay).setVisibility(View.GONE);
+            StrUtils.SetTxt(tv_suggest_retail_orig_price,
+                    "原价" + StrUtils.SetTextForMony(datas.getOrig_price()));
+            tv_suggest_retail_orig_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        }else{
+            findViewById(R.id.gooddetail_price_zhonglay).setVisibility(View.VISIBLE);
+        }
         good_detail_fanyong_log.setVisibility(datas.getIs_fee() == 1 ? View.VISIBLE : View.GONE);
         StrUtils.SetTxt(gooddetail_up_title, datas.getTitle());
         // InItitle();

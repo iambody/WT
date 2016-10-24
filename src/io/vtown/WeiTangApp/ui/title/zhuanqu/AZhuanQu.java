@@ -24,6 +24,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,7 @@ import com.android.volley.Request.Method;
 public class AZhuanQu extends ATitleBase {
 
     private ScrollView zhuanqu_scrollview;
-//    private ImageCycleView imageCycleView;
+    //    private ImageCycleView imageCycleView;
     private View zhuan_nodata_lay;
 
     private ArrayList<String> d = new ArrayList<String>();
@@ -78,8 +79,8 @@ public class AZhuanQu extends ATitleBase {
     }
 
     private void IBasV() {
-        zhuanqu_banner_iv= (ImageView) findViewById(R.id.zhuanqu_banner_iv);
-        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(screenWidth,screenWidth/2);
+        zhuanqu_banner_iv = (ImageView) findViewById(R.id.zhuanqu_banner_iv);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(screenWidth, screenWidth / 2);
         zhuanqu_banner_iv.setLayoutParams(params);
 
         zhuan_nodata_lay = findViewById(R.id.zhuan_nodata_lay);
@@ -97,34 +98,12 @@ public class AZhuanQu extends ATitleBase {
         ShowErrorCanLoad("点我重试哦");
     }
 
-    // ssi==0调用自己的商品id
-//    private void IBanners(String dataurl) {
-//
-//        if (StrUtils.isEmpty(dataurl)) {
-//            imageCycleView.setVisibility(View.GONE);
-//            return;
-//        }
-//        d.add(dataurl);
-//        imageCycleView.setImageResources(d, d, mAdCycleViewListener, screenWidth / 2);
-//
-//    }
+
 
     private void IBunds() {
     }
 
-//    private ImageCycleViewListener mAdCycleViewListener = new ImageCycleViewListener() {
-//        @Override
-//        public void displayImage(String imageURL, ImageView imageView, int postion) {
-//            ImageLoaderUtil.Load2(imageURL, imageView, R.drawable.error_iv1);
-//        }
-//
-//        @Override
-//        public void onImageClick(int position, View imageView) {
-////			PromptManager.ShowCustomToast(BaseContext, "点击" + position);
-//        }
-//
-//
-//    };
+
 
     @Override
     protected void InitTile() {
@@ -139,18 +118,13 @@ public class AZhuanQu extends ATitleBase {
             return;
         }
         IDataView(zhuanqu_scrollview, zhuan_nodata_lay, NOVIEW_RIGHT);
-//        BZhuan bdComment;
-//        try {
-        BZhuan   bdComment = JSON.parseObject(Data.getHttpResultStr(),
-                    BZhuan.class);
-//        } catch (Exception e) {
-//            PromptManager.ShowCustomToast(BaseContext, "解析错误");
-//            return;
-//        }
+
+        BZhuan bdComment = JSON.parseObject(Data.getHttpResultStr(),
+                BZhuan.class);
+
         zhuanqu_scrollview.smoothScrollTo(0, 20);
-//		IBanners(bdComment.getPic_path());
-//        zhuanqu_banner_iv
-        ImageLoaderUtil.Load2(bdComment.getPic_path(),zhuanqu_banner_iv,R.drawable.error_iv1);
+
+        ImageLoaderUtil.Load2(bdComment.getPic_path(), zhuanqu_banner_iv, R.drawable.error_iv1);
         huoDongAdapter.FrashAp(bdComment.getCategory());
     }
 
@@ -345,6 +319,8 @@ public class AZhuanQu extends ATitleBase {
                         R.id.item_zhuanqu_in_name);
                 dongInItem.item_zhuanqu_in_price = ViewHolder.get(convertView,
                         R.id.item_zhuanqu_in_price);
+                dongInItem.item_zhuanqu_odl_price = ViewHolder.get(convertView,
+                        R.id.item_zhuanqu_odl_price);
                 convertView.setTag(dongInItem);
             } else {
                 dongInItem = (HuoDongInItem) convertView.getTag();
@@ -357,6 +333,13 @@ public class AZhuanQu extends ATitleBase {
             StrUtils.SetTxt(dongInItem.item_zhuanqu_in_price,
                     StrUtils.SetTextForMony(dddata.getSell_price()) + "元");
 
+            if (!StrUtils.isEmpty(dddata.getOrig_price())&&!dddata.getOrig_price().equals("0")) {
+            StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
+                    "原价" + StrUtils.SetTextForMony(dddata.getOrig_price()));
+//            StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
+//                    ("原价" + "30.4"));
+                dongInItem.item_zhuanqu_odl_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            }
             return convertView;
         }
 
@@ -364,6 +347,7 @@ public class AZhuanQu extends ATitleBase {
             ImageView item_zhuanqu_in_iv;
             TextView item_zhuanqu_in_name;
             TextView item_zhuanqu_in_price;
+            TextView item_zhuanqu_odl_price;
         }
     }
 }

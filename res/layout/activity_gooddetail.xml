@@ -238,21 +238,45 @@
                         android:layout_marginTop="5dp"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="left|center_vertical"
-                            android:text="@string/jianyilingshou"
-                            android:textColor="@color/grey"/>
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left|center_vertical"
+                                android:text="@string/jianyilingshou"
+                                android:textColor="@color/grey"/>
+
+                            <TextView
+                                android:id="@+id/gooddetail_price_zhonglay"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"/>
+
+                            <TextView
+                                android:id="@+id/tv_suggest_retail_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/ui_10_dip"
+                                android:text="@string/nullstr"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/app_fen"/>
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/tv_suggest_retail_price"
+                            android:id="@+id/tv_suggest_retail_orig_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:text="@string/nullstr"
-                            android:textColor="@color/app_fen"/>
+                            android:textColor="@color/app_gray"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="@dimen/ui_12_dip"
+                            />
                     </LinearLayout>
 
                     <View style="@style/line_left"/>

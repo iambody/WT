@@ -42,6 +42,7 @@ public class BGoodDetail extends BBase {
     private String seller_name;// =蜜趣杂货铺
     private String slevel;// =0
     private String title;// =盘子
+    private String orig_price;
 //    private String is_fee;
     private int is_fee;//=1
 
@@ -269,5 +270,13 @@ public class BGoodDetail extends BBase {
 
     public void setIs_fee(int is_fee) {
         this.is_fee = is_fee;
+    }
+
+    public String getOrig_price() {
+        return orig_price;
+    }
+
+    public void setOrig_price(String orig_price) {
+        this.orig_price = orig_price;
     }
 }
