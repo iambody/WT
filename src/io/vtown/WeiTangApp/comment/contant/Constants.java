@@ -116,13 +116,13 @@ public class Constants {
 	/**
 	 * 测试环境的host 测试环境 需要切换key 需要同时切换SignKey这个字段!!!!!!!!!!!!!!!!!!!!
 	 */
-	 public static String Host = "https://testvtapi.v-town.cc";
+//	 public static String Host = "https://testvtapi.v-town.cc";
 	public static String WxHost="https://static.v-town.cc/";
 
 	/**
 	 * 生产环境
 	 */
- 	//public static String Host = "https://api.v-town.cc";
+ 	public static String Host = "https://api.v-town.cc";
 
 	// 接口配置参数*******************************************************************
 	/**
@@ -945,11 +945,11 @@ public static int SouSouHeistory= 12;
 	/**
 	 * 测试环境
 	 */
-	 public static String SignKey = "3vh4xN3@G02ixajB*^@PHkxfz88AKk%O";
+//	 public static String SignKey = "3vh4xN3@G02ixajB*^@PHkxfz88AKk%O";
 	/**
 	 * 正式环境的key
 	 */
- //	public static String SignKey = "hkf%t5SMv1HtrVS!Y%B!NPNS!!0cWgy";
+ 	public static String SignKey = "hkf%t5SMv1HtrVS!Y%B!NPNS!!0cWgy";
 
 	// 微糖小助手sheng'chuan'j生产
  // public static String WtHelper = "v-town000111222";

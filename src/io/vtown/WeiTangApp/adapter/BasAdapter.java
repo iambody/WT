@@ -9,7 +9,7 @@ public abstract class BasAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return 0;
-
+//llllllllllllllllllll
 //ddddddddddddddddd
         //dddd
         //ddd
