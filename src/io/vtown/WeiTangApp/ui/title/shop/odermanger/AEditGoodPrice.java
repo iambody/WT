@@ -130,10 +130,12 @@ public class AEditGoodPrice extends ATitleBase implements TextWatcher {
 		StrUtils.SetTxt(tv_good_edit_modity_before_count, "修改前价格:");
 		StrUtils.SetTxt(tv_modify_price_tips,
 				String.format("价格不能小于%1$s元", StrUtils.SetTextForMony(goodInfo.getPurchase_price())));
-		StrUtils.SetTxt(
-				tv_good_edit_price_modify_before,
-				String.format("￥%1$s元",
-						StrUtils.SetTextForMony(goodInfo.getGoods_money())));
+//		StrUtils.SetTxt(
+//				tv_good_edit_price_modify_before,
+//				String.format("￥%1$s元",
+//						StrUtils.SetTextForMony(goodInfo.getGoods_money())));
+
+		StrUtils.SetMoneyFormat(BaseContext,tv_good_edit_price_modify_before,goodInfo.getGoods_money(),17);
 		et_good_edit_price.setText(StrUtils.SetTextForMony(goodInfo.getGoods_money()));
 		
 		tv_good_edit_success.setOnClickListener(this);
@@ -217,7 +219,7 @@ public class AEditGoodPrice extends ATitleBase implements TextWatcher {
 		} else {
 			tv_modify_price_tips.setVisibility(View.GONE);
 			tv_good_edit_success.setEnabled(true);
-			tv_good_edit_success.setBackgroundResource(R.drawable.select_fen_to_gray);
+			tv_good_edit_success.setBackgroundResource(R.drawable.select_white_to_fen1);
 		}
 	}
 

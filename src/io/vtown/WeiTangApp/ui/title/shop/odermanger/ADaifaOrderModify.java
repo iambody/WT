@@ -592,7 +592,7 @@ public class ADaifaOrderModify extends ATitleBase {
                 break;
 
             case Tage_From_Look_Detail_Close:// 已关闭之查看订单详情
-                ll_contact_buyer.setVisibility(View.GONE);
+                ll_contact_buyer.setVisibility(View.VISIBLE);
 
                 lv_order_good_express_speed.setVisibility(View.VISIBLE);
 

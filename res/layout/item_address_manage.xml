@@ -51,7 +51,7 @@
             android:layout_marginLeft="@dimen/center_address_manager_delivery_address_left_right_margin"
 
             android:text="@string/delivery_address"
-            android:textColor="@color/app_gray"
+            android:textColor="@color/app_black"
             android:textSize="@dimen/comment_label_txtsize" />
 
             />

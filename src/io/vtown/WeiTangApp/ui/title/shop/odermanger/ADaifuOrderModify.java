@@ -262,7 +262,7 @@ public class ADaifuOrderModify extends ATitleBase {
 		StrUtils.SetTxt(tv_daifu_good_count, count);
 		total_price_set = Integer.parseInt(data2.getGoods_price())
 				+ Integer.parseInt(data2.getPostage());
-		//total_price_old = total_price_set;
+		total_price_old = total_price_set;
 //		StrUtils.SetTxt(
 //				tv_daifu_total_price,
 //				String.format("%1$s元",
@@ -618,13 +618,13 @@ public class ADaifuOrderModify extends ATitleBase {
 			String goods_price = String.format("￥%1$s",
 					StrUtils.SetTextForMony(datas.get(arg0).getGoods_price()));
 			StrUtils.SetTxt(item.tv_daifu_good_price, goods_price);
-			if(isModifyPrice){
-				item.tv_daifu_good_price.setVisibility(View.VISIBLE);
-				item.tv_daifu_good_price.setTextColor(getResources().getColor(R.color.app_gray));
-				item.tv_daifu_good_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-			}else{
-				item.tv_daifu_good_price.setVisibility(View.GONE);
-			}
+//			if(isModifyPrice){
+//				item.tv_daifu_good_price.setVisibility(View.VISIBLE);
+//				item.tv_daifu_good_price.setTextColor(getResources().getColor(R.color.app_gray));
+//				item.tv_daifu_good_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+//			}else{
+//				item.tv_daifu_good_price.setVisibility(View.GONE);
+//			}
 			String goods_number = String.format("x%1$s", datas.get(arg0)
 					.getGoods_number());
 			StrUtils.SetTxt(item.tv_daifu_good_count, goods_number);
@@ -713,24 +713,10 @@ public class ADaifuOrderModify extends ATitleBase {
 					isModifyPrice = true;
 				}
 			}
-			LogUtils.i("*****************total_price***************"+total_price);
-			LogUtils.i("*****************good_price***************"+good_price);
-			int old_total_price = Integer.parseInt(data.getGoods_price());
-			old_total_price += Math.abs(total_price)-Math.abs(total_price_old);
-			//String text = tv_daifu_total_price.getText().toString();
-
-
-			//total_price_set += (int)(good_price-total_price_old);
-
-
-//			StrUtils.SetTxt(tv_daifu_total_price, String.format(
-//					"￥%1$s",
-//					StrUtils.SetTextForMony(total_price
-//							+ Integer.parseInt(data.getPostage()) + "")));
-
-			StrUtils.SetMoneyFormat(BaseContext,tv_daifu_total_price,old_total_price + Integer.parseInt(data.getPostage())+ "",17);
+			total_price_old += total_price;
+			StrUtils.SetMoneyFormat(BaseContext,tv_daifu_total_price,total_price_old + Integer.parseInt(data.getPostage())+ "",17);
 		}
-		total_price_old = total_price;
+
 	}
 
 	@Override

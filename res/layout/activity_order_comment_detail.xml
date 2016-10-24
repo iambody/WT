@@ -24,43 +24,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
                 
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/order_detail_layout_padding"
-                        android:background="@color/white"
-                        android:visibility="visible" >
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/nullstr"
-                            android:textColor="@color/grey"
-                            android:visibility="invisible"
-                            android:textSize="@dimen/comment_label_txtsize" />
-
-                        <LinearLayout
-                            android:id="@+id/ll_order_manager_contact_buyer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:orientation="horizontal" >
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/shopbus_item_log2" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="联系买家"
-                                android:textColor="@color/grey"
-                                android:textSize="@dimen/comment_label_txtsize" />
-                        </LinearLayout>
-                    </RelativeLayout>
                     
-                <View style="@style/line"/>
+
 
                 <include
                     android:id="@+id/address_message"
@@ -132,6 +98,43 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="vertical" >
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/order_detail_layout_padding"
+                        android:background="@color/white"
+                        android:visibility="visible" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nullstr"
+                            android:textColor="@color/grey"
+                            android:visibility="invisible"
+                            android:textSize="@dimen/comment_label_txtsize" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_order_manager_contact_buyer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/shopbus_item_log2" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="联系买家"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/comment_label_txtsize" />
+                        </LinearLayout>
+                    </RelativeLayout>
 
                     <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                         android:id="@+id/lv_common_goods"

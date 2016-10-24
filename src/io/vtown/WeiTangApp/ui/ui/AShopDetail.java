@@ -227,6 +227,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     protected void InItBaseView() {
         setContentView(R.layout.activity_shopdetail);
         user_Get = Spuit.User_Get(BaseContext);
+        SetTitleHttpDataLisenter(this);
         IBase();
         IData();
     }
@@ -234,7 +235,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
     // 获取商品详情的通道
     private void IData() {
         PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.loading));
-        SetTitleHttpDataLisenter(this);
+
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("seller_id", baseBcBComment.getId());// 自营店铺
         map.put("_member_id", user_Get.getId());
