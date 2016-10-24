@@ -18,7 +18,7 @@ public class AExitNull extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_null_for_shopdetailskip);
 //        AppManager.getAppManager().finishAllActivity();
-        PromptManager.SkipActivity(this,new Intent(this, ALogin.class));
+//        PromptManager.SkipActivity(this,new Intent(this, ALogin.class));
         this.finish();
     }
 }

@@ -552,40 +552,40 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AInviteFriendRecord.class));
 //                    return;
 //                }
-                if (!Spuit.IsHaveBind_Get(BaseActivity)) {
-                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                            ANewBindCode.class));
-                    return;
-                }
-                if (Spuit.IsHaveActive_Get(BaseActivity)) {
+//                if (!Spuit.IsHaveBind_Get(BaseActivity)) {
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+//                            ANewBindCode.class));
+//                    return;
+//                }
+//                if (Spuit.IsHaveActive_Get(BaseActivity)) {
                     PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AInviteFriendRecord.class));
-                }
-
-                if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {
-                    ShowCustomDialog(getResources().getString(R.string.to_Jihuo),
-                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo),
-                            new IDialogResult() {
-                                @Override
-                                public void RightResult() {
-                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
-                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
-                                            maxtive.getActivitytitle());
-                                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
-                                            mBCommentss));
-                                }
-
-                                @Override
-                                public void LeftResult() {
-                                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                                            BaseActivity, AWeb.class).putExtra(
-                                            AWeb.Key_Bean,
-                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
-
-                                }
-                            });
-                    return;
-                }
+//                }
+//
+//                if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {
+//                    ShowCustomDialog(getResources().getString(R.string.to_Jihuo),
+//                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo),
+//                            new IDialogResult() {
+//                                @Override
+//                                public void RightResult() {
+//                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+//                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+//                                            maxtive.getActivitytitle());
+//                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+//                                            mBCommentss));
+//                                }
+//
+//                                @Override
+//                                public void LeftResult() {
+//                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                                            BaseActivity, AWeb.class).putExtra(
+//                                            AWeb.Key_Bean,
+//                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+//
+//                                }
+//                            });
+//                    return;
+//                }
 
 
                 break;

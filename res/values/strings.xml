@@ -699,6 +699,7 @@
     <string name="bind_yaoqing">绑定邀请码</string>
     <string name="bind_jihuo">激活账户</string>
     <string name="bind_yaoqinghaoyou">邀请好友</string>
+    <string name="my_shangji">我的上级</string>
     <string name="nobind">未绑定</string>
     <string name="myaddress">我的地址</string>
     <string name="no_bind_code">去绑定邀请码</string>

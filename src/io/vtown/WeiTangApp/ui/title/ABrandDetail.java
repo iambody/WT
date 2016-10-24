@@ -43,6 +43,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -848,7 +849,8 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                         R.id.item_branddetail_name);
                 myItem.item_branddetail_price = ViewHolder.get(arg1,
                         R.id.item_branddetail_price);
-
+                myItem.item_branddetail_orig_price= ViewHolder.get(arg1,
+                        R.id.item_branddetail_orig_price);
                 arg1.setTag(myItem);
             } else {
                 myItem = (Myitem) arg1.getTag();
@@ -859,6 +861,15 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
             StrUtils.SetTxt(myItem.item_branddetail_name, data.getTitle());
             StrUtils.SetTxt(myItem.item_branddetail_price,
                     StrUtils.SetTextForMony(data.getSell_price()) + "元");
+            if(!StrUtils.isEmpty(data.getOrig_price())&&!data.getOrig_price().equals("0")){
+
+                StrUtils.SetTxt(myItem.item_branddetail_orig_price,
+                        "原价" + StrUtils.SetTextForMony(data.getOrig_price()));
+//            StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
+//                    ("原价" + "30.4"));
+                myItem.item_branddetail_orig_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+
+            }
             return arg1;
         }
 
@@ -866,6 +877,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
             ImageView item_branddetail_iv;
             TextView item_branddetail_name;
             TextView item_branddetail_price;
+            TextView item_branddetail_orig_price;
         }
     }
 

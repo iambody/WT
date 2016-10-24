@@ -35,6 +35,7 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -768,7 +769,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                 if (Tage_SouGoodResultItem == Tage_Result) {//搜索无结果
 //                    IDataView(acomment_list, comment_nodata_lay, NOVIEW_ERROR);
                     ShowErrorCanLoad(error);
-                            ShowErrorIv(R.drawable.error_sou);
+                    ShowErrorIv(R.drawable.error_sou);
                     ShowErrorIv(R.drawable.error_sou);
                 }
                 if (Tage_Result == Tage_ACenterShopCollect) {// 店铺收藏
@@ -1060,6 +1061,9 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                                 convertView, R.id.tv_good_category_good_price);
                         goodSort.tv_good_category_good_title = ViewHolder.get(
                                 convertView, R.id.tv_good_category_good_title);
+                        goodSort.tv_good_category_orig_good_price = ViewHolder.get(
+                                convertView, R.id.tv_good_category_orig_good_price);
+
                         convertView.setTag(goodSort);
                         break;
 
@@ -1112,15 +1116,6 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     break;
                 case Tage_HomePopBrand:// 首页的弹出框item0的品牌按钮点击后进来的品牌列表
 
-                    // ViewGroup.LayoutParams lp = brandItem.item_home_brand_iv
-                    // .getLayoutParams();
-                    // lp.width = screenWidth;
-                    // lp.height = LayoutParams.WRAP_CONTENT;
-                    // brandItem.item_home_brand_iv.setScaleType(ScaleType.FIT_XY);
-                    // brandItem.item_home_brand_iv.setLayoutParams(lp);
-                    //
-                    // brandItem.item_home_brand_iv.setMaxWidth(screenWidth);
-                    // brandItem.item_home_brand_iv.setMaxHeight(screenWidth * 2);
 
                     ImageLoaderUtil.Load2(data.getCover(),
                             brandItem.item_home_brand_iv, R.drawable.error_iv1);
@@ -1156,7 +1151,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
 
                     break;
                 case Tage_ACenterOderGuanzhu:
-                    ImageLoaderUtil.Load(data.getCover(),
+                    ImageLoaderUtil.Load2(data.getCover(),
                             centerGoodCollect.iv_center_good_collect_good_icon,
                             R.drawable.error_iv2);
                     StrUtils.SetTxt(
@@ -1207,19 +1202,26 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     break;
                 case Tage_AGoodSort:
                     try {
-                        ImageLoaderUtil.Load(data.getCover(),
+                        ImageLoaderUtil.Load2(data.getCover(),
                                 goodSort.iv_good_category_good_icon,
                                 R.drawable.error_iv2);
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
-
                     StrUtils.SetTxt(goodSort.tv_good_category_good_title,
                             data.getTitle());
                     StrUtils.SetTxt(
                             goodSort.tv_good_category_good_price,
                             String.format("价格: %s元",
                                     StrUtils.SetTextForMony(data.getSell_price())));
+
+                    if (!StrUtils.isEmpty(data.getOrig_price()) && !data.getOrig_price().equals("0")) {
+                        StrUtils.SetTxt(goodSort.tv_good_category_orig_good_price,
+                                "原价" + StrUtils.SetTextForMony(data.getOrig_price()));
+//            StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
+//                    ("原价" + "30.4"));
+                        goodSort.tv_good_category_orig_good_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
                     break;
 
                 default:
@@ -1285,7 +1287,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
 
         class GoodSortItem {
             ImageView iv_good_category_good_icon;
-            TextView tv_good_category_good_title, tv_good_category_good_price;
+            TextView tv_good_category_good_title, tv_good_category_good_price, tv_good_category_orig_good_price;
         }
     }
 

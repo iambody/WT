@@ -36,7 +36,7 @@ public class BLComment extends BBase {
 	// 搜索界面的热门商品&&&搜索商品获取的搜索结果 TODO此处需要进行搜索历史的缓存**********************
 	private String id;// ": "3",
 	private String title;// ": "iPhone SE"
-
+	private String orig_price;
 	// 首页的品牌图片跳转到的品牌页的列表的bean**********************
 
 	// private String id;//": "2",
@@ -2020,4 +2020,11 @@ public class BLComment extends BBase {
 	// this.listss = listss;
 	// }
 
+	public String getOrig_price() {
+		return orig_price;
+	}
+
+	public void setOrig_price(String orig_price) {
+		this.orig_price = orig_price;
+	}
 }

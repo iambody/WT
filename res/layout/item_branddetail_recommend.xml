@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/shap_corner"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/shap_corner"
+              android:orientation="vertical">
 
     <ImageView
         android:id="@+id/item_branddetail_iv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/brand_detail_brand_item_iv_height"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_size3"
-        android:src="@color/app_line" />
+        android:src="@color/app_line"/>
 
     <TextView
         android:id="@+id/item_branddetail_name"
@@ -26,14 +26,28 @@
         android:lines="2"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:textColor="@color/grey" />
+        android:textColor="@color/grey"/>
 
-    <TextView
-        android:id="@+id/item_branddetail_price"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:textColor="@color/app_fen" />
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/item_branddetail_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:textColor="@color/app_fen"/>
+
+        <TextView
+            android:id="@+id/item_branddetail_orig_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/ui_12_dip"
+            />
+    </LinearLayout>
 </LinearLayout>

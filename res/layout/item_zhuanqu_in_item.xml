@@ -9,7 +9,7 @@
         android:id="@+id/item_zhuanqu_in_iv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/zhuanqu_item_height"
-        android:scaleType="centerCrop"/>
+        android:scaleType="fitCenter"/>
 
     <ImageView
         android:layout_width="match_parent"

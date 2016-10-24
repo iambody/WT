@@ -535,11 +535,13 @@ public class AddAndSubView extends LinearLayout {
 		@Override
 		public void afterTextChanged(Editable s) {
 			String numString = s.toString();
-			if (numString == null || numString.equals("")) {
+
+			if (s==null||numString == null || numString.equals("")||numString.equals("0")) {
 				num = 1;
 				if (onNumChangeListener != null) {
 					onNumChangeListener.onNumChange(AddAndSubView.this, num);
 				}
+
 			} else {
 				int numInt = Integer.parseInt(numString);
 				if (numInt < MinNumber) {

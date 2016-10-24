@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -67,8 +68,11 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     private ImageView maintab_center_cover;
     private CircleImageView maintab_center_myiv;
     private TextView maintab_center_myname;
+
     //我的订单，，我的钱包
     private View maintab_tab_center_oder, maintab_tab_center_walle;
+    private LinearLayout maintab_center_superior_lay;
+    private View maintab_center_superior;//绑定的上级
     //我的show,邀请码，卡券,我的地址
     private View maintab_center_show, maintab_center_invite_code, maintab_center_card, maintab_center_address;
     //商品关注，店铺收藏，浏览记录
@@ -121,7 +125,9 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     }
 
     private void IBaseView() {
-        //
+        maintab_center_superior_lay = (LinearLayout) BaseView.findViewById(R.id.maintab_center_superior_lay);
+        maintab_center_superior = BaseView.findViewById(R.id.maintab_center_superior);
+        //ss
         maintab_center_myiv_lay = (RelativeLayout) BaseView.findViewById(R.id.maintab_center_myiv_lay);
         maintab_center_cover = (ImageView) BaseView.findViewById(R.id.maintab_center_cover);
         maintab_center_myiv = (CircleImageView) BaseView.findViewById(R.id.maintab_center_myiv);
@@ -175,7 +181,7 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 R.drawable.tab1_nor);//login_my_log
 
         // 上边两个
-        SetCommentIV("我的订单", R.drawable.shop_grad2, maintab_tab_center_oder);
+        SetCommentIV("我的订单", R.drawable.shop_grada2, maintab_tab_center_oder);
         SetCommentIV("我的钱包", R.drawable.center_wallet, maintab_tab_center_walle);
         MyResume();
     }
@@ -269,16 +275,24 @@ public class FMainCenter extends FBase implements View.OnClickListener {
     }
 
     public void MyResume() {
+        maintab_center_superior_lay.setVisibility(View.VISIBLE);
         int ShowBindTitle;
         if (!Spuit.IsHaveBind_Get(BaseActivity)) {//未绑定
+            maintab_center_superior_lay.setVisibility(View.GONE);
             ShowBindTitle = R.string.bind_yaoqing;//"绑定邀请码";
         } else if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {//已绑定未激活==》跳转激活界面
             ShowBindTitle = R.string.bind_jihuo;//"请激活";
+            SetItemContent(maintab_center_superior, R.string.my_shangji,
+                    R.drawable.shop_grad3);
         } else {//已激活==》跳转邀请界面
             ShowBindTitle = R.string.bind_yaoqinghaoyou;//"邀请好友";
+            SetItemContent(maintab_center_superior, R.string.my_shangji,
+                    R.drawable.shop_grad3);
         }
         SetItemContent(maintab_center_invite_code, ShowBindTitle,
                 R.drawable.center_iv3);
+
+
     }
 
     @Override
@@ -417,6 +431,11 @@ public class FMainCenter extends FBase implements View.OnClickListener {
             case R.id.maintab_center_oder_about:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         AAboutWt.class));
+                break;
+            case R.id.maintab_center_superior://我的上级
+
+
+
                 break;
         }
 

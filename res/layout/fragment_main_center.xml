@@ -125,6 +125,16 @@
 
                     <ImageView style="@style/center_line"/>
 
+                    <LinearLayout
+                        android:id="@+id/maintab_center_superior_lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <include
+                            android:id="@+id/maintab_center_superior"
+                            layout="@layout/commentview_center"/>
+                        <ImageView style="@style/center_line"/>
+                    </LinearLayout>
                     <include
                         android:id="@+id/maintab_center_card"
                         layout="@layout/commentview_center"/>
@@ -134,6 +144,7 @@
                     <include
                         android:id="@+id/maintab_center_address"
                         layout="@layout/commentview_center"/>
+
 
                 </LinearLayout>
             </LinearLayout>
