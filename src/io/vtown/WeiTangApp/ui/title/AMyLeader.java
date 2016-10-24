@@ -90,7 +90,7 @@ public class AMyLeader extends ATitleBase {
             StrUtils.SetTxt(tvMyLeaderUsertag, getResources().getString(R.string.weijihuo));
         } else {
             StrUtils.SetTxt(tvMyLeaderUsertag, leader.getMember_level_name());
-            //设置shape的背景色和字体颜色
+            //设置shape的背景色和字体颜色44
             switch (leader.getMember_level()) {
                 case 0:
                     UiHelper.SetShapeColor(tvMyLeaderUsertag, getResources().getColor(R.color.lv1));
