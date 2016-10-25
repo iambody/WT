@@ -125,7 +125,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/select_white_to_fen1"
         android:padding="10dp"
-        android:textColor="@color/app_fen"
+        android:textColor="@color/app_gray"
         android:text="@string/submit_real_auth"
         android:layout_marginBottom="@dimen/ui_10_dip"/>
 

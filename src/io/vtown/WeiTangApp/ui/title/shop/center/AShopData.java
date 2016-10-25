@@ -144,6 +144,8 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 
     private View myView;
     private BNewHome MBNewHome;
+    private boolean IsAvater=false;
+
     @Override
     protected void InItBaseView() {
 
@@ -549,15 +551,16 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
      * 裁切图片 uri为选中图片返回的Uri cutImgUri为把截取图片写入sd卡的Uri
      */
     private void crop(Uri uri, Uri cutImgUri) {
+        boolean  IsAvater=(show_type==1);
         // 裁剪图片意图
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
         intent.putExtra("crop", "true");
         // 裁剪框的比例，1：1
-        intent.putExtra("aspectX", 4);
-        intent.putExtra("aspectY", 5);
+        intent.putExtra("aspectX", IsAvater?8:16);
+        intent.putExtra("aspectY", 8);
         // 裁剪后输出图片的尺寸大小
-        intent.putExtra("outputX", 400);
+        intent.putExtra("outputX", IsAvater?500:800);
         intent.putExtra("outputY", 500);
         // 图片格式
         intent.putExtra("outputFormat", "JPEG");

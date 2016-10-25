@@ -153,8 +153,8 @@ public class ASouSouShop extends ATitileNoBase {
 			DataError("暂无相关店铺", Data.getHttpLoadType());
 			return;
 		}
+		IDataView(soushop_outlay, shousoushop_show_nodata_lay, NOVIEW_RIGHT);
 		soushop_outlay.setVisibility(View.VISIBLE);
-
 		// 开始解析****************************************************************
 		JSONObject obj = null;
 		try {

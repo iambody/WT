@@ -60,6 +60,7 @@ public class ARecyclerMyShow extends ATitleBase {
     private boolean IsCanLoadMore = false;
     private boolean IsLoadingMore = false;
     private View mRootView ;
+    private  View comment_myshow_no__lay;
 
     @Override
     protected void InItBaseView() {
@@ -81,6 +82,7 @@ public class ARecyclerMyShow extends ATitleBase {
     }
 
     private void IView() {
+        comment_myshow_no__lay=findViewById(R.id.comment_myshow_no__lay);
         HeadView = LayoutInflater.from(BaseContext).inflate(R.layout.view_othershow, null);
 
         center_show_head = (CircleImageView) HeadView.findViewById(R.id.center_show_head);
@@ -136,17 +138,6 @@ public class ARecyclerMyShow extends ATitleBase {
 
             return;
         }
-//        center_show_head.setVisibility(View.VISIBLE);
-       // myshow_head_lay.setVisibility(View.VISIBLE);
-//        List<BLOtherShowOut> listDatas = datas.getShowinfo();
-//        if (listDatas.size() > 0)
-//            LastId = listDatas
-//                    .get(listDatas.size() - 1)
-//                    .getList()
-//                    .get(listDatas.get(listDatas.size() - 1).getList().size() - 1)
-//                    .getId();
-//        myshowscrollview.smoothScrollTo(0, 20);
-//        mCenterShowAp.FrashData(listDatas, datas);
         myShowAdapter.FrashData(datas);
     }
 
@@ -216,6 +207,9 @@ public class ARecyclerMyShow extends ATitleBase {
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     CacheUtil.MyShow_Save(BaseContext,"");
                     myShowAdapter.FrashData(new ArrayList<BShow>());
+                    IDataView(recyclerview_my_show, comment_myshow_no__lay, NOVIEW_ERROR);
+                    ShowErrorIv(R.drawable.error_show);
+                    ShowErrorCanLoad(getResources().getString(R.string.younoshow));
                     return;
                 }
                 CacheUtil.MyShow_Save(BaseContext,Data.getHttpResultStr());

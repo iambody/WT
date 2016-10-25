@@ -63,8 +63,12 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_my_show"
         android:divider="@color/app_gray"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+    <include
+        android:id="@+id/comment_myshow_no__lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"/>
 </LinearLayout>

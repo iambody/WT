@@ -197,8 +197,6 @@ public class FMainCenter extends FBase implements View.OnClickListener {
         int messageType = mymessage.getMessageType();
         BShop myBShop = Spuit.Shop_Get(BaseContext);
         switch (messageType) {
-
-
             case BMessage.Tage_Shop_data_cover_change:
                 if (!StrUtils.isEmpty(myBShop.getAvatar())) {
                     ImageLoaderUtil.Load2(Spuit.Shop_Get(BaseContext).getAvatar(),

@@ -52,7 +52,7 @@ public class ARecyclerOtherShow extends ATitleBase {
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.acvitty_recycler_other_show);
-        this.mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.acvitty_recycler_other_show,null);
+        this.mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.acvitty_recycler_other_show, null);
         SetTitleHttpDataLisenter(this);
         IBundlle();
         IHeaderView();
@@ -86,7 +86,7 @@ public class ARecyclerOtherShow extends ATitleBase {
         recyclerview_other_show = (RecyclerView) findViewById(R.id.recyclerview_other_show);
         recyclerview_other_show.setLayoutManager(mLinearLayoutManager);
         recyclerview_other_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
-        mShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth,mRootView,this,false);
+        mShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth, mRootView, this, false);
         mHeadAdapter = new HeaderViewRecyclerAdapter(mShowAdapter);
         mHeadAdapter.addHeaderView(HeadView);
         recyclerview_other_show.setAdapter(mHeadAdapter);//myShowAdapter
@@ -96,7 +96,7 @@ public class ARecyclerOtherShow extends ATitleBase {
 
                 if (!IsLoadingMore) {
                     if (IsCanLoadMore) {
-                        PromptManager.ShowCustomToast(BaseContext, "开始sss");
+//                        PromptManager.ShowCustomToast(BaseContext, "开始sss");
                         createLoadMoreView();
                     }
                 }
@@ -122,7 +122,7 @@ public class ARecyclerOtherShow extends ATitleBase {
      * 删除我自己的show
      */
 
-    public void DeletMyShow(String ShowId,String seller_id) {
+    public void DeletMyShow(String ShowId, String seller_id) {
         HashMap<String, String> mHashMap = new HashMap<String, String>();
 
         mHashMap.put("id", ShowId);
@@ -169,7 +169,7 @@ public class ARecyclerOtherShow extends ATitleBase {
                     IData(lastid, LOAD_INITIALIZE);
                 }
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    PromptManager.ShowCustomToast(BaseContext,getResources().getString(R.string.noshow));
+                    PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.noshow));
                     return;
                 }
                 List<BShow> datas = new ArrayList<BShow>();
@@ -201,6 +201,9 @@ public class ARecyclerOtherShow extends ATitleBase {
     @Override
     protected void DataError(String error, int LoadType) {
         PromptManager.ShowCustomToast(BaseContext, error);
+        if (LoadType == LOAD_LOADMOREING) {
+            HindLoadMore();
+        }
     }
 
     @Override

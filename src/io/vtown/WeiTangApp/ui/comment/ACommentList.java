@@ -1004,6 +1004,11 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                         centerGoodCollect.ll_center_good_collect_good_rule3 = ViewHolder
                                 .get(convertView,
                                         R.id.ll_center_good_collect_good_rule3);
+
+
+                        centerGoodCollect.tv_center_good_collect_good_origprice= ViewHolder
+                                .get(convertView,
+                                        R.id.tv_center_good_collect_good_origprice);
                         convertView.setTag(centerGoodCollect);
                         break;
 
@@ -1049,6 +1054,10 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                         centerBrowseRecord.ll_center_browse_record_rule3 = ViewHolder
                                 .get(convertView,
                                         R.id.ll_center_browse_record_rule3);
+
+                        centerBrowseRecord.tv_center_browse_record_origprice= ViewHolder
+                                .get(convertView,
+                                        R.id.tv_center_browse_record_origprice);
                         convertView.setTag(centerBrowseRecord);
                         break;
 
@@ -1168,6 +1177,12 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                         centerGoodCollect.iv_center_good_collect_good_level
                                 .setVisibility(View.VISIBLE);
                     }
+                    if(!StrUtils.isEmpty(data.getOrig_price())&&!data.getOrig_price().equals("0")){
+                        StrUtils.SetTxt(centerGoodCollect.tv_center_good_collect_good_origprice,
+                                "原价" + StrUtils.SetTextForMony(data.getOrig_price()));
+
+                        centerGoodCollect.tv_center_good_collect_good_origprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
                     break;
                 case Tage_ACenterShopCollect:
                     ImageLoaderUtil.Load2(data.getAvatar(),
@@ -1198,6 +1213,14 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                         centerBrowseRecord.iv_center_browse_record_good_level
                                 .setVisibility(View.VISIBLE);
                     }
+                    if(!StrUtils.isEmpty(data.getOrig_price())&&!data.getOrig_price().equals("0")){
+                        StrUtils.SetTxt(centerBrowseRecord.tv_center_browse_record_origprice,
+                                "原价" + StrUtils.SetTextForMony(data.getOrig_price()));
+
+                        centerBrowseRecord.tv_center_browse_record_origprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
+
+
 
                     break;
                 case Tage_AGoodSort:
@@ -1259,7 +1282,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     tv_center_good_collect_good_rule1,
                     tv_center_good_collect_good_rule2,
                     tv_center_good_collect_good_rule3,
-                    tv_center_good_collect_good_price;
+                    tv_center_good_collect_good_price,tv_center_good_collect_good_origprice;
             LinearLayout ll_center_good_collect_good_rule1,
                     ll_center_good_collect_good_rule2,
                     ll_center_good_collect_good_rule3;
@@ -1278,7 +1301,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     tv_center_browse_record_rule1,
                     tv_center_browse_record_rule2,
                     tv_center_browse_record_rule3,
-                    tv_center_browse_record_price;
+                    tv_center_browse_record_price,tv_center_browse_record_origprice;
             LinearLayout ll_center_browse_record_rule1,
                     ll_center_browse_record_rule2,
                     ll_center_browse_record_rule3;
