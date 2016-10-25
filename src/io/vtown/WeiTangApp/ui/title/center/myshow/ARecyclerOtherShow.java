@@ -29,6 +29,8 @@ import io.vtown.WeiTangApp.comment.view.RecyclerCommentItemDecoration;
 import io.vtown.WeiTangApp.comment.view.custom.EndlessRecyclerOnScrollListener;
 import io.vtown.WeiTangApp.comment.view.custom.HeaderViewRecyclerAdapter;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.ACommentList;
+import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
@@ -225,9 +227,20 @@ public class ARecyclerOtherShow extends ATitleBase {
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.center_show_head:
+                PromptManager.SkipActivity(
+                        BaseActivity,
+                        new Intent(BaseActivity, baseBcBComment.getIs_brand()
+                                .equals("1") ? ABrandDetail.class
+                                : AShopDetail.class).putExtra(
+                                ACommentList.Tage_ResultKey,
+                                ACommentList.Tage_HomePopBrand).putExtra(
+                                BaseKey_Bean,
+                                new BComment(baseBcBComment.getId(), baseBcBComment
+                                        .getSeller_name())));
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        AShopDetail.class).putExtra(BaseKey_Bean, baseBcBComment));
 
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AShopDetail.class).putExtra(BaseKey_Bean, baseBcBComment));
+
                 break;
         }
     }

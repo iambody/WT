@@ -337,19 +337,19 @@ public class AOtherShow extends ATitleBase implements OnFooterRefreshListener {
 					AMyShowDataSet.class).putExtra(AMyShowDataSet.Bean_Key,
 					baseBcBComment));
 			break;
-		// case R.id.center_othershow_head:
-		// PromptManager.ShowCustomToast(BaseContext, "ssssssssssd");
-		// PromptManager.SkipActivity(
-		// BaseActivity,
-		// new Intent(BaseActivity, baseBcBComment.getIs_brand()
-		// .equals("1") ? ABrandDetail.class
-		// : AShopDetail.class).putExtra(
-		// ACommentList.Tage_ResultKey,
-		// ACommentList.Tage_HomePopBrand).putExtra(
-		// BaseKey_Bean,
-		// new BComment(baseBcBComment.getId(), baseBcBComment
-		// .getSeller_name())));
-		// break;
+//		 case R.id.center_othershow_head:
+//		 PromptManager.ShowCustomToast(BaseContext, "ssssssssssd");
+//		 PromptManager.SkipActivity(
+//		 BaseActivity,
+//		 new Intent(BaseActivity, baseBcBComment.getIs_brand()
+//		 .equals("1") ? ABrandDetail.class
+//		 : AShopDetail.class).putExtra(
+//		 ACommentList.Tage_ResultKey,
+//		 ACommentList.Tage_HomePopBrand).putExtra(
+//		 BaseKey_Bean,
+//		 new BComment(baseBcBComment.getId(), baseBcBComment
+//		 .getSeller_name())));
+//		 break;
 		default:
 			break;
 		}
