@@ -405,6 +405,11 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
                 //lv_fall_daifu_common.stopLoadMore();
 
                 break;
+
+            case 1117:
+                lv_fall_daifu_common.setVisibility(View.VISIBLE);
+                fragent_oder_nodata_lay.setVisibility(View.GONE);
+                break;
         }
     }
 
@@ -526,7 +531,7 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
         map.put("seller_id", seller_id);
         map.put("seller_order_sn", seller_order_sn);
         FBGetHttpData(map, Constants.Agree_TuiKuan, Method.PUT, 1,
-                LOAD_INITIALIZE);
+                1117);
 
     }
 
@@ -542,7 +547,7 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
         map.put("seller_id", seller_id);
         map.put("seller_order_sn", seller_order_sn);
         FBGetHttpData(map, Constants.UnAgree_TuiKuan, Method.PUT, 2,
-                LOAD_INITIALIZE);
+                1117);
 
     }
 
@@ -722,7 +727,7 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
 
             BLShopOrderManage blComment = datas.get(arg0);
             int order_status = Integer.parseInt(blComment.getOrder_status());
-            String is_send = blComment.getIs_send();
+            String is_send = blComment.getIs_send();//is_send为1的时候是发货商
             String is_refund = blComment.getIs_refund();
             String is_edit = blComment.getIs_edit();
             String is_show = blComment.getIs_show();
@@ -806,28 +811,52 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
 
                 case 40:// 买家已申请退款，卖家可同意退款和拒绝退款
 
-                    if ("0".equals(is_refund)) {
+                    if ("1".equals(is_edit)) {
+                        if ("0".equals(is_refund)) {
+                            outside.ll_shop_center_order_manage_order_sn2
+                                    .setVisibility(View.GONE);
+                            outside.btn_modification.setVisibility(View.GONE);
+                            outside.btn_deliver_goods.setVisibility(View.GONE);
+                            outside.ll_shop_center_order_manage_order_sn1
+                                    .setVisibility(View.VISIBLE);
+                            outside.tv_shop_order_manage_is_zhongcai
+                                    .setVisibility(View.VISIBLE);
+                        } else {
+                            outside.ll_shop_center_order_manage_order_sn2
+                                    .setVisibility(View.VISIBLE);
+                            outside.ll_shop_center_order_manage_order_sn1
+                                    .setVisibility(View.GONE);
+                            outside.btn_modification.setVisibility(View.VISIBLE);
+                            outside.btn_deliver_goods.setVisibility(View.VISIBLE);
+
+                            outside.tv_shop_order_manage_is_zhongcai.setVisibility(View.GONE);
+                        }
+                    } else {
                         outside.ll_shop_center_order_manage_order_sn2
                                 .setVisibility(View.GONE);
                         outside.ll_shop_center_order_manage_order_sn1
                                 .setVisibility(View.VISIBLE);
-                        outside.tv_shop_order_manage_is_zhongcai
-                                .setVisibility(View.VISIBLE);
+                        outside.btn_modification.setVisibility(View.GONE);
+                        outside.btn_deliver_goods.setVisibility(View.GONE);
+
+                        outside.tv_shop_order_manage_is_zhongcai.setVisibility(View.GONE);
                     }
+
+
+
                     outside.btn_order_optioning.setVisibility(View.GONE);
                     outside.tv_shop_order_manage_is_cancel.setVisibility(View.GONE);
-                    outside.btn_modification.setVisibility(View.VISIBLE);
-                    outside.btn_deliver_goods.setVisibility(View.VISIBLE);
+
                     outside.tv_shop_order_manage_is_zhongcai
                             .setVisibility(View.GONE);
                     outside.btn_modification_order.setVisibility(View.GONE);
                     outside.tv_shop_order_manage_is_over.setVisibility(View.GONE);
                     outside.btn_modification.setText("同意退款");
                     outside.btn_deliver_goods.setText("拒绝退款");
-                    outside.ll_shop_center_order_manage_order_sn2
-                            .setVisibility(View.VISIBLE);
-                    outside.ll_shop_center_order_manage_order_sn1
-                            .setVisibility(View.GONE);
+//                    outside.ll_shop_center_order_manage_order_sn2
+//                            .setVisibility(View.VISIBLE);
+//                    outside.ll_shop_center_order_manage_order_sn1
+//                            .setVisibility(View.GONE);
 
                     break;
 
@@ -932,8 +961,8 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
 //            String price = String.format("%1$s元",
 //                    StrUtils.SetTextForMony(total_price + ""));
 //            StrUtils.SetTxt(outside.tv_good_price, price);
-            int total_price = Integer.parseInt(datas.get(arg0).getGoods_price())+Integer.parseInt(datas.get(arg0).getPostage());
-            StrUtils.SetMoneyFormat(BaseContext,outside.tv_good_price,total_price+"",17);
+            int total_price = Integer.parseInt(datas.get(arg0).getGoods_price()) + Integer.parseInt(datas.get(arg0).getPostage());
+            StrUtils.SetMoneyFormat(BaseContext, outside.tv_good_price, total_price + "", 17);
             String number = String.format("共%1$s件商品", datas.get(arg0)
                     .getNumber());
             StrUtils.SetTxt(outside.tv_goods_count_desc, number);
@@ -1253,6 +1282,7 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
                 intent.putExtra("order_status", order_status);
                 intent.putExtra("is_send", blComment.getIs_send());
                 intent.putExtra("is_edit", blComment.getIs_edit());
+                intent.putExtra("is_refund",blComment.getIs_refund());
 
             }
 

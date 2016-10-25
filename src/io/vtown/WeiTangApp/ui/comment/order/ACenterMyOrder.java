@@ -370,7 +370,7 @@ public class ACenterMyOrder extends ATitleBase implements
         map.put("seller_order_sn", seller_order_sn);
         map.put("member_id", member_id);
         FBGetHttpData(map, Constants.Center_My_Order_Remind_Send_Out,
-                Method.PUT, 1, LOAD_INITIALIZE);
+                Method.PUT, 1, 1116);
     }
 
     /**
@@ -384,7 +384,7 @@ public class ACenterMyOrder extends ATitleBase implements
         map.put("seller_order_sn", seller_order_sn);
         map.put("member_id", member_id);
         FBGetHttpData(map, Constants.Center_My_Order_Confirm_Order, Method.PUT,
-                2, LOAD_INITIALIZE);
+                2, 1116);
     }
 
     /**
@@ -396,7 +396,7 @@ public class ACenterMyOrder extends ATitleBase implements
         // @王永奎=======》7.14修改取消订单的key值！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
         map.put("order_sn", seller_order_sn);
         FBGetHttpData(map, Constants.Center_My_Order_Cancel, Method.PUT, 3,
-                LOAD_INITIALIZE);
+                1116);
     }
 
     /**
@@ -407,7 +407,7 @@ public class ACenterMyOrder extends ATitleBase implements
         map.put("member_id", member_id);
         map.put("order_sn", order_sn);
         FBGetHttpData(map, Constants.Center_My_Order_Go_Pay, Method.PUT, 4,
-                LOAD_INITIALIZE);
+                1116);
     }
 
     /**
@@ -421,7 +421,7 @@ public class ACenterMyOrder extends ATitleBase implements
         map.put("member_id", member_id);
         map.put("seller_order_sn", seller_order_sn);
         FBGetHttpData(map, Constants.Center_My_Order_Delayreceive, Method.PUT,
-                5, LOAD_INITIALIZE);
+                5, 1116);
     }
 
     /**
@@ -1767,6 +1767,11 @@ public class ACenterMyOrder extends ATitleBase implements
             case LOAD_LOADMOREING:// 加载更多
                 //fragment_center_order_ls.stopLoadMore();
 
+                break;
+
+            case 1116:
+                fragment_center_order_ls.setVisibility(View.VISIBLE);
+                fragent_centeroder_nodata_lay.setVisibility(View.GONE);
                 break;
         }
     }

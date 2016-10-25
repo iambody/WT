@@ -190,6 +190,7 @@ public class AOderDetail extends ATitleBase {
 	 * 获取到的数据
 	 */
 	private BDShopOrderDetail bdComment;
+	private String is_refund;
 
 	@Override
 	protected void InItBaseView() {
@@ -202,6 +203,7 @@ public class AOderDetail extends ATitleBase {
 		order_status = intent.getIntExtra("order_status", 0);
 		is_send = intent.getStringExtra("is_send");
 		is_edit = intent.getStringExtra("is_edit");
+		is_refund = intent.getStringExtra("is_refund");
 		IView();
 		IData(seller_id, seller_order_sn);
 
@@ -351,14 +353,24 @@ public class AOderDetail extends ATitleBase {
 			tv_order_manage_look_logistics1.setVisibility(View.VISIBLE);
 			break;
 		case 40:
-			ll_order_manage_agree_and_unagree_refund.setVisibility(View.VISIBLE);
+			if ("1".equals(is_edit)) {
+				ll_order_manage_agree_and_unagree_refund.setVisibility(View.VISIBLE);
+			} else {
+				ll_order_manage_agree_and_unagree_refund.setVisibility(View.GONE);
+			}
+
 			break;
 		case 50:
 			
 			break;
 			
 		case 60:
-			tv_order_manage_arbitramenting.setVisibility(View.VISIBLE);
+			if("0".equals(is_refund)){
+				tv_order_manage_arbitramenting.setVisibility(View.GONE);
+			}else{
+				tv_order_manage_arbitramenting.setVisibility(View.VISIBLE);
+			}
+
 			tv_order_manage_arbitramenting.setEnabled(false);
 			
 			break;

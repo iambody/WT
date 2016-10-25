@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -527,6 +528,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 holder.ll_integral_point_and_status = (LinearLayout) convertView.findViewById(R.id.ll_integral_point_and_status);
                 holder.tv_integral_point = (TextView) convertView.findViewById(R.id.tv_integral_point);
                 holder.tv_integral_status = (TextView) convertView.findViewById(R.id.tv_integral_status);
+                holder.iv_dot_integral = (ImageView)convertView.findViewById(R.id.iv_dot_integral) ;
                 convertView.setTag(holder);
             } else {
                 holder = (IntegralInsideHolder) convertView.getTag();
@@ -561,12 +563,15 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             switch (status) {
                 case 1:
                     status_str = "正在到账";
+                    holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.zidian));
                     break;
                 case 2:
                     status_str = "到账成功";
+                    holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.huangdian));
                     break;
                 case 3:
                     status_str = "到账失败";
+                    holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.lvdian));
                     break;
             }
             StrUtils.SetTxt(holder.tv_integral_status, status_str);
@@ -579,6 +584,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
     class IntegralInsideHolder {
         TextView tv_integral_day, tv_integral_time, tv_integral_content, tv_integral_point, tv_integral_status;
         LinearLayout ll_integral_point_and_status;
+        ImageView iv_dot_integral;
     }
 
     class IntegralOutsideHoler {
