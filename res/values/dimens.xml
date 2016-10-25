@@ -236,7 +236,7 @@
     <dimen name="order_detail_modify_address_top_buttom_margin">12dp</dimen>
     <!-- 输入框的marginLeft -->
     <dimen name="order_detail_modify_address_edittext_marginleft">16dp</dimen>
-    <dimen name="order_detail_modify_address_delivery_edittext_height">120dp</dimen>
+    <dimen name="order_detail_modify_address_delivery_edittext_height">80dp</dimen>
     <!-- *******end*******订单管理修改商品地址页面 ********end********** -->
 
 

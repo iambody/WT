@@ -439,6 +439,7 @@ public class ATiXian extends ATitleBase {
 							if (CheckNet(BaseContext))
 								return;
 							PassView(fetch_type, transferMoney1);
+							tv_apply_withdraw_deposit.setEnabled(true);
 						}
 						break;
 
@@ -453,6 +454,7 @@ public class ATiXian extends ATitleBase {
 						if (CheckNet(BaseContext))
 							return;
 						PassView(fetch_type,transferMoney);
+						tv_apply_withdraw_deposit.setEnabled(true);
 						break;
 				}
 
@@ -560,8 +562,9 @@ public class ATiXian extends ATitleBase {
 
 			@Override
 			public void Cancle() {
-				p.dismiss();
 				tv_apply_withdraw_deposit.setEnabled(true);
+				p.dismiss();
+
 			}
 		});
 		p.showAtLocation(view, Gravity.CENTER, 0, 0);

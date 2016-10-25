@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.ui.title.shop.odermanger;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BAddress;
 import io.vtown.WeiTangApp.bean.bcomment.easy.shoporder.BDShopOrderDetail;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
@@ -166,6 +167,7 @@ public class ADaifuOrderModify extends ATitleBase {
 	private TextView tv_order_manager_daifu_detail_used_coupons;
 	private float total_price_old;
 	private int total_price_set;
+	private BAddress address_info;
 
 
 	@Override
@@ -237,6 +239,8 @@ public class ADaifuOrderModify extends ATitleBase {
 				commentview_add_address,
 				data2.getProvince() + data2.getCity() + data2.getArea()
 						+ data2.getAddress());
+
+		address_info = new BAddress(data2.getUsername(), data2.getMobile(), data2.getProvince(), data2.getCity(), data2.getArea(), data2.getAddress());
 		StrUtils.SetColorsTxt(BaseContext, tv_order_manager_daifu_detail_used_coupons, R.color.app_gray, "使用卡券：", String.format("%1$s元",StrUtils.SetTextForMony(data2.getCoupons_price())));
 		//显示使用余额和卡券，只有金额不为0的时候才显示
 		if(0 != Integer.parseInt(data2.getCoupons_price())){
@@ -484,7 +488,11 @@ public class ADaifuOrderModify extends ATitleBase {
 			// intent.putExtra("seller_order_sn", seller_order_sn);
 			// intent.putExtra("seller_id", seller_id);
 			// PromptManager.SkipActivity(BaseActivity, intent);
-			PromptManager.SkipResultActivity(BaseActivity, intent, 100);
+			if (address_info != null) {
+				intent.putExtra("address_info", address_info);
+				PromptManager.SkipResultActivity(BaseActivity, intent, 100);
+			}
+
 			break;
 
 		default:
