@@ -10,14 +10,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="@dimen/login_log_margintop_height">
 
         <ImageView
             android:id="@+id/login_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/login_log" />
+            android:layout_centerInParent="true"
+            android:src="@drawable/login_my_log" />
     </RelativeLayout>
 
     <TextView
@@ -25,7 +25,7 @@
         style="@style/bt_match"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/login_phon_margintop_height"
         android:background="@drawable/select_fen_to_gray"
         android:gravity="center"
         android:padding="10dp"
@@ -39,7 +39,7 @@
         android:orientation="horizontal"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="@dimen/login_phon_margintop_height1">
 
         <View
             android:layout_width="0dp"

@@ -321,7 +321,7 @@ public class AGoodDetail extends ATitleBase {
         String Host_Str = isAttention ? Constants.Good_Attention
                 : Constants.Good_Attention_Delete;
 
-        FBGetHttpData(map, Host_Str, method_Type, 1, LOAD_REFRESHING);
+        FBGetHttpData(map, Host_Str, method_Type, 15, LOAD_REFRESHING);
     }
 
     private void IBase() {
@@ -440,7 +440,7 @@ public class AGoodDetail extends ATitleBase {
                 mHandler.postDelayed(mRandomMessageTimerTask, 3000);
                 break;
 
-            case 1:// 关注商品
+            case 15:// 关注商品
                 right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
                         : R.drawable.ic_shoucang_nor_good_detail);
 //                PromptManager.ShowMyToast(BaseContext, isAttention ? "关注商品成功"
@@ -474,8 +474,11 @@ public class AGoodDetail extends ATitleBase {
 
     @Override
     protected void DataError(String error, int LoadTyp) {
-        PromptManager.ShowCustomToast(BaseContext, error);
 
+        if (LoadTyp == 15) {
+            return;
+        }
+        PromptManager.ShowCustomToast(BaseContext, error);
         if (LOAD_INITIALIZE == LoadTyp) {// 刚进来获取数据时候异常就不显示数据
             // 数据初异常时不可用
             rl_good_detail_lianxikefu_log.setVisibility(View.GONE);
@@ -499,12 +502,12 @@ public class AGoodDetail extends ATitleBase {
      */
     private void RefreshView(BGoodDetail datas) {
 //        StrUtils.SetTxt(gooddetailUpTitle,datas.getTitle());tv_suggest_retail_orig_price
-        if ( !StrUtils.isEmpty(datas.getOrig_price()) && !datas.getOrig_price().equals("0")) {
+        if (!StrUtils.isEmpty(datas.getOrig_price()) && !datas.getOrig_price().equals("0")) {
             findViewById(R.id.gooddetail_price_zhonglay).setVisibility(View.GONE);
             StrUtils.SetTxt(tv_suggest_retail_orig_price,
                     "原价" + StrUtils.SetTextForMony(datas.getOrig_price()));
             tv_suggest_retail_orig_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        }else{
+        } else {
             findViewById(R.id.gooddetail_price_zhonglay).setVisibility(View.VISIBLE);
         }
         good_detail_fanyong_log.setVisibility(datas.getIs_fee() == 1 ? View.VISIBLE : View.GONE);

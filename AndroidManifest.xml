@@ -137,9 +137,9 @@
             </intent-filter>
         </activity>
         <activity
-        android:name=".ui.ui.AMain"
-        android:launchMode="singleTask"
-        android:screenOrientation="portrait"></activity>
+            android:name=".ui.ui.AMain"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.AExitNull"
             android:launchMode="singleTask"
@@ -685,6 +685,10 @@
 
         <activity
             android:name=".ui.title.loginregist.bindcode_three.ANewBindCode"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.title.AMyLeader"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->

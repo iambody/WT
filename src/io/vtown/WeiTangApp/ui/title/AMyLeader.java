@@ -1,8 +1,11 @@
 package io.vtown.WeiTangApp.ui.title;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -13,6 +16,7 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
@@ -24,8 +28,9 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.util.ui.UiHelper;
-import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
  * Created by Yihuihua on 2016/10/24.
@@ -33,20 +38,27 @@ import io.vtown.WeiTangApp.ui.ATitleBase;
 
 public class AMyLeader extends ATitleBase {
     @BindView(R.id.iv_my_leader_icon)
-    CircleImageView ivMyLeaderIcon;
+    ImageView ivMyLeaderIcon;
     @BindView(R.id.tv_my_leader_name)
     TextView tvMyLeaderName;
     @BindView(R.id.tv_my_leader_usertag)
     TextView tvMyLeaderUsertag;
     @BindView(R.id.sv_my_leader)
     ScrollView sv_my_leader;
+
+    @BindView(R.id.tv_my_leader_phone)
+    TextView tvMyLeaderPhone;
+    @BindView(R.id.iv_my_leader_back_icon)
+    ImageView ivMyLeaderBackIcon;
+    @BindView(R.id.tv_my_leader_look_guize)
+    LinearLayout tvMyLeaderLookGuize;
     private Unbinder mBind;
     private View mRootView;
     private View my_leader_nodata_lay;
+    private BCMyLeader leader;
 
     @Override
     protected void InItBaseView() {
-
         setContentView(R.layout.activity_my_leader);
         mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_my_leader, null);
 
@@ -76,13 +88,18 @@ public class AMyLeader extends ATitleBase {
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
 
-        BCMyLeader leader = JSON.parseObject(Data.getHttpResultStr(), BCMyLeader.class);
+        leader = JSON.parseObject(Data.getHttpResultStr(), BCMyLeader.class);
         RefreshView(leader);
     }
 
     private void RefreshView(BCMyLeader leader) {
+        if (leader.getIs_ropot()==1) {
+
+            return;
+        }
         ImageLoaderUtil.Load2(leader.getAvatar(), ivMyLeaderIcon, R.drawable.error_iv2);
         StrUtils.SetTxt(tvMyLeaderName, leader.getSeller_name());
+        StrUtils.SetTxt(tvMyLeaderPhone, leader.getPhone());
         if (0 == leader.getIs_activate()) {
             //设置shape的背景色和字体颜色
             UiHelper.SetShapeColor(tvMyLeaderUsertag, getResources().getColor(R.color.app_line));
@@ -169,4 +186,29 @@ public class AMyLeader extends ATitleBase {
         super.onDestroy();
         mBind.unbind();
     }
+
+
+    @OnClick({R.id.iv_my_leader_back_icon, R.id.iv_my_leader_icon, R.id.tv_my_leader_look_guize})
+    public void onClick(View V) {
+        switch (V.getId()) {
+            case R.id.iv_my_leader_back_icon:
+                BaseActivity.finish();
+                break;
+            case R.id.iv_my_leader_icon:
+                BComment mBComment = new BComment(leader.getSeller_id(), leader.getSeller_name());
+                PromptManager.SkipActivity(BaseActivity, new Intent(
+                        BaseActivity, AShopDetail.class).putExtra(
+                        BaseKey_Bean, mBComment));
+                break;
+            case R.id.tv_my_leader_look_guize:
+                PromptManager.SkipActivity(BaseActivity, new Intent(
+                        BaseActivity, AWeb.class).putExtra(
+                        AWeb.Key_Bean,
+                        new BComment(Constants.Homew_FanYong, getResources().getString(R.string.fanyongguize))));
+                break;
+        }
+
+    }
+
+
 }

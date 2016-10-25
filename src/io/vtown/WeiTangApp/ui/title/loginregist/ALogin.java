@@ -10,6 +10,7 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.util.SdCardUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewUtils;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.ui.AMain;
@@ -53,6 +54,7 @@ public class ALogin extends Activity implements View.OnClickListener, PlatformAc
      */
     private ImageView login_logo;
 
+
     /**
      * 微信一键登录
      */
@@ -94,12 +96,13 @@ public class ALogin extends Activity implements View.OnClickListener, PlatformAc
 
 
     private void Ibase() {
+
         login_logo = (ImageView) findViewById(R.id.login_logo);
         login_wx_login = (TextView) findViewById(R.id.login_wx_login);
         login_phone_login = (TextView) findViewById(R.id.login_phone_login);
         login_wx_login.setOnClickListener(this);
         login_phone_login.setOnClickListener(this);
-
+//        ViewUtils.SetGaoSi(this,login_out_iv,R.drawable.log_bg);
     }
 
     // 获取到微信的id后进行后台连接

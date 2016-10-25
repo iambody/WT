@@ -23,6 +23,7 @@ import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -49,8 +50,8 @@ public class ARecyclerMyShow extends ATitleBase {
 
     private HeaderViewRecyclerAdapter MyHeadAdapter;
     // 需要他的封面和头像
-    private BShop bShop;
-
+//    private BShop bShop;
+    private BNewHome MBNewHome;
     private View HeadView;
     private CircleImageView center_show_head;
     private ImageView center_show_bg;
@@ -72,7 +73,8 @@ public class ARecyclerMyShow extends ATitleBase {
             _seller_id = seller_id;
         }
         user_get = Spuit.User_Get(BaseContext);
-        bShop = Spuit.Shop_Get(BaseContext);
+//        bShop = Spuit.Shop_Get(BaseContext);
+        MBNewHome= JSON.parseObject( CacheUtil.NewHome_Get(BaseContext), BNewHome.class);
         IView();
         ICache();
         IData(lastid, LOAD_INITIALIZE);
@@ -86,9 +88,9 @@ public class ARecyclerMyShow extends ATitleBase {
         center_show_head.setBorderWidth(10);
         center_show_head.setBorderColor(getResources().getColor(R.color.transparent7));
 
-        ImageLoaderUtil.Load2(bShop.getCover(),
+        ImageLoaderUtil.Load2(MBNewHome.getSellerinfo().getCover(),
                 center_show_bg, R.drawable.error_iv1);
-        ImageLoaderUtil.Load2(bShop.getAvatar(),
+        ImageLoaderUtil.Load2(MBNewHome.getSellerinfo().getAvatar(),
                 center_show_head, R.drawable.error_iv2);
 
         MLinearLayoutManager = new LinearLayoutManager(this);

@@ -44,6 +44,7 @@ import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.AIntegralDetail;
 import io.vtown.WeiTangApp.ui.title.AInviteFriendRecord;
+import io.vtown.WeiTangApp.ui.title.AMyLeader;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.ABindCode;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
@@ -434,7 +435,8 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 break;
             case R.id.maintab_center_superior://我的上级
 
-
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                        AMyLeader.class));
 
                 break;
         }

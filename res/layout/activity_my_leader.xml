@@ -1,61 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_bg"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:orientation="vertical">
 
-    <include layout="@layout/titlebar" />
+    <include
+        layout="@layout/titlebar"
+        android:visibility="gone"/>
 
     <ScrollView
         android:id="@+id/sv_my_leader"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/app_fen"
+            android:orientation="vertical"
+            >
 
-            <io.vtown.WeiTangApp.comment.view.CircleImageView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_my_leader_back_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="@dimen/ui_10_dip"
+                    android:src="@drawable/arrow_back"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="我的上级"
+                    android:textColor="@color/white"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/ui_10_dip"
+                    android:src="@drawable/arrow_back"
+                    android:visibility="invisible"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
+            <ImageView
                 android:id="@+id/iv_my_leader_icon"
                 android:layout_width="@dimen/shop_user_hright"
                 android:layout_height="@dimen/shop_user_hright"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/center_my_invite_code_icon_margin"
+                android:layout_marginTop="50dp"
                 android:clickable="true"
-                android:src="@drawable/error_iv2" />
+                android:src="@drawable/error_iv2"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_my_leader_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="张三" />
+                android:layout_height="wrap_content"
+                >
 
                 <TextView
                     android:id="@+id/tv_my_leader_usertag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/line_size6"
-                    android:layout_toRightOf="@id/tv_my_leader_name"
+                    android:layout_marginLeft="@dimen/ui_5_dip"
+                    android:layout_toRightOf="@+id/tv_my_leader_name"
                     android:background="@drawable/shap_home_bind"
                     android:clickable="true"
                     android:paddingLeft="@dimen/line_size6"
                     android:paddingRight="@dimen/line_size6"
                     android:textColor="@color/gray"
-                    android:textSize="10dp" />
+                    android:textSize="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_my_leader_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:text="张三"
+                    android:textColor="@color/white"/>
 
 
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/tv_my_leader_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/ui_10_dip"
+                android:textColor="@color/white"
+                />
+
+            <LinearLayout
+                android:id="@+id/tv_my_leader_look_guize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/ui_10_dip"
+                android:clickable="true"
+                android:background="@drawable/select_white_to_gray">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/fanyongguize"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
@@ -66,7 +140,7 @@
         layout="@layout/commentview_nodata"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
 
 </LinearLayout>
