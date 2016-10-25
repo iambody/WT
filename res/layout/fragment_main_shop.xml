@@ -36,15 +36,15 @@
                         android:layout_alignParentTop="true"
                         android:src="@color/app_fen"/>
 
-                    <TextView
-                        android:id="@+id/fragment_main_tab_shop_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="@dimen/ui_10_dip"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/ui_18_dip"/>
+                    <!--  <TextView
+                          android:id="@+id/fragment_main_tab_shop_name"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_alignParentTop="true"
+                          android:layout_marginTop="@dimen/ui_10_dip"
+                          android:gravity="center"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/ui_18_dip"/>-->
                     <!-- 数量分析 -->
 
                     <LinearLayout
@@ -68,7 +68,6 @@
                                 android:id="@+id/fragment_main_tab_shop_today_income"
                                 style="@style/fragment_shop_up_lay_txt_pading_lay"
                                 android:gravity="center"
-
                                 android:textColor="@color/red"/>
 
                             <ImageView
@@ -106,12 +105,12 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                style="@style/iv_text"
+                                style="@style/iv_text3"
                                 android:gravity="center"
                                 android:paddingBottom="@dimen/fragment_shop_up_lay_txt_pading"
                                 android:paddingTop="@dimen/fragment_shop_up_lay_txt_pading"
                                 android:text="@string/shop_tody_incom"
-                                android:textColor="@color/grey"/>
+                                android:textColor="@color/app_gray"/>
 
                             <ImageView
                                 android:layout_width="@dimen/line_size2"
@@ -119,10 +118,10 @@
                                 android:src="@color/app_line"/>
 
                             <TextView
-                                style="@style/iv_text"
+                                style="@style/iv_text3"
                                 android:gravity="center"
                                 android:text="@string/shop_tody_number"
-                                android:textColor="@color/grey"/>
+                                android:textColor="@color/app_gray"/>
 
                             <ImageView
                                 android:layout_width="@dimen/line_size2"
@@ -130,10 +129,10 @@
                                 android:src="@color/app_line"/>
 
                             <TextView
-                                style="@style/iv_text"
+                                style="@style/iv_text3"
                                 android:gravity="center"
                                 android:text="@string/shop_tody_inverstor"
-                                android:textColor="@color/grey"/>
+                                android:textColor="@color/app_gray"/>
                         </LinearLayout>
 
                         <!-- 下*** -->
@@ -174,7 +173,7 @@
                             android:layout_gravity="center_horizontal"
                             android:padding="5dp"
                             android:text="@string/shop_tuandui_num"
-                            android:textColor="@color/grey"
+                            android:textColor="@color/app_gray"
                             android:textSize="16dp"/>
 
                         <TextView
@@ -208,7 +207,7 @@
                             android:layout_gravity="center_horizontal"
                             android:padding="5dp"
                             android:text="@string/shop_xiaji_num"
-                            android:textColor="@color/grey"
+                            android:textColor="@color/app_gray"
                             android:textSize="16dp"/>
 
                         <TextView
@@ -226,7 +225,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/ui_20_dip"
+                    android:layout_height="@dimen/ui_10_dip"
                     android:src="@color/app_bg"/>
 
                 <!-- 九宫格布局@author 大兔兔 -->
@@ -235,6 +234,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="horizontal">
 
                     <include
@@ -244,6 +244,8 @@
                     <ImageView
                         android:layout_width="@dimen/line_size1"
                         android:layout_height="match_parent"
+                        android:paddingBottom="@dimen/ui_10_dip"
+                        android:paddingTop="@dimen/ui_10_dip"
                         android:src="@color/app_line"/>
 
                     <include
@@ -253,6 +255,8 @@
                     <ImageView
                         android:layout_width="@dimen/line_size1"
                         android:layout_height="match_parent"
+                        android:paddingBottom="@dimen/ui_10_dip"
+                        android:paddingTop="@dimen/ui_10_dip"
                         android:src="@color/app_line"/>
 
                     <include
@@ -260,16 +264,43 @@
                         layout="@layout/commentview_ivtext"/>
                 </LinearLayout>
                 <!-- 第一行** -->
-
-                <ImageView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_size1"
-                    android:src="@color/app_line"/>
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/line_size1"
+                        android:layout_weight="1"
+                        android:src="@color/app_line"
+                        android:paddingRight="@dimen/ui_10_dip"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/line_size1"
+                        android:layout_weight="1"
+                        android:src="@color/app_line"
+                        android:paddingLeft="@dimen/ui_10_dip"
+                        android:paddingRight="@dimen/ui_10_dip"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/line_size1"
+                        android:layout_weight="1"
+                        android:src="@color/app_line"
+                        android:paddingLeft="@dimen/ui_10_dip"/>
+
+                </LinearLayout>
+
+
                 <!-- 第二行 -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="horizontal">
 
                     <include
@@ -279,6 +310,8 @@
                     <ImageView
                         android:layout_width="@dimen/line_size1"
                         android:layout_height="match_parent"
+                        android:paddingBottom="@dimen/ui_10_dip"
+                        android:paddingTop="@dimen/ui_10_dip"
                         android:src="@color/app_line"/>
 
                     <include
@@ -288,6 +321,8 @@
                     <ImageView
                         android:layout_width="@dimen/line_size1"
                         android:layout_height="match_parent"
+                        android:paddingBottom="@dimen/ui_10_dip"
+                        android:paddingTop="@dimen/ui_10_dip"
                         android:src="@color/app_line"/>
 
                     <include
@@ -295,16 +330,42 @@
                         layout="@layout/commentview_ivtext"/>
                 </LinearLayout>
                 <!-- 第二行** -->
-
-                <ImageView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_size1"
-                    android:src="@color/app_line"/>
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/line_size1"
+                        android:layout_weight="1"
+                        android:src="@color/app_line"
+                        android:paddingRight="@dimen/ui_10_dip"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/line_size1"
+                        android:layout_weight="1"
+                        android:src="@color/app_line"
+                        android:paddingLeft="@dimen/ui_10_dip"
+                        android:paddingRight="@dimen/ui_10_dip"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/line_size1"
+                        android:layout_weight="1"
+                        android:src="@color/app_line"
+                        android:paddingLeft="@dimen/ui_10_dip"/>
+
+                </LinearLayout>
+
                 <!-- 第三行 -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="horizontal">
 
                     <include
@@ -314,6 +375,8 @@
                     <ImageView
                         android:layout_width="@dimen/line_size1"
                         android:layout_height="match_parent"
+                        android:paddingBottom="@dimen/line_size6"
+                        android:paddingTop="@dimen/line_size6"
                         android:src="@color/app_line"/>
 
                     <include
@@ -323,6 +386,8 @@
                     <ImageView
                         android:layout_width="@dimen/line_size1"
                         android:layout_height="match_parent"
+                        android:paddingBottom="@dimen/line_size6"
+                        android:paddingTop="@dimen/line_size6"
                         android:src="@color/app_line"/>
 
                     <include

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/ui_10_dip"
             android:focusable="true"
-            android:src="@drawable/newhome_sao"/>
+            android:src="@drawable/sao"/>
 
         <TextView
             android:layout_width="0dp"
@@ -42,6 +42,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/ui_10_dip"
             android:focusable="true"
-            android:src="@drawable/newhome_news"/>
+            android:src="@drawable/new1"/>
     </LinearLayout>
 </LinearLayout>

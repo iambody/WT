@@ -22,12 +22,17 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:lines="2"
+        android:paddingBottom="@dimen/line_size6"
+        android:paddingLeft="@dimen/line_size6"
+        android:paddingTop="@dimen/line_size6"
         android:textColor="@color/gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/line_size6"
+        android:paddingLeft="@dimen/line_size6">
 
         <TextView
             android:id="@+id/item_zhuanqu_in_price"

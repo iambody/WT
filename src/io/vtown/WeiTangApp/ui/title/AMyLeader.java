@@ -52,6 +52,8 @@ public class AMyLeader extends ATitleBase {
     ImageView ivMyLeaderBackIcon;
     @BindView(R.id.tv_my_leader_look_guize)
     LinearLayout tvMyLeaderLookGuize;
+    @BindView(R.id.iv_my_leader_invite_code)
+    TextView ivMyLeaderInviteCode;
     private Unbinder mBind;
     private View mRootView;
     private View my_leader_nodata_lay;
@@ -74,6 +76,7 @@ public class AMyLeader extends ATitleBase {
     }
 
     private void IData() {
+        PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.loading));
         SetTitleHttpDataLisenter(this);
         HashMap<String, String> map = new HashMap<>();
         map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());
@@ -93,9 +96,8 @@ public class AMyLeader extends ATitleBase {
     }
 
     private void RefreshView(BCMyLeader leader) {
-        if (leader.getIs_ropot()==1) {
-
-            return;
+        if (!StrUtils.isEmpty(leader.getInvite_code())) {
+            StrUtils.SetTxt(ivMyLeaderInviteCode, leader.getInvite_code());
         }
         ImageLoaderUtil.Load2(leader.getAvatar(), ivMyLeaderIcon, R.drawable.error_iv2);
         StrUtils.SetTxt(tvMyLeaderName, leader.getSeller_name());
@@ -142,7 +144,7 @@ public class AMyLeader extends ATitleBase {
         sv_my_leader.setVisibility(View.GONE);
         my_leader_nodata_lay.setVisibility(View.VISIBLE);
         my_leader_nodata_lay.setClickable(true);
-        ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
+        ShowErrorCanLoad(getResources().getString(R.string.error_fuwuqi));
     }
 
     @Override
@@ -195,6 +197,9 @@ public class AMyLeader extends ATitleBase {
                 BaseActivity.finish();
                 break;
             case R.id.iv_my_leader_icon:
+                if (leader.getIs_ropot() == 1) //是机器人不需要查看其店铺
+                    return;
+
                 BComment mBComment = new BComment(leader.getSeller_id(), leader.getSeller_name());
                 PromptManager.SkipActivity(BaseActivity, new Intent(
                         BaseActivity, AShopDetail.class).putExtra(

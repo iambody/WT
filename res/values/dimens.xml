@@ -625,13 +625,16 @@
     <dimen name="return_point_width">60dp</dimen>
     <dimen name="integral_point_width">60dp</dimen>
     <dimen name="commentview_address_view_height">60dp</dimen>
-    <dimen name="fragment_up_lay_height">100dp</dimen>
-    <dimen name="fragment_up_lay_margintop_height">60dp</dimen>
+    <dimen name="fragment_up_lay_height">70dp</dimen>
+    <dimen name="fragment_up_lay_margintop_height">30dp</dimen>
     <dimen name="fragment_shop_up_lay_txt_pading">12dp</dimen>
     <dimen name="pop_intgraldetail_width">100dp</dimen>
-    <dimen name="login_log_margintop_height">70dp</dimen>
-    <dimen name="login_phon_margintop_height">80dp</dimen>
+    <dimen name="login_log_margintop_height">40dp</dimen>
+    <dimen name="login_phon_margintop_height">60dp</dimen>
     <dimen name="login_phon_margintop_height1">30dp</dimen>
+    <dimen name="fragment_newhome_up_bg_height">200dp</dimen>
+    <dimen name="fragment_newhome_up_wave_height">140dp</dimen>
+    <dimen name="ui_25_dip">25dp</dimen>
 
 
 </resources>

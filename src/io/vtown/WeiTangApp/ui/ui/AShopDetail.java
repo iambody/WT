@@ -318,7 +318,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
         shopdetail_imagview.setBorderWidth(5);
         shopdetail_imagview.setBorderColor(getResources().getColor(R.color.TextColorWhite));
-        shopdetail_imagview.setOnClickListener(this);
+
 
         ll_shopdetail_shop_look_show = (LinearLayout) findViewById(R.id.ll_shopdetail_shop_look_show);
 
@@ -486,15 +486,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                     }
                 }
                 // 解析**************************************************************************************************************
-                // try {
-                // MyData = JSON.parseObject(Data.getHttpResultStr(), BShop.class);
-                //
-                // // ss
-                //
-                // } catch (Exception e) {
-                // DataError("解析错误", Data.getHttpLoadType());
-                // return;
-                // }
+
 
                 BaseViewFradsash(MyData.getBase());
                 shopSortLsAp.Refrsh(MyData.getCategorys());
@@ -609,14 +601,7 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             rl_shop_detail_contact_log.setVisibility(View.GONE);
         }
         IsCollect = base.getIs_collect().equals("1");// 1标识已经收藏过
-        // ;;;;;0标识未收藏过
-        // shopdetail_imagview
-        // shopdetail_shop_name
-        // shopdetail_shop_tag
-        //
-        // shopdetail_shop_guanzhu_bt
-        // shopdetail_shop_guanzhu_number
-        // shopdetail_shop_visitor_number
+
         ImageLoaderUtil.Load2(base.getAvatar(), shopdetail_imagview,
                 R.drawable.testiv);
         ImageLoaderUtil.Load2(base.getCover(),
@@ -646,12 +631,8 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
 
     private void IsCollectBtControl(boolean isCollect) {
         if (isCollect) {// 收藏过
-            //shopdetail_shop_guanzhu_bt.setTextColor(getResources().getColor(R.color.app_fen));
-            //shopdetail_shop_guanzhu_bt.setText("取消收藏");
             shop_detail_shoucang_log.setImageDrawable(getResources().getDrawable(R.drawable.ic_shoucang_press));
         } else {// 未收藏过
-            //shopdetail_shop_guanzhu_bt.setTextColor(getResources().getColor(R.color.TextColorWhite));
-            //shopdetail_shop_guanzhu_bt.setText("+收藏");
 
             shop_detail_shoucang_log.setImageDrawable(getResources().getDrawable(R.drawable.ic_shoucang_nor));
 
@@ -1094,11 +1075,6 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                 IsBrandStatue = true;
 
                 FristSelect();
-//                if( if (!IsBrand) {
-//                CacheLsDatas_ZiYing.addAll(blComments);
-//            } else {
-//                CacheLsDatas_Brand.addAll(blComments);
-//            }){}
 
                 if (CacheLsDatas_Brand == null || CacheLsDatas_Brand.size() == 0) {
                     CurrentPage = 1;
@@ -1157,41 +1133,12 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
                                             MyData.getBase().getAvatar()));
 
                 break;
-            case R.id.shopdetail_imagview:// 点击头像
-                // if (null != MyData)
-                // PromptManager.SkipActivity(
-                // BaseActivity,
-                // new Intent(BaseActivity, ACenterShow.class).putExtra(
-                // "isshopdetail", true).putExtra("ohtersellerid",
-                // MyData.getBase().getId()));
 
-                // if (null != MyData &&
-                // !StrUtils.isEmpty(MyData.getBase().getId()))
-
-                // PromptManager.SkipActivity(BaseActivity, new Intent(
-                // BaseActivity, AGoodShow.class).putExtra(
-                // AGoodShow.Tage_GoodSid, MyData.getBase().getId()));
-
-                if (null != MyData && !StrUtils.isEmpty(MyData.getBase().getId())) {
-                    Intent intent = new Intent(BaseActivity, ARecyclerOtherShow.class);
-                    intent.putExtra(BaseKey_Bean, new BComment(MyData.getBase()
-                            .getId(), MyData.getBase().getCover(), MyData.getBase()
-                            .getAvatar(), MyData.getBase().getSeller_name(), MyData
-                            .getBase().getIs_brand()));
-                    PromptManager.SkipActivity(BaseActivity, intent);
-                }
-
-                break;
             case R.id.shopdetail_nodata_lay:
                 IData();
                 break;
             case R.id.ll_shopdetail_shop_look_show:// 查看show
-                // if (null != MyData &&
-                // !StrUtils.isEmpty(MyData.getBase().getId()))
-                //
-                // PromptManager.SkipActivity(BaseActivity, new Intent(
-                // BaseActivity, AGoodShow.class).putExtra(
-                // AGoodShow.Tage_GoodSid, MyData.getBase().getId()));
+
                 if (null != MyData && !StrUtils.isEmpty(MyData.getBase().getId())) {
                     Intent intent = new Intent(BaseActivity, ARecyclerOtherShow.class);
                     intent.putExtra(BaseKey_Bean, new BComment(MyData.getBase()

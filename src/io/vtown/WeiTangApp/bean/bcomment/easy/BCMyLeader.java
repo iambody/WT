@@ -8,7 +8,7 @@ import io.vtown.WeiTangApp.bean.BBase;
 
 public class BCMyLeader extends BBase {
 
-   private int member_level;// "member_level":0,
+    private int member_level;// "member_level":0,
     private String member_level_name;//"member_level_name":"青铜店铺",
     private String phone;//"phone":"17800000002",
     private int is_activate;//"is_activate":1,
@@ -17,6 +17,7 @@ public class BCMyLeader extends BBase {
     private String seller_id;//"seller_id":1014970,
     private String seller_no;//"seller_no":10000283,
     private int is_ropot;//"is_ropot":0
+    private String invite_code;
 
     public int getMember_level() {
         return member_level;
@@ -88,5 +89,13 @@ public class BCMyLeader extends BBase {
 
     public void setIs_ropot(int is_ropot) {
         this.is_ropot = is_ropot;
+    }
+
+    public String getInvite_code() {
+        return invite_code;
+    }
+
+    public void setInvite_code(String invite_code) {
+        this.invite_code = invite_code;
     }
 }

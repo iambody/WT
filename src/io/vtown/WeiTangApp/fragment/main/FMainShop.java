@@ -68,7 +68,7 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     //头像
 //    private RoundAngleImageView fragment_main_tab_shop_iv;
     //店铺名字
-    private TextView fragment_main_tab_shop_name;
+//    private TextView fragment_main_tab_shop_name;
     //店铺描述
 //    private TextView fragment_main_tab_shop_sign;
     //累计收入的view
@@ -106,7 +106,7 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
         fragment_shop_refrash.setOnRefreshListener(this);
         fragment_shop_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
 //        fragment_main_tab_shop_iv = (RoundAngleImageView) BaseView.findViewById(R.id.fragment_main_tab_shop_iv);
-        fragment_main_tab_shop_name = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_name);
+//        fragment_main_tab_shop_name = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_name);
 //        fragment_main_tab_shop_sign = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_sign);
 
 //设置头像的border
@@ -191,7 +191,7 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
         StrUtils.SetTxt(fragment_main_tab_shop_zhijixiashu_number, myBShop.getSubCounter());
         // tab_shop_name = (TextView) findViewById(R.id.tab_shop_name);
         // tab_shop_sign
-        StrUtils.SetTxt(fragment_main_tab_shop_name, myBShop.getSeller_name());
+//        StrUtils.SetTxt(fragment_main_tab_shop_name, myBShop.getSeller_name());
 //        StrUtils.SetTxt(
 //                fragment_main_tab_shop_sign,
 //                StrUtils.isEmpty(myBShop.getIntro()) ? "您还未描述店铺" : myBShop
@@ -202,15 +202,15 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
 
     public void OnMainTabShop(BMessage myMessage) {
         int messageType = myMessage.getMessageType();
-        switch (messageType) {
-            case BMessage.Tage_Shop_data_shopname_change:
-                StrUtils.SetTxt(fragment_main_tab_shop_name, Spuit.Shop_Get(BaseContext)
-                        .getSeller_name());
-                break;
-
-            default:
-                break;
-        }
+//        switch (messageType) {
+//            case BMessage.Tage_Shop_data_shopname_change:
+//                StrUtils.SetTxt(fragment_main_tab_shop_name, Spuit.Shop_Get(BaseContext)
+//                        .getSeller_name());
+//                break;
+//
+//            default:
+//                break;
+//        }
 
     }
 

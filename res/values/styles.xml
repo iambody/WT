@@ -81,6 +81,12 @@
         <item name="android:layout_weight">1</item>
         <item name="android:padding">6dp</item>
     </style>
+    <style name="iv_text3">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">10dp</item>
+    </style>
     <style name="fragment_shop_up_lay_txt_pading_lay">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>

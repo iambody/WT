@@ -25,14 +25,14 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="@dimen/fragment_newhome_up_bg_height"
                     android:background="@color/white"
                     >
 
                     <ImageView
                         android:id="@+id/fragment_newhome_bg"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="@dimen/fragment_newhome_up_bg_height"
                         android:scaleType="fitXY"/>
                     <!--波浪-->
                     <RelativeLayout
@@ -44,7 +44,7 @@
                         <io.vtown.WeiTangApp.comment.view.WaveView
                             android:id="@+id/fragment_newhome_waveview"
                             android:layout_width="match_parent"
-                            android:layout_height="140dp"
+                            android:layout_height="@dimen/fragment_newhome_up_wave_height"
                             android:layout_centerHorizontal="true"/>
 
 

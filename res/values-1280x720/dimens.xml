@@ -27,4 +27,7 @@
     <dimen name="commentview_address_view_height">60dp</dimen>
 
     <dimen name="login_phon_margintop_height">100dp</dimen>
+
+    <dimen name="fragment_newhome_up_bg_height">220dp</dimen>
+    <dimen name="fragment_newhome_up_wave_height">180dp</dimen>
 </resources>

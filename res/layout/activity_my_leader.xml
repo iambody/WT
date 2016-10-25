@@ -57,7 +57,20 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+                android:layout_height="30dp"/>
+
+            <TextView
+                android:id="@+id/iv_my_leader_invite_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+
+                android:textColor="@color/white"
+                android:textSize="@dimen/ui_18_dip"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
 
             <ImageView
                 android:id="@+id/iv_my_leader_icon"
@@ -114,26 +127,27 @@
                 android:id="@+id/tv_my_leader_look_guize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/ui_10_dip"
+                android:background="@drawable/select_white_to_gray"
                 android:clickable="true"
-                android:background="@drawable/select_white_to_gray">
+                android:orientation="horizontal"
+                android:padding="@dimen/ui_10_dip">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="@string/fanyongguize"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/arrow_right"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/arrow_right"/>
             </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
-
 
     <include
         android:id="@+id/my_leader_nodata_lay"
