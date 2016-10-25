@@ -50,6 +50,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int Show_Grid = 111;
     private static final int Show_Video = 112;
     private static final int Show_Pic = 113;
+    private static final int Show_Null = 1141;
 
     private static final int HeadView = 101;//增加投
     private static final int FootView = 102;//增加底部加载更多
@@ -110,6 +111,9 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             case Show_Pic:
                 holder = new MyShowSinglePicItem(inflater.inflate(R.layout.item_recycle_my_show_single_pic, parent, false));
                 break;
+            case Show_Null:
+                holder = new NullItem(inflater.inflate(R.layout.item_show_null,parent,false));
+                break;
         }
         return holder;
     }
@@ -126,14 +130,17 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemViewType(int position) {
-
-        if (datas.get(position).getIs_type().equals("1")) {//视频
+        if(datas.size() == 0){
+            return Show_Null;
+        }else if(datas.get(position).getIs_type().equals("1")) {//视频
             return Show_Video;
         } else if (datas.get(position).getImgarr().size() == 1) {//一张图片
             return Show_Pic;
         } else {//多张图片
             return Show_Grid;
         }
+
+
     }
 
     @Override
@@ -289,6 +296,12 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 });
                 break;
 
+
+            case Show_Null:
+
+
+                break;
+
         }
 
     }
@@ -414,6 +427,18 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             comment_show_share_iv_pic = (ImageView) comment_show_operation_pic.findViewById(R.id.comment_show_share_iv);
             comment_show_gooddetail_iv_pic = (ImageView) comment_show_operation_pic.findViewById(R.id.comment_show_gooddetail_iv);
             //my_show_single_pic_create_time = (TextView) itemView.findViewById(R.id.my_show_single_pic_create_time);
+        }
+    }
+
+    class NullItem extends RecyclerView.ViewHolder{
+
+        private ImageView iv_no_data;
+        private TextView tv_no_show_data;
+
+        public NullItem(View itemView){
+            super(itemView);
+           iv_no_data =  (ImageView) itemView.findViewById(R.id.iv_no_data);
+            tv_no_show_data = (TextView) itemView.findViewById(R.id.tv_no_show_data);
         }
     }
 

@@ -890,6 +890,16 @@ public static int SouSouHeistory= 12;
      */
     public static String Get_My_Show = Host
             + "/v1/show/show/myshowlist";
+
+
+	/**
+	 * 获取用户直属上级信息
+	 */
+	public static String Get_My_Leader = Host
+			+ "/v1/member/member/get-superior";
+
+
+
 //    /**
 //     * 店铺内进行搜索
 //     */
