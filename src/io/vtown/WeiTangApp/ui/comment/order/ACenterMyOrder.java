@@ -1116,7 +1116,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     .get(position).getGoods_name());
             StrUtils.SetTxt(
                     myItem.item_fragment_center_order_in_price,
-                    String.format("￥%1$s元", StrUtils.SetTextForMony(datas.get(
+                    String.format("￥%1$s", StrUtils.SetTextForMony(datas.get(
                             position).getGoods_price())));
             StrUtils.SetTxt(myItem.item_fragment_center_order_in_number, String
                     .format("x%1$s", datas.get(position).getGoods_number()));

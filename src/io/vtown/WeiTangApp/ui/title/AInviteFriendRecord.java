@@ -179,7 +179,9 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                             invite_friends_nodata_lay.setVisibility(View.VISIBLE);
                             invite_friends_nodata_lay.setClickable(false);
                             ShowErrorCanLoad(getString(R.string.null_invite_friend));
-
+                            if (Shop_All_Lv.equals(Current_Lv)) {
+                                CacheUtil.My_Invite_Friends_Save(BaseContext, Data.getHttpResultStr());
+                            }
 
                             mAdapter.FreshData(new ArrayList<BCInviteFriends>());
                             return;

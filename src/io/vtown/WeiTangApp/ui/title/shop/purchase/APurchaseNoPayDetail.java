@@ -563,7 +563,7 @@ public class APurchaseNoPayDetail extends ATitleBase {
 					innerMost_data.get(position).getGoods_name());
 			StrUtils.SetTxt(
 					centerOrderNoPayInnerMost.item_purchase_order_no_pay_detail_in_price,
-					String.format("￥%1$s元", StrUtils
+					String.format("￥%1$s", StrUtils
 							.SetTextForMony(innerMost_data.get(position)
 									.getGoods_money())));
 			StrUtils.SetTxt(

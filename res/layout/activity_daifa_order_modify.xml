@@ -344,7 +344,10 @@
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
                     </LinearLayout>
-                    <View style="@style/line_left" />
+
+                    <View style="@style/line_left2"
+
+                        />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

@@ -117,6 +117,8 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                     retrun_detail_nodata_lay.setVisibility(View.VISIBLE);
                     retrun_detail_nodata_lay.setClickable(false);
                     ShowErrorIv(R.drawable.pic_fanyongjine);
+                    mAdapter.FrashData(new ArrayList<BLAPropertyList>());
+                    CacheUtil.Home_Return_Detail_Save(BaseContext, Data.getHttpResultStr());
                     String error_tip = getResources().getString(R.string.null_return_detail);
                     ShowErrorCanLoad(error_tip);
                     return;

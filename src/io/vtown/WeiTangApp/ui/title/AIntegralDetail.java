@@ -137,6 +137,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
                     if (TYPE_ALL.equals(Current_Type)) {
                         ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
+                        CacheUtil.Integral_Detail_Save(BaseContext, Data.getHttpResultStr());
                     }
                     if (TYPE_SYSTEM.equals(Current_Type)) {
                         ShowErrorCanLoad(getResources().getString(R.string.null_integral_system));

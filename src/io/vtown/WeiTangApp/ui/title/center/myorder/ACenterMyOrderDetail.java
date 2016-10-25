@@ -1077,7 +1077,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
 			StrUtils.SetTxt(item.tv_center_my_order_content_value,
 					data.get(arg0).getGoods_standard());
-			String goods_price = String.format("￥%1$s元",
+			String goods_price = String.format("￥%1$s",
 					StrUtils.SetTextForMony(data.get(arg0).getGoods_price()));
 			StrUtils.SetTxt(item.tv_center_my_order_detail_good_price,
 					goods_price);
