@@ -482,7 +482,6 @@ public class APurchaseNoPayDetail extends ATitleBase {
 							if (CheckNet(BaseContext))
 								return;
 
-							LogUtils.i("-----------------"+secoud_datas.get(myItemPosition).getSeller_id()+"===="+secoud_datas.get(myItemPosition).getSeller_name());
 //							PromptManager.SkipActivity(BaseActivity,
 //									new Intent(BaseActivity, AChat.class));
 							BComment mBComment = new BComment(secoud_datas.get(myItemPosition).getSeller_id(),

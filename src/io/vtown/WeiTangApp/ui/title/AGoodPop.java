@@ -296,6 +296,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     private String fee;
     private String score;
     private String mSell_price;
+    private View baseView;
 
 
     @Override
@@ -345,6 +346,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         }
         FBGetHttpData(map, urlString, method, Type, LOAD_INITIALIZE);
     }
+
+
 
     private void CommintData(HashMap<String, String> map) {
 
@@ -845,7 +848,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                 break;
 
             case 3:
-                this.finish();
+                //this.finish()
                 PromptManager.ShowMyToast(BaseContext, "上架成功");
                 BNew bnew = new BNew();
                 bnew.setShare_title(getResources().getString(R.string.share_app) + "  " + databean.getSeller_name());
@@ -886,13 +889,17 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                                                     MyVidoBShowShare));
 
                                 }
+
                                 break;
 
 
                         }
+                        AGoodPop.this.finish();
                     }
+
                 });
                 showShare.showAtLocation(mRootView, Gravity.CENTER, 0, 0);
+
                 break;
         }
     }
