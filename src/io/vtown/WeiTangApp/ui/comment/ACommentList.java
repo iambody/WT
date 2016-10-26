@@ -1239,11 +1239,14 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                                     StrUtils.SetTextForMony(data.getSell_price())));
 
                     if (!StrUtils.isEmpty(data.getOrig_price()) && !data.getOrig_price().equals("0")) {
+                        goodSort.tv_good_category_orig_good_price.setVisibility(View.VISIBLE);
                         StrUtils.SetTxt(goodSort.tv_good_category_orig_good_price,
                                 "原价" + StrUtils.SetTextForMony(data.getOrig_price()));
 //            StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
 //                    ("原价" + "30.4"));
                         goodSort.tv_good_category_orig_good_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    }else{
+                        goodSort.tv_good_category_orig_good_price.setVisibility(View.GONE);
                     }
                     break;
 

@@ -8,8 +8,9 @@
         android:id="@+id/return_month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@color/white"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
         android:textColor="@color/grey" />
 
     <io.vtown.WeiTangApp.comment.view.custom.CompleteListView

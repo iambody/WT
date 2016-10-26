@@ -7,6 +7,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.purchase.BDPurchaseNoPayDetail;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
@@ -430,7 +431,7 @@ public class APurchaseNoPayDetail extends ATitleBase {
 		}
 
 		@Override
-		public View getView(final int position, View convertView, ViewGroup parent) {
+		public View getView(int position, View convertView, ViewGroup parent) {
 			PurchaseOrderNoPayInsideItem centerOrderNoPayInside = null;
 			if (convertView == null) {
 				centerOrderNoPayInside = new PurchaseOrderNoPayInsideItem();
@@ -480,10 +481,13 @@ public class APurchaseNoPayDetail extends ATitleBase {
 						public void onClick(View v) {
 							if (CheckNet(BaseContext))
 								return;
+
+							LogUtils.i("-----------------"+secoud_datas.get(myItemPosition).getSeller_id()+"===="+secoud_datas.get(myItemPosition).getSeller_name());
 //							PromptManager.SkipActivity(BaseActivity,
 //									new Intent(BaseActivity, AChat.class));
-							BComment mBComment = new BComment(secoud_datas.get(position).getSeller_id(),
-									secoud_datas.get(position).getSeller_name());
+							BComment mBComment = new BComment(secoud_datas.get(myItemPosition).getSeller_id(),
+									secoud_datas.get(myItemPosition).getSeller_name());
+
 							PromptManager.SkipActivity(BaseActivity,
 									new Intent(BaseActivity, ABrandDetail.class)
 											.putExtra(BaseKey_Bean, mBComment));

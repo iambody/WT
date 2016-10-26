@@ -987,9 +987,9 @@ public class APurchaseDetail extends ATitleBase {
 			//		AChat.class));
 			BComment mBComment = new BComment(data.getSeller_id(),
 					data.getSeller_name());
-			PromptManager.SkipActivity(BaseActivity,
-					new Intent(BaseActivity, ANull.class)
-							.putExtra(BaseKey_Bean, mBComment));
+			PromptManager.SkipActivity(BaseActivity, new Intent(
+					BaseActivity, ABrandDetail.class).putExtra(
+					BaseKey_Bean, mBComment));
 			break;
 
 		case R.id.right_right_iv:// 消息按钮
