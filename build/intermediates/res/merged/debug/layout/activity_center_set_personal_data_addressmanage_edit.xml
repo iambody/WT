@@ -9,8 +9,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -133,11 +134,16 @@
 
     <Button
         android:id="@+id/btn_edit_addres_save"
-        style="@style/build_two_dimension_code_btn_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/comment_label_txtsize"
-        android:layout_margin="@dimen/center_address_manager_add_address_save_buttom_margin"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/select_white_to_fen1"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/gray"
         android:text="@string/txt_save" />
 
 </LinearLayout>

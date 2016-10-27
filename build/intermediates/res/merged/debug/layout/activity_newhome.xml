@@ -87,17 +87,15 @@
             android:clickable="true"
             android:visibility="gone" />
     </LinearLayout>
-
-    <io.vtown.WeiTangApp.comment.view.listview.LListView
-        android:id="@+id/newhome_ls"
+    <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+        android:id="@+id/activity_home_refrash"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbars="none" />
-
-    <ImageView
+        android:layout_weight="1">
+    <ListView
+        android:id="@+id/newhome_ls"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_height1"
-        android:src="@color/transparent" />
-
+        android:layout_height="match_parent"
+        android:scrollbars="none" />
+    </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
 </LinearLayout>

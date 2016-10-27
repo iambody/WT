@@ -50,7 +50,7 @@ public class ARecyclerOtherShow extends ATitleBase {
     private boolean IsLoadingMore = false;
     private String lastid = "";
     private View mRootView;
-
+    private View comment_othershow_no__lay;
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.acvitty_recycler_other_show);
@@ -70,6 +70,7 @@ public class ARecyclerOtherShow extends ATitleBase {
     }
 
     private void IHeaderView() {
+        comment_othershow_no__lay=findViewById(R.id.comment_othershow_no__lay);
         HeadView = LayoutInflater.from(BaseContext).inflate(R.layout.view_othershow, null);
         center_show_head = (CircleImageView) HeadView.findViewById(R.id.center_show_head);
         center_show_bg = (ImageView) HeadView.findViewById(R.id.comment_othershow_bg);
@@ -172,6 +173,10 @@ public class ARecyclerOtherShow extends ATitleBase {
                 }
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.noshow));
+
+                    IDataView(recyclerview_other_show, comment_othershow_no__lay, NOVIEW_ERROR);
+                    ShowErrorIv(R.drawable.error_show);
+                    ShowErrorCanLoad(getResources().getString(R.string.other_noshow));
                     return;
                 }
                 List<BShow> datas = new ArrayList<BShow>();

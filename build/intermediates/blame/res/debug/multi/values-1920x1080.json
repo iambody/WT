@@ -1,17 +1,264 @@
 [
     {
-        "outputFile": "D:\\Wt\\WT\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-1920x1080\\values-1920x1080.xml",
+        "outputFile": "D:\\Wtapp\\WT\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-1920x1080\\values-1920x1080.xml",
         "map": [
             {
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 58,
-                    "endOffset": 109
+                    "endColumn": 62,
+                    "endOffset": 113
                 },
                 "from": {
-                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1080,
+                        "endColumn": 62,
+                        "endOffset": 1138
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 118,
+                    "endColumn": 61,
+                    "endOffset": 175
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 1229,
+                        "endColumn": 61,
+                        "endOffset": 1286
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 180,
+                    "endColumn": 63,
+                    "endOffset": 239
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 1292,
+                        "endColumn": 63,
+                        "endOffset": 1351
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 244,
+                    "endColumn": 54,
+                    "endOffset": 294
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 1377,
+                        "endColumn": 54,
+                        "endOffset": 1427
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 299,
+                    "endColumn": 63,
+                    "endOffset": 358
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 1433,
+                        "endColumn": 63,
+                        "endOffset": 1492
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 363,
+                    "endColumn": 60,
+                    "endOffset": 419
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 792,
+                        "endColumn": 60,
+                        "endOffset": 848
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 424,
+                    "endColumn": 60,
+                    "endOffset": 480
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 730,
+                        "endColumn": 60,
+                        "endOffset": 786
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 485,
+                    "endColumn": 66,
+                    "endOffset": 547
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 486,
+                        "endColumn": 66,
+                        "endOffset": 548
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 552,
+                    "endColumn": 57,
+                    "endOffset": 605
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 554,
+                        "endColumn": 57,
+                        "endOffset": 607
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 610,
+                    "endColumn": 57,
+                    "endOffset": 663
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 671,
+                        "endColumn": 57,
+                        "endOffset": 724
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 668,
+                    "endColumn": 56,
+                    "endOffset": 720
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 613,
+                        "endColumn": 56,
+                        "endOffset": 665
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 725,
+                    "endColumn": 60,
+                    "endOffset": 781
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 854,
+                        "endColumn": 60,
+                        "endOffset": 910
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 786,
+                    "endColumn": 58,
+                    "endOffset": 840
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 916,
+                        "endColumn": 58,
+                        "endOffset": 970
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 845,
+                    "endColumn": 58,
+                    "endOffset": 899
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -23,14 +270,33 @@
             },
             {
                 "to": {
-                    "startLine": 3,
+                    "startLine": 16,
                     "startColumn": 4,
-                    "startOffset": 114,
-                    "endColumn": 50,
-                    "endOffset": 160
+                    "startOffset": 904,
+                    "endColumn": 51,
+                    "endOffset": 951
                 },
                 "from": {
-                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1027,
+                        "endColumn": 51,
+                        "endOffset": 1074
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 956,
+                    "endColumn": 50,
+                    "endOffset": 1002
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -42,14 +308,33 @@
             },
             {
                 "to": {
-                    "startLine": 4,
+                    "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 165,
-                    "endColumn": 54,
-                    "endOffset": 215
+                    "startOffset": 1007,
+                    "endColumn": 59,
+                    "endOffset": 1062
                 },
                 "from": {
-                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1148,
+                        "endColumn": 59,
+                        "endOffset": 1203
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1067,
+                    "endColumn": 54,
+                    "endOffset": 1117
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -61,14 +346,14 @@
             },
             {
                 "to": {
-                    "startLine": 5,
+                    "startLine": 20,
                     "startColumn": 4,
-                    "startOffset": 220,
+                    "startOffset": 1122,
                     "endColumn": 50,
-                    "endOffset": 266
+                    "endOffset": 1168
                 },
                 "from": {
-                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -80,14 +365,14 @@
             },
             {
                 "to": {
-                    "startLine": 6,
+                    "startLine": 21,
                     "startColumn": 4,
-                    "startOffset": 271,
+                    "startOffset": 1173,
                     "endColumn": 53,
-                    "endOffset": 320
+                    "endOffset": 1222
                 },
                 "from": {
-                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -99,14 +384,33 @@
             },
             {
                 "to": {
-                    "startLine": 7,
+                    "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 325,
-                    "endColumn": 59,
-                    "endOffset": 380
+                    "startOffset": 1227,
+                    "endColumn": 49,
+                    "endOffset": 1272
                 },
                 "from": {
-                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 976,
+                        "endColumn": 49,
+                        "endOffset": 1021
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1277,
+                    "endColumn": 59,
+                    "endOffset": 1332
+                },
+                "from": {
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -118,152 +422,14 @@
             },
             {
                 "to": {
-                    "startLine": 8,
+                    "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 385,
+                    "startOffset": 1337,
                     "endColumn": 48,
-                    "endOffset": 429
+                    "endOffset": 1381
                 },
                 "from": {
-                    "file": "D:\\Wt\\WT\\res\\values-1920x1080\\dimens.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 436,
-                        "endColumn": 48,
-                        "endOffset": 480
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-1920x1080\\values-1920x1080.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 58,
-                    "endOffset": 109
-                },
-                "from": {
-                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-1920x1080\\dimens.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 321,
-                        "endColumn": 58,
-                        "endOffset": 375
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 114,
-                    "endColumn": 50,
-                    "endOffset": 160
-                },
-                "from": {
-                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-1920x1080\\dimens.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 152,
-                        "endColumn": 50,
-                        "endOffset": 198
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 165,
-                    "endColumn": 54,
-                    "endOffset": 215
-                },
-                "from": {
-                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-1920x1080\\dimens.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 265,
-                        "endColumn": 54,
-                        "endOffset": 315
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 220,
-                    "endColumn": 50,
-                    "endOffset": 266
-                },
-                "from": {
-                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-1920x1080\\dimens.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 96,
-                        "endColumn": 50,
-                        "endOffset": 142
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 271,
-                    "endColumn": 53,
-                    "endOffset": 320
-                },
-                "from": {
-                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-1920x1080\\dimens.xml",
-                    "position": {
-                        "startLine": 12,
-                        "startColumn": 4,
-                        "startOffset": 381,
-                        "endColumn": 53,
-                        "endOffset": 430
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 325,
-                    "endColumn": 59,
-                    "endOffset": 380
-                },
-                "from": {
-                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-1920x1080\\dimens.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 204,
-                        "endColumn": 59,
-                        "endOffset": 259
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 385,
-                    "endColumn": 48,
-                    "endOffset": 429
-                },
-                "from": {
-                    "file": "D:\\MyStudioSpace\\WtApp\\res\\values-1920x1080\\dimens.xml",
+                    "file": "D:\\Wtapp\\WT\\res\\values-1920x1080\\dimens.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,

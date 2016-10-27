@@ -3,6 +3,8 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/app_bg"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
               android:orientation="vertical">
 
     <!-- title -->
@@ -34,30 +36,23 @@
             android:orientation="horizontal"
             android:padding="5dp">
 
+            <ImageView
+                android:layout_width="@dimen/sousou_historr_item_iv_height"
+                android:layout_height="@dimen/sousou_historr_item_iv_height"
+                android:layout_marginLeft="@dimen/ui_10_dip"
+                android:src="@drawable/sousou"/>
+
             <EditText
                 android:id="@+id/sousou_sou_ed"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/ui_10_dip"
                 android:background="@null"
-                android:gravity="center_horizontal"
                 android:hint="@string/sousou_hint"
                 android:textColor="@color/sousou_ed"
                 android:textColorHint="@color/sousou_ed"
                 android:textSize="15dp"/>
-
-            <!--
-                 <ImageView
-                android:id="@+id/sousou_sou_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="4dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="4dp"
-                android:src="@drawable/sousou" />
-            -->
         </LinearLayout>
 
         <TextView
@@ -86,9 +81,10 @@
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/sousou_historr_item_iv_height"
+            android:layout_height="@dimen/sousou_historr_item_iv_height"
             android:layout_centerVertical="true"
+
             android:layout_toLeftOf="@+id/goodsousou_toshop_sousou_txt"
             android:src="@drawable/shop_log"/>
 
@@ -151,22 +147,28 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@color/app_bg"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
+
+                        android:padding="@dimen/ui_10_dip"
                         android:text="@string/sousou_remen"
+                        android:textColor="@color/app_gray"
                         />
+
 
                     <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
                         android:id="@+id/sousou_remen_grid"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numColumns="3"/>
+                        android:horizontalSpacing="@dimen/line_size"
+                        android:numColumns="3"
+                        android:verticalSpacing="@dimen/line_size"
+                        />
                 </LinearLayout>
                 <!-- 热门搜索 ** -->
                 <!-- 历史搜索 -->
@@ -174,17 +176,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:background="@color/app_bg"
+                    android:orientation="vertical"
+                    >
 
                     <TextView
                         android:id="@+id/sousou_history_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="10dp"
-                        android:text="@string/sousou_history"/>
+
+                        android:padding="@dimen/ui_10_dip"
+                        android:text="@string/sousou_history"
+                        android:textColor="@color/app_gray"
+                        />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -195,20 +199,25 @@
                         android:id="@+id/sousou_history_ls"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:divider="@null"
+                        android:background="@color/white"
+                        android:divider="@color/app_line"
+                        android:dividerHeight="@dimen/line_size2"
                         android:listSelector="@drawable/select_white_to_gray"/>
+
+                    <ImageView
+                        style="@style/line1"/>
 
                     <TextView
                         android:id="@+id/sousou_history_ls_clearn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/select_txt_bt"
+                        android:background="@drawable/select_white_to_gray"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="10dp"
                         android:text="清除记录"
-                        android:textColor="@color/white"
+                        android:textColor="@color/gray"
                         android:visibility="gone"/>
                 </LinearLayout>
                 <!-- 历史搜索** -->

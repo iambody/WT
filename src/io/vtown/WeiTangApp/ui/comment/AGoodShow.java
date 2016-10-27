@@ -148,6 +148,8 @@ public class AGoodShow extends ATitleBase implements IXListViewListener {
 							|| LOAD_REFRESHING == LOAD_REFRESHING) {// 非加载更多
 						IDataView(activity_goodshow_ls, NoDataView,
 								NOVIEW_ERROR);
+						ShowErrorCanLoad("暂无相关Show");
+						ShowErrorIv(R.drawable.error_show);
 					}
 
 					break;
@@ -207,6 +209,8 @@ public class AGoodShow extends ATitleBase implements IXListViewListener {
 		switch (LoadType) {
 		case LOAD_INITIALIZE:
 			IDataView(activity_goodshow_ls, NoDataView, NOVIEW_ERROR);
+			ShowErrorCanLoad("暂无相关Show");
+			ShowErrorIv(R.drawable.error_show);
 			break;
 		case LOAD_REFRESHING:
 			activity_goodshow_ls.stopRefresh();

@@ -28,54 +28,7 @@
                 android:focusableInTouchMode="true"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/ll_contact_buyer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="visible">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/order_detail_layout_padding">
-
-                        <TextView
-                            android:id="@+id/tv_buyer_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/nullstr"
-                            android:textColor="@color/grey"
-                            android:textSize="@dimen/comment_label_txtsize"
-                            android:visibility="invisible" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_lianxikefu_nor_1" />
-
-                        <TextView
-                            android:id="@+id/tv_call_buyer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/order_detail_contact_seller_margin"
-                            android:text="联系买家"
-                            android:textColor="@color/grey"
-                            android:textSize="@dimen/comment_label_txtsize" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/insulate_view_height"
-                        android:background="@color/app_bg" />
-                </LinearLayout>
 
                 <include
                     android:id="@+id/daifa_address_message"
@@ -135,67 +88,9 @@
                             android:visibility="gone" />
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/insulate_view_height"
-                        android:background="@color/app_bg" />
 
-                    <LinearLayout
-                        android:id="@+id/ll_express_message"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="vertical"
-                        android:visibility="visible">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingLeft="@dimen/order_detail_layout_padding"
-                            android:paddingRight="@dimen/order_detail_layout_padding"
-                            android:paddingTop="@dimen/order_detail_layout_top_bottom_padding">
 
-                            <io.vtown.WeiTangApp.comment.view.DotView
-                                android:id="@+id/dot_view_1"
-                                android:layout_width="@dimen/order_detail_express_dot_size"
-                                android:layout_height="@dimen/order_detail_express_dot_size" />
-
-                            <io.vtown.WeiTangApp.comment.view.CopyTextView
-                                android:id="@+id/tv_order_express_numb"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/order_detail_layout_top_bottom_padding"
-                                android:text="快递单号："
-                                android:textColor="@color/grey"
-                                android:textSize="@dimen/order_detail_express_number_size" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingBottom="@dimen/order_detail_layout_top_bottom_padding"
-                            android:paddingLeft="@dimen/order_detail_layout_padding"
-                            android:paddingRight="@dimen/order_detail_layout_padding">
-
-                            <io.vtown.WeiTangApp.comment.view.DotView
-                                android:id="@+id/dot_view_2"
-                                android:layout_width="@dimen/order_detail_express_dot_size"
-                                android:layout_height="@dimen/order_detail_express_dot_size" />
-
-                            <TextView
-                                android:id="@+id/tv_order_express_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/order_detail_layout_top_bottom_padding"
-                                android:text="物流公司："
-                                android:textColor="@color/grey"
-                                android:textSize="@dimen/order_detail_express_name_size" />
-                        </LinearLayout>
-                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -244,7 +139,7 @@
                         android:id="@+id/select_logistics_company"
                         layout="@layout/commentview_txtarrow" />
 
-                    <View style="@style/line_left" />
+                    <View style="@style/line_left2" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -284,45 +179,85 @@
                     android:layout_height="@dimen/insulate_view_height"
                     android:background="@color/app_bg" />
 
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="vertical">
 
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_contact_buyer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/order_detail_layout_padding">
+
+                            <TextView
+                                android:id="@+id/tv_buyer_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nullstr"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/comment_label_txtsize"
+                                android:visibility="invisible" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_lianxikefu_nor_1" />
+
+                            <TextView
+                                android:id="@+id/tv_call_buyer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/order_detail_contact_seller_margin"
+                                android:text="联系买家"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/comment_label_txtsize" />
+
+                    </LinearLayout>
+
                     <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                         android:id="@+id/lv_daifa_common_goods"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/order_detail_margin"
-                        android:layout_marginTop="@dimen/order_detail_margin"
                         android:cacheColorHint="#00000000"
                         android:divider="@null"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
                         android:listSelector="#00000000"></io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="@color/app_gray" />
 
-                    <RelativeLayout
+
+                    <LinearLayout
                         android:id="@+id/rl_order_goods_message"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:padding="@dimen/order_detail_layout_padding">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical|right"
                             android:background="@color/white"
                             android:orientation="horizontal">
 
                             <io.vtown.WeiTangApp.comment.view.DotView
                                 android:id="@+id/dot_view"
                                 android:layout_width="@dimen/order_detail_dot_size"
+                                android:visibility="gone"
                                 android:layout_height="@dimen/order_detail_dot_size" />
 
                             <TextView
@@ -331,28 +266,29 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/order_detail_margin"
                                 android:text="@string/nullstr"
-                                android:textColor="@color/app_gray"
+                                android:textColor="@color/grey"
                                 android:textSize="@dimen/order_detail_goods_number_txt_size" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/total_price"
-                                android:textColor="@color/app_gray"
+                                android:textColor="@color/grey"
                                 android:textSize="@dimen/order_detail_goods_total_price_lable_size" />
 
                             <TextView
                                 android:id="@+id/tv_daifa_total_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="3dp"
                                 android:text="@string/nullstr"
                                 android:textColor="@color/app_fen"
                                 android:textSize="@dimen/order_detail_goods_total_price_size" />
@@ -362,14 +298,82 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/nullstr"
-                                android:textColor="@color/app_fen"
-                                android:textSize="@dimen/order_detail_goods_postage_size" />
+                                android:layout_marginLeft="5dp"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/order_detail_goods_total_price_size" />
                         </LinearLayout>
-                    </RelativeLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
-                <View style="@style/line" />
 
+
+                <LinearLayout
+                    android:id="@+id/ll_express_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/order_detail_layout_top_bottom_padding"
+                        android:paddingLeft="@dimen/order_detail_layout_padding"
+                        android:paddingRight="@dimen/order_detail_layout_padding"
+                        android:paddingTop="@dimen/order_detail_layout_top_bottom_padding">
+
+                        <io.vtown.WeiTangApp.comment.view.DotView
+                            android:id="@+id/dot_view_1"
+                            android:layout_width="@dimen/order_detail_dot_size"
+                            android:layout_height="@dimen/order_detail_dot_size" />
+
+                        <io.vtown.WeiTangApp.comment.view.CopyTextView
+                            android:id="@+id/tv_order_express_numb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/order_detail_layout_top_bottom_padding"
+                            android:text="快递单号："
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+                    </LinearLayout>
+
+                    <View style="@style/line_left2"
+
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/order_detail_layout_top_bottom_padding"
+                        android:paddingLeft="@dimen/order_detail_layout_padding"
+                        android:paddingTop="@dimen/order_detail_layout_top_bottom_padding"
+                        android:paddingRight="@dimen/order_detail_layout_padding">
+
+                        <io.vtown.WeiTangApp.comment.view.DotView
+                            android:id="@+id/dot_view_2"
+                            android:layout_width="@dimen/order_detail_dot_size"
+                            android:layout_height="@dimen/order_detail_dot_size" />
+
+                        <TextView
+                            android:id="@+id/tv_order_express_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/order_detail_layout_top_bottom_padding"
+                            android:text="物流公司："
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+                    </LinearLayout>
+                </LinearLayout>
+                <View style="@style/line1" />
                 <TextView
                     android:id="@+id/tv_order_good_express_title"
                     android:layout_width="match_parent"
@@ -379,7 +383,7 @@
                     android:textSize="@dimen/comment_label_txtsize"
                     android:visibility="gone" />
 
-                <View style="@style/line" />
+
 
                 <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                     android:id="@+id/lv_order_good_express_speed"

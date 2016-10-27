@@ -1,10 +1,6 @@
 [
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\color\\ksw_md_back_color.xml",
-        "source": "D:\\Wt\\WT\\res\\color\\ksw_md_back_color.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\color\\ksw_md_back_color.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\color\\ksw_md_back_color.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\color\\ksw_md_back_color.xml",
+        "source": "D:\\Wtapp\\WT\\res\\color\\ksw_md_back_color.xml"
     }
 ]

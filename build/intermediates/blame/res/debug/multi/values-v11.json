@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\wt_work_space\\WT\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+        "outputFile": "D:\\Wtapp\\WT\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
         "map": [
             {
                 "to": {
@@ -9,43 +9,17 @@
                     "startOffset": 55,
                     "endLine": 4,
                     "endColumn": 12,
-                    "endOffset": 182
+                    "endOffset": 187
                 },
                 "from": {
-                    "file": "D:\\wt_work_space\\WT\\res\\values-v11\\styles.xml",
+                    "file": "D:\\Wtapp\\WT\\res\\values-v11\\styles.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
                         "startOffset": 183,
                         "endLine": 8,
                         "endColumn": 12,
-                        "endOffset": 312
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "D:\\Wt\\WT\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endLine": 4,
-                    "endColumn": 12,
-                    "endOffset": 182
-                },
-                "from": {
-                    "file": "D:\\Wt\\WT\\res\\values-v11\\styles.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 183,
-                        "endLine": 8,
-                        "endColumn": 12,
-                        "endOffset": 312
+                        "endOffset": 317
                     }
                 }
             }

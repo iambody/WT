@@ -1,1014 +1,570 @@
 [
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\left_btn.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\left_btn.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_center.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_center.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_pic_choose_selector.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\plugin_camera_pic_choose_selector.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_trans_to_gray.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_trans_to_gray.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\chatfrom_bg_normal.9.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\chatfrom_bg_normal.9.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_confirm.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\multiphoto_btn_confirm.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_my_conpous_left_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_my_conpous_left_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_fen_to_gray_no_circular.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_fen_to_gray_no_circular.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comfrem_btn_nor_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_comfrem_btn_nor_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\text_while.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\text_while.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_add_bank_card_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_add_bank_card_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_share_down_up.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_show_share_down_up.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\left_btn_select.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\left_btn_select.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\bt_nobgd.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\bt_nobgd.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_white_point.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_white_point.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_lv_3.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_lv_3.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shadow.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shadow.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sell_line_pre.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_sell_line_pre.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_white_box.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\bg_white_box.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_clean.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\icon_clean.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_del.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\multiphoto_btn_del.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_albumbackground.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\plugin_camera_albumbackground.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_bank_card_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_bank_card_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_icon_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\good_pop_icon_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_select_tuikuan_cause_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_select_tuikuan_cause_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_txtbt_pre.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_txtbt_pre.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_btn_press.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\good_pop_btn_press.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_newhome_fanyong.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_newhome_fanyong.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_rect_no_circular_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_rect_no_circular_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_dai_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_dai_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_fen_to_gray1.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_fen_to_gray1.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_menu_item_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\selector_menu_item_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_up.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_show_up.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shadow.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shadow.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_left_pre.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_left_pre.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_tran_to_gray.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_tran_to_gray.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ssdk_oks_classic_platform_cell_back.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\ssdk_oks_classic_platform_cell_back.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_title_btn_back.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\plugin_camera_title_btn_back.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_add_goods_edit_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_add_goods_edit_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\play.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\play.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_rect_no_circular_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_rect_no_circular_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_white_box.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\bg_white_box.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\right_btn_select.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\right_btn_select.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_pop_gridview_txt_select_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_pop_gridview_txt_select_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_txtbt_pre.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_txtbt_pre.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_pic_choose_selector.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\plugin_camera_pic_choose_selector.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_fen_to_gray_no_circular.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_fen_to_gray_no_circular.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_bg1.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_bg1.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_my_conpous_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_my_conpous_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\left_btn.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\left_btn.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_toast_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_toast_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sell_line_nor.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_sell_line_nor.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\wheel_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_lv_2.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_lv_2.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_confirm.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\multiphoto_btn_confirm.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_lv_5.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_lv_5.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_title_btn_preview.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\plugin_camera_title_btn_preview.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shop_circular_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_shop_circular_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_share_down_up.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_show_share_down_up.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_up.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_show_up.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_gray.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_white_to_gray.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_title_btn_preview.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\plugin_camera_title_btn_preview.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_center.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_center.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comfrem_btn_nor_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_comfrem_btn_nor_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_clean.png",
-        "source": "D:\\Wt\\WT\\res\\drawable\\icon_clean.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_right_pre.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_right_pre.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_input_area.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_input_area.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_add_goods_edit_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_add_goods_edit_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_title_btn_cancel.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\plugin_camera_title_btn_cancel.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\right_btn_select.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\right_btn_select.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\invitercode_line_shape.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\invitercode_line_shape.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_lv_6.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_lv_6.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_btn_nor.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\good_pop_btn_nor.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_jiajian_bt.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_jiajian_bt.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_share_down.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_show_share_down.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_fen_to_gray1.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_fen_to_gray1.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sell_line_pre.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_sell_line_pre.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comment_oval_pre.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_comment_oval_pre.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_vertical_xuxian_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_vertical_xuxian_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\chatfrom_bg_focused.9.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\chatfrom_bg_focused.9.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_bind_code.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_bind_code.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_menu_item_text.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\selector_menu_item_text.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\left_btn_select.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\left_btn_select.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_marquee_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_marquee_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_fan_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_fan_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_rect_no_circular_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_rect_no_circular_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_daifu_finish_btn_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_daifu_finish_btn_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\recording_hint_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\recording_hint_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_del_state.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\plugin_camera_del_state.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_point.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_point.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\text_while.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\text_while.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\aa_dialog_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\aa_dialog_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_usr_id_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_usr_id_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_gooddetail_zhibao_quan.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_gooddetail_zhibao_quan.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\chatfrom_bg_focused.9.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\chatfrom_bg_focused.9.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_del_state.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\plugin_camera_del_state.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\translat.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\translat.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_val.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\wheel_val.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_bg1.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_bg1.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_corner_white.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_corner_white.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\aa_dialog_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\aa_dialog_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_integral_bg_white.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_integral_bg_white.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_centera.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_centera.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\left_btn_select.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\left_btn_select.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_bt_press.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_bt_press.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\wheel_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_order_btn_gray_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_order_btn_gray_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\regist_code_shape_pre.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\regist_code_shape_pre.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_right_pre.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_right_pre.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shop_good_sou_edittext_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_shop_good_sou_edittext_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_trans_to_gray.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_trans_to_gray.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_image_selected.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\multiphoto_image_selected.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_fan_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_fan_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_ok_btn_state.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\plugin_camera_ok_btn_state.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_pop_gridview_txt_normal_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_pop_gridview_txt_normal_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_checkbox.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\selector_checkbox.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sousou_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_sousou_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_share_up.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_show_share_up.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\check_right_btn.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\check_right_btn.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_left_pre.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_left_pre.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comfrem_btn_nor_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_comfrem_btn_nor_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_bank_card_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_bank_card_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_my_conpous_left_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_my_conpous_left_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_orange_to_gray.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_orange_to_gray.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\recording_hint_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\recording_hint_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_add_pic.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\multiphoto_btn_add_pic.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\recording_hint_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\recording_hint_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shopmanger_circular_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_shopmanger_circular_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_title_btn_cancel.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\plugin_camera_title_btn_cancel.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sousou_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_sousou_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_image_selected.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\multiphoto_image_selected.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_fan_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_fan_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_comfrem_btn_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_comfrem_btn_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_daifu_daifa_btn_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_daifu_daifa_btn_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_add_bank_card_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_add_bank_card_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_order_btn_gray_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_order_btn_gray_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_usr_id_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_usr_id_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_btn_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\good_pop_btn_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_brand_caigou.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_brand_caigou.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_gray.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_white_to_gray.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\multiphoto_btn.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_vertical_xuxian_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_vertical_xuxian_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\recording_text_hint_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\recording_text_hint_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_corner.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_corner.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_vertical_xuxian_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_vertical_xuxian_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_comfrem_btn_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_comfrem_btn_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_fen_to_gray.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_fen_to_gray.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_bt_press.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_bt_press.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_title_btn_back.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\plugin_camera_title_btn_back.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_pink_to_white_radius_btn_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_pink_to_white_radius_btn_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_daifu_finish_btn_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_daifu_finish_btn_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_integral_bg_fen.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_integral_bg_fen.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_pi_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_pi_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_usr_id_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_usr_id_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_menu_item_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\selector_menu_item_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_white_point.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_white_point.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_add_goods_edit_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_add_goods_edit_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_circular_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_circular_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_val.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\wheel_val.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_pink_btn_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_white_to_pink_btn_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\left_btn.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\left_btn.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_right_nor.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_right_nor.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_gride.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\selector_gride.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_newhome_jifen.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_newhome_jifen.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_btn_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\good_pop_btn_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\second_step_animation.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\second_step_animation.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_corner.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_corner.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sousou_1.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_sousou_1.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_graytoblack.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_graytoblack.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_graytoblack.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_graytoblack.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_right_nor.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_right_nor.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_home_item.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_home_item.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_btn_text_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_btn_text_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_select_tuikuan_cause_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_select_tuikuan_cause_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_left_nor.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_left_nor.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\check_left_btn.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\check_left_btn.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_ok_btn_state.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\plugin_camera_ok_btn_state.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\ssdk_oks_classic_progressbar.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\ssdk_oks_classic_progressbar.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_white_point.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_white_point.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\chatfrom_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\chatfrom_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_btn_press.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\good_pop_btn_press.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_title_btn_cancel.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\plugin_camera_title_btn_cancel.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_movie_add_shoot.png",
-        "source": "D:\\Wt\\WT\\res\\drawable\\bg_movie_add_shoot.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_bind_code.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_bind_code.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_up.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_show_up.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shop_detail_search.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_shop_detail_search.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_centera.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_centera.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_btn_press.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\good_pop_btn_press.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shop_detail_search.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_shop_detail_search.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_fen_to_gray.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_fen_to_gray.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\ssdk_oks_classic_platform_cell_back.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\ssdk_oks_classic_platform_cell_back.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\multiphoto_btn.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\chatto_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\chatto_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_login_circular.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_login_circular.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_round.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_round.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_show_select_pic_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_show_select_pic_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sell_line_nor.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_sell_line_nor.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_btn_nor.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\good_pop_btn_nor.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\invitercode_line_shape2.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\invitercode_line_shape2.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comment_oval.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_comment_oval.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comment_oval.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_comment_oval.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_movie_add_shoot.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\bg_movie_add_shoot.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shop_circular_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_shop_circular_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_home_bind.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_home_bind.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_pink_btn_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_white_to_pink_btn_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_integral_bg_green.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_integral_bg_green.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_pink_round_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_pink_round_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\recording_text_hint_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\recording_text_hint_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_title_btn_preview.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\plugin_camera_title_btn_preview.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_txt_bt.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_txt_bt.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\check_left_btn.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\check_left_btn.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_fen_circular_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_fen_circular_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_trans_to_gray.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_trans_to_gray.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_gride.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\selector_gride.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_clean.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\icon_clean.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_my_conpous_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_my_conpous_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shadow.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shadow.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_input_area.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_input_area.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\play.png",
-        "source": "D:\\Wt\\WT\\res\\drawable\\play.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_left_nor.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_left_nor.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_pop_gridview_txt_select_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_pop_gridview_txt_select_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\chatto_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\chatto_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_fen1.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_white_to_fen1.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_daifu_finish_btn_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_daifu_finish_btn_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_select_tuikuan_cause_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_select_tuikuan_cause_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_toast_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_toast_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_marquee_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_marquee_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_round.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_round.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_toast_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_toast_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_del.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\multiphoto_btn_del.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_round.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_round.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_white_point_black_stroke.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_white_point_black_stroke.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shop_good_sou_edittext_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_shop_good_sou_edittext_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\right_btn.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\right_btn.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_del.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\multiphoto_btn_del.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_btn_text_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_btn_text_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_marquee_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_marquee_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\ssdk_oks_classic_platform_cell_back.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\ssdk_oks_classic_platform_cell_back.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_comfrem_btn_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_comfrem_btn_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_key_del.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\selector_key_del.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_add_pic.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\multiphoto_btn_add_pic.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_brand_caigou.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_brand_caigou.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_right_pre.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_right_pre.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_pop_gridview_txt_normal_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_pop_gridview_txt_normal_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\check_right_btn.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\check_right_btn.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_pi_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_pi_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comfrem_btn_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_comfrem_btn_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_pink_round_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_pink_round_bg.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shop_detail_search.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_shop_detail_search.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_show_divider_line.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_show_divider_line.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_add_rule_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_add_rule_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_my_conpous_left_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_my_conpous_left_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_share_down_up.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_show_share_down_up.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_add_bank_card_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_add_bank_card_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_my_conpous_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_my_conpous_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\invitercode_line_shape2.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\invitercode_line_shape2.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_white_box.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\bg_white_box.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_fen1.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_white_to_fen1.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\recording_text_hint_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\recording_text_hint_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_lv_4.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_lv_4.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shopmanger_circular_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_shopmanger_circular_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_centera.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shap_centera.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_show_divider_line.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_show_divider_line.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_share_down.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_show_share_down.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_ok_btn_state.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\plugin_camera_ok_btn_state.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\chatfrom_bg_normal.9.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\chatfrom_bg_normal.9.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_center.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_center.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\invitercode_line_shape.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\invitercode_line_shape.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_fen_to_gray1.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_fen_to_gray1.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_integral_bg_white_right.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_integral_bg_white_right.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_pink_to_white_radius_btn_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_pink_to_white_radius_btn_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_lv_1.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_lv_1.xml"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_checkbox.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\selector_checkbox.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\check_right_btn.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\check_right_btn.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\chatto_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\chatto_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comfrem_btn_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\shape_comfrem_btn_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_fen_to_gray.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_fen_to_gray.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_sou_remen.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_sou_remen.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comment_oval_pre.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_comment_oval_pre.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_add_rule_bg.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_add_rule_bg.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_albumbackground.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\plugin_camera_albumbackground.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\translat.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\translat.xml"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sousou_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_sousou_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_dai_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_dai_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_menu_item_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\selector_menu_item_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_txtbt_pre.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_txtbt_pre.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_show_select_pic_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_show_select_pic_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\second_step_animation.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\second_step_animation.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_order_btn_gray_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_order_btn_gray_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_pop_gridview_txt_select_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_pop_gridview_txt_select_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\invitercode_line_shape2.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\invitercode_line_shape2.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\text_while.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\text_while.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\right_btn.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\right_btn.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_corner_white.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_corner_white.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_circular_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_circular_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_val.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\wheel_val.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_fen.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_white_to_fen.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_key_del.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\selector_key_del.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sell_line_nor.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_sell_line_nor.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_pic_choose_selector.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\plugin_camera_pic_choose_selector.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_title_btn_back.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\plugin_camera_title_btn_back.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_txt_bt.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_txt_bt.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_share_down.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_show_share_down.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_daifu_daifa_btn_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_daifu_daifa_btn_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\invitercode_line_shape.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\invitercode_line_shape.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_jiajian_bt.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_jiajian_bt.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_albumbackground.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\plugin_camera_albumbackground.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\bt_nobgd.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\bt_nobgd.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_sou_remen.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_sou_remen.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_dai_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_dai_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_checkbox.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\selector_checkbox.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\multiphoto_btn.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shop_good_sou_edittext_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_shop_good_sou_edittext_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_btn_nor.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\good_pop_btn_nor.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_point.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_point.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_sou_remen.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_sou_remen.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\chatfrom_bg_focused.9.png",
-        "source": "D:\\Wt\\WT\\res\\drawable\\chatfrom_bg_focused.9.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_menu_item_text.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\selector_menu_item_text.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_corner_white.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_corner_white.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_image_selected.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\multiphoto_image_selected.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_pink_to_white_radius_btn_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_pink_to_white_radius_btn_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\plugin_camera_del_state.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\plugin_camera_del_state.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_icon_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\good_pop_icon_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_brand_caigou.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_brand_caigou.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_btn_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\good_pop_btn_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sell_line_pre.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_sell_line_pre.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comfrem_btn_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_comfrem_btn_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sousou_1.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_sousou_1.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_bank_card_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_bank_card_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\regist_code_shape_pre.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\regist_code_shape_pre.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_left_pre.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_left_pre.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\good_pop_icon_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\good_pop_icon_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_orange_to_gray.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_orange_to_gray.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_daifu_daifa_btn_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_daifu_daifa_btn_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\regist_code_shape_pre.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\regist_code_shape_pre.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_menu_item_text.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\selector_menu_item_text.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_orange_to_gray.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_orange_to_gray.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_bg1.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_bg1.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_corner.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_corner.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\translat.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\translat.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\second_step_animation.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\second_step_animation.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_fen1.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_white_to_fen1.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\check_left_btn.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\check_left_btn.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_key_del.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\selector_key_del.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\chatfrom_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\chatfrom_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_share_up.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_show_share_up.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_tran_to_gray.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_tran_to_gray.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_pi_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_pi_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_point.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_point.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_bt_press.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_bt_press.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_login_circular.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_login_circular.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_bind_code.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shap_bind_code.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_add_pic.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\multiphoto_btn_add_pic.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shopmanger_circular_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_shopmanger_circular_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_right_nor.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_right_nor.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_jiajian_bt.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_jiajian_bt.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_input_area.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_input_area.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_gray.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_white_to_gray.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_login_circular.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_login_circular.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_pink_round_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_pink_round_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_circular_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_circular_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\multiphoto_btn_confirm.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\multiphoto_btn_confirm.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\right_btn.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\right_btn.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_movie_add_shoot.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\bg_movie_add_shoot.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_fen.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_white_to_fen.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comment_oval_pre.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_comment_oval_pre.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_comment_oval.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_comment_oval.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_shop_circular_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_shop_circular_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\bt_nobgd.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\bt_nobgd.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_home_item.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_home_item.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\ssdk_oks_classic_progressbar.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\ssdk_oks_classic_progressbar.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_graytoblack.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_graytoblack.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_txt_bt.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_txt_bt.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\play.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\play.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_btn_text_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_btn_text_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_pop_gridview_txt_normal_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_pop_gridview_txt_normal_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\right_btn_select.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\right_btn_select.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_fen_circular_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_fen_circular_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_fen_to_gray_no_circular.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_fen_to_gray_no_circular.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shap_sousou_1.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shap_sousou_1.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\ssdk_oks_classic_progressbar.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\ssdk_oks_classic_progressbar.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_fen_circular_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_fen_circular_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_left_nor.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\shape_left_nor.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_gride.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\selector_gride.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_tran_to_gray.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_tran_to_gray.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\wheel_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_show_select_pic_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\shape_show_select_pic_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_show_share_up.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_show_share_up.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\chatfrom_bg_normal.9.png",
-        "source": "D:\\Wt\\WT\\res\\drawable\\chatfrom_bg_normal.9.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_home_item.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_home_item.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_pink_btn_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\select_white_to_pink_btn_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\chatfrom_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\chatfrom_bg.xml"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable\\select_add_rule_bg.xml",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable\\select_add_rule_bg.xml"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\aa_dialog_bg.xml",
-        "source": "D:\\Wt\\WT\\res\\drawable\\aa_dialog_bg.xml"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable\\select_white_to_fen.xml",
+        "source": "D:\\Wtapp\\WT\\res\\drawable\\select_white_to_fen.xml"
     }
 ]

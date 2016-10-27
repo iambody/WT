@@ -283,9 +283,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 							View arg1, int arg2, long arg3) {
 						final BNew mBNew = (BNew) arg0.getItemAtPosition(arg2);
 
-						ShowCustomDialog("是否该消息?", "取消", "确定",
+						ShowCustomDialog("是否该删除消息?", "取消", "确定",
 								new IDialogResult() {
-
 									@Override
 									public void RightResult() {
 										DeletByType(mBNew.getId());// "system_message_id":

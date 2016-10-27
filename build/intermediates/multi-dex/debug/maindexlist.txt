@@ -73,7 +73,6 @@ android/support/v4/view/AbsSavedState.class
 io/vtown/WeiTangApp/comment/contant/Constants.class
 android/support/v4/media/session/MediaSessionCompat$ResultReceiverWrapper.class
 android/support/v4/app/TaskStackBuilder.class
-com/chanven/lib/cptr/PtrFrameLayout.class
 android/support/v4/view/accessibility/AccessibilityNodeProviderCompat.class
 com/lidroid/xutils/view/annotation/event/OnTabChange.class
 android/support/v4/view/ViewCompatICS.class
@@ -458,7 +457,6 @@ android/support/v4/app/ServiceCompat$BaseServiceCompatImpl.class
 android/support/v4/view/VelocityTrackerCompat.class
 android/support/v4/media/VolumeProviderCompat$1.class
 android/support/v4/media/MediaBrowserCompat$MediaBrowserImplApi24.class
-butterknife/BindFloat.class
 android/support/v7/widget/RecyclerView$ItemAnimator$ItemAnimatorFinishedListener.class
 android/support/v4/media/MediaBrowserCompat$MediaBrowserImplApi23.class
 android/support/v4/view/ViewCompat$KitKatViewCompatImpl.class

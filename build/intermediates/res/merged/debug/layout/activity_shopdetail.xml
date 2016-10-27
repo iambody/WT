@@ -5,80 +5,12 @@
               android:background="@color/white"
               android:orientation="vertical">
 
-    <!-- title -->
-
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/titlebarheingh"
-        android:background="@color/app_fen"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/shopdetail_back_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="title_left_bt"
-            android:src="@drawable/arrow_back"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/shap_sousou_bg"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <EditText
-                android:id="@+id/shopdetail_sou_ed"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center_horizontal"
-                android:hint="@string/sousou_shopnei_hint"
-                android:textColor="@color/sousou_ed"
-                android:textColorHint="@color/sousou_ed"
-                android:textSize="15dp"/>
-
-            <ImageView
-                android:id="@+id/shopdetail_sou_iv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="4dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:src="@drawable/sousou"/>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/shopdetail_cancle_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/cancle"
-            android:textColor="@color/white"/>
-    </LinearLayout>
-    &lt;!&ndash; title*** &ndash;&gt;-->
-
     <include
         android:id="@+id/neterrorview"
         layout="@layout/net_status_bar_info_top"
         android:clickable="true"
         android:visibility="gone"/>
     <!-- head的view -->
-
-
     <!-- 搜索下边的滑动模块 -->
 
     <io.vtown.WeiTangApp.comment.view.custom.PullView
@@ -128,8 +60,6 @@
                                 android:id="@+id/shopdetail_imagview"
                                 android:layout_width="@dimen/brand_detail_brand_iv"
                                 android:layout_height="@dimen/brand_detail_brand_iv"
-
-
                                 android:clickable="true"
                                 android:focusable="true"/>
 
@@ -148,9 +78,8 @@
                             <TextView
                                 android:id="@+id/shopdetail_shop_tag"
                                 style="@style/AudioFileInfoOverlayText1"
-                                android:layout_width="200dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-
                                 android:layout_margin="10dp"
                                 android:ellipsize="end"
                                 android:gravity="center"
@@ -161,14 +90,14 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
+                        <!--<LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
                             android:orientation="horizontal">
 
 
-                        </LinearLayout>
+                        </LinearLayout>-->
 
 
                     </LinearLayout>
@@ -181,15 +110,7 @@
 
                         android:orientation="horizontal">
 
-                        <!--   <LinearLayout
-                               android:layout_width="0dp"
-                               android:layout_height="match_parent"
-                               android:layout_weight="1"
-                               android:gravity="center_vertical"
-                               android:orientation="horizontal">
 
-
-   -->
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -199,12 +120,12 @@
                             android:id="@+id/shopdetail_sou_iv"
                             android:layout_width="@dimen/shopdetail_sou_iv_height"
                             android:layout_height="@dimen/shopdetail_sou_iv_height"
-                            android:padding="@dimen/line_size4"
-
                             android:layout_gravity="center_vertical"
+
                             android:layout_marginLeft="10dp"
                             android:clickable="true"
                             android:focusable="true"
+                            android:padding="@dimen/line_size4"
                             android:src="@drawable/ic_baiseshousuo_nor"/>
 
 
@@ -248,7 +169,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:background="@color/transparent5"
+
                         android:orientation="horizontal"
                         android:padding="5dp">
 
@@ -286,9 +207,8 @@
                         <TextView
                             android:id="@+id/line_1"
                             android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_height="@dimen/ui_10_dip"
+                           android:layout_gravity="center_vertical"
                             android:background="@color/white"/>
 
 
@@ -324,9 +244,9 @@
                         <TextView
                             android:id="@+id/line_2"
                             android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_height="@dimen/ui_10_dip"
+                            android:layout_gravity="center_vertical"
+
                             android:background="@color/white"/>
 
 
@@ -361,9 +281,8 @@
                         <TextView
                             android:id="@+id/line_3"
                             android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_height="@dimen/ui_10_dip"
+                           android:layout_gravity="center_vertical"
                             android:background="@color/white"/>
 
 
@@ -437,114 +356,121 @@
                 </LinearLayout>
 
                 <!-- 品牌和自营进行切换 -->
-                <ImageView
+                <!--<ImageView
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
                     android:src="@color/app_bg"/>
-<LinearLayout
-    android:id="@+id/shop_detail_catory_lay"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:background="@color/white"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/shop_detail_ziying"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="自营"
-                        android:textColor="@color/app_fen"/>
-
-                    <ImageView
-                        android:layout_width="@dimen/line_size1"
-                        android:layout_height="match_parent"
-                        android:src="@color/app_line"/>
-
-                    <TextView
-                        android:id="@+id/shop_detail_brand"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="品牌"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="6dp"
-                    android:background="@color/app_bg"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@color/app_bg"/>
-
-                    <ImageView
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:src="@color/white"/>
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="6dp"
-                        android:layout_gravity="center_vertical"
-                        android:padding="5dp"
-                        android:src="@drawable/shop_good_iv_ls"
-                        android:visibility="invisible"/>
-                </LinearLayout>
-
-
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/app_bg"
-                    android:orientation="horizontal">
-
-                    <io.vtown.WeiTangApp.comment.view.listview.HorizontalListView
-                        android:id="@+id/shop_detail_horizontal_ls"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/horizontallistview"
-                        android:layout_weight="1"/>
-
-                    <ImageView
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:src="@color/white"/>
-
-                    <ImageView
-                        android:id="@+id/shop_detail_goods_chang_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:layout_gravity="top"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:longClickable="true"
-                        android:padding="5dp"
-                        android:src="@drawable/shop_good_iv_ls"/>
-                </LinearLayout>
-                <!-- 下边的ls -->
+-->
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/line_size"
-                    android:src="@color/white"/>
-</LinearLayout>
+                    android:layout_height="@dimen/line_size1"
+                    android:src="@color/app_line"/>
+                <LinearLayout
+                    android:id="@+id/shop_detail_catory_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/shop_detail_ziying"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="自营"
+                            android:textColor="@color/app_fen"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/line_size1"
+                            android:layout_height="match_parent"
+                            android:src="@color/app_line"/>
+
+                        <TextView
+                            android:id="@+id/shop_detail_brand"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="品牌"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:background="@color/app_bg"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/app_bg"/>
+
+                        <ImageView
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:src="@color/white"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center_vertical"
+                            android:padding="5dp"
+                            android:src="@drawable/shop_good_iv_ls"
+                            android:visibility="invisible"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/app_bg"
+                        android:orientation="horizontal">
+
+                        <io.vtown.WeiTangApp.comment.view.listview.HorizontalListView
+                            android:id="@+id/shop_detail_horizontal_ls"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/horizontallistview"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:src="@color/white"/>
+
+                        <ImageView
+                            android:id="@+id/shop_detail_goods_chang_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_gravity="top"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:longClickable="true"
+                            android:padding="5dp"
+                            android:src="@drawable/shop_good_iv_ls"/>
+                    </LinearLayout>
+                    <!-- 下边的ls -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line_size"
+                        android:src="@color/white"/>
+                </LinearLayout>
+
                 <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                     android:id="@+id/shop_detail_downgoods_ls"
                     android:layout_width="match_parent"
@@ -555,8 +481,7 @@
                     android:id="@+id/shop_detail_downgoods_gr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:background="@color/app_bg"
                     android:horizontalSpacing="5dp"
                     android:numColumns="2"
                     android:scrollbars="none"

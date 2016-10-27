@@ -120,7 +120,7 @@
                         </LinearLayout>
                     </RelativeLayout>
 
-                    <View style="@style/line" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -134,32 +134,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:cacheColorHint="#00000000"
-                        android:divider="@null"
+                        android:dividerHeight="3dp"
+                        android:divider="@color/white"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
                         android:listSelector="#00000000" >
                     </io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
 
-                    <View style="@style/line" />
 
-                    <RelativeLayout
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:padding="@dimen/order_detail_layout_padding" >
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="match_parent"
                             android:layout_centerVertical="true"
                             android:background="@color/white"
-                            android:gravity="center_vertical"
+                            android:gravity="center_vertical|right"
                             android:orientation="horizontal"
                             android:visibility="visible" >
 
                             <io.vtown.WeiTangApp.comment.view.DotView
                                 android:id="@+id/dot_view"
                                 android:layout_width="@dimen/order_detail_dot_size"
+                                android:visibility="gone"
                                 android:layout_height="@dimen/order_detail_dot_size" />
 
                             <TextView
@@ -169,22 +173,22 @@
                                 android:layout_marginLeft="5dp"
                                 android:text="共6件商品"
                                 android:textColor="@color/grey"
-                                android:textSize="@dimen/order_detail_goods_number_txt_size" />
+                                android:textSize="@dimen/order_list_good_number" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
                             android:orientation="horizontal" >
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="总价："
+                                android:text="合计："
                                 android:textColor="@color/grey"
-                                android:textSize="@dimen/order_detail_goods_total_price_lable_size" />
+                                android:textSize="@dimen/order_list_wait_pay" />
 
                             <TextView
                                 android:id="@+id/tv_center_my_order_total_price"
@@ -201,8 +205,9 @@
                                 android:textSize="@dimen/order_detail_goods_postage_size"
                                 android:visibility="gone" />
                         </LinearLayout>
-                    </RelativeLayout>
+                    </LinearLayout>
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/ll_center_my_order_express_message"
@@ -212,7 +217,11 @@
                     android:orientation="vertical"
                     android:visibility="gone" >
 
-                    <View style="@style/line" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg"
+                        />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -221,6 +230,7 @@
                         android:orientation="horizontal"
                         android:paddingLeft="@dimen/order_detail_layout_padding"
                         android:paddingRight="@dimen/order_detail_layout_padding"
+                        android:paddingBottom="@dimen/order_detail_layout_top_bottom_padding"
                         android:paddingTop="@dimen/order_detail_layout_top_bottom_padding" >
 
                         <io.vtown.WeiTangApp.comment.view.DotView
@@ -234,15 +244,17 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:text="快递单号："
-                            android:textColor="@color/grey"
-                            android:textSize="@dimen/order_detail_express_number_size" />
-                    </LinearLayout>
 
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/comment_label_txtsize" />
+                    </LinearLayout>
+                    <View style="@style/line_left2" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
+                        android:paddingTop="@dimen/order_detail_layout_top_bottom_padding"
                         android:paddingBottom="@dimen/order_detail_layout_top_bottom_padding"
                         android:paddingLeft="@dimen/order_detail_layout_padding"
                         android:paddingRight="@dimen/order_detail_layout_padding" >
@@ -257,14 +269,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:layout_marginTop="3dp"
                             android:text="物流公司："
                             android:textColor="@color/grey"
-                            android:textSize="@dimen/order_detail_express_name_size" />
+                            android:textSize="@dimen/comment_label_txtsize" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <View style="@style/line" />
+
+
+                <View style="@style/line1" />
 
                 <TextView
                     android:id="@+id/tv_center_order_good_express_title"
@@ -276,7 +289,8 @@
                     android:textSize="@dimen/comment_label_txtsize"
                     android:visibility="gone" />
 
-                <View style="@style/line" />
+                <View style="@style/line1" />
+
 
                 <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                     android:id="@+id/lv_center_my_order_good_express_speed"

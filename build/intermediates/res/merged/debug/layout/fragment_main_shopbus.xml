@@ -13,7 +13,8 @@
 
         <RelativeLayout
             android:layout_width="@dimen/main_shopbus_sidewidth"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
 
             <TextView
                 android:id="@+id/maintab_shopbus_left_txt"
@@ -21,7 +22,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:clickable="true"
-                android:focusable="true"/>
+                android:focusable="true"
+                android:textColor="@color/white"
+                />
         </RelativeLayout>
 
         <TextView
@@ -30,14 +33,16 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/tab_shopbus"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/titlebar_size"
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:layout_width="@dimen/main_shopbus_sidewidth"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/maintab_shopbus_Right_iv"
+                android:id="@+id/maintab_shopbus_right_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -46,9 +51,28 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/lajixiang_iv"/>
+            <TextView
+                android:id="@+id/maintab_shopbus_right_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/TextColorWhite"
+                android:textSize="@dimen/ui_18_dip"
+                android:padding="@dimen/line_size6"
+                android:clickable="true"
+                android:text="@string/wancheng"
+                android:visibility="gone"
+                android:focusable="true" />
         </RelativeLayout>
     </LinearLayout>
 
+    <include
+        android:id="@+id/fragment_main_shopbus_neterrorview"
+        layout="@layout/net_status_bar_info_top"
+        android:clickable="true"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/maintab_shopbus_show_lay"
@@ -73,8 +97,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_size1"
-            android:src="@color/app_fen"
-            android:visibility="gone"/>
+            android:src="@color/app_line"/>
 
         <LinearLayout
             android:id="@+id/maintab_shopbus_down_lay"

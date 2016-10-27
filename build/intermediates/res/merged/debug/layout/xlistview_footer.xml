@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content" >
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/transparent">
+
 
     <RelativeLayout
         android:id="@+id/xlistview_footer_content"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_size"
+            android:layout_alignParentTop="true"
+            android:src="@color/app_line"/>
 
         <TextView
             android:id="@+id/xlistview_footer_hint_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="@color/app_gray"
+            android:padding="@dimen/ui_10_dip"
             android:text="@string/xlistview_footer_hint_normal"
-              />
+            android:textColor="@color/app_gray"
+            />
 
         <ImageView
             android:id="@+id/iv_load"
@@ -25,7 +34,7 @@
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/xlistview_footer_hint_textview"
             android:src="@drawable/icon_loading_not_selected"
-            android:visibility="gone" />
+            android:visibility="gone"/>
     </RelativeLayout>
 
 </LinearLayout>

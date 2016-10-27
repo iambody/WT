@@ -137,6 +137,7 @@
     <color name="app_color4">#BFD976</color>
     <color name="app_color5">#FF7461</color>
     <color name="app_color6">#AA8ABC</color>
+    <color name="app_color7">#BFD976</color>
     <color name="app_fen">#FF4878</color>
     <color name="app_fen1">#99FF4878</color>
     <color name="app_fen2">#abFF4878</color>
@@ -145,6 +146,7 @@
     <color name="app_gray1">#dfdfdf</color>
     <color name="app_herse">#f8b551</color>
     <color name="app_line">#dcdcdc</color>
+    <color name="app_line1">#11dcdcdc</color>
     <color name="app_red">#FF7360</color>
     <color name="app_title_bg">#e5e5e5</color>
     <color name="aqua">#00ffff</color>
@@ -173,7 +175,7 @@
     <color name="coral">#ff7f50</color>
     <color name="cornflowerblue">#6495ed</color>
     <color name="cornsilk">#fff8dc</color>
-    <color name="crimson">#dc143c</color>
+    <color name="crimson">#d7e56ba0</color>
     <color name="cyan">#00ffff</color>
     <color name="darkblue">#00008b</color>
     <color name="darkcyan">#008b8b</color>
@@ -221,6 +223,7 @@
     <color name="hotpink">#ff69b4</color>
     <color name="indianred">#cd5c5c</color>
     <color name="indigo">#4b0082</color>
+    <color name="item_bg">#fafafa</color>
     <color name="item_home_txt">#2d2229</color>
     <color name="ivory">#fffff0</color>
     <color name="khaki">#f0e68c</color>
@@ -248,6 +251,20 @@
     <color name="lime">#00ff00</color>
     <color name="limegreen">#32cd32</color>
     <color name="linen">#faf0e6</color>
+    <color name="lv1">#ffa819</color>
+    <color name="lv1_top">#f59a04</color>
+    <color name="lv2">#8aa4ea</color>
+    <color name="lv2_top">#728dd7</color>
+    <color name="lv3">#91bb19</color>
+    <color name="lv3_top">#82a814</color>
+    <color name="lv4">#f59a04</color>
+    <color name="lv4_top">#e38f05</color>
+    <color name="lv5">#728dd7</color>
+    <color name="lv5_top">#5c7bd0</color>
+    <color name="lv6">#82a814</color>
+    <color name="lv6_top">#799b15</color>
+    <color name="lv7">#ff4777</color>
+    <color name="lv7_top">#f13264</color>
     <color name="magenta">#ff00ff</color>
     <color name="maroon">#800000</color>
     <color name="mediumaquamarine">#66cdaa</color>
@@ -331,6 +348,7 @@
     <color name="transparent5">#1a000000</color>
     <color name="transparent6">#5cffffff</color>
     <color name="transparent7">#ffffffff</color>
+    <color name="transparent8">#1affffff</color>
     <color name="triangle">#aa72d572</color>
     <color name="turquoise">#40e0d0</color>
     <color name="view_bg">#00000000</color>
@@ -360,6 +378,8 @@
     <declare-styleable name="LoadingView"><attr format="string" name="loadingText"/><attr format="reference" name="loadingTextAppearance"/></declare-styleable>
     <declare-styleable name="MovieRecorderView"><attr format="boolean" name="is_open_camera"/><attr format="integer" name="record_max_time"/><attr format="integer" name="recordwidth"/><attr format="integer" name="recordheight"/></declare-styleable>
     <declare-styleable name="RatioImageView"><attr format="float" name="ratio"/></declare-styleable>
+    <declare-styleable name="RecyclerView"><attr format="string" name="layoutManager"/><attr name="android:orientation"/><attr name="android:descendantFocusability"/><attr format="integer" name="spanCount"/><attr format="boolean" name="reverseLayout"/><attr format="boolean" name="stackFromEnd"/></declare-styleable>
+    <declare-styleable name="RoundAngleImageView"><attr format="dimension" name="roundWidth"/><attr format="dimension" name="roundHeight"/></declare-styleable>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="beandshop_bannerheigh">140dp</dimen>
@@ -381,13 +401,13 @@
     <dimen name="center_address_manager_delivery_address_top_buttom_margin">8dp</dimen>
     <dimen name="center_address_manager_name_phone_left_right_margin">16dp</dimen>
     <dimen name="center_address_manager_name_phone_top_buttom_margin">5dp</dimen>
-    <dimen name="center_bg_height">220dp</dimen>
+    <dimen name="center_bg_height">200dp</dimen>
     <dimen name="center_comment_arrow_height">16dip</dimen>
     <dimen name="center_comment_iv_height">16dip</dimen>
     <dimen name="center_comment_myshow_headivheight_height">50dip</dimen>
     <dimen name="center_comment_myshow_ivheight_height">180dip</dimen>
     <dimen name="center_iv_height">70dp</dimen>
-    <dimen name="center_iv_marg_top">50dp</dimen>
+    <dimen name="center_iv_marg_top">20dp</dimen>
     <dimen name="center_my_conpons_listview_divider_height">10dp</dimen>
     <dimen name="center_my_conpons_listview_magrin">10dp</dimen>
     <dimen name="center_my_conpons_look_over_time_coupons_txt_padding">4dp</dimen>
@@ -435,7 +455,7 @@
     <dimen name="center_wallet_alipay_manage_margin">10dp</dimen>
     <dimen name="center_wallet_alipay_manage_no_alipay_desc_padding">40dp</dimen>
     <dimen name="center_wallet_alipay_manage_padding">10dp</dimen>
-    <dimen name="center_wallet_alipay_manage_top_bottom_margin">5dp</dimen>
+    <dimen name="center_wallet_alipay_manage_top_bottom_margin">10dp</dimen>
     <dimen name="center_wallet_bankcard_manage_bank_icon_marginleft">10dp</dimen>
     <dimen name="center_wallet_bankcard_manage_bank_icon_margintop">15dp</dimen>
     <dimen name="center_wallet_bankcard_manage_bank_icon_size">50dp</dimen>
@@ -470,6 +490,7 @@
     </dimen>
     <dimen name="center_wallet_property_detail_inside_listview_content_trade_type_txt_size">10sp
     </dimen>
+    <dimen name="center_wallet_property_detail_inside_listview_counter_fee_txt_size">10sp</dimen>
     <dimen name="center_wallet_property_detail_inside_listview_data_time_margin">5dp</dimen>
     <dimen name="center_wallet_property_detail_inside_listview_data_time_txt_size">10sp</dimen>
     <dimen name="center_wallet_property_detail_inside_listview_data_time_vertical_line_dot_size">
@@ -496,15 +517,39 @@
     <dimen name="center_wallet_tixian_edittext_padding">5dp</dimen>
     <dimen name="center_wallet_tixian_margin">10dp</dimen>
     <dimen name="center_wallet_tixian_padding">10dp</dimen>
-    <dimen name="center_wallet_total_money_txt_size">20sp</dimen>
+    <dimen name="center_wallet_total_money_txt_size">24dp</dimen>
     <dimen name="comment_circular_iv_height">46dp</dimen>
-    <dimen name="comment_label_txtsize">15sp</dimen>
+    <dimen name="comment_good_renzheng_iv_height">30dp</dimen>
+    <dimen name="comment_good_renzheng_txt_size">10dp</dimen>
+    <dimen name="comment_label_txtsize">14sp</dimen>
     <dimen name="comment_othershow_head">80dp</dimen>
     <dimen name="comment_rightbar_iv_height">20dp</dimen>
     <dimen name="comment_txtarrow_txtsize">16dp</dimen>
+    <dimen name="commentview_address_view_height">60dp</dimen>
+    <dimen name="fragment_newhome_banner_title_size">24dp</dimen>
+    <dimen name="fragment_newhome_downlayiv_height">30dp</dimen>
+    <dimen name="fragment_newhome_downlaytxt_size">14dp</dimen>
+    <dimen name="fragment_newhome_head_height">40dp</dimen>
+    <dimen name="fragment_newhome_level_height">25dp</dimen>
+    <dimen name="fragment_newhome_up_bg_height">200dp</dimen>
+    <dimen name="fragment_newhome_up_wave_height">140dp</dimen>
+    <dimen name="fragment_shop_shoplog_size">13dp</dimen>
+    <dimen name="fragment_shop_shopname_size">18dp</dimen>
+    <dimen name="fragment_shop_up_lay_txt_pading">12dp</dimen>
+    <dimen name="fragment_shop_up_lay_up_textsize">22dp</dimen>
+    <dimen name="fragment_up_lay_height">70dp</dimen>
+    <dimen name="fragment_up_lay_margintop_height">30dp</dimen>
     <dimen name="good_add_vido_height">150dp</dimen>
+    <dimen name="good_pop_addandsubview_height">40dp</dimen>
+    <dimen name="good_pop_addandsubview_width">160dp</dimen>
+    <dimen name="good_pop_content_scrollview_height">230dp</dimen>
+    <dimen name="good_pop_edit_price_height">80dp</dimen>
+    <dimen name="good_pop_edit_price_margin">16dp</dimen>
+    <dimen name="good_pop_edit_price_width">35dp</dimen>
     <dimen name="good_pop_icon_size">90dp</dimen>
     <dimen name="good_pop_icon_size1">98dp</dimen>
+    <dimen name="good_pop_make_how_much_height">30dp</dimen>
+    <dimen name="good_pop_price_store_height">80dp</dimen>
     <dimen name="good_upload_vido_iv_height">100dp</dimen>
     <dimen name="goode_detail_sell_iv_height">40dip</dimen>
     <dimen name="goos_detail_icon_size">25dp</dimen>
@@ -512,11 +557,17 @@
     <dimen name="home_bannerheigh">120dp</dimen>
     <dimen name="horizontallistview">40dip</dimen>
     <dimen name="insulate_view_height">8dp</dimen>
+    <dimen name="integral_point_width">60dp</dimen>
+    <dimen name="invite_friend_hright">55dp</dimen>
     <dimen name="item_goodsort_iv_height">90dip</dimen>
     <dimen name="item_my_new_head_iv_hright">40dip</dimen>
     <dimen name="item_shop_purchase_height">80dip</dimen>
     <dimen name="item_shop_purchase_width">60dip</dimen>
+    <dimen name="item_show_delet_height">24dp</dimen>
     <dimen name="item_show_iv_height">50dip</dimen>
+    <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_max_velocity">800dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_velocity">120dp</dimen>
     <dimen name="jiesuan_iv_height">60dip</dimen>
     <dimen name="line_size">1dip</dimen>
     <dimen name="line_size1">0.5dip</dimen>
@@ -526,8 +577,12 @@
     <dimen name="line_size5">7dip</dimen>
     <dimen name="line_size6">5dip</dimen>
     <dimen name="line_size7">10dip</dimen>
+    <dimen name="login_aggren_size">12dp</dimen>
+    <dimen name="login_log_margintop_height">40dp</dimen>
     <dimen name="login_margentop_log">40dp</dimen>
-    <dimen name="main_shopbus_sidewidth">50dp</dimen>
+    <dimen name="login_phon_margintop_height">60dp</dimen>
+    <dimen name="login_phon_margintop_height1">30dp</dimen>
+    <dimen name="main_shopbus_sidewidth">80dp</dimen>
     <dimen name="main_tab_group_height">48dp</dimen>
     <dimen name="main_tab_group_txt_size">12dp</dimen>
     <dimen name="main_tab_shop_margin_right">30dp</dimen>
@@ -541,7 +596,7 @@
     <dimen name="new_show_item_headwidth">60dp</dimen>
     <dimen name="new_show_item_headwidth1">80dp</dimen>
     <dimen name="newgoodedit_vido_height">120dp</dimen>
-    <dimen name="oderbeing_buyer_txt_size">15dp</dimen>
+    <dimen name="oderbeing_buyer_txt_size">12dp</dimen>
     <dimen name="order_detail_button_margin">16dp</dimen>
     <dimen name="order_detail_contact_seller_margin">5dp</dimen>
     <dimen name="order_detail_dot_default_size">5dp</dimen>
@@ -549,18 +604,18 @@
     <dimen name="order_detail_express_dot_size">5dp</dimen>
     <dimen name="order_detail_express_name_size">12sp</dimen>
     <dimen name="order_detail_express_number_size">12sp</dimen>
-    <dimen name="order_detail_goods_number_txt_size">12sp</dimen>
+    <dimen name="order_detail_goods_number_txt_size">13sp</dimen>
     <dimen name="order_detail_goods_postage_size">10sp</dimen>
-    <dimen name="order_detail_goods_total_price_lable_size">12sp</dimen>
-    <dimen name="order_detail_goods_total_price_size">18sp</dimen>
+    <dimen name="order_detail_goods_total_price_lable_size">13sp</dimen>
+    <dimen name="order_detail_goods_total_price_size">13sp</dimen>
     <dimen name="order_detail_layout_padding">10dp</dimen>
     <dimen name="order_detail_layout_top_bottom_padding">5dp</dimen>
     <dimen name="order_detail_left_right_padding">8dp</dimen>
-    <dimen name="order_detail_listview_goods_total_price_size">18sp</dimen>
+    <dimen name="order_detail_listview_goods_total_price_size">13sp</dimen>
     <dimen name="order_detail_listview_margin">5dp</dimen>
     <dimen name="order_detail_listview_padding">10dp</dimen>
     <dimen name="order_detail_margin">5dp</dimen>
-    <dimen name="order_detail_modify_address_delivery_edittext_height">120dp</dimen>
+    <dimen name="order_detail_modify_address_delivery_edittext_height">80dp</dimen>
     <dimen name="order_detail_modify_address_edittext_marginleft">16dp</dimen>
     <dimen name="order_detail_modify_address_left_right_margin">10dp</dimen>
     <dimen name="order_detail_modify_address_top_buttom_margin">12dp</dimen>
@@ -581,42 +636,57 @@
     <dimen name="order_list_button_txt">12sp</dimen>
     <dimen name="order_list_button_txt_left_right_padding">7dp</dimen>
     <dimen name="order_list_button_txt_top_bottom_padding">4dp</dimen>
-    <dimen name="order_list_good_number">15sp</dimen>
-    <dimen name="order_list_inside_layout_padding">10dp</dimen>
+    <dimen name="order_list_good_number">13sp</dimen>
+    <dimen name="order_list_inside_layout_padding">5dp</dimen>
     <dimen name="order_list_inside_left_right_padding">8dp</dimen>
     <dimen name="order_list_inside_number_size">13sp</dimen>
-    <dimen name="order_list_inside_price_size">15sp</dimen>
+    <dimen name="order_list_inside_price_size">13sp</dimen>
     <dimen name="order_list_inside_standard_lable_size">12sp</dimen>
     <dimen name="order_list_inside_standard_size">12sp</dimen>
     <dimen name="order_list_inside_top_bottom_padding">4dp</dimen>
-    <dimen name="order_list_inside_total_price_size">15sp</dimen>
+    <dimen name="order_list_inside_total_price_size">13sp</dimen>
     <dimen name="order_list_order_sn">13sp</dimen>
     <dimen name="order_list_order_sn_lable">13sp</dimen>
     <dimen name="order_list_outside_layout_padding">10dp</dimen>
-    <dimen name="order_list_poseage">10sp</dimen>
-    <dimen name="order_list_total_money">18sp</dimen>
+    <dimen name="order_list_poseage">13sp</dimen>
+    <dimen name="order_list_total_money">13dp</dimen>
     <dimen name="order_list_txt_padding">5dp</dimen>
-    <dimen name="order_list_wait_pay">15sp</dimen>
+    <dimen name="order_list_wait_pay">13sp</dimen>
     <dimen name="order_listview_margin">5dp</dimen>
     <dimen name="paymethod_iv_height">40dp</dimen>
     <dimen name="pop_addcatory_margitop">40dp</dimen>
+    <dimen name="pop_intgraldetail_width">100dp</dimen>
+    <dimen name="return_point_width">60dp</dimen>
     <dimen name="shop_add_jia_height">36dp</dimen>
     <dimen name="shop_cover_height">180dp</dimen>
     <dimen name="shop_dailils_iv_height">100dp</dimen>
     <dimen name="shop_data_dialog_iv_height">60dp</dimen>
     <dimen name="shop_detail_head_height">140dp</dimen>
     <dimen name="shop_user_hright">46dp</dimen>
+    <dimen name="shop_user_hright1">50dp</dimen>
+    <dimen name="shop_user_hright_out">54dp</dimen>
     <dimen name="shop_user_totop_hright">30dp</dimen>
+    <dimen name="shop_user_width">50dp</dimen>
+    <dimen name="shop_user_width_lay">80dp</dimen>
     <dimen name="shopdetail_sou_iv_height">30dp</dimen>
     <dimen name="show_oneiv_height">150dp</dimen>
     <dimen name="show_play_height">30dp</dimen>
     <dimen name="show_share_grad_delet_panding">5dp</dimen>
     <dimen name="show_up_top_height">70sp</dimen>
+    <dimen name="sousou_historr_item_iv_height">20dp</dimen>
     <dimen name="titlebar_size">18dp</dimen>
     <dimen name="titlebarheingh">50dip</dimen>
     <dimen name="titlebarheingh1">40dip</dimen>
     <dimen name="ui_10_dip">10dip</dimen>
+    <dimen name="ui_12_dip">12dp</dimen>
+    <dimen name="ui_15_dip">15dip</dimen>
+    <dimen name="ui_18_dip">18dp</dimen>
+    <dimen name="ui_20_dip">20dip</dimen>
+    <dimen name="ui_25_dip">25dp</dimen>
+    <dimen name="ui_30_dip">30dp</dimen>
+    <dimen name="ui_5_dip">5dip</dimen>
     <dimen name="vidoshare_height">170dp</dimen>
+    <dimen name="xls_foot_txt_size">12dp</dimen>
     <dimen name="zhuanqu_item_height">180dp</dimen>
     <drawable name="black">#FF000000</drawable>
     <drawable name="blue">#FF0000FF</drawable>
@@ -639,10 +709,12 @@
     <item name="decode" type="id"/>
     <item name="decode_failed" type="id"/>
     <item name="decode_succeeded" type="id"/>
+    <item name="item_touch_helper_previous_elevation" type="id"/>
     <item name="launch_product_query" type="id"/>
     <item name="quit" type="id"/>
     <item name="restart_preview" type="id"/>
     <item name="return_scan_result" type="id"/>
+    <string name="Bindcode">邀请码绑定</string>
     <string name="Real_auth_title">实名认证</string>
     <string name="about_w_town">关于微糖</string>
     <string name="account_safe">账户安全</string>
@@ -702,6 +774,8 @@
     <string name="authentication">实名认证</string>
     <string name="authentication_desc">完成身份验证可核对真实身份\n保障合法权益</string>
     <string name="authentication_next_step">下一步</string>
+    <string name="bangding_bindtishi">请绑定用户个人信息</string>
+    <string name="bangding_tishi">微糖商城智能保障您的个人信息隐私</string>
     <string name="bank_card_manage">银行卡管理</string>
     <string name="bank_transfer">《银行转账授权协议》</string>
     <string name="be_junior">成为下级</string>
@@ -709,6 +783,14 @@
     <string name="benyue">  近一月   </string>
     <string name="benzhou">   近一周  </string>
     <string name="bianji">编辑</string>
+    <string name="bind_code">绑定</string>
+    <string name="bind_jihuo">激活账户</string>
+    <string name="bind_yaoqing">绑定邀请码</string>
+    <string name="bind_yaoqinghaoyou">邀请好友</string>
+    <string name="bindcode_down_txt">定后即可进行购买返佣等操作。如尚未获得邀请码，可联系官方客服获取。</string>
+    <string name="bindcode_up_txt">微糖商城,新的赚钱之道</string>
+    <string name="bindtag_no">未绑定</string>
+    <string name="bindtag_yes">已绑定</string>
     <string name="brand_add_us">您的品牌想要入住微糖商城,请联系我们,赶快行动吧~</string>
     <string name="brand_agent_agency_time">代理时间：%1$s</string>
     <string name="brand_agent_apply_level">申请升级</string>
@@ -736,7 +818,7 @@
     <string name="button_3">其它标题</string>
     <string name="button_ok">确定</string>
     <string name="buy">买</string>
-    <string name="buyer_liuyan">买家留言</string>
+    <string name="buyer_liuyan">买家留言:</string>
     <string name="buyer_message">买家留言</string>
     <string name="camera_cancel">取消</string>
     <string name="camera_close_notice">您已经关闭了灯光！</string>
@@ -760,7 +842,8 @@
     <string name="center_kaquan">我的卡券</string>
     <string name="center_oder">我的订单</string>
     <string name="center_shop_collect">店铺收藏</string>
-    <string name="center_show">我的SHOW圈</string>
+    <string name="center_show">SHOW圈</string>
+    <string name="center_tobind">绑定邀请码</string>
     <string name="center_wallet">我的钱包</string>
     <string name="center_yaoqingma">我的邀请码</string>
     <string name="chakanshow">查看商品show</string>
@@ -770,7 +853,7 @@
     <string name="chanle_t_phone">请填写手机号</string>
     <string name="chanle_t_teamnumber">请填写团队数</string>
     <string name="chanle_t_teamnuminf">请填写团队信息</string>
-    <string name="check_net">请检查网络</string>
+    <string name="check_net">请检查网络亲~</string>
     <string name="check_new_version">检测到新版本</string>
     <string name="chongxinluzhi">重新录制</string>
     <string name="chongzhi_vido">是否重新录制？</string>
@@ -788,8 +871,10 @@
     <string name="consignee_detail_address">收货地址：%1$s</string>
     <string name="consignee_name">收货人姓名</string>
     <string name="consignee_name_order">收 货 人 ：%1$s</string>
+    <string name="contact_dengjiguize">店铺等级规则</string>
     <string name="contact_phone_numb">联系电话</string>
     <string name="contact_service">联系客服</string>
+    <string name="counter_fee">(含手续费%1$s元)</string>
     <string name="coupons_confirm">确认</string>
     <string name="coupons_no_data">暂无过期卡券</string>
     <string name="daifu_confirm_order">确认订单</string>
@@ -802,14 +887,15 @@
     <string name="daifu_modify_total_price">总价：</string>
     <string name="daifu_order_detail">订单详情</string>
     <string name="daifu_order_id">订单编号：</string>
-    <string name="daifu_total_price">总价</string>
+    <string name="daifu_total_price">合计：</string>
     <string name="daifu_total_price_modify_after">总价：￥100.00(含运费￥10.00)</string>
     <string name="dailipinpai">代理品牌</string>
     <string name="dataerror">数据异常</string>
     <string name="deduction_how_money">可抵扣￥400.00元</string>
     <string name="default_address">默认地址</string>
     <string name="delete">删除</string>
-    <string name="delivery_address">收货地址：%1$s</string>
+    <string name="delivery_address">%1$s</string>
+    <string name="dengjiguize">等级规则</string>
     <string name="detail_address">详细地址</string>
     <string name="develop_junior">发展下级</string>
     <string name="dingxian">定向邀请</string>
@@ -826,17 +912,24 @@
     <string name="error_fuwuqi4">服务器异常4</string>
     <string name="error_fuwuqi5">服务器异常5</string>
     <string name="error_network">网络连接异常,初始化失败 请检查网络！</string>
-    <string name="error_null_address">\"您还没有添加地址哦~~~\"</string>
-    <string name="error_null_alipay">\"您还没有绑定支付宝哦~~~\"</string>
-    <string name="error_null_my_order_all">\"暂时没有全部订单哦~~~\"</string>
-    <string name="error_null_my_order_daifa">\"暂时没有待发货订单哦~~~\"</string>
-    <string name="error_null_my_order_daishou">\"暂时没有待收货订单哦~~~\"</string>
-    <string name="error_null_my_order_no_pay">\"暂时没有待付款订单哦~~~\"</string>
-    <string name="error_null_my_order_over">\"暂时没有已完成订单哦~~~\"</string>
-    <string name="error_null_my_order_tuikuan">\"暂时没有退款/仲裁订单哦~~~\"</string>
+    <string name="error_null_address">还没有添加地址哦</string>
+    <string name="error_null_alipay">您还没有绑定支付宝哦~点我进行绑定吧</string>
+    <string name="error_null_bank_list_over">无获取到您想要的银行哦，请稍后再试试吧~~~\"</string>
+    <string name="error_null_my_order_all">没有订单哦</string>
+    <string name="error_null_my_order_daifa">无待发货订单</string>
+    <string name="error_null_my_order_daishou">无待收货订单</string>
+    <string name="error_null_my_order_no_pay">无待付款订单</string>
+    <string name="error_null_my_order_over">没有已完成订单</string>
+    <string name="error_null_my_order_tuikuan">无退款/仲裁订单</string>
     <string name="error_null_noda">网络调皮,点我刷新</string>
     <string name="error_null_over_coupons">您还没有过期卡券哦</string>
-    <string name="error_null_search_result">\"没有搜到您想要的商品，再试试吧~~~\"</string>
+    <string name="error_null_property_list">无资金明细</string>
+    <string name="error_null_property_recharge">无退款资金明细</string>
+    <string name="error_null_property_return">无返佣资金明细</string>
+    <string name="error_null_property_sell">无销售资金明细</string>
+    <string name="error_null_property_shopping">无购物资金明细</string>
+    <string name="error_null_property_withdraw">无提现资金明细</string>
+    <string name="error_null_search_result">没搜到您想要的商品</string>
     <string name="error_style_empty">style不能为空</string>
     <string name="error_tag_empty">tag不能为空</string>
     <string name="error_tag_gs_empty">格式不对</string>
@@ -845,9 +938,11 @@
     <string name="faifu_order_modity">修改订单</string>
     <string name="faifu_order_modity_after_count">修改后数量：X%1$s</string>
     <string name="faifu_order_modity_before_count">修改前数量：X%1$s</string>
+    <string name="fanyongguize">返佣规则</string>
     <string name="fast_send_out">快些发货……</string>
     <string name="finish">完成</string>
     <string name="framwork_problem">二维码扫描暂时出现问题。您重启再试。</string>
+    <string name="function_guanyuwomen">关于微糖</string>
     <string name="function_introduce">用户协议</string>
     <string name="get_sms_code">获取验证码</string>
     <string name="getzs_loading">获取证书中···</string>
@@ -862,7 +957,7 @@
     <string name="grad6">商品管理</string>
     <string name="grad7">销售统计</string>
     <string name="grad8">店铺预览</string>
-    <string name="grad9">品牌入驻</string>
+    <string name="grad9">我要合作</string>
     <string name="grade_to_app">给软件评价</string>
     <string name="guige">规格: </string>
     <string name="hello">Hello World, JPush!</string>
@@ -878,28 +973,41 @@
     <string name="in_location">所在地区</string>
     <string name="input_shop_sou_inf">输入要找的商品信息吧</string>
     <string name="input_shouhuoren_mingzi">输入收货人姓名</string>
+    <string name="integral_title_activation">下级购物积分</string>
+    <string name="integral_title_all">全部积分</string>
+    <string name="integral_title_concume">每日消耗积分</string>
+    <string name="integral_title_friend_buy">下级购买积分</string>
+    <string name="integral_title_invite">邀请注册积分</string>
+    <string name="integral_title_own_buy">我的购物积分</string>
+    <string name="integral_title_past">每日签到积分</string>
+    <string name="integral_title_system1">系统赠送积分</string>
     <string name="introduce_youself">自我介绍</string>
     <string name="invalidSD">sdcard无效或没有插入！</string>
     <string name="invite_frends">邀请好友</string>
+    <string name="invite_friend_shop_id">店铺号：%1$s</string>
+    <string name="invite_friends">全部店铺</string>
+    <string name="invite_friends_no_activites">未激活店铺</string>
     <string name="invite_record">发展记录</string>
     <string name="invite_superior">发展上级</string>
     <string name="invter_share_conten">微糖通过其专业的技术团队，力求为每一个商家打造强大公信力，为每个消费者创造购物的便捷和良好的用户体验</string>
     <string name="io_exception_error">文件流异常</string>
     <string name="jianyilingshou">售价:</string>
+    <string name="jifenguize">积分规则</string>
+    <string name="jihuo_canto_ibit">激活后才能邀请好友哦</string>
     <string name="kaquan">卡券</string>
-    <string name="kongkong">空空如也....</string>
+    <string name="kongkong">连接失败....</string>
     <string name="lable_add_alipay">添加支付宝</string>
     <string name="lable_alipay_numb">支付宝账号</string>
     <string name="lable_alipay_numb_format">支付宝账号：%1$s</string>
     <string name="lable_bank_card_numb">卡号：</string>
     <string name="lable_bank_numb_format">尾号%1$s快捷</string>
-    <string name="lable_bank_numb_format_1">(尾号%1$s快捷)</string>
+    <string name="lable_bank_numb_format_1">(尾号%1$s)</string>
     <string name="lijian">立减:</string>
     <string name="lijijiesuan">取消</string>
     <string name="loading">加载中···</string>
     <string name="loadmore">正在加载更多....</string>
     <string name="login">登录</string>
-    <string name="login_agreen_xieyi">我已阅读并同意</string>
+    <string name="login_agreen_xieyi">点击-登录,即表示已阅读并同意</string>
     <string name="login_login_wx">微信登录</string>
     <string name="login_phone_number">手机号</string>
     <string name="login_realid_hint_id">请输入身份证号</string>
@@ -907,13 +1015,15 @@
     <string name="login_tianxie_initer_cose">填写邀请码</string>
     <string name="login_title">登录</string>
     <string name="login_yijianlogin">微信一键登录</string>
+    <string name="loginin_bindcode_down_txt">定后即可进行购买返佣等操作。如尚未获得邀请码，点我联系官方客服获取</string>
     <string name="logining">程序在后台执行, 请查看日志！</string>
     <string name="logistics_send_out">物流发货</string>
     <string name="long_click_copy">(通过店铺号搜索到您的店铺，长按复制)</string>
     <string name="look_aptitude">品牌</string>
     <string name="look_express">查看物流</string>
     <string name="look_express_speed">查看物流</string>
-    <string name="main_shangcheng">商城</string>
+    <string name="look_guize">查看规则</string>
+    <string name="main_shangcheng">微糖</string>
     <string name="main_shop">店铺</string>
     <string name="main_shopbus">购物车</string>
     <string name="main_wode">我的</string>
@@ -929,8 +1039,11 @@
     <string name="my_invite_code_share_to_wx">微信</string>
     <string name="my_invite_code_tips">我的邀请码</string>
     <string name="my_junior">我的下级</string>
+    <string name="my_leader">我的上级</string>
+    <string name="my_shangji">我的上级</string>
     <string name="my_show_data_set">资料设置</string>
     <string name="my_superior">我的上级</string>
+    <string name="myaddress">我的地址</string>
     <string name="needpay">还需支付:</string>
     <string name="net_error_tip">网络已断开请设置网络</string>
     <string name="network_not_connected">网络连接失败，请检查网络设置</string>
@@ -945,19 +1058,33 @@
     <string name="newgoodedit_good_desc_desc">(供商品详情页面图文详情显示使用,请谨慎修改)</string>
     <string name="newgoodedit_good_roll">(仅供商品详情页面轮播图展示使用,请谨慎修改)</string>
     <string name="newgoodedite_good_vidoo">(仅供商品详情页视频播放展示使用,请谨慎修改)</string>
+    <string name="newhome_fanyong">返佣金额</string>
+    <string name="newhome_libao">激活礼包</string>
+    <string name="newhome_myjifen">我的积分</string>
+    <string name="newhome_qiandao">今日签到</string>
+    <string name="newhome_qiandao1">已签到</string>
+    <string name="newhome_renshu">邀请人数</string>
+    <string name="newhome_temai">特卖专区</string>
+    <string name="newhome_yaoqing">邀请好友</string>
     <string name="next_step">下一步</string>
     <string name="no_alipay_desc">您还没有绑定支付宝账户，快去绑定吧</string>
-    <string name="no_brand_good">暂无品牌商品</string>
+    <string name="no_bind_code">去绑定邀请码</string>
+    <string name="no_brand_good">无品牌商品，点我申请代理品牌吧</string>
     <string name="no_center_sho">偷懒暂未发SHOW哦</string>
+    <string name="no_doudou_data">没有相关数据</string>
     <string name="no_doudou_goods">没有相关商品</string>
+    <string name="no_fresh_invite_friend">没有新的邀请记录哦</string>
     <string name="no_goods">暂无商品哦</string>
     <string name="no_invtor">没有访客=_=,推荐给小伙伴吧</string>
     <string name="no_laji_brand">暂无被删除品牌商品</string>
     <string name="no_laji_ziying">暂无被删除自营商品</string>
     <string name="no_logistics_send_out">无需物流发货</string>
+    <string name="no_more_integral_detail">没有更多积分了</string>
+    <string name="no_new_integral_detail">没有新的积分</string>
+    <string name="no_nore_invite_friend">没有更多了哦，亲</string>
     <string name="no_other_show">店家很懒,还没发SHOW哦</string>
     <string name="no_photo">相册没有图片</string>
-    <string name="no_shopbus">您的购物车空空如也,点我挑选商品吧</string>
+    <string name="no_shopbus">购物车无宝贝,点我挑选商品吧</string>
     <string name="no_shouru">您暂无收入=_=,继续努力哟</string>
     <string name="no_xiajia_brand">暂无下架品牌商品</string>
     <string name="no_xiajia_ziying">暂无下架自营商品</string>
@@ -965,10 +1092,25 @@
     <string name="no_youhui_data">暂无优惠券=_=,快快邀请好友吧</string>
     <string name="no_zaishou_brand">暂无在售品牌商品</string>
     <string name="no_zaishou_ziying">暂无在售自营商品</string>
+    <string name="nobind">未绑定</string>
     <string name="nocoup">暂无卡券</string>
+    <string name="nofangke">没有访客哦</string>
+    <string name="noincome">还没有收入哦</string>
     <string name="nomoregood">没有更多商品了</string>
     <string name="nomoreshow">没有更多SHOW咯</string>
+    <string name="nosell">没有销量,加油哦</string>
     <string name="noshimingrenz">您还没有进行实名认证</string>
+    <string name="noshow">暂无SHOW</string>
+    <string name="null_integral_activation">还没有下级激活积分</string>
+    <string name="null_integral_consume">暂时未消耗积分</string>
+    <string name="null_integral_detail">没有积分哦</string>
+    <string name="null_integral_friend_buy">没有下级购买积分</string>
+    <string name="null_integral_invite">还没有邀请好友哦</string>
+    <string name="null_integral_own_buy">还没有自己购买积分哦</string>
+    <string name="null_integral_past">还没有签到积分\n赶快去首页签到吧</string>
+    <string name="null_integral_system">还没有系统赠送的积分</string>
+    <string name="null_invite_friend">\"亲，你没有邀请对应好友哦~~~"</string>
+    <string name="null_return_detail">\"暂时还没有返佣记录"</string>
     <string name="nullstr">--</string>
     <string name="oderbeing_tijiaooder">    提交订单     </string>
     <string name="only_choose_num">超出可选图片张数</string>
@@ -978,6 +1120,7 @@
     <string name="order_id">订单编号：</string>
     <string name="ordering_time">下单时间：</string>
     <string name="other_login">其他登录方式</string>
+    <string name="other_noshow">主人太懒,还没上传SHOW</string>
     <string name="paramete_error">参数正确，请重新扫描</string>
     <string name="pay_time">付款时间：</string>
     <string name="personal_data">个人资料</string>
@@ -1012,6 +1155,7 @@
     <string name="property_detail_select_all">全部</string>
     <string name="property_detail_sell_record">销售</string>
     <string name="property_detail_top_up">退款</string>
+    <string name="property_detail_usr_return">返佣</string>
     <string name="property_detail_withdraw">提现</string>
     <string name="purchase_apply_tuikuan">申请退款</string>
     <string name="purchase_arbitration">仲裁中</string>
@@ -1034,11 +1178,17 @@
     <string name="quxiao">取消</string>
     <string name="real_name">姓名</string>
     <string name="regist_clause">我同意《微糖注册协议》</string>
+    <string name="renzheng_haiwai">海外直邮</string>
+    <string name="renzheng_qitian">七天无理由退货</string>
+    <string name="renzheng_shouquan">品牌授权</string>
+    <string name="renzheng_zhengpin">正品保障</string>
     <string name="replace">替换</string>
     <string name="reset_pwd">重置支付密码</string>
     <string name="result_title_default">网址路径</string>
     <string name="result_uri">网址路径</string>
+    <string name="return_detail">返佣明细</string>
     <string name="save_send_out_address">保存发货地址</string>
+    <string name="sbumit_tixian">提现</string>
     <string name="searching">搜索中···</string>
     <string name="select_all">全选</string>
     <string name="select_bank">选择银行</string>
@@ -1060,14 +1210,14 @@
     <string name="share_app">微糖商城App | </string>
     <string name="share_quan_str">新用户注册送5元优惠券\n通过邀请码邀请好友注册并登录各得20元</string>
     <string name="shareshow">分享SHOW圈</string>
-    <string name="shop_all_income">累计收入(元)</string>
-    <string name="shop_another_name">店铺名称</string>
+    <string name="shop_all_income">累计收入</string>
+    <string name="shop_another_name">店铺昵称</string>
     <string name="shop_cover">店铺封面</string>
     <string name="shop_data">店铺资料</string>
     <string name="shop_good_manger">商品管理</string>
     <string name="shop_icon">店铺头像</string>
     <string name="shop_id">店铺号</string>
-    <string name="shop_introduce">店铺介绍</string>
+    <string name="shop_introduce">个性签名</string>
     <string name="shop_no_good">暂无商品</string>
     <string name="shop_oder_add_good">发布商品</string>
     <string name="shop_oder_brand_daili">品牌代理</string>
@@ -1090,7 +1240,7 @@
     <string name="shopdetail_jiaguanzhu">     +关注     </string>
     <string name="shopdetail_total_goods">商品总数</string>
     <string name="shopdetail_zizhi">    查看    </string>
-    <string name="shouhuoren">收  货  人 ：</string>
+    <string name="shouhuoren">收货人名:</string>
     <string name="show_no_more">没有更多SHOW咯</string>
     <string name="show_noshow">关注更多店铺才能看SHOW哦</string>
     <string name="show_share">Show分享</string>
@@ -1104,6 +1254,7 @@
     <string name="sousou_remen">热门商品</string>
     <string name="sousou_shop_hint">搜索微糖店铺</string>
     <string name="sousou_shopnei_hint">搜索店铺内商品</string>
+    <string name="sousoushop_nodata">暂未搜索到店铺</string>
     <string name="ssdk_alipay">支付宝好友</string>
     <string name="ssdk_alipay_client_inavailable">目前您的支付宝版本过低或未安装，需要安装支付宝才能使用</string>
     <string name="ssdk_baidutieba">百度贴吧</string>
@@ -1277,13 +1428,17 @@ function login(form){
     <string name="title_activity_andk_test">ANdkTest</string>
     <string name="title_property_detail_all">全部资金明细</string>
     <string name="title_property_detail_buy_good">购物资金明细</string>
+    <string name="title_property_detail_return">返佣资金明细</string>
     <string name="title_property_detail_sell_record">销售资金明细</string>
     <string name="title_property_detail_top_up">退款资金明细</string>
     <string name="title_property_detail_withdraw">提现资金明细</string>
+    <string name="to_Jihuo">请先激活账户</string>
+    <string name="to_Jihuo_toqiandao">激活后才能签到哦</string>
+    <string name="to_jihuo">去激活</string>
     <string name="toerweima">生成二维码</string>
-    <string name="total_price">总价</string>
+    <string name="total_price">合计：</string>
     <string name="tuikuan_cause">退款原因</string>
-    <string name="tuwendetail">图文详情</string>
+    <string name="tuwendetail">宝贝详情</string>
     <string name="tv_commentview_name">" 收 货 人 ："</string>
     <string name="two_reset_psd_not_equals">两次密码不一致请重新输入</string>
     <string name="txt_consignee">收      货      人 </string>
@@ -1298,7 +1453,7 @@ function login(form){
     <string name="txtresuorce_getcode">获取验证码</string>
     <string name="txtresuorce_getcodeerror">获取验证码失败</string>
     <string name="txtresuorce_getok">获取成功</string>
-    <string name="txtresuorce_phoneerror">你猜你输入的手机号正确么( ˇˍˇ )</string>
+    <string name="txtresuorce_phoneerror">手机号格式错误</string>
     <string name="txtresuorce_registok">恭喜您注册成功</string>
     <string name="txtresuorce_seconde">秒</string>
     <string name="unfinished">完成</string>
@@ -1313,12 +1468,15 @@ function login(form){
     <string name="vido">视频</string>
     <string name="vido_error">视频播放出错请稍后重试</string>
     <string name="viewpager_indicator">%1$d/%2$d</string>
+    <string name="wancheng">完成</string>
     <string name="wanchengyanzheng">完成验证</string>
+    <string name="weijihuo">未激活</string>
+    <string name="weitang_cheng">微糖承诺</string>
     <string name="wt_app_new_version">是最新版本</string>
     <string name="wt_app_version">版本1.0.0</string>
     <string name="wt_helper">微糖客服</string>
     <string name="wt_weburl">http://www.v-town.cc</string>
-    <string name="xlistview_footer_hint_normal">更多</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">查看更多</string>
     <string name="xlistview_header_hint_loading">加载中···</string>
     <string name="xlistview_header_hint_normal">下拉刷新</string>
@@ -1326,10 +1484,13 @@ function login(form){
     <string name="xlistview_header_last_time">上次更新时间:</string>
     <string name="xml_parser_failed">数据解析异常</string>
     <string name="yaoiqng">邀请</string>
+    <string name="yaoqingmaa">邀请码</string>
     <string name="yaoqingshangji_yaoqing">请填写上级信息</string>
     <string name="yijiandaimai">一键代买</string>
+    <string name="yijihuo">已激活</string>
     <string name="yinhangka">银行卡</string>
     <string name="yinlian_pay_payfuzhi">网址已复制</string>
+    <string name="younoshow">你太懒了,还没发Show</string>
     <string name="yunfei">运费：</string>
     <string name="zanwushow">暂无更多Show</string>
     <string name="zhifubao">支付宝</string>
@@ -1342,6 +1503,11 @@ function login(form){
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:windowNoTitle">true</item>
 
+    </style>
+    <style name="AppTheme_yu" parent="@android:style/Theme.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:animationDuration">0</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="AudioFileInfoOverlayText">
         <item name="android:shadowColor">@color/black</item>
@@ -1373,17 +1539,17 @@ function login(form){
     <style name="MyDialogStyleTop" parent="android:Theme.Dialog">
 
         <item name="android:windowFrame">@null</item>
-        <!-- 边框 -->
+        
         <item name="android:windowIsFloating">true</item>
-        <!-- 是否浮现在activity之上 -->
+        
         <item name="android:windowIsTranslucent">true</item>
-        <!-- 半透明 -->
+        
         <item name="android:windowNoTitle">true</item>
-        <!-- 无标题 -->
+        
         <item name="android:windowBackground">@android:color/transparent</item>
-        <!-- 背景透明 -->
+        
         <item name="android:backgroundDimEnabled">false</item>
-        <!-- 模糊 -->
+        
     </style>
     <style mce_bogus="1" name="PopupAnimation" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/activity_translate_in</item>
@@ -1397,7 +1563,9 @@ function login(form){
         <item name="android:maxHeight">5dip</item>
         <item name="android:minHeight">5dip</item>
         <item name="android:indeterminateOnly">false</item>
-        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
         <item name="android:progressDrawable">@drawable/progressbar</item>
     </style>
     <style name="Transparent" parent="android:style/Theme.Dialog">
@@ -1467,7 +1635,8 @@ function login(form){
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/line_size1</item>
         <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:src">@color/app_fen</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:src">@color/app_line</item>
     </style>
     <style name="clickstyle">
         <item name="android:clickable">true</item>
@@ -1491,6 +1660,14 @@ function login(form){
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">4dp</item>
     </style>
+    <style name="fragment_shop_up_lay_txt_pading_lay">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/fragment_shop_up_lay_up_textsize</item>
+        <item name="android:paddingTop">@dimen/fragment_shop_up_lay_txt_pading</item>
+        <item name="android:paddingBottom">@dimen/fragment_shop_up_lay_txt_pading</item>
+    </style>
     <style name="home_good">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1504,6 +1681,12 @@ function login(form){
         <item name="android:layout_weight">1</item>
         <item name="android:padding">6dp</item>
     </style>
+    <style name="iv_text3">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">10dp</item>
+    </style>
     <style name="line">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">@dimen/line_size</item>
@@ -1511,7 +1694,7 @@ function login(form){
     </style>
     <style name="line1">
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">@dimen/line_size3</item>
+        <item name="android:layout_height">@dimen/line_size2</item>
         <item name="android:background">@color/app_line</item>
     </style>
     <style name="line_left">
@@ -1526,9 +1709,22 @@ function login(form){
 
         <item name="android:background">@color/app_line</item>
     </style>
+    <style name="line_left2">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/line_size2</item>
+        <item name="android:layout_marginLeft">10dip</item>
+        <item name="android:background">@color/app_line</item>
+    </style>
     <style name="line_left_right">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">@dimen/line_size1</item>
+        <item name="android:layout_marginLeft">10dip</item>
+        <item name="android:layout_marginRight">10dip</item>
+        <item name="android:background">@color/app_line</item>
+    </style>
+    <style name="line_left_right1">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/line_size2</item>
         <item name="android:layout_marginLeft">10dip</item>
         <item name="android:layout_marginRight">10dip</item>
         <item name="android:background">@color/app_line</item>
@@ -1559,35 +1755,35 @@ function login(form){
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:windowFullscreen">false</item>
-        <!-- <item name="android:windowNoTitle">false</item> -->
+        
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:adjustViewBounds">true</item>
 
-        <!-- 模糊 -->
+        
         <item name="android:windowIsFloating">false</item>
-        <!-- 类似windows的弹出Dialog -->
+        
         <item name="android:windowContentOverlay">@null</item>
-        <!-- 不要头部阴影 -->
+        
         <item name="android:windowBackground">@color/transparent</item>
-        <!-- 背景颜色设置透明 -->
+        
         <item name="android:background">@android:color/transparent</item>
     </style>
     <style name="myloading3">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:windowFullscreen">false</item>
-        <!-- <item name="android:windowNoTitle">false</item> -->
+        
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:adjustViewBounds">true</item>
 
-        <!-- 模糊 -->
+        
 
         <item name="android:windowIsFloating">false</item>
-        <!-- 类似windows的弹出Dialog -->
+        
         <item name="android:windowContentOverlay">@null</item>
-        <!-- 不要头部阴影 -->
+        
         <item name="android:windowBackground">@color/transparent</item>
-        <!-- 背景颜色设置透明 -->
+        
         <item name="android:background">@color/transparent3</item>
     </style>
     <style name="mystyle" parent="@android:style/Theme.Dialog">

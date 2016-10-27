@@ -3,7 +3,8 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:orientation="vertical"
+             >
 
     <include
         android:id="@+id/neterrorview"
@@ -37,7 +38,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:paddingTop="@dimen/line_size6" >
+            android:paddingTop="@dimen/line_size6">
 
             <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton
                 android:id="@+id/maintab_home"
@@ -52,7 +53,7 @@
                 android:textColor="@color/gray"
                 android:textSize="@dimen/main_tab_group_txt_size"
                 app:gradual_color="#f75151"
-              />
+                />
 
             <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton
                 android:id="@+id/maintab_shop"

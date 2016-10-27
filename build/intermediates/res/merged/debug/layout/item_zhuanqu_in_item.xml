@@ -1,30 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/shap_corner"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/shap_corner"
+              android:orientation="vertical">
 
     <ImageView
         android:id="@+id/item_zhuanqu_in_iv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/zhuanqu_item_height"
-        android:scaleType="centerCrop" />
+        android:scaleType="fitCenter"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size1"
+        android:src="@color/app_line"/>
 
     <TextView
         android:id="@+id/item_zhuanqu_in_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:textColor="@color/gray"
-        android:lines="2" />
-    <TextView 
-        android:id="@+id/item_zhuanqu_in_price"
+        android:lines="2"
+        android:paddingBottom="@dimen/line_size6"
+        android:paddingLeft="@dimen/line_size6"
+        android:paddingTop="@dimen/line_size6"
+        android:textColor="@color/gray"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:textColor="@color/red"
-        
-        />
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/line_size6"
+        android:paddingLeft="@dimen/line_size6">
 
+        <TextView
+            android:id="@+id/item_zhuanqu_in_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textColor="@color/red"
+            />
+
+        <TextView
+            android:id="@+id/item_zhuanqu_odl_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/ui_10_dip"
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/ui_12_dip"/>
+    </LinearLayout>
 </LinearLayout>

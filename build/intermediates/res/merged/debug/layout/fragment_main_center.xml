@@ -2,6 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:clipToPadding="true"
+              android:fitsSystemWindows="true"
               android:orientation="vertical">
 
 
@@ -24,23 +27,40 @@
                     android:id="@+id/maintab_center_cover"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/center_bg_height"
+                    android:background="@color/app_fen"
                     android:scaleType="fitXY"/>
 
-                <io.vtown.WeiTangApp.comment.view.CircleImageView
-                    android:id="@+id/maintab_center_myiv"
+                <RelativeLayout
+                    android:id="@+id/maintab_center_myiv_lay"
                     android:layout_width="@dimen/center_iv_height"
                     android:layout_height="@dimen/center_iv_height"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/center_iv_marg_top"
-                    android:clickable="true"/>
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <io.vtown.WeiTangApp.comment.view.CircleImageView
+                        android:id="@+id/maintab_center_myiv"
+                        android:layout_width="@dimen/center_iv_height"
+                        android:layout_height="@dimen/center_iv_height"
+                        />
+
+                    <ImageView
+                        android:id="@+id/maintab_tab_center_setting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/center_iv_setting"/>
+                </RelativeLayout>
+
 
                 <TextView
                     android:id="@+id/maintab_center_myname"
                     style="@style/AudioFileInfoOverlayText1"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/center_myiv"
+                    android:layout_below="@id/maintab_center_myiv_lay"
                     android:gravity="center"
                     android:padding="10dp"
                     android:textColor="@color/white"
@@ -51,30 +71,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/transparent"
+                    android:background="@color/white"
                     android:orientation="horizontal">
 
                     <include
                         android:id="@+id/maintab_tab_center_oder"
                         layout="@layout/commentview_ivtext1"/>
 
+                    <ImageView
+                        android:layout_width="@dimen/line_size1"
+                        android:layout_height="match_parent"
+                        android:src="@color/app_line"/>
+
                     <include
                         android:id="@+id/maintab_tab_center_walle"
                         layout="@layout/commentview_ivtext1"/>
                 </LinearLayout>
+
             </RelativeLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/ui_5_dip"
+                android:paddingRight="@dimen/ui_5_dip"
+                >
 
-                <View
-                    android:layout_width="6dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/shape_center"/>
+                <!-- <View
+                     android:layout_width="6dp"
+                     android:layout_height="match_parent"
+                     android:background="@drawable/shape_center"/>-->
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -87,8 +117,6 @@
                         android:id="@+id/maintab_center_show"
                         layout="@layout/commentview_center"/>
 
-
-
                     <ImageView style="@style/center_line"/>
 
                     <include
@@ -97,11 +125,27 @@
 
                     <ImageView style="@style/center_line"/>
 
-
-
+                    <LinearLayout
+                        android:id="@+id/maintab_center_superior_lay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <include
+                            android:id="@+id/maintab_center_superior"
+                            layout="@layout/commentview_center"/>
+                        <ImageView style="@style/center_line"/>
+                    </LinearLayout>
                     <include
                         android:id="@+id/maintab_center_card"
                         layout="@layout/commentview_center"/>
+
+                    <ImageView style="@style/center_line"/>
+
+                    <include
+                        android:id="@+id/maintab_center_address"
+                        layout="@layout/commentview_center"/>
+
+
                 </LinearLayout>
             </LinearLayout>
             <!-- 上部分****************** -->
@@ -110,14 +154,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/ui_5_dip"
+                android:paddingRight="@dimen/ui_5_dip">
 
-                <View
-                    android:layout_width="6dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/shap_centera"/>
-
+                <!--   <View
+                       android:layout_width="6dp"
+                       android:layout_height="match_parent"
+                       android:background="@drawable/shap_centera"/>
+-->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -141,6 +188,23 @@
                         android:id="@+id/maintab_center_liulan_history"
                         layout="@layout/commentview_center"/>
                 </LinearLayout>
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ui_10_dip"
+                android:src="@color/app_bg"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/ui_5_dip"
+                android:paddingRight="@dimen/ui_5_dip">
+
+                <include
+                    android:id="@+id/maintab_center_oder_about"
+                    layout="@layout/commentview_center"/>
             </LinearLayout>
             <!-- 下部分****************** -->
         </LinearLayout>

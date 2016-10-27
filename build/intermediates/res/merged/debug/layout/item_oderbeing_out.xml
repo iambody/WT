@@ -10,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp" >
+        android:paddingLeft="@dimen/ui_10_dip"
+        android:paddingRight="@dimen/ui_10_dip"
+        android:paddingTop="@dimen/line_size6"
+        android:paddingBottom="@dimen/line_size6">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -39,7 +42,6 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_size1"
-        android:layout_marginLeft="20dp"
         android:src="@color/app_line" />
 
     <LinearLayout
@@ -56,7 +58,7 @@
             android:layout_height="@dimen/jiesuan_iv_height"
             android:layout_weight="1"
             android:padding="5dp"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             android:src="@drawable/testiv"
             android:visibility="invisible" />
 
@@ -66,7 +68,7 @@
             android:layout_height="@dimen/jiesuan_iv_height"
             android:layout_weight="1"
             android:padding="5dp"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             android:src="@drawable/testiv"
             android:visibility="invisible" />
 
@@ -76,7 +78,7 @@
             android:layout_height="@dimen/jiesuan_iv_height"
             android:layout_weight="1"
             android:padding="5dp"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             android:src="@drawable/testiv"
             android:visibility="invisible" />
 
@@ -112,37 +114,11 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_size1"
-        android:layout_marginLeft="20dp"
+
         android:src="@color/app_line" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" >
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:text="运费:" />
 
-        <TextView
-            android:id="@+id/item_oderbeing_out_yunfei"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:padding="10dp"
-            android:text="@string/nullstr" />
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/line_size1"
-        android:layout_marginLeft="20dp"
-        android:src="@color/app_line" />
 
     <!-- 运费 -->
     <!-- 价格 -->
@@ -151,8 +127,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="20dp" >
+        android:paddingLeft="10dp" >
+        <TextView
+            android:id="@+id/item_oderbeing_out_yunfei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
 
+            android:text="@string/nullstr" />
         <TextView
             android:id="@+id/item_oderbeing_out_number_down"
             android:layout_width="0dp"
@@ -161,6 +143,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:padding="5dp"
+            android:textColor="@color/gray"
             android:text="@string/nullstr" />
 
         <TextView

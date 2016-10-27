@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.vtown.WeiTangApp"
-    android:versionCode="52"
-    android:versionName="2.5.2" >
+    android:versionCode="54"
+    android:versionName="3.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="14"
         android:targetSdkVersion="22" />
     <!-- 权限设置space -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <!-- 极光推送 -->
     <permission
         android:name="io.vtown.WeiTangApp.permission.JPUSH_MESSAGE"
@@ -135,6 +136,10 @@
         </activity>
         <activity
             android:name="io.vtown.WeiTangApp.ui.ui.AMain"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="io.vtown.WeiTangApp.ui.AExitNull"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
@@ -638,7 +643,26 @@
             android:name="io.vtown.WeiTangApp.ui.ui.AMainTab"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name="io.vtown.WeiTangApp.ui.title.AInviteFriendRecord"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="io.vtown.WeiTangApp.ui.title.AReturnDetail"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="io.vtown.WeiTangApp.ui.title.AIntegralDetail"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="io.vtown.WeiTangApp.ui.title.AMyLeader"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <!-- activity的space************************************* -->
 
 

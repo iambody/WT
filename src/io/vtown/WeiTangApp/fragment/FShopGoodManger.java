@@ -435,7 +435,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                 case 3://修改库存成功了
                     int visiblePosition3 = lv_comment_listview.getFirstVisiblePosition();
                     if (position - visiblePosition3 >= 0) {
-                        View view = lv_comment_listview.getChildAt(position - visiblePosition3 + 1);
+                        View view = lv_comment_listview.getChildAt(position - visiblePosition3 );
                         SellingSoldoutItem holder1 = (SellingSoldoutItem) view.getTag();
                         holder1.tv_inventory.setText(Store + "");
                     }
@@ -637,6 +637,11 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                         case 20:// 已下架
 //                            ShowReminder("确定修改库存?", Manger_Brand_Number,
 //                                    mydatas.get(postion), postion);
+                            if(IsBrand){
+                                ShowReminder("确定修改库存?", Manger_Brand_Number,
+                                        mydatas.get(postion), postion);
+                                return;
+                            }
                             PromptManager.SkipActivity(BaseActivity,
                                     new Intent(BaseContext,
 //                                            AGoodMangerEdit.class)

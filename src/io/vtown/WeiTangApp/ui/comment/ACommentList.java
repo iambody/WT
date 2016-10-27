@@ -667,7 +667,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
 
             IDataView(commengt_list_refrash, comment_nodata_lay, NOVIEW_ERROR);
             DataError(Constants.SucessToError, Data.getHttpLoadType());
-            ShowErrorCanLoad(getResources().getString(R.string.no_doudou_goods));
+            ShowErrorCanLoad(getResources().getString(R.string.no_doudou_data));
 
             return;
         }

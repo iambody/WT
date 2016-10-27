@@ -2,87 +2,90 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:descendantFocusability="blocksDescendants" 
-    android:orientation="vertical" >
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
 
-    
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_shopmanger_circular_bg"
-        android:orientation="vertical"
-        android:padding="@dimen/order_list_txt_padding" >
+        android:layout_marginBottom="5dp"
+
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="@dimen/order_list_outside_layout_padding" >
+            android:paddingBottom="6dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="6dp">
 
             <LinearLayout
                 android:id="@+id/ll_shop_center_order_manage_order_sn1"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_order_numb_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="订单编号:"
-                    android:textSize="@dimen/order_list_order_sn"
-                    android:textColor="@color/slategrey" />
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/order_list_order_sn" />
 
                 <TextView
                     android:id="@+id/tv_order_numb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/slategrey"
+                    android:textColor="@color/grey"
                     android:textSize="@dimen/order_list_order_sn" />
             </LinearLayout>
 
-           
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right|center_vertical"
-                 >
-                <TextView 
+                android:gravity="right|center_vertical">
+
+                <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/btn_modification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    
+
                     android:background="@drawable/shape_daifu_daifa_btn_bg"
                     android:gravity="center"
-                    android:padding="@dimen/order_list_txt_padding" 
+                    android:padding="@dimen/order_list_txt_padding"
                     android:text=" 修改  "
-                    android:visibility="gone"
                     android:textColor="@color/app_fen"
-                    android:textSize="@dimen/order_list_button_txt"/>
+                    android:textSize="@dimen/order_list_button_txt"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/btn_deliver_goods"
-                   android:layout_width="wrap_content"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="3dp"
                     android:background="@drawable/shape_daifu_daifa_btn_bg"
                     android:gravity="center"
-                    android:padding="@dimen/order_list_txt_padding" 
+                    android:padding="@dimen/order_list_txt_padding"
                     android:text=" 发货  "
-                    android:visibility="gone"
                     android:textColor="@color/app_fen"
-                    android:textSize="@dimen/order_list_button_txt" />
-                
+                    android:textSize="@dimen/order_list_button_txt"
+                    android:visibility="gone" />
+
 
                 <TextView
                     android:id="@+id/btn_modification_order"
@@ -90,21 +93,20 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_daifu_daifa_btn_bg"
                     android:gravity="center"
-                    android:padding="@dimen/order_list_txt_padding" 
+                    android:padding="@dimen/order_list_txt_padding"
                     android:text="修改订单"
                     android:textColor="@color/app_fen"
                     android:textSize="@dimen/order_list_button_txt"
                     android:visibility="gone" />
-                
-                 <TextView
+
+                <TextView
                     android:id="@+id/btn_order_optioning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_order_btn_gray_bg"
-                    android:textColor="@color/white"
                     android:gravity="center"
-                    android:padding="@dimen/order_list_txt_padding" 
+
                     android:text="订单进行中"
+                    android:textColor="@color/app_gray"
                     android:textSize="@dimen/order_list_button_txt"
                     android:visibility="gone" />
 
@@ -112,22 +114,20 @@
                     android:id="@+id/tv_shop_order_manage_is_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/order_list_txt_padding" 
-                    android:background="@drawable/shape_order_btn_gray_bg"
-                    android:textColor="@color/white"
-                    android:singleLine="true"
                     android:ellipsize="end"
+
+                    android:singleLine="true"
+                    android:textColor="@color/app_gray"
                     android:textSize="@dimen/order_list_button_txt"
                     android:visibility="gone" />
-                
-                 <TextView
+
+                <TextView
                     android:id="@+id/tv_shop_order_manage_is_zhongcai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/order_list_txt_padding" 
+
                     android:text="仲裁中"
-                    android:background="@drawable/shape_order_btn_gray_bg"
-                    android:textColor="@color/white"
+                    android:textColor="@color/app_gray"
                     android:textSize="@dimen/order_list_button_txt"
                     android:visibility="gone" />
 
@@ -135,10 +135,9 @@
                     android:id="@+id/tv_shop_order_manage_is_over"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/order_list_txt_padding" 
+
                     android:text="订单已完成"
-                    android:background="@drawable/shape_order_btn_gray_bg"
-                    android:textColor="@color/white"
+                    android:textColor="@color/app_gray"
                     android:textSize="@dimen/order_list_button_txt"
                     android:visibility="gone" />
             </LinearLayout>
@@ -148,25 +147,25 @@
             android:id="@+id/ll_shop_center_order_manage_order_sn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:visibility="gone">
 
-            <View style="@style/line_left_right" />
+            <View style="@style/line1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               android:paddingLeft="@dimen/order_list_txt_padding"
-               android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/order_list_txt_padding">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/order_list_txt_padding"
                     android:text="订单编号:"
-                    android:textSize="@dimen/order_list_order_sn"
-                    android:textColor="@color/grey" />
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/order_list_order_sn" />
 
                 <TextView
                     android:id="@+id/tv_shop_order_nanage_order_sn_numb"
@@ -177,7 +176,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <View style="@style/line_left_right" />
 
         <!-- 全部、待付款列表 -->
 
@@ -185,51 +183,55 @@
             android:id="@+id/lv_daifu_daifa_common_inside"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/order_listview_margin"
-            android:layout_marginTop="@dimen/order_listview_margin"
             android:cacheColorHint="#00000000"
-            android:divider="@null"
+            android:dividerHeight="3dp"
+            android:divider="@color/white"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:listSelector="#00000000" >
-        </io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
+            android:listSelector="#00000000"></io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
 
-        <View style="@style/line_left_right" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/order_list_outside_layout_padding" >
+            android:orientation="horizontal"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/tv_goods_count_desc"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:gravity="right"
                 android:text="@string/goods_count"
-                android:textColor="@color/slategrey"
+                android:textColor="@color/grey"
                 android:textSize="@dimen/order_list_good_number" />
 
             <LinearLayout
                 android:id="@+id/ll_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="待收款："
-                    android:textColor="@color/darkgrey"
+                    android:text="合计："
+                    android:textColor="@color/grey"
                     android:textSize="@dimen/order_list_wait_pay" />
 
                 <TextView
                     android:id="@+id/tv_good_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
                     android:text="@string/good_price"
                     android:textColor="@color/app_fen"
                     android:textSize="@dimen/order_list_total_money" />
@@ -238,11 +240,12 @@
                     android:id="@+id/tv_post_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:text="@string/post_price"
-                    android:textColor="@color/app_fen"
+                    android:textColor="@color/grey"
                     android:textSize="@dimen/order_list_poseage" />
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

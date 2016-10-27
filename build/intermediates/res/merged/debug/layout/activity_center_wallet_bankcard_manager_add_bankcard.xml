@@ -11,10 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/insulate_view_height" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:text="请绑定持卡人本人的银行卡"
+        android:textColor="@color/app_gray"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_height="wrap_content" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:scrollbars="none" >
 
         <LinearLayout
@@ -76,6 +85,15 @@
                     layout="@layout/commentview_txtarrow" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:text="微糖智能加密，保障您的用卡安全"
+                android:textColor="@color/app_gray"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,13 +130,16 @@
 
     <TextView
         android:id="@+id/tv_btn_submit_bank_card"
-        style="@style/build_two_dimension_code_btn_style_no_circular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+       android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/select_white_to_fen1"
         android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
-        android:padding="@dimen/center_wallet_add_bankcard_submit_padding"
-        android:text="提交"
-        android:textSize="@dimen/comment_label_txtsize" />
+        android:padding="10dp"
+        android:text="提交绑定"
+        android:textColor="@color/gray" />
 
 </LinearLayout>

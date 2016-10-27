@@ -398,7 +398,8 @@ public class FMainCenter extends FBase implements View.OnClickListener {
 
                 break;
             case R.id.maintab_center_card://卡券
-
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         AMyCoupons.class));
                 break;
@@ -410,6 +411,8 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 PromptManager.SkipActivity(BaseActivity, intentss);
                 break;
             case R.id.maintab_center_oder_guanzhu://商品关注
+                if (CheckNet(BaseContext))
+                    return;
                 Intent intent = new Intent(BaseActivity, ACommentList.class);
                 intent.putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterOderGuanzhu);
@@ -417,11 +420,15 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                 PromptManager.SkipActivity(BaseActivity, intent);
                 break;
             case R.id.maintab_center_shop_collect://店铺收藏
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterShopCollect));
                 break;
             case R.id.maintab_center_liulan_history://浏览记录
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterGoodBrowseRecord));
@@ -432,7 +439,8 @@ public class FMainCenter extends FBase implements View.OnClickListener {
                         AAboutWt.class));
                 break;
             case R.id.maintab_center_superior://我的上级
-
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         AMyLeader.class));
 

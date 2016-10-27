@@ -8,7 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/order_list_inside_layout_padding" >
+        android:background="@color/item_bg"
+        android:paddingLeft="10dp"
+
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+         >
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -17,6 +22,7 @@
             <ImageView
                 android:id="@+id/item_fragment_center_order_no_pay_in_iv"
                 android:layout_width="@dimen/item_shop_purchase_height"
+                android:scaleType="fitXY"
                 android:layout_height="@dimen/item_shop_purchase_height" />
         </RelativeLayout>
 
@@ -25,41 +31,43 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:orientation="vertical" >
+            android:orientation="horizontal" >
 
             <TextView
                 android:id="@+id/item_fragment_center_order_no_pay_in_name"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/error_network"
-                android:textColor="@color/app_gray" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="@dimen/order_list_inside_layout_padding"
-                android:paddingTop="@dimen/order_list_inside_layout_padding" >
+                android:layout_weight="1"
+                android:textSize="@dimen/order_list_inside_price_size"
+                android:text="@string/error_network"
+                android:textColor="@color/grey" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
 
                 <TextView
                     android:id="@+id/item_fragment_center_order_no_pay_in_price"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
                     android:textSize="@dimen/order_list_inside_price_size"
+                    android:text="123"
+                    android:textStyle="bold"
+                    android:gravity="right"
                     android:textColor="@color/salmon" />
 
                 <TextView
                     android:id="@+id/item_fragment_center_order_no_pay_in_number"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
+                    android:text="12"
+                    android:gravity="right"
+                    android:layout_marginTop="5dp"
                     android:textSize="@dimen/order_list_inside_number_size"
-                    android:textColor="@color/tan" />
-            </RelativeLayout>
+                    android:textColor="@color/app_gray" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

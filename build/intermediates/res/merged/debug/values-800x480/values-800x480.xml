@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="commentview_address_view_height">60dp</dimen>
+    <dimen name="good_pop_addandsubview_height">40dp</dimen>
+    <dimen name="good_pop_addandsubview_width">160dp</dimen>
+    <dimen name="good_pop_content_scrollview_height">230dp</dimen>
+    <dimen name="good_pop_edit_price_height">80dp</dimen>
+    <dimen name="good_pop_edit_price_margin">16dp</dimen>
+    <dimen name="good_pop_edit_price_width">35dp</dimen>
+    <dimen name="good_pop_make_how_much_height">30dp</dimen>
+    <dimen name="good_pop_price_store_height">80dp</dimen>
     <dimen name="good_upload_vido_iv_height">100dp</dimen>
+    <dimen name="integral_point_width">60dp</dimen>
     <dimen name="new_goods_vido_play_pading">5dp</dimen>
     <dimen name="newgoodedit_vido_height">100dp</dimen>
     <dimen name="paymethod_iv_height">30dp</dimen>
     <dimen name="pop_addcatory_margitop">40dp</dimen>
+    <dimen name="return_point_width">60dp</dimen>
     <dimen name="shop_user_hright">45dp</dimen>
+    <dimen name="shop_user_hright1">50dp</dimen>
     <dimen name="show_share_grad_delet_panding">5dp</dimen>
     <dimen name="vidoshare_height">140dp</dimen>
 </resources>

@@ -40,12 +40,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:divider="@color/app_bg"
-                    android:dividerHeight="10dp"
+                    android:dividerHeight="4dp"
                     android:scrollbars="none"/>
                 <!-- 下边布局 -->
                 <!-- 卖家留言-->
-                <View
-                    style="@style/line_left"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/app_bg"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -66,64 +70,64 @@
                         android:id="@+id/oderbeing_note_ed"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:background="@null"
                         android:hint="@string/hint_buyer_liuyan"
                         android:padding="@dimen/ui_10_dip"
-                        android:textColorHint="@color/app_gray"
                         android:textColor="@color/app_gray"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="@dimen/oderbeing_buyer_txt_size" />
+                        android:textColorHint="@color/app_gray"
+                        android:textSize="@dimen/oderbeing_buyer_txt_size"/>
                 </LinearLayout>
 
                 <!-- 卖家留言-->
 
                 <!-- 下bain布局 -->
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/line_size"
+                  android:src="@color/app_line"/>
+
+                <LinearLayout
+                    android:id="@+id/oderbeing_coupons_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/select_white_to_gray"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/oderbeing_quan"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/kaquan"/>
+
+                    <TextView
+                        android:id="@+id/oderbeing_coupons_nameprice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:textColor="@color/gray"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="14dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/arrow_right"/>
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/app_bg"/>
-
-        <LinearLayout
-            android:id="@+id/oderbeing_coupons_lay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/select_white_to_gray"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/oderbeing_quan"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/kaquan"/>
-
-            <TextView
-                android:id="@+id/oderbeing_coupons_nameprice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:textColor="@color/gray"
-                android:gravity="right"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="14dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/arrow_right"/>
-        </LinearLayout>
 
         <ImageView
             android:layout_width="match_parent"

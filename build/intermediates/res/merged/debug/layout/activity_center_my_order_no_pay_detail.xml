@@ -79,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:divider="@null" />
                     
-                    <View style="@style/line"/>
+
                     
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -98,7 +98,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="总价："
+                                android:text="合计："
                                 android:textColor="@color/grey"
                                 android:textSize="@dimen/order_detail_goods_total_price_lable_size" />
 
@@ -106,7 +106,7 @@
                                 android:id="@+id/tv_center_my_order_no_pay_total_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="￥100.00"
+
                                 android:textColor="@color/app_fen"
                                 android:textSize="@dimen/order_detail_goods_total_price_size" />
 

@@ -42,7 +42,7 @@
             <LinearLayout
                 android:id="@+id/ll_pop_good_icon_price_store"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="@dimen/good_pop_price_store_height"
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:padding="10dp">
@@ -63,8 +63,9 @@
 
 
             <ScrollView
+                android:id="@+id/good_content_sv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/good_pop_content_scrollview_height"
                 android:background="@color/white"
                 android:paddingTop="10dp"
                 android:scrollbars="none">
@@ -88,9 +89,9 @@
                             android:id="@+id/tv_good_standard_lable1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                           android:paddingLeft="10dp"
-                            android:paddingBottom="10dp"
                             android:lines="1"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
                             android:text="@string/nullstr"
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
@@ -123,9 +124,9 @@
                             android:id="@+id/tv_good_standard_lable2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="10dp"
-                            android:paddingBottom="10dp"
                             android:lines="1"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
                             android:text="@string/nullstr"
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
@@ -167,8 +168,8 @@
                                 android:id="@+id/tv_good_standard_lable3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:paddingLeft="10dp"
                                 android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
                                 android:text="赚到"
                                 android:textColor="@color/grey"
                                 android:textSize="@dimen/comment_label_txtsize" />
@@ -176,7 +177,7 @@
                             <io.vtown.WeiTangApp.comment.view.listview.HorizontalListView
                                 android:id="@+id/hl_make_how_much"
                                 android:layout_width="match_parent"
-                                android:layout_height="30dp"
+                                android:layout_height="@dimen/good_pop_make_how_much_height"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
 
@@ -200,7 +201,7 @@
                         android:background="@color/white"
                         android:orientation="horizontal"
                         android:paddingBottom="10dp"
-                        android:paddingLeft="16dp"
+                        android:paddingLeft="20dp"
                         android:paddingRight="16dp"
                         android:paddingTop="10dp">
 
@@ -209,16 +210,16 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:text="数量"
+
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
 
                         <io.vtown.WeiTangApp.comment.view.AddAndSubView
                             android:id="@+id/aasv_add_sub"
-                            android:layout_width="160dp"
-                            android:layout_height="40dp"
+                            android:layout_width="@dimen/good_pop_addandsubview_width"
+                            android:layout_height="@dimen/good_pop_addandsubview_height"
                             android:layout_marginLeft="15dp" />
                     </LinearLayout>
-
 
 
                     <LinearLayout
@@ -280,7 +281,7 @@
                         android:background="@color/white"
                         android:orientation="horizontal"
                         android:paddingBottom="10dp"
-                        android:paddingLeft="16dp"
+                        android:paddingLeft="20dp"
                         android:paddingRight="16dp"
                         android:paddingTop="10dp">
 
@@ -293,9 +294,9 @@
 
                         <EditText
                             android:id="@+id/pop_purchase_ed"
-                            android:layout_width="80dp"
-                            android:layout_height="35dp"
-                            android:layout_marginLeft="16dp"
+                            android:layout_width="@dimen/good_pop_edit_price_height"
+                            android:layout_height="@dimen/good_pop_edit_price_width"
+                            android:layout_marginLeft="@dimen/good_pop_edit_price_margin"
                             android:background="@drawable/shape_add_goods_edit_bg" />
                     </LinearLayout>
 
@@ -338,7 +339,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
 
             android:orientation="horizontal">
 
@@ -364,13 +365,13 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
 
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
-android:layout_marginTop="5dp"
                 android:padding="10dp">
 
 
@@ -393,6 +394,30 @@ android:layout_marginTop="5dp"
 
                     android:textColor="@color/app_fen"
                     android:textSize="@dimen/comment_label_txtsize" />
+
+                <LinearLayout
+                    android:id="@+id/ll_return_and_integral"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_return_money"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textColor="@color/app_gray"
+                        android:visibility="gone"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/tv_good_integral"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:textColor="@color/app_gray"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -1,1370 +1,846 @@
 [
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shoubus_ok.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shoubus_ok.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf3.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\brand_inf3.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab_ask_pre.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab_ask_pre.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_wodeshangji_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_wodeshangji_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_log.jpg",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\login_log.jpg"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_lianxikefu_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_lianxikefu_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_banyuan_up.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_banyuan_up.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\iv_add_jia.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\iv_add_jia.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_log.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shopbus_log.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_guoqi_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_guoqi_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_f_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab3_f_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_show_press.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_show_press.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ease_open_icon.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ease_open_icon.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chat_default_head.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\chat_default_head.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jixuzengjiaguige_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_jixuzengjiaguige_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\regist_checkbox_ok.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\regist_checkbox_ok.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\quan_select_3.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\quan_select_3.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab_ask_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab_ask_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab2_pr.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab2_pr.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_down_qian.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_down_qian.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_show_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_show_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\pic_fanyongjine.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\pic_fanyongjine.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_huiseback.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_huiseback.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\net_warning_redirect.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\net_warning_redirect.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\net_warning.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\net_warning.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_phone.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\login_phone.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv8.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_iv8.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\point_normal11.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\point_normal11.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_collct_pre.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\brand_collct_pre.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_mask.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\switch_btn_mask.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shipin_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_shipin_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_log1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shopbus_item_log1.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv7.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv7.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_banyuan_up.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_banyuan_up.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab3_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load_up3.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\load_up3.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_wodexiaji_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_wodexiaji_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\alipay_log.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\alipay_log.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_collct_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\brand_collct_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\pic_maidedingdankongbaiyemian.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\pic_maidedingdankongbaiyemian.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\selpiccamera.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\selpiccamera.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\oderbeing_quan.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\oderbeing_quan.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\regist_checkbox_ok.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\regist_checkbox_ok.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_collct_pre.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\brand_collct_pre.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_tiaozhuan_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_tiaozhuan_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\pic_caigoukongbaiyemian.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\pic_caigoukongbaiyemian.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\e.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\e.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_log.jpg",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\login_log.jpg"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv6.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_iv6.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_putongdianpuxiaotubiao_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_putongdianpuxiaotubiao_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\banner_dian_focus.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\banner_dian_focus.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grad2.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf2.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\brand_inf2.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_baisefenxiang_nor_good_detail.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_baisefenxiang_nor_good_detail.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load4.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\load4.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_lianxikefu_nor_1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_lianxikefu_nor_1.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\point_focus11.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\point_focus11.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\pic_yaoqingma_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\pic_yaoqingma_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_press_good_detail.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_shoucang_press_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_good_iv_ls.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_good_iv_ls.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab3_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoujihao_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_shoujihao_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_log3.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shopbus_item_log3.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_down_temai.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_down_temai.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad9.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_grad9.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_banyuan_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_banyuan_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shiyong_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_shiyong_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\net_warning.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\net_warning.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chakanshangpinshow_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_chakanshangpinshow_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\error_tongji_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\error_tongji_iv.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_log1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shopbus_item_log1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_buke_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_buke_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ico_kaquan_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ico_kaquan_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_bottom.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\switch_btn_bottom.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_pic.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\chart_pic.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_xiaoxitixing_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_xiaoxitixing_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lod2.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\lod2.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\pic_maidongxikongbaiyemian.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\pic_maidongxikongbaiyemian.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_check_default.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ssdk_oks_classic_check_default.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_im.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\new_im.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_pay_zfb.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_pay_zfb.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shipin_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_shipin_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_lianxikefu_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_lianxikefu_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_money_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_money_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\brand_inf1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_pho.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\chart_pho.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_log1.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shopbus_item_log1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_f_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab3_f_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_show_press.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_show_press.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\jian_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\jian_iv.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\point_normal.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\point_normal.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_log.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_log.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chakanshangpinshow_nor_good_detail.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_chakanshangpinshow_nor_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\share_wxpy.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\share_wxpy.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_bottom.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\switch_btn_bottom.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab1_pr.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab1_pr.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad1.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_grad1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_level2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_level2.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv4.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_iv4.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\cha_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\cha_iv.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_gengduo_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_gengduo_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\point_focus11.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\point_focus11.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_benzhouxiaoliang_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_benzhouxiaoliang_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_shortmessage.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_shortmessage.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_pay_wx.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_pay_wx.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\jia_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\jia_iv.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chat_default_head.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\chat_default_head.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad6.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grad6.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\d.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\d.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_log3.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shopbus_item_log3.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_wechatmoments.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_wechatmoments.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ease_close_icon.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ease_close_icon.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad9.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grad9.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\address_iv.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\address_iv.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ico_kaquan_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ico_kaquan_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_new.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\new_new.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_psd.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\login_psd.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ico_kaquan_press.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ico_kaquan_press.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad7.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grad7.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\cha_iv.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\cha_iv.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lod3.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\lod3.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv5.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv5.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sharer_weixin.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\sharer_weixin.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad5.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_grad5.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_f_pre.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab3_f_pre.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_fukuan.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\new_fukuan.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab4_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab4_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_in_shiku.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shopbus_item_in_shiku.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\detail_share.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\detail_share.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_wallet.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_wallet.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv4.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_iv4.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_xiangce_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_xiangce_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\quan_select_2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\quan_select_2.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad2.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_grad2.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_sou.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_sou.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab2_pr.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab2_pr.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_zhengfangxing_press.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_zhengfangxing_press.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_shortmessage.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ssdk_oks_classic_shortmessage.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\home_fy_pr.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\home_fy_pr.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_nor_good_detail.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_shoucang_nor_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_fan_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_fan_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_check_checked.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ssdk_oks_classic_check_checked.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\b.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\b.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_jia.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\chart_jia.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\home_fy.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\home_fy.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_lianxikefu_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_lianxikefu_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv5.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_iv5.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\quan_select_2.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\quan_select_2.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad8.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grad8.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab1_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab1_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\error_show.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\error_show.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\detail_share.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\detail_share.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lod2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\lod2.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_im.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\new_im.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\quan_select_3.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\quan_select_3.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_pressed.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\switch_btn_pressed.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\point_normal.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\point_normal.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shiyong_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_shiyong_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shoubus_ok.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shoubus_ok.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lajixiang_iv.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\lajixiang_iv.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\banner_dian_blur.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\banner_dian_blur.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chakanshangpinshow_nor_good_detail.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_chakanshangpinshow_nor_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_gouwuche_nor_good_detail.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_gouwuche_nor_good_detail.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\quan_select_3.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\quan_select_3.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_fukuan.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\new_fukuan.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_shoucang_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_news.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_news.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_good_iv_gr.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_good_iv_gr.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\item_shangji_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\item_shangji_iv.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load10.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\load10.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_auth_title_back.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ssdk_auth_title_back.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\show_xiangqing.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\show_xiangqing.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\show_xiangqing.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\show_xiangqing.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\a.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\a.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\commen_good_renzheng_1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\commen_good_renzheng_1.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\alipay_log.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\alipay_log.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jixuzengjiaguige_press.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_jixuzengjiaguige_press.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv1.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_iv1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_benzhoujinhuo_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_benzhoujinhuo_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad4.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_grad4.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\commen_good_renzheng_2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\commen_good_renzheng_2.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\arrow_back.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\arrow_back.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\brand_inf1.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv3.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_iv3.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_unpressed.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\switch_btn_unpressed.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\point_normal.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\point_normal.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load4.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\load4.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_check_checked.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_check_checked.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\error_shopbus.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\error_shopbus.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_phone.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\login_phone.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\im_zhushou_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\im_zhushou_iv.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad6.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_grad6.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lajixiang_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\lajixiang_iv.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_bottom.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\switch_btn_bottom.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_my_log.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\login_my_log.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load2.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\load2.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\home_jf_pr.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\home_jf_pr.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_fenxiang_nor_good_detail.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_fenxiang_nor_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_pr.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab3_pr.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_frame.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\switch_btn_frame.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_pay_yl.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_pay_yl.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_press_good_detail.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_shoucang_press_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv_setting.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_iv_setting.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\scan.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\scan.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_in_shiku.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shopbus_item_in_shiku.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_pr.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab3_pr.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load_up4.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\load_up4.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jixuzengjiaguige_press.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_jixuzengjiaguige_press.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_in_xuku.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shopbus_item_in_xuku.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\share_wxpy.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\share_wxpy.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_saomiao_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_saomiao_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\pic_yaoqingma_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\pic_yaoqingma_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab1_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab1_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_unpressed.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\switch_btn_unpressed.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_down_freads.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_down_freads.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_shoucang_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chakanshangpinshow_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_chakanshangpinshow_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_banyuan_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_banyuan_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_pic.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\chart_pic.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_psd.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\login_psd.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\home_select.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\home_select.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\arrow_back.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\arrow_back.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_check_default.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_check_default.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_press.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_shoucang_press.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_log2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shopbus_item_log2.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_wodexiaji_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_wodexiaji_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_fenxiang_nor_good_detail.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_fenxiang_nor_good_detail.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_dui.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\login_dui.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\selpiccamera.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\selpiccamera.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv3.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv3.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf4.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\brand_inf4.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\bg_btn_copy.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\bg_btn_copy.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_nor_good_detail.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_shoucang_nor_good_detail.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_nor_good_detail.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_shoucang_nor_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_pressed.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\switch_btn_pressed.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\d.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\d.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jixuzengjiaguige_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_jixuzengjiaguige_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\regist_checkbox_empty.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\regist_checkbox_empty.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load_up2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\load_up2.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad6.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_grad6.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_benzhouxiaoliang_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_benzhouxiaoliang_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_mask.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\switch_btn_mask.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grad1.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\quan_select_1.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\quan_select_1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_collct_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\brand_collct_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_frame.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\switch_btn_frame.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\no_data.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\no_data.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jiahao_add.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_jiahao_add.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_press.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_shoucang_press.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\splash_iv.jpg",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\splash_iv.jpg"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_log.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shopbus_log.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab1_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab1_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\pic_jifenmingxi.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\pic_jifenmingxi.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chat_default_head.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\chat_default_head.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_press_good_detail.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_shoucang_press_good_detail.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_zhengfangxing_press.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_zhengfangxing_press.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_wechatmoments.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_wechatmoments.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_logo.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ssdk_logo.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\address_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\address_iv.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_guoqi_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_guoqi_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_pay_wx.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_pay_wx.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf4.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\brand_inf4.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_sao.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_sao.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_buke_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_buke_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab2_pr.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab2_pr.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_collct_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\brand_collct_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sousou.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\sousou.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_saomiao_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_saomiao_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_tiaozhuan_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_tiaozhuan_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ico_kaquan_press.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ico_kaquan_press.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chakanshangpinshow_nor_good_detail.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_chakanshangpinshow_nor_good_detail.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_grad1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\new1.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_log2.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shopbus_item_log2.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_jia.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\chart_jia.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv4.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv4.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\arrow_white_right.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\arrow_white_right.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad7.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_grad7.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grada2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grada2.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\jian_iv.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\jian_iv.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab2_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab2_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jixuzengjiaguige_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_jixuzengjiaguige_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\a.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\a.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_im.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\new_im.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_good_iv_gr.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_good_iv_gr.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_gouwuche_nor_good_detail.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_gouwuche_nor_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\commen_good_renzheng_3.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\commen_good_renzheng_3.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\b.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\b.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load3.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\load3.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_add.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\chart_add.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sao.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\sao.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lod1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\lod1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_mingxingdianpuxiaotubiao_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_mingxingdianpuxiaotubiao_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_baisefenxiang_nor_good_detail.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_baisefenxiang_nor_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load10.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\load10.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_wechatmoments.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ssdk_oks_classic_wechatmoments.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\d.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\d.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\arrow_white_right.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\arrow_white_right.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\brand_inf2.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sharer_weixin.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\sharer_weixin.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shiyong_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_shiyong_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_good_iv_gr.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_good_iv_gr.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jiahao_add.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_jiahao_add.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\jia_iv.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\jia_iv.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\quan_select_1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\quan_select_1.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\new1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_back_arr.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ssdk_back_arr.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sao.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\sao.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad3.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grad3.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\point_normal11.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\point_normal11.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jiahao_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_jiahao_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\jian_iv.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\jian_iv.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab_ask_pre.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab_ask_pre.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lajixiang_iv.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\lajixiang_iv.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv3.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_iv3.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\point_focus11.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\point_focus11.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\arrow_back.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\arrow_back.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_my_log.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\login_my_log.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\bg_btn_copy.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\bg_btn_copy.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad5.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_grad5.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_fanyong_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_fanyong_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_fukuan.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\new_fukuan.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv6.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_iv6.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_title_div.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ssdk_title_div.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_gengduo_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_gengduo_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\banner_dian_focus.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\banner_dian_focus.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\log_bg.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\log_bg.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv2.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_iv2.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_check_checked.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_check_checked.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_benzhouxiaoliang_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_benzhouxiaoliang_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\load2.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_my_log.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\login_my_log.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\commen_good_renzheng_4.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\commen_good_renzheng_4.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_wodeshangji_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_wodeshangji_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\banner_dian_focus.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\banner_dian_focus.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load1.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\load1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_oder.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\new_oder.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab4_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab4_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_pay_zfb.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_pay_zfb.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_pay_yl.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_pay_yl.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_down_qian_pre.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_down_qian_pre.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\detail_share.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\detail_share.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\home_jf.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\home_jf.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_benzhoujinhuo_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_benzhoujinhuo_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_down_libao.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_down_libao.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\home_select.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\home_select.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\load1.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab4_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab4_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\splash_iv.jpg",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\splash_iv.jpg"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv6.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv6.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_xiangce_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_xiangce_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_xiaoxitixing_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_xiaoxitixing_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ease_close_icon.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ease_close_icon.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_guoqi_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_guoqi_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_zhengfangxing_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_zhengfangxing_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_oder.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\new_oder.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab4_pr.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab4_pr.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_in_xuku.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shopbus_item_in_xuku.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_title_div.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ssdk_title_div.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sousou.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\sousou.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_wallet.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_wallet.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\im_zhushou_iv.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\im_zhushou_iv.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\regist_checkbox_empty.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\regist_checkbox_empty.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_tiaozhuan_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_tiaozhuan_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\tab3_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad8.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_grad8.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\scan.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\scan.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_zhengfangxing_press.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_zhengfangxing_press.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lod1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\lod1.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf1.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\brand_inf1.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ease_open_icon.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ease_open_icon.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_wallet.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_wallet.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad5.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grad5.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\show_xiangqing.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\show_xiangqing.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_show_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_show_nor.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_gouwuche_nor_good_detail.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_gouwuche_nor_good_detail.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_huiseback.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_huiseback.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_pay_wx.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_pay_wx.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_lianxikefu_nor_good_detail.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_lianxikefu_nor_good_detail.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_back_arr.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ssdk_back_arr.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\error_goodmanger_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\error_goodmanger_iv.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_mask.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\switch_btn_mask.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\error_sou.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\error_sou.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_log.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_log.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad4.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\shop_grad4.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv7.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_iv7.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_wodexiaji_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_wodexiaji_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_money_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_money_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\newhome_level1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\newhome_level1.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\quan_select_2.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\quan_select_2.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv7.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_iv7.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_auth_title_back.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ssdk_auth_title_back.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv2.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_iv2.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_f_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab3_f_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_frame.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\switch_btn_frame.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_in_xuku.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shopbus_item_in_xuku.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\e.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\e.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab1_pr.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab1_pr.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_logo.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ssdk_logo.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_pic.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\chart_pic.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv8.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_iv8.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_collct_pre.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\brand_collct_pre.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_wechat.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_wechat.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_pressed.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\switch_btn_pressed.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ico_kaquan_press.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ico_kaquan_press.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_wechat.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ssdk_oks_classic_wechat.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\center_iv1.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_banyuan_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_banyuan_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_dui.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\login_dui.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_press.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_shoucang_press.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\error_goodmanger.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\error_goodmanger.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_auth_title_back.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ssdk_auth_title_back.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\share_iv.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\share_iv.png"
     },
     {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jiahao_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_jiahao_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load_up1.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\load_up1.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab2_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab2_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shoucang_nor.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\ic_shoucang_nor.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ico_kaquan_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ico_kaquan_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_add.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\chart_add.png"
     },
     {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sousou.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\sousou.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\share_wxpy.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\share_wxpy.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_log.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shopbus_log.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad9.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_grad9.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab_ask_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab_ask_nor.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv_setting.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv_setting.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_show_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_show_nor.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new1.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\new1.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_gengduo_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_gengduo_nor.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_oder.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\new_oder.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_lianxikefu_nor_good_detail.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_lianxikefu_nor_good_detail.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load3.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\load3.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf3.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\brand_inf3.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_money_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_money_nor.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load10.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\load10.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_lianxikefu_nor_1.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_lianxikefu_nor_1.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\home_select.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\home_select.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_in_shiku.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shopbus_item_in_shiku.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf2.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\brand_inf2.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_lianxikefu_nor_good_detail.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_lianxikefu_nor_good_detail.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_log2.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shopbus_item_log2.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\net_warning_redirect.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\net_warning_redirect.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lod1.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\lod1.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_pr.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab3_pr.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_zhengfangxing_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_zhengfangxing_nor.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_phone.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\login_phone.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv8.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv8.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lod3.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\lod3.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_lianxikefu_nor_1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_lianxikefu_nor_1.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_new.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\new_new.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad7.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_grad7.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\alipay_log.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\alipay_log.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_shortmessage.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_shortmessage.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_f_pre.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab3_f_pre.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv_setting.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_iv_setting.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\oderbeing_quan.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\oderbeing_quan.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\scan.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\scan.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_pho.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\chart_pho.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_xiangce_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_xiangce_nor.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab_ask_pre.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab_ask_pre.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_jia.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\chart_jia.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\jia_iv.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\jia_iv.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv2.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv2.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\bg_btn_copy.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\bg_btn_copy.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\oderbeing_quan.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\oderbeing_quan.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_buke_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_buke_nor.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab4_pr.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab4_pr.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\a.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\a.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_banyuan_up.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_banyuan_up.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_add.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\chart_add.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_fenxiang_nor_good_detail.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_fenxiang_nor_good_detail.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\regist_checkbox_ok.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\regist_checkbox_ok.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_benzhoujinhuo_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_benzhoujinhuo_nor.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lod3.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\lod3.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\chart_pho.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\chart_pho.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_xiaoxitixing_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_xiaoxitixing_nor.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad3.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_grad3.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\im_zhushou_iv.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\im_zhushou_iv.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\switch_btn_unpressed.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\switch_btn_unpressed.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf4.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\brand_inf4.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\load1.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\selpiccamera.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\selpiccamera.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ease_open_icon.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ease_open_icon.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\share_iv.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\share_iv.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\net_warning_redirect.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\net_warning_redirect.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\center_iv1.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load3.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\load3.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\lod2.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\lod2.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad4.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_grad4.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_logo.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ssdk_logo.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\iv_add_jia.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\iv_add_jia.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_psd.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\login_psd.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\item_shangji_iv.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\item_shangji_iv.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sao.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\sao.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab_ask_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab_ask_nor.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load2.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\load2.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab2_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab2_nor.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\regist_checkbox_empty.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\regist_checkbox_empty.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad3.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_grad3.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\b.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\b.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\banner_dian_blur.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\banner_dian_blur.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_show_press.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_show_press.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\banner_dian_blur.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\banner_dian_blur.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_log.jpg",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\login_log.jpg"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_log.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_log.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\iv_add_jia.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\iv_add_jia.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\address_iv.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\address_iv.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_saomiao_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_saomiao_nor.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\no_data.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\no_data.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab3_f_pre.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab3_f_pre.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jiahao_add.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_jiahao_add.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_huiseback.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_huiseback.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\quan_select_1.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\quan_select_1.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ease_close_icon.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ease_close_icon.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\center_iv5.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\center_iv5.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_good_iv_ls.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_good_iv_ls.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jiahao_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_jiahao_nor.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\arrow_white_right.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\arrow_white_right.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab1_pr.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\tab1_pr.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_jixuzengjiaguige_press.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_jixuzengjiaguige_press.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_good_iv_ls.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\shop_good_iv_ls.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_check_default.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_check_default.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_zhengfangxing_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_zhengfangxing_nor.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shoubus_ok.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shoubus_ok.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\brand_inf3.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\brand_inf3.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\sharer_weixin.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\sharer_weixin.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shopbus_item_log3.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shopbus_item_log3.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\net_warning.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\net_warning.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\load4.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\load4.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_pay_zfb.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_pay_zfb.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_wechat.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ssdk_oks_classic_wechat.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_dui.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\login_dui.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\e.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\e.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_chakanshangpinshow_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_chakanshangpinshow_nor.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\pic_yaoqingma_nor.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\pic_yaoqingma_nor.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad8.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_grad8.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\splash_iv.jpg",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\splash_iv.jpg"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_back_arr.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ssdk_back_arr.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_wodeshangji_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_wodeshangji_nor.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\no_data.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\no_data.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_pay_yl.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_pay_yl.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\share_iv.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\share_iv.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_baisefenxiang_nor_good_detail.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ic_baisefenxiang_nor_good_detail.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\tab4_pr.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\tab4_pr.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\shop_grad2.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\shop_grad2.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\cha_iv.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\cha_iv.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\point_normal11.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\point_normal11.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_title_div.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\ssdk_title_div.png"
-    },
-    {
-        "merged": "D:\\MyStudioSpace\\WtApp\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\item_shangji_iv.png",
-        "source": "D:\\MyStudioSpace\\WtApp\\res\\drawable-xhdpi\\item_shangji_iv.png"
-    },
-    {
-        "merged": "D:\\Wt\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_shipin_nor.png",
-        "source": "D:\\Wt\\WT\\res\\drawable-xhdpi\\ic_shipin_nor.png"
+        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\new_new.png",
+        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\new_new.png"
     }
 ]
