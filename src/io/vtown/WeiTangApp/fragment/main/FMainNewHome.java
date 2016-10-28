@@ -51,6 +51,7 @@ import io.vtown.WeiTangApp.comment.view.custom.HomeScrollView;
 import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
+import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
@@ -172,6 +173,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
      * 开始签到
      */
     private void BeginSign() {
+        if (CheckNet(BaseContext))
+            return;
         PromptManager.showLoading(BaseContext);
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("member_id", MyUser.getMember_id());
@@ -590,12 +593,20 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
                 break;
             case R.id.fragment_newhome_jifen_lay:
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AIntegralDetail.class));
+
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyShop.class));
+//                if (CheckNet(BaseContext))
+//                    return;
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AIntegralDetail.class));
                 break;
             case R.id.fragment_newhome_yongjin_lay:
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AReturnDetail.class));
                 break;
             case R.id.fragment_newhome_temai_lay://特卖专区
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
                 break;
 //            fragment_newhome_qian_lay, fragment_newhome_yaoqing_lay, fragment_newhome_libao_lay
@@ -699,6 +710,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyInviteCode.class));
                 break;
             case R.id.fragment_newhome_libao_lay://激活礼包
+                if (CheckNet(BaseContext))
+                    return;
                 BComment mBCommentss = new BComment(MBNewHome.getActivityid(),
                         MBNewHome.getActivitytitle());
                 PromptManager.SkipActivity(BaseActivity, new Intent(
@@ -707,12 +720,16 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
                 break;
             case R.id.fragment_newhome_bt_jifem://积分
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(
                         BaseActivity, AWeb.class).putExtra(
                         AWeb.Key_Bean,
                         new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
                 break;
             case R.id.fragment_newhome_bt_fanyong://返佣
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(
                         BaseActivity, AWeb.class).putExtra(
                         AWeb.Key_Bean,

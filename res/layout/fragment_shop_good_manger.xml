@@ -15,7 +15,8 @@
         android:layout_marginLeft="@dimen/ui_10_dip"
         android:layout_marginRight="@dimen/ui_10_dip"
         android:layout_marginTop="@dimen/ui_10_dip"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/fragment_isbrand_ziying_txt"

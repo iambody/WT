@@ -233,7 +233,8 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/brand_detail_apply"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <include

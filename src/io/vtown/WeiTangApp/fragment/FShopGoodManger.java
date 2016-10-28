@@ -87,8 +87,8 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
     // 未获取到数据时候需要进行的
     private View fragent_goodmanger_nodata_lay;
 
-    private TextView fragment_isbrand_brand_txt, fragment_isbrand_ziying_txt;
-    private LinearLayout fragment_isbrand_lay;
+//    private TextView fragment_isbrand_brand_txt, fragment_isbrand_ziying_txt;
+//    private LinearLayout fragment_isbrand_lay;
 
     /**
      * 当前订单状态 100在售中;;20 已经下架;;0品牌商品;;1标识垃圾箱
@@ -212,14 +212,14 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
     }
 
     private void IView() {
-        fragment_isbrand_lay = (LinearLayout) BaseView
-                .findViewById(R.id.fragment_isbrand_lay);
-        fragment_isbrand_brand_txt = (TextView) BaseView
-                .findViewById(R.id.fragment_isbrand_brand_txt);
-        fragment_isbrand_ziying_txt = (TextView) BaseView
-                .findViewById(R.id.fragment_isbrand_ziying_txt);
-        fragment_isbrand_brand_txt.setOnClickListener(this);
-        fragment_isbrand_ziying_txt.setOnClickListener(this);
+//        fragment_isbrand_lay = (LinearLayout) BaseView
+//                .findViewById(R.id.fragment_isbrand_lay);
+//        fragment_isbrand_brand_txt = (TextView) BaseView
+//                .findViewById(R.id.fragment_isbrand_brand_txt);
+//        fragment_isbrand_ziying_txt = (TextView) BaseView
+//                .findViewById(R.id.fragment_isbrand_ziying_txt);
+//        fragment_isbrand_brand_txt.setOnClickListener(this);
+//        fragment_isbrand_ziying_txt.setOnClickListener(this);
 
         fragent_goodmanger_nodata_lay = BaseView
                 .findViewById(R.id.fragent_goodmanger_nodata_lay);
@@ -253,7 +253,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
 
                 break;
             case 0:// 品牌商品ss
-                fragment_isbrand_lay.setVisibility(View.GONE);
+//                fragment_isbrand_lay.setVisibility(View.GONE);
 
 //                tv_add_item.setOnClickListener(this);
 //                SetTitleHttpDataLisenter(this);
@@ -1396,38 +1396,38 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
 //                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandList.class));
 //                break;
 
-            case R.id.fragment_isbrand_brand_txt:// 品牌
-                if (!IsBrand) {
-                    fragment_isbrand_brand_txt.setBackground(getResources()
-                            .getDrawable(R.drawable.shape_right_pre));
-                    fragment_isbrand_ziying_txt.setBackground(getResources()
-                            .getDrawable(R.drawable.shape_left_nor));
-                    fragment_isbrand_brand_txt.setTextColor(getResources()
-                            .getColor(R.color.white));
-                    fragment_isbrand_ziying_txt.setTextColor(getResources()
-                            .getColor(R.color.app_fen));
-                    IsBrand = true;
-
-                    CurrentPage = 1;
-                    LoadData(CurrentPage, INITIALIZE);
-                }
-
-                break;
-            case R.id.fragment_isbrand_ziying_txt:// 自营
-                if (IsBrand) {
-                    fragment_isbrand_brand_txt.setBackground(getResources()
-                            .getDrawable(R.drawable.shape_right_nor));
-                    fragment_isbrand_ziying_txt.setBackground(getResources()
-                            .getDrawable(R.drawable.shape_left_pre));
-                    fragment_isbrand_brand_txt.setTextColor(getResources()
-                            .getColor(R.color.app_fen));
-                    fragment_isbrand_ziying_txt.setTextColor(getResources()
-                            .getColor(R.color.white));
-                    IsBrand = false;
-                    CurrentPage = 1;
-                    LoadData(CurrentPage, INITIALIZE);
-                }
-                break;
+//            case R.id.fragment_isbrand_brand_txt:// 品牌
+//                if (!IsBrand) {
+//                    fragment_isbrand_brand_txt.setBackground(getResources()
+//                            .getDrawable(R.drawable.shape_right_pre));
+//                    fragment_isbrand_ziying_txt.setBackground(getResources()
+//                            .getDrawable(R.drawable.shape_left_nor));
+//                    fragment_isbrand_brand_txt.setTextColor(getResources()
+//                            .getColor(R.color.white));
+//                    fragment_isbrand_ziying_txt.setTextColor(getResources()
+//                            .getColor(R.color.app_fen));
+//                    IsBrand = true;
+//
+//                    CurrentPage = 1;
+//                    LoadData(CurrentPage, INITIALIZE);
+//                }
+//
+//                break;
+//            case R.id.fragment_isbrand_ziying_txt:// 自营
+//                if (IsBrand) {
+//                    fragment_isbrand_brand_txt.setBackground(getResources()
+//                            .getDrawable(R.drawable.shape_right_nor));
+//                    fragment_isbrand_ziying_txt.setBackground(getResources()
+//                            .getDrawable(R.drawable.shape_left_pre));
+//                    fragment_isbrand_brand_txt.setTextColor(getResources()
+//                            .getColor(R.color.app_fen));
+//                    fragment_isbrand_ziying_txt.setTextColor(getResources()
+//                            .getColor(R.color.white));
+//                    IsBrand = false;
+//                    CurrentPage = 1;
+//                    LoadData(CurrentPage, INITIALIZE);
+//                }
+//                break;
             default:
                 break;
         }

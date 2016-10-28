@@ -145,17 +145,18 @@
                 <!-- 团队和下级的布局 -->
                 <include
                     android:id="@+id/fragment_main_tab_shop_all_income_lay"
-                    layout="@layout/commentview_txtarrow"/>
+                    layout="@layout/commentview_txtarrow" android:visibility="gone"/>
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_size"
-                    android:src="@color/app_line1"/>
+                    android:src="@color/app_line1" android:visibility="gone"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <!-- 左边团队人数布局 -->
 
@@ -260,37 +261,37 @@
                         android:src="@color/app_line"/>
 
                     <include
-                        android:id="@+id/fragment_main_tab_shop_good_qudao_guanli"
+                        android:id="@+id/fragment_main_tab_shop_good_good_guanli"
                         layout="@layout/commentview_ivtext"/>
                 </LinearLayout>
                 <!-- 第一行** -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_size1"
-                    android:orientation="horizontal"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/line_size1"
                         android:layout_weight="1"
-                        android:src="@color/app_line"
-                        android:paddingRight="@dimen/ui_10_dip"/>
+                        android:paddingRight="@dimen/ui_10_dip"
+                        android:src="@color/app_line"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/line_size1"
                         android:layout_weight="1"
-                        android:src="@color/app_line"
                         android:paddingLeft="@dimen/ui_10_dip"
-                        android:paddingRight="@dimen/ui_10_dip"/>
+                        android:paddingRight="@dimen/ui_10_dip"
+                        android:src="@color/app_line"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/line_size1"
                         android:layout_weight="1"
-                        android:src="@color/app_line"
-                        android:paddingLeft="@dimen/ui_10_dip"/>
+                        android:paddingLeft="@dimen/ui_10_dip"
+                        android:src="@color/app_line"/>
 
                 </LinearLayout>
 
@@ -301,7 +302,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <include
                         android:id="@+id/fragment_main_tab_shop_caigoudan"
@@ -326,37 +328,37 @@
                         android:src="@color/app_line"/>
 
                     <include
-                        android:id="@+id/fragment_main_tab_shop_good_good_guanli"
+                        android:id="@+id/fragment_main_tab_shop_good_qudao_guanli"
                         layout="@layout/commentview_ivtext"/>
                 </LinearLayout>
                 <!-- 第二行** -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_size1"
-                    android:orientation="horizontal"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/line_size1"
                         android:layout_weight="1"
-                        android:src="@color/app_line"
-                        android:paddingRight="@dimen/ui_10_dip"/>
+                        android:paddingRight="@dimen/ui_10_dip"
+                        android:src="@color/app_line"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/line_size1"
                         android:layout_weight="1"
-                        android:src="@color/app_line"
                         android:paddingLeft="@dimen/ui_10_dip"
-                        android:paddingRight="@dimen/ui_10_dip"/>
+                        android:paddingRight="@dimen/ui_10_dip"
+                        android:src="@color/app_line"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/line_size1"
                         android:layout_weight="1"
-                        android:src="@color/app_line"
-                        android:paddingLeft="@dimen/ui_10_dip"/>
+                        android:paddingLeft="@dimen/ui_10_dip"
+                        android:src="@color/app_line"/>
 
                 </LinearLayout>
 

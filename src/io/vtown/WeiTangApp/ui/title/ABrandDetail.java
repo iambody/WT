@@ -132,7 +132,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     /**
      * 申请代理
      */
-    private TextView brand_detail_apply;
+//    private TextView brand_detail_apply;
     /**
      * pager
      */
@@ -206,8 +206,8 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
         brand_detail_brand_brandinf_iv.setOnClickListener(this);
         brand_detail_brand_lookshow_iv.setOnClickListener(this);
 
-        brand_detail_apply = (TextView) findViewById(R.id.brand_detail_apply);
-        brand_detail_apply.setOnClickListener(this);
+//        brand_detail_apply = (TextView) findViewById(R.id.brand_detail_apply);
+//        brand_detail_apply.setOnClickListener(this);
 
         recommendAp = new RecommendAp(BaseContext);
         brand_detail_grid.setAdapter(recommendAp);
@@ -412,13 +412,13 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 
     public void ReciverMessage(BMessage message) {
         if (message.getMessageType() == BMessage.Tage_Brand_Apply_Statue) {
-            brand_detail_apply.setClickable(false);
-            brand_detail_apply.setFocusable(false);
-            brand_detail_apply.setBackgroundColor(getResources().getColor(
-                    R.color.app_gray));
-            brand_detail_apply.setText("审核中");
-            brand_detail_apply.setTextColor(getResources().getColor(
-                    R.color.white));
+//            brand_detail_apply.setClickable(false);
+//            brand_detail_apply.setFocusable(false);
+//            brand_detail_apply.setBackgroundColor(getResources().getColor(
+//                    R.color.app_gray));
+//            brand_detail_apply.setText("审核中");
+//            brand_detail_apply.setTextColor(getResources().getColor(
+//                    R.color.white));
         }
 
 
@@ -429,27 +429,27 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
      */
     private void ResultData(BShopBrand data) {
         brandshop_connect_iv.setVisibility(View.VISIBLE);
-        if (data.getIs_agented().equals("1")) {// 已经代理过
-            brand_detail_apply.setClickable(false);
-            brand_detail_apply.setFocusable(false);
-            brand_detail_apply.setBackgroundColor(getResources().getColor(
-                    R.color.app_gray));
-            brand_detail_apply.setText("您已代理");
-            brand_detail_apply.setTextColor(getResources().getColor(
-                    R.color.white));
-        } else if (data.getIs_agented().equals("2")) {// 审核中
-            brand_detail_apply.setClickable(false);
-            brand_detail_apply.setFocusable(false);
-            brand_detail_apply.setBackgroundColor(getResources().getColor(
-                    R.color.app_gray));
-            brand_detail_apply.setText("审核中");
-            brand_detail_apply.setTextColor(getResources().getColor(
-                    R.color.white));
-        } else if (data.getIs_agented().equals("0")) {// 未代理
-
-        } else {// 未代理过
-
-        }
+//        if (data.getIs_agented().equals("1")) {// 已经代理过
+//            brand_detail_apply.setClickable(false);
+//            brand_detail_apply.setFocusable(false);
+//            brand_detail_apply.setBackgroundColor(getResources().getColor(
+//                    R.color.app_gray));
+//            brand_detail_apply.setText("您已代理");
+//            brand_detail_apply.setTextColor(getResources().getColor(
+//                    R.color.white));
+//        } else if (data.getIs_agented().equals("2")) {// 审核中
+//            brand_detail_apply.setClickable(false);
+//            brand_detail_apply.setFocusable(false);
+//            brand_detail_apply.setBackgroundColor(getResources().getColor(
+//                    R.color.app_gray));
+//            brand_detail_apply.setText("审核中");
+//            brand_detail_apply.setTextColor(getResources().getColor(
+//                    R.color.white));
+//        } else if (data.getIs_agented().equals("0")) {// 未代理
+//
+//        } else {// 未代理过
+//
+//        }
 
         // 获取品牌信息
 //        InItPaGeView(data.getRoll());

@@ -233,9 +233,7 @@ public class AMyInviteCode extends ATitleBase {
 		SetTitleTxt(getString(R.string.center_yaoqingma));
 		right_txt = (TextView) findViewById(R.id.right_txt);
 		right_txt.setOnClickListener(this);
-
 		SetRightText("绑定邀请码");
-
 	}
 
 	@Override

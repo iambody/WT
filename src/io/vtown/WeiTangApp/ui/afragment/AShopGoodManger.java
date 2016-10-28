@@ -32,7 +32,7 @@ public class AShopGoodManger extends ABaseFragment implements View.OnClickListen
     /**
      * 头部的title
      */
-    private String[] TitleNames = new String[]{"在售中", "已下架", "品牌商品", "垃圾桶"};
+    private String[] TitleNames = new String[]{"在售中", "已下架",   "垃圾桶"};
 
     /**
      * 碎片管理栈
@@ -70,10 +70,8 @@ public class AShopGoodManger extends ABaseFragment implements View.OnClickListen
 
     private void Ifragment() {
         FSelling = FShopGoodManger.newInstance(100);
-
         // 创建1
         FSellOut = FShopGoodManger.newInstance(20);
-
         // 创建2
         FBrand = FShopGoodManger.newInstance(0);
         // 创建3
@@ -83,7 +81,7 @@ public class AShopGoodManger extends ABaseFragment implements View.OnClickListen
         // 添加
         FragmentLs.add(FSelling);
         FragmentLs.add(FSellOut);
-        FragmentLs.add(FBrand);
+//        FragmentLs.add(FBrand);
         FragmentLs.add(FRecycle);
 
         // s设置当前cureentfragment
@@ -147,10 +145,10 @@ public class AShopGoodManger extends ABaseFragment implements View.OnClickListen
             CurrentPostion = position;
 
             findViewById(R.id.right_txt).setVisibility(CurrentPostion == 2 ? View.VISIBLE : View.GONE);
-            if (2 == position) {
-                SetTitleRigthTxt("添加");
-                ((TextView) findViewById(R.id.right_txt)).setTextColor(getResources().getColor(R.color.white));
-            }
+//            if (2 == position) {
+//                SetTitleRigthTxt("添加");
+//                ((TextView) findViewById(R.id.right_txt)).setTextColor(getResources().getColor(R.color.white));
+//            }
         }
     }
 
