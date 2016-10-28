@@ -40,6 +40,7 @@ import io.vtown.WeiTangApp.event.receiver.NewMessageBroadcastReceiver;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.fragment.main.FMainCenter;
 import io.vtown.WeiTangApp.fragment.main.FMainHome;
+import io.vtown.WeiTangApp.fragment.main.FMainNew;
 import io.vtown.WeiTangApp.fragment.main.FMainNewHome;
 import io.vtown.WeiTangApp.fragment.main.FMainNewShow;
 import io.vtown.WeiTangApp.fragment.main.FMainShop;
@@ -58,7 +59,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private GradualRadioButton maintab_home, maintab_shop, maintab_shopbus, maintab_center;
     private List<GradualRadioButton> RadioButtons;
     private ImageView maintab_show_iv;
-    private FBase FMainHome, FMainShop, FMainShow, FMainShopBus;//
+    private FBase FMainHome, FMainShop, FMainShow, FMainShopBus,FMainNew;//
     private FMainCenter FMainCenter;
     private List<FBase> Fragments;
     private int CurrentPostion = 0;
@@ -73,6 +74,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
      * 二次退出时候的时长标识
      */
     private long exitTime = 0;
+
 
     @Override
     protected void InItBaseView() {
@@ -120,19 +122,23 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         FMainShop = new FMainShop();
         FMainShow = new FMainShow();//FMainShow();FMainNewShow
         FMainShopBus = new FMainShopBus();
-        FMainCenter = new FMainCenter();
+       // FMainCenter = new FMainCenter();
+        FMainNew = new FMainNew();
 
         FMainHome.setArguments(GetBund());
         FMainShop.setArguments(GetBund());
         FMainShow.setArguments(GetBund());
         FMainShopBus.setArguments(GetBund());
-        FMainCenter.setArguments(GetBund());
+       //FMainCenter.setArguments(GetBund());
+        FMainNew.setArguments(GetBund());
 
         Fragments.add(FMainHome);
         Fragments.add(FMainShop);
 //        Fragments.add(FMainShow);
         Fragments.add(FMainShopBus);
-        Fragments.add(FMainCenter);
+  //      Fragments.add(FMainCenter);
+
+       Fragments.add(FMainNew);
 
 
     }

@@ -19,7 +19,7 @@ public class BNew extends BBase {
 	// 消息列表*********ANew****************************
 	private String id;// ": "219",
 	private String member_id;// ": "2",
-	// private String status;//": "1",
+
 	private String title;// ": "sdf",
 	private String content;// ": "asdf",
 	private String message_type;// ": "2",
@@ -30,6 +30,16 @@ public class BNew extends BBase {
 	private String source_type;// ": "1"
 	private String action;
 	private String system_message_id;
+private String message_id;
+
+	public String getMessage_id() {
+		return message_id;
+	}
+
+	public void setMessage_id(String message_id) {
+		this.message_id = message_id;
+	}
+
 	public String getAction() {
 		return action;
 	}

@@ -5,11 +5,16 @@
     android:background="@color/app_bg"
     android:orientation="vertical" >
 
-    <include
-        layout="@layout/titlebar"
-        />
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebarheingh"
+        android:background="@color/app_fen"
+        android:gravity="center"
+        android:text="消息"
+        android:textColor="@color/white"
+        android:textSize="18dp"/>
 
     <ScrollView
         android:layout_width="match_parent"

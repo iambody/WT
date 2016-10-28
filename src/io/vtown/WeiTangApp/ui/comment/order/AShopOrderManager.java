@@ -332,6 +332,7 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
                 }
                 //PromptManager.closetextLoading();
                 switch (Data.getHttpLoadType()) {
+                    case 1117:
                     case LOAD_INITIALIZE:
                         myAdapter.FrashData(dattaa);
 
@@ -633,6 +634,8 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
          */
         private List<BLShopOrderManage> datas = new ArrayList<BLShopOrderManage>();
 
+        private HashMap<Integer,OutsideItem> map = new HashMap<Integer,OutsideItem>();
+
         public myAdapter(int key, int resourceId) {
             super();
             this.key = key;
@@ -679,6 +682,23 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
             return arg0;
         }
 
+        public void RefreshPosition(int type,int position){
+            switch (type){
+                case 1://同意退款
+                    if(40 == Ket_Tage){
+                        datas.remove(position);
+                        notifyDataSetChanged();
+                    }else{
+
+                    }
+
+                    break;
+                case 2://拒绝退款
+
+                    break;
+            }
+        }
+
         @Override
         public View getView(int arg0, View arg1, ViewGroup arg2) {
 
@@ -686,6 +706,7 @@ public class AShopOrderManager extends ATitleBase implements OnItemClickListener
 
             if (arg1 == null) {
                 outside = new OutsideItem();
+                map.put(arg0,outside);
                 arg1 = inflater.inflate(ResourceId, null);
                 outside.tv_order_numb_tag = ViewHolder.get(arg1,
                         R.id.tv_order_numb_tag);

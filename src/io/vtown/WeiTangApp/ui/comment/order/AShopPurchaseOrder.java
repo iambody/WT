@@ -137,6 +137,8 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
     private Drawable mDrawable;
     private RefreshLayout shop_purchase_refrash;
 
+    private int SelectPosition = -1;
+
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_shop_purchase);
@@ -337,12 +339,15 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
                     }
 
                     switch (Data.getHttpLoadType()) {
+                        case 1115:
                         case LOAD_INITIALIZE:
+                        case LOAD_REFRESHING:// 刷新数据
                             if (10 == Ket_Tage) {
                                 purchaseOrderNoPayAdapter.RefreshData(list_datas);
                             } else {
                                 lsAp.RefreshData(list_datas);
                             }
+                            last_id = list_datas.get(list_datas.size()-1).getId();
                             shop_purchase_refrash.setRefreshing(false);
                             //fragment_shop_purchase_ls.stopRefresh();
 
@@ -353,24 +358,29 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
                                 shop_purchase_refrash.setCanLoadMore(false);
                             //fragment_shop_purchase_ls.hidefoot();
 
-                            break;
 
-                        case LOAD_REFRESHING:// 刷新数据
-                            shop_purchase_refrash.setRefreshing(false);
-                            //fragment_shop_purchase_ls.stopRefresh();
-                            lsAp.RefreshData(list_datas);
-                            if (list_datas.size() == Constants.PageSize)
-                                shop_purchase_refrash.setCanLoadMore(true);
-                            //fragment_shop_purchase_ls.ShowFoot();
-                            if (list_datas.size() < Constants.PageSize)
-                                shop_purchase_refrash.setCanLoadMore(false);
-                            //fragment_shop_purchase_ls.hidefoot();
+
+//
+//                            shop_purchase_refrash.setRefreshing(false);
+//                            //fragment_shop_purchase_ls.stopRefresh();
+//                            lsAp.RefreshData(list_datas);
+//                            if (list_datas.size() == Constants.PageSize)
+//                                shop_purchase_refrash.setCanLoadMore(true);
+//                            //fragment_shop_purchase_ls.ShowFoot();
+//                            if (list_datas.size() < Constants.PageSize)
+//                                shop_purchase_refrash.setCanLoadMore(false);
+//                            //fragment_shop_purchase_ls.hidefoot();
                             break;
 
                         case LOAD_LOADMOREING:// 加载更多
+                            if (10 == Ket_Tage) {
+                                purchaseOrderNoPayAdapter.AddFrashData(list_datas);
+                            } else {
+                                lsAp.AddFrashData(list_datas);
+                            }
                             shop_purchase_refrash.setLoading(false);
                             //fragment_shop_purchase_ls.stopLoadMore();
-                            lsAp.AddFrashData(list_datas);
+                            last_id = list_datas.get(list_datas.size()-1).getId();
                             if (list_datas.size() == Constants.PageSize)
                                 //fragment_shop_purchase_ls.ShowFoot();
                                 shop_purchase_refrash.setCanLoadMore(true);
@@ -385,26 +395,39 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
 
             case 1:// 延期收货
                 PromptManager.ShowMyToast(BaseContext, "订单已延期");
-                last_id = "";
-                IData(LOAD_INITIALIZE, Ket_Tage + "");
+//                last_id = "";
+//                IData(LOAD_INITIALIZE, Ket_Tage + "");
+
+                lsAp.RefreshPosition(SelectPosition,2);
+
                 break;
 
             case 2:// 提醒发货
                 PromptManager.ShowMyToast(BaseContext, "已提醒卖家发货");// TODO 需要换成dialog
-                last_id = "";
-                IData(LOAD_INITIALIZE, Ket_Tage + "");
-
+//                last_id = "";
+//                IData(LOAD_INITIALIZE, Ket_Tage + "");
+                lsAp.RefreshPosition(SelectPosition,2);
                 break;
 
             case 3:// 确认收货
                 PromptManager.ShowMyToast(BaseContext, "收货成功");// TODO 需要换成dialog
-                last_id = "";
-                IData(LOAD_INITIALIZE, Ket_Tage + "");
+//                last_id = "";
+//                IData(LOAD_INITIALIZE, Ket_Tage + "");
+                lsAp.RefreshPosition(SelectPosition,1);
                 break;
             case 4:// 取消订单
                 PromptManager.ShowMyToast(BaseContext, "订单取消成功");
-                last_id = "";
-                IData(LOAD_INITIALIZE, Ket_Tage + "");
+//                last_id = "";
+//                IData(LOAD_INITIALIZE, Ket_Tage + "");
+                switch (Ket_Tage){
+                    case 0:
+                        lsAp.RefreshPosition(SelectPosition,1);
+                        break;
+
+                    case 10:
+                        purchaseOrderNoPayAdapter.RefreshNoPayPosition(SelectPosition);
+                        break;
+                }
                 break;
 
             case 5:// 去付款
@@ -741,6 +764,20 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
             return arg0;
         }
 
+        public void RefreshPosition(int position, int Type){
+            switch (Type){
+                case 1:
+                    datas.remove(position);
+                    notifyDataSetChanged();
+                    break;
+
+                case 2:
+                    notifyDataSetChanged();
+                    break;
+
+            }
+        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup arg2) {
             LsMyItem myItem = null;
@@ -1017,7 +1054,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
 
             }
 
-            OnClickEvent(myItem, datas.get(position), order_status);
+            OnClickEvent(position,myItem, datas.get(position), order_status);
 
             return convertView;
 
@@ -1030,7 +1067,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
          * @param blComment
          * @param order_status
          */
-        private void OnClickEvent(LsMyItem myItem,
+        private void OnClickEvent(final int position, LsMyItem myItem,
                                   final BLShopPurchase blComment, final int order_status) {
             myItem.fragment_shop_purchase_pay_again
                     .setOnClickListener(new OnClickListener() {
@@ -1050,6 +1087,8 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
                                                                     .getMember_id(),
                                                             blComment.getOrder_sn());
 
+                                                    SelectPosition = position;
+
                                                 }
 
                                                 @Override
@@ -1059,6 +1098,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
 
                                     break;
                                 case PYiFu:// 已付款,点申请退款--->申请退款页面
+                                    SelectPosition = position;
                                     Intent intent2 = new Intent(BaseContext,
                                             AApplyTuikuan.class);
                                     intent2.putExtra("seller_order_sn",
@@ -1082,6 +1122,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
                                                                     .getSeller_order_sn(),
                                                             blComment
                                                                     .getMember_id());
+                                                    SelectPosition = position;
                                                 }
 
                                                 @Override
@@ -1112,6 +1153,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
                                         return;
                                     RemindSendOut(blComment.getMember_id(),
                                             blComment.getSeller_order_sn());
+                                    SelectPosition = position;
 
                                     break;
                                 case PDaiShou:// 待收货,确认收货
@@ -1127,6 +1169,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
                                                                     .getMember_id(),
                                                             blComment
                                                                     .getSeller_order_sn());
+                                                    SelectPosition = position;
                                                 }
 
                                                 @Override
@@ -1160,6 +1203,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
                                                 return;
                                             GoPay(blComment.getMember_id(),
                                                     blComment.getOrder_sn());
+                                            SelectPosition = position;
                                         }
 
                                         @Override
@@ -1334,8 +1378,13 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
             return position;
         }
 
+        public void RefreshNoPayPosition(int position){
+            datas.remove(position);
+            notifyDataSetChanged();
+        }
+
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             PurchaseOrderNoPayItem centerOrderNoPay = null;
             if (convertView == null) {
                 centerOrderNoPay = new PurchaseOrderNoPayItem();
@@ -1394,6 +1443,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
                                                 return;
                                             GoPay(blComment.getMember_id(),
                                                     blComment.getOrder_sn());
+                                            SelectPosition = position;
                                         }
 
                                         @Override
@@ -1418,7 +1468,7 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
                                             CancelOrder(
                                                     blComment.getMember_id(),
                                                     blComment.getOrder_sn());
-
+                                            SelectPosition = position;
                                         }
 
                                         @Override
@@ -1684,12 +1734,23 @@ public class AShopPurchaseOrder extends ATitleBase implements OnItemClickListene
     public void OnGetMessage(BMessage event) {
         int messageType = event.getMessageType();
         if (messageType == event.Tage_My_Purchase) {
-            last_id = "";
-            IData(LOAD_INITIALIZE, Ket_Tage + "");
+//            last_id = "";
+//            IData(LOAD_INITIALIZE, Ket_Tage + "");
+            lsAp.RefreshPosition(SelectPosition, 2);
         }
         if (messageType == event.Tage_To_Pay_Updata) {
-            last_id = "";
-            IData(LOAD_INITIALIZE, Ket_Tage + "");
+//            last_id = "";
+//            IData(LOAD_INITIALIZE, Ket_Tage + "");
+
+            switch (Ket_Tage) {
+                case 0:
+                    lsAp.RefreshPosition(SelectPosition, 1);
+                    break;
+
+                case 10:
+                    purchaseOrderNoPayAdapter.RefreshNoPayPosition(SelectPosition);
+                    break;
+            }
         }
     }
 

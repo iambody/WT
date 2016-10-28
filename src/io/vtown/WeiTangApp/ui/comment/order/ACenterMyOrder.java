@@ -141,6 +141,7 @@ public class ACenterMyOrder extends ATitleBase implements
     private Drawable mDrawable;
     private TextView mTitle;
     private RefreshLayout fragment_center_order_refrash;
+    private int SelectPosition = -1;
 
     // @Override
     // public void InItView() {
@@ -503,63 +504,38 @@ public class ACenterMyOrder extends ATitleBase implements
             return arg0;
         }
 
-        /*
-         * (non-Javadoc)
-         *
-         * @see io.vtown.WeiTangApp.adapter.BasAdapter#getView(int,
-         * android.view.View, android.view.ViewGroup)
-         */
-        @Override
-        public View getView(int position, View convertView, ViewGroup arg2) {
-            CenterOrderOutsideItem myItem = null;
-            if (convertView == null) {
+        private void RefreshPosition(int type, int position) {
+            switch (Ket_Tage) {
+                case PAll:
 
-                convertView = inflater.inflate(ResourceId, null);
-                myItem = new CenterOrderOutsideItem();
-                myItem.fragment_center_order_shopname = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_shopname);
-                myItem.fragment_center_order_cancel_order = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_cancel_order);
-                myItem.fragment_center_order_pay_to = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_pay_to);
-                myItem.fragment_center_order_pay_again = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_pay_again);
-                myItem.fragment_center_order_shouhuo_commiont = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_shouhuo_commiont);
-                myItem.fragment_center_order_apply_for_tuikuan_commiont = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_apply_for_tuikuan_commiont);
-                myItem.fragment_center_order_remind_fahuo = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_remind_fahuo);
-                myItem.fragment_center_order_arbitration = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_arbitration);
-                myItem.fragment_center_order_is_delaytime = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_is_delaytime);
-                myItem.fragment_center_order_delayreceive = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_delayreceive);
-                myItem.item_fragment_center_order_allnum = (TextView) convertView
-                        .findViewById(R.id.item_fragment_center_order_allnum);
-                myItem.item_fragment_center_order_allmoney = (TextView) convertView
-                        .findViewById(R.id.item_fragment_center_order_allmoney);
-                myItem.item_fragment_center_order_ls = (CompleteListView) convertView
-                        .findViewById(R.id.item_fragment_center_order_ls);
-                myItem.item_fragment_center_order_postage = (TextView) convertView
-                        .findViewById(R.id.item_fragment_center_order_postage);
-                myItem.fragment_center_order_is_cencal = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_is_cencal);
-                myItem.fragment_center_order_is_over = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_is_over);
-                myItem.fragment_center_order_apply_refunding = (TextView) convertView
-                        .findViewById(R.id.fragment_center_order_apply_refunding);
-                myItem.tv_center_my_order_seller_order_sn = (TextView) convertView
-                        .findViewById(R.id.tv_center_my_order_seller_order_sn);
-                convertView.setTag(myItem);
-            } else {
-                myItem = (CenterOrderOutsideItem) convertView.getTag();
+                    BLCenterOder data = datas.get(position);// 非未付订单列表
+                    int visiblePosition = fragment_center_order_ls.getFirstVisiblePosition();
+                    if (position - visiblePosition >= 0) {
+                        View view = fragment_center_order_ls.getChildAt(position - visiblePosition + 1);
+                        CenterOrderOutsideItem holder1 = (CenterOrderOutsideItem) view.getTag();
+                    }
+                    switch (Integer.parseInt(data.getOrder_status())){
+                        case PAll:
+                            if (0 == type) {//去付款
+
+                            }else{
+
+                            }
+                            break;
+                    }
+
+
+                    break;
+
+                case 2:
+                    datas.remove(position);
+                    notifyDataSetChanged();
+                    break;
+
             }
+        }
 
-            BLCenterOder data = datas.get(position);// 非未付订单列表
-
-            LogUtils.i("**************good--id****************" + data.getId());
+        private void ControlView(CenterOrderOutsideItem myItem, BLCenterOder data) {
             int showType = Integer.parseInt(data.getOrder_status());
             switch (showType) {
                 case PDaiFu:
@@ -820,6 +796,67 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     break;
             }
+        }
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see io.vtown.WeiTangApp.adapter.BasAdapter#getView(int,
+         * android.view.View, android.view.ViewGroup)
+         */
+        @Override
+        public View getView(int position, View convertView, ViewGroup arg2) {
+            CenterOrderOutsideItem myItem = null;
+            if (convertView == null) {
+
+                convertView = inflater.inflate(ResourceId, null);
+                myItem = new CenterOrderOutsideItem();
+                myItem.fragment_center_order_shopname = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_shopname);
+                myItem.fragment_center_order_cancel_order = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_cancel_order);
+                myItem.fragment_center_order_pay_to = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_pay_to);
+                myItem.fragment_center_order_pay_again = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_pay_again);
+                myItem.fragment_center_order_shouhuo_commiont = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_shouhuo_commiont);
+                myItem.fragment_center_order_apply_for_tuikuan_commiont = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_apply_for_tuikuan_commiont);
+                myItem.fragment_center_order_remind_fahuo = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_remind_fahuo);
+                myItem.fragment_center_order_arbitration = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_arbitration);
+                myItem.fragment_center_order_is_delaytime = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_is_delaytime);
+                myItem.fragment_center_order_delayreceive = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_delayreceive);
+                myItem.item_fragment_center_order_allnum = (TextView) convertView
+                        .findViewById(R.id.item_fragment_center_order_allnum);
+                myItem.item_fragment_center_order_allmoney = (TextView) convertView
+                        .findViewById(R.id.item_fragment_center_order_allmoney);
+                myItem.item_fragment_center_order_ls = (CompleteListView) convertView
+                        .findViewById(R.id.item_fragment_center_order_ls);
+                myItem.item_fragment_center_order_postage = (TextView) convertView
+                        .findViewById(R.id.item_fragment_center_order_postage);
+                myItem.fragment_center_order_is_cencal = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_is_cencal);
+                myItem.fragment_center_order_is_over = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_is_over);
+                myItem.fragment_center_order_apply_refunding = (TextView) convertView
+                        .findViewById(R.id.fragment_center_order_apply_refunding);
+                myItem.tv_center_my_order_seller_order_sn = (TextView) convertView
+                        .findViewById(R.id.tv_center_my_order_seller_order_sn);
+                convertView.setTag(myItem);
+            } else {
+                myItem = (CenterOrderOutsideItem) convertView.getTag();
+            }
+
+            BLCenterOder data = datas.get(position);// 非未付订单列表
+
+            LogUtils.i("**************good--id****************" + data.getId());
+            ControlView(myItem, data);
+
             StrUtils.SetTxt(myItem.tv_center_my_order_seller_order_sn,
                     data.getSeller_order_sn());
             StrUtils.SetColorsTxt(BaseContext,
@@ -833,7 +870,7 @@ public class ACenterMyOrder extends ATitleBase implements
 //                    .format("%1$s元", StrUtils.SetTextForMony(data
 //                            .getOrder_total_price())));
 
-            StrUtils.SetMoneyFormat(BaseContext,myItem.item_fragment_center_order_allmoney,data.getOrder_total_price(),17);
+            StrUtils.SetMoneyFormat(BaseContext, myItem.item_fragment_center_order_allmoney, data.getOrder_total_price(), 17);
 
             float postageF = Float.parseFloat(data.getPostage());
             StrUtils.SetTxt(
@@ -864,7 +901,7 @@ public class ACenterMyOrder extends ATitleBase implements
                         }
                     });
 
-            onClickEvent(myItem, data);
+            onClickEvent(position, myItem, data);
 
             return convertView;
 
@@ -876,7 +913,7 @@ public class ACenterMyOrder extends ATitleBase implements
          * @param myItem
          * @param blComment
          */
-        private void onClickEvent(CenterOrderOutsideItem myItem,
+        private void onClickEvent(final int position, CenterOrderOutsideItem myItem,
                                   final BLCenterOder blComment) {
 
             // 取消订单
@@ -893,7 +930,7 @@ public class ACenterMyOrder extends ATitleBase implements
                                             CancelMyOrder(
                                                     blComment.getOrder_sn(),
                                                     blComment.getMember_id());
-
+                                            SelectPosition = position;
                                         }
 
                                         @Override
@@ -926,6 +963,7 @@ public class ACenterMyOrder extends ATitleBase implements
                                                 return;
                                             GoPay(blComment.getMember_id(),
                                                     blComment.getOrder_sn());
+                                            SelectPosition = position;
                                         }
 
                                         @Override
@@ -950,6 +988,7 @@ public class ACenterMyOrder extends ATitleBase implements
                                             DelayReceive(blComment
                                                             .getSeller_order_sn(),
                                                     blComment.getMember_id());
+                                            SelectPosition = position;
                                         }
 
                                         @Override
@@ -975,6 +1014,7 @@ public class ACenterMyOrder extends ATitleBase implements
                                             ConfirmShouhuo(blComment
                                                             .getSeller_order_sn(),
                                                     blComment.getMember_id());
+                                            SelectPosition = position;
                                         }
 
                                         @Override
@@ -989,6 +1029,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     .setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            SelectPosition = position;
                             Intent intent = new Intent(BaseContext,
                                     AApplyTuikuan.class);
                             intent.putExtra("FromTag",
@@ -997,6 +1038,7 @@ public class ACenterMyOrder extends ATitleBase implements
                                     blComment.getSeller_order_sn());
                             PromptManager.SkipActivity((Activity) BaseContext,
                                     intent);
+
                         }
                     });
             // 提醒发货
@@ -1009,6 +1051,7 @@ public class ACenterMyOrder extends ATitleBase implements
                                 return;
                             RemindSendOut(blComment.getSeller_order_sn(),
                                     blComment.getMember_id());
+                            SelectPosition = position;
                         }
                     });
 
@@ -1227,8 +1270,8 @@ public class ACenterMyOrder extends ATitleBase implements
 //                    String.format("%1$s元", StrUtils.SetTextForMony(datas.get(
 //                            position).getOrder_total_price())));
 
-            StrUtils.SetMoneyFormat(BaseContext,centerOrderNoPay.item_fragment_center_order_no_pay_allmoney,datas.get(
-                    position).getOrder_total_price(),17);
+            StrUtils.SetMoneyFormat(BaseContext, centerOrderNoPay.item_fragment_center_order_no_pay_allmoney, datas.get(
+                    position).getOrder_total_price(), 17);
             float postage_moneyF = Float.parseFloat(datas.get(position)
                     .getPostage_money());
             StrUtils.SetTxt(
@@ -1534,7 +1577,6 @@ public class ACenterMyOrder extends ATitleBase implements
     }
 
 
-
     /**
      * 接收事件
      *
@@ -1574,7 +1616,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
                     if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
                         //PromptManager.ShowCustomToast(BaseContext, "暂无订单");
-                        switch (Ket_Tage){
+                        switch (Ket_Tage) {
 
 
                             case PAll:
@@ -1681,13 +1723,13 @@ public class ACenterMyOrder extends ATitleBase implements
                             //fragment_center_order_ls.ShowFoot();
                             fragment_center_order_refrash.setCanLoadMore(true);
                         if (order_list.size() < Constants.PageSize)
-                           // fragment_center_order_ls.hidefoot();
+                            // fragment_center_order_ls.hidefoot();
                             fragment_center_order_refrash.setCanLoadMore(false);
                         break;
 
                     case LOAD_LOADMOREING:// 加载更多
                         fragment_center_order_refrash.setLoading(false);
-                       // fragment_center_order_ls.stopLoadMore();
+                        // fragment_center_order_ls.stopLoadMore();
                         if (PDaiFu == Ket_Tage) {
                             centerOrderNoPayAdapter.AddFrashData(order_list);
                         } else {
@@ -1697,7 +1739,7 @@ public class ACenterMyOrder extends ATitleBase implements
                         if (order_list.size() == Constants.PageSize)
                             //fragment_center_order_ls.ShowFoot();
                             fragment_center_order_refrash.setCanLoadMore(true);
-                        if (order_list.size() < Constants.PageSize){
+                        if (order_list.size() < Constants.PageSize) {
                             //fragment_center_order_ls.hidefoot();
                             fragment_center_order_refrash.setCanLoadMore(false);
 
@@ -1761,7 +1803,7 @@ public class ACenterMyOrder extends ATitleBase implements
                 ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
                 break;
             case LOAD_REFRESHING:// 刷新数据
-               // fragment_center_order_ls.stopRefresh();
+                // fragment_center_order_ls.stopRefresh();
 
                 break;
             case LOAD_LOADMOREING:// 加载更多
@@ -1798,7 +1840,7 @@ public class ACenterMyOrder extends ATitleBase implements
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.title:
-                if(CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
                 showPopupWindow(V);
                 break;
             case R.id.ll_center_order_all:
