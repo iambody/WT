@@ -9,7 +9,7 @@ import io.vtown.WeiTangApp.fragment.main.FMainShop;
 import io.vtown.WeiTangApp.ui.ABaseFragment;
 
 /**
- * Created by datutu on 2016/10/28.
+ *
  */
 
 public class AMyShop extends ABaseFragment {
