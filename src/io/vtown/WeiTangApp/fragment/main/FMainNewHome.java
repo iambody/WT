@@ -57,6 +57,7 @@ import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.AIntegralDetail;
 import io.vtown.WeiTangApp.ui.title.AInviteFriendRecord;
+import io.vtown.WeiTangApp.ui.title.ANewCenter;
 import io.vtown.WeiTangApp.ui.title.AReturnDetail;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.title.loginregist.AInviteAndApprove;
@@ -547,7 +548,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                         ANew.class));
                 break;
             case R.id.fragment_newhome_head_iv:
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AShopData.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewCenter.class));
                 break;
             case R.id.fragment_newhome_renshu_lay:
 

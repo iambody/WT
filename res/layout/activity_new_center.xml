@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/app_bg"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/titlebar"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/insulate_view_height"
+        android:background="@color/app_bg"/>
+
+    <include
+        android:id="@+id/view_personal_data"
+        layout="@layout/commentview_center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/insulate_view_height"
+        android:background="@color/app_bg"/>
+
+    <include
+        android:id="@+id/view_good_soucang"
+        layout="@layout/commentview_center"/>
+
+    <View
+        style="@style/line_left2"/>
+
+    <include
+        android:id="@+id/view_shop_guanzhu"
+        layout="@layout/commentview_center"/>
+    <View
+        style="@style/line_left2"/>
+
+    <include
+        android:id="@+id/view_scan_record"
+        layout="@layout/commentview_center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/insulate_view_height"
+        android:background="@color/app_bg"/>
+
+    <include
+        android:id="@+id/view_setting"
+        layout="@layout/commentview_center"/>
+
+</LinearLayout>

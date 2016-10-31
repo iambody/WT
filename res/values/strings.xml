@@ -723,4 +723,12 @@
     <string name="no_doudou_data">没有相关数据</string>
     <string name="other_noshow">主人太懒,还没上传SHOW</string>
 
+    <!--我的页面-->
+    <string name="my_title">我的</string>
+    <string name="my_personal_data">个人资料</string>
+    <string name="my_good_shouchang">商品收藏</string>
+    <string name="my_shop_guanzhu">店铺关注</string>
+    <string name="my_scan_record">浏览记录</string>
+    <string name="my_setting">设置</string>
+
 </resources>
