@@ -53,13 +53,17 @@ import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
+import io.vtown.WeiTangApp.ui.title.ACenter;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.AIntegralDetail;
 import io.vtown.WeiTangApp.ui.title.AInviteFriendRecord;
 import io.vtown.WeiTangApp.ui.title.ANewCenter;
 import io.vtown.WeiTangApp.ui.title.AReturnDetail;
+import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
+import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.AInviteAndApprove;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.title.mynew.ANew;
@@ -117,6 +121,9 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     private TextView Text_fragment_newhome_RenShu, Text_fragment_newhome_JiFen, Text_fragment_newhome_YongJin;
     //签到,邀请，礼包,特卖
     private View fragment_newhome_qian_lay, fragment_newhome_yaoqing_lay, fragment_newhome_libao_lay, fragment_newhome_temai_lay;
+    //3.1新添加的我的钱包，我的卡券，我的店铺，我的订单
+    private View fragment_newhome_wallet_lay, fragment_newhome_kaquan_lay, fragment_newhome_myshop_lay, fragment_newhome_myoder_lay;
+
     //ButterKnife句柄
     private Unbinder unbinder;
     //WaveHelper句柄
@@ -319,6 +326,16 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         SetDownLay(fragment_newhome_yaoqing_lay, getResources().getString(R.string.newhome_yaoqing), R.drawable.newhome_down_freads);
         SetDownLay(fragment_newhome_libao_lay, getResources().getString(R.string.newhome_libao), R.drawable.newhome_down_libao);
         SetDownLay(fragment_newhome_temai_lay, getResources().getString(R.string.newhome_temai), R.drawable.newhome_down_temai);
+        //下边布局3.1*******************
+        fragment_newhome_wallet_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_wallet_lay);
+        fragment_newhome_kaquan_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_kaquan_lay);
+        fragment_newhome_myshop_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_myshop_lay);
+        fragment_newhome_myoder_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_myoder_lay);
+        SetDownLay(fragment_newhome_wallet_lay, getResources().getString(R.string.newhome_wallet), R.drawable.newhome_down_qian);
+        SetDownLay(fragment_newhome_kaquan_lay, getResources().getString(R.string.newhome_kaquan), R.drawable.newhome_down_freads);
+        SetDownLay(fragment_newhome_myshop_lay, getResources().getString(R.string.newhome_myshop), R.drawable.newhome_down_libao);
+        SetDownLay(fragment_newhome_myoder_lay, getResources().getString(R.string.newhome_wodeoder), R.drawable.newhome_down_temai);
+
 
         fragmentNewhomeHeadIv.setBorderWidth(5);
         fragmentNewhomeHeadIv.setBorderColor(getResources().getColor(R.color.transparent6));
@@ -562,7 +579,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //                    return;
 //                }
 //                if (Spuit.IsHaveActive_Get(BaseActivity)) {
-                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AInviteFriendRecord.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AInviteFriendRecord.class));
 //                }
 //
 //                if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {
@@ -742,9 +759,21 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                         AWeb.Key_Bean,
                         new BComment(Constants.Home_Level, getResources().getString(R.string.dengjiguize))));
                 break;
+            case R.id.fragment_newhome_wallet_lay:
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ACenterWallet.class));
+                break;
+            case R.id.fragment_newhome_kaquan_lay:
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AMyCoupons.class));
+                break;
+            case R.id.fragment_newhome_myshop_lay:
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AMyShop.class));
+                break;
+            case R.id.fragment_newhome_myoder_lay:
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ACenterMyOrder.class));
+                break;
         }
-//        fragmentNewhomeIvLaya.setVisibility(View.GONE);
-//        fragmentNewhomeIvLaya.getBackground().setAlpha(255);
+//        fragment_newhome_wallet_lay,fragment_newhome_kaquan_lay,fragment_newhome_myshop_lay,fragment_newhome_myoder_lay
+
     }
 
 
@@ -757,9 +786,9 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //            shopping_cart.getBackground().setAlpha(255);
 //        } else if (scrollY >= 100 && scrollY < 860) {//860
             Log.i("homejuli", "小于100==>" + scrollY);
-        } else if (scrollY >= 20 && scrollY < 160) {//860
+        } else if (scrollY >= 20 && scrollY < 256) {//860
             Log.i("homejuli", "大于100小于160==>" + scrollY);
-            fragmentNewhomeIvLaya.getBackground().mutate().setAlpha((scrollY + 50));//scrollY-100
+            fragmentNewhomeIvLaya.getBackground().mutate().setAlpha((scrollY));//scrollY-100
 //            PromptManager.ShowCustomToast(BaseContext, "数据" + scrollY);
 //            back.getBackground().setAlpha(255 - (scrollY-100)/3);
 //            shopping_cart.getBackground().setAlpha(255 - (scrollY-100)/3);

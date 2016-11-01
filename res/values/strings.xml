@@ -730,5 +730,9 @@
     <string name="my_shop_guanzhu">店铺关注</string>
     <string name="my_scan_record">浏览记录</string>
     <string name="my_setting">设置</string>
+    <string name="newhome_wallet">我的钱包</string>
+    <string name="newhome_kaquan">我的卡券</string>
+    <string name="newhome_myshop">我的店铺</string>
+    <string name="newhome_wodeoder">我的订单</string>
 
 </resources>
