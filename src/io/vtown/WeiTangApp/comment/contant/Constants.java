@@ -136,6 +136,12 @@ public class Constants {
     public static String UpData = Host + "/v1/api/api/get-version";
 
     /**
+     * 店铺+商品搜索
+     */
+    public static String Search_Shop_Good = Host + "/v1/search/search/searchall";
+
+
+    /**
      * 商品搜索
      */
     public static String SouGood = Host + "/v1/search/search/tag";

@@ -21,6 +21,7 @@ import io.vtown.WeiTangApp.db.dao.DaoSouRecord;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitileNoBase;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
+import io.vtown.WeiTangApp.ui.title.ASearchResult;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -306,6 +307,8 @@ public class ASouSouGood extends ATitileNoBase {
                                             .putExtra(
                                                     ACommentList.Tage_BeanKey,
                                                     data));
+
+
                     BaseActivity.finish();
                 }
 
@@ -324,6 +327,8 @@ public class ASouSouGood extends ATitileNoBase {
                                 ACommentList.Tage_ResultKey,
                                 ACommentList.Tage_SouGoodResultItem).putExtra(
                                 ACommentList.Tage_BeanKey, data));
+
+
                 AddCacheData(DATA);
                 // BaseActivity.finish();
             }
@@ -734,6 +739,7 @@ public class ASouSouGood extends ATitileNoBase {
                                                     .putExtra(
                                                             ACommentList.Tage_BeanKey,
                                                             data));
+
                         }
                     });
 
@@ -765,17 +771,20 @@ public class ASouSouGood extends ATitileNoBase {
 
                 AddCacheData(new BSouRecord(GetRandomId(), sousou_sou_ed.getText()
                         .toString()));
-                BComment data = new BComment("", sousou_sou_ed.getText().toString()
-                        .trim());
+//                BComment data = new BComment("", sousou_sou_ed.getText().toString()
+//                        .trim());
+//
+//                // AddCacheData(new BSouRecord("1", DATA.getTitle(),
+//                // 1 + ""));
+//                PromptManager.SkipActivity(
+//                        BaseActivity,
+//                        new Intent(BaseActivity, ACommentList.class).putExtra(
+//                                ACommentList.Tage_ResultKey,
+//                                ACommentList.Tage_SouGoodResultItem).putExtra(
+//                                ACommentList.Tage_BeanKey, data));
 
-                // AddCacheData(new BSouRecord("1", DATA.getTitle(),
-                // 1 + ""));
-                PromptManager.SkipActivity(
-                        BaseActivity,
-                        new Intent(BaseActivity, ACommentList.class).putExtra(
-                                ACommentList.Tage_ResultKey,
-                                ACommentList.Tage_SouGoodResultItem).putExtra(
-                                ACommentList.Tage_BeanKey, data));
+
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, ASearchResult.class).putExtra("search_key",sousou_sou_ed.getText().toString()));
 
                 break;
             case R.id.sousou_history_ls_clearn:// 清理全部历史记录

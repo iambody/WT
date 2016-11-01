@@ -986,24 +986,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                         centerGoodCollect.tv_center_good_collect_good_price = ViewHolder
                                 .get(convertView,
                                         R.id.tv_center_good_collect_good_price);
-                        centerGoodCollect.tv_center_good_collect_good_rule1 = ViewHolder
-                                .get(convertView,
-                                        R.id.tv_center_good_collect_good_rule1);
-                        centerGoodCollect.tv_center_good_collect_good_rule2 = ViewHolder
-                                .get(convertView,
-                                        R.id.tv_center_good_collect_good_rule2);
-                        centerGoodCollect.tv_center_good_collect_good_rule3 = ViewHolder
-                                .get(convertView,
-                                        R.id.tv_center_good_collect_good_rule3);
-                        centerGoodCollect.ll_center_good_collect_good_rule1 = ViewHolder
-                                .get(convertView,
-                                        R.id.ll_center_good_collect_good_rule1);
-                        centerGoodCollect.ll_center_good_collect_good_rule2 = ViewHolder
-                                .get(convertView,
-                                        R.id.ll_center_good_collect_good_rule2);
-                        centerGoodCollect.ll_center_good_collect_good_rule3 = ViewHolder
-                                .get(convertView,
-                                        R.id.ll_center_good_collect_good_rule3);
+
 
 
                         centerGoodCollect.tv_center_good_collect_good_origprice= ViewHolder

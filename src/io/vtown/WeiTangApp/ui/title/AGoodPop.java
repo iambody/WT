@@ -39,6 +39,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BGoodDetail;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
+import io.vtown.WeiTangApp.bean.bcomment.easy.SerializableMap;
 import io.vtown.WeiTangApp.bean.bcomment.easy.gooddetail.BDataGood;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
@@ -373,7 +374,13 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     * 立即购买-----》生成订单页面
     * */
     private void toBuy() {
-        PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AOderBeing.class).putExtra("isDirectBuy",true));
+        HashMap<String, String> map = new HashMap<>();
+        CommintData(map);
+        SerializableMap tmpmap=new SerializableMap();
+        tmpmap.setMap(map);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("DirectBuyInfo", tmpmap);
+        PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AOderBeing.class).putExtras(bundle));
     }
 
     /**

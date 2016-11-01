@@ -705,6 +705,11 @@
             android:name=".ui.title.ANewCenter"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.title.ASearchResult"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->
 
 

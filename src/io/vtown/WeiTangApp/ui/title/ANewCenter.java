@@ -134,7 +134,7 @@ public class ANewCenter extends ATitleBase {
 
             case R.id.view_about_me:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AAboutWt.class));
+                        ASearchResult.class));
                 break;
 
             case R.id.view_setting:

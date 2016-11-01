@@ -6,6 +6,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.SerializableMap;
 import io.vtown.WeiTangApp.bean.bcomment.easy.coupons.BLMyCoupons;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
@@ -136,22 +137,56 @@ public class AOderBeing extends ATitleBase {
     // ;;2==》当前显示 使用卡券
     private View oderbering_view;
     private TextView RightShowTxt;
+    HashMap<String, String> map = null;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_oderbeing);
+        SetTitleHttpDataLisenter(this);
         user_Get = Spuit.User_Get(BaseContext);
         EventBus.getDefault().register(this, "ReciverInf", BMessage.class);
         IBundle();
         IBase();
 
-        IData(user_Get.getId(), AccountStr);
+        if (null == map) {
+            IData(user_Get.getId(), AccountStr);
+        } else {
+            IDirectBuy();
+
+        }
+
+    }
+
+    private void IDirectBuy() {
+        IDataView(oderbeing_out_lay, oderbeing_nodata_lay, NOVIEW_INITIALIZE);
+        PromptManager.showtextLoading(BaseContext,
+                getResources().getString(R.string.loading));
+        FBGetHttpData(map, Constants.Direct_Buy, Method.POST, 0, LOAD_INITIALIZE);
     }
 
     private void IBundle() {
-        if (getIntent().getExtras() != null
-                && getIntent().getExtras().containsKey("accountstr")) {
-            AccountStr = getIntent().getStringExtra("accountstr");
+
+
+//        if (getIntent().getExtras() != null
+//                && getIntent().getExtras().containsKey("accountstr")) {
+//            AccountStr = getIntent().getStringExtra("accountstr");
+//        }else if (getIntent().getExtras() != null) {
+//            Bundle bundle = getIntent().getExtras();
+//            SerializableMap serializableMap = (SerializableMap) bundle
+//                    .get("DirectBuyInfo");
+//            map = serializableMap.getMap();
+//        }
+
+
+        if(getIntent().getExtras() != null){
+            if(getIntent().getExtras().containsKey("accountstr")){
+                AccountStr = getIntent().getStringExtra("accountstr");
+            }else{
+                Bundle bundle = getIntent().getExtras();
+                SerializableMap serializableMap = (SerializableMap) bundle
+                        .get("DirectBuyInfo");
+                map = serializableMap.getMap();
+            }
         }
     }
 
@@ -166,7 +201,7 @@ public class AOderBeing extends ATitleBase {
         IDataView(oderbeing_out_lay, oderbeing_nodata_lay, NOVIEW_INITIALIZE);
         PromptManager.showtextLoading(BaseContext,
                 getResources().getString(R.string.loading));
-        SetTitleHttpDataLisenter(this);
+
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("member_id", member);
         map.put("cid", cid);
@@ -339,7 +374,7 @@ public class AOderBeing extends ATitleBase {
             oderbeing_coupons_lay.setVisibility(View.INVISIBLE);
         }
         if (!StrUtils.isEmpty(mBdComment.getCouponsNum())) {
-            StrUtils.SetTxt(oderbeing_coupons_nameprice, mBdComment.getCouponsNum()+"张可用卡券" );
+            StrUtils.SetTxt(oderbeing_coupons_nameprice, mBdComment.getCouponsNum() + "张可用卡券");
         }
         oderAp.FrashData(mBdComment.getList());
         // 判断地址数据是否为空
@@ -500,7 +535,7 @@ public class AOderBeing extends ATitleBase {
                     iBlComment.getSeller_name());
 //            StrUtils.SetTxt(oderOutItem.item_oderbeing_out_yunfei, "￥"
 //                    + StrUtils.SetTextForMony(iBlComment.getPostage()));
-            StrUtils.SetColorsTxt(BaseContext,oderOutItem.item_oderbeing_out_yunfei,R.color.gray,R.color.app_fen,"运费:","￥"+StrUtils.SetTextForMony(iBlComment.getPostage()));
+            StrUtils.SetColorsTxt(BaseContext, oderOutItem.item_oderbeing_out_yunfei, R.color.gray, R.color.app_fen, "运费:", "￥" + StrUtils.SetTextForMony(iBlComment.getPostage()));
             StrUtils.SetTxt(oderOutItem.item_oderbeing_out_mony,
                     iBlComment.getAll_money());
             StrUtils.SetColorsTxt(BaseContext,
@@ -865,7 +900,7 @@ public class AOderBeing extends ATitleBase {
                 .toString().trim())
                 || StrUtils.isEmpty1(commentview_add_phone.getText().toString()
                 .trim())) {
-            PromptManager.ShowCustomToast(BaseContext, getResources()  .getString(R.string.querendizhi));
+            PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.querendizhi));
             return;
         }
 
