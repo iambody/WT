@@ -54,8 +54,11 @@ import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.listview.HorizontalListView;
 import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
+import io.vtown.WeiTangApp.ui.title.account.AOderBeing;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 
 /**
  * Created by Yihuihua on 2016/9/21.
@@ -348,7 +351,6 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     }
 
 
-
     private void CommintData(HashMap<String, String> map) {
 
         map.put("member_id", user_Get.getId());
@@ -365,6 +367,13 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         map.put("goods_id", goods_id);
         map.put("goods_attr_name", goods_attr_name);
         map.put("goods_attr", goods_attr);
+    }
+
+    /*
+    * 立即购买-----》生成订单页面
+    * */
+    private void toBuy() {
+        PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AOderBeing.class).putExtra("isDirectBuy",true));
     }
 
     /**
@@ -901,6 +910,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                 showShare.showAtLocation(mRootView, Gravity.CENTER, 0, 0);
 
                 break;
+
         }
     }
 
@@ -913,7 +923,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     /**
      * 添加到购物车sssss
      */
-    private void AddGoodBus() {
+    private void AddGoodBus(int type) {
         BDataGood blComment = (LastClickIsUp ? myUpAdapter : myDownAdapter)
                 .GetDataResource().get(LastClickItem);
         String c1 = blComment.getAttr_map().getC1();
@@ -930,7 +940,30 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
             PromptManager.ShowMyToast(BaseContext, "请选择数量");
             return;
         }
-        ConnectNet(1);
+        if(type == 1){
+            ConnectNet(1);
+        }else{
+            //如果没绑定邀请码就先绑定
+            if (!Spuit.IsHaveBind_Get(BaseContext)) {
+                ShowCustomDialog("请先绑定邀请码", getResources().getString(R.string.cancle),
+                        getResources().getString(R.string.queding),
+                        new IDialogResult() {
+
+                            @Override
+                            public void RightResult() {
+                                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                        ANewBindCode.class));
+                            }
+
+                            @Override
+                            public void LeftResult() {
+                            }
+                        });
+                return;
+            }
+            toBuy();
+        }
+
     }
 
     @Override
@@ -979,7 +1012,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
             case TYPE_GOOD_DETAIL_BUY:
 
-                AddGoodBus();
+                AddGoodBus(1);
 
                 break;
             case TYPE_GOOD_DETAIL_REPLACE_SELL:
@@ -994,8 +1027,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
             case TYPE_GOOD_DETAIL_BUY:
 
-                this.finish();
-                // toBuy();
+                //this.finish();
+                AddGoodBus(2);
                 break;
             case TYPE_GOOD_DETAIL_REPLACE_SELL:
                 ConnectNet(2);
@@ -1005,6 +1038,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                 break;
         }
     }
+
 
     @Override
     protected void InItBundle(Bundle bundle) {

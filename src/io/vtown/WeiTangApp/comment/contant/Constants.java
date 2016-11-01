@@ -703,6 +703,11 @@ public class Constants {
     public static String Add_to_Good_Bus = Host + "/v1/shopcart/cart/add";
 
     /**
+     * 立即购买
+     */
+    public static String Direct_Buy= Host + "/v1/order/order/direct-buy";
+
+    /**
      * 商品上架
      */
     public static String Add_to_online = Host + "/v1/goods/goods/online";

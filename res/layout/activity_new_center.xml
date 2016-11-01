@@ -21,6 +21,13 @@
         android:background="@color/app_bg"/>
 
     <include
+        android:id="@+id/view_my_show"
+        layout="@layout/commentview_center"/>
+
+    <View
+        style="@style/line_left2"/>
+
+    <include
         android:id="@+id/view_good_soucang"
         layout="@layout/commentview_center"/>
 
@@ -35,6 +42,15 @@
 
     <include
         android:id="@+id/view_scan_record"
+        layout="@layout/commentview_center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/insulate_view_height"
+        android:background="@color/app_bg"/>
+
+    <include
+        android:id="@+id/view_about_me"
         layout="@layout/commentview_center"/>
 
     <View
