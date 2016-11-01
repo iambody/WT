@@ -684,7 +684,12 @@
 
 
         <activity
-            android:name=".ui.title.loginregist.bindcode_three.ANewBindCode"
+        android:name=".ui.title.loginregist.bindcode_three.ANewBindCode"
+        android:launchMode="singleTask"
+        android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.title.AMyLeader"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
@@ -693,6 +698,11 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.afragment.AMyShop"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.title.ANewCenter"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->

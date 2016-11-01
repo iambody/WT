@@ -426,6 +426,21 @@ public class ACenterMyOrder extends ATitleBase implements
     }
 
     /**
+     * 快速获取积分
+     *
+     * @param seller_order_sn
+     * @param member_id
+     */
+    private void getIntegral(String seller_order_sn, String member_id){
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("member_id", member_id);
+        map.put("seller_order_sn", seller_order_sn);
+
+        FBGetHttpData(map, Constants.Center_My_Order_Integral, Method.GET,
+                6, 1116);
+    }
+
+    /**
      * 暴露当是哪个订单状态的页面
      *
      * @return
@@ -1783,6 +1798,12 @@ public class ACenterMyOrder extends ATitleBase implements
 
             case 5:// 延迟收货
                 PromptManager.ShowMyToast(BaseContext, "订单已延期");
+                last_id = "";
+                IData(LOAD_INITIALIZE, Ket_Tage + "");
+                break;
+
+            case 6:// 延迟收货
+                PromptManager.ShowMyToast(BaseContext, "积分获取成功");
                 last_id = "";
                 IData(LOAD_INITIALIZE, Ket_Tage + "");
                 break;
