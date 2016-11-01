@@ -46,6 +46,7 @@ import io.vtown.WeiTangApp.fragment.main.FMainNewShow;
 import io.vtown.WeiTangApp.fragment.main.FMainShop;
 import io.vtown.WeiTangApp.fragment.main.FMainShopBus;
 import io.vtown.WeiTangApp.fragment.main.FMainShow;
+import io.vtown.WeiTangApp.fragment.main.FMainSort;
 import io.vtown.WeiTangApp.service.DownloadService;
 import io.vtown.WeiTangApp.ui.ABaseFragment;
 
@@ -119,7 +120,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         UpCheck();
         Fragments = new ArrayList<FBase>();
         FMainHome = new FMainNewHome();//new FMainHome();
-        FMainShop = new FMainShop();
+        FMainShop = new FMainSort(); //FMainShop();
         FMainShow = new FMainShow();//FMainShow();FMainNewShow
         FMainShopBus = new FMainShopBus();
        // FMainCenter = new FMainCenter();

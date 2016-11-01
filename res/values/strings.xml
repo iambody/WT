@@ -736,5 +736,8 @@
     <string name="newhome_kaquan">我的卡券</string>
     <string name="newhome_myshop">我的店铺</string>
     <string name="newhome_wodeoder">我的订单</string>
+    <string name="main_news">消息</string>
+    <string name="main_shangdian">商城</string>
+    <string name="shop_souso">搜索</string>
 
 </resources>

@@ -41,13 +41,17 @@ public class HorizontalScrollMenu extends LinearLayout {
 	private int mPaddingLeft = 80;
 	private int mPaddingTop = 20;
 	private int mPaddingRight = 80;
-	private int mPaddingBottom = 20;
+	private int mPaddingBottom = 10;
 	private HorizontalScrollView hsv_menu;
 	private boolean[] mVisitStatus; // 菜单访问状态
 	private List<String> mItems; // 菜单名
 	private List<View> mPagers; // 内容页
 	private boolean mSwiped = true; // 是否可滑动
+	private View vvv;
+	public void SetBgColo(int resouceid){
+		mBackgroundResId=resouceid;
 
+	}
 	public HorizontalScrollMenu(Context context) {
 		this(context, null);
 		// TODO Auto-generated constructor stub
@@ -64,16 +68,19 @@ public class HorizontalScrollMenu extends LinearLayout {
 		super(context, attrs, defStyle);
 		// TODO Auto-generated constructor stub
 		mContext = context;
-		View v = LayoutInflater.from(context).inflate(
+		vvv = LayoutInflater.from(context).inflate(
 				R.layout.horizontal_scroll_menu, this, true);
-		rg_items = (RadioGroup) v.findViewById(R.id.rg_items);
+		rg_items = (RadioGroup) vvv.findViewById(R.id.rg_items);
 		// vp_content = (MyViewPager) v.findViewById(R.id.vp_content);
 		mColors = getResources().getColorStateList(
 				R.drawable.selector_menu_item_text);
-		hsv_menu = (HorizontalScrollView) v.findViewById(R.id.hsv_menu);
+		hsv_menu = (HorizontalScrollView) vvv.findViewById(R.id.hsv_menu);
 		mBackgroundResId = R.drawable.bg_rb_checked;
 	}
 
+	public void SetLayoutColor(int bgresource){
+		rg_items.setBackgroundColor(bgresource);
+	}
 	public void setAdapter(HBaseAdapter adapter) {
 		if (null != adapter) {
 			adapter.setHorizontalScrollMenu(this);
