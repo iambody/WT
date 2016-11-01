@@ -22,6 +22,7 @@ public class BNewHome extends BBase {
     private String activitydata;//激活礼包数据 ":"",
     private int is_attendance;//今天是否签到":1
     private List<BLBanner> banner;
+    private String category;
     private BNewShop sellerinfo = new BNewShop();
     //激活专区
     private String activityid;//=28
@@ -140,5 +141,13 @@ public class BNewHome extends BBase {
 
     public void setMember_level_name(String member_level_name) {
         this.member_level_name = member_level_name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

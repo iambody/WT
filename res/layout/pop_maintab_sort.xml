@@ -2,55 +2,128 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="horizontal">
-
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"/>
-
-    <!-- 左侧-->
+              android:orientation="vertical">
+    <!-- 上边透明的的不需要显示的 -->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/pop_maitab_sort_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="lsajlsajsajasl"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/titlebarheingh"/>
 
-        <TextView
-            android:id="@+id/pop_maitab_sort_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="lsajlsajsajasl"/>
-
-        <TextView
-            android:id="@+id/pop_maitab_sort_jifen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="lsajlsajsajasl"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"/>
     </LinearLayout>
-    <!-- 左侧......   -->
+    <!-- 上边透明的的不需要显示的************************ -->
+    <!-- 下边的需要显示的 -->
 
-    <!-- 右侧   -->
-    <ScrollView
-        android:layout_width="wrap_content"
+
+    <!--横向 显示的-->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sdda"/>
-
-        <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
-            android:id="@+id/pop_maitab_sort_ls"
+        android:orientation="horizontal">
+        <!-- 左侧******************************************-->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            />
-    </ScrollView>
-    <!-- 右侧.....   -->
+            android:background="@color/app_line2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pop_maitab_sort_type"
+                style="@style/pop_sort_left_txt"
+                android:text="@string/type"/>
+
+            <TextView
+                android:id="@+id/pop_maitab_sort_price"
+                style="@style/pop_sort_left_txt"
+                android:text="@string/price"/>
+
+            <TextView
+                android:id="@+id/pop_maitab_sort_jifen"
+                style="@style/pop_sort_left_txt"
+                android:text="@string/jifen"/>
+
+            <TextView
+                android:id="@+id/pop_maitab_sort_branc"
+                style="@style/pop_sort_left_txt"
+                android:text="@string/pinpai"/>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+
+            <TextView
+                android:id="@+id/pop_maitab_queding"
+                style="@style/pop_sort_left_txt"
+                android:background="@drawable/select_gray_to_withe"
+                android:text="@string/queding"
+                />
+
+            <TextView
+                android:id="@+id/pop_maitab_reset"
+                style="@style/pop_sort_left_txt"
+                android:background="@drawable/select_gray_to_withe"
+                android:text="@string/chongzhi"/>
+
+            <TextView
+                android:id="@+id/pop_maitab_cancle"
+                style="@style/pop_sort_left_txt"
+                android:background="@drawable/select_gray_to_withe"
+                android:text="@string/cancle"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"/>
+
+
+        </LinearLayout>
+        <!-- 左侧********************************************   -->
+
+
+        <!-- 右侧 ****************************************  -->
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/ui_20_dip"
+                    android:text="全部"/>
+
+                <!--<io.vtown.WeiTangApp.comment.view.custom.CompleteListView-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:background="@color/red"/>-->
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/red"/>
+
+            </LinearLayout>
+        </ScrollView>
+        <!-- 右侧 ***************************************  -->
+
+        <!--横向 显示的*******-->
+
+    </LinearLayout>
+
+
 </LinearLayout>

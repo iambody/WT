@@ -63,13 +63,46 @@
             android:src="@drawable/new1"/>
     </LinearLayout>
     <!-- title*** -->
-
-
-
     <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu
         android:id="@+id/f_sort_goofd_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <TextView
+            style="@style/style_sort_up_txt"
+            android:id="@+id/sort_good_zonghe"
+            android:text="@string/zonghe"
+            android:textColor="@color/app_fen"
+            />
+        <TextView
+            android:id="@+id/sort_good_price"
+            style="@style/style_sort_up_txt"
+            android:text="@string/jiage"
+            android:textColor="@color/gray"/>
+
+        <TextView
+            android:id="@+id/sort_good_jifen"
+            style="@style/style_sort_up_txt"
+            android:text="@string/jifen"
+            android:textColor="@color/gray"/>
+
+        <TextView
+            android:id="@+id/sort_good_xiaoliang"
+            style="@style/style_sort_up_txt"
+            android:text="@string/xiaoliang"
+            android:textColor="@color/gray"/>
+
+        <TextView
+            android:id="@+id/sort_good_shaixuan"
+            style="@style/style_sort_up_txt"
+            android:text="@string/shaixuan"
+            android:textColor="@color/gray"/>
+    </LinearLayout>
 
 </LinearLayout>

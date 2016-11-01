@@ -122,6 +122,10 @@ public class CacheUtil {
      * 返佣明细的数据的缓存
      */
     private final static String SP_Return_Detail = "returndetail";
+    /**
+     * 以及分类
+     */
+    private final static String SP_Good_Sort="goodsort_sp";
 
     /**
      * 缓存首页数据
@@ -788,4 +792,19 @@ public class CacheUtil {
 
     }
 
+    //保存商品一级分类
+    //保存商品分类
+    public static void HomeSort_Save(Context PContext,String Str){
+//        SP_Good_Sort
+        SharedPreferences Sp = PContext.getSharedPreferences(SP_Good_Sort,
+                Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+        editor.putString("newhomesortstr", Str);
+        editor.commit();
+    }
+    public static String HomeSort_Get(Context pContext) {
+        SharedPreferences Sp = pContext.getSharedPreferences(SP_Good_Sort,
+                Context.MODE_PRIVATE);
+        return Sp.getString("newhomesortstr", "");
+    }
 }

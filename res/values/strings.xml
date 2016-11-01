@@ -739,5 +739,14 @@
     <string name="main_news">消息</string>
     <string name="main_shangdian">商城</string>
     <string name="shop_souso">搜索</string>
+    <string name="zonghe">综合</string>
+    <string name="jiage">价格</string>
+    <string name="jifen">积分</string>
+    <string name="xiaoliang">销量</string>
+    <string name="shaixuan">筛选</string>
+    <string name="type">类别</string>
+    <string name="price">价格</string>
+    <string name="pinpai">品牌</string>
+    <string name="chongzhi">重置</string>
 
 </resources>

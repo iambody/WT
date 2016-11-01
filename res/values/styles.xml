@@ -81,12 +81,14 @@
         <item name="android:layout_weight">1</item>
         <item name="android:padding">6dp</item>
     </style>
+
     <style name="iv_text3">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:padding">10dp</item>
     </style>
+
     <style name="fragment_shop_up_lay_txt_pading_lay">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -393,4 +395,54 @@
     </style>-->
     <!-- <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>-->
     <dimen name="fragment_shop_up_lay_up_textsize">22dp</dimen>
+
+
+    <style name="style_sort_up_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+
+    <style name="MySortDialogStyleTop">
+        <item name="android:windowAnimationStyle">@style/AnimTop2</item>
+        <!--
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        -->
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 模糊 -->
+    </style>
+
+    <style name="AnimTop2" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_rigth_in1</item>
+        <item name="android:windowExitAnimation">@anim/push_rigth_out1</item>
+    </style>
+
+    <!-- maintab-->分类弹出框左边的点击事件 -->
+
+    <style name="pop_sort_left_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:paddingTop">@dimen/ui_15_dip</item>
+        <item name="android:paddingBottom">@dimen/ui_15_dip</item>
+        <item name="android:paddingLeft">@dimen/ui_30_dip</item>
+        <item name="android:paddingRight">@dimen/ui_30_dip</item>
+
+    </style>
+
+
 </resources>

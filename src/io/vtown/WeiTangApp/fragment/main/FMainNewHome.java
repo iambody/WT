@@ -516,6 +516,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                     fragmentNewhomeSrollviw.setRefreshing(false);
                 }
                 MBNewHome = JSON.parseObject(Data.getHttpResultStr(), BNewHome.class);
+                CacheUtil.HomeSort_Save(BaseContext,MBNewHome.getCategory());
                 BindHomeData(MBNewHome);
                 CacheUtil.NewHome_Save(BaseContext, Data.getHttpResultStr());
                 break;

@@ -710,6 +710,11 @@
             android:name=".ui.title.ASearchResult"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.comment.AMianSort"
+            android:theme="@style/MySortDialogStyleTop"
+            android:screenOrientation="portrait"
+            />
         <!-- activity的space************************************* -->
 
 
