@@ -975,6 +975,14 @@ public class Constants {
      * 品牌列表关键字
      */
     public static String  BrandsLs=Host +"/v1/goods/search/keywords";
+    /**
+     * 筛选时候价格的区间段列表
+     */
+    public static String  MainSort_Price_Rang=Host +"/v1/goods/search/price";
+    /**
+     * 筛选时候积分的区间段列表
+     */
+    public static String  MainSort_Score_Rang=Host +"/v1/goods/search/score";
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************

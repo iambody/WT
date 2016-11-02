@@ -121,6 +121,24 @@
                     android:numColumns="2"
                     android:verticalSpacing="@dimen/line_size1"
                     android:visibility="gone"/>
+                <!-- 分类的条件列表数据-->
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                    android:id="@+id/pop_maitab_rangprice_ls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@color/app_line"
+                    android:dividerHeight="@dimen/line_size1"
+                    android:visibility="gone"
+                    />
+                <!-- 分类的条件列表数据-->
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                    android:id="@+id/pop_maitab_rangscore_ls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@color/app_line"
+                    android:dividerHeight="@dimen/line_size1"
+                    android:visibility="gone"
+                    />
             </LinearLayout>
         </ScrollView>
         <!-- 右侧 ***************************************  -->

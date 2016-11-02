@@ -21,11 +21,11 @@ import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.easy.mainsort.BSortCategory;
+import io.vtown.WeiTangApp.bean.bcomment.easy.mainsort.BSortRang;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
@@ -56,6 +56,10 @@ public class AMianSort extends ABase {
     CompleteListView popMaitabSortLs;
     @BindView(R.id.pop_maitab_sort_brand_gridview)
     CompleteGridView popMaitabSortBrandGridview;
+    @BindView(R.id.pop_maitab_rangprice_ls)
+    CompleteListView popMaitabRangLs;
+    @BindView(R.id.pop_maitab_rangscore_ls)
+    CompleteListView popMaitabRangscoreLs;
 
 
     //我左侧的文本控制列表
@@ -63,7 +67,8 @@ public class AMianSort extends ABase {
     //我的二级ap
     private MySortAp mySortAp;
     private MyBrandAp myBrnadAp;
-
+    private MyRangAp myRangAp;
+    private MyRangAp myRangScoreAp;
     //我左侧上边的位置标示
     private int LeftPostion = 0;
     //记录下二级类别被选中后的
@@ -113,6 +118,12 @@ public class AMianSort extends ABase {
 //开始进行品牌列表的Ap的初始化
         myBrnadAp = new MyBrandAp();
         popMaitabSortBrandGridview.setAdapter(myBrnadAp);
+//开始初始化我的价格的列表
+        myRangAp = new MyRangAp();
+        popMaitabRangLs.setAdapter(myRangAp);
+//开始初始化我的积分列表
+        myRangScoreAp = new MyRangAp();
+        popMaitabRangscoreLs.setAdapter(myRangScoreAp);
 
         popMaitabSortLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -147,7 +158,23 @@ public class AMianSort extends ABase {
                 }
             }
         });
+        popMaitabRangLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (LeftPostion) {
+                    case 0:
+                        break;
+                    case 1:
+                        myRangAp.SetSelectPostion(position);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
 
+                        break;
+                }
+            }
+        });
     }
 
     private void CheckLeftPostion(int postion) {
@@ -167,22 +194,40 @@ public class AMianSort extends ABase {
                 LeftPostion = 0;
                 CheckLeftPostion(LeftPostion);
 
+                popMaitabRangscoreLs.setVisibility(View.GONE);
+                popMaitabRangLs.setVisibility(View.GONE);
                 popMaitabSortBrandGridview.setVisibility(View.GONE);
                 popMaitabSortLs.setVisibility(View.VISIBLE);
                 break;
             case R.id.pop_maitab_sort_price:
                 LeftPostion = 1;
                 CheckLeftPostion(LeftPostion);
+
+                popMaitabRangscoreLs.setVisibility(View.GONE);
+                popMaitabSortBrandGridview.setVisibility(View.GONE);
+                popMaitabSortLs.setVisibility(View.GONE);
+                popMaitabRangLs.setVisibility(View.VISIBLE);
+                if (myRangAp.getCount() == 0)
+                    Net_Rang_Price();
                 break;
             case R.id.pop_maitab_sort_jifen:
                 LeftPostion = 2;
                 CheckLeftPostion(LeftPostion);
+                popMaitabSortBrandGridview.setVisibility(View.GONE);
+                popMaitabSortLs.setVisibility(View.GONE);
+                popMaitabRangLs.setVisibility(View.GONE);
+                popMaitabRangscoreLs.setVisibility(View.VISIBLE);
+                if(myRangScoreAp.getCount()==0)
+                    Net_Rang_Scro();
+
+
                 break;
             case R.id.pop_maitab_sort_branc://
                 LeftPostion = 3;
                 CheckLeftPostion(LeftPostion);
                 //开始请求数据
-
+                popMaitabRangscoreLs.setVisibility(View.GONE);
+                popMaitabRangLs.setVisibility(View.GONE);
                 popMaitabSortLs.setVisibility(View.GONE);
                 popMaitabSortBrandGridview.setVisibility(View.VISIBLE);
                 if (popMaitabSortBrandGridview.getCount() == 0)
@@ -245,7 +290,7 @@ public class AMianSort extends ABase {
             public void getResult(int Code, String Msg, String Data) {
                 List<String> dataresult = JSON.parseArray(Data, String.class);
                 myBrnadAp.FrashBrandAp(dataresult);
-                CacheUtil.HomeSort_Brand_Save(BaseContext,Data);
+                CacheUtil.HomeSort_Brand_Save(BaseContext, Data);
             }
 
             @Override
@@ -255,6 +300,69 @@ public class AMianSort extends ABase {
         });
         HashMap<String, String> map = new HashMap<>();
         mbrandNHttpBaseStr.getData(Constants.BrandsLs, map, Request.Method.GET);
+    }
+
+    /**
+     * 获取j价格的 区间列表
+     */
+    private void Net_Rang_Price() {
+        //先判断是否存在品牌的缓存数据
+        String BrnadCahcStr = CacheUtil.HomeSort_Price_Range_Get(BaseContext);
+        if (!StrUtils.isEmpty(BrnadCahcStr)) {//存在缓存
+            //直接获取数据展示数据
+            List<BSortRang> ResultPrice = JSON.parseArray(BrnadCahcStr, BSortRang.class);
+            myRangAp.FrashRangAp(ResultPrice);
+            return;
+        }
+        PromptManager.showtextLoading(BaseContext, "筛选中");
+        NHttpBaseStr mbrandNHttpBaseStr = new NHttpBaseStr(BaseContext);
+        mbrandNHttpBaseStr.setPostResult(new IHttpResult<String>() {
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
+                List<BSortRang> ResultPrice = JSON.parseArray(Data, BSortRang.class);
+                myRangAp.FrashRangAp(ResultPrice);
+                CacheUtil.HomeSort_Price_Range_Save(BaseContext, Data);
+            }
+
+            @Override
+            public void onError(String error, int LoadType) {
+
+            }
+        });
+        HashMap<String, String> map = new HashMap<>();
+        mbrandNHttpBaseStr.getData(Constants.MainSort_Price_Rang, map, Request.Method.GET);
+    }
+
+    /**
+     * 获取j价格的 区间列表
+     */
+    private void Net_Rang_Scro() {
+
+        //先判断是否存在品牌的缓存数据
+        String BrnadCahcStr = CacheUtil.HomeSort_Scroe_Range_Get(BaseContext);
+        if (!StrUtils.isEmpty(BrnadCahcStr)) {//存在缓存
+            //直接获取数据展示数据
+            List<BSortRang> ResultPrice = JSON.parseArray(BrnadCahcStr, BSortRang.class);
+            myRangScoreAp.FrashRangAp(ResultPrice);
+            return;
+        }
+        PromptManager.showtextLoading(BaseContext, "筛选中");
+        NHttpBaseStr mbrandNHttpBaseStr = new NHttpBaseStr(BaseContext);
+        mbrandNHttpBaseStr.setPostResult(new IHttpResult<String>() {
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
+                List<BSortRang> ResultPrice = JSON.parseArray(Data, BSortRang.class);
+                myRangScoreAp.FrashRangAp(ResultPrice);
+                CacheUtil.HomeSort_Scroe_Range_Save(BaseContext, Data);
+            }
+
+            @Override
+            public void onError(String error, int LoadType) {
+
+            }
+        });
+        HashMap<String, String> map = new HashMap<>();
+        mbrandNHttpBaseStr.getData(Constants.MainSort_Score_Rang, map, Request.Method.GET);
     }
 
     @Override
@@ -317,10 +425,10 @@ public class AMianSort extends ABase {
             BSortCategory da = datas.get(position);
             StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, da.getCate_name());
             if (selectItem == position) {
-                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
-                mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.white));
+//                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
+                mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.red));
             } else {
-                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.transparent));
+//                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.transparent));
                 mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.black));
             }
             return convertView;
@@ -381,10 +489,10 @@ public class AMianSort extends ABase {
             String da = datas.get(position);
             StrUtils.SetTxt(mmiten.pop_mainsort_sort_brand_item_txt, da);
             if (selectItem == position) {
-                mmiten.pop_mainsort_sort_brand_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
-                mmiten.pop_mainsort_sort_brand_item_txt.setTextColor(getResources().getColor(R.color.white));
+//                mmiten.pop_mainsort_sort_brand_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
+                mmiten.pop_mainsort_sort_brand_item_txt.setTextColor(getResources().getColor(R.color.red));
             } else {
-                mmiten.pop_mainsort_sort_brand_item_txt.setBackgroundColor(getResources().getColor(R.color.transparent));
+//                mmiten.pop_mainsort_sort_brand_item_txt.setBackgroundColor(getResources().getColor(R.color.transparent));
                 mmiten.pop_mainsort_sort_brand_item_txt.setTextColor(getResources().getColor(R.color.black));
             }
             return convertView;
@@ -394,4 +502,74 @@ public class AMianSort extends ABase {
             TextView pop_mainsort_sort_brand_item_txt;
         }
     }
+
+    //价格和积分的Ap
+
+    /**
+     * 二级分类的ap
+     */
+    private class MyRangAp extends BaseAdapter {
+        //二级分类
+        private List<BSortRang> datas = new ArrayList<>();
+        //品牌列表
+
+        private int selectItem = -1;
+
+        public void SetSelectPostion(int postion) {
+            this.selectItem = postion;
+            this.notifyDataSetChanged();
+        }
+
+        public void FrashRangAp(List<BSortRang> ddd) {
+            this.datas = ddd;
+            this.notifyDataSetChanged();
+        }
+
+
+        @Override
+        public int getCount() {
+            return datas.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            myitem mmiten = null;
+            if (null == convertView) {
+                convertView = LayoutInflater.from(BaseContext).inflate(R.layout.pop_mainsort_sort_item, null);
+                mmiten = new myitem();
+                mmiten.pop_mainsort_sort_item_txt = (TextView) convertView.findViewById(R.id.pop_mainsort_sort_item_txt);
+                convertView.setTag(mmiten);
+            } else {
+                mmiten = (myitem) convertView.getTag();
+            }
+            BSortRang da = datas.get(position);
+            StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, da.getPrice_min() + "--" + da.getPrice_max());
+            if (StrUtils.isEmpty(da.getPrice_max())) {
+                StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, "大于" + da.getPrice_min());
+            }
+            if (selectItem == position) {
+//                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
+                mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.red));
+            } else {
+//                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.transparent));
+                mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.black));
+            }
+            return convertView;
+        }
+
+        class myitem {
+            TextView pop_mainsort_sort_item_txt;
+        }
+    }
+
 }

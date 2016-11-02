@@ -130,7 +130,14 @@ public class CacheUtil {
      * 缓存筛选时候的品牌的列表
      */
     private final static String Sp_Short_Brand_ls = "short_bbrand_sp";
-
+    /**
+     * 缓存筛选时候的 价格的区间列表
+     */
+    private final static String Sp_Short_Price_Range_ls = "short_rang_price_sp";
+    /**
+     * 缓存筛选时候的 价格的积分区间列表
+     */
+    private final static String Sp_Short_Scroe_Range_ls = "short_rang_scroe_sp";
     /**
      * 缓存首页数据
      */
@@ -816,7 +823,7 @@ public class CacheUtil {
     //保存 筛选时候的品牌列表
 
     public static void HomeSort_Brand_Save(Context PContext, String Str) {
-//        SP_Good_Sort
+
         SharedPreferences Sp = PContext.getSharedPreferences(Sp_Short_Brand_ls,
                 Context.MODE_PRIVATE);
         Editor editor = Sp.edit();
@@ -829,4 +836,41 @@ public class CacheUtil {
                 Context.MODE_PRIVATE);
         return Sp.getString("newhomesortbrandstr", "");
     }
+
+    //筛选时候的价格区间的列表
+//    Sp_Short_Price_Range_ls
+
+
+    public static void HomeSort_Price_Range_Save(Context PContext, String Str) {
+
+        SharedPreferences Sp = PContext.getSharedPreferences(Sp_Short_Price_Range_ls,
+                Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+        editor.putString("newhomesortpricerangstr", Str);
+        editor.commit();
+    }
+
+    public static String HomeSort_Price_Range_Get(Context pContext) {
+        SharedPreferences Sp = pContext.getSharedPreferences(Sp_Short_Price_Range_ls,
+                Context.MODE_PRIVATE);
+        return Sp.getString("newhomesortpricerangstr", "");
+    }
+    //开始分类筛选时候的积分缓存
+//
+
+    public static void HomeSort_Scroe_Range_Save(Context PContext, String Str) {
+
+        SharedPreferences Sp = PContext.getSharedPreferences(Sp_Short_Scroe_Range_ls,
+                Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+        editor.putString("newhomesortscroerangstr", Str);
+        editor.commit();
+    }
+
+    public static String HomeSort_Scroe_Range_Get(Context pContext) {
+        SharedPreferences Sp = pContext.getSharedPreferences(Sp_Short_Scroe_Range_ls,
+                Context.MODE_PRIVATE);
+        return Sp.getString("newhomesortscroerangstr", "");
+    }
 }
+
