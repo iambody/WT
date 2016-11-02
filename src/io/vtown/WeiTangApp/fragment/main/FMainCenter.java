@@ -1,11 +1,9 @@
 package io.vtown.WeiTangApp.fragment.main;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,7 +22,6 @@ import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.easy.shop.BMyShop;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
@@ -42,13 +38,9 @@ import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
-import io.vtown.WeiTangApp.ui.title.AIntegralDetail;
-import io.vtown.WeiTangApp.ui.title.AInviteFriendRecord;
 import io.vtown.WeiTangApp.ui.title.AMyLeader;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
-import io.vtown.WeiTangApp.ui.title.center.myinvitecode.ABindCode;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
-import io.vtown.WeiTangApp.ui.title.center.myshow.ACenterShow;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.set.AAboutWt;
 import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
@@ -56,9 +48,7 @@ import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
-import io.vtown.WeiTangApp.ui.title.shop.channel.AInviteRecord;
 import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
-import io.vtown.WeiTangApp.ui.ui.ARecyclerShow;
 
 /**
  * Created by datutu on 2016/9/18.

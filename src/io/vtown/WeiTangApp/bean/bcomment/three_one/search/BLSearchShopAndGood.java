@@ -8,6 +8,12 @@ import io.vtown.WeiTangApp.bean.BBase;
 
 public class BLSearchShopAndGood extends BBase {
 
+
+    private String seller_no;// "seller_no":1012535,
+    private String is_brand;//"is_brand":0,
+    private String attention;//"attention":0,
+    private String intro;//"intro":""
+
     private int is_agent;//"is_agent": 1,
     private String id;//"id": 151,
     private String cover;// "cover": "",
@@ -115,5 +121,37 @@ public class BLSearchShopAndGood extends BBase {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getSeller_no() {
+        return seller_no;
+    }
+
+    public void setSeller_no(String seller_no) {
+        this.seller_no = seller_no;
+    }
+
+    public String getIs_brand() {
+        return is_brand;
+    }
+
+    public void setIs_brand(String is_brand) {
+        this.is_brand = is_brand;
+    }
+
+    public String getAttention() {
+        return attention;
+    }
+
+    public void setAttention(String attention) {
+        this.attention = attention;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
     }
 }

@@ -1,4 +1,4 @@
-package io.vtown.WeiTangApp.ui.title;
+package io.vtown.WeiTangApp.ui.title.myhome;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;

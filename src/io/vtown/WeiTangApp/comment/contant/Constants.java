@@ -140,6 +140,16 @@ public class Constants {
      */
     public static String Search_Shop_Good = Host + "/v1/search/search/searchall";
 
+    /**
+     * 按照名称搜索店铺列表
+     */
+    public static String Search_Shoplist = Host + "/v1/search/search/shoplist";
+
+    /**
+     * 商品搜索接口
+     */
+    public static String Search_Goodinfo = Host + "/v1/search/search/goodinfo";
+
 
     /**
      * 商品搜索

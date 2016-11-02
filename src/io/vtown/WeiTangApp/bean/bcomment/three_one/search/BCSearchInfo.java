@@ -10,22 +10,41 @@ import io.vtown.WeiTangApp.bean.BBase;
  */
 
 public class BCSearchInfo extends BBase {
-    private List<BLSearchShopAndGood> sellerinfo = new ArrayList<BLSearchShopAndGood>();
-    private List<BLSearchShopAndGood> goodsinfo = new ArrayList<BLSearchShopAndGood>();
+//    private List<BLSearchShopAndGood> sellerinfo = new ArrayList<BLSearchShopAndGood>();
+//    private List<BLSearchShopAndGood> goodsinfo = new ArrayList<BLSearchShopAndGood>();
+//
+//    public List<BLSearchShopAndGood> getSellerinfo() {
+//        return sellerinfo;
+//    }
+//
+//    public void setSellerinfo(List<BLSearchShopAndGood> sellerinfo) {
+//        this.sellerinfo = sellerinfo;
+//    }
+//
+//    public List<BLSearchShopAndGood> getGoodsinfo() {
+//        return goodsinfo;
+//    }
+//
+//    public void setGoodsinfo(List<BLSearchShopAndGood> goodsinfo) {
+//        this.goodsinfo = goodsinfo;
+//    }
 
-    public List<BLSearchShopAndGood> getSellerinfo() {
+    private String sellerinfo;
+    private String goodsinfo;
+
+    public String getSellerinfo() {
         return sellerinfo;
     }
 
-    public void setSellerinfo(List<BLSearchShopAndGood> sellerinfo) {
+    public void setSellerinfo(String sellerinfo) {
         this.sellerinfo = sellerinfo;
     }
 
-    public List<BLSearchShopAndGood> getGoodsinfo() {
+    public String getGoodsinfo() {
         return goodsinfo;
     }
 
-    public void setGoodsinfo(List<BLSearchShopAndGood> goodsinfo) {
+    public void setGoodsinfo(String goodsinfo) {
         this.goodsinfo = goodsinfo;
     }
 }

@@ -1,4 +1,4 @@
-package io.vtown.WeiTangApp.ui.title;
+package io.vtown.WeiTangApp.ui.title.myhome;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcache.BShop;

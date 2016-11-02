@@ -6,7 +6,6 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.comment.BUpData;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
-import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.upgrade.UpdateManager;
@@ -15,18 +14,15 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.onConfirmClick;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.oncancelClick;
-import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.event.receiver.NewMessageBroadcastReceiver;
 import io.vtown.WeiTangApp.service.DownloadService;
-import io.vtown.WeiTangApp.ui.ANdkTest;
-import io.vtown.WeiTangApp.ui.title.ACenter;
+import io.vtown.WeiTangApp.ui.title.myhome.ACenter;
 import io.vtown.WeiTangApp.ui.title.AShopBus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
@@ -35,7 +31,6 @@ import com.jauker.widget.BadgeView;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -47,8 +42,6 @@ import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.jpush.android.api.JPushInterface;
-import cn.jpush.android.api.TagAliasCallback;
 import de.greenrobot.event.EventBus;
 
 /**

@@ -1,4 +1,4 @@
-package io.vtown.WeiTangApp.ui.title;
+package io.vtown.WeiTangApp.ui.title.myhome;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
+import io.vtown.WeiTangApp.ui.title.ASearchResult;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.set.AAboutWt;
 import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;

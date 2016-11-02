@@ -157,7 +157,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".ui.title.ACenter"
+            android:name=".ui.title.myhome.ACenter"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
         <activity
@@ -668,7 +668,7 @@
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".ui.title.AInviteFriendRecord"
+            android:name=".ui.title.myhome.AInviteFriendRecord"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
@@ -678,7 +678,7 @@
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".ui.title.AIntegralDetail"
+            android:name=".ui.title.myhome.AIntegralDetail"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
@@ -702,7 +702,7 @@
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".ui.title.ANewCenter"
+            android:name=".ui.title.myhome.ANewCenter"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
@@ -710,6 +710,12 @@
             android:name=".ui.title.ASearchResult"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.title.myhome.ASearchResultList"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".ui.comment.AMianSort"
             android:theme="@style/MySortDialogStyleTop"

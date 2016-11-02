@@ -749,4 +749,7 @@
     <string name="pinpai">品牌</string>
     <string name="chongzhi">重置</string>
 
+    <!--搜索结果页面-->
+    <string name="search_result_null">没有搜索到相关信息哦</string>
+
 </resources>
