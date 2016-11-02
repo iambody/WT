@@ -970,6 +970,11 @@ public class Constants {
      * 首页签到
      */
     public static String NewHomeSign = Host + "/v1/home/home/attendance";
+
+    /**
+     * 品牌列表关键字
+     */
+    public static String  BrandsLs=Host +"/v1/goods/search/keywords";
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************

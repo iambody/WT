@@ -9,7 +9,7 @@ import io.vtown.WeiTangApp.bean.BBase;
 public class BSortCategory extends BBase {
     private String id;
     private String cate_name;//": "男女服装"
-
+//
 
     public String getId() {
         return id;

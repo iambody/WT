@@ -125,7 +125,11 @@ public class CacheUtil {
     /**
      * 以及分类
      */
-    private final static String SP_Good_Sort="goodsort_sp";
+    private final static String SP_Good_Sort = "goodsort_sp";
+    /**
+     * 缓存筛选时候的品牌的列表
+     */
+    private final static String Sp_Short_Brand_ls = "short_bbrand_sp";
 
     /**
      * 缓存首页数据
@@ -447,7 +451,7 @@ public class CacheUtil {
      * @param walletStr
      */
     public static void Integral_Detail_Save(Context pcContext,
-                                              String integral) {
+                                            String integral) {
         SharedPreferences Sp = pcContext.getSharedPreferences(
                 SP_Integral_Detail, Context.MODE_PRIVATE);
         Editor editor = Sp.edit();
@@ -495,7 +499,7 @@ public class CacheUtil {
      * @param walletStr
      */
     public static void Shop_Lv_Save(Context pcContext,
-                                            String integral) {
+                                    String integral) {
         SharedPreferences Sp = pcContext.getSharedPreferences(
                 SP_Shop_Lv, Context.MODE_PRIVATE);
         Editor editor = Sp.edit();
@@ -536,14 +540,14 @@ public class CacheUtil {
         Home_Save(mpContext, "");
         MyShow_Save(mpContext, "");
         Center_Set_Initve_Save(mpContext, "");
-        Center_Wallet_Bank_List_Save(mpContext,"");
-        Shop_Lv_Save(mpContext,"");
-        Center_Wallet_Alipay_Save(mpContext,"");
-        Center_Wallet_BankCard_Save(mpContext,"");
-        Home_Return_Detail_Save(mpContext,"");
-        My_Coupons_Save(mpContext,"");
-        My_Invite_Friends_Save(mpContext,"");
-        Integral_Detail_Save(mpContext,"");
+        Center_Wallet_Bank_List_Save(mpContext, "");
+        Shop_Lv_Save(mpContext, "");
+        Center_Wallet_Alipay_Save(mpContext, "");
+        Center_Wallet_BankCard_Save(mpContext, "");
+        Home_Return_Detail_Save(mpContext, "");
+        My_Coupons_Save(mpContext, "");
+        My_Invite_Friends_Save(mpContext, "");
+        Integral_Detail_Save(mpContext, "");
         Center_Wallet_Property_Save(mpContext, "");
         Center_Order_List_Save(mpContext, "");
         Shop_Order_List_Save(mpContext, "");
@@ -794,7 +798,7 @@ public class CacheUtil {
 
     //保存商品一级分类
     //保存商品分类
-    public static void HomeSort_Save(Context PContext,String Str){
+    public static void HomeSort_Save(Context PContext, String Str) {
 //        SP_Good_Sort
         SharedPreferences Sp = PContext.getSharedPreferences(SP_Good_Sort,
                 Context.MODE_PRIVATE);
@@ -802,9 +806,27 @@ public class CacheUtil {
         editor.putString("newhomesortstr", Str);
         editor.commit();
     }
+
     public static String HomeSort_Get(Context pContext) {
         SharedPreferences Sp = pContext.getSharedPreferences(SP_Good_Sort,
                 Context.MODE_PRIVATE);
         return Sp.getString("newhomesortstr", "");
+    }
+
+    //保存 筛选时候的品牌列表
+
+    public static void HomeSort_Brand_Save(Context PContext, String Str) {
+//        SP_Good_Sort
+        SharedPreferences Sp = PContext.getSharedPreferences(Sp_Short_Brand_ls,
+                Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+        editor.putString("newhomesortbrandstr", Str);
+        editor.commit();
+    }
+
+    public static String HomeSort_Brand_Get(Context pContext) {
+        SharedPreferences Sp = pContext.getSharedPreferences(Sp_Short_Brand_ls,
+                Context.MODE_PRIVATE);
+        return Sp.getString("newhomesortbrandstr", "");
     }
 }

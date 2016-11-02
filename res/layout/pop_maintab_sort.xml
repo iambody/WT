@@ -24,7 +24,9 @@
     <!--横向 显示的-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
         android:orientation="horizontal">
         <!-- 左侧******************************************-->
         <LinearLayout
@@ -99,24 +101,26 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/ui_20_dip"
-                    android:text="全部"/>
-
-                <!--<io.vtown.WeiTangApp.comment.view.custom.CompleteListView-->
-                <!--android:layout_width="60dp"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:background="@color/red"/>-->
-                <android.support.v7.widget.RecyclerView
+                <!-- 分类的条件列表数据-->
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                    android:id="@+id/pop_maitab_sort_ls"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/red"/>
-
+                    android:divider="@color/app_line"
+                    android:dividerHeight="@dimen/line_size1"
+                    />
+                <!-- 品牌的分类列表 -->
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+                    android:id="@+id/pop_maitab_sort_brand_gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_gray1"
+                    android:horizontalSpacing="@dimen/line_size1"
+                    android:numColumns="2"
+                    android:verticalSpacing="@dimen/line_size1"
+                    android:visibility="gone"/>
             </LinearLayout>
         </ScrollView>
         <!-- 右侧 ***************************************  -->
