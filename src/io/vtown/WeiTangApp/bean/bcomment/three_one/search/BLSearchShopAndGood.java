@@ -13,6 +13,7 @@ public class BLSearchShopAndGood extends BBase {
     private String is_brand;//"is_brand":0,
     private String attention;//"attention":0,
     private String intro;//"intro":""
+    private int sales;
 
     private int is_agent;//"is_agent": 1,
     private String id;//"id": 151,
@@ -26,6 +27,14 @@ public class BLSearchShopAndGood extends BBase {
     private String postage;//"postage": 0
     private String seller_name;//"seller_name":"旺铺301-2016",
     private String avatar;//"avatar":"http://fs.v-town.cc/DefaultSellerAvatar.jpg"
+
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
 
     public int getIs_agent() {
         return is_agent;

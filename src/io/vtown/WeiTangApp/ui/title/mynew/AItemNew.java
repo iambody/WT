@@ -98,7 +98,7 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                     .getString(R.string.loading));
         }
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("member_id", user_Get.getId());
+        map.put("member_id","10015086");// user_Get.getId()
         map.put("source_type", Type + "");
         map.put("lastid", LastId);
         map.put("pagesize", Constants.PageSize + "");
@@ -124,7 +124,7 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
         mynew_Itemlist.setPullRefreshEnable(true);
         mynew_Itemlist.setXListViewListener(this);
         mynew_Itemlist.hidefoot();
-        myMew_Ap = new MyItemMew_Ap(R.layout.item_my_new);
+        myMew_Ap = new MyItemMew_Ap(R.layout.item_my_new_list);
         mynew_Itemlist.setAdapter(myMew_Ap);
 
         mynew_Itemlist.setOnItemClickListener(new OnItemClickListener() {
@@ -448,26 +448,26 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
             if (convertView == null) {
                 myItem = new My_New_Item_Item();
                 convertView = inflater.inflate(ResourceId, null);
+                myItem.item_my_new_list_data = (TextView) convertView
+                        .findViewById(R.id.item_my_new_list_data);
                 myItem.item_my_new_title = (TextView) convertView
-                        .findViewById(R.id.item_my_new_title);
+                        .findViewById(R.id.item_my_new_list_title);
                 myItem.item_my_new_content = (TextView) convertView
-                        .findViewById(R.id.item_my_new_content);
-                myItem.item_myin_new_iv = ViewHolder.get(convertView,
-                        R.id.item_myin_new_iv);
+                        .findViewById(R.id.item_my_new_list_content);
                 myItem.item_my_new_time = ViewHolder.get(convertView,
-                        R.id.item_my_new_time);
+                        R.id.item_my_new_list_time);
                 convertView.setTag(myItem);
             } else {
                 myItem = (My_New_Item_Item) convertView.getTag();
             }
             BNew data = datas.get(position);
-
+            String datastr = DateUtils.timeStampToStr(StrUtils.toLong(data.getCreate_time()));
+            String[] split = datastr.split(" ");
+            StrUtils.SetTxt(myItem.item_my_new_list_data, split[1]);
             StrUtils.SetTxt(myItem.item_my_new_title, data.getTitle());
             StrUtils.SetTxt(myItem.item_my_new_content, data.getContent());
-            StrUtils.SetTxt(myItem.item_my_new_time, DateUtils
-                    .timeStampToStr(StrUtils.toLong(data.getCreate_time())));
+            StrUtils.SetTxt(myItem.item_my_new_time, datastr);
 
-            myItem.item_myin_new_iv.setVisibility(View.GONE);
 
             return convertView;
         }
@@ -475,8 +475,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
         class My_New_Item_Item {
             TextView item_my_new_title;
             TextView item_my_new_content;
-            ImageView item_myin_new_iv;
             TextView item_my_new_time;//
+            TextView item_my_new_list_data;
         }
     }
 

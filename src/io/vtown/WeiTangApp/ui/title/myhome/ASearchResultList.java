@@ -294,6 +294,13 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
                         StrUtils.SetTxt(goods.tvSearchResultAllGoodOrigprice, StrUtils.SetTextForMony(blSearchShopAndGood.getOrig_price()));
                         goods.tvSearchResultAllGoodOrigprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     }
+
+                    if(blSearchShopAndGood.getSales() > 0){
+                        goods.tvSearchResultAllGoodSales.setVisibility(View.VISIBLE);
+                        StrUtils.SetTxt(goods.tvSearchResultAllGoodSales,"销量："+blSearchShopAndGood.getSales()+"件");
+                    }else{
+                        goods.tvSearchResultAllGoodSales.setVisibility(View.GONE);
+                    }
                     break;
             }
 
@@ -329,6 +336,8 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
         TextView tvSearchResultAllGoodPrice;
         @BindView(R.id.tv_search_result_all_good_origprice)
         TextView tvSearchResultAllGoodOrigprice;
+        @BindView(R.id.tv_search_result_all_good_sales)
+        TextView tvSearchResultAllGoodSales;
 
         GoodsHolder(View view) {
             ButterKnife.bind(this, view);

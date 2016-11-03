@@ -30,6 +30,7 @@ import io.vtown.WeiTangApp.bean.bcomment.three_one.search.BLSearchShopAndGood;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.ui.ATitleBase;
@@ -53,7 +54,6 @@ public class ASearchResult extends ATitleBase{
     LinearLayout llSearchShops;
     @BindView(R.id.ll_search_goods)
     LinearLayout llSearchGoods;
-    @BindView(R.id.search_result_nodata_lay)
     View search_result_nodata_lay;
     @BindView(R.id.search_result_data_lay)
     ScrollView search_result_data_lay;
@@ -63,10 +63,12 @@ public class ASearchResult extends ATitleBase{
     private String search_key;
 
     private BCSearchInfo info;
+    private View mRootView;
 
     @Override
     protected void InItBaseView() {
-        setContentView(R.layout.activity_search_result);
+        mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_search_result,null);
+        setContentView(mRootView);
         mBinder = ButterKnife.bind(this);
         IBundle();
         IView();
@@ -75,6 +77,7 @@ public class ASearchResult extends ATitleBase{
     }
 
     private void IView() {
+        search_result_nodata_lay = ViewHolder.get(mRootView,R.id.search_result_nodata_lay);
         search_result_nodata_lay.setOnClickListener(this);
         tvSearchResultAllShops.setOnClickListener(this);
         tvSearchResultAllGoods.setOnClickListener(this);
@@ -112,15 +115,21 @@ public class ASearchResult extends ATitleBase{
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
         if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+
+            return;
+        }
+
+
+        info = JSON.parseObject(Data.getHttpResultStr(), BCSearchInfo.class);
+        if(StrUtils.isEmpty(info.getSellerinfo()) && StrUtils.isEmpty(info.getGoodsinfo())){
             search_result_data_lay.setVisibility(View.GONE);
             search_result_nodata_lay.setVisibility(View.VISIBLE);
             ShowErrorCanLoad(getResources().getString(R.string.search_result_null));
             search_result_nodata_lay.setClickable(false);
-            return;
+        }else{
+            search_result_data_lay.setVisibility(View.VISIBLE);
+            search_result_nodata_lay.setVisibility(View.GONE);
         }
-        search_result_data_lay.setVisibility(View.VISIBLE);
-        search_result_nodata_lay.setVisibility(View.GONE);
-        info = JSON.parseObject(Data.getHttpResultStr(), BCSearchInfo.class);
         if (StrUtils.isEmpty(info.getSellerinfo())) {
             llSearchShops.setVisibility(View.GONE);
         } else {
@@ -362,6 +371,12 @@ class myOnItemClickListener implements AdapterView.OnItemClickListener{
                 StrUtils.SetTxt(holder.tvSearchResultGoodOrigprice, StrUtils.SetTextForMony(blSearchShopAndGood.getOrig_price()));
                 holder.tvSearchResultGoodOrigprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             }
+            if(blSearchShopAndGood.getSales() > 0){
+                holder.tvSearchResultGoodSales.setVisibility(View.VISIBLE);
+                StrUtils.SetTxt(holder.tvSearchResultGoodSales,"销量："+blSearchShopAndGood.getSales()+"件");
+            }else{
+                holder.tvSearchResultGoodSales.setVisibility(View.GONE);
+            }
             return convertView;
         }
 
@@ -379,6 +394,8 @@ class myOnItemClickListener implements AdapterView.OnItemClickListener{
         TextView tvSearchResultGoodPrice;
         @BindView(R.id.tv_search_result_good_origprice)
         TextView tvSearchResultGoodOrigprice;
+        @BindView(R.id.tv_search_result_good_sales)
+        TextView tvSearchResultGoodSales;
 
         GoodsHolder(View view) {
             ButterKnife.bind(this, view);

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/app_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+
+    android:paddingTop="5dp">
+
+    <TextView
+        android:id="@+id/item_my_new_list_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_new_item_time_bg"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        android:text="2016-11-2"
+        android:textColor="@color/white"
+        android:textSize="9sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_new_item_content_bg"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/item_my_new_list_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="left"
+            android:lines="1"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:text="@string/nullstr"
+            android:textColor="@color/grey"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <View style="@style/line1" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:id="@+id/item_my_new_list_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="clip_vertical"
+                android:text="@string/nullstr"
+                android:textSize="12sp"
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:id="@+id/item_my_new_list_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:paddingRight="5dp"
+                android:text="@string/nullstr"
+                android:textColor="@color/app_gray"
+                android:textSize="@dimen/ui_10_dip" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

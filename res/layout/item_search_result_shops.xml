@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/iv_search_result_shop_icon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:scaleType="fitXY" />
 
         <RelativeLayout
@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/grey"
                     android:text="@string/nullstr"
-                    android:textSize="18sp" />
+                    android:textSize="13sp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/app_gray"
                     android:textSize="12sp"
-                    android:lines="3"
+                    android:lines="1"
                     android:ellipsize="end"
                     android:layout_marginBottom="5dp"
                     android:text="@string/nullstr" />

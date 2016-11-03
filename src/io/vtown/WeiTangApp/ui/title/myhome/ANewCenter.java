@@ -16,6 +16,7 @@ import io.vtown.WeiTangApp.ui.comment.ACommentList;
 import io.vtown.WeiTangApp.ui.title.ASearchResult;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.set.AAboutWt;
+import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
 import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;
 import io.vtown.WeiTangApp.ui.title.shop.center.AShopData;
 
@@ -33,6 +34,7 @@ public class ANewCenter extends ATitleBase {
     private View view_setting;
     private View view_my_show;
     private View view_about_me;
+    private View view_my_address;
 
     @Override
     protected void InItBaseView() {
@@ -44,6 +46,7 @@ public class ANewCenter extends ATitleBase {
 
         view_personal_data = findViewById(R.id.view_personal_data);
         view_my_show = findViewById(R.id.view_my_show);
+        view_my_address = findViewById(R.id.view_my_address);
         view_good_soucang = findViewById(R.id.view_good_soucang);
         view_shop_guanzhu = findViewById(R.id.view_shop_guanzhu);
         view_scan_record = findViewById(R.id.view_scan_record);
@@ -51,12 +54,13 @@ public class ANewCenter extends ATitleBase {
         view_setting = findViewById(R.id.view_setting);
 
         SetItemContent(view_personal_data, R.drawable.shop_grad9, R.string.my_personal_data);
+        SetItemContent(view_my_address,  R.drawable.address_iv, R.string._my_address);
         SetItemContent(view_my_show, R.drawable.center_iv1, R.string._my_show);
         SetItemContent(view_good_soucang, R.drawable.center_iv6, R.string.my_good_shouchang);
         SetItemContent(view_shop_guanzhu, R.drawable.center_iv7, R.string.my_shop_guanzhu);
         SetItemContent(view_scan_record, R.drawable.center_iv8, R.string.my_scan_record);
         SetItemContent(view_about_me, R.drawable.tab1_nor, R.string.about_w_town);
-        SetItemContent(view_setting, R.drawable.shop_grad9, R.string.my_setting);
+        SetItemContent(view_setting, R.drawable.center_iv_setting, R.string.my_setting);
 
     }
 
@@ -135,11 +139,17 @@ public class ANewCenter extends ATitleBase {
 
             case R.id.view_about_me:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ASearchResult.class));
+                        AAboutWt.class));
                 break;
 
             case R.id.view_setting:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, APersonalData.class));
+                break;
+
+            case R.id.view_my_address:
+                Intent intentss = new Intent(BaseActivity, AAddressManage.class);
+                intentss.putExtra("NeedFinish", false);
+                PromptManager.SkipActivity(BaseActivity, intentss);
                 break;
         }
 
