@@ -144,4 +144,9 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_goodsort_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/app_gray"/>
 </LinearLayout>

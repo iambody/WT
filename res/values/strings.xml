@@ -752,5 +752,7 @@
 
     <!--搜索结果页面-->
     <string name="search_result_null">没有搜索到相关信息哦</string>
+    <string name="toselect">请筛选商品条件</string>
+    <string name="resetsort">确定重置筛选条件?</string>
 
 </resources>

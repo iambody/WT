@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.bean.bcomment.news;
 
 import io.vtown.WeiTangApp.bean.bcomment.easy.addgood.BCategory;
+import io.vtown.WeiTangApp.bean.bcomment.easy.mainsort.BSortRang;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -244,6 +245,18 @@ public class BMessage {
     public static final int Fragment_home_pause = 673;
 
 
+    //Main商品分类筛选视乎需要把四个筛选条件二级分类(需要一个二级分类的id)&&价格(需要一个最大最小值)&&积分（需要一个最大最小值）&&品牌（需要一个string）
+    private String SecondSortId;//二级分类的id
+    private BSortRang PriceSort;//价格的筛选
+    private BSortRang ScoreSort;//积分的筛选
+    private String BrandSort;//品牌的筛选字段
+//记录所筛选的位置 不可能全部未-1（-1没有筛选） 四类至少要筛选一个
+    private int SecondSortId_Postion;//二级分类的选择 -1标识没有选择
+    private int PriceSort_Postion;//价格的位置 -1标识没有选择  -2标识是自定义的区间
+    private int  ScoreSort_Postion;//积分的位置 -1标识没有选择  -2标识是自定义的区间
+    private int  BrandSort_Postion;//品牌的位置 -1标识没有选择
+
+
     //退出时候通知所有进行
     public BMessage() {
         super();
@@ -395,5 +408,67 @@ public class BMessage {
         this.address_infos = address_infos;
     }
 
+    public String getSecondSortId() {
+        return SecondSortId;
+    }
 
+    public void setSecondSortId(String secondSortId) {
+        SecondSortId = secondSortId;
+    }
+
+    public BSortRang getPriceSort() {
+        return PriceSort;
+    }
+
+    public void setPriceSort(BSortRang priceSort) {
+        PriceSort = priceSort;
+    }
+
+    public BSortRang getScoreSort() {
+        return ScoreSort;
+    }
+
+    public void setScoreSort(BSortRang scoreSort) {
+        ScoreSort = scoreSort;
+    }
+
+    public String getBrandSort() {
+        return BrandSort;
+    }
+
+    public void setBrandSort(String brandSort) {
+        BrandSort = brandSort;
+    }
+
+    public int getSecondSortId_Postion() {
+        return SecondSortId_Postion;
+    }
+
+    public void setSecondSortId_Postion(int secondSortId_Postion) {
+        SecondSortId_Postion = secondSortId_Postion;
+    }
+
+    public int getPriceSort_Postion() {
+        return PriceSort_Postion;
+    }
+
+    public void setPriceSort_Postion(int priceSort_Postion) {
+        PriceSort_Postion = priceSort_Postion;
+    }
+
+    public int getScoreSort_Postion() {
+        return ScoreSort_Postion;
+    }
+
+    public void setScoreSort_Postion(int scoreSort_Postion) {
+        ScoreSort_Postion = scoreSort_Postion;
+    }
+
+    public int getBrandSort_Postion() {
+        return BrandSort_Postion;
+    }
+
+    public void setBrandSort_Postion(int brandSort_Postion) {
+        BrandSort_Postion = brandSort_Postion;
+    }
 }

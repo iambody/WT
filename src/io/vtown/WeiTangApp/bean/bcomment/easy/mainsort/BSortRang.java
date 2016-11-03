@@ -7,22 +7,30 @@ import io.vtown.WeiTangApp.bean.BBase;
  */
 
 public class BSortRang extends BBase {
-    private String price_min;//":0,
-    private String price_max;//":1000
+    private String min;//":0,
+    private String max;//":1000
 
-    public String getPrice_min() {
-        return price_min;
+    public String getMin() {
+        return min;
     }
 
-    public void setPrice_min(String price_min) {
-        this.price_min = price_min;
+    public void setMin(String min) {
+        this.min = min;
     }
 
-    public String getPrice_max() {
-        return price_max;
+    public String getMax() {
+        return max;
     }
 
-    public void setPrice_max(String price_max) {
-        this.price_max = price_max;
+    public void setMax(String max) {
+        this.max = max;
+    }
+
+    public BSortRang() {
+    }
+
+    public BSortRang(String min, String max) {
+        this.min = min;
+        this.max = max;
     }
 }

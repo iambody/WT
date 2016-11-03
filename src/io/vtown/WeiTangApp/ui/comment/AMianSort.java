@@ -28,8 +28,10 @@ import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.encrypt.StringEncrypt;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.ui.ABase;
 
@@ -76,6 +78,19 @@ public class AMianSort extends ABase {
     //排序Fragment页面带过来的数据
     private String catoryid;
 
+    //*******************需要直接初始化view还原数据时fragment带来的参数********************************
+    private boolean IsRecover;
+    private String SecondSortId;
+    private BSortRang PriceSort;
+    private BSortRang ScoreSort;
+    private String BrandName;
+    //获取位置
+    private int SecondSortId_Postion;
+    private int PriceSort_Postion;
+    private int ScoreSort_Postion;
+    private int BrandName_Postion;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +111,19 @@ public class AMianSort extends ABase {
 
     private void IBund() {
         catoryid = getIntent().getStringExtra("catoryid");
+        IsRecover = getIntent().getBooleanExtra("IsInItView", false);
+        if (IsRecover) {
+            SecondSortId = getIntent().getStringExtra("SecondSortId");
+            PriceSort = (BSortRang) getIntent().getSerializableExtra("PriceSort");
+            ScoreSort = (BSortRang) getIntent().getSerializableExtra("ScoreSort");
+            BrandName = getIntent().getStringExtra("BrandName");
+            //开始获取对应的位置
+            SecondSortId_Postion = getIntent().getIntExtra("SecondSortId_Postion", -1);//getIntent().getIntExtra("SecondSortId_Postion",-1);
+            PriceSort_Postion = getIntent().getIntExtra("PriceSort_Postion", -1);
+            ScoreSort_Postion = getIntent().getIntExtra("ScoreSort_Postion", -1);
+            BrandName_Postion = getIntent().getIntExtra("BrandName_Postion", -1);
+
+        }
     }
 
     private void IBase() {
@@ -104,14 +132,7 @@ public class AMianSort extends ABase {
         MyLeft.add(popMaitabSortPrice);
         MyLeft.add(popMaitabSortJifen);
         MyLeft.add(popMaitabSortBranc);
-        if (catoryid.equals("0")) {
-            popMaitabSortType.setVisibility(View.GONE);
-            LeftPostion = 1;
-            CheckLeftPostion(LeftPostion);
-        } else {
-            CheckLeftPostion(LeftPostion);
-            NetSort(catoryid);
-        }
+
         //开始二级分类的Ap的初始化
         mySortAp = new MySortAp();
         popMaitabSortLs.setAdapter(mySortAp);
@@ -124,7 +145,20 @@ public class AMianSort extends ABase {
 //开始初始化我的积分列表
         myRangScoreAp = new MyRangAp();
         popMaitabRangscoreLs.setAdapter(myRangScoreAp);
+        if (catoryid.equals("0")) {//全部进来 应该请求的是价格
+            popMaitabSortType.setVisibility(View.GONE);
+            LeftPostion = 1;
+            CheckLeftPostion(LeftPostion);
+            popMaitabSortLs.setVisibility(View.GONE);
+            popMaitabRangLs.setVisibility(View.VISIBLE);
+            Net_Rang_Price();
 
+        } else {//点击一级列表进来
+            CheckLeftPostion(LeftPostion);
+            popMaitabSortLs.setVisibility(View.VISIBLE);
+            popMaitabSortBrandGridview.setVisibility(View.GONE);
+            NetSort(catoryid);
+        }
         popMaitabSortLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -175,6 +209,23 @@ public class AMianSort extends ABase {
                 }
             }
         });
+        popMaitabRangscoreLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (LeftPostion) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        myRangScoreAp.SetSelectPostion(position);
+                        break;
+                    case 3:
+
+                        break;
+                }
+            }
+        });
     }
 
     private void CheckLeftPostion(int postion) {
@@ -217,7 +268,7 @@ public class AMianSort extends ABase {
                 popMaitabSortLs.setVisibility(View.GONE);
                 popMaitabRangLs.setVisibility(View.GONE);
                 popMaitabRangscoreLs.setVisibility(View.VISIBLE);
-                if(myRangScoreAp.getCount()==0)
+                if (myRangScoreAp.getCount() == 0)
                     Net_Rang_Scro();
 
 
@@ -234,13 +285,101 @@ public class AMianSort extends ABase {
                     NetBrandLs();
 
                 break;
-            case R.id.pop_maitab_queding:
+            case R.id.pop_maitab_queding://确定筛选项
+//                private MySortAp mySortAp;
+//                private MyBrandAp myBrnadAp;
+//                private MyRangAp myRangAp;
+//                private MyRangAp myRangScoreAp;
+                //需要通过事件总线直接给ta页面的筛选fragment传递数据 要定义三种数据
+                BMessage SortMessage = new BMessage(9901);
+                //把筛选的二级分类id依string形式传递出去**********************************************************************************************
+                String SortStr = "";
+                List<BSortCategory> mydatas = mySortAp.GetDatas();
+                if (mydatas.size() == 0) {
+                    SortStr = "";
+                    SortMessage.setSecondSortId_Postion(-1);
+                } else if (mySortAp.GetSelectPostion() == -1) {// 没有点击筛选需要选择全部
+                    for (int i = 0; i < mydatas.size(); i++) {
+                        SortStr = SortStr + mydatas.get(i).getId() + ",";
+                    }
+                    SortStr = SortStr.substring(0, SortStr.length() - 1);
+                    SortMessage.setSecondSortId_Postion(-1);
+                } else {//点击筛选了
+                    SortStr = mydatas.get(mySortAp.GetSelectPostion()).getId();
+                    SortMessage.setSecondSortId_Postion(mySortAp.GetSelectPostion());
+                }
+
+//                PromptManager.ShowCustomToast(BaseContext,"筛选二级分类"+SortStr);
+                SortMessage.setSecondSortId(SortStr);
+                //把筛选的价格区间封装bean传递出去************************************************************************************************
+
+                BSortRang MyPriceSort;
+                if (myRangAp.GetSelectPostion() == -1) {// 没有点击筛选需要选择全部
+                    MyPriceSort = new BSortRang("0", "100000000000");
+                    SortMessage.setPriceSort_Postion(-1);//-1标识没选择  -2标识自定义价格区间
+                } else {//点击筛选了
+                    MyPriceSort = myRangAp.GetDatas().get(myRangAp.GetSelectPostion());
+                    SortMessage.setPriceSort_Postion(myRangAp.GetSelectPostion());
+                }
+//
+                SortMessage.setPriceSort(MyPriceSort);
+                //把筛选的积分区间封装bean传递出去**********************************************************************************************
+
+                BSortRang MyScoreSort;
+                if (myRangScoreAp.GetSelectPostion() == -1) {// 没有点击筛选需要选择全部
+                    MyScoreSort = new BSortRang("0", "200000000000000");
+                    SortMessage.setScoreSort_Postion(-1);//-1标识没选择  -2标识自定义积分区间
+                } else {//点击筛选了
+                    MyScoreSort = myRangScoreAp.GetDatas().get(myRangScoreAp.GetSelectPostion());
+                    SortMessage.setScoreSort_Postion(myRangScoreAp.GetSelectPostion());
+                }
+//                PromptManager.ShowCustomToast(BaseContext, String.format("最小积分%s--最大积分%s", MyScoreSort.getMin(), MyScoreSort.getMax()));
+                SortMessage.setScoreSort(MyScoreSort);
+                //把筛选的品牌的string传递出去**********************************************************************************************
+                String BrnadSort;
+                if (myBrnadAp.GetSelectPostion() == -1) {
+                    BrnadSort = "";
+                    SortMessage.setBrandSort_Postion(-1);//-1标识没有选择品牌
+                } else {
+                    BrnadSort = myBrnadAp.GetDatas().get(myBrnadAp.GetSelectPostion());
+                    SortMessage.setBrandSort_Postion(myBrnadAp.GetSelectPostion());
+                }
+                PromptManager.ShowCustomToast(BaseContext, String.format("我的筛选品牌=>%s", BrnadSort));
+
+                SortMessage.setBrandSort(BrnadSort);
+                //开始发送广播到fragment页面进行刷新列表
+                EventBus.getDefault().post(SortMessage);
                 BaseActivity.finish();
                 break;
-            case R.id.pop_maitab_reset:
-                BaseActivity.finish();
+            case R.id.pop_maitab_reset://重置 相当于没做任何筛选
+                if (mySortAp.getCount() == 0 && myBrnadAp.getCount() == 0 && myRangAp.getCount() == 0 && myRangScoreAp.getCount() != 0) {
+                    PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.toselect));
+                    return;
+                }
+
+
+                if (mySortAp.GetSelectPostion() == -1 && myBrnadAp.GetSelectPostion() == -1 && myRangAp.GetSelectPostion() == -1 && myRangScoreAp.GetSelectPostion() == -1) {
+                    PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.toselect));
+                    return;
+                }
+                ShowCustomDialog(getResources().getString(R.string.resetsort), getResources().getString(R.string.cancle), getResources().getString(R.string.queding), new IDialogResult() {
+                    @Override
+                    public void LeftResult() {
+
+                    }
+
+                    @Override
+                    public void RightResult() {
+                        mySortAp.SetSelectPostion(-1);
+                        myBrnadAp.SetSelectPostion(-1);
+                        myRangAp.SetSelectPostion(-1);
+                        myRangScoreAp.SetSelectPostion(-1);
+                    }
+                });
+
+
                 break;
-            case R.id.pop_maitab_cancle:
+            case R.id.pop_maitab_cancle://请取消==》直接退出相当于没做任何筛选
                 BaseActivity.finish();
                 break;
         }
@@ -258,6 +397,8 @@ public class AMianSort extends ABase {
             public void getResult(int Code, String Msg, String Data) {
                 List<BSortCategory> dataresult = JSON.parseArray(Data, BSortCategory.class);
                 mySortAp.FrashSortAp(dataresult);
+
+                if(IsRecover){mySortAp.SetSelectPostion(SecondSortId_Postion);}
             }
 
             @Override
@@ -280,6 +421,8 @@ public class AMianSort extends ABase {
         if (!StrUtils.isEmpty(BrnadCahcStr)) {//存在缓存
             List<String> dataresult = JSON.parseArray(BrnadCahcStr, String.class);
             myBrnadAp.FrashBrandAp(dataresult);
+
+            if(IsRecover){myBrnadAp.SetSelectPostion(BrandName_Postion);}
             return;
         }
 
@@ -303,15 +446,17 @@ public class AMianSort extends ABase {
     }
 
     /**
-     * 获取j价格的 区间列表
+     * 获取 价格的 区间列表
      */
     private void Net_Rang_Price() {
-        //先判断是否存在品牌的缓存数据
+        //先判断是否存在 的缓存数据
         String BrnadCahcStr = CacheUtil.HomeSort_Price_Range_Get(BaseContext);
         if (!StrUtils.isEmpty(BrnadCahcStr)) {//存在缓存
             //直接获取数据展示数据
             List<BSortRang> ResultPrice = JSON.parseArray(BrnadCahcStr, BSortRang.class);
             myRangAp.FrashRangAp(ResultPrice);
+
+            if(IsRecover){myRangAp.SetSelectPostion(PriceSort_Postion);}
             return;
         }
         PromptManager.showtextLoading(BaseContext, "筛选中");
@@ -334,7 +479,7 @@ public class AMianSort extends ABase {
     }
 
     /**
-     * 获取j价格的 区间列表
+     * 获取积分的 区间列表
      */
     private void Net_Rang_Scro() {
 
@@ -344,6 +489,8 @@ public class AMianSort extends ABase {
             //直接获取数据展示数据
             List<BSortRang> ResultPrice = JSON.parseArray(BrnadCahcStr, BSortRang.class);
             myRangScoreAp.FrashRangAp(ResultPrice);
+
+            if(IsRecover){myRangScoreAp.SetSelectPostion(ScoreSort_Postion);}
             return;
         }
         PromptManager.showtextLoading(BaseContext, "筛选中");
@@ -385,6 +532,14 @@ public class AMianSort extends ABase {
         public void SetSelectPostion(int postion) {
             this.selectItem = postion;
             this.notifyDataSetChanged();
+        }
+
+        public List<BSortCategory> GetDatas() {
+            return datas;
+        }
+
+        public int GetSelectPostion() {
+            return selectItem;
         }
 
         public void FrashSortAp(List<BSortCategory> ddd) {
@@ -448,6 +603,14 @@ public class AMianSort extends ABase {
         //品牌列表
 
         private int selectItem = -1;
+
+        public List<String> GetDatas() {
+            return datas;
+        }
+
+        public int GetSelectPostion() {
+            return selectItem;
+        }
 
         public void SetSelectPostion(int postion) {
             this.selectItem = postion;
@@ -515,6 +678,14 @@ public class AMianSort extends ABase {
 
         private int selectItem = -1;
 
+        public List<BSortRang> GetDatas() {
+            return datas;
+        }
+
+        public int GetSelectPostion() {
+            return selectItem;
+        }
+
         public void SetSelectPostion(int postion) {
             this.selectItem = postion;
             this.notifyDataSetChanged();
@@ -553,9 +724,9 @@ public class AMianSort extends ABase {
                 mmiten = (myitem) convertView.getTag();
             }
             BSortRang da = datas.get(position);
-            StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, da.getPrice_min() + "--" + da.getPrice_max());
-            if (StrUtils.isEmpty(da.getPrice_max())) {
-                StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, "大于" + da.getPrice_min());
+            StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, da.getMin() + "--" + da.getMax());
+            if (StrUtils.isEmpty(da.getMax())) {
+                StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, "大于" + da.getMin());
             }
             if (selectItem == position) {
 //                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
