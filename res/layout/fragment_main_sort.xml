@@ -68,6 +68,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size3"
+        android:src="@color/app_line1"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -144,9 +148,16 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fragment_goodsort_recyclerview"
+    <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+        android:id="@+id/fragment_sort_refrash"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@color/app_gray"/>
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/fragment_sort_ls"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"/>
+    </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
 </LinearLayout>
