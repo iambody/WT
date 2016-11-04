@@ -2,10 +2,12 @@ package io.vtown.WeiTangApp.fragment.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -43,6 +45,7 @@ import io.vtown.WeiTangApp.comment.util.DateUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.im.AChatInf;
@@ -52,7 +55,7 @@ import io.vtown.WeiTangApp.ui.title.mynew.AItemNew;
  * Created by Yihuihua on 2016/10/28.
  */
 
-public class FMainNew extends FBase implements View.OnClickListener {
+public class FMainNew extends FBase implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
 
     /**
@@ -78,6 +81,7 @@ public class FMainNew extends FBase implements View.OnClickListener {
     private LinearLayout new_zhushou_lay;
     private TextView item_my_new_content;
     private TextView new_zhushou_time;
+    private CustomSwipeToRefresh fragment_main_new_srollviw;
 
     @Override
     public void InItView() {
@@ -87,7 +91,7 @@ public class FMainNew extends FBase implements View.OnClickListener {
         IView();
         SetTitleHttpDataLisenter(this);
         ICache();
-        IData(INITIALIZE);
+        IData(REFRESHING);
     }
 
     @Override
@@ -96,7 +100,18 @@ public class FMainNew extends FBase implements View.OnClickListener {
     }
 
     private void IView() {
-            new_zhushou_lay = (LinearLayout) BaseView.findViewById(R.id.new_zhushou_lay);
+        fragment_main_new_srollviw = (CustomSwipeToRefresh) BaseView.findViewById(R.id.fragment_main_new_srollviw);
+        fragment_main_new_srollviw.setOnRefreshListener(this);
+        fragment_main_new_srollviw.setRefreshing(true);
+        fragment_main_new_srollviw.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        fragment_main_new_srollviw.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                fragment_main_new_srollviw.setEnabled(fragment_main_new_srollviw.getScrollY() == 0);
+
+            }
+        });
+        new_zhushou_lay = (LinearLayout) BaseView.findViewById(R.id.new_zhushou_lay);
             item_my_new_content = (TextView) BaseView.findViewById(R.id.item_my_new_content);
             new_zhushou_time = (TextView) BaseView.findViewById(R.id.new_zhushou_time);
             new_zhushou_lay.setOnClickListener(this);
@@ -338,6 +353,7 @@ public class FMainNew extends FBase implements View.OnClickListener {
                         myMew_Ap.Refrsh(comments);
                         break;
                     case REFRESHING:
+                        fragment_main_new_srollviw.setRefreshing(false);
                         myMew_Ap.Refrsh(comments);
 
                         break;
@@ -561,6 +577,11 @@ public class FMainNew extends FBase implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onRefresh() {
+       IData(REFRESHING);
     }
 
 

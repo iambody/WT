@@ -16,10 +16,11 @@
         android:textColor="@color/white"
         android:textSize="18dp"/>
 
-    <ScrollView
+    <io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh
+        android:id="@+id/fragment_main_new_srollviw"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none" >
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,6 +113,6 @@
                 android:visibility="gone" >
             </io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
         </LinearLayout>
-    </ScrollView>
+    </io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh>
 
 </LinearLayout>

@@ -722,7 +722,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
         if (FCenterOder.PDaiShou == Order_status
                 || FCenterOder.PClose == Order_status) {
             tv_center_order_good_express_title.setVisibility(View.VISIBLE);
-
+            tv_center_my_order_confirm.setVisibility(View.GONE);
             if (express_data.size() == 0) {
                 StrUtils.SetColorsTxt(BaseContext,
                         tv_center_order_good_express_title, R.color.app_gray,
