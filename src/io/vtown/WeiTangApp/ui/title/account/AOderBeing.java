@@ -33,6 +33,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -330,6 +331,7 @@ public class AOderBeing extends ATitleBase {
                 IsUserCoup = !(StrUtils.isEmpty(mBdComment.getIs_used_coupons()) || mBdComment
                         .getIs_used_coupons().equals("N"));
                 IResultData(mBdComment);
+
                 break;
 
             case 1:// =>提交数据生成订单=》
@@ -370,15 +372,24 @@ public class AOderBeing extends ATitleBase {
 
 
    public void title_left_bt(View v){
-       if(1 == goGoodBus){
-           EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_four));
-           PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                   AMainTab.class).putExtra("a", goGoodBus+""));
-       }else{
-           finish();
-           overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
-       }
+       FrashBus();
+    }
 
+    private void FrashBus(){
+        if(1 == goGoodBus){
+            EventBus.getDefault().post(new BMessage(BMessage.Shop_Frash));
+        }
+        finish();
+        overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            FrashBus();
+            return  true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     /**

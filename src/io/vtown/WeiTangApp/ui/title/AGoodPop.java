@@ -381,6 +381,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         Bundle bundle = new Bundle();
         bundle.putSerializable("DirectBuyInfo", tmpmap);
         PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AOderBeing.class).putExtras(bundle));
+        this.finish();
     }
 
     /**

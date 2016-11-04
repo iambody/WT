@@ -130,6 +130,7 @@ public class ASearchResult extends ATitleBase {
             search_result_data_lay.setVisibility(View.GONE);
             search_result_nodata_lay.setVisibility(View.VISIBLE);
             ShowErrorCanLoad(getResources().getString(R.string.search_result_null));
+            ShowErrorIv( R.drawable.error_sou);
             search_result_nodata_lay.setClickable(false);
         } else {
             search_result_data_lay.setVisibility(View.VISIBLE);
