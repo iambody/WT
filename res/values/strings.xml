@@ -637,7 +637,7 @@
     <string name="newhome_qiandao">今日签到</string>
     <string name="newhome_qiandao1">已签到</string>
     <string name="newhome_yaoqing">邀请好友</string>
-    <string name="newhome_libao">激活礼包</string>
+    <string name="newhome_libao">今日精选</string>
     <string name="newhome_temai">特卖专区</string>
     <string name="noincome">还没有收入哦</string>
     <string name="nosell">没有销量,加油哦</string>
@@ -754,5 +754,6 @@
     <string name="search_result_null">没有搜索到相关信息哦</string>
     <string name="toselect">请筛选商品条件</string>
     <string name="resetsort">确定重置筛选条件?</string>
+    <string name="error_null_good">无符合条件商品</string>
 
 </resources>

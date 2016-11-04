@@ -82,7 +82,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     @BindView(R.id.fragment_sort_refrash)
     RefreshLayout fragmentSortRefrash;
 
-
+    private View fragment_sort_nodata_lay;
     private boolean IsUpSortZoreClick = false;
     //一级分类的选择位置
     private int UpSortPostion = 0;
@@ -171,11 +171,11 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             PromptManager.showtextLoading(BaseContext, "加载中....");
         }
         HashMap<String, String> GoodsMap = new HashMap<>();
-        GoodsMap.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());
+//        GoodsMap.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());
         GoodsMap.put("sale_status", "100");//正常售卖的
         GoodsMap.put("is_delete", "0");//0标识正常
         GoodsMap.put("pagesize", "20");//当前的页数
-        // GoodsMap.put("is_agent", "999");// 不传标识获取品牌和自营的
+        GoodsMap.put("is_agent", "1");// 不传标识获取品牌和自营的
         GoodsMap.put("page", Page + "");//当前的页数
         GoodsMap.put("cate_id", CurrentOutSortId);//外层分类分类id
         if (!StrUtils.isEmpty(SecondSortId) && !SecondSortId.contains(","))
@@ -194,6 +194,8 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     }
 
     private void IBase() {
+        fragment_sort_nodata_lay = BaseView.findViewById(R.id.fragment_sort_nodata_lay);
+
         PriceSort = new BSortRang("0", Constants.SortMax);
         ScoreSort = new BSortRang("0", Constants.SortMax);
         fSortGoofdContainer.setSwiped(false);
@@ -201,7 +203,8 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
         fSortGoofdContainer.setMenuItemPaddingLeft(50);
         fSortGoofdContainer.setMenuItemPaddingRight(50);
 //        fSortGoofdContainer.SetBgColo(getResources().getColor(R.color.app_fen));
-//        fSortGoofdContainer.setColorList(R.drawable.selector_menu_item_text1);
+
+//        fSortGoofdContainer.setColorList(R.drawable.selector_menu_item_text1); //正常selector_menu_item_text // 正常selector_menu_item_text//非正常R.drawable.select_sort_up1
 //        fSortGoofdContainer.setCheckedBackground(R.color.app_fen);
 //        fSortGoofdContainer.SetCheckedTxtColor(getResources().getColor(R.color.gold));
         fSortGoofdContainer.setAdapter(new SortMenuAdapter());
@@ -219,7 +222,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BSortGood data = (BSortGood) parent.getItemAtPosition(position);
                 PromptManager.SkipActivity(BaseActivity,
-                new Intent(BaseActivity, AGoodDetail.class)
+                        new Intent(BaseActivity, AGoodDetail.class)
                                 .putExtra("goodid", data.getId()));
             }
         });
@@ -331,6 +334,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             case R.id.sort_good_shaixuan_lay://点击筛选
                 SortSortClick = !SortSortClick;
                 SortShaiXuan();
+//                fSortGoofdContainer.setColorList(R.drawable.select_sort_up1); //正常selector_menu_item_text // 正常selector_menu_item_text//非正常R.drawable.select_sort_up1
                 if (SortPostion == UpSortPostion && IsHaveSort) {//需要把原来筛选获取的数据带过去
                     PromptManager.ShowCustomToast(BaseContext, "我需要把数据带过去");
                     Intent MyIntent = new Intent(BaseActivity, AMianSort.class);
@@ -369,6 +373,15 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     }
 
     private void ResetSort() {
+        SecondSortId = "";
+        PriceSort = new BSortRang("0", Constants.SortMax);
+        ScoreSort = new BSortRang("0", Constants.SortMax);
+        BrandName = "";
+
+        SecondSortId_Postion = -1;
+        PriceSort_Postion = -1;
+        ScoreSort_Postion = -1;
+        BrandName_Postion = -1;
         //改变综合的标志
         SortZongHe = true;
         sortGoodZonghe.setTextColor(getResources().getColor(R.color.app_fen));
@@ -407,7 +420,19 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
     @Override
     public void OnFrash() {
-        fragmentSortRefrash.setRefreshing(false);
+//
+
+
+        if (SortZongHe) //综合被点击
+            GetGoodsLs(CurrentPage, "sell_price", false, LOADMOREING);
+        if (SortPriceUp == 1) //价格升序
+            GetGoodsLs(CurrentPage, "sell_price", true, LOADMOREING);
+        if (SortPriceUp == 2) //价格降序
+            GetGoodsLs(CurrentPage, "sell_price", false, LOADMOREING);
+        if (SortJiFenClick) //积分升序
+            GetGoodsLs(CurrentPage, "score", true, LOADMOREING);
+        if (SortSellNumberClick)
+            GetGoodsLs(CurrentPage, "sales", true, LOADMOREING);
     }
 
 
@@ -443,10 +468,14 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             }
             if (position != UpSortPostion) {//点击的是其他的非原来的一级分类 就默认认为还没进行筛选 同时还要把筛选条件重置
                 IsHaveSort = true;
+
             }
 
             UpSortPostion = position;
             CurrentOutSortId = MySortCategory.get(UpSortPostion).getId();
+            //重置
+            ResetSort();
+            GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
 //            PromptManager.ShowCustomToast(BaseContext, "位置==>" + MySortCategory.get(position).getCate_name());
         }
 
@@ -460,19 +489,26 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     @Override
     public void getResult(int Code, String Msg, BComment Data) {
         String ResultStr = Data.getHttpResultStr();
+        IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_RIGHT);
         switch (Data.getHttpResultTage()) {
             case 0://获取列表
                 switch (Data.getHttpLoadType()) {
                     case INITIALIZE:
                         if (StrUtils.isEmpty(ResultStr)) {
                             PromptManager.ShowCustomToast(BaseContext, "暂无数据");
+                            mySortAdapter.FrashData(new ArrayList<BSortGood>());
+                            IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_ERROR);
+                            ShowErrorCanLoad(getResources().getString(R.string.error_null_good));
+                            ShowErrorIv(R.drawable.error_sou);
                             return;
                         }
+
                         List<BSortGood> ListGoods = JSON.parseArray(ResultStr, BSortGood.class);
 
                         mySortAdapter.FrashData(ListGoods);
                         break;
                     case LOADMOREING:
+                        fragmentSortRefrash.setRefreshing(false);
                         break;
                     case REFRESHING:
                         break;
@@ -487,7 +523,11 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
     @Override
     public void onError(String error, int LoadType) {
-
+        switch (LoadType) {
+            case LOADMOREING:
+                fragmentSortRefrash.setRefreshing(false);
+                break;
+        }
     }
 
     /**
@@ -563,7 +603,9 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
 
     public void MyReCeverMsg(BMessage msg) {
+//        fSortGoofdContainer.setColorList(R.drawable.selector_menu_item_text); //正常selector_menu_item_text // 正常selector_menu_item_text//非正常R.drawable.select_sort_up1
         switch (msg.getMessageType()) {
+
             case 2111:
                 SortSortClick = false;
                 SortShaiXuan();
@@ -580,9 +622,9 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 ScoreSort_Postion = msg.getScoreSort_Postion();
                 BrandName_Postion = msg.getBrandSort_Postion();
 
-
+//if(SecondSortId_Postion==-1&&PriceSort_Postion==-1&&ScoreSort_Postion==-1&&BrandName_Postion==-1){return ;}
                 if (SortZongHe) //综合被点击
-                    GetGoodsLs(CurrentPage, "sell_price", false, INITIALIZE);
+                    GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
                 if (SortPriceUp == 1) //价格升序
                     GetGoodsLs(CurrentPage, "sell_price", true, INITIALIZE);
                 if (SortPriceUp == 2) //价格降序

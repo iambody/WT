@@ -77,7 +77,7 @@ public class AMianSort extends ABase {
 
     //排序Fragment页面带过来的数据
     private String catoryid;
-
+private boolean IsReSet;
     //*******************需要直接初始化view还原数据时fragment带来的参数********************************
     private boolean IsRecover;
     private String SecondSortId;
@@ -152,13 +152,24 @@ public class AMianSort extends ABase {
             popMaitabSortLs.setVisibility(View.GONE);
             popMaitabRangLs.setVisibility(View.VISIBLE);
             Net_Rang_Price();
+            //没有二级分类列表*************************
+            Net_Rang_Price();
+            Net_Rang_Scro();
+            NetBrandLs();
 
         } else {//点击一级列表进来
             CheckLeftPostion(LeftPostion);
             popMaitabSortLs.setVisibility(View.VISIBLE);
             popMaitabSortBrandGridview.setVisibility(View.GONE);
             NetSort(catoryid);
+            //有二级分类列白哦***************************
+            NetSort(catoryid);
+            Net_Rang_Price();
+            Net_Rang_Scro();
+            NetBrandLs();
         }
+
+
         popMaitabSortLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -221,7 +232,6 @@ public class AMianSort extends ABase {
                         myRangScoreAp.SetSelectPostion(position);
                         break;
                     case 3:
-
                         break;
                 }
             }
@@ -290,8 +300,16 @@ public class AMianSort extends ABase {
 //                private MyBrandAp myBrnadAp;
 //                private MyRangAp myRangAp;
 //                private MyRangAp myRangScoreAp;
+                if(IsReSet){
+                    mySortAp.SetSelectPostion(-1);
+                    myBrnadAp.SetSelectPostion(-1);
+                    myRangAp.SetSelectPostion(-1);
+                    myRangScoreAp.SetSelectPostion(-1);
+                }
+
                 //需要通过事件总线直接给ta页面的筛选fragment传递数据 要定义三种数据
                 BMessage SortMessage = new BMessage(9901);
+
                 //把筛选的二级分类id依string形式传递出去**********************************************************************************************
                 String SortStr = "";
                 List<BSortCategory> mydatas = mySortAp.GetDatas();
@@ -352,7 +370,7 @@ public class AMianSort extends ABase {
                 BaseActivity.finish();
                 break;
             case R.id.pop_maitab_reset://重置 相当于没做任何筛选
-                if (mySortAp.getCount() == 0 && myBrnadAp.getCount() == 0 && myRangAp.getCount() == 0 && myRangScoreAp.getCount() != 0) {
+                if (mySortAp.getCount() == 0 && myBrnadAp.getCount() == 0 && myRangAp.getCount() == 0 && myRangScoreAp.getCount() == 0) {
                     PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.toselect));
                     return;
                 }
@@ -370,13 +388,18 @@ public class AMianSort extends ABase {
 
                     @Override
                     public void RightResult() {
-                        mySortAp.SetSelectPostion(-1);
-                        myBrnadAp.SetSelectPostion(-1);
-                        myRangAp.SetSelectPostion(-1);
-                        myRangScoreAp.SetSelectPostion(-1);
+                        mySortAp.SetReSet( );
+                        myBrnadAp.SetReSet( );
+                        myRangAp.SetReSet( );
+                        myRangScoreAp.SetReSet( );
+                        IsReSet=true;
+//                        sssssss
                     }
                 });
-
+//                SecondSortId_Postion = -1;//getIntent().getIntExtra("SecondSortId_Postion",-1);
+//                PriceSort_Postion = -1;
+//                ScoreSort_Postion = -1;
+//                BrandName_Postion = -1;
 
                 break;
             case R.id.pop_maitab_cancle://请取消==》直接退出相当于没做任何筛选
@@ -398,7 +421,9 @@ public class AMianSort extends ABase {
                 List<BSortCategory> dataresult = JSON.parseArray(Data, BSortCategory.class);
                 mySortAp.FrashSortAp(dataresult);
 
-                if(IsRecover){mySortAp.SetSelectPostion(SecondSortId_Postion);}
+                if (IsRecover) {
+                    mySortAp.SetSelectPostion(SecondSortId_Postion);
+                }
             }
 
             @Override
@@ -422,7 +447,9 @@ public class AMianSort extends ABase {
             List<String> dataresult = JSON.parseArray(BrnadCahcStr, String.class);
             myBrnadAp.FrashBrandAp(dataresult);
 
-            if(IsRecover){myBrnadAp.SetSelectPostion(BrandName_Postion);}
+            if (IsRecover) {
+                myBrnadAp.SetSelectPostion(BrandName_Postion);
+            }
             return;
         }
 
@@ -456,7 +483,9 @@ public class AMianSort extends ABase {
             List<BSortRang> ResultPrice = JSON.parseArray(BrnadCahcStr, BSortRang.class);
             myRangAp.FrashRangAp(ResultPrice);
 
-            if(IsRecover){myRangAp.SetSelectPostion(PriceSort_Postion);}
+            if (IsRecover) {
+                myRangAp.SetSelectPostion(PriceSort_Postion);
+            }
             return;
         }
         PromptManager.showtextLoading(BaseContext, "筛选中");
@@ -490,7 +519,9 @@ public class AMianSort extends ABase {
             List<BSortRang> ResultPrice = JSON.parseArray(BrnadCahcStr, BSortRang.class);
             myRangScoreAp.FrashRangAp(ResultPrice);
 
-            if(IsRecover){myRangScoreAp.SetSelectPostion(ScoreSort_Postion);}
+            if (IsRecover) {
+                myRangScoreAp.SetSelectPostion(ScoreSort_Postion);
+            }
             return;
         }
         PromptManager.showtextLoading(BaseContext, "筛选中");
@@ -526,10 +557,17 @@ public class AMianSort extends ABase {
         //二级分类
         private List<BSortCategory> datas = new ArrayList<>();
         //品牌列表
-
+        //假重置
+        private boolean IsJiaClear;
         private int selectItem = -1;
 
+        public void SetReSet() {
+            IsJiaClear=true;
+            this.notifyDataSetChanged();
+        }
+
         public void SetSelectPostion(int postion) {
+            IsJiaClear=false;
             this.selectItem = postion;
             this.notifyDataSetChanged();
         }
@@ -579,7 +617,7 @@ public class AMianSort extends ABase {
             }
             BSortCategory da = datas.get(position);
             StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, da.getCate_name());
-            if (selectItem == position) {
+            if (selectItem == position&&!IsJiaClear) {
 //                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
                 mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.red));
             } else {
@@ -602,8 +640,15 @@ public class AMianSort extends ABase {
         private List<String> datas = new ArrayList<>();
         //品牌列表
 
-        private int selectItem = -1;
 
+        //假重置
+
+        private int selectItem = -1;
+        private boolean IsJiaClear;
+        public void SetReSet() {
+            IsJiaClear=true;
+            this.notifyDataSetChanged();
+        }
         public List<String> GetDatas() {
             return datas;
         }
@@ -614,6 +659,7 @@ public class AMianSort extends ABase {
 
         public void SetSelectPostion(int postion) {
             this.selectItem = postion;
+            IsJiaClear=false;
             this.notifyDataSetChanged();
         }
 
@@ -651,7 +697,7 @@ public class AMianSort extends ABase {
             }
             String da = datas.get(position);
             StrUtils.SetTxt(mmiten.pop_mainsort_sort_brand_item_txt, da);
-            if (selectItem == position) {
+            if (selectItem == position&&!IsJiaClear) {
 //                mmiten.pop_mainsort_sort_brand_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
                 mmiten.pop_mainsort_sort_brand_item_txt.setTextColor(getResources().getColor(R.color.red));
             } else {
@@ -677,7 +723,11 @@ public class AMianSort extends ABase {
         //品牌列表
 
         private int selectItem = -1;
-
+        private boolean IsJiaClear;
+        public void SetReSet() {
+            IsJiaClear=true;
+            this.notifyDataSetChanged();
+        }
         public List<BSortRang> GetDatas() {
             return datas;
         }
@@ -688,6 +738,7 @@ public class AMianSort extends ABase {
 
         public void SetSelectPostion(int postion) {
             this.selectItem = postion;
+            IsJiaClear=false;
             this.notifyDataSetChanged();
         }
 
@@ -728,7 +779,7 @@ public class AMianSort extends ABase {
             if (StrUtils.isEmpty(da.getMax())) {
                 StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, "大于" + da.getMin());
             }
-            if (selectItem == position) {
+            if (selectItem == position&&!IsJiaClear) {
 //                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
                 mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.red));
             } else {

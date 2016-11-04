@@ -54,6 +54,7 @@ import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.myhome.AIntegralDetail;
 import io.vtown.WeiTangApp.ui.title.myhome.AInviteFriendRecord;
 import io.vtown.WeiTangApp.ui.title.myhome.ANewCenter;
 import io.vtown.WeiTangApp.ui.title.AReturnDetail;
@@ -607,10 +608,10 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 break;
             case R.id.fragment_newhome_jifen_lay:
 
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyShop.class));
-//                if (CheckNet(BaseContext))
-//                    return;
-//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AIntegralDetail.class));
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyShop.class));
+                if (CheckNet(BaseContext))
+                    return;
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AIntegralDetail.class));
                 break;
             case R.id.fragment_newhome_yongjin_lay:
                 if (CheckNet(BaseContext))

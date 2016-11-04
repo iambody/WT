@@ -163,4 +163,10 @@
             android:dividerHeight="@dimen/line_size2"
             android:scrollbars="none"/>
     </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
+    <include
+        android:id="@+id/fragment_sort_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
 </LinearLayout>

@@ -225,6 +225,7 @@ public class HorizontalScrollMenu extends LinearLayout {
 	 */
 	public void setColorList(int colorListId) {
 		mColors = getResources().getColorStateList(colorListId);
+
 	}
 
 	/**
