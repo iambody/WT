@@ -41,7 +41,8 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * Created by Yihuihua on 2016/11/1.
  */
 
-public class ASearchResult extends ATitleBase{
+public class ASearchResult extends ATitleBase {
+
     @BindView(R.id.tv_search_result_all_shops)
     TextView tvSearchResultAllShops;
     @BindView(R.id.lv_search_result_shops)
@@ -57,6 +58,10 @@ public class ASearchResult extends ATitleBase{
     View search_result_nodata_lay;
     @BindView(R.id.search_result_data_lay)
     ScrollView search_result_data_lay;
+    @BindView(R.id.tv_search_result_total_shops)
+    TextView tvSearchResultTotalShops;
+    @BindView(R.id.tv_search_result_total_goods)
+    TextView tvSearchResultTotalGoods;
     private Unbinder mBinder;
     private ShopResultAdapter mShopResultAdapter;
     private GoodResultAdapter mGoodResultAdapter;
@@ -67,7 +72,7 @@ public class ASearchResult extends ATitleBase{
 
     @Override
     protected void InItBaseView() {
-        mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_search_result,null);
+        mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_search_result, null);
         setContentView(mRootView);
         mBinder = ButterKnife.bind(this);
         IBundle();
@@ -77,7 +82,7 @@ public class ASearchResult extends ATitleBase{
     }
 
     private void IView() {
-        search_result_nodata_lay = ViewHolder.get(mRootView,R.id.search_result_nodata_lay);
+        search_result_nodata_lay = ViewHolder.get(mRootView, R.id.search_result_nodata_lay);
         search_result_nodata_lay.setOnClickListener(this);
         tvSearchResultAllShops.setOnClickListener(this);
         tvSearchResultAllGoods.setOnClickListener(this);
@@ -121,12 +126,12 @@ public class ASearchResult extends ATitleBase{
 
 
         info = JSON.parseObject(Data.getHttpResultStr(), BCSearchInfo.class);
-        if(StrUtils.isEmpty(info.getSellerinfo()) && StrUtils.isEmpty(info.getGoodsinfo())){
+        if (StrUtils.isEmpty(info.getSellerinfo()) && StrUtils.isEmpty(info.getGoodsinfo())) {
             search_result_data_lay.setVisibility(View.GONE);
             search_result_nodata_lay.setVisibility(View.VISIBLE);
             ShowErrorCanLoad(getResources().getString(R.string.search_result_null));
             search_result_nodata_lay.setClickable(false);
-        }else{
+        } else {
             search_result_data_lay.setVisibility(View.VISIBLE);
             search_result_nodata_lay.setVisibility(View.GONE);
         }
@@ -136,9 +141,11 @@ public class ASearchResult extends ATitleBase{
             llSearchShops.setVisibility(View.VISIBLE);
             List<BLSearchShopAndGood> datas = new ArrayList<BLSearchShopAndGood>();
             datas = JSON.parseArray(info.getSellerinfo(), BLSearchShopAndGood.class);
-            if(datas.size()<4){
-                tvSearchResultAllShops.setClickable(false);
-                tvSearchResultAllShops.setText("共"+datas.size()+"个店铺");
+            tvSearchResultTotalShops.setText("相关店铺"+info.getSeller_total()+"个");
+            if (datas.size() < 4) {
+                tvSearchResultAllShops.setVisibility(View.GONE);
+            }else{
+                tvSearchResultAllShops.setVisibility(View.VISIBLE);
             }
             mShopResultAdapter.RefreshShop(datas);
         }
@@ -149,9 +156,11 @@ public class ASearchResult extends ATitleBase{
             llSearchGoods.setVisibility(View.VISIBLE);
             List<BLSearchShopAndGood> datas = new ArrayList<BLSearchShopAndGood>();
             datas = JSON.parseArray(info.getGoodsinfo(), BLSearchShopAndGood.class);
-            if(datas.size()<6){
-                tvSearchResultAllGoods.setClickable(false);
-                tvSearchResultAllGoods.setText("共"+datas.size()+"件商品");
+            tvSearchResultTotalGoods.setText("相关商品"+info.getGoods_total()+"个");
+            if (datas.size() < 6) {
+                tvSearchResultAllGoods.setVisibility(View.GONE);
+            }else{
+                tvSearchResultAllGoods.setVisibility(View.VISIBLE);
             }
             mGoodResultAdapter.RefreshGood(datas);
         }
@@ -186,24 +195,24 @@ public class ASearchResult extends ATitleBase{
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.search_result_nodata_lay:
-                if(CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
                 IData();
                 break;
 
             case R.id.tv_search_result_all_shops:
                 Bundle bundle = new Bundle();
-                bundle.putInt("show_type",1);
-                bundle.putString("title",search_key);
-                bundle.putString("content",info.getSellerinfo());
-               PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, ASearchResultList.class).putExtra("resultinfo",bundle));
+                bundle.putInt("show_type", 1);
+                bundle.putString("title", search_key);
+                bundle.putString("content", info.getSellerinfo());
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASearchResultList.class).putExtra("resultinfo", bundle));
                 break;
 
             case R.id.tv_search_result_all_goods:
                 Bundle bundle1 = new Bundle();
-                bundle1.putInt("show_type",2);
-                bundle1.putString("title",search_key);
-                bundle1.putString("content",info.getGoodsinfo());
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, ASearchResultList.class).putExtra("resultinfo",bundle1));
+                bundle1.putInt("show_type", 2);
+                bundle1.putString("title", search_key);
+                bundle1.putString("content", info.getGoodsinfo());
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASearchResultList.class).putExtra("resultinfo", bundle1));
                 break;
         }
     }
@@ -217,29 +226,32 @@ public class ASearchResult extends ATitleBase{
     protected void SaveBundle(Bundle bundle) {
 
     }
-class myOnItemClickListener implements AdapterView.OnItemClickListener{
-    private int type;
-    public myOnItemClickListener(int type){
-        super();
-        this.type = type;
-    }
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (type){
-            case 1:
-                BLSearchShopAndGood item = (BLSearchShopAndGood) mShopResultAdapter.getItem(position);
-                BComment bComment = new BComment(item.getId(), item.getSeller_name());
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AShopDetail.class).putExtra(BaseKey_Bean,bComment));
-                break;
 
-            case 2:
-                BLSearchShopAndGood data = (BLSearchShopAndGood) mGoodResultAdapter.getItem(position);
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,AGoodDetail.class).putExtra("goodid",data.getId()));
-                break;
+
+    class myOnItemClickListener implements AdapterView.OnItemClickListener {
+        private int type;
+
+        public myOnItemClickListener(int type) {
+            super();
+            this.type = type;
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            switch (type) {
+                case 1:
+                    BLSearchShopAndGood item = (BLSearchShopAndGood) mShopResultAdapter.getItem(position);
+                    BComment bComment = new BComment(item.getId(), item.getSeller_name());
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AShopDetail.class).putExtra(BaseKey_Bean, bComment));
+                    break;
+
+                case 2:
+                    BLSearchShopAndGood data = (BLSearchShopAndGood) mGoodResultAdapter.getItem(position);
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AGoodDetail.class).putExtra("goodid", data.getId()));
+                    break;
+            }
         }
     }
-}
-
 
 
     class ShopResultAdapter extends BaseAdapter {
@@ -289,7 +301,7 @@ class myOnItemClickListener implements AdapterView.OnItemClickListener{
             BLSearchShopAndGood blSearchShopAndGood = datas.get(position);
             ImageLoaderUtil.Load2(blSearchShopAndGood.getAvatar(), holder.ivSearchResultShopIcon, R.drawable.error_iv2);
             StrUtils.SetTxt(holder.tvSearchResultShopName, blSearchShopAndGood.getSeller_name());
-            StrUtils.SetTxt(holder.tvSearchResultShopDesc,blSearchShopAndGood.getIntro());
+            StrUtils.SetTxt(holder.tvSearchResultShopDesc, blSearchShopAndGood.getIntro());
 
             return convertView;
         }
@@ -371,10 +383,10 @@ class myOnItemClickListener implements AdapterView.OnItemClickListener{
                 StrUtils.SetTxt(holder.tvSearchResultGoodOrigprice, StrUtils.SetTextForMony(blSearchShopAndGood.getOrig_price()));
                 holder.tvSearchResultGoodOrigprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             }
-            if(blSearchShopAndGood.getSales() > 0){
+            if (blSearchShopAndGood.getSales() > 0) {
                 holder.tvSearchResultGoodSales.setVisibility(View.VISIBLE);
-                StrUtils.SetTxt(holder.tvSearchResultGoodSales,"销量："+blSearchShopAndGood.getSales()+"件");
-            }else{
+                StrUtils.SetTxt(holder.tvSearchResultGoodSales, "销量：" + blSearchShopAndGood.getSales() + "件");
+            } else {
                 holder.tvSearchResultGoodSales.setVisibility(View.GONE);
             }
             return convertView;

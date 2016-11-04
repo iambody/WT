@@ -47,6 +47,7 @@ import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -138,6 +139,7 @@ public class AOderBeing extends ATitleBase {
     private View oderbering_view;
     private TextView RightShowTxt;
     HashMap<String, String> map = null;
+    private int goGoodBus = -1;
 
     @Override
     protected void InItBaseView() {
@@ -186,6 +188,7 @@ public class AOderBeing extends ATitleBase {
                 SerializableMap serializableMap = (SerializableMap) bundle
                         .get("DirectBuyInfo");
                 map = serializableMap.getMap();
+                goGoodBus = 1;
             }
         }
     }
@@ -266,6 +269,7 @@ public class AOderBeing extends ATitleBase {
         oderbeing_address.setOnClickListener(this);
         oderbeing_commint.setOnClickListener(this);
         oderbeing_coupons_lay.setOnClickListener(this);
+
     }
 
     @Override
@@ -361,6 +365,19 @@ public class AOderBeing extends ATitleBase {
 
                 break;
         }
+
+    }
+
+
+   public void title_left_bt(View v){
+       if(1 == goGoodBus){
+           EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_four));
+           PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                   AMainTab.class).putExtra("a", goGoodBus+""));
+       }else{
+           finish();
+           overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
+       }
 
     }
 
@@ -721,6 +738,7 @@ public class AOderBeing extends ATitleBase {
                     return;
                 }
                 break;
+
             default:
                 break;
         }

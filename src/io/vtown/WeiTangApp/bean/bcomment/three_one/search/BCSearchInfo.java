@@ -31,6 +31,8 @@ public class BCSearchInfo extends BBase {
 
     private String sellerinfo;
     private String goodsinfo;
+    private int seller_total;//"seller_total":1,
+    private int goods_total; //  "goods_total":6
 
     public String getSellerinfo() {
         return sellerinfo;
@@ -46,5 +48,21 @@ public class BCSearchInfo extends BBase {
 
     public void setGoodsinfo(String goodsinfo) {
         this.goodsinfo = goodsinfo;
+    }
+
+    public int getSeller_total() {
+        return seller_total;
+    }
+
+    public void setSeller_total(int seller_total) {
+        this.seller_total = seller_total;
+    }
+
+    public int getGoods_total() {
+        return goods_total;
+    }
+
+    public void setGoods_total(int goods_total) {
+        this.goods_total = goods_total;
     }
 }
