@@ -325,10 +325,10 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         fragment_newhome_kaquan_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_kaquan_lay);
         fragment_newhome_myshop_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_myshop_lay);
         fragment_newhome_myoder_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_myoder_lay);
-        SetDownLay(fragment_newhome_wallet_lay, getResources().getString(R.string.newhome_wallet), R.drawable.newhome_down_qian);
-        SetDownLay(fragment_newhome_kaquan_lay, getResources().getString(R.string.newhome_kaquan), R.drawable.newhome_down_freads);
-        SetDownLay(fragment_newhome_myshop_lay, getResources().getString(R.string.newhome_myshop), R.drawable.newhome_down_libao);
-        SetDownLay(fragment_newhome_myoder_lay, getResources().getString(R.string.newhome_wodeoder), R.drawable.newhome_down_temai);
+        SetDownLay(fragment_newhome_wallet_lay, getResources().getString(R.string.newhome_wallet), R.drawable.f_home_qianbao);
+        SetDownLay(fragment_newhome_kaquan_lay, getResources().getString(R.string.newhome_kaquan), R.drawable.f_home_kaquan);
+        SetDownLay(fragment_newhome_myshop_lay, getResources().getString(R.string.newhome_myshop), R.drawable.f_home_dianpu);
+        SetDownLay(fragment_newhome_myoder_lay, getResources().getString(R.string.newhome_wodeoder), R.drawable.f_home_oder);
 
 
         fragmentNewhomeHeadIv.setBorderWidth(5);

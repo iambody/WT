@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:background="@color/white"
               android:orientation="horizontal"
               android:padding="@dimen/ui_10_dip">
 
@@ -9,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_sort_iv_bg"
-        android:padding="@dimen/line_size">
+        android:padding="@dimen/line_size4">
 
         <ImageView
             android:id="@+id/item_main_sort_iv"
@@ -20,16 +21,72 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/ui_5_dip"
+        android:layout_marginRight="@dimen/ui_10_dip"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/item_main_sort_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lines="2"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:lines="1"
+            android:textSize="@dimen/ui_16_dip"
             />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_main_sort_jifen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/ui_14_dip"
+                />
+
+            <TextView
+                android:id="@+id/item_main_sort_xiaoliang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/ui_20_dip"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/ui_14_dip"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_main_sort_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/ui_14_dip"
+                />
+
+            <TextView
+                android:id="@+id/item_main_sort_price_yuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/app_gray"
+                android:layout_marginLeft="@dimen/ui_20_dip"
+                android:textSize="@dimen/ui_14_dip"
+                />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

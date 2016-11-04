@@ -7,7 +7,7 @@ import io.vtown.WeiTangApp.bean.BBase;
  */
 
 public class BSortGood extends BBase {
-  private String id;//":449,
+    private String id;//":449,
     private String goods_info_id;//":148,
     private String seller_id;//":1014779,
     private String title;//":"雅诗兰黛肌透修护眼部精华霜（特价）  (15ml)",

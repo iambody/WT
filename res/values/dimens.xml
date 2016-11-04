@@ -635,7 +635,9 @@
     <dimen name="fragment_newhome_up_bg_height">200dp</dimen>
     <dimen name="fragment_newhome_up_wave_height">140dp</dimen>
     <dimen name="ui_25_dip">25dp</dimen>
-    <dimen name="sort_good_item_height">50dp</dimen>
+    <dimen name="sort_good_item_height">70dp</dimen>
+    <dimen name="ui_16_dip">16dp</dimen>
+    <dimen name="ui_14_dip">14dp</dimen>
 
 
 </resources>

@@ -68,6 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_size3"
@@ -158,6 +159,8 @@
             android:id="@+id/fragment_sort_ls"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:divider="@color/app_line"
+            android:dividerHeight="@dimen/line_size2"
             android:scrollbars="none"/>
     </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
 </LinearLayout>

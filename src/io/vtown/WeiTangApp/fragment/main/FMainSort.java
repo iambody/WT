@@ -1,12 +1,14 @@
 package io.vtown.WeiTangApp.fragment.main;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -45,6 +47,7 @@ import io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScroll
 import io.vtown.WeiTangApp.comment.view.pop.PMainTabSort;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.AMianSort;
+import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 
 /**
  * Created by datutu on 2016/10/28.
@@ -115,17 +118,8 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     private int BrandName_Postion;
 
     //TODO在进这个fragment时候需要偷偷加载/刷新已经缓存过的筛选的价格区间积分去接纳品牌名称列表
-
-
     //开始进行
     private SortAp mySortAdapter;
-
-    //recyleview 的布局管理器
-    LinearLayoutManager SortLayoutManager;
-    //是否正在加载更多
-    private boolean IsLoadingMore;
-    // 条数小于20时候不可以加载更多
-    private boolean IsCanLoadMore;
 
 
     //当前列表是第几页的
@@ -188,7 +182,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             GoodsMap.put("category_id", SecondSortId);//内层分类分类id
 
         GoodsMap.put("orderby", UpType);//排序字段
-        GoodsMap.put("sort", IsUp ? "ASC" : "DESC");//排序顺序ASC升序   DESC降序
+        GoodsMap.put("sort", !IsUp ? "ASC" : "DESC");//排序顺序ASC升序   DESC降序
 
 
         GoodsMap.put("min", ScoreSort.getMin());//积分的最小
@@ -211,13 +205,26 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 //        fSortGoofdContainer.setCheckedBackground(R.color.app_fen);
 //        fSortGoofdContainer.SetCheckedTxtColor(getResources().getColor(R.color.gold));
         fSortGoofdContainer.setAdapter(new SortMenuAdapter());
-
+        fragmentSortRefrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        fragmentSortRefrash.setOnLoadListener(this);
+        fragmentSortRefrash.setCanLoadMore(false);
 //        fragmentSortRefrash
         //上边选择的textview的设置
         GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
 
         mySortAdapter = new SortAp();
         fragmentSortLs.setAdapter(mySortAdapter);
+        fragmentSortLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BSortGood data = (BSortGood) parent.getItemAtPosition(position);
+                PromptManager.SkipActivity(BaseActivity,
+                new Intent(BaseActivity, AGoodDetail.class)
+                                .putExtra("goodid", data.getId()));
+            }
+        });
+
+
     }
 
 
@@ -243,10 +250,12 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             case 1:
                 sortGoodPrice.setTextColor(getResources().getColor(R.color.app_fen));
                 sortGoodPriceIv.setImageResource(R.drawable.sort_price_up);
+                GetGoodsLs(CurrentPage, "sell_price", true, INITIALIZE);
                 break;
             case 2:
                 sortGoodPrice.setTextColor(getResources().getColor(R.color.app_fen));
                 sortGoodPriceIv.setImageResource(R.drawable.sort_price_down);
+                GetGoodsLs(CurrentPage, "sell_price", false, INITIALIZE);
                 break;
         }
     }
@@ -298,6 +307,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                     SortJiFenClick = true;
                     sortGoodJifen.setTextColor(getResources().getColor(R.color.app_fen));
                     //开始请求数据！！！！！！！！！！！
+                    GetGoodsLs(CurrentPage, "score", true, INITIALIZE);
                 }
                 break;
             case R.id.sort_good_xiaoliang://点击销量
@@ -315,6 +325,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                     SortSellNumberClick = true;
                     sortGoodXiaoliang.setTextColor(getResources().getColor(R.color.app_fen));
                     //开始请求数据！！！！！！！！！！！
+                    GetGoodsLs(CurrentPage, "sales", true, INITIALIZE);
                 }
                 break;
             case R.id.sort_good_shaixuan_lay://点击筛选
@@ -373,6 +384,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
         SortSellNumberClick = false;
         sortGoodXiaoliang.setTextColor(getResources().getColor(R.color.gray));
         //开始请求数据！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
     }
 
     /**
@@ -494,7 +506,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
         public void AddFrashData(List<BSortGood> dd) {
             this.SortDatas.addAll(dd);
             this.notifyDataSetChanged();
-            ;
+
         }
 
         @Override
@@ -504,7 +516,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
         @Override
         public Object getItem(int position) {
-            return null;
+            return SortDatas.get(position);
         }
 
         @Override
@@ -520,7 +532,10 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 convertView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_item_goodsort, null);
                 mySortItem.item_main_sort_iv = ViewHolder.get(convertView, R.id.item_main_sort_iv);
                 mySortItem.item_main_sort_name = ViewHolder.get(convertView, R.id.item_main_sort_name);
-
+                mySortItem.item_main_sort_jifen = ViewHolder.get(convertView, R.id.item_main_sort_jifen);
+                mySortItem.item_main_sort_xiaoliang = ViewHolder.get(convertView, R.id.item_main_sort_xiaoliang);
+                mySortItem.item_main_sort_price = ViewHolder.get(convertView, R.id.item_main_sort_price);
+                mySortItem.item_main_sort_price_yuan = ViewHolder.get(convertView, R.id.item_main_sort_price_yuan);
                 convertView.setTag(mySortItem);
             } else {
                 mySortItem = (MySortItem) convertView.getTag();
@@ -528,12 +543,21 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             BSortGood bSortGood = SortDatas.get(position);
             ImageLoaderUtil.Load2(bSortGood.getCover(), mySortItem.item_main_sort_iv, R.drawable.error_iv2);
             StrUtils.SetTxt(mySortItem.item_main_sort_name, bSortGood.getTitle());
+            StrUtils.SetTxt(mySortItem.item_main_sort_jifen, String.format("积分：%s", bSortGood.getScore()));
+            StrUtils.SetTxt(mySortItem.item_main_sort_xiaoliang, String.format("销量：%s", bSortGood.getSales()));
+            StrUtils.SetTxt(mySortItem.item_main_sort_price, String.format("￥%s", bSortGood.getSell_price()));
+            if (!StrUtils.isEmpty(bSortGood.getOrig_price()) && !bSortGood.getOrig_price().equals("0")) {
+                StrUtils.SetTxt(mySortItem.item_main_sort_price_yuan, String.format("￥%s", bSortGood.getOrig_price()));
+                mySortItem.item_main_sort_price_yuan.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            }
             return convertView;
         }
 
         class MySortItem {
             ImageView item_main_sort_iv;
             TextView item_main_sort_name;
+            TextView item_main_sort_jifen, item_main_sort_xiaoliang;
+            TextView item_main_sort_price, item_main_sort_price_yuan;
         }
     }
 
@@ -557,7 +581,17 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 BrandName_Postion = msg.getBrandSort_Postion();
 
 
-                PromptManager.ShowCustomToast(BaseContext, String.format("我的二级分类:%s，我的最大价格:%s,我的最大积分:%s,我的品牌名字:%s", SecondSortId, PriceSort.getMax(), ScoreSort.getMax(), BrandName));
+                if (SortZongHe) //综合被点击
+                    GetGoodsLs(CurrentPage, "sell_price", false, INITIALIZE);
+                if (SortPriceUp == 1) //价格升序
+                    GetGoodsLs(CurrentPage, "sell_price", true, INITIALIZE);
+                if (SortPriceUp == 2) //价格降序
+                    GetGoodsLs(CurrentPage, "sell_price", false, INITIALIZE);
+                if (SortJiFenClick) //积分升序
+                    GetGoodsLs(CurrentPage, "score", true, INITIALIZE);
+                if (SortSellNumberClick)
+                    GetGoodsLs(CurrentPage, "sales", true, INITIALIZE);
+//                PromptManager.ShowCustomToast(BaseContext, String.format("我的二级分类:%s，我的最大价格:%s,我的最大积分:%s,我的品牌名字:%s", SecondSortId, PriceSort.getMax(), ScoreSort.getMax(), BrandName));
 
                 break;
         }
