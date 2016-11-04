@@ -424,15 +424,15 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
 
         if (SortZongHe) //综合被点击
-            GetGoodsLs(CurrentPage, "sell_price", false, LOADMOREING);
+            GetGoodsLs(CurrentPage, "sell_price", false, REFRESHING);
         if (SortPriceUp == 1) //价格升序
-            GetGoodsLs(CurrentPage, "sell_price", true, LOADMOREING);
+            GetGoodsLs(CurrentPage, "sell_price", true, REFRESHING);
         if (SortPriceUp == 2) //价格降序
-            GetGoodsLs(CurrentPage, "sell_price", false, LOADMOREING);
+            GetGoodsLs(CurrentPage, "sell_price", false, REFRESHING);
         if (SortJiFenClick) //积分升序
-            GetGoodsLs(CurrentPage, "score", true, LOADMOREING);
+            GetGoodsLs(CurrentPage, "score", true, REFRESHING);
         if (SortSellNumberClick)
-            GetGoodsLs(CurrentPage, "sales", true, LOADMOREING);
+            GetGoodsLs(CurrentPage, "sales", true, REFRESHING);
     }
 
 
@@ -487,6 +487,13 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+//sss
+        if(fragmentSortRefrash.isRefreshing())fragmentSortRefrash.setRefreshing(false);
+    }
+
+    @Override
     public void getResult(int Code, String Msg, BComment Data) {
         String ResultStr = Data.getHttpResultStr();
         IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_RIGHT);
@@ -508,9 +515,11 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                         mySortAdapter.FrashData(ListGoods);
                         break;
                     case LOADMOREING:
-                        fragmentSortRefrash.setRefreshing(false);
+
+
                         break;
                     case REFRESHING:
+                        fragmentSortRefrash.setRefreshing(false);
                         break;
                     case LOADHind:
                         break;
@@ -524,8 +533,9 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     @Override
     public void onError(String error, int LoadType) {
         switch (LoadType) {
-            case LOADMOREING:
+            case REFRESHING:
                 fragmentSortRefrash.setRefreshing(false);
+                IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_ERROR);
                 break;
         }
     }

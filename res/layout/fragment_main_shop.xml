@@ -26,131 +26,157 @@
 
 
                 <!-- 最新的用户头像 和个性签名布局******  -->
-                <RelativeLayout
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_fen"
+                    android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/fragment_up_lay_height"
-                        android:layout_alignParentTop="true"
-                        android:src="@color/app_fen"/>
+                        android:id="@+id/fragment_main_tab_shop_iv"
+                        android:layout_width="@dimen/center_iv_height"
+                        android:layout_height="@dimen/center_iv_height"
+                        android:layout_margin="@dimen/ui_10_dip"
 
-                    <!--  <TextView
-                          android:id="@+id/fragment_main_tab_shop_name"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_alignParentTop="true"
-                          android:layout_marginTop="@dimen/ui_10_dip"
-                          android:gravity="center"
-                          android:textColor="@color/white"
-                          android:textSize="@dimen/ui_18_dip"/>-->
-                    <!-- 数量分析 -->
+                        android:src="@drawable/ic_launcher"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/ui_10_dip"
-                        android:layout_marginLeft="@dimen/ui_10_dip"
-                        android:layout_marginRight="@dimen/ui_10_dip"
-
-                        android:layout_marginTop="@dimen/fragment_up_lay_margintop_height"
-                        android:background="@drawable/shape_shop_circular_bg"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <!-- 上 -->
-
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/fragment_main_tab_shop_name"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="left|bottom"
 
-                            <TextView
-                                android:id="@+id/fragment_main_tab_shop_today_income"
-                                style="@style/fragment_shop_up_lay_txt_pading_lay"
-                                android:gravity="center"
-                                android:textColor="@color/red"/>
+                            android:textColor="@color/white"
 
-                            <ImageView
-                                android:layout_width="@dimen/line_size2"
-                                android:layout_height="match_parent"
-                                android:src="@color/app_line"/>
+                            android:textSize="@dimen/ui_16_dip"/>
 
-                            <TextView
-                                android:id="@+id/fragment_main_tab_shop_today_volume"
-                                style="@style/fragment_shop_up_lay_txt_pading_lay"
-                                android:gravity="center"
-                                android:textColor="@color/red"/>
+                        <TextView
+                            android:id="@+id/fragment_main_tab_shop_sign"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical"
 
-                            <ImageView
-                                android:layout_width="@dimen/line_size2"
-                                android:layout_height="match_parent"
-                                android:src="@color/app_line"/>
+                            android:textColor="@color/white"
 
-                            <TextView
-                                android:id="@+id/fragment_main_tab_shop_today_visitor"
-                                style="@style/fragment_shop_up_lay_txt_pading_lay"
-                                android:gravity="center"
-                                android:textColor="@color/red"/>
-                        </LinearLayout>
-                        <!-- 上*** -->
+                            android:textSize="@dimen/ui_12_dip"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ui_10_dip"
+                    android:layout_marginLeft="@dimen/ui_10_dip"
+                    android:layout_marginRight="@dimen/ui_10_dip"
+
+                    android:layout_marginTop="@dimen/fragment_up_lay_margintop_height"
+                    android:background="@drawable/shape_shop_circular_bg"
+                    android:orientation="vertical">
+
+                    <!-- 上 -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/fragment_main_tab_shop_today_income"
+                            style="@style/fragment_shop_up_lay_txt_pading_lay"
+                            android:gravity="center"
+                            android:textColor="@color/red"/>
 
                         <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/line_size2"
+                            android:layout_width="@dimen/line_size2"
+                            android:layout_height="match_parent"
                             android:src="@color/app_line"/>
-                        <!-- 下 -->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/fragment_main_tab_shop_today_volume"
+                            style="@style/fragment_shop_up_lay_txt_pading_lay"
+                            android:gravity="center"
+                            android:textColor="@color/red"/>
 
-                            <TextView
-                                style="@style/iv_text3"
-                                android:gravity="center"
-                                android:paddingBottom="@dimen/fragment_shop_up_lay_txt_pading"
-                                android:paddingTop="@dimen/fragment_shop_up_lay_txt_pading"
-                                android:text="@string/shop_tody_incom"
-                                android:textColor="@color/app_gray"/>
+                        <ImageView
+                            android:layout_width="@dimen/line_size2"
+                            android:layout_height="match_parent"
+                            android:src="@color/app_line"/>
 
-                            <ImageView
-                                android:layout_width="@dimen/line_size2"
-                                android:layout_height="match_parent"
-                                android:src="@color/app_line"/>
+                        <TextView
+                            android:id="@+id/fragment_main_tab_shop_today_visitor"
+                            style="@style/fragment_shop_up_lay_txt_pading_lay"
+                            android:gravity="center"
+                            android:textColor="@color/red"/>
+                    </LinearLayout>
+                    <!-- 上*** -->
 
-                            <TextView
-                                style="@style/iv_text3"
-                                android:gravity="center"
-                                android:text="@string/shop_tody_number"
-                                android:textColor="@color/app_gray"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line_size2"
+                        android:src="@color/app_line"/>
+                    <!-- 下 -->
 
-                            <ImageView
-                                android:layout_width="@dimen/line_size2"
-                                android:layout_height="match_parent"
-                                android:src="@color/app_line"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                            <TextView
-                                style="@style/iv_text3"
-                                android:gravity="center"
-                                android:text="@string/shop_tody_inverstor"
-                                android:textColor="@color/app_gray"/>
-                        </LinearLayout>
+                        <TextView
+                            style="@style/iv_text3"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/fragment_shop_up_lay_txt_pading"
+                            android:paddingTop="@dimen/fragment_shop_up_lay_txt_pading"
+                            android:text="@string/shop_tody_incom"
+                            android:textColor="@color/app_gray"/>
 
-                        <!-- 下*** -->
+                        <ImageView
+                            android:layout_width="@dimen/line_size2"
+                            android:layout_height="match_parent"
+                            android:src="@color/app_line"/>
 
+                        <TextView
+                            style="@style/iv_text3"
+                            android:gravity="center"
+                            android:text="@string/shop_tody_number"
+                            android:textColor="@color/app_gray"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/line_size2"
+                            android:layout_height="match_parent"
+                            android:src="@color/app_line"/>
+
+                        <TextView
+                            style="@style/iv_text3"
+                            android:gravity="center"
+                            android:text="@string/shop_tody_inverstor"
+                            android:textColor="@color/app_gray"/>
                     </LinearLayout>
 
-                </RelativeLayout>
+                    <!-- 下*** -->
 
+                </LinearLayout>
                 <!-- 数量分析** -->
                 <!-- 团队和下级的布局 -->
                 <include
                     android:id="@+id/fragment_main_tab_shop_all_income_lay"
-                    layout="@layout/commentview_txtarrow" android:visibility="gone"/>
+                    layout="@layout/commentview_txtarrow"
+                    android:visibility="gone"/>
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_size"
-                    android:src="@color/app_line1" android:visibility="gone"/>
+                    android:src="@color/app_line1"
+                    android:visibility="gone"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"

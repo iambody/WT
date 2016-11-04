@@ -66,11 +66,11 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     //背景
 //    private ImageView fragment_main_iv_shop_cover;
     //头像
-//    private RoundAngleImageView fragment_main_tab_shop_iv;
+    private  ImageView fragment_main_tab_shop_iv;
     //店铺名字
-//    private TextView fragment_main_tab_shop_name;
+    private TextView fragment_main_tab_shop_name;
     //店铺描述
-//    private TextView fragment_main_tab_shop_sign;
+    private TextView fragment_main_tab_shop_sign;
     //累计收入的view
     private View fragment_main_tab_shop_all_income_lay;
     private TextView All_InCome;
@@ -105,9 +105,9 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
         fragment_shop_refrash.setCanLoadMore(false);
         fragment_shop_refrash.setOnRefreshListener(this);
         fragment_shop_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
-//        fragment_main_tab_shop_iv = (RoundAngleImageView) BaseView.findViewById(R.id.fragment_main_tab_shop_iv);
-//        fragment_main_tab_shop_name = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_name);
-//        fragment_main_tab_shop_sign = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_sign);
+        fragment_main_tab_shop_iv = (ImageView) BaseView.findViewById(R.id.fragment_main_tab_shop_iv);
+        fragment_main_tab_shop_name = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_name);
+        fragment_main_tab_shop_sign = ViewHolder.get(BaseView, R.id.fragment_main_tab_shop_sign);
 
 //设置头像的border
 //        fragment_main_tab_shop_iv.setBorderWidth(10);
@@ -178,8 +178,8 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
     private void ShowView(BShop myBShop) {
         if (StrUtils.isEmpty(myBShop.getSeller_name()))// 没有缓存数据
             return;
-//        ImageLoaderUtil.Load2(StrUtils.NullToStr(myBShop.getAvatar()),
-//                fragment_main_tab_shop_iv, R.drawable.testiv);
+        ImageLoaderUtil.Load2(StrUtils.NullToStr(myBShop.getAvatar()),
+                fragment_main_tab_shop_iv, R.drawable.testiv);
 
 
         StrUtils.SetTxt(fragment_main_tab_shop_today_income,
@@ -191,11 +191,11 @@ public class FMainShop extends FBase implements View.OnClickListener, SwipeRefre
         StrUtils.SetTxt(fragment_main_tab_shop_zhijixiashu_number, myBShop.getSubCounter());
         // tab_shop_name = (TextView) findViewById(R.id.tab_shop_name);
         // tab_shop_sign
-//        StrUtils.SetTxt(fragment_main_tab_shop_name, myBShop.getSeller_name());
-//        StrUtils.SetTxt(
-//                fragment_main_tab_shop_sign,
-//                StrUtils.isEmpty(myBShop.getIntro()) ? "您还未描述店铺" : myBShop
-//                        .getIntro());
+        StrUtils.SetTxt(fragment_main_tab_shop_name, myBShop.getSeller_name());
+        StrUtils.SetTxt(
+                fragment_main_tab_shop_sign,
+                StrUtils.isEmpty(myBShop.getIntro()) ? "您还未描述店铺" : myBShop
+                        .getIntro());
         StrUtils.SetTxt(All_InCome,
                 StrUtils.SetTextForMony(myBShop.getTotalIncome()) + "元");
     }
