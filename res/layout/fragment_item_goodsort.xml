@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="@dimen/ui_10_dip">
 
-    <TextView
-        android:id="@+id/ll"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/ui_10_dip"
-        android:text="水晶蜡三大阿城撒啊从此精魄"
-        />
+        android:background="@drawable/shape_sort_iv_bg"
+        android:padding="@dimen/line_size">
+
+        <ImageView
+            android:id="@+id/item_main_sort_iv"
+            android:layout_width="@dimen/sort_good_item_height"
+            android:layout_height="@dimen/sort_good_item_height"
+            android:scaleType="fitXY"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_main_sort_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            />
+
+    </LinearLayout>
 </LinearLayout>
