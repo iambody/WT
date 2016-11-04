@@ -32,9 +32,25 @@ public class BLCenterOder extends BBase {
 	 private String postage_money;//"postage_money": "0",
 	 private String delaynumber;//delaynumber=0
 	 private String remind_time;//remind_time=0
-	 
-	 
-	 
+	private int advance_point;// "advance_point": 0,
+	private String point_time;//"point_time": 0,
+
+	public int getAdvance_point() {
+		return advance_point;
+	}
+
+	public void setAdvance_point(int advance_point) {
+		this.advance_point = advance_point;
+	}
+
+	public String getPoint_time() {
+		return point_time;
+	}
+
+	public void setPoint_time(String point_time) {
+		this.point_time = point_time;
+	}
+
 	public String getDelaynumber() {
 		return delaynumber;
 	}

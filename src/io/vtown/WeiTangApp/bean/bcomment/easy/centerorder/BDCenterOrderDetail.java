@@ -63,7 +63,25 @@ public class BDCenterOrderDetail extends BBase {
 	private String number;//  "number": 1
 	private String avatar="";
 	private String balance_price;//"balance_price": 0,
-	
+	private String point_time;//"point_time": 1478248638,
+	private int advance_point;//"advance_point": 1,
+
+	public String getPoint_time() {
+		return point_time;
+	}
+
+	public void setPoint_time(String point_time) {
+		this.point_time = point_time;
+	}
+
+	public int getAdvance_point() {
+		return advance_point;
+	}
+
+	public void setAdvance_point(int advance_point) {
+		this.advance_point = advance_point;
+	}
+
 	public String getBalance_price() {
 		return balance_price;
 	}

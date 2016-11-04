@@ -462,7 +462,9 @@ public class Constants {
      * 我的-->我的订单-->订单详情--快速获取积分
      */
     public static String Center_My_Order_Integral = Host
-            + "/v1/order/seller/get-point";
+            + "/v1/order/member/get-point";
+
+
 
     /**
      * 我的-->我的订单-->订单详情--退款申请

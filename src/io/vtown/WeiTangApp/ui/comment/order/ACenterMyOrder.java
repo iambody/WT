@@ -431,12 +431,12 @@ public class ACenterMyOrder extends ATitleBase implements
      * @param seller_order_sn
      * @param member_id
      */
-    private void getIntegral(String seller_order_sn, String member_id){
+    private void getIntegral(String seller_order_sn, String member_id) {
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("member_id", member_id);
         map.put("seller_order_sn", seller_order_sn);
 
-        FBGetHttpData(map, Constants.Center_My_Order_Integral, Method.GET,
+        FBGetHttpData(map, Constants.Center_My_Order_Integral, Method.PUT,
                 6, 1116);
     }
 
@@ -529,11 +529,11 @@ public class ACenterMyOrder extends ATitleBase implements
                         View view = fragment_center_order_ls.getChildAt(position - visiblePosition + 1);
                         CenterOrderOutsideItem holder1 = (CenterOrderOutsideItem) view.getTag();
                     }
-                    switch (Integer.parseInt(data.getOrder_status())){
+                    switch (Integer.parseInt(data.getOrder_status())) {
                         case PAll:
                             if (0 == type) {//去付款
 
-                            }else{
+                            } else {
 
                             }
                             break;
@@ -574,13 +574,26 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
+                    myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
+                    myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
 
                     break;
 
                 case PYiFu:
+
                     if ("0".equals(data.getRefund())) {
                         myItem.fragment_center_order_apply_for_tuikuan_commiont
                                 .setVisibility(View.VISIBLE);
+                        if (0 == data.getAdvance_point()) {
+                            myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                            myItem.fragment_center_order_get_integral.setVisibility(View.VISIBLE);
+                        } else {
+                            myItem.fragment_center_order_apply_for_tuikuan_commiont.setVisibility(View.GONE);
+                            myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
+                            myItem.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
+
+                        }
+
                         if ("0".equals(data.getRemind_time())) {
                             myItem.fragment_center_order_remind_fahuo
                                     .setVisibility(View.VISIBLE);
@@ -588,6 +601,8 @@ public class ACenterMyOrder extends ATitleBase implements
                             myItem.fragment_center_order_remind_fahuo
                                     .setVisibility(View.GONE);
                         }
+
+
 
                     } else {
                         myItem.fragment_center_order_apply_for_tuikuan_commiont
@@ -647,7 +662,7 @@ public class ACenterMyOrder extends ATitleBase implements
                                     .setVisibility(View.GONE);
                         }
                     }
-
+                    myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_remind_fahuo
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_cancel_order
@@ -664,9 +679,12 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.fragment_center_order_is_over.setVisibility(View.GONE);
                     myItem.fragment_center_order_apply_refunding
                             .setVisibility(View.GONE);
+                    myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
                     break;
 
                 case PTuiKuan:
+                    myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                    myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_arbitration
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_cancel_order
@@ -690,6 +708,8 @@ public class ACenterMyOrder extends ATitleBase implements
                     break;
 
                 case PZhongCai:
+                    myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                    myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_arbitration
                             .setVisibility(View.VISIBLE);
                     myItem.fragment_center_order_cancel_order
@@ -713,6 +733,8 @@ public class ACenterMyOrder extends ATitleBase implements
                     break;
 
                 case PAgreeTuiKuan:
+                    myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                    myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_cancel_order
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_pay_again.setVisibility(View.GONE);
@@ -738,6 +760,8 @@ public class ACenterMyOrder extends ATitleBase implements
                     break;
 
                 case PClose:
+                    myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                    myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_cancel_order
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_pay_again.setVisibility(View.GONE);
@@ -764,6 +788,8 @@ public class ACenterMyOrder extends ATitleBase implements
                     break;
 
                 case PCancel:// 订单已取消
+                    myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                    myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_cancel_order
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_pay_again.setVisibility(View.GONE);
@@ -789,6 +815,8 @@ public class ACenterMyOrder extends ATitleBase implements
                     break;
 
                 default:
+                    myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                    myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_pay_again.setVisibility(View.GONE);
                     myItem.fragment_center_order_pay_to.setVisibility(View.GONE);
                     myItem.fragment_center_order_cancel_order
@@ -840,6 +868,8 @@ public class ACenterMyOrder extends ATitleBase implements
                         .findViewById(R.id.fragment_center_order_apply_for_tuikuan_commiont);
                 myItem.fragment_center_order_remind_fahuo = (TextView) convertView
                         .findViewById(R.id.fragment_center_order_remind_fahuo);
+                myItem.fragment_center_order_get_integral = (TextView) convertView.findViewById(R.id.fragment_center_order_get_integral);
+                myItem.fragment_center_order_is_get_integral = (TextView) convertView.findViewById(R.id.fragment_center_order_is_get_integral);
                 myItem.fragment_center_order_arbitration = (TextView) convertView
                         .findViewById(R.id.fragment_center_order_arbitration);
                 myItem.fragment_center_order_is_delaytime = (TextView) convertView
@@ -874,9 +904,8 @@ public class ACenterMyOrder extends ATitleBase implements
 
             StrUtils.SetTxt(myItem.tv_center_my_order_seller_order_sn,
                     data.getSeller_order_sn());
-            StrUtils.SetColorsTxt(BaseContext,
-                    myItem.fragment_center_order_shopname, R.color.grey, "卖家：",
-                    data.getSeller_name());
+            StrUtils.SetTxt( myItem.fragment_center_order_shopname, data.getSeller_name());
+
             StrUtils.SetTxt(myItem.item_fragment_center_order_allnum,
                     String.format("共%1$s件商品", data.getNumber()));
             // float total_price = Float.parseFloat(data.getGoods_price())
@@ -1013,6 +1042,27 @@ public class ACenterMyOrder extends ATitleBase implements
                         }
                     });
 
+            myItem.fragment_center_order_get_integral.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (CheckNet(BaseContext))
+                        return;
+
+                    ShowCustomDialog("确认立即获取积分吗？\n获取积分后不能再申请退款", "取消", "确认",
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    getIntegral(blComment.getSeller_order_sn(), blComment.getMember_id());
+                                    SelectPosition = position;
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                }
+                            });
+                }
+            });
+
             // 确认收货
             myItem.fragment_center_order_shouhuo_commiont
                     .setOnClickListener(new OnClickListener() {
@@ -1100,7 +1150,8 @@ public class ACenterMyOrder extends ATitleBase implements
             TextView fragment_center_order_is_over;// 订单已完成
             TextView fragment_center_order_is_delaytime;// 已延期收货
             TextView fragment_center_order_apply_refunding;// 申请退款中
-
+            TextView fragment_center_order_get_integral;// 获取积分
+            TextView fragment_center_order_is_get_integral;//已获取积分
             CompleteListView item_fragment_center_order_ls;
 
             TextView item_fragment_center_order_allnum;// 多少件商品
@@ -1802,7 +1853,7 @@ public class ACenterMyOrder extends ATitleBase implements
                 IData(LOAD_INITIALIZE, Ket_Tage + "");
                 break;
 
-            case 6:// 延迟收货
+            case 6:// 积分获取
                 PromptManager.ShowMyToast(BaseContext, "积分获取成功");
                 last_id = "";
                 IData(LOAD_INITIALIZE, Ket_Tage + "");
