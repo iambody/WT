@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -28,7 +30,6 @@ import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
-import io.vtown.WeiTangApp.comment.util.encrypt.StringEncrypt;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
@@ -62,6 +63,22 @@ public class AMianSort extends ABase {
     CompleteListView popMaitabRangLs;
     @BindView(R.id.pop_maitab_rangscore_ls)
     CompleteListView popMaitabRangscoreLs;
+    @BindView(R.id.pop_sort_rang_price_min_ed)
+    EditText popSortRangPriceMinEd;//价格自定义最小输入框
+    @BindView(R.id.pop_sort_rang_price_max_ed)
+    EditText popSortRangPriceMaxEd;//价格自定义最大输入框
+    @BindView(R.id.pop_sort_rang_price_bt)
+    TextView popSortRangPriceBt;//价格自定义 确定按钮
+    @BindView(R.id.pop_sort_rang_price_ed_lay)
+    LinearLayout popSortRangPriceEdLay;//价格自定义布局view
+    @BindView(R.id.pop_sort_rang_score_min_ed)
+    EditText popSortRangScoreMinEd;//积分自定义最小输入框
+    @BindView(R.id.pop_sort_rang_score_max_ed)
+    EditText popSortRangScoreMaxEd;//积分自定义最大输入框
+    @BindView(R.id.pop_sort_rang_score_bt)
+    TextView popSortRangScoreBt;//积分自定义 确定按钮
+    @BindView(R.id.pop_sort_rang_score_ed_lay)
+    LinearLayout popSortRangScoreEdLay;//积分自定义布局
 
 
     //我左侧的文本控制列表
@@ -77,7 +94,7 @@ public class AMianSort extends ABase {
 
     //排序Fragment页面带过来的数据
     private String catoryid;
-private boolean IsReSet;
+    private boolean IsReSet;
     //*******************需要直接初始化view还原数据时fragment带来的参数********************************
     private boolean IsRecover;
     private String SecondSortId;
@@ -89,6 +106,13 @@ private boolean IsReSet;
     private int PriceSort_Postion;
     private int ScoreSort_Postion;
     private int BrandName_Postion;
+
+    //自定义区间的保存数据
+    private boolean IsZiDingYiPrice;//是否自定义价格
+    private boolean IsZiDingYiScore;//是否自定义积分
+
+    private BSortRang ZiDingYiPrice;
+    private BSortRang ZiDingYiScore;
 
 
     @Override
@@ -151,6 +175,7 @@ private boolean IsReSet;
             CheckLeftPostion(LeftPostion);
             popMaitabSortLs.setVisibility(View.GONE);
             popMaitabRangLs.setVisibility(View.VISIBLE);
+            popSortRangPriceEdLay.setVisibility(View.VISIBLE);
             Net_Rang_Price();
             //没有二级分类列表*************************
             Net_Rang_Price();
@@ -248,13 +273,24 @@ private boolean IsReSet;
         }
     }
 
-    @OnClick({R.id.pop_maitab_sort_type, R.id.pop_maitab_sort_price, R.id.pop_maitab_sort_jifen, R.id.pop_maitab_sort_branc, R.id.pop_maitab_queding, R.id.pop_maitab_reset, R.id.pop_maitab_cancle})
+    @OnClick({R.id.pop_maitab_sort_type, R.id.pop_maitab_sort_price, R.id.pop_maitab_sort_jifen, R.id.pop_maitab_sort_branc, R.id.pop_maitab_queding, R.id.pop_maitab_reset, R.id.pop_maitab_cancle, R.id.pop_sort_rang_price_bt, R.id.pop_sort_rang_score_bt})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.pop_sort_rang_price_bt://价格区间的确定按钮
+                RangEdCommeint(popSortRangPriceMinEd, popSortRangPriceMaxEd, 1);
+                break;
+            case R.id.pop_sort_rang_score_bt://积分区间的确定按钮
+                break;
             case R.id.pop_maitab_sort_type:
                 LeftPostion = 0;
                 CheckLeftPostion(LeftPostion);
 
+
+                popSortRangPriceEdLay.setVisibility(View.GONE);
+                popSortRangScoreEdLay.setVisibility(View.GONE);
+                //
+
+                //
                 popMaitabRangscoreLs.setVisibility(View.GONE);
                 popMaitabRangLs.setVisibility(View.GONE);
                 popMaitabSortBrandGridview.setVisibility(View.GONE);
@@ -264,6 +300,12 @@ private boolean IsReSet;
                 LeftPostion = 1;
                 CheckLeftPostion(LeftPostion);
 
+                popSortRangPriceEdLay.setVisibility(View.VISIBLE);
+                popSortRangScoreEdLay.setVisibility(View.GONE);
+//是否已经选择了
+
+
+                //
                 popMaitabRangscoreLs.setVisibility(View.GONE);
                 popMaitabSortBrandGridview.setVisibility(View.GONE);
                 popMaitabSortLs.setVisibility(View.GONE);
@@ -274,6 +316,10 @@ private boolean IsReSet;
             case R.id.pop_maitab_sort_jifen:
                 LeftPostion = 2;
                 CheckLeftPostion(LeftPostion);
+
+                popSortRangPriceEdLay.setVisibility(View.GONE);
+                popSortRangScoreEdLay.setVisibility(View.VISIBLE);
+//
                 popMaitabSortBrandGridview.setVisibility(View.GONE);
                 popMaitabSortLs.setVisibility(View.GONE);
                 popMaitabRangLs.setVisibility(View.GONE);
@@ -287,6 +333,10 @@ private boolean IsReSet;
                 LeftPostion = 3;
                 CheckLeftPostion(LeftPostion);
                 //开始请求数据
+
+                popSortRangPriceEdLay.setVisibility(View.GONE);
+                popSortRangScoreEdLay.setVisibility(View.GONE);
+                //
                 popMaitabRangscoreLs.setVisibility(View.GONE);
                 popMaitabRangLs.setVisibility(View.GONE);
                 popMaitabSortLs.setVisibility(View.GONE);
@@ -300,7 +350,7 @@ private boolean IsReSet;
 //                private MyBrandAp myBrnadAp;
 //                private MyRangAp myRangAp;
 //                private MyRangAp myRangScoreAp;
-                if(IsReSet){
+                if (IsReSet) {
                     mySortAp.SetSelectPostion(-1);
                     myBrnadAp.SetSelectPostion(-1);
                     myRangAp.SetSelectPostion(-1);
@@ -388,11 +438,11 @@ private boolean IsReSet;
 
                     @Override
                     public void RightResult() {
-                        mySortAp.SetReSet( );
-                        myBrnadAp.SetReSet( );
-                        myRangAp.SetReSet( );
-                        myRangScoreAp.SetReSet( );
-                        IsReSet=true;
+                        mySortAp.SetReSet();
+                        myBrnadAp.SetReSet();
+                        myRangAp.SetReSet();
+                        myRangScoreAp.SetReSet();
+                        IsReSet = true;
 //                        sssssss
                     }
                 });
@@ -406,6 +456,54 @@ private boolean IsReSet;
                 BaseActivity.finish();
                 break;
         }
+    }
+
+    //点击价格或者积分=====》自定义区间的确定按钮
+    private void RangEdCommeint(EditText popSortRangMinEd, EditText popSortRangMaxEd, int i) {
+
+        if (StrUtils.isEmpty(popSortRangMinEd.getText().toString().trim())) {
+            PromptManager.ShowCustomToast(BaseContext, String.format("请输入最小%s", i == 1 ? "价格" : "积分"));
+            return;
+        }
+        if (StrUtils.isEmpty(popSortRangMaxEd.getText().toString().trim())) {
+            PromptManager.ShowCustomToast(BaseContext, String.format("请输入最大%s", i == 1 ? "价格" : "积分"));
+            return;
+        }
+
+        if (Integer.parseInt(popSortRangMaxEd.getText().toString().trim()) < Integer.parseInt(popSortRangMinEd.getText().toString().trim())) {
+            PromptManager.ShowCustomToast(BaseContext, "请输入正确范围区间");
+            return;
+        }
+        //开始保存自定义区间的数据/////同时如果对应的价格或者积分如果已经选择过了/需要把已选择过的item进行去掉亚瑟处理
+        //如果筛选区间已经选择过需要把上边的徐泽期间的title文字变成红色的  便于进行区别
+
+
+        if (1 == i) { //价格的区间的处理
+            IsZiDingYiPrice = true;
+            if (myRangAp.GetSelectPostion() == -1) {//没选择
+
+                ZiDingYiPrice = new BSortRang(popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim());
+
+            } else {//已经选择
+                myRangAp.SetSelectPostion(-1);
+
+
+            }
+        } else {//积分的区间的处理
+            IsZiDingYiScore = true;
+            if (myRangScoreAp.GetSelectPostion() == -1) {//没选择过
+
+            } else {//已经选择过
+                myRangScoreAp.SetSelectPostion(-1);
+                ZiDingYiScore = new BSortRang(popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim());
+
+
+            }
+
+
+        }
+
+
     }
 
 
@@ -550,6 +648,7 @@ private boolean IsReSet;
         EventBus.getDefault().post(new BMessage(2111));
     }
 
+
     /**
      * 二级分类的ap
      */
@@ -562,12 +661,12 @@ private boolean IsReSet;
         private int selectItem = -1;
 
         public void SetReSet() {
-            IsJiaClear=true;
+            IsJiaClear = true;
             this.notifyDataSetChanged();
         }
 
         public void SetSelectPostion(int postion) {
-            IsJiaClear=false;
+            IsJiaClear = false;
             this.selectItem = postion;
             this.notifyDataSetChanged();
         }
@@ -617,7 +716,7 @@ private boolean IsReSet;
             }
             BSortCategory da = datas.get(position);
             StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, da.getCate_name());
-            if (selectItem == position&&!IsJiaClear) {
+            if (selectItem == position && !IsJiaClear) {
 //                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
                 mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.red));
             } else {
@@ -645,10 +744,12 @@ private boolean IsReSet;
 
         private int selectItem = -1;
         private boolean IsJiaClear;
+
         public void SetReSet() {
-            IsJiaClear=true;
+            IsJiaClear = true;
             this.notifyDataSetChanged();
         }
+
         public List<String> GetDatas() {
             return datas;
         }
@@ -659,7 +760,7 @@ private boolean IsReSet;
 
         public void SetSelectPostion(int postion) {
             this.selectItem = postion;
-            IsJiaClear=false;
+            IsJiaClear = false;
             this.notifyDataSetChanged();
         }
 
@@ -697,7 +798,7 @@ private boolean IsReSet;
             }
             String da = datas.get(position);
             StrUtils.SetTxt(mmiten.pop_mainsort_sort_brand_item_txt, da);
-            if (selectItem == position&&!IsJiaClear) {
+            if (selectItem == position && !IsJiaClear) {
 //                mmiten.pop_mainsort_sort_brand_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
                 mmiten.pop_mainsort_sort_brand_item_txt.setTextColor(getResources().getColor(R.color.red));
             } else {
@@ -724,10 +825,12 @@ private boolean IsReSet;
 
         private int selectItem = -1;
         private boolean IsJiaClear;
+
         public void SetReSet() {
-            IsJiaClear=true;
+            IsJiaClear = true;
             this.notifyDataSetChanged();
         }
+
         public List<BSortRang> GetDatas() {
             return datas;
         }
@@ -738,7 +841,7 @@ private boolean IsReSet;
 
         public void SetSelectPostion(int postion) {
             this.selectItem = postion;
-            IsJiaClear=false;
+            IsJiaClear = false;
             this.notifyDataSetChanged();
         }
 
@@ -779,7 +882,7 @@ private boolean IsReSet;
             if (StrUtils.isEmpty(da.getMax())) {
                 StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, "大于" + da.getMin());
             }
-            if (selectItem == position&&!IsJiaClear) {
+            if (selectItem == position && !IsJiaClear) {
 //                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
                 mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.red));
             } else {

@@ -54,6 +54,7 @@ import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.AMyLeader;
 import io.vtown.WeiTangApp.ui.title.myhome.AIntegralDetail;
 import io.vtown.WeiTangApp.ui.title.myhome.AInviteFriendRecord;
 import io.vtown.WeiTangApp.ui.title.myhome.ANewCenter;
@@ -328,7 +329,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         fragment_newhome_myoder_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_myoder_lay);
         SetDownLay(fragment_newhome_wallet_lay, getResources().getString(R.string.newhome_wallet), R.drawable.f_home_qianbao);
         SetDownLay(fragment_newhome_kaquan_lay, getResources().getString(R.string.newhome_kaquan), R.drawable.f_home_kaquan);
-        SetDownLay(fragment_newhome_myshop_lay, getResources().getString(R.string.newhome_myshop), R.drawable.f_home_dianpu);
+        SetDownLay(fragment_newhome_myshop_lay, getResources().getString(R.string.newhome_myshangji), R.drawable.f_home_dianpu);
         SetDownLay(fragment_newhome_myoder_lay, getResources().getString(R.string.newhome_wodeoder), R.drawable.f_home_oder);
 
 
@@ -762,7 +763,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AMyCoupons.class));
                 break;
             case R.id.fragment_newhome_myshop_lay:
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AMyShop.class));
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AMyLeader.class));
                 break;
             case R.id.fragment_newhome_myoder_lay:
                 PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ACenterMyOrder.class));

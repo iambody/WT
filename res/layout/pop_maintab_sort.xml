@@ -97,7 +97,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
-
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             >
 
             <LinearLayout
@@ -108,7 +109,7 @@
                 <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                     android:id="@+id/pop_maitab_sort_ls"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:divider="@color/app_line"
                     android:dividerHeight="@dimen/line_size1"
                     />
@@ -126,7 +127,7 @@
                 <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                     android:id="@+id/pop_maitab_rangprice_ls"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:divider="@color/app_line"
                     android:dividerHeight="@dimen/line_size1"
                     android:visibility="gone"
@@ -135,11 +136,168 @@
                 <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                     android:id="@+id/pop_maitab_rangscore_ls"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:divider="@color/app_line"
                     android:dividerHeight="@dimen/line_size1"
                     android:visibility="gone"
                     />
+                <!-- 价格的自定义区间 **************************************  -->
+                <LinearLayout
+                    android:id="@+id/pop_sort_rang_price_ed_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line_size1"
+                        android:layout_marginBottom="@dimen/ui_5_dip"
+                        android:layout_marginTop="@dimen/ui_5_dip"
+                        android:src="@color/app_line"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ui_10_dip"
+                        android:padding="@dimen/ui_10_dip"
+                        android:text="自定义(价格)"
+                        android:textColor="@color/app_black"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/pop_sort_rang_price_min_ed"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/ui_20_dip"
+                            android:paddingTop="@dimen/ui_2_dip"
+                            android:paddingBottom="@dimen/ui_2_dip"
+                            android:layout_weight="2"
+                            android:background="@drawable/shape_login_circular"
+                            android:inputType="number"
+                            android:textColor="@color/app_black"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/line_size4"
+                            android:layout_marginRight="@dimen/line_size4"
+                            android:gravity="center"
+                            android:text="—"/>
+
+                        <EditText
+                            android:id="@+id/pop_sort_rang_price_max_ed"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:paddingTop="@dimen/ui_2_dip"
+                            android:paddingBottom="@dimen/ui_2_dip"
+                            android:background="@drawable/shape_login_circular"
+                            android:inputType="number"
+                            android:textColor="@color/app_black"/>
+
+                        <TextView
+                            android:id="@+id/pop_sort_rang_price_bt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/ui_10_dip"
+                            android:layout_marginRight="@dimen/ui_10_dip"
+                            android:background="@drawable/select_fen_to_gray"
+                            android:clickable="true"
+                            android:paddingBottom="@dimen/ui_2_dip"
+                            android:paddingLeft="@dimen/ui_10_dip"
+                            android:paddingRight="@dimen/ui_10_dip"
+                            android:paddingTop="@dimen/ui_2_dip"
+                            android:text="@string/queding"
+                            android:textColor="@color/white"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- 价格的自定义区间 **************************************  -->
+                <!-- 积分的自定义区间  *******************************-->
+                <LinearLayout
+                    android:id="@+id/pop_sort_rang_score_ed_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line_size1"
+                        android:layout_marginBottom="@dimen/ui_5_dip"
+                        android:layout_marginTop="@dimen/ui_5_dip"
+                        android:src="@color/app_line"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ui_10_dip"
+                        android:padding="@dimen/ui_10_dip"
+                        android:text="自定义(积分)"
+                        android:textColor="@color/app_black"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/pop_sort_rang_score_min_ed"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/ui_20_dip"
+                            android:layout_weight="2"
+                            android:paddingTop="@dimen/ui_2_dip"
+                            android:paddingBottom="@dimen/ui_2_dip"
+                            android:background="@drawable/shape_login_circular"
+                            android:inputType="number"
+                            android:textColor="@color/app_black"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/line_size4"
+                            android:layout_marginRight="@dimen/line_size4"
+                            android:gravity="center"
+                            android:text="—"/>
+
+                        <EditText
+                            android:id="@+id/pop_sort_rang_score_max_ed"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:paddingTop="@dimen/ui_2_dip"
+                            android:paddingBottom="@dimen/ui_2_dip"
+                            android:background="@drawable/shape_login_circular"
+                            android:inputType="number"
+                            android:textColor="@color/app_black"/>
+
+                        <TextView
+                            android:id="@+id/pop_sort_rang_score_bt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/ui_10_dip"
+                            android:layout_marginRight="@dimen/ui_10_dip"
+                            android:background="@drawable/select_fen_to_gray"
+                            android:clickable="true"
+                            android:paddingBottom="@dimen/ui_2_dip"
+                            android:paddingLeft="@dimen/ui_10_dip"
+                            android:paddingRight="@dimen/ui_10_dip"
+                            android:paddingTop="@dimen/ui_2_dip"
+                            android:text="@string/queding"
+                            android:textColor="@color/white"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 积分的自定义区间  *******************************-->
             </LinearLayout>
         </ScrollView>
         <!-- 右侧 ***************************************  -->

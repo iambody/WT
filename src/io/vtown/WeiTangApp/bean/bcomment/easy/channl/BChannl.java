@@ -15,7 +15,8 @@ public class BChannl extends BBase {
     public String invite_code_img = "http://www.lagou.com/i/image/M00/23/47/CgqKkVcXIKSADKFqAAAkAWuqPx8396.jpg";// 分享邀请二维码文案
     public String invite_code_title = "微糖邀请码";// 分享邀请二维码的文案
     public String invite_code_content = "微糖通过其专业的技术团队，力求为每一个商家打造强大公信力，为每个消费者创造购物的便捷和良好的用户体验";
-    public String invite_code_info="微糖商城";
+    public String invite_code_info = "微糖商城";
+    public String rules;
 
     public String getJunior() {
         return junior;
@@ -71,5 +72,13 @@ public class BChannl extends BBase {
 
     public void setInvite_code_info(String invite_code_info) {
         this.invite_code_info = invite_code_info;
+    }
+
+    public String getRules() {
+        return rules;
+    }
+
+    public void setRules(String rules) {
+        this.rules = rules;
     }
 }

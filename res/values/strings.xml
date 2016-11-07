@@ -755,5 +755,6 @@
     <string name="toselect">请筛选商品条件</string>
     <string name="resetsort">确定重置筛选条件?</string>
     <string name="error_null_good">无符合条件商品</string>
+    <string name="newhome_myshangji">我的上级</string>
 
 </resources>

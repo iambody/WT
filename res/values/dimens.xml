@@ -638,6 +638,7 @@
     <dimen name="sort_good_item_height">70dp</dimen>
     <dimen name="ui_16_dip">16dp</dimen>
     <dimen name="ui_14_dip">14dp</dimen>
+    <dimen name="ui_2_dip">2dp</dimen>
 
 
 </resources>

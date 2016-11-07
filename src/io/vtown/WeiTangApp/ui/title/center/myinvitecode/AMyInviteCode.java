@@ -66,6 +66,7 @@ public class AMyInviteCode extends ATitleBase {
 	 * 邀请码
 	 */
 	private TextView tv_my_invite_code;
+
 	/**
 	 * 复制按钮
 	 */
@@ -75,6 +76,7 @@ public class AMyInviteCode extends ATitleBase {
 	 * 邀请码描述
 	 */
 //	private TextView tv_my_invite_code_desc;
+	private TextView my_invite_code_rules;
 	/**
 	 * 分享微信
 	 */
@@ -131,6 +133,7 @@ public class AMyInviteCode extends ATitleBase {
 				myBChannl = JSON.parseObject(
 						CacheUtil.Center_Set_Initve_Get(BaseContext),
 						BChannl.class);
+				StrUtils.SetTxt1(my_invite_code_rules,myBChannl.getRules());
 			} catch (Exception e) {
 				return;
 			}
@@ -142,7 +145,7 @@ public class AMyInviteCode extends ATitleBase {
 	 * 初始化控件
 	 */
 	private void IView() {
-
+		my_invite_code_rules = (TextView) findViewById(R.id.my_invite_code_rules);
 		tv_my_invite_code_copy_iv= (ImageView) findViewById(R.id.tv_my_invite_code_copy_iv);
 		my_invite_code_iv = (ImageView) findViewById(R.id.my_invite_code_iv);
 		my_invite_code_iv.setOnClickListener(this);
@@ -258,6 +261,7 @@ public class AMyInviteCode extends ATitleBase {
 			return;
 		}
 		CacheUtil.Center_Set_Initve_Save(BaseContext, Data.getHttpResultStr());
+		StrUtils.SetTxt1(my_invite_code_rules,myBChannl.getRules());
 		if (Data.getHttpLoadType() == LOAD_LOADMOREING) {// 是二次验证是否存在时候的验证
 			Share(Data.getHttpResultTage());
 		}

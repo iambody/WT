@@ -59,6 +59,7 @@ public class AMyLeader extends ATitleBase {
     private View my_leader_nodata_lay;
     private BCMyLeader leader;
 
+    //如果是机器人 跳转===>ANewBind
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_my_leader);
