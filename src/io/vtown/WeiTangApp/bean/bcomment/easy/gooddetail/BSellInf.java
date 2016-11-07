@@ -19,7 +19,15 @@ public class BSellInf extends BBase {
     private List<String> intro;
     private String itype;//": 0,
     private String is_revise;//": 0
+    private String subtitle;//"subtitle": "",
 
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
 
     public String getCover() {
         return cover;

@@ -26,6 +26,7 @@ public class BGoodDetail extends BBase {
     private String goods_info_id;//=339
     private String goods_pid;// =0
     private String goods_sid;// =0
+    private int sales;//"sales": 13,
     private String goods_url;// =http://dev.vt.m.v-town.cn/goods/index/index?goods_id=687&type=goods
     private String id;// =687
     private String is_agent;// =0
@@ -45,6 +46,14 @@ public class BGoodDetail extends BBase {
     private String orig_price;
 //    private String is_fee;
     private int is_fee;//=1
+
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
 
     private String is_dasell;//品牌商是否可以代理！！！！！！！！！！！！！！！！！！！！！=0
 

@@ -262,6 +262,9 @@ public class AGoodDetail extends ATitleBase {
 
     private LinearLayout good_title_up;
     private ImageView good_detail_fanyong_log;
+    private TextView good_detail_subtitle;
+    private LinearLayout good_detail_sales;
+    private TextView tv_goods_detail_sales;
 
     @Override
     protected void InItBaseView() {
@@ -343,6 +346,7 @@ public class AGoodDetail extends ATitleBase {
         ll_gooddetail_random_message = (LinearLayout) findViewById(R.id.ll_gooddetail_random_message);
         good_detail_fanyong_log = (ImageView) findViewById(R.id.good_detail_fanyong_log);
         tv_good_title = (TextView) findViewById(R.id.tv_good_title);
+        good_detail_subtitle = (TextView) findViewById(R.id.good_detail_subtitle);
         rl_look_show = (RelativeLayout) findViewById(R.id.rl_look_show);
         rl_look_share = (RelativeLayout) findViewById(R.id.rl_look_share);
         iv_show_icon = (ImageView) findViewById(R.id.iv_show_icon);
@@ -371,6 +375,8 @@ public class AGoodDetail extends ATitleBase {
         tv_suggest_retail_price = (TextView) findViewById(R.id.tv_suggest_retail_price);
         tv_send_address = (TextView) findViewById(R.id.tv_send_address);
         tv_freight = (TextView) findViewById(R.id.tv_freight);
+        good_detail_sales = (LinearLayout) findViewById(R.id.good_detail_sales);
+        tv_goods_detail_sales = (TextView) findViewById(R.id.tv_goods_detail_sales);
         iv_seller_icon = (CircleImageView) findViewById(R.id.iv_seller_icon);
         tv_seller_shop_name = (TextView) findViewById(R.id.tv_seller_shop_name);
         // lv_pic_text_detail = (CompleteListView)
@@ -380,6 +386,7 @@ public class AGoodDetail extends ATitleBase {
 
         tv_buy = (TextView) findViewById(R.id.tv_buy);
         tv_replace_sell = (TextView) findViewById(R.id.tv_replace_sell);
+
 
         rl_look_show.setOnClickListener(this);
         rl_seller.setOnClickListener(this);
@@ -512,6 +519,13 @@ public class AGoodDetail extends ATitleBase {
         }
         good_detail_fanyong_log.setVisibility(datas.getIs_fee() == 1 ? View.VISIBLE : View.GONE);
         StrUtils.SetTxt(gooddetail_up_title, datas.getTitle());
+//        if(StrUtils.isEmpty(datas.getGoods_info().getSubtitle())){//商品副标题
+//            good_detail_subtitle.setVisibility(View.GONE);
+//        }else{
+//            good_detail_subtitle.setVisibility(View.VISIBLE);
+//            StrUtils.SetTxt(good_detail_subtitle,datas.getGoods_info().getSubtitle());
+//        }
+
         // InItitle();
         // 判断是否是图片还是视频
         IsPicDetail = datas.getGoods_info().getRtype().equals("0");
@@ -525,6 +539,14 @@ public class AGoodDetail extends ATitleBase {
             tv_freight.setText("包邮");
             tv_freight.setTextColor(getResources().getColor(R.color.app_red));
         }
+
+        if(0 == datas.getSales()){
+            good_detail_sales.setVisibility(View.GONE);
+        }else{
+            good_detail_sales.setVisibility(View.VISIBLE);
+            StrUtils.SetTxt(tv_goods_detail_sales,datas.getSales() + "件");
+        }
+
         // 判断是否品牌商品 1=》品牌商品进行判断=》标识是否可以代理
         // 判断是否是品牌商品0=》自营商品进行判断=》是否你可以代卖
         IsAgen = datas.getIs_agent().equals("1");
