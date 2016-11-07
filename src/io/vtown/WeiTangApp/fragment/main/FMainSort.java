@@ -139,7 +139,10 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
         SetTitleHttpDataLisenter(this);
         //必需先确保一级分类存在******不存在就立即进行获取
         ICacheCategory();
+        //第一次进来需要偷偷的加载==>价格/品牌/积分三个标识
+        ISaveSortTiaoJian();
     }
+
 
     private void ICacheCategory() {
         String Mycache = CacheUtil.HomeSort_Get(BaseContext);
@@ -166,11 +169,11 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
     //开始获取一级分类的数据
     private void IGetCategoryData() {
-        NHttpBaseStr Bastr=new NHttpBaseStr(BaseContext);
+        NHttpBaseStr Bastr = new NHttpBaseStr(BaseContext);
         Bastr.setPostResult(new IHttpResult<String>() {
             @Override
             public void getResult(int Code, String Msg, String Data) {
-                CacheUtil.HomeSort_Save(BaseContext,Data);
+                CacheUtil.HomeSort_Save(BaseContext, Data);
 
                 MySortCategory = JSON.parseArray(Data, BSortCategory.class);
                 MySortCategory.add(0, new BSortCategory("0", "全部"));
@@ -183,8 +186,8 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             }
         });
 
-        HashMap<String,String>Hsmap=new HashMap<>();
-        Hsmap.put("pid","0");
+        HashMap<String, String> Hsmap = new HashMap<>();
+        Hsmap.put("pid", "0");
         Bastr.getData(Constants.Add_Good_Categoty, Hsmap, Request.Method.GET);
 
     }
@@ -239,7 +242,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 //        fragmentSortRefrash.setCanLoadMore(false);
 //        fragmentSortRefrash
         //上边选择的textview的设置
-        GetGoodsLs(CurrentPage, "weight", false, INITIALIZE);
+        GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
 
         mySortAdapter = new SortAp();
         fragmentSortLs.setAdapter(mySortAdapter);
@@ -304,11 +307,13 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sort_good_zonghe://点击综合&&点击综合价格//积分//销量//全部清空
+                CurrentPage = 1;
                 if (!SortZongHe)
                     ResetSort();
                 //  //开始请求数据！！！！！！！！！！！
                 break;
             case R.id.sort_good_price_lay://点击价格
+                CurrentPage = 1;
                 //综合重置
                 SortZongHe = false;
                 sortGoodZonghe.setTextColor(getResources().getColor(R.color.gray));
@@ -322,6 +327,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 PriceColorControl(false);
                 break;
             case R.id.sort_good_jifen://点击积分
+                CurrentPage = 1;
                 //综合重置
                 SortZongHe = false;
                 sortGoodZonghe.setTextColor(getResources().getColor(R.color.gray));
@@ -340,6 +346,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 }
                 break;
             case R.id.sort_good_xiaoliang://点击销量
+                CurrentPage = 1;
                 //综合重置
                 SortZongHe = false;
                 sortGoodZonghe.setTextColor(getResources().getColor(R.color.gray));
@@ -397,7 +404,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 //                }
                 break;
             case R.id.fragment_main_sort_sou_lay://点击搜索
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ASouSouGood.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ASouSouGood.class));
                 break;
         }
     }
@@ -464,7 +471,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     @Override
     public void OnFrash() {
 //
-
+        CurrentPage = 1;
 
         if (SortZongHe) //综合被点击
             GetGoodsLs(CurrentPage, "sell_price", false, REFRESHING);
@@ -513,7 +520,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 IsHaveSort = true;
 
             }
-            CurrentPage=1;
+            CurrentPage = 1;
             UpSortPostion = position;
             CurrentOutSortId = MySortCategory.get(UpSortPostion).getId();
             //重置
@@ -562,7 +569,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                         if (ListGoods.size() < 20) {
                             fragmentSortRefrash.setCanLoadMore(false);
                         }
-                        if(ListGoods.size()==20){
+                        if (ListGoods.size() == 20) {
                             fragmentSortRefrash.setCanLoadMore(true);
                         }
                         break;
@@ -579,7 +586,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                         if (ListGoodsmore.size() < 20) {
                             fragmentSortRefrash.setCanLoadMore(false);
                         }
-                        if(ListGoodsmore.size()==20){
+                        if (ListGoodsmore.size() == 20) {
                             fragmentSortRefrash.setCanLoadMore(true);
                         }
                         break;
@@ -692,7 +699,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 SortShaiXuan();
                 break;
             case 9901://筛选条件完成开始请求数据
-                CurrentPage=1;
+                CurrentPage = 1;
                 IsHaveSort = true;
                 SecondSortId = msg.getSecondSortId();
                 PriceSort = msg.getPriceSort();
@@ -724,4 +731,78 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 break;
         }
     }
+
+    /**
+     * 要确定是放在fragment里面还是放在外边tabactivity里面
+     */
+    private void ISaveSortTiaoJian() {
+        Net_Hind_Rang_Price();
+        Net_Hind_Rang_Scro();
+        Net_Hind_HindBrandLs();
+    }
+
+    /**
+     * 获取品牌的数据
+     */
+    private void Net_Hind_HindBrandLs() {
+        //先判断是否存在品牌的缓存数据
+        NHttpBaseStr mbrandNHttpBaseStr = new NHttpBaseStr(BaseContext);
+        mbrandNHttpBaseStr.setPostResult(new IHttpResult<String>() {
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
+                CacheUtil.HomeSort_Brand_Save(BaseContext, Data);
+            }
+
+            @Override
+            public void onError(String error, int LoadType) {
+            }
+        });
+        HashMap<String, String> map = new HashMap<>();
+        mbrandNHttpBaseStr.getData(Constants.BrandsLs, map, Request.Method.GET);
+
+
+    }
+
+    /**
+     * 偷偷获取 价格的 区间列表
+     */
+    private void Net_Hind_Rang_Price() {
+        //先判断是否存在 的缓存数据
+
+        NHttpBaseStr mbrandNHttpBaseStr = new NHttpBaseStr(BaseContext);
+        mbrandNHttpBaseStr.setPostResult(new IHttpResult<String>() {
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
+                CacheUtil.HomeSort_Price_Range_Save(BaseContext, Data);
+            }
+
+            @Override
+            public void onError(String error, int LoadType) {
+
+            }
+        });
+        HashMap<String, String> map = new HashMap<>();
+        mbrandNHttpBaseStr.getData(Constants.MainSort_Price_Rang, map, Request.Method.GET);
+    }
+
+    /**
+     * 偷偷获取积分的区间
+     */
+    private void Net_Hind_Rang_Scro() {
+        NHttpBaseStr mbrandNHttpBaseStr = new NHttpBaseStr(BaseContext);
+        mbrandNHttpBaseStr.setPostResult(new IHttpResult<String>() {
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
+                CacheUtil.HomeSort_Scroe_Range_Save(BaseContext, Data);
+            }
+
+            @Override
+            public void onError(String error, int LoadType) {
+
+            }
+        });
+        HashMap<String, String> map = new HashMap<>();
+        mbrandNHttpBaseStr.getData(Constants.MainSort_Score_Rang, map, Request.Method.GET);
+    }
+
 }

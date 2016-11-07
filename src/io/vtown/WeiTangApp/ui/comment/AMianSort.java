@@ -112,8 +112,14 @@ public class AMianSort extends ABase {
     private int BrandName_Postion;
 
     //自定义区间的保存数据
-    private boolean IsZiDingYiPrice;//是否自定义价格
+    private boolean IsZiDingYiPrice ;//是否自定义价格
     private boolean IsZiDingYiScore;//是否自定义积分
+
+    //如果自定义过区间后 不点击确定相当于没重置 多以要添加一个 状态去保存临时的数据
+    private boolean IsCache_ZiDingYi_Price;
+    private boolean IsCache_ZiDingYi_Score;
+
+
 
     private BSortRang ZiDingYiPrice;
     private BSortRang ZiDingYiScore;
@@ -151,7 +157,9 @@ public class AMianSort extends ABase {
             ScoreSort_Postion = getIntent().getIntExtra("ScoreSort_Postion", -1);
             BrandName_Postion = getIntent().getIntExtra("BrandName_Postion", -1);
             IsZiDingYiPrice = getIntent().getBooleanExtra("IsSort_Rang_Price_ZiDingYi", false);
+
             IsZiDingYiScore = getIntent().getBooleanExtra("IsSort_Rang_Score_ZiDingYi", false);
+            //临时保存
             if (IsZiDingYiPrice) {
                 ZiDingYiPrice = PriceSort;
             }
@@ -199,7 +207,6 @@ public class AMianSort extends ABase {
                 popSortRangPriceMinEd.setText(PriceSort.getMin());
                 popSortRangPriceMaxEd.setText(PriceSort.getMax());
 
-
             }
 
         } else {//点击一级列表进来
@@ -221,7 +228,7 @@ public class AMianSort extends ABase {
                 switch (LeftPostion) {
                     case 0:
                         mySortAp.SetSelectPostion(position);
-
+                        IsReSet=false;
                         break;
                     case 1:
                         break;
@@ -244,6 +251,7 @@ public class AMianSort extends ABase {
                         break;
                     case 3:
                         myBrnadAp.SetSelectPostion(position);
+                        IsReSet=false;
                         break;
                 }
             }
@@ -255,6 +263,7 @@ public class AMianSort extends ABase {
                     case 0:
                         break;
                     case 1:
+                        IsReSet=false;
                         myRangAp.SetSelectPostion(position);
 
                         IsZiDingYiPrice = false;
@@ -280,6 +289,7 @@ public class AMianSort extends ABase {
                     case 1:
                         break;
                     case 2:
+                        IsReSet=false;
                         myRangScoreAp.SetSelectPostion(position);
 
                         IsZiDingYiScore = false;
@@ -409,6 +419,12 @@ public class AMianSort extends ABase {
                     myBrnadAp.SetSelectPostion(-1);
                     myRangAp.SetSelectPostion(-1);
                     myRangScoreAp.SetSelectPostion(-1);
+
+                    IsZiDingYiPrice = false;//是否自定义价格
+                    IsZiDingYiScore = false;//是否自定义积分
+
+                    ZiDingYiPrice = null;
+                    ZiDingYiScore = null;
                 }
 
                 //需要通过事件总线直接给ta页面的筛选fragment传递数据 要定义三种数据
@@ -482,16 +498,17 @@ public class AMianSort extends ABase {
                 BaseActivity.finish();
                 break;
             case R.id.pop_maitab_reset://重置 相当于没做任何筛选
-                if (mySortAp.getCount() == 0 && myBrnadAp.getCount() == 0 && myRangAp.getCount() == 0 && myRangScoreAp.getCount() == 0) {
+                if (!IsZiDingYiScore&&!IsZiDingYiPrice&&mySortAp.getCount() == 0 && myBrnadAp.getCount() == 0 && myRangAp.getCount() == 0 && myRangScoreAp.getCount() == 0) {
                     PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.toselect));
                     return;
                 }
 
 
-                if (mySortAp.GetSelectPostion() == -1 && myBrnadAp.GetSelectPostion() == -1 && myRangAp.GetSelectPostion() == -1 && myRangScoreAp.GetSelectPostion() == -1) {
+                if (!IsZiDingYiScore&&!IsZiDingYiPrice&&mySortAp.GetSelectPostion() == -1 && myBrnadAp.GetSelectPostion() == -1 && myRangAp.GetSelectPostion() == -1 && myRangScoreAp.GetSelectPostion() == -1) {
                     PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.toselect));
                     return;
                 }
+
                 ShowCustomDialog(getResources().getString(R.string.resetsort), getResources().getString(R.string.cancle), getResources().getString(R.string.queding), new IDialogResult() {
                     @Override
                     public void LeftResult() {
@@ -521,8 +538,8 @@ public class AMianSort extends ABase {
                         IsZiDingYiPrice = false;//是否自定义价格
                         IsZiDingYiScore = false;//是否自定义积分
 
-                        ZiDingYiPrice = new BSortRang("0", Constants.SortMax);
-                        ZiDingYiScore = new BSortRang("0", Constants.SortMax);
+                        ZiDingYiPrice = null;
+                        ZiDingYiScore = null;
 //                        sssssss
                     }
                 });

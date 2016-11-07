@@ -886,7 +886,6 @@ public class CacheUtil {
 //
 
     public static void HomeSort_Scroe_Range_Save(Context PContext, String Str) {
-
         SharedPreferences Sp = PContext.getSharedPreferences(Sp_Short_Scroe_Range_ls,
                 Context.MODE_PRIVATE);
         Editor editor = Sp.edit();
