@@ -145,6 +145,58 @@
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/arrow_right"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tv_my_leader_bind_super"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:visibility="gone"
+                android:clickable="true"
+                android:layout_height="wrap_content">
+
+                <View
+                    style="@style/line_left2"
+                    />
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/select_white_to_gray"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/ui_10_dip">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:text="@string/bindsuper"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/arrow_right"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="@color/app_bg"
+                    android:textSize="11sp"
+                    android:paddingTop="3dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/grey"
+                    android:text="您目前绑定的上级是系统默认的上级，点击“绑定上级”可重新绑定上级"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+
         </LinearLayout>
 
     </ScrollView>

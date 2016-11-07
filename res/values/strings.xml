@@ -645,6 +645,7 @@
     <string name="sousoushop_nodata">暂未搜索到店铺</string>
     <string name="jifenguize">积分规则</string>
     <string name="fanyongguize">返佣规则</string>
+    <string name="bindsuper">绑定上级</string>
     <string name="bindtag_yes">已绑定</string>
     <string name="bindtag_no">未绑定</string>
 
@@ -731,6 +732,7 @@
     <string name="my_scan_record">浏览记录</string>
     <string name="_my_show">我的show</string>
     <string name="_my_address">我的地址</string>
+    <string name="_my_shop">我的店铺</string>
     <string name="my_about_me">关于我们</string>
     <string name="my_setting">设置</string>
     <string name="newhome_wallet">我的钱包</string>

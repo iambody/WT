@@ -138,6 +138,11 @@ public class CacheUtil {
      * 缓存筛选时候的 价格的积分区间列表
      */
     private final static String Sp_Short_Scroe_Range_ls = "short_rang_scroe_sp";
+
+    /**
+     * 我的上级缓存
+     */
+    private final static String Sp_My_Super = "my_super_sp";
     /**
      * 缓存首页数据
      */
@@ -540,7 +545,7 @@ public class CacheUtil {
         Shop_Purchase_List_Save(mpContext, "");
         Center_Wallet_Save(mpContext, "");
         Guanzhu_LiuLan_Save(mpContext, "");
-
+        My_Super_Save(mpContext, "");
         Guanzhu_Shop_Save(mpContext, "");
         Guanzhu_Good_Save(mpContext, "");
         MyShow_Save(mpContext, "");
@@ -681,6 +686,28 @@ public class CacheUtil {
                 Context.MODE_PRIVATE);
         Editor editor = Sp.edit();
         editor.putString("invitcode", invitcodetr);
+        editor.commit();
+    }
+
+    /**
+     * 我的上级
+     */
+    public static String My_Super_Get(Context mPContext) {
+        SharedPreferences Sp = mPContext.getSharedPreferences(Sp_My_Super,
+                Context.MODE_PRIVATE);
+        return Sp.getString("mysuper", "");
+
+    }
+
+    /**
+     * 我的上级
+     */
+    public static void My_Super_Save(Context pContext,
+                                              String mysuper) {
+        SharedPreferences Sp = pContext.getSharedPreferences(Sp_My_Super,
+                Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+        editor.putString("mysuper", mysuper);
         editor.commit();
     }
 

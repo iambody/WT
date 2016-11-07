@@ -1,9 +1,11 @@
 package io.vtown.WeiTangApp.ui.title;
 
+import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -367,9 +369,21 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
             } else {
                 holder = (ReturnOutsideViewHolder) convertView.getTag();
             }
-            BLAPropertyList data = datas.get(position);
+            final BLAPropertyList data = datas.get(position);
             StrUtils.SetTxt(holder.returnMonth, data.getMonth());
-            holder.lvReturnListOutside.setAdapter(new ReturnInsideAdapter(data.getList()));
+           final ReturnInsideAdapter returnInsideAdapter = new ReturnInsideAdapter(data.getList());
+            holder.lvReturnListOutside.setAdapter(returnInsideAdapter);
+            holder.lvReturnListOutside.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    BLAPropertyDetail item = (BLAPropertyDetail)returnInsideAdapter.getItem(position);
+                    ClipboardManager c= (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+                    String content = "【微糖商城】【返佣啦！】有人购买了【"+item.getGoods_name()+"】，新增佣金为￥"+StrUtils.SetTextForMony(item.getPrice())+"元，祝您鸿图大展，财源广进！";
+                    c.setText(content);
+                    PromptManager.ShowCustomToast(BaseContext,"复制内容："+content);
+
+                }
+            });
             return convertView;
         }
 

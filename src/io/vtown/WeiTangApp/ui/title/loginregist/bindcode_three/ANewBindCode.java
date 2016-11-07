@@ -54,12 +54,12 @@ public class ANewBindCode extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
+        //通知首页修改状态
+        EventBus.getDefault().post(new BMessage(BMessage.Fragment_Home_Bind));
         Spuit.IsHaveBind_Set(BaseContext, true);
         PromptManager.ShowCustomToast(BaseContext, "已绑定");
         //通知个人中心刷新数据
         EventBus.getDefault().post(new BMessage(BMessage.Fragment_Center_ChangStatus));
-        //通知首页修改状态
-        EventBus.getDefault().post(new BMessage(BMessage.Fragment_Home_Bind));
         BaseActivity.finish();
     }
 

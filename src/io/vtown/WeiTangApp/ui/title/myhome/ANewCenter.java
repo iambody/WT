@@ -12,6 +12,7 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
 import io.vtown.WeiTangApp.ui.title.ASearchResult;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
@@ -35,6 +36,7 @@ public class ANewCenter extends ATitleBase {
     private View view_my_show;
     private View view_about_me;
     private View view_my_address;
+    private View view_my_shop;
 
     @Override
     protected void InItBaseView() {
@@ -46,6 +48,7 @@ public class ANewCenter extends ATitleBase {
 
         view_personal_data = findViewById(R.id.view_personal_data);
         view_my_show = findViewById(R.id.view_my_show);
+        view_my_shop = findViewById(R.id.view_my_shop);
         view_my_address = findViewById(R.id.view_my_address);
         view_good_soucang = findViewById(R.id.view_good_soucang);
         view_shop_guanzhu = findViewById(R.id.view_shop_guanzhu);
@@ -55,6 +58,7 @@ public class ANewCenter extends ATitleBase {
 
         SetItemContent(view_personal_data, R.drawable.shop_grad9, R.string.my_personal_data);
         SetItemContent(view_my_address,  R.drawable.address_iv, R.string._my_address);
+        SetItemContent(view_my_shop,  R.drawable.shop_grad8, R.string._my_shop);
         SetItemContent(view_my_show, R.drawable.center_iv1, R.string._my_show);
         SetItemContent(view_good_soucang, R.drawable.center_iv6, R.string.my_good_shouchang);
         SetItemContent(view_shop_guanzhu, R.drawable.center_iv7, R.string.my_shop_guanzhu);
@@ -110,46 +114,50 @@ public class ANewCenter extends ATitleBase {
     protected void MyClick(View V) {
         if (CheckNet(BaseContext)) return;
         switch (V.getId()) {
-            case R.id.view_personal_data:
+            case R.id.view_personal_data://个人资料
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AShopData.class));
                 break;
 
-            case R.id.view_my_show:
+            case R.id.view_my_show://我的show
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ARecyclerMyShow.class).putExtra("seller_id", Spuit.User_Get(BaseContext).getSeller_id()));
                 break;
 
-            case R.id.view_good_soucang:
+            case R.id.view_good_soucang://商品收藏
                 Intent intent = new Intent(BaseActivity, ACommentList.class);
                 intent.putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterOderGuanzhu);
 
                 PromptManager.SkipActivity(BaseActivity, intent);
                 break;
-            case R.id.view_shop_guanzhu:
+            case R.id.view_shop_guanzhu://店铺关注
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterShopCollect));
                 break;
-            case R.id.view_scan_record:
+            case R.id.view_scan_record://浏览记录
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterGoodBrowseRecord));
                 break;
 
-            case R.id.view_about_me:
+            case R.id.view_about_me://关于我们
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         AAboutWt.class));
                 break;
 
-            case R.id.view_setting:
+            case R.id.view_setting://设置
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, APersonalData.class));
                 break;
 
-            case R.id.view_my_address:
+            case R.id.view_my_address://我的地址
                 Intent intentss = new Intent(BaseActivity, AAddressManage.class);
                 intentss.putExtra("NeedFinish", false);
                 PromptManager.SkipActivity(BaseActivity, intentss);
+                break;
+
+            case R.id.view_my_shop://我的店铺
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMyShop.class));
                 break;
         }
 

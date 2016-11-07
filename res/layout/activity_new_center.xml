@@ -21,6 +21,13 @@
         android:background="@color/app_bg"/>
 
     <include
+        android:id="@+id/view_my_shop"
+        layout="@layout/commentview_center"/>
+
+    <View
+        style="@style/line_left2"/>
+
+    <include
         android:id="@+id/view_my_address"
         layout="@layout/commentview_center"/>
 

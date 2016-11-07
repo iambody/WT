@@ -18,9 +18,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BCMyLeader;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -30,6 +33,7 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.util.ui.UiHelper;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
@@ -54,6 +58,9 @@ public class AMyLeader extends ATitleBase {
     LinearLayout tvMyLeaderLookGuize;
     @BindView(R.id.iv_my_leader_invite_code)
     TextView ivMyLeaderInviteCode;
+    @BindView(R.id.tv_my_leader_bind_super)
+    LinearLayout tvMyLeaderBindSuper;
+
     private Unbinder mBind;
     private View mRootView;
     private View my_leader_nodata_lay;
@@ -64,11 +71,26 @@ public class AMyLeader extends ATitleBase {
     protected void InItBaseView() {
         setContentView(R.layout.activity_my_leader);
         mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_my_leader, null);
-
+        EventBus.getDefault().register(this, "onRefrashView", BMessage.class);
         mBind = ButterKnife.bind(this);
         IView();
+        ICache();
         IData();
 
+    }
+
+    private void ICache() {
+        String s = CacheUtil.My_Super_Get(BaseContext);
+        if (StrUtils.isEmpty(s)) {
+            PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.loading));
+        } else {
+            try {
+                leader = JSON.parseObject(s, BCMyLeader.class);
+            } catch (Exception e) {
+                return;
+            }
+            RefreshView(leader);
+        }
     }
 
     private void IView() {
@@ -77,7 +99,7 @@ public class AMyLeader extends ATitleBase {
     }
 
     private void IData() {
-        PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.loading));
+
         SetTitleHttpDataLisenter(this);
         HashMap<String, String> map = new HashMap<>();
         map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());
@@ -93,12 +115,19 @@ public class AMyLeader extends ATitleBase {
     protected void DataResult(int Code, String Msg, BComment Data) {
 
         leader = JSON.parseObject(Data.getHttpResultStr(), BCMyLeader.class);
+        CacheUtil.My_Super_Save(BaseContext, Data.getHttpResultStr());
         RefreshView(leader);
     }
 
     private void RefreshView(BCMyLeader leader) {
         if (!StrUtils.isEmpty(leader.getInvite_code())) {
             StrUtils.SetTxt(ivMyLeaderInviteCode, leader.getInvite_code());
+        }
+
+        if (1 == leader.getIs_ropot()) {
+            tvMyLeaderBindSuper.setVisibility(View.VISIBLE);
+        } else {
+            tvMyLeaderBindSuper.setVisibility(View.GONE);
         }
         ImageLoaderUtil.Load2(leader.getAvatar(), ivMyLeaderIcon, R.drawable.error_iv2);
         StrUtils.SetTxt(tvMyLeaderName, leader.getSeller_name());
@@ -184,14 +213,26 @@ public class AMyLeader extends ATitleBase {
 
     }
 
+    public void onRefrashView(BMessage event){
+        int messageType = event.getMessageType();
+        if(messageType == BMessage.Fragment_Home_Bind){
+            IData();
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mBind.unbind();
+        try{
+            EventBus.getDefault().unregister(this);
+        }catch (Exception e){
+
+        }
     }
 
 
-    @OnClick({R.id.iv_my_leader_back_icon, R.id.iv_my_leader_icon, R.id.tv_my_leader_look_guize})
+    @OnClick({R.id.iv_my_leader_back_icon, R.id.iv_my_leader_icon, R.id.tv_my_leader_look_guize, R.id.tv_my_leader_bind_super})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.iv_my_leader_back_icon:
@@ -211,6 +252,11 @@ public class AMyLeader extends ATitleBase {
                         BaseActivity, AWeb.class).putExtra(
                         AWeb.Key_Bean,
                         new BComment(Constants.Homew_FanYong, getResources().getString(R.string.fanyongguize))));
+                break;
+
+            case R.id.tv_my_leader_bind_super://绑定上级
+//如果是机器人 跳转===>ANewBind
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ANewBindCode.class));
                 break;
         }
 
