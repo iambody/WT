@@ -519,12 +519,12 @@ public class AGoodDetail extends ATitleBase {
         }
         good_detail_fanyong_log.setVisibility(datas.getIs_fee() == 1 ? View.VISIBLE : View.GONE);
         StrUtils.SetTxt(gooddetail_up_title, datas.getTitle());
-//        if(StrUtils.isEmpty(datas.getGoods_info().getSubtitle())){//商品副标题
-//            good_detail_subtitle.setVisibility(View.GONE);
-//        }else{
-//            good_detail_subtitle.setVisibility(View.VISIBLE);
-//            StrUtils.SetTxt(good_detail_subtitle,datas.getGoods_info().getSubtitle());
-//        }
+        if(StrUtils.isEmpty(datas.getGoods_info().getSubtitle())){//商品副标题
+            good_detail_subtitle.setVisibility(View.GONE);
+        }else{
+            good_detail_subtitle.setVisibility(View.VISIBLE);
+            StrUtils.SetTxt(good_detail_subtitle,datas.getGoods_info().getSubtitle());
+        }
 
         // InItitle();
         // 判断是否是图片还是视频

@@ -233,7 +233,6 @@
                             android:layout_width="match_parent"
                             android:textColor="@color/app_fen1"
                             android:layout_marginTop="3dp"
-                            android:text="中华人民共和国中华人民共和国中华人民共和国"
                             android:layout_height="wrap_content" />
 
                     </LinearLayout>
