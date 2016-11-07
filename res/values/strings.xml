@@ -650,7 +650,7 @@
     <string name="bindtag_no">未绑定</string>
 
     <!--邀请的好友-->
-    <string name="invite_friends">全部店铺</string>
+    <string name="invite_friends">全部好友</string>
     <string name="invite_friends_no_activites">未激活店铺</string>
 
 
