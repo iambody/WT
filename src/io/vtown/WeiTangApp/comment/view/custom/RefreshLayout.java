@@ -243,6 +243,7 @@ public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnS
 
     @Override
     public void onRefresh() {
+        if(mOnLoadListener!=null)
         mOnLoadListener.OnFrash();
     }
 

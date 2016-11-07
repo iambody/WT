@@ -250,12 +250,14 @@ public class BMessage {
     private BSortRang PriceSort;//价格的筛选
     private BSortRang ScoreSort;//积分的筛选
     private String BrandSort;//品牌的筛选字段
-//记录所筛选的位置 不可能全部未-1（-1没有筛选） 四类至少要筛选一个
+    //记录所筛选的位置 不可能全部未-1（-1没有筛选） 四类至少要筛选一个
     private int SecondSortId_Postion;//二级分类的选择 -1标识没有选择
     private int PriceSort_Postion;//价格的位置 -1标识没有选择  -2标识是自定义的区间
-    private int  ScoreSort_Postion;//积分的位置 -1标识没有选择  -2标识是自定义的区间
-    private int  BrandSort_Postion;//品牌的位置 -1标识没有选择
-
+    private int ScoreSort_Postion;//积分的位置 -1标识没有选择  -2标识是自定义的区间
+    private int BrandSort_Postion;//品牌的位置 -1标识没有选择
+    //是否自定义了
+    private boolean IsSort_Price_ZiDingYi;
+    private boolean IsSort_Score_ZiDingYi;
 
     //退出时候通知所有进行
     public BMessage() {
@@ -470,5 +472,21 @@ public class BMessage {
 
     public void setBrandSort_Postion(int brandSort_Postion) {
         BrandSort_Postion = brandSort_Postion;
+    }
+
+    public boolean isSort_Price_ZiDingYi() {
+        return IsSort_Price_ZiDingYi;
+    }
+
+    public void setSort_Price_ZiDingYi(boolean sort_Price_ZiDingYi) {
+        IsSort_Price_ZiDingYi = sort_Price_ZiDingYi;
+    }
+
+    public boolean isSort_Score_ZiDingYi() {
+        return IsSort_Score_ZiDingYi;
+    }
+
+    public void setSort_Score_ZiDingYi(boolean sort_Score_ZiDingYi) {
+        IsSort_Score_ZiDingYi = sort_Score_ZiDingYi;
     }
 }

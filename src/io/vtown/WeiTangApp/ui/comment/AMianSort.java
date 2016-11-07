@@ -79,6 +79,10 @@ public class AMianSort extends ABase {
     TextView popSortRangScoreBt;//积分自定义 确定按钮
     @BindView(R.id.pop_sort_rang_score_ed_lay)
     LinearLayout popSortRangScoreEdLay;//积分自定义布局
+    @BindView(R.id.pop_sort_rang_price_tag)
+    TextView popSortRangPriceTag;//价格的显示标题
+    @BindView(R.id.pop_sort_rang_score_tag)
+    TextView popSortRangScoreTag;//积分的显示标题
 
 
     //我左侧的文本控制列表
@@ -146,6 +150,14 @@ public class AMianSort extends ABase {
             PriceSort_Postion = getIntent().getIntExtra("PriceSort_Postion", -1);
             ScoreSort_Postion = getIntent().getIntExtra("ScoreSort_Postion", -1);
             BrandName_Postion = getIntent().getIntExtra("BrandName_Postion", -1);
+            IsZiDingYiPrice = getIntent().getBooleanExtra("IsSort_Rang_Price_ZiDingYi", false);
+            IsZiDingYiScore = getIntent().getBooleanExtra("IsSort_Rang_Score_ZiDingYi", false);
+            if (IsZiDingYiPrice) {
+                ZiDingYiPrice = PriceSort;
+            }
+            if (IsZiDingYiScore) {
+                ZiDingYiScore = ScoreSort;
+            }
 
         }
     }
@@ -181,6 +193,14 @@ public class AMianSort extends ABase {
             Net_Rang_Price();
             Net_Rang_Scro();
             NetBrandLs();
+            //先显示价格 如果价格是已经自定义过需要直接显示
+            if (IsZiDingYiPrice) { //刚进来需要初始化的
+                popSortRangPriceTag.setTextColor(getResources().getColor(R.color.app_fen));
+                popSortRangPriceMinEd.setText(PriceSort.getMin());
+                popSortRangPriceMaxEd.setText(PriceSort.getMax());
+
+
+            }
 
         } else {//点击一级列表进来
             CheckLeftPostion(LeftPostion);
@@ -236,6 +256,12 @@ public class AMianSort extends ABase {
                         break;
                     case 1:
                         myRangAp.SetSelectPostion(position);
+
+                        IsZiDingYiPrice = false;
+                        ZiDingYiPrice = null;
+                        popSortRangPriceTag.setTextColor(getResources().getColor(R.color.app_black));
+                        popSortRangPriceMinEd.setText("");
+                        popSortRangPriceMaxEd.setText("");
                         break;
                     case 2:
                         break;
@@ -255,6 +281,13 @@ public class AMianSort extends ABase {
                         break;
                     case 2:
                         myRangScoreAp.SetSelectPostion(position);
+
+                        IsZiDingYiScore = false;
+                        ZiDingYiScore = null;
+                        popSortRangScoreTag.setTextColor(getResources().getColor(R.color.app_black));
+                        popSortRangScoreMinEd.setText("");
+                        popSortRangScoreMaxEd.setText("");
+
                         break;
                     case 3:
                         break;
@@ -280,6 +313,7 @@ public class AMianSort extends ABase {
                 RangEdCommeint(popSortRangPriceMinEd, popSortRangPriceMaxEd, 1);
                 break;
             case R.id.pop_sort_rang_score_bt://积分区间的确定按钮
+                RangEdCommeint(popSortRangScoreMinEd, popSortRangScoreMaxEd, 2);
                 break;
             case R.id.pop_maitab_sort_type:
                 LeftPostion = 0;
@@ -302,7 +336,16 @@ public class AMianSort extends ABase {
 
                 popSortRangPriceEdLay.setVisibility(View.VISIBLE);
                 popSortRangScoreEdLay.setVisibility(View.GONE);
-//是否已经选择了
+//是否已经选择了自定义的价格
+                if (IsZiDingYiPrice) {
+                    popSortRangPriceTag.setTextColor(getResources().getColor(R.color.app_fen));
+                    popSortRangPriceMinEd.setText(ZiDingYiPrice.getMin());
+                    popSortRangPriceMaxEd.setText(ZiDingYiPrice.getMax());
+                } else {
+                    popSortRangPriceTag.setTextColor(getResources().getColor(R.color.app_black));
+                    popSortRangPriceMinEd.setText("");
+                    popSortRangPriceMaxEd.setText("");
+                }
 
 
                 //
@@ -319,7 +362,18 @@ public class AMianSort extends ABase {
 
                 popSortRangPriceEdLay.setVisibility(View.GONE);
                 popSortRangScoreEdLay.setVisibility(View.VISIBLE);
-//
+//是否已经选择了自定义积分
+                if (IsZiDingYiScore) {
+                    popSortRangScoreTag.setTextColor(getResources().getColor(R.color.app_fen));
+                    popSortRangScoreMinEd.setText(ZiDingYiScore.getMin());
+                    popSortRangScoreMaxEd.setText(ZiDingYiScore.getMax());
+                } else {
+                    popSortRangScoreTag.setTextColor(getResources().getColor(R.color.app_black));
+                    popSortRangScoreMinEd.setText("");
+                    popSortRangScoreMaxEd.setText("");
+                }
+
+                //
                 popMaitabSortBrandGridview.setVisibility(View.GONE);
                 popMaitabSortLs.setVisibility(View.GONE);
                 popMaitabRangLs.setVisibility(View.GONE);
@@ -383,14 +437,18 @@ public class AMianSort extends ABase {
 
                 BSortRang MyPriceSort;
                 if (myRangAp.GetSelectPostion() == -1) {// 没有点击筛选需要选择全部
-                    MyPriceSort = new BSortRang("0", "100000000000");
+                    MyPriceSort = new BSortRang("0", Constants.SortMax);
                     SortMessage.setPriceSort_Postion(-1);//-1标识没选择  -2标识自定义价格区间
                 } else {//点击筛选了
                     MyPriceSort = myRangAp.GetDatas().get(myRangAp.GetSelectPostion());
                     SortMessage.setPriceSort_Postion(myRangAp.GetSelectPostion());
                 }
 //
+                if (IsZiDingYiPrice) {//如果已经自定义筛选了直接改成自定义筛选的功能
+                    MyPriceSort = ZiDingYiPrice;
+                }
                 SortMessage.setPriceSort(MyPriceSort);
+                SortMessage.setSort_Price_ZiDingYi(IsZiDingYiPrice);//把是否自定义选择价格区间的标识传给你
                 //把筛选的积分区间封装bean传递出去**********************************************************************************************
 
                 BSortRang MyScoreSort;
@@ -401,8 +459,12 @@ public class AMianSort extends ABase {
                     MyScoreSort = myRangScoreAp.GetDatas().get(myRangScoreAp.GetSelectPostion());
                     SortMessage.setScoreSort_Postion(myRangScoreAp.GetSelectPostion());
                 }
+                if (IsZiDingYiScore) {//如果已经自定义筛选了直接改成自定义筛选的功能
+                    MyScoreSort = ZiDingYiScore;
+                }
 //                PromptManager.ShowCustomToast(BaseContext, String.format("最小积分%s--最大积分%s", MyScoreSort.getMin(), MyScoreSort.getMax()));
                 SortMessage.setScoreSort(MyScoreSort);
+                SortMessage.setSort_Score_ZiDingYi(IsZiDingYiScore);//把是否自定义的字段返回
                 //把筛选的品牌的string传递出去**********************************************************************************************
                 String BrnadSort;
                 if (myBrnadAp.GetSelectPostion() == -1) {
@@ -443,6 +505,24 @@ public class AMianSort extends ABase {
                         myRangAp.SetReSet();
                         myRangScoreAp.SetReSet();
                         IsReSet = true;
+
+                        if (IsZiDingYiPrice) {
+                            popSortRangPriceTag.setTextColor(getResources().getColor(R.color.app_black));
+                            popSortRangPriceMinEd.setText("");
+                            popSortRangPriceMaxEd.setText("");
+                        }
+                        if(IsZiDingYiScore){
+                            popSortRangScoreTag.setTextColor(getResources().getColor(R.color.app_black));
+                            popSortRangScoreMinEd.setText("");
+                            popSortRangScoreMaxEd.setText("");
+                        }
+
+
+                        IsZiDingYiPrice = false;//是否自定义价格
+                        IsZiDingYiScore = false;//是否自定义积分
+
+                        ZiDingYiPrice = new BSortRang("0", Constants.SortMax);
+                        ZiDingYiScore = new BSortRang("0", Constants.SortMax);
 //                        sssssss
                     }
                 });
@@ -480,30 +560,30 @@ public class AMianSort extends ABase {
 
         if (1 == i) { //价格的区间的处理
             IsZiDingYiPrice = true;
+            ZiDingYiPrice = new BSortRang(popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim());
+            popSortRangPriceTag.setTextColor(getResources().getColor(R.color.app_fen));
+
             if (myRangAp.GetSelectPostion() == -1) {//没选择
 
-                ZiDingYiPrice = new BSortRang(popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim());
 
             } else {//已经选择
                 myRangAp.SetSelectPostion(-1);
-
-
             }
+
         } else {//积分的区间的处理
             IsZiDingYiScore = true;
+            ZiDingYiScore = new BSortRang(popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim());
+            popSortRangScoreTag.setTextColor(getResources().getColor(R.color.app_fen));
+
             if (myRangScoreAp.GetSelectPostion() == -1) {//没选择过
 
             } else {//已经选择过
                 myRangScoreAp.SetSelectPostion(-1);
-                ZiDingYiScore = new BSortRang(popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim());
-
-
             }
 
-
         }
-
-
+        PromptManager.ShowCustomToast(BaseContext, String.format("%s区间选择成功", 1 == i ? "价格" : "积分"));
+        hintKbTwo();
     }
 
 
@@ -568,6 +648,8 @@ public class AMianSort extends ABase {
         });
         HashMap<String, String> map = new HashMap<>();
         mbrandNHttpBaseStr.getData(Constants.BrandsLs, map, Request.Method.GET);
+
+
     }
 
     /**
@@ -680,6 +762,9 @@ public class AMianSort extends ABase {
         }
 
         public void FrashSortAp(List<BSortCategory> ddd) {
+//            BSortCategory all = new BSortCategory("", "全部");
+//            this.datas.add(all);
+//            this.datas.addAll(ddd);
             this.datas = ddd;
             this.notifyDataSetChanged();
         }
@@ -846,6 +931,9 @@ public class AMianSort extends ABase {
         }
 
         public void FrashRangAp(List<BSortRang> ddd) {
+//            BSortRang daa = new BSortRang("0", Constants.SortMax);
+//            this.datas.add(daa);
+//            this.datas.addAll(ddd);
             this.datas = ddd;
             this.notifyDataSetChanged();
         }

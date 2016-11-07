@@ -277,6 +277,12 @@ public class StrUtils {
         }
     }
 
+    public static String toInt_price(String obj) {
+
+            return Integer.parseInt(obj) * 100 + "";
+
+    }
+
     /**
      * 对象转整数
      *

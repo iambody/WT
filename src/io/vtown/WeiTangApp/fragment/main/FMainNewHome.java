@@ -391,6 +391,14 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             Spuit.IsHaveBind_Set(BaseContext, false);
             StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.nobind));
         }
+
+        //判断是否绑定机器人
+
+         if(Data.getIs_ropot()==1){
+             Spuit.IsHaveBind_JiQi_Set(BaseContext,true);
+         }else{
+             Spuit.IsHaveBind_JiQi_Set(BaseContext,false);
+         }
 //        UiHelper.SetShapeColor(fragmentNewhomeUsertag, getResources().getColor(R.color.app_fen));
 //判断是否明细店铺状态
 //        if (Data.getIsstar() == 1) {//明星店铺

@@ -31,6 +31,10 @@ public class BNewHome extends BBase {
 //    private int  member_level;//=0
     private String member_level_name;//=青铜店铺
 
+    //是否绑定机器人
+    private int  is_ropot;
+
+
     public BNewShop getSellerinfo() {
         return sellerinfo;
     }
@@ -149,5 +153,13 @@ public class BNewHome extends BBase {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getIs_ropot() {
+        return is_ropot;
+    }
+
+    public void setIs_ropot(int is_ropot) {
+        this.is_ropot = is_ropot;
     }
 }

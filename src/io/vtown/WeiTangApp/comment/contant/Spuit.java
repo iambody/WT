@@ -104,6 +104,10 @@ public class Spuit {
      */
     private static final String BindUser_Sp = "binduser_sp";
     /**
+     * 绑定的是机器人吗
+     */
+    private static final String BindJiQiRen_Sp = "bindjiqiren_sp";
+    /**
      * 是否已经激活状态标识
      */
     private static final String Active_Sp = "active_sp";
@@ -545,6 +549,20 @@ public class Spuit {
     public static boolean IsHaveBind_Get(Context PPcontext) {
         SharedPreferences Sp = PPcontext.getSharedPreferences(BindUser_Sp, Context.MODE_PRIVATE);
         return Sp.getBoolean("isbind", false);
+    }
+    //判断是否是绑定的机器人
+
+
+    public static void IsHaveBind_JiQi_Set(Context Pcontext, Boolean IsBind) {
+        SharedPreferences Sp = Pcontext.getSharedPreferences(BindJiQiRen_Sp, Context.MODE_PRIVATE);
+        Editor ed = Sp.edit();
+        ed.putBoolean("isbind_jiqi", IsBind);
+        ed.commit();
+    }
+
+    public static boolean IsHaveBind_JiQi_Get(Context PPcontext) {
+        SharedPreferences Sp = PPcontext.getSharedPreferences(BindJiQiRen_Sp, Context.MODE_PRIVATE);
+        return Sp.getBoolean("isbind_jiqi", false);
     }
 //需要判断是否已经激活（只有激活状态才能进行邀请好友）
 
