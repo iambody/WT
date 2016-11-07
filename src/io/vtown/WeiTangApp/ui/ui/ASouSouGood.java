@@ -293,20 +293,21 @@ public class ASouSouGood extends ATitileNoBase {
                 } else {// 点击正常
                     // PromptManager.ShowCustomToast(BaseContext, "位置：" + arg2);
                     BLComment DATA = (BLComment) arg0.getItemAtPosition(arg2);
-                    BComment data = new BComment(DATA.getId(), DATA.getTitle());
+                   // BComment data = new BComment(DATA.getId(), DATA.getTitle());
 
                     AddCacheData(new BSouRecord(DATA.getId(), DATA.getTitle(),
                             1 + ""));
-                    PromptManager
-                            .SkipActivity(
-                                    BaseActivity,
-                                    new Intent(BaseActivity, ACommentList.class)
-                                            .putExtra(
-                                                    ACommentList.Tage_ResultKey,
-                                                    ACommentList.Tage_SouGoodResultItem)
-                                            .putExtra(
-                                                    ACommentList.Tage_BeanKey,
-                                                    data));
+//                    PromptManager
+//                            .SkipActivity(
+//                                    BaseActivity,
+//                                    new Intent(BaseActivity, ACommentList.class)
+//                                            .putExtra(
+//                                                    ACommentList.Tage_ResultKey,
+//                                                    ACommentList.Tage_SouGoodResultItem)
+//                                            .putExtra(
+//                                                    ACommentList.Tage_BeanKey,
+//                                                    data));
+                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, ASearchResult.class).putExtra("search_key",DATA.getTitle()));
 
 
                     BaseActivity.finish();

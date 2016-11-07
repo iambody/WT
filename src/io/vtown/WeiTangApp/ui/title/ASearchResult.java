@@ -98,7 +98,7 @@ public class ASearchResult extends ATitleBase {
         SetTitleHttpDataLisenter(this);
         PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
         HashMap<String, String> map = new HashMap<>();
-        map.put("api_version", "3.0.1");
+        map.put("api_version", "3.1.0");
         map.put("keyword", search_key);
         FBGetHttpData(map, Constants.Search_Shop_Good, Request.Method.GET, 0, LOAD_INITIALIZE);
     }
@@ -130,7 +130,7 @@ public class ASearchResult extends ATitleBase {
             search_result_data_lay.setVisibility(View.GONE);
             search_result_nodata_lay.setVisibility(View.VISIBLE);
             ShowErrorCanLoad(getResources().getString(R.string.search_result_null));
-            ShowErrorIv( R.drawable.error_sou);
+            ShowErrorIv(R.drawable.error_sou);
             search_result_nodata_lay.setClickable(false);
         } else {
             search_result_data_lay.setVisibility(View.VISIBLE);
@@ -142,10 +142,10 @@ public class ASearchResult extends ATitleBase {
             llSearchShops.setVisibility(View.VISIBLE);
             List<BLSearchShopAndGood> datas = new ArrayList<BLSearchShopAndGood>();
             datas = JSON.parseArray(info.getSellerinfo(), BLSearchShopAndGood.class);
-            tvSearchResultTotalShops.setText("相关店铺"+info.getSeller_total()+"个");
+            tvSearchResultTotalShops.setText("相关店铺" + info.getSeller_total() + "个");
             if (datas.size() < 4) {
                 tvSearchResultAllShops.setVisibility(View.GONE);
-            }else{
+            } else {
                 tvSearchResultAllShops.setVisibility(View.VISIBLE);
             }
             mShopResultAdapter.RefreshShop(datas);
@@ -157,10 +157,10 @@ public class ASearchResult extends ATitleBase {
             llSearchGoods.setVisibility(View.VISIBLE);
             List<BLSearchShopAndGood> datas = new ArrayList<BLSearchShopAndGood>();
             datas = JSON.parseArray(info.getGoodsinfo(), BLSearchShopAndGood.class);
-            tvSearchResultTotalGoods.setText("相关商品"+info.getGoods_total()+"个");
+            tvSearchResultTotalGoods.setText("相关商品" + info.getGoods_total() + "个");
             if (datas.size() < 6) {
                 tvSearchResultAllGoods.setVisibility(View.GONE);
-            }else{
+            } else {
                 tvSearchResultAllGoods.setVisibility(View.VISIBLE);
             }
             mGoodResultAdapter.RefreshGood(datas);
@@ -302,8 +302,11 @@ public class ASearchResult extends ATitleBase {
             BLSearchShopAndGood blSearchShopAndGood = datas.get(position);
             ImageLoaderUtil.Load2(blSearchShopAndGood.getAvatar(), holder.ivSearchResultShopIcon, R.drawable.error_iv2);
             StrUtils.SetTxt(holder.tvSearchResultShopName, blSearchShopAndGood.getSeller_name());
-            StrUtils.SetTxt(holder.tvSearchResultShopDesc, blSearchShopAndGood.getIntro());
-
+            if(StrUtils.isEmpty(blSearchShopAndGood.getIntro())){
+                StrUtils.SetTxt(holder.tvSearchResultShopDesc, "店铺暂时还没有相关描述，敬请期待……");
+            }else{
+                StrUtils.SetTxt(holder.tvSearchResultShopDesc, blSearchShopAndGood.getIntro());
+            }
             return convertView;
         }
 
@@ -376,14 +379,25 @@ public class ASearchResult extends ATitleBase {
                 holder.ivSearchResultGoodLevel.setVisibility(View.GONE);
             }
             StrUtils.SetTxt(holder.tvSearchResultGoodName, blSearchShopAndGood.getTitle());
-            StrUtils.SetMoneyFormat(BaseContext, holder.tvSearchResultGoodPrice, blSearchShopAndGood.getSell_price(), 17);
+            StrUtils.SetMoneyFormat(BaseContext, holder.tvSearchResultGoodPrice, blSearchShopAndGood.getSell_price(), 15);
             if ("0".equals(blSearchShopAndGood.getOrig_price()) || StrUtils.isEmpty(blSearchShopAndGood.getOrig_price())) {
-                holder.tvSearchResultGoodOrigprice.setVisibility(View.GONE);
+                holder.tvSearchResultGoodOrigprice.setVisibility(View.INVISIBLE);
             } else {
                 holder.tvSearchResultGoodOrigprice.setVisibility(View.VISIBLE);
                 StrUtils.SetTxt(holder.tvSearchResultGoodOrigprice, StrUtils.SetTextForMony(blSearchShopAndGood.getOrig_price()));
                 holder.tvSearchResultGoodOrigprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             }
+
+
+            if (blSearchShopAndGood.getScore() > 0){
+                holder.tvSearchResultGoodScore.setVisibility(View.VISIBLE);
+                StrUtils.SetTxt(holder.tvSearchResultGoodScore, "积分：" + blSearchShopAndGood.getScore());
+            }else{
+                holder.tvSearchResultGoodScore.setVisibility(View.GONE);
+            }
+
+
+
             if (blSearchShopAndGood.getSales() > 0) {
                 holder.tvSearchResultGoodSales.setVisibility(View.VISIBLE);
                 StrUtils.SetTxt(holder.tvSearchResultGoodSales, "销量：" + blSearchShopAndGood.getSales() + "件");
@@ -392,7 +406,6 @@ public class ASearchResult extends ATitleBase {
             }
             return convertView;
         }
-
 
     }
 
@@ -409,6 +422,8 @@ public class ASearchResult extends ATitleBase {
         TextView tvSearchResultGoodOrigprice;
         @BindView(R.id.tv_search_result_good_sales)
         TextView tvSearchResultGoodSales;
+        @BindView(R.id.tv_search_result_good_score)
+        TextView tvSearchResultGoodScore;
 
         GoodsHolder(View view) {
             ButterKnife.bind(this, view);

@@ -26,7 +26,6 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.three_one.search.BLSearchShopAndGood;
 import io.vtown.WeiTangApp.comment.contant.Constants;
-import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
@@ -99,7 +98,7 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
         HashMap<String, String> map = new HashMap<>();
         map.put("keyword", title);
         map.put("page", page + "");
-        map.put("pagesize",Constants.PageSize+"");
+        map.put("pagesize", Constants.PageSize + "");
         String host = "";
         switch (Show_Type) {
             case 1:
@@ -219,7 +218,6 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
     }
 
 
-
     class SearchResultAdapter extends BaseAdapter {
 
         @Override
@@ -275,7 +273,12 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
                 case 1:
                     ImageLoaderUtil.Load2(blSearchShopAndGood.getAvatar(), holder.ivSearchResultAllShopIcon, R.drawable.error_iv2);
                     StrUtils.SetTxt(holder.tvSearchResultAllShopName, blSearchShopAndGood.getSeller_name());
-                    StrUtils.SetTxt(holder.tvSearchResultAllShopDesc,blSearchShopAndGood.getIntro());
+                    if(StrUtils.isEmpty(blSearchShopAndGood.getIntro())){
+                        StrUtils.SetTxt(holder.tvSearchResultAllShopDesc,"店铺暂时还没有相关描述，敬请期待……");
+                    }else{
+                        StrUtils.SetTxt(holder.tvSearchResultAllShopDesc, blSearchShopAndGood.getIntro());
+                }
+
                     break;
 
                 case 2:
@@ -286,19 +289,26 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
                     } else {
                         goods.ivSearchResultAllGoodLevel.setVisibility(View.VISIBLE);
                     }
-                    StrUtils.SetMoneyFormat(BaseContext, goods.tvSearchResultAllGoodPrice, blSearchShopAndGood.getSell_price(), 17);
+                    StrUtils.SetMoneyFormat(BaseContext, goods.tvSearchResultAllGoodPrice, blSearchShopAndGood.getSell_price(), 15);
                     if ("0".equals(blSearchShopAndGood.getOrig_price()) || StrUtils.isEmpty(blSearchShopAndGood.getOrig_price())) {
-                        goods.tvSearchResultAllGoodOrigprice.setVisibility(View.GONE);
+                        goods.tvSearchResultAllGoodOrigprice.setVisibility(View.INVISIBLE);
                     } else {
                         goods.tvSearchResultAllGoodOrigprice.setVisibility(View.VISIBLE);
                         StrUtils.SetTxt(goods.tvSearchResultAllGoodOrigprice, StrUtils.SetTextForMony(blSearchShopAndGood.getOrig_price()));
                         goods.tvSearchResultAllGoodOrigprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     }
 
-                    if(blSearchShopAndGood.getSales() > 0){
+                    if (blSearchShopAndGood.getScore() > 0) {
+                        goods.tvSearchResultAllGoodScore.setVisibility(View.VISIBLE);
+                        StrUtils.SetTxt(goods.tvSearchResultAllGoodScore, "积分：" + blSearchShopAndGood.getScore());
+                    } else {
+                        goods.tvSearchResultAllGoodScore.setVisibility(View.GONE);
+                    }
+
+                    if (blSearchShopAndGood.getSales() > 0) {
                         goods.tvSearchResultAllGoodSales.setVisibility(View.VISIBLE);
-                        StrUtils.SetTxt(goods.tvSearchResultAllGoodSales,"销量："+blSearchShopAndGood.getSales()+"件");
-                    }else{
+                        StrUtils.SetTxt(goods.tvSearchResultAllGoodSales, "销量：" + blSearchShopAndGood.getSales() + "件");
+                    } else {
                         goods.tvSearchResultAllGoodSales.setVisibility(View.GONE);
                     }
                     break;
@@ -306,7 +316,6 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
 
             return convertView;
         }
-
 
     }
 
@@ -338,6 +347,8 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
         TextView tvSearchResultAllGoodOrigprice;
         @BindView(R.id.tv_search_result_all_good_sales)
         TextView tvSearchResultAllGoodSales;
+        @BindView(R.id.tv_search_result_all_good_score)
+        TextView tvSearchResultAllGoodScore;
 
         GoodsHolder(View view) {
             ButterKnife.bind(this, view);
