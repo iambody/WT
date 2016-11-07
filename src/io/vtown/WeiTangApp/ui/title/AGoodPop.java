@@ -952,7 +952,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
             ConnectNet(1);
         }else{
             //如果没绑定邀请码就先绑定
-            if (!Spuit.IsHaveBind_Get(BaseContext)) {
+            if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {
                 ShowCustomDialog("请先绑定邀请码", getResources().getString(R.string.cancle),
                         getResources().getString(R.string.queding),
                         new IDialogResult() {
