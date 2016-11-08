@@ -11,6 +11,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -61,6 +62,7 @@ import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
 import io.vtown.WeiTangApp.ui.title.center.myorder.AApplyTuikuan;
 import io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderDetail;
 import io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderNoPayDetail;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
@@ -1984,6 +1986,25 @@ public class ACenterMyOrder extends ATitleBase implements
 
     @Override
     protected void SaveBundle(Bundle bundle) {
+    }
+    /**
+     * 点击左侧按钮的监听事件
+     */
+    public void title_left_bt(View v) {
+        finish();
+
+        overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
+        PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AMainTab.class).putExtra("a", "1"));
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AMainTab.class));
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

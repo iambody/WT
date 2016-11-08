@@ -386,38 +386,32 @@
                     android:textSize="@dimen/comment_label_txtsize"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/pop_purchase_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-
-                    android:textColor="@color/app_fen"
-                    android:textSize="@dimen/comment_label_txtsize" />
-
                 <LinearLayout
-                    android:id="@+id/ll_return_and_integral"
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_return_money"
+                        android:id="@+id/pop_purchase_price"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
                         android:layout_weight="1"
-                        android:textSize="11sp"
-                        android:textColor="@color/app_gray"
-                        android:visibility="gone"
-                        android:layout_height="match_parent" />
+                        android:textColor="@color/app_fen"
+                        android:textSize="@dimen/comment_label_txtsize" />
+
 
                     <TextView
                         android:id="@+id/tv_good_integral"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="11sp"
                         android:textColor="@color/app_gray"
-                        android:layout_height="match_parent" />
+                        android:textSize="@dimen/comment_label_txtsize" />
                 </LinearLayout>
+
+
 
             </LinearLayout>
 
