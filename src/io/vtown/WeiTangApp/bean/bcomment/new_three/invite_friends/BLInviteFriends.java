@@ -16,6 +16,16 @@ public class BLInviteFriends extends BBase {
     private String seller_name;//"seller_name":"wt29029064",
     private String seller_no;//"seller_no":10000100,
     private String seller_id;//"seller_id":1014787
+    private String member_level_picture;//"member_level_picture": "http://fs.v-town.cc/StoreLevel_0_201611021548.jpg"
+
+
+    public String getMember_level_picture() {
+        return member_level_picture;
+    }
+
+    public void setMember_level_picture(String member_level_picture) {
+        this.member_level_picture = member_level_picture;
+    }
 
     public String getIsstar() {
         return isstar;

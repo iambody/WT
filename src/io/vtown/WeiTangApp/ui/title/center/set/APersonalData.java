@@ -234,7 +234,7 @@ public class APersonalData extends ATitleBase implements
                 ShowCustomDialog("确定退出该账号?", "取消", "退出", new IDialogResult() {
                     @Override
                     public void RightResult() {
-PromptManager.showLoading(BaseContext);
+                        PromptManager.showLoading(BaseContext);
 //                        PromptManager.ShowCustomToast(BaseContext, "退出成功");
 //                        AppManager.getAppManager().AppExit(BaseContext);
 

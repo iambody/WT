@@ -65,6 +65,9 @@ import com.android.volley.Request.Method;
 
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.title.center.set.AAccountSafe;
+import io.vtown.WeiTangApp.ui.title.center.set.ARealIdauthSucceed;
+import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
 
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
@@ -104,16 +107,31 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     private TextView tv_conment1;
     private TextView tv_conment2;
     private ImageView shop_qr_code_iv;
-    private TextView shop_data_name;
+   // private TextView shop_data_name;
+
+    /**
+     * 实名认证
+     */
+    private View authentication;
     /**
      * 分享
      */
-    private TextView share_my_shop_url;
+   // private TextView share_my_shop_url;
+
+    /**
+     * 电话号码
+     */
+    private TextView tv_phone_numb;
 
     /**
      * 用户信息
      */
     private BUser user_Get;
+
+    /**
+     * 账户安全
+     */
+    private View account_safe;
 //    private BShop uBShop;
 
     /**
@@ -141,10 +159,19 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     private float QrscaleWidth;
     private float QrscaleHeight;
 
+    /**
+     * 认证状态
+     */
+    private TextView comment_txtarrow_content;
 
+    /**
+     * 是否认证
+     */
+    private boolean isLogin_RenZheng_Set;
     private View myView;
     private BNewHome MBNewHome;
     private boolean IsAvater=false;
+    private LinearLayout share_my_shop_url;
 
     @Override
     protected void InItBaseView() {
@@ -156,12 +183,35 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
 //        uBShop = Spuit.Shop_Get(getApplicationContext());
         MBNewHome = JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class);
         IView();
+        IData();
         ShowView(MBNewHome );
+    }
+
+    private void IData() {
+        BUser user_Get = Spuit.User_Get(getApplicationContext());
+        String phone = user_Get.getPhone();
+        if (!StrUtils.isEmpty(phone)) {
+            StrUtils.SetTxt(tv_phone_numb, phone.substring(0, 3) + "****"
+                    + phone.substring(7));
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        isLogin_RenZheng_Set = Spuit.IsLogin_RenZheng_Set(BaseContext);
+        if (isLogin_RenZheng_Set) {
+            StrUtils.SetTxt(comment_txtarrow_content, "已认证");
+
+        } else {
+            StrUtils.SetTxt(comment_txtarrow_content, "未认证");
+        }
     }
 
     private void ShowView(BNewHome shop_Get) {
 
-        StrUtils.SetTxt(shop_data_name, MBNewHome.getSellerinfo().getSeller_name());
+        //StrUtils.SetTxt(shop_data_name, MBNewHome.getSellerinfo().getSeller_name());
         ImageLoaderUtil.Load2(shop_Get.getSellerinfo().getAvatar(), tab_shop_iv,
                 R.drawable.testiv);
         StrUtils.SetTxt(tv_shop_id, MBNewHome.getSellerinfo().getSeller_no());
@@ -175,26 +225,35 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     }
 
     private void IView() {
-        shop_data_name = (TextView) findViewById(R.id.shop_data_name);
+        //shop_data_name = (TextView) findViewById(R.id.shop_data_name);
 
         shop_qr_code_iv = (ImageView) findViewById(R.id.shop_qr_code_iv);
         tab_shop_iv = (CircleImageView) findViewById(R.id.tab_shop_iv);
-        share_my_shop_url = (TextView) findViewById(R.id.share_my_shop_url);
+        share_my_shop_url = (LinearLayout) findViewById(R.id.share_my_shop_url);
+
+        tv_phone_numb = (TextView) findViewById(R.id.tv_phone_numb);
+        authentication = findViewById(R.id.authentication);
+        comment_txtarrow_content = (TextView) authentication
+                .findViewById(R.id.comment_txtarrow_content);
+        account_safe = findViewById(R.id.account_safe);
+
         tv_shop_id = (TextView) findViewById(R.id.tv_shop_id);
         shop_cover = findViewById(R.id.shop_cover);
         shop_another_name = findViewById(R.id.shop_another_name);
         shop_introduce = findViewById(R.id.shop_introduce);
-        rl_set_icon = (RelativeLayout) findViewById(R.id.rl_set_icon);
+        ll_set_icon = (LinearLayout) findViewById(R.id.ll_set_icon);
         ll_shop_id = (LinearLayout) findViewById(R.id.ll_shop_id);
-        rl_set_icon.setOnClickListener(this);
+        ll_set_icon.setOnClickListener(this);
         ll_shop_id.setOnLongClickListener(this);
 
         shop_guize = findViewById(R.id.shop_guize);
         SetItemContent(shop_cover, R.string.shop_cover, "", 0);
         SetItemContent(shop_guize, R.string.contact_dengjiguize, "", -1);
+        SetItemContent(authentication, R.string.authentication, "未认证",1);
+        SetItemContent(account_safe, R.string.account_safe, "",0);
+
 
         IItCodeIv();
-        shop_qr_code_iv.setOnClickListener(this);
         share_my_shop_url.setOnClickListener(this);
     }
 
@@ -227,7 +286,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
                             qrBitmap = BitmapFactory.decodeFile(path2);
                             shop_qr_code_iv.setImageBitmap(qrBitmap);
                             shop_qr_code_iv.setVisibility(View.VISIBLE);
-                            share_my_shop_url.setVisibility(View.VISIBLE);
+                            //share_my_shop_url.setVisibility(View.VISIBLE);
                             QrscaleWidth = 2;
                             QrscaleHeight = (screenHeight * 2 / screenWidth);
 
@@ -306,12 +365,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
                         AWeb.Key_Bean,
                         new BComment(Constants.Home_Level, getResources().getString(R.string.dengjiguize))));
                 break;
-            case R.id.shop_qr_code_iv:
-                if (null != qrBitmap)
-                    new ImagViewDialog(BaseContext, qrBitmap, screenWidth, 1)
-                            .show();
-                break;
-            case R.id.rl_set_icon:
+            case R.id.ll_set_icon:
                 show_type = 1;
                 DialogTest(1);
                 break;
@@ -351,7 +405,27 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
                 break;
 
             case R.id.share_my_shop_url://分享店铺二维码
-                ShareShopUrl();
+                //ShareShopUrl();
+                if (null != qrBitmap)
+                    new ImagViewDialog(BaseContext, qrBitmap, screenWidth, 1)
+                            .show();
+                break;
+
+            case R.id.authentication:
+                if (isLogin_RenZheng_Set) {
+                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                            BaseActivity, ARealIdauthSucceed.class));
+                } else {
+                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                            BaseActivity, ARealIdauth.class).putExtra(
+                            ARealIdauth.FROM_WHERE_KEY, 2));
+                }
+
+                break;
+
+            case R.id.account_safe://账户安全
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                        AAccountSafe.class));
                 break;
 
         }
@@ -420,7 +494,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     // .getExternalStorageDirectory() + "/" + "CutPictureDemo");
     private static final String PHOTO_FILE_PATH = getPath(PicHost);
     private File tempFile;
-    private RelativeLayout rl_set_icon;
+    private LinearLayout ll_set_icon;
     private Bitmap bitmap;
 
     /**
@@ -484,7 +558,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
         if (requestCode == 100 && resultCode == RESULT_CODE) {
             String result = data.getStringExtra("content");
             StrUtils.SetTxt(tv_conment1, result);
-            StrUtils.SetTxt(shop_data_name, result);
+            //StrUtils.SetTxt(shop_data_name, result);
         }
 
         if (requestCode == 101 && resultCode == RESULT_CODE) {

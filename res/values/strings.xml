@@ -240,12 +240,12 @@
     <string name="txt_delete">删除</string>
     <string name="vido_error">视频播放出错请稍后重试</string>
     <!-- 店铺资料 -->
-    <string name="shop_data">店铺资料</string>
-    <string name="shop_icon">店铺头像</string>
-    <string name="shop_id">店铺号</string>
-    <string name="long_click_copy">(通过店铺号搜索到您的店铺，长按复制)</string>
-    <string name="shop_cover">店铺封面</string>
-    <string name="shop_another_name">店铺昵称</string>
+    <string name="shop_data">我的资料</string>
+    <string name="shop_icon">我的头像</string>
+    <string name="shop_id">我的ID</string>
+    <string name="long_click_copy">(通过ID号搜索到您的店铺，长按复制)</string>
+    <string name="shop_cover">背景图</string>
+    <string name="shop_another_name">昵称</string>
     <string name="shop_introduce">个性签名</string>
     <string name="goods_count">共%1$d件商品</string>
     <string name="good_price">￥%1$.2f</string>
@@ -651,8 +651,8 @@
     <string name="bindtag_no">未绑定</string>
 
     <!--邀请的好友-->
-    <string name="invite_friends">全部好友</string>
-    <string name="invite_friends_no_activites">未激活店铺</string>
+    <string name="invite_friends">邀请好友</string>
+    <string name="invite_friends_no_activites">普通店铺</string>
 
 
 
@@ -718,7 +718,7 @@
     <string name="to_Jihuo_toqiandao">激活后才能签到哦</string>
     <string name="noshow">暂无SHOW</string>
     <string name="dengjiguize">等级规则</string>
-    <string name="contact_dengjiguize">店铺等级规则</string>
+    <string name="contact_dengjiguize">等级规则</string>
     <string name="function_guanyuwomen">关于微糖</string>
     <string name="my_leader">我的上级</string>
     <string name="younoshow">你太懒了,还没发Show</string>
@@ -727,7 +727,7 @@
 
     <!--我的页面-->
     <string name="my_title">我的</string>
-    <string name="my_personal_data">个人资料</string>
+    <string name="my_personal_data">我的资料</string>
     <string name="my_good_shouchang">商品收藏</string>
     <string name="my_shop_guanzhu">店铺关注</string>
     <string name="my_scan_record">浏览记录</string>

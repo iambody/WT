@@ -6,74 +6,97 @@
 
     <include layout="@layout/titlebar"/>
 
-    <View
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/insulate_view_height"
-        android:background="@color/app_bg"/>
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:layout_height="0dp">
 
-    <include
-        android:id="@+id/view_personal_data"
-        layout="@layout/commentview_center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
 
-    <View
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/insulate_view_height"
+                android:background="@color/app_bg"/>
+
+            <include
+                android:id="@+id/view_personal_data"
+                layout="@layout/commentview_center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/insulate_view_height"
+                android:background="@color/app_bg"/>
+
+            <include
+                android:id="@+id/view_my_shop"
+                layout="@layout/commentview_center"/>
+
+            <View
+                style="@style/line_left2"/>
+
+            <include
+                android:id="@+id/view_my_address"
+                layout="@layout/commentview_center"/>
+
+            <View
+                style="@style/line_left2"/>
+
+            <include
+                android:id="@+id/view_my_show"
+                layout="@layout/commentview_center"/>
+
+            <View
+                style="@style/line_left2"/>
+
+            <include
+                android:id="@+id/view_good_soucang"
+                layout="@layout/commentview_center"/>
+
+            <View
+                style="@style/line_left2"/>
+
+            <include
+                android:id="@+id/view_shop_guanzhu"
+                layout="@layout/commentview_center"/>
+            <View
+                style="@style/line_left2"/>
+
+            <include
+                android:id="@+id/view_scan_record"
+                layout="@layout/commentview_center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/insulate_view_height"
+                android:background="@color/app_bg"/>
+
+            <include
+                android:id="@+id/view_about_me"
+                layout="@layout/commentview_center"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_quit"
+        style="@style/build_two_dimension_code_btn_style"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/insulate_view_height"
-        android:background="@color/app_bg"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/center_set_personal_data_quit_buttom_left_right_margin"
+        android:layout_marginRight="@dimen/center_set_personal_data_quit_buttom_left_right_margin"
 
-    <include
-        android:id="@+id/view_my_shop"
-        layout="@layout/commentview_center"/>
+        android:layout_marginBottom="20dp"
+        android:text="安全退出"
+        android:padding="@dimen/ui_10_dip"
+        android:textSize="@dimen/comment_label_txtsize"/>
 
-    <View
-        style="@style/line_left2"/>
 
-    <include
-        android:id="@+id/view_my_address"
-        layout="@layout/commentview_center"/>
-
-    <View
-        style="@style/line_left2"/>
-
-    <include
-        android:id="@+id/view_my_show"
-        layout="@layout/commentview_center"/>
-
-    <View
-        style="@style/line_left2"/>
-
-    <include
-        android:id="@+id/view_good_soucang"
-        layout="@layout/commentview_center"/>
-
-    <View
-        style="@style/line_left2"/>
-
-    <include
-        android:id="@+id/view_shop_guanzhu"
-        layout="@layout/commentview_center"/>
-    <View
-        style="@style/line_left2"/>
-
-    <include
-        android:id="@+id/view_scan_record"
-        layout="@layout/commentview_center"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/insulate_view_height"
-        android:background="@color/app_bg"/>
-
-    <include
-        android:id="@+id/view_about_me"
-        layout="@layout/commentview_center"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/insulate_view_height"
-        android:background="@color/app_bg"/>
-
-    <include
-        android:id="@+id/view_setting"
-        layout="@layout/commentview_center"/>
 
 </LinearLayout>

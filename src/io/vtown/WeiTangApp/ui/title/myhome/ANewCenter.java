@@ -3,14 +3,20 @@ package io.vtown.WeiTangApp.ui.title.myhome;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
+import io.vtown.WeiTangApp.ui.AExitNull;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
@@ -32,11 +38,11 @@ public class ANewCenter extends ATitleBase {
     private View view_good_soucang;
     private View view_shop_guanzhu;
     private View view_scan_record;
-    private View view_setting;
     private View view_my_show;
     private View view_about_me;
     private View view_my_address;
     private View view_my_shop;
+    private Button btn_quit;
 
     @Override
     protected void InItBaseView() {
@@ -54,17 +60,17 @@ public class ANewCenter extends ATitleBase {
         view_shop_guanzhu = findViewById(R.id.view_shop_guanzhu);
         view_scan_record = findViewById(R.id.view_scan_record);
         view_about_me = findViewById(R.id.view_about_me);
-        view_setting = findViewById(R.id.view_setting);
+        btn_quit = (Button) findViewById(R.id.btn_quit);
 
         SetItemContent(view_personal_data, R.drawable.shop_grad9, R.string.my_personal_data);
-        SetItemContent(view_my_address,  R.drawable.address_iv, R.string._my_address);
-        SetItemContent(view_my_shop,  R.drawable.shop_grad8, R.string._my_shop);
+        SetItemContent(view_my_address, R.drawable.address_iv, R.string._my_address);
+        SetItemContent(view_my_shop, R.drawable.shop_grad8, R.string._my_shop);
         SetItemContent(view_my_show, R.drawable.center_iv1, R.string._my_show);
         SetItemContent(view_good_soucang, R.drawable.center_iv6, R.string.my_good_shouchang);
         SetItemContent(view_shop_guanzhu, R.drawable.center_iv7, R.string.my_shop_guanzhu);
         SetItemContent(view_scan_record, R.drawable.center_iv8, R.string.my_scan_record);
         SetItemContent(view_about_me, R.drawable.tab1_nor, R.string.about_w_town);
-        SetItemContent(view_setting, R.drawable.center_iv_setting, R.string.my_setting);
+        btn_quit.setOnClickListener(this);
 
     }
 
@@ -146,10 +152,6 @@ public class ANewCenter extends ATitleBase {
                         AAboutWt.class));
                 break;
 
-            case R.id.view_setting://设置
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, APersonalData.class));
-                break;
-
             case R.id.view_my_address://我的地址
                 Intent intentss = new Intent(BaseActivity, AAddressManage.class);
                 intentss.putExtra("NeedFinish", false);
@@ -158,6 +160,32 @@ public class ANewCenter extends ATitleBase {
 
             case R.id.view_my_shop://我的店铺
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMyShop.class));
+                break;
+
+            case R.id.btn_quit://退出
+                // 提示对话框
+                ShowCustomDialog("确定退出该账号?", "取消", "退出", new IDialogResult() {
+                    @Override
+                    public void RightResult() {
+                        PromptManager.showLoading(BaseContext);
+//                        PromptManager.ShowCustomToast(BaseContext, "退出成功");
+//                        AppManager.getAppManager().AppExit(BaseContext);
+
+                        Spuit.Login_Out(BaseContext);
+                        // 清理数据库
+                        Spuit.Shop_Save(BaseContext, new BShop());
+                        EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_Kill_Self));
+//                        BaseActivity.finish();
+                        PromptManager.SkipActivity(BaseActivity, new Intent(
+                                BaseActivity, AExitNull.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        BaseActivity.finish();
+
+                    }
+
+                    @Override
+                    public void LeftResult() {
+                    }
+                });
                 break;
         }
 

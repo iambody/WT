@@ -2,6 +2,7 @@ package io.vtown.WeiTangApp.ui.title.myhome;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +35,11 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
+import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
@@ -65,6 +69,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private final String Shop_Lv4 = "3";
     private final String Shop_Lv5 = "4";
     private final String Shop_Lv6 = "5";
+    private final String Shop_Lv7 = "6";
     private String Current_Lv = Shop_All_Lv;
 
     private final int Type_All = 0;
@@ -75,8 +80,8 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private final int Type_Lv4 = 5;
     private final int Type_Lv5 = 6;
     private final int Type_Lv6 = 7;
+    private final int Type_Lv7 = 8;
     private int click_type = Type_All;
-
 
 
     @Override
@@ -286,6 +291,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         TextView tv_shop_lv4 = (TextView) view.findViewById(R.id.tv_shop_lv4);
         TextView tv_shop_lv5 = (TextView) view.findViewById(R.id.tv_shop_lv5);
         TextView tv_shop_lv6 = (TextView) view.findViewById(R.id.tv_shop_lv6);
+        TextView tv_shop_lv7 = (TextView) view.findViewById(R.id.tv_shop_lv7);
         TextView tv_shop_no_activate = (TextView) view.findViewById(R.id.tv_shop_no_activate);
 
         tv_shop_lv1.setText(lv_list.get(0));
@@ -294,6 +300,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         tv_shop_lv4.setText(lv_list.get(3));
         tv_shop_lv5.setText(lv_list.get(4));
         tv_shop_lv6.setText(lv_list.get(5));
+        tv_shop_lv7.setText(lv_list.get(6));
 
         tv_shop_all.setOnClickListener(this);
         tv_shop_lv1.setOnClickListener(this);
@@ -302,6 +309,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         tv_shop_lv4.setOnClickListener(this);
         tv_shop_lv5.setOnClickListener(this);
         tv_shop_lv6.setOnClickListener(this);
+        tv_shop_lv7.setOnClickListener(this);
         tv_shop_no_activate.setOnClickListener(this);
 
         mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -383,34 +391,38 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 IPopupWindow(V);
                 break;
             case R.id.tv_shop_all:
-                LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends),Type_All);
+                LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends), Type_All);
                 break;
             case R.id.tv_shop_lv1:
-                LvSwitch(Shop_Lv1, lv_list.get(0),Type_Lv1);
+                LvSwitch(Shop_Lv1, lv_list.get(0), Type_Lv1);
                 break;
             case R.id.tv_shop_lv2:
-                LvSwitch(Shop_Lv2, lv_list.get(1),Type_Lv2);
+                LvSwitch(Shop_Lv2, lv_list.get(1), Type_Lv2);
                 break;
             case R.id.tv_shop_lv3:
-                LvSwitch(Shop_Lv3, lv_list.get(2),Type_Lv3);
+                LvSwitch(Shop_Lv3, lv_list.get(2), Type_Lv3);
                 break;
             case R.id.tv_shop_lv4:
-                LvSwitch(Shop_Lv4, lv_list.get(3),Type_Lv4);
+                LvSwitch(Shop_Lv4, lv_list.get(3), Type_Lv4);
                 break;
             case R.id.tv_shop_lv5:
-                LvSwitch(Shop_Lv5, lv_list.get(4),Type_Lv5);
+                LvSwitch(Shop_Lv5, lv_list.get(4), Type_Lv5);
                 break;
             case R.id.tv_shop_lv6:
-                LvSwitch(Shop_Lv6, lv_list.get(5),Type_Lv6);
+                LvSwitch(Shop_Lv6, lv_list.get(5), Type_Lv6);
+                break;
+
+            case R.id.tv_shop_lv7:
+                LvSwitch(Shop_Lv7, lv_list.get(6), Type_Lv7);
                 break;
             case R.id.tv_shop_no_activate:
-                LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends_no_activites),Type_Activites);
+                LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends_no_activites), Type_Activites);
                 break;
         }
     }
 
-    private void LvSwitch(String switch_type, String titlename,int type) {
-        if(type != click_type){
+    private void LvSwitch(String switch_type, String titlename, int type) {
+        if (type != click_type) {
             click_type = type;
             Current_Lv = switch_type;
             page = 1;
@@ -539,18 +551,65 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             holder.invite_friends_record_inside.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    BLInviteFriends friend = bcInviteFriends.getList().get(position);
-                    BComment mBComment = new BComment(friend.getSeller_id(), friend
-                            .getSeller_name());
-                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseActivity, AShopDetail.class).putExtra(
-                            BaseKey_Bean, mBComment));
+                    final BLInviteFriends friend = bcInviteFriends.getList().get(position);
+//                    BComment mBComment = new BComment(friend.getSeller_id(), friend
+//                            .getSeller_name());
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                            BaseActivity, AShopDetail.class).putExtra(
+//                            BaseKey_Bean, mBComment));
+
+                    ContactFriend(friend);
 
 
                 }
             });
             return convertView;
         }
+    }
+
+    /**
+     * 联系客服---拨号
+     */
+    public void ContactFriend(final BLInviteFriends friend) {
+        final CustomDialog dialog = new CustomDialog(BaseContext,
+                R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "电话联系", "微糖聊天");
+        dialog.show();
+        dialog.setTitleText("联系"+friend.getSeller_name());
+        dialog.Settitles("人之相识，贵在相知，人之相知，贵在知心。—— 孟子");
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setcancelListener(new CustomDialog.oncancelClick() {
+            @Override
+            public void oncancelClick(View v) {
+                if (CheckNet(BaseContext))
+                    return;
+                Intent intentPhone = new Intent(Intent.ACTION_CALL, Uri
+                        .parse("tel:" + friend.getPhone()));
+
+                startActivity(intentPhone);
+                dialog.dismiss();
+
+            }
+        });
+
+        dialog.setConfirmListener(new CustomDialog.onConfirmClick() {
+            @Override
+            public void onConfirmCLick(View v) {
+                if (CheckNet(BaseContext))
+                    return;
+                if (!StrUtils.isEmpty(friend.getSeller_id()))
+                    PromptManager.SkipActivity(
+                            BaseActivity,
+                            new Intent(BaseActivity, AChatLoad.class)
+                                    .putExtra(AChatLoad.Tage_TageId,
+                                            friend.getSeller_id())
+                                    .putExtra(AChatLoad.Tage_Name,
+                                            friend.getSeller_name())
+                                    .putExtra(AChatLoad.Tage_Iv,
+                                            friend.getAvatar()));
+                dialog.dismiss();
+            }
+        });
+
     }
 
 
@@ -593,10 +652,8 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 holder.tv_friend_name = (TextView) convertView.findViewById(R.id.tv_friend_name);
                 holder.tv_friend_shop_id = (TextView) convertView.findViewById(R.id.tv_friend_shop_id);
                 holder.tv_invite_phone = (TextView) convertView.findViewById(R.id.tv_invite_phone);
-                holder.ll_invite_point_and_status = (LinearLayout) convertView.findViewById(R.id.ll_invite_point_and_status);
-                holder.tv_lv = (TextView) convertView.findViewById(R.id.tv_lv);
-                holder.tv_lv_top = (TextView) convertView.findViewById(R.id.tv_lv_top);
                 holder.tv_invite_no_activate = (TextView) convertView.findViewById(R.id.tv_invite_no_activate);
+                holder.iv_lv = (ImageView) convertView.findViewById(R.id.iv_lv);
                 holder.list_line = convertView.findViewById(R.id.list_line);
                 convertView.setTag(holder);
             } else {
@@ -604,67 +661,23 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             }
             BLInviteFriends friend = friends_datas.get(position);
             ImageLoaderUtil.Load2(friend.getAvatar(), holder.iv_friend_icon, R.drawable.error_iv2);
-            if ("0".equals(friend.getIs_activate())) {
-                holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_putongdianpuxiaotubiao_nor));
-                holder.ll_invite_point_and_status.setVisibility(View.GONE);
-                holder.tv_invite_no_activate.setVisibility(View.VISIBLE);
-            } else {
-                if ("0".equals(friend.getIsstar())) {
-                    holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_putongdianpuxiaotubiao_nor));
-                } else {
-                    holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_mingxingdianpuxiaotubiao_nor));
-                }
-                holder.ll_invite_point_and_status.setVisibility(View.VISIBLE);
-                holder.tv_invite_no_activate.setVisibility(View.GONE);
-            }
 
             StrUtils.SetTxt(holder.tv_friend_name, friend.getSeller_name());
             String shop_id = BaseContext.getResources().getString(R.string.invite_friend_shop_id);
             StrUtils.SetTxt(holder.tv_friend_shop_id, String.format(shop_id, friend.getSeller_no()));
             StrUtils.SetTxt(holder.tv_invite_phone, friend.getPhone());
-            int level = Integer.parseInt(friend.getMember_level());
-            switch (level) {
-                case 0:
-                    holder.tv_lv.setText(friend.getMember_level_name());
-                    //holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv1));
-                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_1);
-                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv1_top));
-                    break;
-                case 1:
-                    holder.tv_lv.setText(friend.getMember_level_name());
-                    // holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv2));
-                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_2);
-                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv2_top));
-                    break;
-                case 2:
-                    holder.tv_lv.setText(friend.getMember_level_name());
-                    //holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3));
-                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_3);
-                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv3_top));
-                    break;
-                case 3:
-                    holder.tv_lv.setText(friend.getMember_level_name());
-                    //holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv4));
-                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_4);
-                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv4_top));
-                    break;
 
-                case 4:
-                    holder.tv_lv.setText(friend.getMember_level_name());
-                    // holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv5));
-                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_5);
-                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv5_top));
-                    break;
-
-                case 5:
-                    holder.tv_lv.setText(friend.getMember_level_name());
-                    // holder.tv_lv.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv6));
-                    holder.tv_lv.setBackgroundResource(R.drawable.shape_lv_6);
-                    holder.tv_lv_top.setBackgroundColor(BaseContext.getResources().getColor(R.color.lv6_top));
-                    break;
-
-
+            if ("0".equals(friend.getIs_activate())) {
+                holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_putongdianpuxiaotubiao_nor));
+                holder.iv_lv.setVisibility(View.GONE);
+                holder.tv_invite_no_activate.setVisibility(View.VISIBLE);
+            } else {
+                holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_mingxingdianpuxiaotubiao_nor));
+                holder.tv_invite_no_activate.setVisibility(View.GONE);
+                holder.iv_lv.setVisibility(View.VISIBLE);
+                ImageLoaderUtil.Load2(friend.getMember_level_picture(), holder.iv_lv, R.drawable.error_iv2);
             }
+
             if (friends_datas.size() - 1 == position) {
                 holder.list_line.setVisibility(View.GONE);
             } else {
@@ -681,11 +694,10 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
     class FriendsHolder {
         CircleImageView iv_friend_icon;
-        ImageView iv_friend_lv;
-        TextView tv_friend_name, tv_friend_shop_id, tv_lv_top, tv_lv, tv_invite_phone, tv_invite_no_activate;
+        ImageView iv_friend_lv, iv_lv;
+        TextView tv_friend_name, tv_friend_shop_id, tv_invite_phone, tv_invite_no_activate;
         View list_line;
 
-        LinearLayout ll_invite_point_and_status;
 
     }
 }

@@ -141,13 +141,13 @@
 
 
 
-        <!--  <View
+          <View
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
             android:background="@color/white"
             />
         <TextView
-            android:id="@+id/tv_consume"
+            android:id="@+id/tv_shop_lv7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -155,7 +155,7 @@
             android:clickable="true"
             android:gravity="center"
 
-            android:textColor="@color/white" />-->
+            android:textColor="@color/white" />
 
 
     </LinearLayout>
