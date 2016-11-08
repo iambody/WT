@@ -319,7 +319,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
                     .getString(R.string.loading));
         }
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("member_id","10015086");//"10015086"user_Get.getId()
+        map.put("member_id",user_Get.getId());//"10015086"user_Get.getId()
         map.put("api_version","3.1.0");
         FBGetHttpData(map, Constants.My_New_ls, Request.Method.GET, 0, LoadType);
     }

@@ -98,7 +98,7 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                     .getString(R.string.loading));
         }
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("member_id","10015086");// user_Get.getId()
+        map.put("member_id",user_Get.getId());// "10015086"
         map.put("source_type", Type + "");
         map.put("lastid", LastId);
         map.put("pagesize", Constants.PageSize + "");
