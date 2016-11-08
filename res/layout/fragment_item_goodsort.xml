@@ -73,9 +73,11 @@
                 android:id="@+id/item_main_sort_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/gray"
+                android:layout_weight="1"
+                android:textColor="@color/app_fen"
                 android:layout_gravity="center_vertical"
                 android:textSize="@dimen/ui_14_dip"
+
                 />
 
             <TextView
@@ -84,8 +86,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/app_gray"
-                android:layout_marginLeft="@dimen/ui_20_dip"
-                android:textSize="@dimen/ui_14_dip"
+
+                android:layout_marginRight="@dimen/ui_12_dip"
+                android:textSize="@dimen/ui_12_dip"
                 />
         </LinearLayout>
     </LinearLayout>

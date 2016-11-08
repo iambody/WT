@@ -10,13 +10,16 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/pop_maitab_sort_hind_sousou_iv"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/titlebarheingh"/>
+            android:layout_height="@dimen/titlebarheingh"
+            android:layout_marginLeft="40dp"
+            android:clickable="true"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:src="#aaffffff"/>
+            android:src="#55ffffff"/>
     </LinearLayout>
     <!-- 上边透明的的不需要显示的************************ -->
     <!-- 下边的需要显示的 -->

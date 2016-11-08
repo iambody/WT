@@ -99,7 +99,6 @@ public class AMyLeader extends ATitleBase {
     }
 
     private void IData() {
-
         SetTitleHttpDataLisenter(this);
         HashMap<String, String> map = new HashMap<>();
         map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());

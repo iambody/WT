@@ -375,7 +375,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             fragmentNewhomeUsertag.setTextColor(getResources().getColor(R.color.gray));
 
 
-            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.weijihuo));
+            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.weijihuo1));
             Spuit.IsHaveActive_Set(BaseContext, false);
             //激活才能邀请好友未激活不能邀请好友
             ((ImageView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(R.drawable.newhome_down_qian_pre);
@@ -394,11 +394,11 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
         //判断是否绑定机器人
 
-         if(Data.getIs_ropot()==1){
-             Spuit.IsHaveBind_JiQi_Set(BaseContext,true);
-         }else{
-             Spuit.IsHaveBind_JiQi_Set(BaseContext,false);
-         }
+        if (Data.getIs_ropot() == 1) {
+            Spuit.IsHaveBind_JiQi_Set(BaseContext, true);
+        } else {
+            Spuit.IsHaveBind_JiQi_Set(BaseContext, false);
+        }
 //        UiHelper.SetShapeColor(fragmentNewhomeUsertag, getResources().getColor(R.color.app_fen));
 //判断是否明细店铺状态
 //        if (Data.getIsstar() == 1) {//明星店铺
@@ -520,7 +520,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                     fragmentNewhomeSrollviw.setRefreshing(false);
                 }
                 MBNewHome = JSON.parseObject(Data.getHttpResultStr(), BNewHome.class);
-                CacheUtil.HomeSort_Save(BaseContext,MBNewHome.getCategory());
+                CacheUtil.HomeSort_Save(BaseContext, MBNewHome.getCategory());
                 BindHomeData(MBNewHome);
                 CacheUtil.NewHome_Save(BaseContext, Data.getHttpResultStr());
                 break;
@@ -634,7 +634,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 break;
 //            fragment_newhome_qian_lay, fragment_newhome_yaoqing_lay, fragment_newhome_libao_lay
             case R.id.fragment_newhome_qian_lay://签到
-                if (!Spuit.IsHaveBind_Get(BaseContext)) {//未绑定邀请码
+                if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
                     ShowCustomDialog(getResources().getString(R.string.no_bind_code),
                             getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
                             new IDialogResult() {
@@ -651,8 +651,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                     return;
                 }
                 if (Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
-                    ShowCustomDialog(getResources().getString(R.string.to_Jihuo_toqiandao),
-                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo),
+                    ShowCustomDialog(MBNewHome.getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
                             new IDialogResult() {
                                 @Override
                                 public void RightResult() {
@@ -684,7 +684,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
                 break;
             case R.id.fragment_newhome_yaoqing_lay://邀请好友
-                if (!Spuit.IsHaveBind_Get(BaseContext)) {//未绑定邀请码
+                if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
                     ShowCustomDialog(getResources().getString(R.string.no_bind_code),
                             getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
                             new IDialogResult() {
@@ -703,8 +703,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                     return;
                 }
                 if (Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
-                    ShowCustomDialog(getResources().getString(R.string.jihuo_canto_ibit),
-                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo),
+                    ShowCustomDialog(MBNewHome.getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
                             new IDialogResult() {
                                 @Override
                                 public void RightResult() {
@@ -765,16 +765,35 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                         new BComment(Constants.Home_Level, getResources().getString(R.string.dengjiguize))));
                 break;
             case R.id.fragment_newhome_wallet_lay:
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ACenterWallet.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ACenterWallet.class));
                 break;
             case R.id.fragment_newhome_kaquan_lay:
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AMyCoupons.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyCoupons.class));
                 break;
             case R.id.fragment_newhome_myshop_lay:
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AMyLeader.class));
+
+                if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定绑定的也不是机器人
+                    ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                            getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                            ANewBindCode.class));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+
+                                }
+                            });
+                    return;
+                }
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyLeader.class));
+
                 break;
             case R.id.fragment_newhome_myoder_lay:
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ACenterMyOrder.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ACenterMyOrder.class));
                 break;
         }
 //        fragment_newhome_wallet_lay,fragment_newhome_kaquan_lay,fragment_newhome_myshop_lay,fragment_newhome_myoder_lay

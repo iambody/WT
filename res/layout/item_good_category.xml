@@ -20,8 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:lines="2"
-            android:text="@string/nullstr"/>
+            android:lines="1"
+            />
+        <TextView
+            android:id="@+id/tv_good_category_good_saless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/ui_12_dip"
+            android:textColor="@color/gray"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/app_gray"
                 android:textSize="@dimen/ui_12_dip"/>
+
         </LinearLayout>
     </RelativeLayout>
 

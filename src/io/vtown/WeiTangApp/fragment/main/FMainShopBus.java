@@ -59,7 +59,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
     private RefreshLayout fragment_shopbus_refrash;
 
-    private TextView maintab_shopbus_left_txt;
+//    private TextView maintab_shopbus_left_txt;
     private ImageView maintab_shopbus_right_iv;
 
 
@@ -143,8 +143,8 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         fragment_shopbus_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
 
 
-        maintab_shopbus_left_txt = (TextView) BaseView.findViewById(R.id.maintab_shopbus_left_txt);
-        maintab_shopbus_left_txt.setOnClickListener(this);
+//        maintab_shopbus_left_txt = (TextView) BaseView.findViewById(R.id.maintab_shopbus_left_txt);
+//        maintab_shopbus_left_txt.setOnClickListener(this);
         maintab_shopbus_right_iv = (ImageView) BaseView.findViewById(R.id.maintab_shopbus_right_iv);
 
 
@@ -162,7 +162,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 //        maintab_shopbus_ls.setXListViewListener(this);
 //        maintab_shopbus_ls.hidefoot();
         maintab_shopbus_nodata_lay.setOnClickListener(this);
-        maintab_shopbus_left_txt.setOnClickListener(this);
+//        maintab_shopbus_left_txt.setOnClickListener(this);
         maintab_shopbus_right_iv.setOnClickListener(this);
         maintab_sopbus_bottom_jiesuan.setOnClickListener(this);
         maintab_sopbus_bottom_select_iv.setOnClickListener(this);
@@ -189,7 +189,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         // 获取数据钱 先要收到设置未处于全选状态********处于结算状态***********
         IsAllSelectIv = false;
         IsJeiSuan = true;
-        maintab_shopbus_left_txt.setVisibility(View.GONE);
+//        maintab_shopbus_left_txt.setVisibility(View.GONE);
 //        maintab_shopbus_Right_iv.setImageResource(!IsJeiSuan ? R.drawable.shoubus_ok// R.drawable.center_iv2
 //                : R.drawable.lajixiang_iv);
         maintab_shopbus_right_iv.setVisibility(IsJeiSuan ? View.VISIBLE : View.GONE);
@@ -241,6 +241,9 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
      * 根据获取的string 进行解析处理到view层显示
      */
     private void SetShopView(String ShopData, int Type) {
+        if (Type == REFRESHING) {
+            fragment_shopbus_refrash.setRefreshing(false);
+        }
         if (StrUtils.isEmpty(ShopData)) {
             onError(Constants.SucessToError, Type);
             maintab_shopbus_right_iv.setVisibility(View.GONE);
@@ -249,111 +252,134 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
             ShowErrorCanLoad(getResources().getString(R.string.no_shopbus));
             ShowErrorIv(R.drawable.error_shopbus);
             NoGood = true;
-            if (Type == REFRESHING) {
-//                    maintab_shopbus_ls.stopRefresh();
-                fragment_shopbus_refrash.setRefreshing(false);
-            }
             return;
         }
         NoGood = false;
         IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_RIGHT);
-        if (Type == REFRESHING) {
-            fragment_shopbus_refrash.setRefreshing(false);
-        }
-
         BShopBus bComment = JSON.parseObject(ShopData,
                 BShopBus.class);
-        // AllNumber=0;
-
-
-        if (bComment.getPT() == null && bComment.getCG() == null) {// 没有普通也没有采购的
+        if (bComment.getPT() == null) {//没数据
+            onError(Constants.SucessToError, Type);
             maintab_shopbus_right_iv.setVisibility(View.GONE);
             maintab_shopbus_down_lay.setVisibility(View.GONE);
             IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
-            AllNumber = 0;
-            Spuit.ShopBusNumber_Save(BaseContext, 0);
-            Send(AllNumber);
             ShowErrorCanLoad(getResources().getString(R.string.no_shopbus));
             ShowErrorIv(R.drawable.error_shopbus);
             NoGood = true;
+            return;
         }
-        if (bComment.getPT() != null && bComment.getCG() == null) {// 只有普通的没有采购的
-            busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
-            maintab_shopbus_ls.setAdapter(busAdapter);
-            busAdapter.FrashData(bComment.getPT());
-            IsPu = true;
-            maintab_shopbus_left_txt.setText("零售商品");
+        busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
+        maintab_shopbus_ls.setAdapter(busAdapter);
+        busAdapter.FrashData(bComment.getPT());
+        IsPu = true;
+//        maintab_shopbus_left_txt.setText("零售商品");
+//
+//        maintab_shopbus_left_txt.setVisibility(View.GONE);
+//        maintab_shopbus_left_txt.setClickable(false);
+        maintab_shopbus_right_iv.setVisibility(View.VISIBLE);
+        AllNumber = 0;
 
-            maintab_shopbus_left_txt.setVisibility(View.GONE);
-            maintab_shopbus_left_txt.setClickable(false);
-            maintab_shopbus_right_iv.setVisibility(View.VISIBLE);
-            AllNumber = 0;
-
-            for (int i = 0; i < bComment.getPT().size(); i++) {
-                AllNumber = AllNumber
-                        + bComment.getPT().get(i).getList().size();
-
-            }
-            Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
-            Send(AllNumber);
-            maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
+        for (int i = 0; i < bComment.getPT().size(); i++) {
+            AllNumber = AllNumber
+                    + bComment.getPT().get(i).getList().size();
         }
-        if (bComment.getPT() == null && bComment.getCG() != null) {// 只有采购的没有普通的
-            busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
-            maintab_shopbus_ls.setAdapter(busAdapter);
-            busAdapter.FrashData(bComment.getCG());
-            IsPu = false;
-            maintab_shopbus_left_txt.setText("采购商品");
-            maintab_shopbus_left_txt.setVisibility(View.GONE);
-            maintab_shopbus_left_txt.setClickable(false);
-            maintab_shopbus_left_txt.setVisibility(View.VISIBLE);
+        Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
+        Send(AllNumber);
+        maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
 
-            AllNumber = 0;
 
-            for (int i = 0; i < bComment.getCG().size(); i++) {
 
-                AllNumber = AllNumber
-                        + bComment.getCG().get(i).getList().size();
 
-            }
-            Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
-            Send(AllNumber);
-            maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
-        }
 
-        if (bComment.getPT() != null && bComment.getCG() != null) {// 既有采购也有普通
-            maintab_shopbus_left_txt.setVisibility(View.VISIBLE);
-            busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
-            maintab_shopbus_ls.setAdapter(busAdapter);
-            if (TypeShow == -1)
-                TypeShow = 1;
-            if (TypeShow == 1) {
-                StrUtils.SetTxt(maintab_shopbus_left_txt, "零售商品");
-                ViewUtils.SetIvOnTextview(BaseContext, maintab_shopbus_left_txt, R.drawable.arrow_down, 20);
-                busAdapter.FrashData(bComment.getPT());
-                IsPu = true;
-            }
-            if (TypeShow == 2) {
-                StrUtils.SetTxt(maintab_shopbus_left_txt, "采购商品");
-                busAdapter.FrashData(bComment.getCG());
-                IsPu = false;
-            }
-            maintab_shopbus_left_txt.setClickable(true);
-            maintab_shopbus_left_txt.setVisibility(View.VISIBLE);
-            AllNumber = 0;
-            for (int i = 0; i < bComment.getPT().size(); i++) {
-                AllNumber = AllNumber
-                        + bComment.getPT().get(i).getList().size();
-            }
 
-            for (int i = 0; i < bComment.getCG().size(); i++) {
-                AllNumber = AllNumber
-                        + bComment.getCG().get(i).getList().size();
-            }
-            Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
-            Send(AllNumber);
-            maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
-        }
+//        if (bComment.getPT() == null && bComment.getCG() == null) {// 没有普通也没有采购的
+//            maintab_shopbus_right_iv.setVisibility(View.GONE);
+//            maintab_shopbus_down_lay.setVisibility(View.GONE);
+//            IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
+//            AllNumber = 0;
+//            Spuit.ShopBusNumber_Save(BaseContext, 0);
+//            Send(AllNumber);
+//            ShowErrorCanLoad(getResources().getString(R.string.no_shopbus));
+//            ShowErrorIv(R.drawable.error_shopbus);
+//            NoGood = true;
+//        }
+//        if (bComment.getPT() != null && bComment.getCG() == null) {// 只有普通的没有采购的
+//            busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
+//            maintab_shopbus_ls.setAdapter(busAdapter);
+//            busAdapter.FrashData(bComment.getPT());
+//            IsPu = true;
+//            maintab_shopbus_left_txt.setText("零售商品");
+//
+//            maintab_shopbus_left_txt.setVisibility(View.GONE);
+//            maintab_shopbus_left_txt.setClickable(false);
+//            maintab_shopbus_right_iv.setVisibility(View.VISIBLE);
+//            AllNumber = 0;
+//
+//            for (int i = 0; i < bComment.getPT().size(); i++) {
+//                AllNumber = AllNumber
+//                        + bComment.getPT().get(i).getList().size();
+//
+//            }
+//            Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
+//            Send(AllNumber);
+//            maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
+//        }
+//        if (bComment.getPT() == null && bComment.getCG() != null) {// 只有采购的没有普通的
+//            busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
+//            maintab_shopbus_ls.setAdapter(busAdapter);
+//            busAdapter.FrashData(bComment.getCG());
+//            IsPu = false;
+//            maintab_shopbus_left_txt.setText("采购商品");
+//            maintab_shopbus_left_txt.setVisibility(View.GONE);
+//            maintab_shopbus_left_txt.setClickable(false);
+//            maintab_shopbus_left_txt.setVisibility(View.VISIBLE);
+//
+//            AllNumber = 0;
+//
+//            for (int i = 0; i < bComment.getCG().size(); i++) {
+//
+//                AllNumber = AllNumber
+//                        + bComment.getCG().get(i).getList().size();
+//
+//            }
+//            Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
+//            Send(AllNumber);
+//            maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
+//        }
+
+//        if (bComment.getPT() != null && bComment.getCG() != null) {// 既有采购也有普通
+//            maintab_shopbus_left_txt.setVisibility(View.VISIBLE);
+//            busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
+//            maintab_shopbus_ls.setAdapter(busAdapter);
+//            if (TypeShow == -1)
+//                TypeShow = 1;
+//            if (TypeShow == 1) {
+//                StrUtils.SetTxt(maintab_shopbus_left_txt, "零售商品");
+//                ViewUtils.SetIvOnTextview(BaseContext, maintab_shopbus_left_txt, R.drawable.arrow_down, 20);
+//                busAdapter.FrashData(bComment.getPT());
+//                IsPu = true;
+//            }
+//            if (TypeShow == 2) {
+//                StrUtils.SetTxt(maintab_shopbus_left_txt, "采购商品");
+//                busAdapter.FrashData(bComment.getCG());
+//                IsPu = false;
+//            }
+//            maintab_shopbus_left_txt.setClickable(true);
+//            maintab_shopbus_left_txt.setVisibility(View.VISIBLE);
+//            AllNumber = 0;
+//            for (int i = 0; i < bComment.getPT().size(); i++) {
+//                AllNumber = AllNumber
+//                        + bComment.getPT().get(i).getList().size();
+//            }
+//
+//            for (int i = 0; i < bComment.getCG().size(); i++) {
+//                AllNumber = AllNumber
+//                        + bComment.getCG().get(i).getList().size();
+//            }
+//            Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
+//            Send(AllNumber);
+//            maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
+//        }
 
     }
 
@@ -1036,9 +1062,9 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
                 } else
                     IData(INITIALIZE);
                 break;
-            case R.id.maintab_shopbus_left_txt://切换
-                ShowSelect(maintab_shopbus_left_txt);
-                break;
+//            case R.id.maintab_shopbus_left_txt://切换
+//                ShowSelect(maintab_shopbus_left_txt);
+//                break;
             case R.id.maintab_shopbus_right_txt:
                 IsJeiSuan = !IsJeiSuan;
                 busAdapter.FrashData(busAdapter.GetDatas());
@@ -1190,32 +1216,31 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
     /**
      * 左上按钮点击筛选弹出框
      */
-    private void ShowSelect(View VV) {
-
-        // left_txt
-        PShopBus mBus = new PShopBus(BaseContext, TypeShow);
-        mBus.GetSelectReult(new PShopBus.BusSelecListener() {
-            @Override
-            public void GetResult(int type) {
-
-                if (type == PShopBus.Type_LingShou) {// 零售
-                    StrUtils.SetTxt(maintab_shopbus_left_txt, "零售商品");
-                    Channel = "PT";
-
-                    TypeShow = 1;
-                    IData(INITIALIZE);
-                }
-                if (type == PShopBus.Type_CaiGou) {// 采购
-                    StrUtils.SetTxt(maintab_shopbus_left_txt, "采购商品");
-                    Channel = "CG";
-                    TypeShow = 2;
-                    IData(INITIALIZE);
-                }
-                return;
-            }
-        });
-        mBus.showAsDropDown(VV, -20, 20);
-
-    }
+//    private void ShowSelect(View VV) {
+//
+//        // left_txt
+//        PShopBus mBus = new PShopBus(BaseContext, TypeShow);
+//        mBus.GetSelectReult(new PShopBus.BusSelecListener() {
+//            @Override
+//            public void GetResult(int type) {
+//
+//                if (type == PShopBus.Type_LingShou) {// 零售
+//                    StrUtils.SetTxt(maintab_shopbus_left_txt, "零售商品");
+//                    Channel = "PT";
+//                    TypeShow = 1;
+//                    IData(INITIALIZE);
+//                }
+//                if (type == PShopBus.Type_CaiGou) {// 采购
+//                    StrUtils.SetTxt(maintab_shopbus_left_txt, "采购商品");
+//                    Channel = "CG";
+//                    TypeShow = 2;
+//                    IData(INITIALIZE);
+//                }
+//                return;
+//            }
+//        });
+//        mBus.showAsDropDown(VV, -20, 20);
+//
+//    }
 
 }

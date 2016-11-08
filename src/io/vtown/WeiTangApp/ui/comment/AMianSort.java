@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.comment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,6 +37,7 @@ import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.ui.ABase;
+import io.vtown.WeiTangApp.ui.ui.ASouSouGood;
 
 /**
  * Created by datutu on 2016/11/1.
@@ -83,6 +86,8 @@ public class AMianSort extends ABase {
     TextView popSortRangPriceTag;//价格的显示标题
     @BindView(R.id.pop_sort_rang_score_tag)
     TextView popSortRangScoreTag;//积分的显示标题
+    @BindView(R.id.pop_maitab_sort_hind_sousou_iv)
+    ImageView popMaitabSortHindSousouIv;
 
 
     //我左侧的文本控制列表
@@ -112,13 +117,12 @@ public class AMianSort extends ABase {
     private int BrandName_Postion;
 
     //自定义区间的保存数据
-    private boolean IsZiDingYiPrice ;//是否自定义价格
+    private boolean IsZiDingYiPrice;//是否自定义价格
     private boolean IsZiDingYiScore;//是否自定义积分
 
     //如果自定义过区间后 不点击确定相当于没重置 多以要添加一个 状态去保存临时的数据
     private boolean IsCache_ZiDingYi_Price;
     private boolean IsCache_ZiDingYi_Score;
-
 
 
     private BSortRang ZiDingYiPrice;
@@ -129,11 +133,21 @@ public class AMianSort extends ABase {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pop_maintab_sort);
+//        EventBus.getDefault().register(this, "ReciverMsg", BMessage.class);
         ButterKnife.bind(this);
         IBund();
         IBase();
         IData();
     }
+
+//    public void ReciverMsg(BMessage Msg) {
+//        switch (Msg.getMessageType()) {
+//            case BMessage.SortToSouSou:
+//                BaseActivity.finish();
+//                break;
+//        }
+//
+//    }
 
     /**
      * 根据情况获取数据 默认刚进来获取的数据时
@@ -228,7 +242,7 @@ public class AMianSort extends ABase {
                 switch (LeftPostion) {
                     case 0:
                         mySortAp.SetSelectPostion(position);
-                        IsReSet=false;
+                        IsReSet = false;
                         break;
                     case 1:
                         break;
@@ -251,7 +265,7 @@ public class AMianSort extends ABase {
                         break;
                     case 3:
                         myBrnadAp.SetSelectPostion(position);
-                        IsReSet=false;
+                        IsReSet = false;
                         break;
                 }
             }
@@ -263,7 +277,7 @@ public class AMianSort extends ABase {
                     case 0:
                         break;
                     case 1:
-                        IsReSet=false;
+                        IsReSet = false;
                         myRangAp.SetSelectPostion(position);
 
                         IsZiDingYiPrice = false;
@@ -289,7 +303,7 @@ public class AMianSort extends ABase {
                     case 1:
                         break;
                     case 2:
-                        IsReSet=false;
+                        IsReSet = false;
                         myRangScoreAp.SetSelectPostion(position);
 
                         IsZiDingYiScore = false;
@@ -316,7 +330,7 @@ public class AMianSort extends ABase {
         }
     }
 
-    @OnClick({R.id.pop_maitab_sort_type, R.id.pop_maitab_sort_price, R.id.pop_maitab_sort_jifen, R.id.pop_maitab_sort_branc, R.id.pop_maitab_queding, R.id.pop_maitab_reset, R.id.pop_maitab_cancle, R.id.pop_sort_rang_price_bt, R.id.pop_sort_rang_score_bt})
+    @OnClick({R.id.pop_maitab_sort_type, R.id.pop_maitab_sort_price, R.id.pop_maitab_sort_jifen, R.id.pop_maitab_sort_branc, R.id.pop_maitab_queding, R.id.pop_maitab_reset, R.id.pop_maitab_cancle, R.id.pop_sort_rang_price_bt, R.id.pop_sort_rang_score_bt, R.id.pop_maitab_sort_hind_sousou_iv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.pop_sort_rang_price_bt://价格区间的确定按钮
@@ -498,13 +512,13 @@ public class AMianSort extends ABase {
                 BaseActivity.finish();
                 break;
             case R.id.pop_maitab_reset://重置 相当于没做任何筛选
-                if (!IsZiDingYiScore&&!IsZiDingYiPrice&&mySortAp.getCount() == 0 && myBrnadAp.getCount() == 0 && myRangAp.getCount() == 0 && myRangScoreAp.getCount() == 0) {
+                if (!IsZiDingYiScore && !IsZiDingYiPrice && mySortAp.getCount() == 0 && myBrnadAp.getCount() == 0 && myRangAp.getCount() == 0 && myRangScoreAp.getCount() == 0) {
                     PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.toselect));
                     return;
                 }
 
 
-                if (!IsZiDingYiScore&&!IsZiDingYiPrice&&mySortAp.GetSelectPostion() == -1 && myBrnadAp.GetSelectPostion() == -1 && myRangAp.GetSelectPostion() == -1 && myRangScoreAp.GetSelectPostion() == -1) {
+                if (!IsZiDingYiScore && !IsZiDingYiPrice && mySortAp.GetSelectPostion() == -1 && myBrnadAp.GetSelectPostion() == -1 && myRangAp.GetSelectPostion() == -1 && myRangScoreAp.GetSelectPostion() == -1) {
                     PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.toselect));
                     return;
                 }
@@ -528,7 +542,7 @@ public class AMianSort extends ABase {
                             popSortRangPriceMinEd.setText("");
                             popSortRangPriceMaxEd.setText("");
                         }
-                        if(IsZiDingYiScore){
+                        if (IsZiDingYiScore) {
                             popSortRangScoreTag.setTextColor(getResources().getColor(R.color.app_black));
                             popSortRangScoreMinEd.setText("");
                             popSortRangScoreMaxEd.setText("");
@@ -550,6 +564,10 @@ public class AMianSort extends ABase {
 
                 break;
             case R.id.pop_maitab_cancle://请取消==》直接退出相当于没做任何筛选
+                BaseActivity.finish();
+                break;
+            case R.id.pop_maitab_sort_hind_sousou_iv:
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ASouSouGood.class).putExtra("isfromsort", true));
                 BaseActivity.finish();
                 break;
         }
@@ -745,6 +763,7 @@ public class AMianSort extends ABase {
         super.onDestroy();
         //通知分类Fragment进行重置分类文本的颜色和图片的颜色
         EventBus.getDefault().post(new BMessage(2111));
+//        EventBus.getDefault().unregister(this);
     }
 
 

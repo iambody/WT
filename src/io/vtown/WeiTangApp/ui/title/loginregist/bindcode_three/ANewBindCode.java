@@ -59,7 +59,7 @@ public class ANewBindCode extends ATitleBase {
         Spuit.IsHaveBind_Set(BaseContext, true);
         PromptManager.ShowCustomToast(BaseContext, "已绑定");
         //通知个人中心刷新数据
-        EventBus.getDefault().post(new BMessage(BMessage.Fragment_Center_ChangStatus));
+//        EventBus.getDefault().post(new BMessage(BMessage.Fragment_Center_ChangStatus));
         BaseActivity.finish();
     }
 

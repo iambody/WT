@@ -1,9 +1,11 @@
 package io.vtown.WeiTangApp.ui.ui;
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcache.BSouRecord;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
@@ -75,6 +77,8 @@ public class ASouSouGood extends ATitileNoBase {
      * 取消按钮
      */
     private TextView sousou_cancle_txt;
+    //删除叉叉iv
+    private ImageView sousou_sou_ed_cha;
     /**
      * 返回按钮
      */
@@ -118,11 +122,11 @@ public class ASouSouGood extends ATitileNoBase {
     /**
      * FootView 跳转到搜索店铺的界面
      */
-    private View FootShopView;
+//    private View FootShopView;
     /**
      * GOTO商铺搜索
      */
-    private TextView GoShopSouTxt;
+//    private TextView GoShopSouTxt;
 
     /**
      * 热门搜索
@@ -144,8 +148,8 @@ public class ASouSouGood extends ATitileNoBase {
     /**
      * 搜索下边提示跳转到搜索店铺
      */
-    private TextView goodsousou_toshop_sousou_txt;
-    private RelativeLayout goodsousou_toshop_sousou_txt_lay;
+//    private TextView goodsousou_toshop_sousou_txt;
+//    private RelativeLayout goodsousou_toshop_sousou_txt_lay;
 
 //    private ImageView goodsousou_toshop_sousou_txt_downbg;
 
@@ -155,6 +159,11 @@ public class ASouSouGood extends ATitileNoBase {
         mDaoSouRecord = DaoSouRecord.getInstance(BaseContext);
         IView();
         ICacherRecommend();
+
+        //如果是从透明筛选进入的 需要偷偷销毁上一个透明的筛选界面
+//        if (getIntent().getBooleanExtra("isfromsort", false)) {
+//            EventBus.getDefault().post(new BMessage(BMessage.SortToSouSou));
+//        }
     }
 
     /**
@@ -207,7 +216,7 @@ public class ASouSouGood extends ATitileNoBase {
         List<BSouRecord> sddss = mDaoSouRecord.findAll();
         List<BSouRecord> newlist = new ArrayList<BSouRecord>();
         if (sddss.size() > Constants.SouSouHeistory) {// 超出规定条数
-            for (int i = sddss.size() - 1; i >= sddss.size() -  Constants.SouSouHeistory; i--) {
+            for (int i = sddss.size() - 1; i >= sddss.size() - Constants.SouSouHeistory; i--) {
                 newlist.add(sddss.get(i));
 
             }
@@ -245,11 +254,12 @@ public class ASouSouGood extends ATitileNoBase {
     }
 
     private void IView() {
-        goodsousou_toshop_sousou_txt_lay = (RelativeLayout) findViewById(R.id.goodsousou_toshop_sousou_txt_lay);
-        goodsousou_toshop_sousou_txt = (TextView) findViewById(R.id.goodsousou_toshop_sousou_txt);
-        // goodsousou_toshop_sousou_txt.setOnClickListener(this);
-        goodsousou_toshop_sousou_txt_lay.setOnClickListener(this);
-
+//        goodsousou_toshop_sousou_txt_lay = (RelativeLayout) findViewById(R.id.goodsousou_toshop_sousou_txt_lay);
+//        goodsousou_toshop_sousou_txt = (TextView) findViewById(R.id.goodsousou_toshop_sousou_txt);
+//        // goodsousou_toshop_sousou_txt.setOnClickListener(this);
+//        goodsousou_toshop_sousou_txt_lay.setOnClickListener(this);
+        sousou_sou_ed_cha= (ImageView) findViewById(R.id.sousou_sou_ed_cha);
+        sousou_sou_ed_cha.setOnClickListener(this);
         // 清除历史
         sousou_history_txt = (TextView) findViewById(R.id.sousou_history_txt);
         sousou_history_ls_clearn = (TextView) findViewById(R.id.sousou_history_ls_clearn);
@@ -261,17 +271,17 @@ public class ASouSouGood extends ATitileNoBase {
         sousou_remen_grid = (CompleteGridView) findViewById(R.id.sousou_remen_grid);
         sousou_history_ls = (CompleteListView) findViewById(R.id.sousou_history_ls);
         sousou_sousou_ls = (CompleteListView) findViewById(R.id.sousou_sousou_ls);
-
-        FootShopView = ViewHolder.ToView(BaseContext,
-                R.layout.view_sousou_good_footview);
-        GoShopSouTxt = (TextView) FootShopView
-                .findViewById(R.id.view_sousou_good_footview_goshopsou);
+//
+//        FootShopView = ViewHolder.ToView(BaseContext,
+//                R.layout.view_sousou_good_footview);
+//        GoShopSouTxt = (TextView) FootShopView
+//                .findViewById(R.id.view_sousou_good_footview_goshopsou);
 //        goodsousou_toshop_sousou_txt_downbg = (ImageView) findViewById(R.id.goodsousou_toshop_sousou_txt_downbg);
         myGradAp = new MyGradAp(R.layout.item_sousou_remen);
         sousou_remen_grid.setAdapter(myGradAp);
 
         // 搜索结果列表的处理
-        sousou_sousou_ls.addFooterView(FootShopView);
+//        sousou_sousou_ls.addFooterView(FootShopView);
         souSouAdapter = new SouSouAdapter(BaseContext,
                 R.layout.item_sousougood_result);
         sousou_sousou_ls.setAdapter(souSouAdapter);
@@ -293,7 +303,7 @@ public class ASouSouGood extends ATitileNoBase {
                 } else {// 点击正常
                     // PromptManager.ShowCustomToast(BaseContext, "位置：" + arg2);
                     BLComment DATA = (BLComment) arg0.getItemAtPosition(arg2);
-                   // BComment data = new BComment(DATA.getId(), DATA.getTitle());
+                    // BComment data = new BComment(DATA.getId(), DATA.getTitle());
 
                     AddCacheData(new BSouRecord(DATA.getId(), DATA.getTitle(),
                             1 + ""));
@@ -307,7 +317,7 @@ public class ASouSouGood extends ATitileNoBase {
 //                                            .putExtra(
 //                                                    ACommentList.Tage_BeanKey,
 //                                                    data));
-                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, ASearchResult.class).putExtra("search_key",DATA.getTitle()));
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASearchResult.class).putExtra("search_key", DATA.getTitle()));
 
 
                     BaseActivity.finish();
@@ -347,22 +357,22 @@ public class ASouSouGood extends ATitileNoBase {
                         return true;
                     }
                 });
-        GoShopSouTxt.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                if (StrUtils.IsOnlyNumber(sousou_sou_ed.getText().toString()
-                        .trim())) {
-                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseActivity, ASouSouShop.class).putExtra("id",
-                            sousou_sou_ed.getText().toString().trim()));
-                } else {
-                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseActivity, ASouSouShop.class));
-                }
-
-            }
-        });
+//        GoShopSouTxt.setOnClickListener(new OnClickListener() {
+//
+//            @Override
+//            public void onClick(View arg0) {
+//                if (StrUtils.IsOnlyNumber(sousou_sou_ed.getText().toString()
+//                        .trim())) {
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                            BaseActivity, ASouSouShop.class).putExtra("id",
+//                            sousou_sou_ed.getText().toString().trim()));
+//                } else {
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                            BaseActivity, ASouSouShop.class));
+//                }
+//
+//            }
+//        });
     }
 
     private void HistryOnLongClick(final BSouRecord da) {
@@ -427,26 +437,24 @@ public class ASouSouGood extends ATitileNoBase {
         public void afterTextChanged(Editable s) {
             if (!StrUtils.isEmpty(s.toString().trim())) {
                 DataEding(s.toString());
-                if (StrUtils.IsOnlyNumber(s.toString().trim())) {
-
-                    // goodsousou_toshop_sousou_txt.setVisibility(View.VISIBLE);
-                    goodsousou_toshop_sousou_txt_lay
-                            .setVisibility(View.VISIBLE);
-//                    goodsousou_toshop_sousou_txt_downbg
+                sousou_sou_ed_cha.setVisibility(View.VISIBLE);
+//                if (StrUtils.IsOnlyNumber(s.toString().trim())) {
+//
+//
+//                    goodsousou_toshop_sousou_txt_lay
 //                            .setVisibility(View.VISIBLE);
-                    StrUtils.SetColorsTxt(BaseContext,
-                            goodsousou_toshop_sousou_txt, R.color.red,
-                            "去搜索店铺:", s.toString().trim());
-                    // goodsousou_toshop_sousou_txt.setText("去搜索店铺:"
-                    // + s.toString().trim());
-                }
+//
+//                    StrUtils.SetColorsTxt(BaseContext,
+//                            goodsousou_toshop_sousou_txt, R.color.red,
+//                            "去搜索店铺:", s.toString().trim());
+//
+//                }
             } else {
-                sousou_up_lay.setVisibility(View.VISIBLE);
-                sousou_sousou_ls.setVisibility(View.GONE);
+//                sousou_up_lay.setVisibility(View.VISIBLE);
+//                sousou_sousou_ls.setVisibility(View.GONE);
+//
+//                goodsousou_toshop_sousou_txt_lay.setVisibility(View.GONE);
 
-                goodsousou_toshop_sousou_txt_lay.setVisibility(View.GONE);
-                // goodsousou_toshop_sousou_txt.setVisibility(View.GONE);
-//                goodsousou_toshop_sousou_txt_downbg.setVisibility(View.GONE);
             }
         }
 
@@ -542,15 +550,15 @@ public class ASouSouGood extends ATitileNoBase {
             this.datas = da;
             if (da.size() > 0) {
                 // goodsousou_toshop_sousou_txt.setVisibility(View.GONE);
-                goodsousou_toshop_sousou_txt_lay.setVisibility(View.GONE);
+//                goodsousou_toshop_sousou_txt_lay.setVisibility(View.GONE);
 //                goodsousou_toshop_sousou_txt_downbg.setVisibility(View.GONE);
-                if (StrUtils.IsOnlyNumber(sousou_sou_ed.getText().toString()
-                        .trim())) {
-                    GoShopSouTxt.setText("搜索店铺:"
-                            + sousou_sou_ed.getText().toString().trim());
-                } else {
-                    GoShopSouTxt.setText("搜索店铺 ");
-                }
+//                if (StrUtils.IsOnlyNumber(sousou_sou_ed.getText().toString()
+//                        .trim())) {
+//                    GoShopSouTxt.setText("搜索店铺:"
+//                            + sousou_sou_ed.getText().toString().trim());
+//                } else {
+//                    GoShopSouTxt.setText("搜索店铺 ");
+//                }
 
             }
 
@@ -756,7 +764,11 @@ public class ASouSouGood extends ATitileNoBase {
     @Override
     protected void MyClick(View V) {
         switch (V.getId()) {
-
+            case R.id.sousou_sou_ed_cha:
+                sousou_sou_ed.setText("");
+                sousou_sou_ed_cha.setVisibility(View.GONE);
+                souSouAdapter.Refrsh(new ArrayList<BLComment>());
+                break;
             // case R.id.sousou_sou_iv:// 搜索按钮
             // if (!StrUtils.isEmpty(sousou_sou_ed.getText().toString().trim())) {
             // PromptManager.showtextLoading(BaseContext, getResources()
@@ -785,18 +797,18 @@ public class ASouSouGood extends ATitileNoBase {
 //                                ACommentList.Tage_BeanKey, data));
 
 
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, ASearchResult.class).putExtra("search_key",sousou_sou_ed.getText().toString()));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASearchResult.class).putExtra("search_key", sousou_sou_ed.getText().toString()));
 
                 break;
             case R.id.sousou_history_ls_clearn:// 清理全部历史记录
                 ClearnCaCheHistory();
                 break;
-            case R.id.goodsousou_toshop_sousou_txt_lay:// 提示跳转到搜索店铺界面
-
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ASouSouShop.class).putExtra("id", sousou_sou_ed.getText()
-                        .toString().trim()));
-                break;
+//            case R.id.goodsousou_toshop_sousou_txt_lay:// 提示跳转到搜索店铺界面
+//
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        ASouSouShop.class).putExtra("id", sousou_sou_ed.getText()
+//                        .toString().trim()));
+//                break;
             default:
                 break;
         }

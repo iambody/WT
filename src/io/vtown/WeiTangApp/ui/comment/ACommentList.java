@@ -988,8 +988,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                                         R.id.tv_center_good_collect_good_price);
 
 
-
-                        centerGoodCollect.tv_center_good_collect_good_origprice= ViewHolder
+                        centerGoodCollect.tv_center_good_collect_good_origprice = ViewHolder
                                 .get(convertView,
                                         R.id.tv_center_good_collect_good_origprice);
                         convertView.setTag(centerGoodCollect);
@@ -1038,7 +1037,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                                 .get(convertView,
                                         R.id.ll_center_browse_record_rule3);
 
-                        centerBrowseRecord.tv_center_browse_record_origprice= ViewHolder
+                        centerBrowseRecord.tv_center_browse_record_origprice = ViewHolder
                                 .get(convertView,
                                         R.id.tv_center_browse_record_origprice);
                         convertView.setTag(centerBrowseRecord);
@@ -1055,7 +1054,8 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                                 convertView, R.id.tv_good_category_good_title);
                         goodSort.tv_good_category_orig_good_price = ViewHolder.get(
                                 convertView, R.id.tv_good_category_orig_good_price);
-
+                        goodSort.tv_good_category_good_saless= ViewHolder.get(
+                                convertView, R.id.tv_good_category_good_saless);
                         convertView.setTag(goodSort);
                         break;
 
@@ -1160,7 +1160,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                         centerGoodCollect.iv_center_good_collect_good_level
                                 .setVisibility(View.VISIBLE);
                     }
-                    if(!StrUtils.isEmpty(data.getOrig_price())&&!data.getOrig_price().equals("0")){
+                    if (!StrUtils.isEmpty(data.getOrig_price()) && !data.getOrig_price().equals("0")) {
                         StrUtils.SetTxt(centerGoodCollect.tv_center_good_collect_good_origprice,
                                 "原价" + StrUtils.SetTextForMony(data.getOrig_price()));
 
@@ -1196,13 +1196,12 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                         centerBrowseRecord.iv_center_browse_record_good_level
                                 .setVisibility(View.VISIBLE);
                     }
-                    if(!StrUtils.isEmpty(data.getOrig_price())&&!data.getOrig_price().equals("0")){
+                    if (!StrUtils.isEmpty(data.getOrig_price()) && !data.getOrig_price().equals("0")) {
                         StrUtils.SetTxt(centerBrowseRecord.tv_center_browse_record_origprice,
                                 "原价" + StrUtils.SetTextForMony(data.getOrig_price()));
 
                         centerBrowseRecord.tv_center_browse_record_origprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     }
-
 
 
                     break;
@@ -1212,8 +1211,9 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                                 goodSort.iv_good_category_good_icon,
                                 R.drawable.error_iv2);
                     } catch (Exception e) {
-                        // TODO: handle exception
                     }
+
+
                     StrUtils.SetTxt(goodSort.tv_good_category_good_title,
                             data.getTitle());
                     StrUtils.SetTxt(
@@ -1228,8 +1228,15 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
 //            StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
 //                    ("原价" + "30.4"));
                         goodSort.tv_good_category_orig_good_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-                    }else{
+                    } else {
                         goodSort.tv_good_category_orig_good_price.setVisibility(View.GONE);
+                    }
+
+                    if(!StrUtils.isEmpty(data.getSales())){
+
+                        StrUtils.SetTxt(goodSort.tv_good_category_good_saless,String.format("销量: %s",data.getSales()));
+                    }else{
+                        goodSort.tv_good_category_good_saless.setVisibility(View.GONE);
                     }
                     break;
 
@@ -1268,7 +1275,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     tv_center_good_collect_good_rule1,
                     tv_center_good_collect_good_rule2,
                     tv_center_good_collect_good_rule3,
-                    tv_center_good_collect_good_price,tv_center_good_collect_good_origprice;
+                    tv_center_good_collect_good_price, tv_center_good_collect_good_origprice;
             LinearLayout ll_center_good_collect_good_rule1,
                     ll_center_good_collect_good_rule2,
                     ll_center_good_collect_good_rule3;
@@ -1287,7 +1294,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
                     tv_center_browse_record_rule1,
                     tv_center_browse_record_rule2,
                     tv_center_browse_record_rule3,
-                    tv_center_browse_record_price,tv_center_browse_record_origprice;
+                    tv_center_browse_record_price, tv_center_browse_record_origprice;
             LinearLayout ll_center_browse_record_rule1,
                     ll_center_browse_record_rule2,
                     ll_center_browse_record_rule3;
@@ -1296,7 +1303,7 @@ public class ACommentList extends ATitleBase implements RefreshLayout.OnLoadList
 
         class GoodSortItem {
             ImageView iv_good_category_good_icon;
-            TextView tv_good_category_good_title, tv_good_category_good_price, tv_good_category_orig_good_price;
+            TextView tv_good_category_good_title, tv_good_category_good_price, tv_good_category_orig_good_price,tv_good_category_good_saless;
         }
     }
 

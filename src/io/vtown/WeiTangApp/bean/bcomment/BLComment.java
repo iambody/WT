@@ -37,6 +37,7 @@ public class BLComment extends BBase {
 	private String id;// ": "3",
 	private String title;// ": "iPhone SE"
 	private String orig_price;
+
 	// 首页的品牌图片跳转到的品牌页的列表的bean**********************
 
 	// private String id;//": "2",

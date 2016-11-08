@@ -18,7 +18,6 @@ import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.event.receiver.NewMessageBroadcastReceiver;
 import io.vtown.WeiTangApp.service.DownloadService;
 import io.vtown.WeiTangApp.ui.title.myhome.ACenter;
-import io.vtown.WeiTangApp.ui.title.AShopBus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -163,9 +162,9 @@ public class AMain extends TabActivity implements OnTabChangeListener {
         tabHost.addTab(tabHost.newTabSpec(TableMenu[2])
                 .setIndicator(TableMenu[2])
                 .setContent(new Intent(BaseCotext, AShow.class)));//
-        tabHost.addTab(tabHost.newTabSpec(TableMenu[3])
-                .setIndicator(TableMenu[3])
-                .setContent(new Intent(BaseCotext, AShopBus.class)));
+//        tabHost.addTab(tabHost.newTabSpec(TableMenu[3])
+//                .setIndicator(TableMenu[3])
+//                .setContent(new Intent(BaseCotext, AShopBus.class)));
 
         tabHost.addTab(tabHost.newTabSpec(TableMenu[4])
                 .setIndicator(TableMenu[4])

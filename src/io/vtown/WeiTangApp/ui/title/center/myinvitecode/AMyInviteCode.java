@@ -234,17 +234,18 @@ public class AMyInviteCode extends ATitleBase {
 	@Override
 	protected void InitTile() {
 		SetTitleTxt(getString(R.string.center_yaoqingma));
-		right_txt = (TextView) findViewById(R.id.right_txt);
-		right_txt.setOnClickListener(this);
-		SetRightText("绑定邀请码");
+//		right_txt = (TextView) findViewById(R.id.right_txt);
+//		right_txt.setOnClickListener(this);
+//		SetRightText("绑定邀请码");
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		right_txt
-				.setVisibility(Spuit.InvitationCode_Get(getApplicationContext()) ? View.GONE
-						: View.VISIBLE);
+//		right_txt.setVisibility(View.GONE);
+//		right_txt
+//				.setVisibility(Spuit.InvitationCode_Get(getApplicationContext()) ? View.GONE
+//						: View.VISIBLE);
 
 	}
 
@@ -309,10 +310,10 @@ public class AMyInviteCode extends ATitleBase {
 			ShareType = 2;
 			ShowBegin(2);
 			break;
-		case R.id.right_txt:// 点击绑定 跳转到绑定邀请码界面********
-			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-					AInviteCode.class).putExtra("isfromcenter", true));
-			break;
+//		case R.id.right_txt:// 点击绑定 跳转到绑定邀请码界面********
+//			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//					AInviteCode.class).putExtra("isfromcenter", true));
+//			break;
 		}
 	}
 

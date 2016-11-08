@@ -88,7 +88,7 @@
                 android:id="@+id/my_invite_code_rules"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/ui_10_dip"
+                android:layout_margin="@dimen/ui_10_dip"
                 android:gravity="center"
                 android:textColor="@color/app_gray"
                 />

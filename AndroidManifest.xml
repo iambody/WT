@@ -152,14 +152,14 @@
             android:name=".ui.ui.AShow"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
+     <!--   <activity
             android:name=".ui.title.AShopBus"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
+            android:screenOrientation="portrait"></activity>-->
+       <!-- <activity
             android:name=".ui.title.myhome.ACenter"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"></activity>-->
         <activity
             android:name=".ui.ui.ASouSouGood"
             android:launchMode="singleTask"

@@ -528,7 +528,7 @@
     <string name="getzs_loading">获取证书中···</string>
     <string name="share_quan_str">新用户注册送5元优惠券\n通过邀请码邀请好友注册并登录各得20元</string>
     <string name="qrcode_shop_desc">扫一扫上面二维码图案,关注我的店铺</string>
-    <string name="qrcode_regist_desc">扫一扫上面二维码图案,注册可得20元哦</string>
+    <string name="qrcode_regist_desc">扫一扫上面二维码图案,绑定邀请码哦</string>
     <string name="brand_add_us">您的品牌想要入住微糖商城,请联系我们,赶快行动吧~</string>
 
     <!-- shop -->
@@ -759,5 +759,9 @@
     <string name="resetsort">确定重置筛选条件?</string>
     <string name="error_null_good">无符合条件商品</string>
     <string name="newhome_myshangji">我的上级</string>
+    <string name="weijihuo1">普通店鋪</string>
+    <string name="to_Jihuo_toqiandao1">您的积分未达10000积分</string>
+    <string name="to_Jihuo_toqiandao2">请至少购买一件返佣商品</string>
+    <string name="to_jihuo1">去增加积分</string>
 
 </resources>

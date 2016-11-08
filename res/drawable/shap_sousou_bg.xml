@@ -3,7 +3,7 @@
     <!-- 圆角的透明的背景 -->
     <corners android:radius="8dp" />
 
-    <solid android:color="#b22046" />
+    <solid android:color="@color/white" />
 
     
     

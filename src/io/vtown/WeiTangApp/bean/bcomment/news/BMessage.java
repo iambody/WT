@@ -259,6 +259,9 @@ public class BMessage {
     private boolean IsSort_Price_ZiDingYi;
     private boolean IsSort_Score_ZiDingYi;
 
+    //如果是透明的筛选页面点击透明的搜索 需要先跳转到搜索在进行通知销毁数据
+    public static final int SortToSouSou=3099;
+
     //退出时候通知所有进行
     public BMessage() {
         super();
