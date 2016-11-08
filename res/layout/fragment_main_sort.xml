@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/shop_souso"
-                android:textColor="@color/sousou_ed"
+                android:textColor="@color/app_gray"
                 android:textSize="15dp"
                 />
 
@@ -48,9 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_toLeftOf="@+id/sort_good_textView"
-
-
-                android:src="@drawable/sousou"/>
+android:layout_centerVertical="true"
+                android:src="@drawable/sousou_gray"
+                />
         </RelativeLayout>
 
         <ImageView
@@ -60,7 +60,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/new1"/>
+            android:src="@drawable/new1"
+            android:visibility="invisible"/>
     </LinearLayout>
     <!-- title*** -->
     <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu
@@ -163,10 +164,11 @@
             android:dividerHeight="@dimen/line_size2"
             android:scrollbars="none"/>
     </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
+
     <include
         android:id="@+id/fragment_sort_nodata_lay"
         layout="@layout/commentview_nodata"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 </LinearLayout>

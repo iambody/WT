@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/home_souso"
-                    android:textColor="@color/sousou_ed"
+                    android:textColor="@color/app_gray"
                     android:textSize="15dp"
                     android:id="@+id/textView"/>
 
@@ -64,8 +64,8 @@
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:focusable="true"
-                    android:src="@drawable/sousou"
-                    android:layout_alignParentTop="true"
+                    android:src="@drawable/sousou_gray"
+                   android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/textView"
                     android:layout_toStartOf="@+id/textView"/>
             </RelativeLayout>

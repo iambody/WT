@@ -49,7 +49,6 @@ public class WXPayEntryActivity extends ABase implements IWXAPIEventHandler {
 
 	@Override
 	public void onResp(BaseResp resp) {
-		Log.d(TAG, "onPayFinish, errCode = " + resp.errCode);
 		switch (resp.errCode) {
 		case 0:// 0 成功 展示成功页面
 			PromptManager.ShowCustomToast(BaseContext, "微信支付成功");
@@ -59,7 +58,7 @@ public class WXPayEntryActivity extends ABase implements IWXAPIEventHandler {
 			// 通知刷新订单数据
 			EventBus.getDefault().post(
 					new BMessage(BMessage.Tage_To_Pay_Updata));
-			EventBus.getDefault().post(new BMessage(BMessage.Tage_Kill_Self));
+			EventBus.getDefault().post(new BMessage(BMessage.Tage_Kill_Self2));
 			WXPayEntryActivity.this.finish();
 			break;
 		case -1:// -1 错误 可能的原因：签名错误、未注册APPID、项目设置APPID不正确、注册的APPID与设置的不匹配、其他异常等。

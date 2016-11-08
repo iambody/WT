@@ -19,7 +19,7 @@ import io.vtown.WeiTangApp.R;
  * Created by datutu on 2016/9/21.
  */
 
-public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnScrollListener , SwipeRefreshLayout.OnRefreshListener  {
+public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnScrollListener, SwipeRefreshLayout.OnRefreshListener {
 
 
     /**
@@ -130,7 +130,7 @@ public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnS
 
             case MotionEvent.ACTION_UP:
                 // 抬起
-                if (canLoad()&&IsCanLoadMore) {
+                if (canLoad() && IsCanLoadMore) {
                     loadData();
                 }
                 break;
@@ -164,6 +164,7 @@ public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnS
 
     /**
      * 是否是上拉操作
+     *
      * @return
      */
     private boolean isPullUp() {
@@ -243,14 +244,14 @@ public class RefreshLayout extends SwipeRefreshLayout implements AbsListView.OnS
 
     @Override
     public void onRefresh() {
-        if(mOnLoadListener!=null)
-        mOnLoadListener.OnFrash();
+        if (mOnLoadListener != null)
+            mOnLoadListener.OnFrash();
     }
 
     /**
      * 加载更多的监听器
      */
-    public   interface OnLoadListener {
+    public interface OnLoadListener {
         public void OnLoadMore();
 
         public void OnFrash();

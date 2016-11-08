@@ -192,6 +192,7 @@ public class BLComment extends BBase {
 	private String is_edit;
 	private String max_price;
 	private String goods_url;
+	private String score;
 
 	// 品牌的分类的列表**************************
 	// private String id;// ": "1",
@@ -2027,5 +2028,14 @@ public class BLComment extends BBase {
 
 	public void setOrig_price(String orig_price) {
 		this.orig_price = orig_price;
+	}
+
+
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
 	}
 }

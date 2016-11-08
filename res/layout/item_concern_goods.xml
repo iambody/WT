@@ -28,8 +28,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
 
                 android:orientation="horizontal">
 
@@ -39,21 +39,48 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
                     android:layout_marginTop="5dp"
-                    android:src="@drawable/shopbus_item_log3"/>
+                    android:src="@drawable/shopbus_item_log3"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tv_center_good_collect_good_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/nullstr"
+                    android:ellipsize="end"
+                    android:lines="1"
                     android:textColor="@color/gray"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_center_good_collect_good_sales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/app_gray"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="12dp"/>
+                <TextView
+                    android:id="@+id/tv_center_good_collect_good_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/ui_30_dip"
+                    android:textColor="@color/app_gray"
+                    android:textSize="12dp"/>
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+
                 android:orientation="horizontal">
 
                 <TextView
@@ -63,13 +90,14 @@
                     android:layout_weight="1"
                     android:textColor="@color/app_fen"
                     android:textSize="16dp"/>
+
                 <TextView
                     android:id="@+id/tv_center_good_collect_good_origprice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/ui_5_dip"
                     android:textColor="@color/app_gray"
-                    android:textSize="12dp"
-                    android:layout_marginRight="@dimen/ui_5_dip"/>
+                    android:textSize="12dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
