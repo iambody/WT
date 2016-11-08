@@ -33,6 +33,7 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.util.ui.UiHelper;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
@@ -212,9 +213,9 @@ public class AMyLeader extends ATitleBase {
 
     }
 
-    public void onRefrashView(BMessage event){
+    public void onRefrashView(BMessage event) {
         int messageType = event.getMessageType();
-        if(messageType == BMessage.Fragment_Home_Bind){
+        if (messageType == BMessage.Fragment_Home_Bind) {
             IData();
         }
     }
@@ -223,9 +224,9 @@ public class AMyLeader extends ATitleBase {
     protected void onDestroy() {
         super.onDestroy();
         mBind.unbind();
-        try{
+        try {
             EventBus.getDefault().unregister(this);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -241,10 +242,22 @@ public class AMyLeader extends ATitleBase {
                 if (leader.getIs_ropot() == 1) //是机器人不需要查看其店铺
                     return;
 
-                BComment mBComment = new BComment(leader.getSeller_id(), leader.getSeller_name());
-                PromptManager.SkipActivity(BaseActivity, new Intent(
-                        BaseActivity, AShopDetail.class).putExtra(
-                        BaseKey_Bean, mBComment));
+//                BComment mBComment = new BComment(leader.getSeller_id(), leader.getSeller_name());
+//                PromptManager.SkipActivity(BaseActivity, new Intent(
+//                        BaseActivity, AShopDetail.class).putExtra(
+//                        BaseKey_Bean, mBComment));
+
+                //lsoso
+//跳转聊天页面
+                PromptManager.SkipActivity(
+                        BaseActivity,
+                        new Intent(BaseActivity, AChatLoad.class)
+                                .putExtra(AChatLoad.Tage_TageId,
+                                        leader.getSeller_id())
+                                .putExtra(AChatLoad.Tage_Name,
+                                        leader.getSeller_name())
+                                .putExtra(AChatLoad.Tage_Iv,
+                                        leader.getAvatar()));
                 break;
             case R.id.tv_my_leader_look_guize:
                 PromptManager.SkipActivity(BaseActivity, new Intent(

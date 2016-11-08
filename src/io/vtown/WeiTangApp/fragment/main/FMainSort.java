@@ -458,14 +458,14 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
         CurrentPage = CurrentPage + 1;
         if (SortZongHe) //综合被点击
             GetGoodsLs(CurrentPage, "sell_price", false, LOADMOREING);
-        if (SortPriceUp == 1) //价格升序
+       else if (SortPriceUp == 1) //价格升序
             GetGoodsLs(CurrentPage, "sell_price", false, LOADMOREING);
-        if (SortPriceUp == 2) //价格降序
+      else  if (SortPriceUp == 2) //价格降序
             GetGoodsLs(CurrentPage, "sell_price", true, LOADMOREING);
-        if (SortJiFenClick) //积分升序
+        else if (SortJiFenClick) //积分升序
             GetGoodsLs(CurrentPage, "score", true, LOADMOREING);
-        if (SortSellNumberClick)
-            GetGoodsLs(CurrentPage, "sales", true, LOADMOREING);
+       else  if (SortSellNumberClick)
+            GetGoodsLs(CurrentPage, "sales", true, LOADMOREING);else ;
     }
 
     @Override
@@ -475,14 +475,14 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
         if (SortZongHe) //综合被点击
             GetGoodsLs(CurrentPage, "sell_price", false, REFRESHING);
-        if (SortPriceUp == 1) //价格升序
+        else if (SortPriceUp == 1) //价格升序
             GetGoodsLs(CurrentPage, "sell_price", false, REFRESHING);
-        if (SortPriceUp == 2) //价格降序
+        else if (SortPriceUp == 2) //价格降序
             GetGoodsLs(CurrentPage, "sell_price", true, REFRESHING);
-        if (SortJiFenClick) //积分升序
+       else if (SortJiFenClick) //积分升序
             GetGoodsLs(CurrentPage, "score", true, REFRESHING);
-        if (SortSellNumberClick)
-            GetGoodsLs(CurrentPage, "sales", true, REFRESHING);
+       else if (SortSellNumberClick)
+            GetGoodsLs(CurrentPage, "sales", true, REFRESHING);else;
     }
 
 
@@ -716,16 +716,16 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 IsSort_Rang_Score_ZiDingYi = msg.isSort_Score_ZiDingYi();
 
 //if(SecondSortId_Postion==-1&&PriceSort_Postion==-1&&ScoreSort_Postion==-1&&BrandName_Postion==-1){return ;}
-                if (SortZongHe) //综合被点击
+                if (SortZongHe) //综合被点击{
                     GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
-                if (SortPriceUp == 1) //价格升序
+               else if (SortPriceUp == 1) //价格升序
                     GetGoodsLs(CurrentPage, "sell_price", true, INITIALIZE);
-                if (SortPriceUp == 2) //价格降序
+               else if (SortPriceUp == 2) //价格降序
                     GetGoodsLs(CurrentPage, "sell_price", false, INITIALIZE);
-                if (SortJiFenClick) //积分升序
+              else  if (SortJiFenClick) //积分升序
                     GetGoodsLs(CurrentPage, "score", true, INITIALIZE);
-                if (SortSellNumberClick)
-                    GetGoodsLs(CurrentPage, "sales", true, INITIALIZE);
+              else  if (SortSellNumberClick)
+                    GetGoodsLs(CurrentPage, "sales", true, INITIALIZE);else;
                 PromptManager.ShowCustomToast(BaseContext, String.format("我的二级分类:%s，我的最大价格:%s,我的最大积分:%s,我的品牌名字:%s", SecondSortId, PriceSort.getMax(), ScoreSort.getMax(), BrandName));
 
                 break;

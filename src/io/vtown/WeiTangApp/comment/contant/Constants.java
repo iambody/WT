@@ -172,7 +172,7 @@ public class Constants {
     public static int PageSize2 = 20;
     //	public static int PageSize3 = 2000;
     //筛选商品时候的最大价格和积分
-    public static String SortMax="900000001";
+    public static String SortMax="900001";
     //搜素是 浏览记录的最大缓存条数
     public static int SouSouHeistory = 12;
     /**
