@@ -36,4 +36,8 @@
     <!--店铺 -->
     <dimen name="fragment_up_lay_height">100dp</dimen>
     <dimen name="fragment_up_lay_margintop_height">50dp</dimen>
+    <dimen name="shop_lv_width">60dp</dimen>
+    <dimen name="shop_lv_height">24dp</dimen>
+    <dimen name="shop_lv_shape_width">55dp</dimen>
+    <dimen name="shop_lv_shape_height">20dp</dimen>
 </resources>

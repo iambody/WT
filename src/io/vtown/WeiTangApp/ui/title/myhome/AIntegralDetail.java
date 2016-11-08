@@ -309,7 +309,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 IntegralSwitch(TYPE_INVITE,getResources().getString(R.string.integral_title_invite));
                 break;
             case R.id.tv_friend_activation://下级激活
-                IntegralSwitch(TYPE_ACTIVATION,getResources().getString(R.string.integral_title_activation));
+                IntegralSwitch(TYPE_ACTIVATION,getResources().getString(R.string.integral_title_updata));
                 break;
             case R.id.tv_own_buy://我买东西
                 IntegralSwitch(TYPE_BUY_OWN,getResources().getString(R.string.integral_title_own_buy));

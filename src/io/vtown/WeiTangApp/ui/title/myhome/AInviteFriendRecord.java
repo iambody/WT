@@ -652,7 +652,6 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 holder.tv_friend_name = (TextView) convertView.findViewById(R.id.tv_friend_name);
                 holder.tv_friend_shop_id = (TextView) convertView.findViewById(R.id.tv_friend_shop_id);
                 holder.tv_invite_phone = (TextView) convertView.findViewById(R.id.tv_invite_phone);
-                holder.tv_invite_no_activate = (TextView) convertView.findViewById(R.id.tv_invite_no_activate);
                 holder.iv_lv = (ImageView) convertView.findViewById(R.id.iv_lv);
                 holder.list_line = convertView.findViewById(R.id.list_line);
                 convertView.setTag(holder);
@@ -669,12 +668,12 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
             if ("0".equals(friend.getIs_activate())) {
                 holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_putongdianpuxiaotubiao_nor));
-                holder.iv_lv.setVisibility(View.GONE);
-                holder.tv_invite_no_activate.setVisibility(View.VISIBLE);
+                holder.iv_lv.setImageResource(R.drawable.ic_putongdianpu_nor);
+
             } else {
                 holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_mingxingdianpuxiaotubiao_nor));
-                holder.tv_invite_no_activate.setVisibility(View.GONE);
-                holder.iv_lv.setVisibility(View.VISIBLE);
+
+
                 ImageLoaderUtil.Load2(friend.getMember_level_picture(), holder.iv_lv, R.drawable.error_iv2);
             }
 
@@ -695,7 +694,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     class FriendsHolder {
         CircleImageView iv_friend_icon;
         ImageView iv_friend_lv, iv_lv;
-        TextView tv_friend_name, tv_friend_shop_id, tv_invite_phone, tv_invite_no_activate;
+        TextView tv_friend_name, tv_friend_shop_id, tv_invite_phone;
         View list_line;
 
 

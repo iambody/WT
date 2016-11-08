@@ -6,7 +6,7 @@
 
 
     <solid
-        android:color="@color/app_bg"
+        android:color="@color/gray"
         />
 
 </shape>

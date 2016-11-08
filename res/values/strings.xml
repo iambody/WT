@@ -670,7 +670,7 @@
     <string name="null_integral_invite">还没有邀请好友哦</string>
     <string name="null_integral_past">还没有签到积分\n赶快去首页签到吧</string>
 
-    <string name="null_integral_activation">还没有下级激活积分</string>
+    <string name="null_integral_activation">还没有下级升级积分</string>
     <string name="null_integral_own_buy">还没有自己购买积分哦</string>
     <string name="null_integral_friend_buy">没有下级购买积分</string>
     <string name="null_integral_consume">暂时未消耗积分</string>
@@ -681,6 +681,7 @@
     <string name="integral_title_system1">系统赠送积分</string>
     <string name="integral_title_past">每日签到积分</string>
     <string name="integral_title_invite">邀请注册积分</string>
+    <string name="integral_title_updata">下级升级积分</string>
     <string name="integral_title_activation">下级购物积分</string>
     <string name="integral_title_own_buy">我的购物积分</string>
     <string name="integral_title_friend_buy">下级购买积分</string>
