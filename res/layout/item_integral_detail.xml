@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -71,6 +71,15 @@
                 android:textColor="@color/gray"
 
                 android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_integral_seller_order_sn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/app_gray"
+                android:textSize="11sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_integral_status"

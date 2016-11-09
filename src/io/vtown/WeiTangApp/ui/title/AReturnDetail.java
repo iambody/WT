@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.ui.title;
 
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -424,10 +425,10 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
             } else {
                 holder = (ReturnInsideViewHolder) convertView.getTag();
             }
-            BLAPropertyDetail data = return_datas.get(position);
+            final BLAPropertyDetail data = return_datas.get(position);
             StrUtils.SetTxt(holder.tvReturnDay, data.getDateStr());
             StrUtils.SetTxt(holder.tvReturnTime, data.getDate());
-            StrUtils.SetTxt(holder.tvReturnContent, data.getTitle());
+            StrUtils.SetTxt(holder.tvReturnContent,data.getPhone()+"购买了"+data.getGoods_name()+"(￥"+StrUtils.SetTextForMony(data.getPrice())+")"+",恭喜您获得返佣" );
             StrUtils.SetTxt(holder.tvReturnPoint, String.format("+ %1$s元", StrUtils.SetTextForMony(data.getPrice())));
             int status = Integer.parseInt(data.getStatus());
             String status_str = "";
@@ -450,6 +451,13 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
             }
 
             holder.tvReturnStatus.setText(status_str);
+
+            holder.tvReturnContent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,AGoodDetail.class).putExtra("goodid",data.getGoods_id()));
+                }
+            });
             return convertView;
         }
 

@@ -25,6 +25,10 @@ public class BLAPropertyDetail extends BBase {
 	private String update_time;// update_time=0
 	private String  goods_name;//"goods_name": "返佣商品3（10/15）",
 
+	private String goods_id;//"goods_id": 815,
+
+	private String phone;//"phone": "178****5679",
+
 	private String bank_name;//"bank_name": "中国建设银行",
 	private String fetch_money;//"fetch_money": 9900,
 	private String fetch_type;//"fetch_type": 1,
@@ -34,6 +38,22 @@ public class BLAPropertyDetail extends BBase {
 
 	private String alipay;//"alipay": "",
 	private String bank_card;//"bank_card": "1000089563333396",
+
+	public String getGoods_id() {
+		return goods_id;
+	}
+
+	public void setGoods_id(String goods_id) {
+		this.goods_id = goods_id;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 	public String getGoods_name() {
 		return goods_name;

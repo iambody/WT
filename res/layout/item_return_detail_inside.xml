@@ -64,7 +64,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textColor="@color/gray"
-                android:textSize="12sp"
+                android:textSize="11sp"
 
 
                 />

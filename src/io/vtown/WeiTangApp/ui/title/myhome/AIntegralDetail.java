@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -483,7 +484,9 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 holer = (IntegralOutsideHoler) convertView.getTag();
             }
             StrUtils.SetTxt(holer.integral_month, datas.get(position).getMonth());
-            holer.lv_integral_list_outside.setAdapter(new IntegralInsideAdapter(R.layout.item_integral_detail, datas.get(position).getList()));
+           final IntegralInsideAdapter integralInsideAdapter = new IntegralInsideAdapter(R.layout.item_integral_detail, datas.get(position).getList());
+            holer.lv_integral_list_outside.setAdapter(integralInsideAdapter);
+
             return convertView;
         }
     }
@@ -525,6 +528,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 holder.tv_integral_day = (TextView) convertView.findViewById(R.id.tv_integral_day);
                 holder.tv_integral_time = (TextView) convertView.findViewById(R.id.tv_integral_time);
                 holder.tv_integral_content = (TextView) convertView.findViewById(R.id.tv_integral_content);
+                holder.tv_integral_seller_order_sn = (TextView) convertView.findViewById(R.id.tv_integral_seller_order_sn);
                 holder.ll_integral_point_and_status = (LinearLayout) convertView.findViewById(R.id.ll_integral_point_and_status);
                 holder.tv_integral_point = (TextView) convertView.findViewById(R.id.tv_integral_point);
                 holder.tv_integral_status = (TextView) convertView.findViewById(R.id.tv_integral_status);
@@ -536,7 +540,24 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             BLIntegralDetails data = datas.get(position);
             StrUtils.SetTxt(holder.tv_integral_day, data.getDateStr());
             StrUtils.SetTxt(holder.tv_integral_time, data.getDate());
-            StrUtils.SetTxt(holder.tv_integral_content, data.getTitle());
+
+
+            if(TYPE_ACTIVATION.equals(data.getType())){
+                StrUtils.SetTxt(holder.tv_integral_content, data.getInvite_member_id()+"升级积分");
+            }else if(TYPE_BUY_FRIEND.equals(data.getType())){
+                StrUtils.SetTxt(holder.tv_integral_content, data.getBy_member_id()+"购物积分");
+            }else if(TYPE_INVITE.equals(data.getType())){
+                StrUtils.SetTxt(holder.tv_integral_content, data.getInvite_member_id()+"注册积分");
+            }else{
+                StrUtils.SetTxt(holder.tv_integral_content, data.getTitle());
+            }
+
+            if(TYPE_BUY_OWN.equals(data.getType())){
+                holder.tv_integral_seller_order_sn.setVisibility(View.VISIBLE);
+                StrUtils.SetTxt(holder.tv_integral_seller_order_sn,"订单号："+data.getSeller_order_sn());
+            }else{
+                holder.tv_integral_seller_order_sn.setVisibility(View.GONE);
+            }
 
             int point = Integer.parseInt(data.getPoint());
             if (point > 9999 && point < 100000) {
@@ -582,7 +603,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
 
     class IntegralInsideHolder {
-        TextView tv_integral_day, tv_integral_time, tv_integral_content, tv_integral_point, tv_integral_status;
+        TextView tv_integral_day, tv_integral_time, tv_integral_content, tv_integral_point, tv_integral_status,tv_integral_seller_order_sn;
         LinearLayout ll_integral_point_and_status;
         ImageView iv_dot_integral;
     }

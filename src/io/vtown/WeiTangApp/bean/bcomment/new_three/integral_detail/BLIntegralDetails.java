@@ -27,6 +27,24 @@ public class BLIntegralDetails {
     private String title;//"title":"返佣积分",
     private String date;//"date":"11:28",
     private String dateStr;//"dateStr":"昨天"
+    private String by_member_id;//"by_member_id": "178****5679",
+    private String seller_order_sn;//"seller_order_sn": "S2016110254981014493",
+
+    public String getSeller_order_sn() {
+        return seller_order_sn;
+    }
+
+    public void setSeller_order_sn(String seller_order_sn) {
+        this.seller_order_sn = seller_order_sn;
+    }
+
+    public String getBy_member_id() {
+        return by_member_id;
+    }
+
+    public void setBy_member_id(String by_member_id) {
+        this.by_member_id = by_member_id;
+    }
 
     public String getId() {
         return id;
