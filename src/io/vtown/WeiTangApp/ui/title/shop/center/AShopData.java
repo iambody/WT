@@ -220,7 +220,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
         SetItemContent(
                 shop_introduce,
                 R.string.shop_introduce,
-                StrUtils.isEmpty(shop_Get.getSellerinfo().getIntro()) ? "您还未描述店铺" : shop_Get.getSellerinfo()
+                StrUtils.isEmpty(shop_Get.getSellerinfo().getIntro()) ? "您还未填写个性签名" : shop_Get.getSellerinfo()
                         .getIntro(), 2);
     }
 
@@ -461,7 +461,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
      * @param
      */
     private void DialogTest(int type) {
-        ShowCustomDialog(type == 1 ? "修改头像" : "修改封面", "图库", "相机",
+        ShowCustomDialog(type == 1 ? "修改头像" : "修改背景图", "图库", "相机",
                 new IDialogResult() {
                     @Override
                     public void RightResult() {

@@ -37,6 +37,7 @@ import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
+import io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderDetail;
 import io.vtown.WeiTangApp.ui.ui.ANewHome;
 
 /**
@@ -548,6 +549,8 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 StrUtils.SetTxt(holder.tv_integral_content, data.getBy_member_id()+"购物积分");
             }else if(TYPE_INVITE.equals(data.getType())){
                 StrUtils.SetTxt(holder.tv_integral_content, data.getInvite_member_id()+"注册积分");
+            }else if(TYPE_BUY_OWN.equals(data.getType())){
+                StrUtils.SetTxt(holder.tv_integral_content, "我的"+data.getTitle());
             }else{
                 StrUtils.SetTxt(holder.tv_integral_content, data.getTitle());
             }
@@ -596,6 +599,13 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     break;
             }
             StrUtils.SetTxt(holder.tv_integral_status, status_str);
+
+//            holder.tv_integral_seller_order_sn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, ACenterMyOrderDetail.class));
+//                }
+//            });
 
             return convertView;
         }

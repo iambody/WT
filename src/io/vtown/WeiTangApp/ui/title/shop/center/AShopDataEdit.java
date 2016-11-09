@@ -59,7 +59,7 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
     private void IData() {
         Intent intent = getIntent();
         content = intent.getStringExtra("content");
-        if (content == null || "您还未描述店铺".equals(content))
+        if (content == null || "您还未填写个性签名".equals(content))
             content = "";
         type = intent.getIntExtra("type", 0);
         seller_id = intent.getStringExtra("seller_id");
@@ -107,13 +107,13 @@ public class AShopDataEdit extends ATitleBase implements TextWatcher, OnFocusCha
         switch (type) {
             case 1:
                 tv_name_or_desc.setText("昵称");
-                tv_modify_desc.setText("好昵称可以让你的店铺更加瞩目");
+                tv_modify_desc.setText("好昵称可以让你更加瞩目");
                 tv_content_count.setVisibility(View.GONE);
                 break;
 
             case 2:
                 tv_name_or_desc.setVisibility(View.GONE);
-                tv_modify_desc.setText("填写个性签名，你的店铺与众不同");
+                tv_modify_desc.setText("填写个性签名，赋予你与众不同的气质");
                 MaxNumber = 20;
                 et_content.clearFocus();
                 et_content.addTextChangedListener(this);
