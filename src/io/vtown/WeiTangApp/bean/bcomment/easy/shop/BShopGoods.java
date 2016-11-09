@@ -40,6 +40,8 @@ public class BShopGoods extends BBase {
     private String max_price;//": 15000,
     private String is_edit;//": 0
 
+    private String score;//"score": 702,
+
     private String seller_name;//": "圣珂兰",
     private String id;//": 1014688,
     private String cover;//": "http://fs.v-town.cc/photo_a5Q62X2hQQ2zmqpnOcESwkJnV85zIhck",
@@ -64,6 +66,14 @@ public class BShopGoods extends BBase {
     //private String is_agent;//    "is_agent":1,
    // private String cover;//    "cover":"http://fs.v-town.cc/photo_em7BRZpW9CFfIY1vpRGz6xlcQqFF4WtS"
 
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
 
     public String getIs_delete() {
         return is_delete;

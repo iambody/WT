@@ -16,12 +16,12 @@
 
             <ImageView
                 android:id="@+id/shop_good_sou_good_icon"
-               android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingRight="5dp"
                 android:layout_width="@dimen/item_shop_purchase_height"
-                android:layout_height="@dimen/item_shop_purchase_height" />
+                android:layout_height="@dimen/item_shop_purchase_height"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp" />
         </RelativeLayout>
 
         <LinearLayout
@@ -30,20 +30,8 @@
             android:layout_margin="5dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
 
-                android:layout_weight="1"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/shop_good_sou_good_is_agent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/shopbus_item_log3" />
 
                 <TextView
                     android:id="@+id/shop_good_sou_good_title"
@@ -51,16 +39,69 @@
                     android:layout_height="wrap_content"
                     android:text="@string/nullstr"
                     android:textColor="@color/gray" />
-            </LinearLayout>
+
 
 
             <TextView
-                android:id="@+id/shop_good_sou_price"
                 android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:textColor="@color/app_fen"
-                android:textSize="16dp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/item_shop_good_sou_result_sales"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="销量"
+                    android:textColor="@color/app_gray"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/item_shop_good_sou_result_score"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="积分"
+                    android:textColor="@color/app_gray"
+                    android:textSize="13dp" />
+
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:textColor="@color/app_gray">
+
+                <TextView
+                    android:id="@+id/shop_good_sou_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="123"
+                    android:textColor="@color/app_fen"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/shop_good_sou_orig_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="23"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/app_gray"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -68,6 +109,6 @@
 
     <View
 
-        style="@style/line" />
+        style="@style/line1" />
 
 </LinearLayout>

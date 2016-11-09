@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.ui.comment;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -95,9 +96,8 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
     }
 
 
-
     private void IGrid() {
-        if(Recommend.size() == 0 || Recommend == null){
+        if (Recommend.size() == 0 || Recommend == null) {
             layout_shop_good_sou_hot_goods.setVisibility(View.GONE);
             return;
         }
@@ -144,7 +144,7 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
     protected void DataResult(int Code, String Msg, BComment Data) {
         layout_shop_good_sou_hot_goods.setVisibility(View.GONE);
         if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-            if(LOAD_INITIALIZE == Data.getHttpLoadType()){
+            if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
                 IDataView(shop_good_sou_result_list, shop_good_sou_nodata_lay, NOVIEW_ERROR);
                 shop_good_sou_nodata_lay.setClickable(false);
                 DataError(getResources().getString(R.string.error_null_search_result), Data.getHttpLoadType());
@@ -277,12 +277,12 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if(s.toString().length() == 0){
+        if (s.toString().length() == 0) {
             layout_shop_good_sou_hot_goods.setVisibility(View.VISIBLE);
             shop_good_sou_result_list.setVisibility(View.GONE);
             shop_good_sou_title_delete.setVisibility(View.GONE);
-        } else{
-  //          layout_shop_good_sou_hot_goods.setVisibility(View.GONE);
+        } else {
+            //          layout_shop_good_sou_hot_goods.setVisibility(View.GONE);
 //            shop_good_sou_result_list.setVisibility(View.VISIBLE);
             shop_good_sou_title_delete.setVisibility(View.VISIBLE);
 //            CurrentTitle = s.toString();
@@ -342,34 +342,48 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
                 holder = new ResultItem();
                 convertView = inflater.inflate(ResoultId, null);
                 holder.shop_good_sou_good_icon = (ImageView) convertView.findViewById(R.id.shop_good_sou_good_icon);
-                holder.shop_good_sou_good_is_agent = (ImageView) convertView.findViewById(R.id.shop_good_sou_good_is_agent);
                 holder.shop_good_sou_good_title = (TextView) convertView.findViewById(R.id.shop_good_sou_good_title);
                 holder.shop_good_sou_price = (TextView) convertView.findViewById(R.id.shop_good_sou_price);
+                holder.item_shop_good_sou_result_sales = (TextView) convertView.findViewById(R.id.item_shop_good_sou_result_sales);
+                holder.shop_good_sou_orig_price = (TextView) convertView.findViewById(R.id.shop_good_sou_orig_price);
+                holder.item_shop_good_sou_result_score = (TextView) convertView.findViewById(R.id.item_shop_good_sou_result_score);
                 convertView.setTag(holder);
                 ImageLoaderUtil.Load2(datas.get(position).getCover(), holder.shop_good_sou_good_icon, R.drawable.error_iv2);
             } else {
                 holder = (ResultItem) convertView.getTag();
             }
-            if (0 == Integer.parseInt(datas.get(position).getIs_agent())) {
-                holder.shop_good_sou_good_is_agent.setVisibility(View.GONE);
-            } else {
-                holder.shop_good_sou_good_is_agent.setVisibility(View.VISIBLE);
-            }
+
+
             StrUtils.SetTxt(holder.shop_good_sou_good_title, datas.get(position).getTitle());
-            StrUtils.SetTxt(holder.shop_good_sou_price, StrUtils.SetTextForMony(datas.get(position).getSell_price()) + "元");
+            //StrUtils.SetTxt(holder.shop_good_sou_price, StrUtils.SetTextForMony(datas.get(position).getSell_price()) + "元");
+            StrUtils.SetMoneyFormat(BaseContext, holder.shop_good_sou_price, datas.get(position).getSell_price(), 14);
+            StrUtils.SetTxt(holder.shop_good_sou_orig_price, StrUtils.SetTextForMony(datas.get(position).getOrig_price()));
+            holder.shop_good_sou_orig_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            if ("0".equals(datas.get(position).getScore())) {
+                holder.item_shop_good_sou_result_score.setVisibility(View.GONE);
+            } else {
+                holder.item_shop_good_sou_result_score.setVisibility(View.VISIBLE);
+                StrUtils.SetTxt(holder.item_shop_good_sou_result_score, "积分：" + datas.get(position).getScore());
+            }
+
+            if ("0".equals(datas.get(position).getSales())) {
+                holder.item_shop_good_sou_result_sales.setVisibility(View.GONE);
+            } else {
+                holder.item_shop_good_sou_result_sales.setVisibility(View.VISIBLE);
+                StrUtils.SetTxt(holder.item_shop_good_sou_result_sales, "销量：" + datas.get(position).getSales());
+            }
             return convertView;
         }
     }
 
 
-
-    class HotGoodAdapter extends BaseAdapter{
+    class HotGoodAdapter extends BaseAdapter {
 
         private int ResourseId;
         private List<BShopGoods> hot_goods;
         private LayoutInflater inflater;
 
-        public HotGoodAdapter(int ResourseId,List<BShopGoods> hot_goods){
+        public HotGoodAdapter(int ResourseId, List<BShopGoods> hot_goods) {
             super();
             this.ResourseId = ResourseId;
             this.hot_goods = hot_goods;
@@ -395,33 +409,35 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
         public View getView(int position, View convertView, ViewGroup parent) {
 
             HotGoodsItem item = null;
-            if(null == convertView){
+            if (null == convertView) {
                 item = new HotGoodsItem();
-                convertView = inflater.inflate(ResourseId,null);
+                convertView = inflater.inflate(ResourseId, null);
                 item.shop_good_sou_hot_goods_icon = (ImageView) convertView.findViewById(R.id.shop_good_sou_hot_goods_icon);
                 item.shop_good_sou_hot_goods_title = (TextView) convertView.findViewById(R.id.shop_good_sou_hot_goods_title);
                 item.shop_good_sou_hot_goods_price = (TextView) convertView.findViewById(R.id.shop_good_sou_hot_goods_price);
                 convertView.setTag(item);
-                ImageLoaderUtil.Load2(hot_goods.get(position).getCover(),item.shop_good_sou_hot_goods_icon,R.drawable.error_iv2);
-            }else{
+                ImageLoaderUtil.Load2(hot_goods.get(position).getCover(), item.shop_good_sou_hot_goods_icon, R.drawable.error_iv2);
+            } else {
                 item = (HotGoodsItem) convertView.getTag();
             }
-            StrUtils.SetTxt(item.shop_good_sou_hot_goods_title,hot_goods.get(position).getTitle());
-            StrUtils.SetTxt(item.shop_good_sou_hot_goods_price,StrUtils.SetTextForMony(hot_goods.get(position).getSell_price())+"元");
+            StrUtils.SetTxt(item.shop_good_sou_hot_goods_title, hot_goods.get(position).getTitle());
+            StrUtils.SetTxt(item.shop_good_sou_hot_goods_price, StrUtils.SetTextForMony(hot_goods.get(position).getSell_price()) + "元");
+
+
             return convertView;
         }
     }
 
 
-    class HotGoodsItem{
+    class HotGoodsItem {
         ImageView shop_good_sou_hot_goods_icon;
-        TextView shop_good_sou_hot_goods_title,shop_good_sou_hot_goods_price;
+        TextView shop_good_sou_hot_goods_title, shop_good_sou_hot_goods_price;
 
     }
 
     class ResultItem {
-        ImageView shop_good_sou_good_icon, shop_good_sou_good_is_agent;
-        TextView shop_good_sou_good_title, shop_good_sou_price;
+        ImageView shop_good_sou_good_icon;
+        TextView shop_good_sou_good_title, shop_good_sou_price, shop_good_sou_orig_price, item_shop_good_sou_result_sales, item_shop_good_sou_result_score;
 
     }
 }

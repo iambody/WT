@@ -31,6 +31,7 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
@@ -207,7 +208,7 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
         switch (Show_Type) {
             case 1:
                 BComment bComment = new BComment(item.getId(), item.getSeller_name());
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AShopDetail.class).putExtra(BaseKey_Bean, bComment));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandDetail.class).putExtra(BaseKey_Bean, bComment));
                 break;
 
             case 2:
@@ -284,11 +285,6 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
                 case 2:
                     ImageLoaderUtil.Load2(blSearchShopAndGood.getCover(), goods.ivSearchResultAllGoodIcon, R.drawable.error_iv2);
                     StrUtils.SetTxt(goods.tvSearchResultAllGoodName, blSearchShopAndGood.getTitle());
-                    if (0 == blSearchShopAndGood.getIs_agent()) {
-                        goods.ivSearchResultAllGoodLevel.setVisibility(View.GONE);
-                    } else {
-                        goods.ivSearchResultAllGoodLevel.setVisibility(View.VISIBLE);
-                    }
                     StrUtils.SetMoneyFormat(BaseContext, goods.tvSearchResultAllGoodPrice, blSearchShopAndGood.getSell_price(), 15);
                     if ("0".equals(blSearchShopAndGood.getOrig_price()) || StrUtils.isEmpty(blSearchShopAndGood.getOrig_price())) {
                         goods.tvSearchResultAllGoodOrigprice.setVisibility(View.INVISIBLE);
@@ -337,8 +333,6 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
     class GoodsHolder {
         @BindView(R.id.iv_search_result_all_good_icon)
         ImageView ivSearchResultAllGoodIcon;
-        @BindView(R.id.iv_search_result_all_good_level)
-        ImageView ivSearchResultAllGoodLevel;
         @BindView(R.id.tv_search_result_all_good_name)
         TextView tvSearchResultAllGoodName;
         @BindView(R.id.tv_search_result_all_good_price)

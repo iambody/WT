@@ -65,6 +65,15 @@ public class BDCenterOrderDetail extends BBase {
 	private String balance_price;//"balance_price": 0,
 	private String point_time;//"point_time": 1478248638,
 	private int advance_point;//"advance_point": 1,
+	private int is_have_point;
+
+	public int getIs_have_point() {
+		return is_have_point;
+	}
+
+	public void setIs_have_point(int is_have_point) {
+		this.is_have_point = is_have_point;
+	}
 
 	public String getPoint_time() {
 		return point_time;

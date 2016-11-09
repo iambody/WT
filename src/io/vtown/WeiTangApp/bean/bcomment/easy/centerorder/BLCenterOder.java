@@ -34,6 +34,15 @@ public class BLCenterOder extends BBase {
 	 private String remind_time;//remind_time=0
 	private int advance_point;// "advance_point": 0,
 	private String point_time;//"point_time": 0,
+	private int is_have_point;
+
+	public int getIs_have_point() {
+		return is_have_point;
+	}
+
+	public void setIs_have_point(int is_have_point) {
+		this.is_have_point = is_have_point;
+	}
 
 	public int getAdvance_point() {
 		return advance_point;

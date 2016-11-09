@@ -586,15 +586,22 @@ public class ACenterMyOrder extends ATitleBase implements
                     if ("0".equals(data.getRefund())) {
                         myItem.fragment_center_order_apply_for_tuikuan_commiont
                                 .setVisibility(View.VISIBLE);
-                        if (0 == data.getAdvance_point()) {
-                            myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
-                            myItem.fragment_center_order_get_integral.setVisibility(View.VISIBLE);
-                        } else {
-                            myItem.fragment_center_order_apply_for_tuikuan_commiont.setVisibility(View.GONE);
-                            myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
-                            myItem.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
 
+                        if(0 == data.getIs_have_point()){
+                            myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                            myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
+                        }else{
+                            if (0 == data.getAdvance_point()) {
+                                myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                                myItem.fragment_center_order_get_integral.setVisibility(View.VISIBLE);
+                            } else {
+                                myItem.fragment_center_order_apply_for_tuikuan_commiont.setVisibility(View.GONE);
+                                myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
+                                myItem.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
+
+                            }
                         }
+
 
                         if ("0".equals(data.getRemind_time())) {
                             myItem.fragment_center_order_remind_fahuo

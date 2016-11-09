@@ -551,6 +551,10 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                 CollecNetDo(!IsCollect);
                 break;
             case R.id.brandshop_sou_lay://搜搜
+                if( mBComment.getAgent() == null){
+                    PromptManager.ShowCustomToast(BaseContext,"店铺没有商品，无法搜索");
+                    return;
+                }
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AShopGoodSou.class).putExtra("Sellid", mBComment.getBase().getId()).putExtra("Sellname", mBComment.getBase().getSeller_name()));
                 BaseApplication.GetInstance().setShopSouRecommend(mBComment.getAgent());
                 break;

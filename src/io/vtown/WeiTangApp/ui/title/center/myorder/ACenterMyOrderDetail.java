@@ -627,18 +627,25 @@ public class ACenterMyOrderDetail extends ATitleBase {
         if (FCenterOder.PYiFu == Order_status) {
             if ("0".equals(order_detail2.getRefund())) {
                 tv_center_my_order_apply_refund.setVisibility(View.VISIBLE);
-                if (0 == order_detail2.getAdvance_point()) {
-                   // myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
-                    ll_center_my_order_get_integral_tips.setVisibility(View.GONE);
-                    tv_center_my_order_get_integral.setVisibility(View.VISIBLE);
-                } else {
-                    tv_center_my_order_apply_refund.setVisibility(View.GONE);
-                    tv_center_my_order_get_integral.setVisibility(View.GONE);
-                    ll_center_my_order_get_integral_tips.setVisibility(View.VISIBLE);
-                    StrUtils.SetTxt(tv_center_my_order_get_integral_tips,"温馨提示：您已在"+ DateUtils.timeStampToStr(Long.parseLong(order_detail2.getPoint_time()))+"获取积分,获取积分后不能再进行申请退款操作");
-                   /// myItem.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
 
+                if(0 == order_detail2.getIs_have_point()){
+                    ll_center_my_order_get_integral_tips.setVisibility(View.GONE);
+                    tv_center_my_order_get_integral.setVisibility(View.GONE);
+                }else{
+                    if (0 == order_detail2.getAdvance_point()) {
+                        // myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                        ll_center_my_order_get_integral_tips.setVisibility(View.GONE);
+                        tv_center_my_order_get_integral.setVisibility(View.VISIBLE);
+                    } else {
+                        tv_center_my_order_apply_refund.setVisibility(View.GONE);
+                        tv_center_my_order_get_integral.setVisibility(View.GONE);
+                        ll_center_my_order_get_integral_tips.setVisibility(View.VISIBLE);
+                        StrUtils.SetTxt(tv_center_my_order_get_integral_tips, "温馨提示：您已在" + DateUtils.timeStampToStr(Long.parseLong(order_detail2.getPoint_time())) + "获取积分,获取积分后不能再进行申请退款操作");
+                        /// myItem.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
+
+                    }
                 }
+
 
                 if ("0".equals(order_detail2.getRemind_time())) {
                     tv_center_my_order_remind_send_out
@@ -788,7 +795,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
             case 3:// 查看物流
             /*
-			 * //ll_center_my_order_good_express_speed.setVisibility(View.VISIBLE
+             * //ll_center_my_order_good_express_speed.setVisibility(View.VISIBLE
 			 * ); /List<BLComment> express_datas = new ArrayList<BLComment>();
 			 * try { express_datas = JSON.parseArray(Data.getHttpResultStr(),
 			 * BLComment.class); } catch (Exception e) { DataError("解析失败", 1); }
@@ -1099,8 +1106,6 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 item = new PurcheseItem();
                 item.iv_center_my_order_detail_good_icon = (ImageView) arg1
                         .findViewById(R.id.iv_center_my_order_detail_good_icon);
-                item.iv_center_my_order_detail_goods_type = (ImageView) arg1
-                        .findViewById(R.id.iv_center_my_order_detail_goods_type);
                 item.tv_center_my_order_detail_good_title = (TextView) arg1
                         .findViewById(R.id.tv_center_my_order_detail_good_title);
                 item.tv_center_my_order_good_content = (TextView) arg1
@@ -1120,24 +1125,9 @@ public class ACenterMyOrderDetail extends ATitleBase {
             } else {
                 item = (PurcheseItem) arg1.getTag();
             }
-
             String goods_type = data.get(arg0).getGoods_type();
-
-            if ("1".equals(goods_type)) {
-//				item.iv_center_my_order_detail_goods_type
-//						.setVisibility(View.GONE);
-                StrUtils.SetTxt(item.tv_center_my_order_detail_good_title, data
-                        .get(arg0).getGoods_name());
-                StrUtils.setTxtLeftDrawable(BaseContext, item.tv_center_my_order_detail_good_title);
-
-            } else {
-                //item.iv_center_my_order_detail_goods_type
-                //		.setVisibility(View.VISIBLE);
-                StrUtils.SetTxt(item.tv_center_my_order_detail_good_title, data
-                        .get(arg0).getGoods_name());
-            }
-
-
+            StrUtils.SetTxt(item.tv_center_my_order_detail_good_title, data
+                    .get(arg0).getGoods_name());
             StrUtils.SetTxt(item.tv_center_my_order_content_value,
                     data.get(arg0).getGoods_standard());
             String goods_price = String.format("￥%1$s",
@@ -1153,8 +1143,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
         }
 
         class PurcheseItem {
-            ImageView iv_center_my_order_detail_good_icon,
-                    iv_center_my_order_detail_goods_type;
+            ImageView iv_center_my_order_detail_good_icon;
             TextView tv_center_my_order_detail_good_title,
                     tv_center_my_order_good_content,
                     tv_center_my_order_content_value,

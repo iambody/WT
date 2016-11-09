@@ -143,7 +143,7 @@ public class ASearchResult extends ATitleBase {
             List<BLSearchShopAndGood> datas = new ArrayList<BLSearchShopAndGood>();
             datas = JSON.parseArray(info.getSellerinfo(), BLSearchShopAndGood.class);
             tvSearchResultTotalShops.setText("相关店铺" + info.getSeller_total() + "个");
-            if (datas.size() < 4) {
+            if (datas.size() < 6) {
                 tvSearchResultAllShops.setVisibility(View.GONE);
             } else {
                 tvSearchResultAllShops.setVisibility(View.VISIBLE);
@@ -158,7 +158,7 @@ public class ASearchResult extends ATitleBase {
             List<BLSearchShopAndGood> datas = new ArrayList<BLSearchShopAndGood>();
             datas = JSON.parseArray(info.getGoodsinfo(), BLSearchShopAndGood.class);
             tvSearchResultTotalGoods.setText("相关商品" + info.getGoods_total() + "个");
-            if (datas.size() < 6) {
+            if (datas.size() < 10) {
                 tvSearchResultAllGoods.setVisibility(View.GONE);
             } else {
                 tvSearchResultAllGoods.setVisibility(View.VISIBLE);
@@ -243,7 +243,7 @@ public class ASearchResult extends ATitleBase {
                 case 1:
                     BLSearchShopAndGood item = (BLSearchShopAndGood) mShopResultAdapter.getItem(position);
                     BComment bComment = new BComment(item.getId(), item.getSeller_name());
-                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AShopDetail.class).putExtra(BaseKey_Bean, bComment));
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandDetail.class).putExtra(BaseKey_Bean, bComment));
                     break;
 
                 case 2:
@@ -265,10 +265,10 @@ public class ASearchResult extends ATitleBase {
 
         @Override
         public int getCount() {
-            if (datas.size() < 3) {
+            if (datas.size() < 5) {
                 return datas.size();
             } else {
-                return 3;
+                return 5;
             }
 
         }
@@ -338,10 +338,10 @@ public class ASearchResult extends ATitleBase {
 
         @Override
         public int getCount() {
-            if (datas.size() < 5) {
+            if (datas.size() < 10) {
                 return datas.size();
             } else {
-                return 5;
+                return 10;
             }
 
         }
@@ -373,11 +373,6 @@ public class ASearchResult extends ATitleBase {
             }
             BLSearchShopAndGood blSearchShopAndGood = datas.get(position);
             ImageLoaderUtil.Load2(blSearchShopAndGood.getCover(), holder.ivSearchResultGoodIcon, R.drawable.error_iv2);
-            if (1 == blSearchShopAndGood.getIs_agent()) {
-                holder.ivSearchResultGoodLevel.setVisibility(View.VISIBLE);
-            } else {
-                holder.ivSearchResultGoodLevel.setVisibility(View.GONE);
-            }
             StrUtils.SetTxt(holder.tvSearchResultGoodName, blSearchShopAndGood.getTitle());
             StrUtils.SetMoneyFormat(BaseContext, holder.tvSearchResultGoodPrice, blSearchShopAndGood.getSell_price(), 15);
             if ("0".equals(blSearchShopAndGood.getOrig_price()) || StrUtils.isEmpty(blSearchShopAndGood.getOrig_price())) {
@@ -412,8 +407,6 @@ public class ASearchResult extends ATitleBase {
     class GoodsHolder {
         @BindView(R.id.iv_search_result_good_icon)
         ImageView ivSearchResultGoodIcon;
-        @BindView(R.id.iv_search_result_good_level)
-        ImageView ivSearchResultGoodLevel;
         @BindView(R.id.tv_search_result_good_name)
         TextView tvSearchResultGoodName;
         @BindView(R.id.tv_search_result_good_price)
