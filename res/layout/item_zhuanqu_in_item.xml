@@ -20,12 +20,37 @@
         android:id="@+id/item_zhuanqu_in_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:gravity="left"
-        android:lines="2"
+        android:lines="1"
         android:paddingBottom="@dimen/line_size6"
         android:paddingLeft="@dimen/line_size6"
         android:paddingTop="@dimen/line_size6"
         android:textColor="@color/gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/ui_5_dip">
+
+        <TextView
+            android:id="@+id/item_zhuanqu_in_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/ui_12_dip"/>
+
+        <TextView
+            android:id="@+id/item_zhuanqu_in_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/ui_20_dip"
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/ui_12_dip"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

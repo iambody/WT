@@ -20,6 +20,9 @@ public class BZhuanquGood extends BBase {
     //原价
     private String orig_price;
 
+    private String sales;//=9764
+    private String score;//=0
+
     public String getId() {
         return id;
     }
@@ -106,5 +109,21 @@ public class BZhuanquGood extends BBase {
 
     public void setOrig_price(String orig_price) {
         this.orig_price = orig_price;
+    }
+
+    public String getSales() {
+        return sales;
+    }
+
+    public void setSales(String sales) {
+        this.sales = sales;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 }

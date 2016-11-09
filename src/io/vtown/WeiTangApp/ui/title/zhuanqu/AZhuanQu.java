@@ -321,6 +321,14 @@ public class AZhuanQu extends ATitleBase {
                         R.id.item_zhuanqu_in_price);
                 dongInItem.item_zhuanqu_odl_price = ViewHolder.get(convertView,
                         R.id.item_zhuanqu_odl_price);
+                dongInItem.item_zhuanqu_in_sales= ViewHolder.get(convertView,
+                        R.id.item_zhuanqu_in_sales);
+
+                dongInItem.item_zhuanqu_in_score= ViewHolder.get(convertView,
+                        R.id.item_zhuanqu_in_score);
+
+
+
                 convertView.setTag(dongInItem);
             } else {
                 dongInItem = (HuoDongInItem) convertView.getTag();
@@ -336,9 +344,16 @@ public class AZhuanQu extends ATitleBase {
             if (!StrUtils.isEmpty(dddata.getOrig_price())&&!dddata.getOrig_price().equals("0")) {
             StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
                     "原价" + StrUtils.SetTextForMony(dddata.getOrig_price()));
-//            StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
-//                    ("原价" + "30.4"));
                 dongInItem.item_zhuanqu_odl_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            }
+            //销量
+
+            if(!StrUtils.isEmpty(dddata.getSales())){
+                dongInItem.item_zhuanqu_in_sales.setText(String.format("销量：%s",dddata.getSales()));
+            }
+            //积分
+            if(!StrUtils.isEmpty(dddata.getScore())){
+                dongInItem.item_zhuanqu_in_score.setText(String.format("积分：%s",dddata.getScore()));
             }
             return convertView;
         }
@@ -347,7 +362,8 @@ public class AZhuanQu extends ATitleBase {
             ImageView item_zhuanqu_in_iv;
             TextView item_zhuanqu_in_name;
             TextView item_zhuanqu_in_price;
-            TextView item_zhuanqu_odl_price;
+            TextView item_zhuanqu_odl_price,item_zhuanqu_in_sales,item_zhuanqu_in_score;
+
         }
     }
 }

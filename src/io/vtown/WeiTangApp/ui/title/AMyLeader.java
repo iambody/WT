@@ -31,6 +31,7 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.util.ui.UiHelper;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
@@ -246,18 +247,35 @@ public class AMyLeader extends ATitleBase {
 //                PromptManager.SkipActivity(BaseActivity, new Intent(
 //                        BaseActivity, AShopDetail.class).putExtra(
 //                        BaseKey_Bean, mBComment));
-
-                //lsoso
+                //联系上级
+                ShowCustomDialog("联系"+leader.getSeller_name(), "电话联系", "微糖聊天", new IDialogResult() {
+                    @Override
+                    public void LeftResult() {
+                        PromptManager.makeCall(BaseContext, leader.getPhone());
+                    }
+                    @Override
+                    public void RightResult() {
+                        PromptManager.SkipActivity(
+                                BaseActivity,
+                                new Intent(BaseActivity, AChatLoad.class)
+                                        .putExtra(AChatLoad.Tage_TageId,
+                                                leader.getSeller_id())
+                                        .putExtra(AChatLoad.Tage_Name,
+                                                leader.getSeller_name())
+                                        .putExtra(AChatLoad.Tage_Iv,
+                                                leader.getAvatar()));
+                    }
+                });
 //跳转聊天页面
-                PromptManager.SkipActivity(
-                        BaseActivity,
-                        new Intent(BaseActivity, AChatLoad.class)
-                                .putExtra(AChatLoad.Tage_TageId,
-                                        leader.getSeller_id())
-                                .putExtra(AChatLoad.Tage_Name,
-                                        leader.getSeller_name())
-                                .putExtra(AChatLoad.Tage_Iv,
-                                        leader.getAvatar()));
+//                PromptManager.SkipActivity(
+//                        BaseActivity,
+//                        new Intent(BaseActivity, AChatLoad.class)
+//                                .putExtra(AChatLoad.Tage_TageId,
+//                                        leader.getSeller_id())
+//                                .putExtra(AChatLoad.Tage_Name,
+//                                        leader.getSeller_name())
+//                                .putExtra(AChatLoad.Tage_Iv,
+//                                        leader.getAvatar()));
                 break;
             case R.id.tv_my_leader_look_guize:
                 PromptManager.SkipActivity(BaseActivity, new Intent(

@@ -34,6 +34,7 @@
             android:layout_weight="1"
             android:gravity="left"
             android:lines="1"
+            android:ellipsize="end"
             android:textSize="@dimen/ui_16_dip"
             />
 
@@ -73,6 +74,7 @@
                 android:id="@+id/item_main_sort_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_weight="1"
                 android:textColor="@color/app_fen"
                 android:layout_gravity="center_vertical"

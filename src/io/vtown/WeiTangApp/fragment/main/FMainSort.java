@@ -457,7 +457,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     public void OnLoadMore() {
         CurrentPage = CurrentPage + 1;
         if (SortZongHe) //综合被点击
-            GetGoodsLs(CurrentPage, "sell_price", false, LOADMOREING);
+            GetGoodsLs(CurrentPage, "weight", true, LOADMOREING);
        else if (SortPriceUp == 1) //价格升序
             GetGoodsLs(CurrentPage, "sell_price", false, LOADMOREING);
       else  if (SortPriceUp == 2) //价格降序
@@ -474,7 +474,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
         CurrentPage = 1;
 
         if (SortZongHe) //综合被点击
-            GetGoodsLs(CurrentPage, "sell_price", false, REFRESHING);
+            GetGoodsLs(CurrentPage, "weight", true, REFRESHING);
         else if (SortPriceUp == 1) //价格升序
             GetGoodsLs(CurrentPage, "sell_price", false, REFRESHING);
         else if (SortPriceUp == 2) //价格降序
@@ -548,12 +548,14 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
     @Override
     public void getResult(int Code, String Msg, BComment Data) {
+
         String ResultStr = Data.getHttpResultStr();
         IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_RIGHT);
         switch (Data.getHttpResultTage()) {
             case 0://获取列表
                 switch (Data.getHttpLoadType()) {
                     case INITIALIZE:
+
                         if (StrUtils.isEmpty(ResultStr)) {
                             PromptManager.ShowCustomToast(BaseContext, "暂无数据");
                             mySortAdapter.FrashData(new ArrayList<BSortGood>());
@@ -562,7 +564,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                             ShowErrorIv(R.drawable.error_sou);
                             return;
                         }
-
+                        fragmentSortLs.smoothScrollToPosition(-20);
                         List<BSortGood> ListGoods = JSON.parseArray(ResultStr, BSortGood.class);
 
                         mySortAdapter.FrashData(ListGoods);
@@ -574,7 +576,6 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                         }
                         break;
                     case LOADMOREING:
-
                         fragmentSortRefrash.setLoading(false);
                         //
                         if (StrUtils.isEmpty(ResultStr)) {
@@ -591,9 +592,27 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                         }
                         break;
                     case REFRESHING:
-
-
+                        fragmentSortLs.smoothScrollToPosition(-20);
                         fragmentSortRefrash.setRefreshing(false);
+
+                        if (StrUtils.isEmpty(ResultStr)) {
+                            PromptManager.ShowCustomToast(BaseContext, "暂无数据");
+                            mySortAdapter.FrashData(new ArrayList<BSortGood>());
+                            IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_ERROR);
+                            ShowErrorCanLoad(getResources().getString(R.string.error_null_good));
+                            ShowErrorIv(R.drawable.error_sou);
+                            return;
+                        }
+                        List<BSortGood> ListGoodss = JSON.parseArray(ResultStr, BSortGood.class);
+
+                        mySortAdapter.FrashData(ListGoodss);
+                        if (ListGoodss.size() < 20) {
+                            fragmentSortRefrash.setCanLoadMore(false);
+                        }
+                        if (ListGoodss.size() == 20) {
+                            fragmentSortRefrash.setCanLoadMore(true);
+                        }
+
                         break;
                     case LOADHind:
                         break;

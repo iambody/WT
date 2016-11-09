@@ -331,13 +331,14 @@ public class ASouSouGood extends ATitileNoBase {
                                     long arg3) {
 
                 BSouRecord DATA = (BSouRecord) arg0.getItemAtPosition(arg2);
-                BComment data = new BComment(DATA.getId(), DATA.getTitle());
-                PromptManager.SkipActivity(
-                        BaseActivity,
-                        new Intent(BaseActivity, ACommentList.class).putExtra(
-                                ACommentList.Tage_ResultKey,
-                                ACommentList.Tage_SouGoodResultItem).putExtra(
-                                ACommentList.Tage_BeanKey, data));
+//                BComment data = new BComment(DATA.getId(), DATA.getTitle());
+//                PromptManager.SkipActivity(
+//                        BaseActivity,
+//                        new Intent(BaseActivity, ACommentList.class).putExtra(
+//                                ACommentList.Tage_ResultKey,
+//                                ACommentList.Tage_SouGoodResultItem).putExtra(
+//                                ACommentList.Tage_BeanKey, data));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASearchResult.class).putExtra("search_key", DATA.getTitle()));
 
 
                 AddCacheData(DATA);
