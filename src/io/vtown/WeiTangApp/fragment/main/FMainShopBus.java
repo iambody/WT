@@ -92,7 +92,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
     //是否是普通
 
-    private boolean IsPu;
+    private boolean IsPu=true;
     private int AllNumber = 0;
 
     private boolean NoGood = false;
@@ -268,17 +268,13 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
             NoGood = true;
             return;
         }
+        IsPu = true;
         busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
         maintab_shopbus_ls.setAdapter(busAdapter);
         busAdapter.FrashData(bComment.getPT());
-        IsPu = true;
-//        maintab_shopbus_left_txt.setText("零售商品");
-//
-//        maintab_shopbus_left_txt.setVisibility(View.GONE);
-//        maintab_shopbus_left_txt.setClickable(false);
+
         maintab_shopbus_right_iv.setVisibility(View.VISIBLE);
         AllNumber = 0;
-
         for (int i = 0; i < bComment.getPT().size(); i++) {
             AllNumber = AllNumber
                     + bComment.getPT().get(i).getList().size();
@@ -289,104 +285,11 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
 
 
-
-
-
-//        if (bComment.getPT() == null && bComment.getCG() == null) {// 没有普通也没有采购的
-//            maintab_shopbus_right_iv.setVisibility(View.GONE);
-//            maintab_shopbus_down_lay.setVisibility(View.GONE);
-//            IDataView(maintab_shopbus_show_lay, maintab_shopbus_nodata_lay, NOVIEW_ERROR);
-//            AllNumber = 0;
-//            Spuit.ShopBusNumber_Save(BaseContext, 0);
-//            Send(AllNumber);
-//            ShowErrorCanLoad(getResources().getString(R.string.no_shopbus));
-//            ShowErrorIv(R.drawable.error_shopbus);
-//            NoGood = true;
-//        }
-//        if (bComment.getPT() != null && bComment.getCG() == null) {// 只有普通的没有采购的
-//            busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
-//            maintab_shopbus_ls.setAdapter(busAdapter);
-//            busAdapter.FrashData(bComment.getPT());
-//            IsPu = true;
-//            maintab_shopbus_left_txt.setText("零售商品");
-//
-//            maintab_shopbus_left_txt.setVisibility(View.GONE);
-//            maintab_shopbus_left_txt.setClickable(false);
-//            maintab_shopbus_right_iv.setVisibility(View.VISIBLE);
-//            AllNumber = 0;
-//
-//            for (int i = 0; i < bComment.getPT().size(); i++) {
-//                AllNumber = AllNumber
-//                        + bComment.getPT().get(i).getList().size();
-//
-//            }
-//            Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
-//            Send(AllNumber);
-//            maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
-//        }
-//        if (bComment.getPT() == null && bComment.getCG() != null) {// 只有采购的没有普通的
-//            busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
-//            maintab_shopbus_ls.setAdapter(busAdapter);
-//            busAdapter.FrashData(bComment.getCG());
-//            IsPu = false;
-//            maintab_shopbus_left_txt.setText("采购商品");
-//            maintab_shopbus_left_txt.setVisibility(View.GONE);
-//            maintab_shopbus_left_txt.setClickable(false);
-//            maintab_shopbus_left_txt.setVisibility(View.VISIBLE);
-//
-//            AllNumber = 0;
-//
-//            for (int i = 0; i < bComment.getCG().size(); i++) {
-//
-//                AllNumber = AllNumber
-//                        + bComment.getCG().get(i).getList().size();
-//
-//            }
-//            Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
-//            Send(AllNumber);
-//            maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
-//        }
-
-//        if (bComment.getPT() != null && bComment.getCG() != null) {// 既有采购也有普通
-//            maintab_shopbus_left_txt.setVisibility(View.VISIBLE);
-//            busAdapter = new MainShopBusAp(R.layout.item_shopbus_out);
-//            maintab_shopbus_ls.setAdapter(busAdapter);
-//            if (TypeShow == -1)
-//                TypeShow = 1;
-//            if (TypeShow == 1) {
-//                StrUtils.SetTxt(maintab_shopbus_left_txt, "零售商品");
-//                ViewUtils.SetIvOnTextview(BaseContext, maintab_shopbus_left_txt, R.drawable.arrow_down, 20);
-//                busAdapter.FrashData(bComment.getPT());
-//                IsPu = true;
-//            }
-//            if (TypeShow == 2) {
-//                StrUtils.SetTxt(maintab_shopbus_left_txt, "采购商品");
-//                busAdapter.FrashData(bComment.getCG());
-//                IsPu = false;
-//            }
-//            maintab_shopbus_left_txt.setClickable(true);
-//            maintab_shopbus_left_txt.setVisibility(View.VISIBLE);
-//            AllNumber = 0;
-//            for (int i = 0; i < bComment.getPT().size(); i++) {
-//                AllNumber = AllNumber
-//                        + bComment.getPT().get(i).getList().size();
-//            }
-//
-//            for (int i = 0; i < bComment.getCG().size(); i++) {
-//                AllNumber = AllNumber
-//                        + bComment.getCG().get(i).getList().size();
-//            }
-//            Spuit.ShopBusNumber_Save(BaseContext, AllNumber);
-//            Send(AllNumber);
-//            maintab_shopbus_down_lay.setVisibility(View.VISIBLE);
-//        }
-
     }
 
 
     @Override
     public void onError(String error, int LoadType) {
-
         NoGood = false;
         switch (LoadType) {
             case INITIALIZE:
@@ -472,21 +375,16 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
             this.inflater = LayoutInflater.from(BaseContext);
             ResourceId = resourceId;
-
         }
 
         /**
          * 刷新时候调用 即使是加载更多 也需要先获取到原有数据然后合并数据后再刷新操作
-         *
          * @param dass
          */
         public void FrashData(List<BLShopBusOut> dass) {
             this.datas = dass;
-
-            for (int i = 0; i < dass.size(); i++) {
-
+            for (int i = 0; i < datas.size(); i++) {
                 getOutbooleans().add(false);
-
                 for (int k = 0; k < datas.get(i).getList().size(); k++) {
                     if (!IsJeiSuan) {// 删除状态
                     } else {
@@ -537,7 +435,6 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
          */
         public void AllSelect(boolean IsAllSelect) {
             for (int i = 0; i < getCount(); i++) {
-
                 getOutbooleans().set(i, IsAllSelect);
                 for (int j = 0; j < BusInAdapters.get(i).getCount(); j++) {
                     BusInAdapters.get(i).getInSelect().set(j, IsAllSelect);
@@ -581,13 +478,14 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
 
                 myItem.item_shopbus_out_shopinf_lay = (LinearLayout) convertView
                         .findViewById(R.id.item_shopbus_out_shopinf_lay);
-                myItem.item_shopbus_ls.setAdapter(BusInAdapters.get(arg0));
+
                 convertView.setTag(myItem);
             } else {
                 myItem = (BusOutItem) convertView.getTag();
             }
 
             final BLShopBusOut daBlComment = datas.get(arg0);
+            myItem.item_shopbus_ls.setAdapter(BusInAdapters.get(arg0));
             if (!IsPu) {
                 datas.get(arg0).setIsCanSelct(true);
             }
@@ -1122,9 +1020,8 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
             DeleteStr = DeleteStr + h.getCid() + ",";
         }
         if (IsAccount) {// 结算按钮操作
-
             //如果没绑定邀请码就先绑定
-            if (!Spuit.IsHaveBind_Get(BaseContext)) {
+            if (!Spuit.IsHaveBind_Get(BaseContext)&&!Spuit.IsHaveBind_JiQi_Get(BaseContext)) {
                 ShowCustomDialog("请先绑定邀请码", getResources().getString(R.string.cancle),
                         getResources().getString(R.string.queding),
                         new IDialogResult() {

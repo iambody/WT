@@ -170,6 +170,8 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 
         if (Spuit.ShopBusNumber_Get(this) > 0) {
             maintab_shopbus.SetIsShowTage(true);
+        }else{
+            maintab_shopbus.SetIsShowTage(false);
         }
 
     }

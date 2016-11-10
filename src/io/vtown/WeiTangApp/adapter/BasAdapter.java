@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 public abstract class BasAdapter extends BaseAdapter {
-
+//ddddddddddddddddddddddd
     @Override
     public int getCount() {
         return 0;

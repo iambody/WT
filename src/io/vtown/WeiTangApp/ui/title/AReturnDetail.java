@@ -113,7 +113,6 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
 
         switch (Data.getHttpLoadType()) {
 
-
             case LOAD_INITIALIZE:
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     retrunDetailList.setVisibility(View.GONE);

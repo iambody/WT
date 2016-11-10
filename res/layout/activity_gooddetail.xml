@@ -227,7 +227,13 @@
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:textColor="@color/black"/>
-
+                        <TextView
+                            android:id="@+id/good_detail_xiangou"
+                            android:layout_width="match_parent"
+                            android:textColor="@color/app_gray"
+                            android:layout_marginTop="3dp"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"/>
                         <TextView
                             android:id="@+id/good_detail_subtitle"
                             android:layout_width="match_parent"

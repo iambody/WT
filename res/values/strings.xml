@@ -581,7 +581,7 @@
     <string name="error_null_my_order_daishou">无待收货订单</string>
     <string name="error_null_my_order_tuikuan">无退款/仲裁订单</string>
     <string name="error_null_my_order_over">没有已完成订单</string>
-    <string name="error_null_bank_list_over">无获取到您想要的银行哦，请稍后再试试吧~~~\"</string>
+    <string name="error_null_bank_list_over">无获取到您想要的银行哦，请稍后再试试吧</string>
     <string name="error_null_property_list">无资金明细</string>
     <string name="error_null_property_shopping">无购物资金明细</string>
     <string name="error_null_property_recharge">无退款资金明细</string>
@@ -608,10 +608,10 @@
     <string name="no_doudou_goods">没有相关商品</string>
     <string name="error_null_over_coupons">您还没有过期卡券哦</string>
     <string name="coupons_no_data">暂无过期卡券</string>
-    <string name="comment_ls_nodata_guanzhu">暂无关注商品哦=_=</string>
-    <string name="comment_ls_nodata_shop">暂无收藏店铺哦=_=</string>
-    <string name="comment_ls_nodata_liulan">暂无浏览记录哦=_=</string>
-    <string name="no_youhui_data">暂无优惠券=_=,快快邀请好友吧</string>
+    <string name="comment_ls_nodata_guanzhu">暂无关注商品哦</string>
+    <string name="comment_ls_nodata_shop">暂无收藏店铺哦</string>
+    <string name="comment_ls_nodata_liulan">暂无浏览记录哦</string>
+    <string name="no_youhui_data">暂无优惠券,快快邀请好友吧</string>
     <string name="no_center_sho">偷懒暂未发SHOW哦</string>
     <string name="nomoreshow">没有更多SHOW咯</string>
     <string name="no_other_show">店家很懒,还没发SHOW哦</string>
@@ -655,8 +655,6 @@
     <string name="invite_friends_no_activites">普通店铺</string>
 
 
-
-
     <string name="null_invite_friend">\"亲，你没有邀请对应好友哦~~~"</string>
     <string name="no_nore_invite_friend">没有更多了哦，亲</string>
     <string name="no_fresh_invite_friend">没有新的邀请记录哦</string>
@@ -676,7 +674,6 @@
     <string name="null_integral_consume">暂时未消耗积分</string>
 
 
-
     <string name="integral_title_all">全部积分</string>
     <string name="integral_title_system1">系统赠送积分</string>
     <string name="integral_title_past">每日签到积分</string>
@@ -693,7 +690,7 @@
     <string name="return_detail">返佣明细</string>
     <string name="wancheng">完成</string>
 
-    <string name="null_return_detail">\"暂时还没有返佣记录"</string>
+    <string name="null_return_detail">没有返佣记录</string>
     <string name="bangding_tishi">微糖商城智能保障您的个人信息隐私</string>
     <string name="bangding_bindtishi">请绑定用户个人信息</string>
     <string name="yijihuo">已激活</string>
@@ -762,7 +759,8 @@
     <string name="newhome_myshangji">我的上级</string>
     <string name="weijihuo1">普通店鋪</string>
     <string name="to_Jihuo_toqiandao1">您的积分未达10000积分</string>
-    <string name="to_Jihuo_toqiandao2">请至少购买一件返佣商品</string>
-    <string name="to_jihuo1">去增加积分</string>
+    <string name="to_Jihuo_toqiandao2">请购买一件返商品</string>
+    <string name="to_jihuo1">去购买商品</string>
+    <string name="sousou_remen1">热门搜索</string>
 
 </resources>

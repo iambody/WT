@@ -116,7 +116,7 @@ public class AAboutWt extends ATitleBase {
     }
 
     private void SetWdithIv() {
-        Drawable drawable = getResources().getDrawable(R.drawable.ic_launcher);
+        Drawable drawable = getResources().getDrawable(R.drawable.login_my_log);
         Bitmap roundedCornerBitmap = StrUtils.getRoundedCornerBitmap(StrUtils.drawableToBitmap(drawable), 10);
         iv_app_icon.setImageBitmap(roundedCornerBitmap);
         LinearLayout.LayoutParams PS = new LayoutParams(screenWidth / 4,

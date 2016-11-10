@@ -198,7 +198,13 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     private void GetGoodsLs(int Page, String UpType, boolean IsUp, int LoadType) {
         if (LoadType == INITIALIZE) {
             PromptManager.showtextLoading(BaseContext, "加载中....");
+            try {
+                fragmentSortRefrash.setLoading(false);
+            } catch (Exception e) {
+
+            }
         }
+
         HashMap<String, String> GoodsMap = new HashMap<>();
 //        GoodsMap.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());
         GoodsMap.put("sale_status", "100");//正常售卖的
@@ -369,7 +375,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 SortShaiXuan();
 //                fSortGoofdContainer.setColorList(R.drawable.select_sort_up1); //正常selector_menu_item_text // 正常selector_menu_item_text//非正常R.drawable.select_sort_up1
                 if (SortPostion == UpSortPostion && IsHaveSort) {//需要把原来筛选获取的数据带过去
-                    PromptManager.ShowCustomToast(BaseContext, "我需要把数据带过去");
+//                    PromptManager.ShowCustomToast(BaseContext, "我需要把数据带过去");
                     Intent MyIntent = new Intent(BaseActivity, AMianSort.class);
                     //我需要带参数过去初始化之前数据
                     MyIntent.putExtra("IsInItView", true);
@@ -390,7 +396,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                     PromptManager.SkipActivity(BaseActivity, MyIntent);
                 } else {
                     SortPostion = UpSortPostion;
-                    PromptManager.ShowCustomToast(BaseContext, "我需要初始化进去");
+//                    PromptManager.ShowCustomToast(BaseContext, "我需要初始化进去");
                     Intent MyIntent = new Intent(BaseActivity, AMianSort.class);
                     MyIntent.putExtra("catoryid", MySortCategory.get(UpSortPostion).getId());
                     PromptManager.SkipActivity(BaseActivity, MyIntent);
@@ -458,14 +464,15 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
         CurrentPage = CurrentPage + 1;
         if (SortZongHe) //综合被点击
             GetGoodsLs(CurrentPage, "weight", true, LOADMOREING);
-       else if (SortPriceUp == 1) //价格升序
+        else if (SortPriceUp == 1) //价格升序
             GetGoodsLs(CurrentPage, "sell_price", false, LOADMOREING);
-      else  if (SortPriceUp == 2) //价格降序
+        else if (SortPriceUp == 2) //价格降序
             GetGoodsLs(CurrentPage, "sell_price", true, LOADMOREING);
         else if (SortJiFenClick) //积分升序
             GetGoodsLs(CurrentPage, "score", true, LOADMOREING);
-       else  if (SortSellNumberClick)
-            GetGoodsLs(CurrentPage, "sales", true, LOADMOREING);else ;
+        else if (SortSellNumberClick)
+            GetGoodsLs(CurrentPage, "sales", true, LOADMOREING);
+        else ;
     }
 
     @Override
@@ -479,10 +486,11 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             GetGoodsLs(CurrentPage, "sell_price", false, REFRESHING);
         else if (SortPriceUp == 2) //价格降序
             GetGoodsLs(CurrentPage, "sell_price", true, REFRESHING);
-       else if (SortJiFenClick) //积分升序
+        else if (SortJiFenClick) //积分升序
             GetGoodsLs(CurrentPage, "score", true, REFRESHING);
-       else if (SortSellNumberClick)
-            GetGoodsLs(CurrentPage, "sales", true, REFRESHING);else;
+        else if (SortSellNumberClick)
+            GetGoodsLs(CurrentPage, "sales", true, REFRESHING);
+        else ;
     }
 
 
@@ -737,15 +745,16 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 //if(SecondSortId_Postion==-1&&PriceSort_Postion==-1&&ScoreSort_Postion==-1&&BrandName_Postion==-1){return ;}
                 if (SortZongHe) //综合被点击{
                     GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
-               else if (SortPriceUp == 1) //价格升序
+                else if (SortPriceUp == 1) //价格升序
                     GetGoodsLs(CurrentPage, "sell_price", true, INITIALIZE);
-               else if (SortPriceUp == 2) //价格降序
+                else if (SortPriceUp == 2) //价格降序
                     GetGoodsLs(CurrentPage, "sell_price", false, INITIALIZE);
-              else  if (SortJiFenClick) //积分升序
+                else if (SortJiFenClick) //积分升序
                     GetGoodsLs(CurrentPage, "score", true, INITIALIZE);
-              else  if (SortSellNumberClick)
-                    GetGoodsLs(CurrentPage, "sales", true, INITIALIZE);else;
-                PromptManager.ShowCustomToast(BaseContext, String.format("我的二级分类:%s，我的最大价格:%s,我的最大积分:%s,我的品牌名字:%s", SecondSortId, PriceSort.getMax(), ScoreSort.getMax(), BrandName));
+                else if (SortSellNumberClick)
+                    GetGoodsLs(CurrentPage, "sales", true, INITIALIZE);
+                else ;
+//                PromptManager.ShowCustomToast(BaseContext, String.format("我的二级分类:%s，我的最大价格:%s,我的最大积分:%s,我的品牌名字:%s", SecondSortId, PriceSort.getMax(), ScoreSort.getMax(), BrandName));
 
                 break;
         }

@@ -201,7 +201,7 @@ public class ARecyclerMyShow extends ATitleBase {
                     PromptManager.ShowCustomToast(BaseContext, "删除成功");
                     lastid = "";
                     IData(lastid, LOAD_INITIALIZE);
-                    //return;
+                    return;
                 }
 
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
@@ -222,9 +222,7 @@ public class ARecyclerMyShow extends ATitleBase {
                 break;
 
             case LOAD_LOADMOREING:
-
                 HindLoadMore();
-
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     IsCanLoadMore=false;
                     return;
@@ -234,7 +232,6 @@ public class ARecyclerMyShow extends ATitleBase {
                 lastid = datass.get(datass.size() - 1).getId();
                 myShowAdapter.FrashAllData(datass);
                 IsCanLoadMore = datass.size() == Constants.PageSize ? true : false;
-
                 break;
         }
 

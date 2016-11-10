@@ -374,7 +374,6 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             UiHelper.SetShapeColor(fragmentNewhomeUsertag, getResources().getColor(R.color.app_line));
             fragmentNewhomeUsertag.setTextColor(getResources().getColor(R.color.gray));
 
-
             StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.weijihuo1));
             Spuit.IsHaveActive_Set(BaseContext, false);
             //激活才能邀请好友未激活不能邀请好友
@@ -384,13 +383,20 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
         }
 
-        //判断绑定 状态
-        if (Data.getBindstatus() == 1) {//绑定
-            Spuit.IsHaveBind_Set(BaseContext, true);
-        } else {//未绑定
-            Spuit.IsHaveBind_Set(BaseContext, false);
+        if (Data.getBindstatus() == 0 && Data.getIs_ropot() == 1) {
+//            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.weijihuo1));
+        }
+        if (Data.getBindstatus() == 0 && Data.getIs_ropot() == 0) {
             StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.nobind));
         }
+        Spuit.IsHaveBind_Set(BaseContext, Data.getBindstatus() == 1);
+//        //判断绑定 状态
+//        if (Data.getBindstatus() == 1) {//绑定
+//            Spuit.IsHaveBind_Set(BaseContext, true);
+//        } else {//未绑定
+//            Spuit.IsHaveBind_Set(BaseContext, false);
+//            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.nobind));
+//        }
 
         //判断是否绑定机器人
 
@@ -681,7 +687,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                     BeginSign();
                     return;
                 }
-
+                BeginSign();
                 break;
             case R.id.fragment_newhome_yaoqing_lay://邀请好友
                 if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码

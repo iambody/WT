@@ -30,6 +30,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/ui_5_dip"
+        android:layout_marginBottom="@dimen/ui_5_dip"
+        >
+
+        <TextView
+            android:id="@+id/item_branddetail_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/ui_2_dip"
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/ui_12_dip"
+            />
+
+        <TextView
+            android:id="@+id/item_branddetail_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/ui_10_dip"
+            android:textColor="@color/app_gray"
+            android:textSize="@dimen/ui_12_dip"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 

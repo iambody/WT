@@ -45,22 +45,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/item_main_sort_jifen"
+                android:id="@+id/item_main_sort_xiaoliang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/ui_14_dip"
+                android:textSize="@dimen/ui_12_dip"
                 />
 
             <TextView
-                android:id="@+id/item_main_sort_xiaoliang"
+                android:id="@+id/item_main_sort_jifen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/ui_20_dip"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/ui_14_dip"
+                android:textSize="@dimen/ui_12_dip"
                 />
         </LinearLayout>
 

@@ -165,7 +165,7 @@ ss
                         android:layout_height="wrap_content"
 
                         android:padding="@dimen/ui_10_dip"
-                        android:text="@string/sousou_remen"
+                        android:text="@string/sousou_remen1"
                         android:textColor="@color/app_gray"
                         />
 

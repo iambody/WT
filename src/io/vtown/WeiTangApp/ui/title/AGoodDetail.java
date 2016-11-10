@@ -265,6 +265,8 @@ public class AGoodDetail extends ATitleBase {
     private TextView good_detail_subtitle;
     private LinearLayout good_detail_sales;
     private TextView tv_goods_detail_sales;
+    //限购
+    private TextView good_detail_xiangou;
 
     @Override
     protected void InItBaseView() {
@@ -328,6 +330,7 @@ public class AGoodDetail extends ATitleBase {
     }
 
     private void IBase() {
+        good_detail_xiangou = (TextView) findViewById(R.id.good_detail_xiangou);
         tv_suggest_retail_orig_price = (TextView) findViewById(R.id.tv_suggest_retail_orig_price);
         gooddetail_up_title_back = (ImageView) findViewById(R.id.gooddetail_up_title_back);
         gooddetail_up_title = (TextView) findViewById(R.id.gooddetail_up_title);
@@ -508,7 +511,15 @@ public class AGoodDetail extends ATitleBase {
      * 刷新页面控件数据
      */
     private void RefreshView(BGoodDetail datas) {
-//        StrUtils.SetTxt(gooddetailUpTitle,datas.getTitle());tv_suggest_retail_orig_price
+//限购
+        if (datas.getGoods_info().getBuy_left() != 0) {
+//            PromptManager.ShowCustomToast(BaseContext, "限购");
+            good_detail_xiangou.setText("限购：" + datas.getGoods_info().getBuy_left() + "件");
+            good_detail_xiangou.setVisibility(View.VISIBLE);
+        } else {
+            good_detail_xiangou.setVisibility(View.GONE);
+        }
+
         if (!StrUtils.isEmpty(datas.getOrig_price()) && !datas.getOrig_price().equals("0")) {
             findViewById(R.id.gooddetail_price_zhonglay).setVisibility(View.GONE);
             StrUtils.SetTxt(tv_suggest_retail_orig_price,
@@ -519,11 +530,11 @@ public class AGoodDetail extends ATitleBase {
         }
         good_detail_fanyong_log.setVisibility(datas.getIs_fee() == 1 ? View.VISIBLE : View.GONE);
         StrUtils.SetTxt(gooddetail_up_title, datas.getTitle());
-        if(StrUtils.isEmpty(datas.getGoods_info().getSubtitle())){//商品副标题
+        if (StrUtils.isEmpty(datas.getGoods_info().getSubtitle())) {//商品副标题
             good_detail_subtitle.setVisibility(View.GONE);
-        }else{
+        } else {
             good_detail_subtitle.setVisibility(View.VISIBLE);
-            StrUtils.SetTxt(good_detail_subtitle,datas.getGoods_info().getSubtitle());
+            StrUtils.SetTxt(good_detail_subtitle, datas.getGoods_info().getSubtitle());
         }
 
         // InItitle();
@@ -540,11 +551,11 @@ public class AGoodDetail extends ATitleBase {
             tv_freight.setTextColor(getResources().getColor(R.color.app_red));
         }
 
-        if(0 == datas.getSales()){
+        if (0 == datas.getSales()) {
             good_detail_sales.setVisibility(View.GONE);
-        }else{
+        } else {
             good_detail_sales.setVisibility(View.VISIBLE);
-            StrUtils.SetTxt(tv_goods_detail_sales,datas.getSales() + "件");
+            StrUtils.SetTxt(tv_goods_detail_sales, datas.getSales() + "件");
         }
 
         // 判断是否品牌商品 1=》品牌商品进行判断=》标识是否可以代理

@@ -738,17 +738,19 @@ public class ASouSouGood extends ATitileNoBase {
                                     .getTitle());
                             AddCacheData(new BSouRecord(data.getId(), data
                                     .getTitle(), 1 + ""));
-                            PromptManager
-                                    .SkipActivity(
-                                            BaseActivity,
-                                            new Intent(BaseActivity,
-                                                    ACommentList.class)
-                                                    .putExtra(
-                                                            ACommentList.Tage_ResultKey,
-                                                            ACommentList.Tage_SouGoodResultItem)
-                                                    .putExtra(
-                                                            ACommentList.Tage_BeanKey,
-                                                            data));
+//                            PromptManager
+//                                    .SkipActivity(
+//                                            BaseActivity,
+//                                            new Intent(BaseActivity,
+//                                                    ACommentList.class)
+//                                                    .putExtra(
+//                                                            ACommentList.Tage_ResultKey,
+//                                                            ACommentList.Tage_SouGoodResultItem)
+//                                                    .putExtra(
+//                                                            ACommentList.Tage_BeanKey,
+//                                                            data));
+                            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASearchResult.class).putExtra("search_key", DATA.getTitle()));
+
 
                         }
                     });

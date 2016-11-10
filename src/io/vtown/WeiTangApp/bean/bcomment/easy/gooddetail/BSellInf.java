@@ -21,6 +21,12 @@ public class BSellInf extends BBase {
     private String is_revise;//": 0
     private String subtitle;//"subtitle": "",
 
+    private int buy_left;//=0;
+    private int buy_max;//=0;buy_max=3
+
+
+
+
     public String getSubtitle() {
         return subtitle;
     }
@@ -107,5 +113,21 @@ public class BSellInf extends BBase {
 
     public void setIs_revise(String is_revise) {
         this.is_revise = is_revise;
+    }
+
+    public int getBuy_left() {
+        return buy_left;
+    }
+
+    public void setBuy_left(int buy_left) {
+        this.buy_left = buy_left;
+    }
+
+    public int getBuy_max() {
+        return buy_max;
+    }
+
+    public void setBuy_max(int buy_max) {
+        this.buy_max = buy_max;
     }
 }
