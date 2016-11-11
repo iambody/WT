@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
@@ -72,8 +74,8 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private final String Shop_Lv7 = "6";
     private String Current_Lv = Shop_All_Lv;
 
-    private final int Type_All = 0;
     private final int Type_Activites = 1;
+    private final int Type_All = 0;
     private final int Type_Lv1 = 2;
     private final int Type_Lv2 = 3;
     private final int Type_Lv3 = 4;
@@ -82,6 +84,9 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private final int Type_Lv6 = 7;
     private final int Type_Lv7 = 8;
     private int click_type = Type_All;
+
+
+    private final int text_view_id = 1000;
 
 
     @Override
@@ -284,32 +289,53 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
     private void showLvPop(View V, List<String> lv_list) {
         View view = LayoutInflater.from(BaseContext).inflate(R.layout.pop_shop_filter, null);
+        LinearLayout ll_pop_shop_filter = (LinearLayout) view.findViewById(R.id.ll_pop_shop_filter);
         TextView tv_shop_all = (TextView) view.findViewById(R.id.tv_shop_all);
-        TextView tv_shop_lv1 = (TextView) view.findViewById(R.id.tv_shop_lv1);
-        TextView tv_shop_lv2 = (TextView) view.findViewById(R.id.tv_shop_lv2);
-        TextView tv_shop_lv3 = (TextView) view.findViewById(R.id.tv_shop_lv3);
-        TextView tv_shop_lv4 = (TextView) view.findViewById(R.id.tv_shop_lv4);
-        TextView tv_shop_lv5 = (TextView) view.findViewById(R.id.tv_shop_lv5);
-        TextView tv_shop_lv6 = (TextView) view.findViewById(R.id.tv_shop_lv6);
-        TextView tv_shop_lv7 = (TextView) view.findViewById(R.id.tv_shop_lv7);
+//        TextView tv_shop_lv1 = (TextView) view.findViewById(R.id.tv_shop_lv1);
+//        TextView tv_shop_lv2 = (TextView) view.findViewById(R.id.tv_shop_lv2);
+//        TextView tv_shop_lv3 = (TextView) view.findViewById(R.id.tv_shop_lv3);
+//        TextView tv_shop_lv4 = (TextView) view.findViewById(R.id.tv_shop_lv4);
+//        TextView tv_shop_lv5 = (TextView) view.findViewById(R.id.tv_shop_lv5);
+//        TextView tv_shop_lv6 = (TextView) view.findViewById(R.id.tv_shop_lv6);
+//        TextView tv_shop_lv7 = (TextView) view.findViewById(R.id.tv_shop_lv7);
         TextView tv_shop_no_activate = (TextView) view.findViewById(R.id.tv_shop_no_activate);
 
-        tv_shop_lv1.setText(lv_list.get(0));
-        tv_shop_lv2.setText(lv_list.get(1));
-        tv_shop_lv3.setText(lv_list.get(2));
-        tv_shop_lv4.setText(lv_list.get(3));
-        tv_shop_lv5.setText(lv_list.get(4));
-        tv_shop_lv6.setText(lv_list.get(5));
-        tv_shop_lv7.setText(lv_list.get(6));
+
+        LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
+        //List<TextView> txviews = new ArrayList<TextView>();
+        for (int i = 0; i < lv_list.size(); i++) {
+            View line = new View(BaseContext);
+            line.setBackgroundResource(R.color.white);
+            line.setLayoutParams(lineParams);
+            TextView textView = new TextView(BaseContext);
+            textView.setClickable(true);
+            textView.setLayoutParams(textParams);
+            textView.setPadding(5, DimensionPixelUtil.dip2px(BaseContext,5), 5, DimensionPixelUtil.dip2px(BaseContext,5));
+            textView.setGravity(Gravity.CENTER);
+            textView.setTextColor(getResources().getColor(R.color.white));
+            textView.setText(lv_list.get(i));
+            textView.setOnClickListener(new OnPopClickListener(i));
+            ll_pop_shop_filter.addView(textView);
+            ll_pop_shop_filter.addView(line);
+        }
+
+//        tv_shop_lv1.setText(lv_list.get(0));
+//        tv_shop_lv2.setText(lv_list.get(1));
+//        tv_shop_lv3.setText(lv_list.get(2));
+//        tv_shop_lv4.setText(lv_list.get(3));
+//        tv_shop_lv5.setText(lv_list.get(4));
+//        tv_shop_lv6.setText(lv_list.get(5));
+//        tv_shop_lv7.setText(lv_list.get(6));
 
         tv_shop_all.setOnClickListener(this);
-        tv_shop_lv1.setOnClickListener(this);
-        tv_shop_lv2.setOnClickListener(this);
-        tv_shop_lv3.setOnClickListener(this);
-        tv_shop_lv4.setOnClickListener(this);
-        tv_shop_lv5.setOnClickListener(this);
-        tv_shop_lv6.setOnClickListener(this);
-        tv_shop_lv7.setOnClickListener(this);
+//        tv_shop_lv1.setOnClickListener(this);
+//        tv_shop_lv2.setOnClickListener(this);
+//        tv_shop_lv3.setOnClickListener(this);
+//        tv_shop_lv4.setOnClickListener(this);
+//        tv_shop_lv5.setOnClickListener(this);
+//        tv_shop_lv6.setOnClickListener(this);
+//        tv_shop_lv7.setOnClickListener(this);
         tv_shop_no_activate.setOnClickListener(this);
 
         mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -362,6 +388,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         }
     }
 
+
     @Override
     protected void NetConnect() {
         NetError.setVisibility(View.GONE);
@@ -393,32 +420,34 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             case R.id.tv_shop_all:
                 LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends), Type_All);
                 break;
-            case R.id.tv_shop_lv1:
-                LvSwitch(Shop_Lv1, lv_list.get(0), Type_Lv1);
-                break;
-            case R.id.tv_shop_lv2:
-                LvSwitch(Shop_Lv2, lv_list.get(1), Type_Lv2);
-                break;
-            case R.id.tv_shop_lv3:
-                LvSwitch(Shop_Lv3, lv_list.get(2), Type_Lv3);
-                break;
-            case R.id.tv_shop_lv4:
-                LvSwitch(Shop_Lv4, lv_list.get(3), Type_Lv4);
-                break;
-            case R.id.tv_shop_lv5:
-                LvSwitch(Shop_Lv5, lv_list.get(4), Type_Lv5);
-                break;
-            case R.id.tv_shop_lv6:
-                LvSwitch(Shop_Lv6, lv_list.get(5), Type_Lv6);
-                break;
-
-            case R.id.tv_shop_lv7:
-                LvSwitch(Shop_Lv7, lv_list.get(6), Type_Lv7);
-                break;
+//            case text_view_id:
+//                LvSwitch(Shop_Lv1, lv_list.get(0), Type_Lv1);
+//                break;
+//            case R.id.tv_shop_lv2:
+//                LvSwitch(Shop_Lv2, lv_list.get(1), Type_Lv2);
+//                break;
+//            case R.id.tv_shop_lv3:
+//                LvSwitch(Shop_Lv3, lv_list.get(2), Type_Lv3);
+//                break;
+//            case R.id.tv_shop_lv4:
+//                LvSwitch(Shop_Lv4, lv_list.get(3), Type_Lv4);
+//                break;
+//            case R.id.tv_shop_lv5:
+//                LvSwitch(Shop_Lv5, lv_list.get(4), Type_Lv5);
+//                break;
+//            case R.id.tv_shop_lv6:
+//                LvSwitch(Shop_Lv6, lv_list.get(5), Type_Lv6);
+//                break;
+//
+//            case R.id.tv_shop_lv7:
+//                LvSwitch(Shop_Lv7, lv_list.get(6), Type_Lv7);
+//                break;
             case R.id.tv_shop_no_activate:
                 LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends_no_activites), Type_Activites);
                 break;
         }
+
+
     }
 
     private void LvSwitch(String switch_type, String titlename, int type) {
@@ -434,6 +463,18 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
         }
         mPopupWindow.dismiss();
+    }
+
+    class OnPopClickListener implements View.OnClickListener {
+        private int clickposition;
+        public OnPopClickListener(int position){
+            clickposition = position;
+        }
+
+        @Override
+        public void onClick(View v) {
+            LvSwitch(clickposition+"", lv_list.get(clickposition), clickposition+2);
+        }
     }
 
     @Override
@@ -470,6 +511,8 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         page++;
         IData(page, LOAD_LOADMOREING);
     }
+
+
 
     class InviteFriendAdapter extends BaseAdapter {
         private List<BCInviteFriends> datas = new ArrayList<BCInviteFriends>();
@@ -574,7 +617,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         final CustomDialog dialog = new CustomDialog(BaseContext,
                 R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "电话联系", "微糖聊天");
         dialog.show();
-        dialog.setTitleText("联系"+friend.getSeller_name());
+        dialog.setTitleText("联系" + friend.getSeller_name());
         dialog.Settitles("人之相识，贵在相知，人之相知，贵在知心。—— 孟子");
         dialog.setCanceledOnTouchOutside(true);
         dialog.setcancelListener(new CustomDialog.oncancelClick() {

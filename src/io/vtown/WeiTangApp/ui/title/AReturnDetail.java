@@ -29,6 +29,7 @@ import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.DateUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
@@ -378,7 +379,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     BLAPropertyDetail item = (BLAPropertyDetail)returnInsideAdapter.getItem(position);
                     ClipboardManager c= (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
-                    String content = "【微糖商城】【返佣啦！】有人购买了【"+item.getGoods_name()+"】，新增佣金为￥"+StrUtils.SetTextForMony(item.getPrice())+"元，祝您鸿图大展，财源广进！";
+                    String content = "【微糖商城】【返佣啦！】有人"+ DateUtils.timeStampToStr(Long.parseLong(item.getCreate_time()))+"购买了【"+item.getGoods_name()+"】，新增佣金为￥"+StrUtils.SetTextForMony(item.getPrice())+"元，祝您鸿图大展，财源广进！";
                     c.setText(content);
                     PromptManager.ShowCustomToast(BaseContext,"复制内容："+content);
 
@@ -427,7 +428,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
             final BLAPropertyDetail data = return_datas.get(position);
             StrUtils.SetTxt(holder.tvReturnDay, data.getDateStr());
             StrUtils.SetTxt(holder.tvReturnTime, data.getDate());
-            StrUtils.SetTxt(holder.tvReturnContent,data.getPhone()+"购买了"+data.getGoods_name()+"(￥"+StrUtils.SetTextForMony(data.getPrice())+")"+",恭喜您获得返佣" );
+            StrUtils.SetTxt(holder.tvReturnContent,data.getPhone()+"购买了"+data.getGoods_name()+",恭喜您获得返佣" );
             StrUtils.SetTxt(holder.tvReturnPoint, String.format("+ %1$s元", StrUtils.SetTextForMony(data.getPrice())));
             int status = Integer.parseInt(data.getStatus());
             String status_str = "";

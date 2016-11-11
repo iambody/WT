@@ -249,7 +249,6 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 //        fragmentSortRefrash
         //上边选择的textview的设置
         GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
-
         mySortAdapter = new SortAp();
         fragmentSortLs.setAdapter(mySortAdapter);
         fragmentSortLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -521,39 +521,149 @@ public class ACenterMyOrder extends ATitleBase implements
             return arg0;
         }
 
-        private void RefreshPosition(int type, int position) {
-            switch (Ket_Tage) {
-                case PAll:
+        private void RefreshPosition(int type, int option, int position) {
+//            switch (type) {
+//                case PAll:
+//
+//                    BLCenterOder data = datas.get(position);// 非未付订单列表
+//                    int visiblePosition = fragment_center_order_ls.getFirstVisiblePosition();
+//                    if (position - visiblePosition >= 0) {
+//                        View view = fragment_center_order_ls.getChildAt(position - visiblePosition + 1);
+//                        CenterOrderOutsideItem holder1 = (CenterOrderOutsideItem) view.getTag();
+//
+//                        switch (Integer.parseInt(data.getOrder_status())) {
+//                            case PDaiFu:
+//                                if (0 == option) {//去付款
+//                                    ControlView(holder1,data,PYiFu);
+//                                } else {//取消订单
+//                                    ControlView(holder1,data,PCancel);
+//                                }
+//                                break;
+//
+//                            case PYiFu:
+//                               switch (option){
+//                                   case 0://立即获取积分
+//                                       ControlView(holder1,data,PYiFu);
+//                                       if(1 ==data.getIs_have_point()){
+//                                           holder1.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
+//                                           holder1.fragment_center_order_get_integral.setVisibility(View.GONE);
+//                                       }else{
+//                                           holder1.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+//                                           holder1.fragment_center_order_get_integral.setVisibility(View.GONE);
+//                                       }
+//
+//
+//                                       break;
+//
+//                                   case 1://申请退款
+//                                       ControlView(holder1,data,PTuiKuan);
+//                                       break;
+//
+//                                   case 2://提醒发货
+//
+//                                       holder1.fragment_center_order_remind_fahuo.setVisibility(View.GONE);
+//
+//                                       break;
+//                               }
+//                                break;
+//
+//                            case PDaiShou:
+//                                switch (option){
+//                                    case 0://确认收货
+//                                        ControlView(holder1,data,PClose);
+//                                        break;
+//
+//                                    case 1://延迟收货
+//                                        holder1.fragment_center_order_shouhuo_commiont
+//                                                .setVisibility(View.VISIBLE);
+//                                        holder1.fragment_center_order_delayreceive
+//                                                .setVisibility(View.GONE);
+//                                        holder1.fragment_center_order_is_delaytime
+//                                                .setVisibility(View.GONE);
+//                                        break;
+//                                }
+//                                break;
+//                        }
+//                    }
+//
+//
+//
+//                    break;
+//
+//                case 2:
+//                    datas.remove(position);
+//                    notifyDataSetChanged();
+//                    break;
+//
+//
+//
+//
+//            }
+            if (PAll == type) {
+                BLCenterOder data = datas.get(position);// 非未付订单列表
+                int visiblePosition = fragment_center_order_ls.getFirstVisiblePosition();
+                if (position - visiblePosition >= 0) {
+                    View view = fragment_center_order_ls.getChildAt(position - visiblePosition + 1);
+                    CenterOrderOutsideItem holder1 = (CenterOrderOutsideItem) view.getTag();
 
-                    BLCenterOder data = datas.get(position);// 非未付订单列表
-                    int visiblePosition = fragment_center_order_ls.getFirstVisiblePosition();
-                    if (position - visiblePosition >= 0) {
-                        View view = fragment_center_order_ls.getChildAt(position - visiblePosition + 1);
-                        CenterOrderOutsideItem holder1 = (CenterOrderOutsideItem) view.getTag();
-                    }
                     switch (Integer.parseInt(data.getOrder_status())) {
-                        case PAll:
-                            if (0 == type) {//去付款
+                        case PDaiFu:
+                            ControlView(holder1, data, PCancel);
+                            break;
 
-                            } else {
+                        case PYiFu:
+                            switch (option) {
+                                case 0://立即获取积分
+                                    ControlView(holder1, data, PYiFu);
+                                    if (1 == data.getIs_have_point()) {
+                                        holder1.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
+                                        holder1.fragment_center_order_get_integral.setVisibility(View.GONE);
+                                    } else {
+                                        holder1.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                                        holder1.fragment_center_order_get_integral.setVisibility(View.GONE);
+                                    }
 
+
+                                    break;
+
+                                case 1://申请退款
+                                    ControlView(holder1, data, PTuiKuan);
+                                    break;
+
+                                case 2://提醒发货
+
+                                    holder1.fragment_center_order_remind_fahuo.setVisibility(View.GONE);
+
+                                    break;
+                            }
+                            break;
+
+                        case PDaiShou:
+                            switch (option) {
+                                case 0://确认收货
+                                    ControlView(holder1, data, PClose);
+                                    break;
+
+                                case 1://延迟收货
+                                    holder1.fragment_center_order_shouhuo_commiont
+                                            .setVisibility(View.VISIBLE);
+                                    holder1.fragment_center_order_delayreceive
+                                            .setVisibility(View.GONE);
+                                    holder1.fragment_center_order_is_delaytime
+                                            .setVisibility(View.GONE);
+                                    break;
                             }
                             break;
                     }
-
-
-                    break;
-
-                case 2:
-                    datas.remove(position);
-                    notifyDataSetChanged();
-                    break;
-
+                }
+            } else {
+                datas.remove(position);
+                notifyDataSetChanged();
             }
         }
 
-        private void ControlView(CenterOrderOutsideItem myItem, BLCenterOder data) {
-            int showType = Integer.parseInt(data.getOrder_status());
+        private void ControlView(CenterOrderOutsideItem myItem, BLCenterOder data, int showType) {
+            //int showType = Integer.parseInt(data.getOrder_status());
             switch (showType) {
                 case PDaiFu:
                     myItem.fragment_center_order_pay_to.setVisibility(View.VISIBLE);
@@ -587,10 +697,10 @@ public class ACenterMyOrder extends ATitleBase implements
                         myItem.fragment_center_order_apply_for_tuikuan_commiont
                                 .setVisibility(View.VISIBLE);
 
-                        if(0 == data.getIs_have_point()){
+                        if (0 == data.getIs_have_point()) {
                             myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
                             myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
-                        }else{
+                        } else {
                             if (0 == data.getAdvance_point()) {
                                 myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
                                 myItem.fragment_center_order_get_integral.setVisibility(View.VISIBLE);
@@ -610,7 +720,6 @@ public class ACenterMyOrder extends ATitleBase implements
                             myItem.fragment_center_order_remind_fahuo
                                     .setVisibility(View.GONE);
                         }
-
 
 
                     } else {
@@ -909,11 +1018,11 @@ public class ACenterMyOrder extends ATitleBase implements
             BLCenterOder data = datas.get(position);// 非未付订单列表
 
             LogUtils.i("**************good--id****************" + data.getId());
-            ControlView(myItem, data);
+            ControlView(myItem, data, Integer.parseInt(data.getOrder_status()));
 
             StrUtils.SetTxt(myItem.tv_center_my_order_seller_order_sn,
                     data.getSeller_order_sn());
-            StrUtils.SetTxt( myItem.fragment_center_order_shopname, data.getSeller_name());
+            StrUtils.SetTxt(myItem.fragment_center_order_shopname, data.getSeller_name());
 
             StrUtils.SetTxt(myItem.item_fragment_center_order_allnum,
                     String.format("共%1$s件商品", data.getNumber()));
@@ -1842,6 +1951,7 @@ public class ACenterMyOrder extends ATitleBase implements
                 PromptManager.ShowMyToast(BaseContext, "订单取消成功");
                 last_id = "";
                 IData(LOAD_INITIALIZE, Ket_Tage + "");
+                //centerOrderOutsideAdapter.RefreshPosition(Ket_Tage, 1, SelectPosition);
                 break;
 
             case 4:// 去付款
@@ -1864,8 +1974,9 @@ public class ACenterMyOrder extends ATitleBase implements
 
             case 6:// 积分获取
                 PromptManager.ShowMyToast(BaseContext, "积分获取成功");
-                last_id = "";
-                IData(LOAD_INITIALIZE, Ket_Tage + "");
+//                last_id = "";
+//                IData(LOAD_INITIALIZE, Ket_Tage + "");
+               centerOrderOutsideAdapter.RefreshPosition(Ket_Tage, 0, SelectPosition);
                 break;
 
             default:
@@ -1994,6 +2105,7 @@ public class ACenterMyOrder extends ATitleBase implements
     @Override
     protected void SaveBundle(Bundle bundle) {
     }
+
     /**
      * 点击左侧按钮的监听事件
      */
@@ -2001,14 +2113,14 @@ public class ACenterMyOrder extends ATitleBase implements
         finish();
 
         overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
-        PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AMainTab.class).putExtra("a", "1"));
+        PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMainTab.class).putExtra("a", "1"));
     }
 
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
-            PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AMainTab.class));
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMainTab.class));
             return true;
         }
         return super.onKeyDown(keyCode, event);

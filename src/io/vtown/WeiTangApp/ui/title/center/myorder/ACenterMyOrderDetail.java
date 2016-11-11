@@ -731,10 +731,10 @@ public class ACenterMyOrderDetail extends ATitleBase {
             tv_center_order_good_express_title.setVisibility(View.VISIBLE);
             tv_center_my_order_confirm.setVisibility(View.GONE);
             if (express_data.size() == 0) {
-                StrUtils.SetColorsTxt(BaseContext,
-                        tv_center_order_good_express_title, R.color.app_gray,
-                        "物流状态：", order_detail2.getLogisticinfo());
+                tv_center_order_good_express_title.setVisibility(View.GONE);
             } else {
+
+
                 StrUtils.SetTxt(tv_center_order_good_express_title, "物流状态：");
                 lv_center_my_order_good_express_speed
                         .setVisibility(View.VISIBLE);
