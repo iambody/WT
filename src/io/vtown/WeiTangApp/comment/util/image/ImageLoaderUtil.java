@@ -72,7 +72,10 @@ public class ImageLoaderUtil {
 
     public static void Load2(String imgUrl, final ImageView imageView,
                              int defaultImg) {
-        if(StrUtils.isEmpty(imgUrl)){imageView.setImageResource(defaultImg);return;}
+        if (StrUtils.isEmpty(imgUrl)) {
+            imageView.setImageResource(defaultImg);
+            return;
+        }
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .showImageOnLoading(defaultImg)
                 .considerExifParams(true)
@@ -83,6 +86,28 @@ public class ImageLoaderUtil {
                 // .displayer(new FadeInBitmapDisplayer(100))
                 .displayer(new SimpleBitmapDisplayer())
                 .bitmapConfig(Bitmap.Config.RGB_565).build();
+        ImageLoader.getInstance().displayImage(imgUrl, imageView, options);
+
+    }
+
+    public static void Load25(String imgUrl, final ImageView imageView,
+                              int defaultImg) {
+        if (StrUtils.isEmpty(imgUrl)) {
+            imageView.setImageResource(defaultImg);
+            return;
+        }
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(defaultImg)
+                .considerExifParams(true)
+                .showImageForEmptyUri(defaultImg).showImageOnFail(defaultImg)
+                .cacheOnDisc(true).cacheInMemory(false)
+                .cacheOnDisk(true)
+
+//                .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
+                // .considerExifParams(true)
+                // .displayer(new FadeInBitmapDisplayer(100))
+//                .displayer(new SimpleBitmapDisplayer())
+                .bitmapConfig(Bitmap.Config.ARGB_8888).build();
         ImageLoader.getInstance().displayImage(imgUrl, imageView, options);
 
     }
@@ -307,7 +332,7 @@ public class ImageLoaderUtil {
                                                                 .ShopCoverPath(pContext));
                                     }
                                     if (2 == Type) {// center的高斯保存
-                                        if( new File(ImagePathConfig.CenterCoverPath(pContext)).exists()){
+                                        if (new File(ImagePathConfig.CenterCoverPath(pContext)).exists()) {
                                             SdCardUtils.delFile(ImagePathConfig.CenterCoverPath(pContext));
                                         }
                                         SdCardUtils

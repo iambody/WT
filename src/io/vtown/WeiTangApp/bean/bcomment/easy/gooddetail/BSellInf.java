@@ -24,7 +24,7 @@ public class BSellInf extends BBase {
     private int buy_left;//=0;
     private int buy_max;//=0;buy_max=3
 
-
+    private List<Float> ratio;
 
 
     public String getSubtitle() {
@@ -129,5 +129,14 @@ public class BSellInf extends BBase {
 
     public void setBuy_max(int buy_max) {
         this.buy_max = buy_max;
+    }
+
+
+    public List<Float> getRatio() {
+        return ratio;
+    }
+
+    public void setRatio(List<Float> ratio) {
+        this.ratio = ratio;
     }
 }

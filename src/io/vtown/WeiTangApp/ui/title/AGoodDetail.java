@@ -640,15 +640,18 @@ public class AGoodDetail extends ATitleBase {
             // lv_pic_text_detail.setAdapter(picTextDetailAdapter);
             for (int i = 0; i < PicLs.size(); i++) {
                 final int Postion = i;
-                final ImageView myimage = new ImageView(BaseContext);
+                  ImageView myimage = new ImageView(BaseContext);
                 myimage.setClickable(true);
-                myimage.setScaleType(ScaleType.FIT_XY);
-                myimage.setAdjustViewBounds(true);
+//                myimage.setScaleType(ScaleType.FIT_START);
+//                myimage.setAdjustViewBounds(true);
                 LayoutParams mLayoutParams = new LayoutParams(
-                        screenWidth, LayoutParams.WRAP_CONTENT);
+                        screenWidth,(int)(screenWidth/datas.getGoods_info().getRatio().get(i)));// LayoutParams.WRAP_CONTENT
                 myimage.setLayoutParams(mLayoutParams);
-                ImageLoaderUtil.Load2(PicLs.get(i), myimage,
+//                myimage.setMaxWidth(screenWidth);
+//                myimage.setMaxHeight((int)(screenWidth/datas.getGoods_info().getRatio().get(i)));
+                ImageLoaderUtil.Load25(PicLs.get(i), myimage,
                         R.drawable.error_iv1);
+//                myimage.setImageResource(R.drawable.v);
                 gooddetail_picview.addView(myimage);
 
                 myimage.setOnClickListener(new OnClickListener() {

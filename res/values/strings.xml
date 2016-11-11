@@ -569,7 +569,7 @@
     <string name="add_good_exit_note">确定退出编辑</string>
     <string name="error_null_noda">网络调皮,点我刷新</string>
     <string name="buyer_liuyan">买家留言:</string>
-    <string name="hint_buyer_liuyan">选填:对本次交易说明</string>
+    <string name="hint_buyer_liuyan">选填:有什么想说的偷偷告诉店主吧</string>
     <string name="brand_sousou">搜索店铺内商品</string>
     <string name="error_fuwuqi">服务器异常</string>
     <string name="error_null_address">还没有添加地址哦</string>
@@ -762,5 +762,6 @@
     <string name="to_Jihuo_toqiandao2">请购买一件返商品</string>
     <string name="to_jihuo1">去购买商品</string>
     <string name="sousou_remen1">热门搜索</string>
+    <string name="kaquan1">卡            券</string>
 
 </resources>

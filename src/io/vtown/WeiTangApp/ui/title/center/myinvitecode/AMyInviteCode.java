@@ -208,7 +208,7 @@ public class AMyInviteCode extends ATitleBase {
 			@Override
 			public void run() {
 
-				String avatar = Spuit.Shop_Get(getApplicationContext()).getAvatar();
+				String avatar = MBNewHome.getSellerinfo().getAvatar();
 				Bitmap logoBm = com.nostra13.universalimageloader.core.ImageLoader
 						.getInstance().loadImageSync(avatar);
 				boolean success = QRCodeUtil.createQRImage(Str, 800, 800,

@@ -62,8 +62,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/ui_10_dip"
-                        android:text="@string/buyer_liuyan"
-                        android:textColor="@color/gray"
+                        android:text="留     言"
+
                         android:textSize="@dimen/oderbeing_buyer_txt_size"/>
 
                     <EditText
@@ -99,16 +99,18 @@
                     android:orientation="horizontal"
                     android:padding="10dp">
 
-                    <ImageView
+                   <!-- <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/oderbeing_quan"/>
+                        android:src="@drawable/oderbeing_quan"
+                        v/>-->
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="@string/kaquan"/>
+                        android:text="卡     券"
+                        android:textSize="@dimen/oderbeing_buyer_txt_size"/>
 
                     <TextView
                         android:id="@+id/oderbeing_coupons_nameprice"
@@ -116,8 +118,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:gravity="right"
-                        android:textColor="@color/gray"/>
+                        android:gravity="left"
+                        android:textSize="@dimen/oderbeing_buyer_txt_size"
+                        android:layout_marginLeft="@dimen/ui_22_dip"
+                        android:textColor="@color/app_gray"/>
 
                     <ImageView
                         android:layout_width="wrap_content"

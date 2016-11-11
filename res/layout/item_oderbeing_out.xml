@@ -15,12 +15,12 @@
         android:paddingTop="@dimen/line_size6"
         android:paddingBottom="@dimen/line_size6">
 
-        <ImageView
+       <!-- <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/shopbus_item_log1" />
+            android:src="@drawable/shopbus_item_log1" />-->
 
         <TextView
             android:id="@+id/item_oderbeing_out_shoptxt"

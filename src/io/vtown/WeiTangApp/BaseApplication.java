@@ -127,9 +127,9 @@ public class BaseApplication extends Application {
                 .denyCacheImageMultipleSizesInMemory()
                 .discCache(new UnlimitedDiscCache(new
                         File(Constants.PicCach)))//自定义缓存路径,图片缓存到sd卡
-                .memoryCacheExtraOptions(720, 1280)
-                .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
-                .memoryCacheSize(2 * 1024 * 1024).memoryCacheSizePercentage(13)
+                .memoryCacheExtraOptions(720*2, 1280*4)
+                .memoryCache(new LruMemoryCache(4 * 1024 * 1024))
+                .memoryCacheSize(4 * 1024 * 1024).memoryCacheSizePercentage(13)
                 .discCacheFileCount(200).denyCacheImageMultipleSizesInMemory()
                 .discCacheFileNameGenerator(new Md5FileNameGenerator())
                 .tasksProcessingOrder(QueueProcessingType.LIFO).build();

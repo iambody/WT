@@ -74,6 +74,7 @@
     <dimen name="item_my_new_head_iv_hright">40dip</dimen>
     <dimen name="ui_10_dip">10dip</dimen>
     <dimen name="ui_20_dip">20dip</dimen>
+    <!--<dimen name="ui_25_dip">25dip</dimen>-->
     <dimen name="ui_15_dip">15dip</dimen>
     <dimen name="ui_5_dip">5dip</dimen>
     <!-- 活动专区 -->
@@ -635,6 +636,7 @@
     <dimen name="fragment_newhome_up_bg_height">200dp</dimen>
     <dimen name="fragment_newhome_up_wave_height">140dp</dimen>
     <dimen name="ui_25_dip">25dp</dimen>
+    <dimen name="ui_22_dip">22dp</dimen>
     <dimen name="sort_good_item_height">70dp</dimen>
     <dimen name="ui_16_dip">16dp</dimen>
     <dimen name="ui_14_dip">14dp</dimen>
