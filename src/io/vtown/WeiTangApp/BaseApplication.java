@@ -72,6 +72,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        instance=this;
         IIM();
         InItData();
         mQueue = Volley.newRequestQueue(getApplicationContext());

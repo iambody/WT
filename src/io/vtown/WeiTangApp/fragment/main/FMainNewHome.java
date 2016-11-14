@@ -49,6 +49,7 @@ import io.vtown.WeiTangApp.comment.view.custom.HomeScrollView;
 import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
+import io.vtown.WeiTangApp.test.ARetrofitTest;
 import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
@@ -477,6 +478,9 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             Log.i("homewave", "隐藏");
             mWaveHelper.cancel();
             fragmentNewhomeBanner.pushImageCycle();
+
+            if (fragmentNewhomeSrollviw.isRefreshing())
+                fragmentNewhomeSrollviw.setRefreshing(false);
         }
 
     }
@@ -489,6 +493,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             mWaveHelper.cancel();
             fragmentNewhomeBanner.pushImageCycle();
             IShow = false;
+            if (fragmentNewhomeSrollviw.isRefreshing())
+                fragmentNewhomeSrollviw.setRefreshing(false);
         } else {
             Log.i("homewave", "显示");
             mWaveHelper.start();
@@ -504,6 +510,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         mWaveHelper.cancel();
 //        unbinder.unbind();
         fragmentNewhomeBanner.pushImageCycle();
+        if (fragmentNewhomeSrollviw.isRefreshing())
+            fragmentNewhomeSrollviw.setRefreshing(false);
     }
 
     @Override
@@ -511,6 +519,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         unbinder.unbind();
+        if (fragmentNewhomeSrollviw.isRefreshing())
+            fragmentNewhomeSrollviw.setRefreshing(false);
     }
 
     @Override
@@ -566,7 +576,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         switch (view.getId()) {
             case R.id.fragment_newhome_iv_sao:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                        CaptureActivity.class));
+                        ARetrofitTest.class));
+//                        CaptureActivity.class));
                 break;
             case R.id.fragment_newhome_iv_sou:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ASouSouGood.class));

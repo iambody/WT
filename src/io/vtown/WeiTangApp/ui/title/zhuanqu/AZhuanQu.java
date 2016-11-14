@@ -8,6 +8,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuan;
 import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuanQuBean;
 import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuanquGood;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -47,7 +48,7 @@ import com.android.volley.Request.Method;
  * @author===》专区界面
  */
 public class AZhuanQu extends ATitleBase {
-
+    private View BaseView;
     private ScrollView zhuanqu_scrollview;
     //    private ImageCycleView imageCycleView;
     private View zhuan_nodata_lay;
@@ -58,10 +59,12 @@ public class AZhuanQu extends ATitleBase {
 
     private CompleteListView zhuanqu_ls;
     private ImageView zhuanqu_banner_iv;
+    private BZhuan bdComment;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_zhaunqu);
+        BaseView = LayoutInflater.from(this).inflate(R.layout.activity_zhaunqu, null);
         IBunds();
         IBasV();
         SetTitleHttpDataLisenter(this);
@@ -99,15 +102,15 @@ public class AZhuanQu extends ATitleBase {
     }
 
 
-
     private void IBunds() {
     }
-
 
 
     @Override
     protected void InitTile() {
         SetTitleTxt(baseBcBComment.getTitle());
+        SetRightIv(R.drawable.detail_share);
+        right_iv.setOnClickListener(this);
     }
 
     @Override
@@ -119,7 +122,7 @@ public class AZhuanQu extends ATitleBase {
         }
         IDataView(zhuanqu_scrollview, zhuan_nodata_lay, NOVIEW_RIGHT);
 
-        BZhuan bdComment = JSON.parseObject(Data.getHttpResultStr(),
+        bdComment = JSON.parseObject(Data.getHttpResultStr(),
                 BZhuan.class);
 
         zhuanqu_scrollview.smoothScrollTo(0, 20);
@@ -177,6 +180,17 @@ public class AZhuanQu extends ATitleBase {
         switch (V.getId()) {
             case R.id.zhuan_nodata_lay:
                 IData(baseBcBComment.getId());
+                break;
+            case R.id.right_iv:
+                if (CheckNet(BaseContext))
+                    return;
+                // PromptManager.ShowCustomToast(BaseContext, "分享");
+                BNew mBNew = new BNew();
+                mBNew.setShare_url(bdComment.getUrl());
+                mBNew.setShare_content(bdComment.getContent());
+                mBNew.setShare_title(bdComment.getTitle());
+                mBNew.setShare_log(bdComment.getPic_path());
+                ShowP(BaseView, mBNew);
                 break;
         }
     }
@@ -321,12 +335,11 @@ public class AZhuanQu extends ATitleBase {
                         R.id.item_zhuanqu_in_price);
                 dongInItem.item_zhuanqu_odl_price = ViewHolder.get(convertView,
                         R.id.item_zhuanqu_odl_price);
-                dongInItem.item_zhuanqu_in_sales= ViewHolder.get(convertView,
+                dongInItem.item_zhuanqu_in_sales = ViewHolder.get(convertView,
                         R.id.item_zhuanqu_in_sales);
 
-                dongInItem.item_zhuanqu_in_score= ViewHolder.get(convertView,
+                dongInItem.item_zhuanqu_in_score = ViewHolder.get(convertView,
                         R.id.item_zhuanqu_in_score);
-
 
 
                 convertView.setTag(dongInItem);
@@ -341,19 +354,19 @@ public class AZhuanQu extends ATitleBase {
             StrUtils.SetTxt(dongInItem.item_zhuanqu_in_price,
                     StrUtils.SetTextForMony(dddata.getSell_price()) + "元");
 
-            if (!StrUtils.isEmpty(dddata.getOrig_price())&&!dddata.getOrig_price().equals("0")) {
-            StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
-                    "原价" + StrUtils.SetTextForMony(dddata.getOrig_price()));
+            if (!StrUtils.isEmpty(dddata.getOrig_price()) && !dddata.getOrig_price().equals("0")) {
+                StrUtils.SetTxt(dongInItem.item_zhuanqu_odl_price,
+                        "原价" + StrUtils.SetTextForMony(dddata.getOrig_price()));
                 dongInItem.item_zhuanqu_odl_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             }
             //销量
 
-            if(!StrUtils.isEmpty(dddata.getSales())){
-                dongInItem.item_zhuanqu_in_sales.setText(String.format("销量：%s",dddata.getSales()));
+            if (!StrUtils.isEmpty(dddata.getSales())) {
+                dongInItem.item_zhuanqu_in_sales.setText(String.format("销量：%s", dddata.getSales()));
             }
             //积分
-            if(!StrUtils.isEmpty(dddata.getScore())){
-                dongInItem.item_zhuanqu_in_score.setText(String.format("积分：%s",dddata.getScore()));
+            if (!StrUtils.isEmpty(dddata.getScore())) {
+                dongInItem.item_zhuanqu_in_score.setText(String.format("积分：%s", dddata.getScore()));
             }
             return convertView;
         }
@@ -362,7 +375,7 @@ public class AZhuanQu extends ATitleBase {
             ImageView item_zhuanqu_in_iv;
             TextView item_zhuanqu_in_name;
             TextView item_zhuanqu_in_price;
-            TextView item_zhuanqu_odl_price,item_zhuanqu_in_sales,item_zhuanqu_in_score;
+            TextView item_zhuanqu_odl_price, item_zhuanqu_in_sales, item_zhuanqu_in_score;
 
         }
     }

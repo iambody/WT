@@ -152,14 +152,14 @@
             android:name=".ui.ui.AShow"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-     <!--   <activity
-            android:name=".ui.title.AShopBus"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>-->
-       <!-- <activity
-            android:name=".ui.title.myhome.ACenter"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>-->
+        <!--   <activity
+               android:name=".ui.title.AShopBus"
+               android:launchMode="singleTask"
+               android:screenOrientation="portrait"></activity>-->
+        <!-- <activity
+             android:name=".ui.title.myhome.ACenter"
+             android:launchMode="singleTask"
+             android:screenOrientation="portrait"></activity>-->
         <activity
             android:name=".ui.ui.ASouSouGood"
             android:launchMode="singleTask"
@@ -684,9 +684,9 @@
 
 
         <activity
-        android:name=".ui.title.loginregist.bindcode_three.ANewBindCode"
-        android:launchMode="singleTask"
-        android:screenOrientation="portrait"/>
+            android:name=".ui.title.loginregist.bindcode_three.ANewBindCode"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ui.title.AMyLeader"
@@ -718,9 +718,12 @@
 
         <activity
             android:name=".ui.comment.AMianSort"
-            android:theme="@style/MySortDialogStyleTop"
             android:screenOrientation="portrait"
+            android:theme="@style/MySortDialogStyleTop"
             />
+        <activity
+            android:name=".test.ARetrofitTest"
+            android:launchMode="singleTask"/>
         <!-- activity的space************************************* -->
 
 

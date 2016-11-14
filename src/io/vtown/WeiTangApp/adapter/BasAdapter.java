@@ -4,6 +4,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+//import retrofit2.Retrofit;
+//import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+//import retrofit2.converter.gson.GsonConverterFactory;
+
+//import retrofit2.Retrofit;
+//import retrofit2.converter.gson.GsonConverterFactory;
+
 public abstract class BasAdapter extends BaseAdapter {
 //ddddddddddddddddddddddd
     @Override
@@ -47,6 +54,19 @@ public abstract class BasAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int arg0) {
+
+//        Retrofit mRetrofit = new Retrofit.Builder()
+//
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .client(mOkHttpClient)
+//                .build();
+
+
+
+
+
+
         return 0;
     }
 

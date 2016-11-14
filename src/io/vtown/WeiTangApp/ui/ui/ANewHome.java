@@ -262,6 +262,7 @@ public class ANewHome extends ATitileNoBase implements RefreshLayout.OnLoadListe
                         PromptManager.SkipActivity(BaseActivity, new Intent(
                                 BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
                                 mBCommentss));
+
                         break;
                     default:
                         // default时候直接展示大图
