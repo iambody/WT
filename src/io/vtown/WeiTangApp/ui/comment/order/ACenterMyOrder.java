@@ -1974,9 +1974,9 @@ public class ACenterMyOrder extends ATitleBase implements
 
             case 6:// 积分获取
                 PromptManager.ShowMyToast(BaseContext, "积分获取成功");
-//                last_id = "";
-//                IData(LOAD_INITIALIZE, Ket_Tage + "");
-               centerOrderOutsideAdapter.RefreshPosition(Ket_Tage, 0, SelectPosition);
+                last_id = "";
+                IData(LOAD_INITIALIZE, Ket_Tage + "");
+              // centerOrderOutsideAdapter.RefreshPosition(Ket_Tage, 0, SelectPosition);
                 break;
 
             default:

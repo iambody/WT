@@ -267,6 +267,8 @@ public class AGoodDetail extends ATitleBase {
     private TextView tv_goods_detail_sales;
     //限购
     private TextView good_detail_xiangou;
+    private LinearLayout good_detail_score;
+    private TextView tv_goods_detail_score;
 
     @Override
     protected void InItBaseView() {
@@ -378,8 +380,13 @@ public class AGoodDetail extends ATitleBase {
         tv_suggest_retail_price = (TextView) findViewById(R.id.tv_suggest_retail_price);
         tv_send_address = (TextView) findViewById(R.id.tv_send_address);
         tv_freight = (TextView) findViewById(R.id.tv_freight);
+        //销量
         good_detail_sales = (LinearLayout) findViewById(R.id.good_detail_sales);
         tv_goods_detail_sales = (TextView) findViewById(R.id.tv_goods_detail_sales);
+        //积分
+        good_detail_score = (LinearLayout) findViewById(R.id.good_detail_score);
+        tv_goods_detail_score = (TextView) findViewById(R.id.tv_goods_detail_score);
+
         iv_seller_icon = (CircleImageView) findViewById(R.id.iv_seller_icon);
         tv_seller_shop_name = (TextView) findViewById(R.id.tv_seller_shop_name);
         // lv_pic_text_detail = (CompleteListView)
@@ -558,6 +565,13 @@ public class AGoodDetail extends ATitleBase {
             StrUtils.SetTxt(tv_goods_detail_sales, datas.getSales() + "件");
         }
 
+        if(0 == datas.getScore()){
+            good_detail_score.setVisibility(View.GONE);
+        }else{
+            good_detail_score.setVisibility(View.VISIBLE);
+            StrUtils.SetTxt(tv_goods_detail_score,datas.getScore()+"分");
+        }
+
         // 判断是否品牌商品 1=》品牌商品进行判断=》标识是否可以代理
         // 判断是否是品牌商品0=》自营商品进行判断=》是否你可以代卖
         IsAgen = datas.getIs_agent().equals("1");
@@ -640,12 +654,12 @@ public class AGoodDetail extends ATitleBase {
             // lv_pic_text_detail.setAdapter(picTextDetailAdapter);
             for (int i = 0; i < PicLs.size(); i++) {
                 final int Postion = i;
-                  ImageView myimage = new ImageView(BaseContext);
+                ImageView myimage = new ImageView(BaseContext);
                 myimage.setClickable(true);
 //                myimage.setScaleType(ScaleType.FIT_START);
 //                myimage.setAdjustViewBounds(true);
                 LayoutParams mLayoutParams = new LayoutParams(
-                        screenWidth,(int)(screenWidth/datas.getGoods_info().getRatio().get(i)));// LayoutParams.WRAP_CONTENT
+                        screenWidth, (int) (screenWidth / datas.getGoods_info().getRatio().get(i)));// LayoutParams.WRAP_CONTENT
                 myimage.setLayoutParams(mLayoutParams);
 //                myimage.setMaxWidth(screenWidth);
 //                myimage.setMaxHeight((int)(screenWidth/datas.getGoods_info().getRatio().get(i)));

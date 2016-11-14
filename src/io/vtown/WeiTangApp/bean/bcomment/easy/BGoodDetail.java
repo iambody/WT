@@ -47,6 +47,16 @@ public class BGoodDetail extends BBase {
 //    private String is_fee;
     private int is_fee;//=1
 
+    private int score;//score=0
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public int getSales() {
         return sales;
     }

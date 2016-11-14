@@ -11,6 +11,8 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.comment.im.AChatInf;
 import io.vtown.WeiTangApp.ui.title.mynew.ANew;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
+
 import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -147,7 +149,7 @@ public class NewMessageBroadcastReceiver extends BroadcastReceiver {
 		// intents, 0);
 
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
-				new Intent(context, ANew.class)
+				new Intent(context, AMainTab.class).putExtra("isNewNotify",true)
 						.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
 				PendingIntent.FLAG_CANCEL_CURRENT);
 		return pendingIntent;

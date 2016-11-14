@@ -383,6 +383,40 @@
                         </LinearLayout>
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/good_detail_score"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <View style="@style/line_left"/>
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="left|center_vertical"
+                                android:text="@string/score"
+                                android:textColor="@color/grey"/>
+
+                            <TextView
+                                android:id="@+id/tv_goods_detail_score"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@drawable/gray"
+                                android:layout_marginLeft="62dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
 
 
                     <View

@@ -357,8 +357,14 @@ public class AShopGoodSou extends ATitleBase implements LListView.IXListViewList
             StrUtils.SetTxt(holder.shop_good_sou_good_title, datas.get(position).getTitle());
             //StrUtils.SetTxt(holder.shop_good_sou_price, StrUtils.SetTextForMony(datas.get(position).getSell_price()) + "元");
             StrUtils.SetMoneyFormat(BaseContext, holder.shop_good_sou_price, datas.get(position).getSell_price(), 14);
-            StrUtils.SetTxt(holder.shop_good_sou_orig_price, StrUtils.SetTextForMony(datas.get(position).getOrig_price()));
-            holder.shop_good_sou_orig_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            if("0".equals(datas.get(position).getOrig_price())){
+                holder.shop_good_sou_orig_price.setVisibility(View.GONE);
+            }else{
+                holder.shop_good_sou_orig_price.setVisibility(View.VISIBLE);
+                StrUtils.SetTxt(holder.shop_good_sou_orig_price, StrUtils.SetTextForMony(datas.get(position).getOrig_price()));
+                holder.shop_good_sou_orig_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            }
+
             if ("0".equals(datas.get(position).getScore())) {
                 holder.item_shop_good_sou_result_score.setVisibility(View.GONE);
             } else {
