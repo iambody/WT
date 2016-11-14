@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title.myhome;
 
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -31,6 +32,7 @@ import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.DateUtils;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
@@ -614,31 +616,21 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
      * 联系客服---拨号
      */
     public void ContactFriend(final BLInviteFriends friend) {
-        final CustomDialog dialog = new CustomDialog(BaseContext,
-                R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "电话联系", "微糖聊天");
-        dialog.show();
-        dialog.setTitleText("联系" + friend.getSeller_name());
-        dialog.Settitles("人之相识，贵在相知，人之相知，贵在知心。—— 孟子");
-        dialog.setCanceledOnTouchOutside(true);
-        dialog.setcancelListener(new CustomDialog.oncancelClick() {
-            @Override
-            public void oncancelClick(View v) {
-                if (CheckNet(BaseContext))
-                    return;
-                Intent intentPhone = new Intent(Intent.ACTION_CALL, Uri
-                        .parse("tel:" + friend.getPhone()));
 
-                startActivity(intentPhone);
-                dialog.dismiss();
+
+        ShowCustomDialog("联系：" + friend.getSeller_name(), "复制手机号", "微糖联系", new IDialogResult() {
+            @Override
+            public void LeftResult() {
+
+                ClipboardManager c= (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+                String content = friend.getPhone();
+                c.setText(content);
+                PromptManager.ShowCustomToast(BaseContext,"手机号复制成功");
 
             }
-        });
 
-        dialog.setConfirmListener(new CustomDialog.onConfirmClick() {
             @Override
-            public void onConfirmCLick(View v) {
-                if (CheckNet(BaseContext))
-                    return;
+            public void RightResult() {
                 if (!StrUtils.isEmpty(friend.getSeller_id()))
                     PromptManager.SkipActivity(
                             BaseActivity,
@@ -649,9 +641,48 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                                             friend.getSeller_name())
                                     .putExtra(AChatLoad.Tage_Iv,
                                             friend.getAvatar()));
-                dialog.dismiss();
+
             }
         });
+
+//        final CustomDialog dialog = new CustomDialog(BaseContext,
+//                R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "电话联系", "微糖聊天");
+//        dialog.show();
+//        dialog.setTitleText("联系" + friend.getSeller_name());
+//        dialog.Settitles("人之相识，贵在相知，人之相知，贵在知心。—— 孟子");
+//        dialog.setCanceledOnTouchOutside(true);
+//        dialog.setcancelListener(new CustomDialog.oncancelClick() {
+//            @Override
+//            public void oncancelClick(View v) {
+//                if (CheckNet(BaseContext))
+//                    return;
+//                Intent intentPhone = new Intent(Intent.ACTION_CALL, Uri
+//                        .parse("tel:" + friend.getPhone()));
+//
+//                startActivity(intentPhone);
+//                dialog.dismiss();
+//
+//            }
+//        });
+//
+//        dialog.setConfirmListener(new CustomDialog.onConfirmClick() {
+//            @Override
+//            public void onConfirmCLick(View v) {
+//                if (CheckNet(BaseContext))
+//                    return;
+//                if (!StrUtils.isEmpty(friend.getSeller_id()))
+//                    PromptManager.SkipActivity(
+//                            BaseActivity,
+//                            new Intent(BaseActivity, AChatLoad.class)
+//                                    .putExtra(AChatLoad.Tage_TageId,
+//                                            friend.getSeller_id())
+//                                    .putExtra(AChatLoad.Tage_Name,
+//                                            friend.getSeller_name())
+//                                    .putExtra(AChatLoad.Tage_Iv,
+//                                            friend.getAvatar()));
+//                dialog.dismiss();
+//            }
+//        });
 
     }
 

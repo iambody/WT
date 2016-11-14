@@ -122,8 +122,13 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
     protected void DataResult(int Code, String Msg, BComment Data) {
         switch (Data.getHttpLoadType()) {
             case LOAD_REFRESHING:
-                datas = JSON.parseArray(Data.getHttpResultStr(), BLSearchShopAndGood.class);
                 searchResultListRefrash.setRefreshing(false);
+                if(StrUtils.isEmpty(Data.getHttpResultStr())){
+                    PromptManager.ShowCustomToast(BaseContext,"没有最新的了");
+                    return;
+                }
+                datas = JSON.parseArray(Data.getHttpResultStr(), BLSearchShopAndGood.class);
+
                 if (datas.size() == Constants.PageSize) {
                     searchResultListRefrash.setCanLoadMore(true);
                 } else {
@@ -133,9 +138,14 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
                 break;
 
             case LOAD_LOADMOREING:
+                searchResultListRefrash.setLoading(false);
+                if(StrUtils.isEmpty(Data.getHttpResultStr())){
+                    PromptManager.ShowCustomToast(BaseContext,"没有更多了");
+                    return;
+                }
                 List<BLSearchShopAndGood> data_more = new ArrayList<BLSearchShopAndGood>();
                 data_more = JSON.parseArray(Data.getHttpResultStr(), BLSearchShopAndGood.class);
-                searchResultListRefrash.setLoading(false);
+
                 if (data_more.size() == Constants.PageSize) {
                     searchResultListRefrash.setCanLoadMore(true);
                 } else {

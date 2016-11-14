@@ -243,7 +243,11 @@ public class ASearchResult extends ATitleBase {
                 case 1:
                     BLSearchShopAndGood item = (BLSearchShopAndGood) mShopResultAdapter.getItem(position);
                     BComment bComment = new BComment(item.getId(), item.getSeller_name());
-                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandDetail.class).putExtra(BaseKey_Bean, bComment));
+                    if("1".equals(item.getIs_brand())){
+                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ABrandDetail.class).putExtra(BaseKey_Bean, bComment));
+                    }else{
+                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AShopDetail.class).putExtra(BaseKey_Bean, bComment));
+                    }
                     break;
 
                 case 2:

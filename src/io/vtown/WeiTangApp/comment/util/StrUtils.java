@@ -1304,4 +1304,25 @@ public class StrUtils {
     public static int ShopDetailPage(int Size) {
         return Size % 10 == 0 ? Size / Size : Size / Size + 1;
     }
+
+    /*
+    * 识别手机号
+    *
+    * */
+    public static String getTelnum(String sParam){
+
+        if(sParam.length()<=0)
+            return "";
+        Pattern pattern = Pattern.compile("(1|861)(3|5|8)\\d{9}$*");
+        Matcher matcher = pattern.matcher(sParam);
+        StringBuffer bf = new StringBuffer();
+        while (matcher.find()) {
+            bf.append(matcher.group()).append(",");
+        }
+        int len = bf.length();
+        if (len > 0) {
+            bf.deleteCharAt(len - 1);
+        }
+        return bf.toString();
+    }
 }

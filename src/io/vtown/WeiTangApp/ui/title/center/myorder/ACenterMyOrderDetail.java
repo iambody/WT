@@ -30,6 +30,7 @@ import java.util.List;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.method.ArrowKeyMovementMethod;
@@ -628,10 +629,10 @@ public class ACenterMyOrderDetail extends ATitleBase {
             if ("0".equals(order_detail2.getRefund())) {
                 tv_center_my_order_apply_refund.setVisibility(View.VISIBLE);
 
-                if(0 == order_detail2.getIs_have_point()){
+                if (0 == order_detail2.getIs_have_point()) {
                     ll_center_my_order_get_integral_tips.setVisibility(View.GONE);
                     tv_center_my_order_get_integral.setVisibility(View.GONE);
-                }else{
+                } else {
                     if (0 == order_detail2.getAdvance_point()) {
                         // myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
                         ll_center_my_order_get_integral_tips.setVisibility(View.GONE);
@@ -729,11 +730,10 @@ public class ACenterMyOrderDetail extends ATitleBase {
         if (FCenterOder.PDaiShou == Order_status
                 || FCenterOder.PClose == Order_status) {
             tv_center_order_good_express_title.setVisibility(View.VISIBLE);
-            tv_center_my_order_confirm.setVisibility(View.GONE);
+            //tv_center_my_order_confirm.setVisibility(View.GONE);
             if (express_data.size() == 0) {
                 tv_center_order_good_express_title.setVisibility(View.GONE);
             } else {
-
 
                 StrUtils.SetTxt(tv_center_order_good_express_title, "物流状态：");
                 lv_center_my_order_good_express_speed
@@ -743,9 +743,37 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 lv_center_my_order_good_express_speed
                         .setAdapter(centerExpressMessageAdapter);
                 centerExpressMessageAdapter.RefreshData(express_data);
+
+                lv_center_my_order_good_express_speed.setOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        BLComment item = (BLComment) centerExpressMessageAdapter.getItem(position);
+                        if (!StrUtils.isEmpty(item.getContext())) {
+                            final String telnum = StrUtils.getTelnum(item.getContext());
+                            if(!StrUtils.isEmpty(telnum)){
+                                ShowCustomDialog("联系：" + telnum, "拨号", "取消", new IDialogResult() {
+                                    @Override
+                                    public void LeftResult() {
+                                        Intent intentPhone = new Intent(Intent.ACTION_CALL, Uri
+                                                .parse("tel:" + telnum));
+                                        startActivity(intentPhone);
+                                    }
+
+                                    @Override
+                                    public void RightResult() {
+
+                                    }
+                                });
+                            }
+
+                        }
+                    }
+                });
+
             }
         }
     }
+
 
     @Override
     protected void InitTile() {
