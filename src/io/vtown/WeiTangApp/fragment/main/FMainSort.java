@@ -703,6 +703,8 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             if (!StrUtils.isEmpty(bSortGood.getOrig_price()) && !bSortGood.getOrig_price().equals("0")) {
                 StrUtils.SetTxt(mySortItem.item_main_sort_price_yuan, String.format("￥%s", StrUtils.SetTextForMony(bSortGood.getOrig_price())));
                 mySortItem.item_main_sort_price_yuan.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            } else {
+                mySortItem.item_main_sort_price_yuan.setVisibility(View.GONE);
             }
             return convertView;
         }

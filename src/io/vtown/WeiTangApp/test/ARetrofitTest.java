@@ -38,7 +38,7 @@ public class ARetrofitTest extends ABase {
 
     @OnClick(R.id.retrofit_test_bt)
     public void onClick() {
-        RetrofitNetWorks.GetHome(MyUser.getMember_id(), MyUser.getSeller_id(), new Observer<BTest>() {
+        RetrofitNetWorks.GetHome(MyUser.getMember_id(), MyUser.getSeller_id(), new Observer<String>() {
             @Override
             public void onCompleted() {
                 PromptManager.ShowCustomToast(BaseContext, "完成");
@@ -51,9 +51,9 @@ public class ARetrofitTest extends ABase {
             }
 
             @Override
-            public void onNext(BTest s) {
+            public void onNext(String s) {
 //                PromptManager.ShowCustomToast(BaseContext, s);
-                retrofitTestTxt.setText(s.toString());
+                retrofitTestTxt.setText(s );
             }
         });
     }

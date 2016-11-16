@@ -226,7 +226,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
                     @Override
                     public void onImageClick(int position, View imageView) {
-
+//                        PromptManager.ShowCustomToast(BaseContext, "点击位置=》" + position);
+//                        if(true)return;
                         switch (MBNewHome.getBanner().get(position).getAdvert_type()) {
 
                             case 1:// HT跳转
@@ -519,8 +520,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         unbinder.unbind();
-        if (fragmentNewhomeSrollviw.isRefreshing())
-            fragmentNewhomeSrollviw.setRefreshing(false);
+//        if (fragmentNewhomeSrollviw.isRefreshing())
+//            fragmentNewhomeSrollviw.setRefreshing(false);
     }
 
     @Override

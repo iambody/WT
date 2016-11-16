@@ -47,7 +47,7 @@ public class RetrofitNetWorks {
 
     //****************************************************************************************************************
 //Get请求
-    public static void GetHome(String tel, String pass, Observer<BTest> observer) {
+    public static void GetHome(String tel, String pass, Observer<String> observer) {
         setSubscribe(service.GetHome(tel, pass), observer);
     }
 

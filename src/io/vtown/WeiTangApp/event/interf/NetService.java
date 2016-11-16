@@ -40,5 +40,5 @@ public interface NetService {
 
     //GET请求==>获取首页数据
     @GET("/v1/home/home/index")
-    Observable<BTest> GetHome(@Query("member_id") String member_id, @Query("seller_id") String seller_id);
+    Observable<String> GetHome(@Query("member_id") String member_id, @Query("seller_id") String seller_id);
 }
