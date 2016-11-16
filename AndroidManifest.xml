@@ -724,6 +724,13 @@
         <activity
             android:name=".test.ARetrofitTest"
             android:launchMode="singleTask"/>
+
+        <activity
+            android:name=".ui.title.zhuanqu.ABrandShopShare"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyleTop"
+            />
         <!-- activity的space************************************* -->
 
 

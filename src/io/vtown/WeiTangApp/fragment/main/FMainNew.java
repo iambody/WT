@@ -91,7 +91,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
         IView();
         SetTitleHttpDataLisenter(this);
         ICache();
-        IData(REFRESHING);
+
     }
 
     @Override
@@ -102,7 +102,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
     private void IView() {
         fragment_main_new_srollviw = (CustomSwipeToRefresh) BaseView.findViewById(R.id.fragment_main_new_srollviw);
         fragment_main_new_srollviw.setOnRefreshListener(this);
-        fragment_main_new_srollviw.setRefreshing(true);
+        fragment_main_new_srollviw.setRefreshing(false);
         fragment_main_new_srollviw.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
         fragment_main_new_srollviw.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
@@ -305,10 +305,14 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
                         .getString(R.string.loading));
                 return;
             }
+            fragment_main_new_srollviw.setRefreshing(false);
+            IData(INITIALIZE);
 
         } else {// 没有缓存
             PromptManager.showtextLoading(BaseContext, getResources()
                     .getString(R.string.loading));
+            fragment_main_new_srollviw.setRefreshing(true);
+            IData(REFRESHING);
         }
     }
 

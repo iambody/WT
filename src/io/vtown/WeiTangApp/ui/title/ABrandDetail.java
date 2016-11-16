@@ -72,6 +72,7 @@ import com.android.volley.Request.Method;
 
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
+import io.vtown.WeiTangApp.ui.title.zhuanqu.ABrandShopShare;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -205,6 +206,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 
         brand_detail_brand_brandinf_iv.setOnClickListener(this);
         brand_detail_brand_lookshow_iv.setOnClickListener(this);
+        brand_detail_brand_iv.setOnClickListener(this);
 
 //        brand_detail_apply = (TextView) findViewById(R.id.brand_detail_apply);
 //        brand_detail_apply.setOnClickListener(this);
@@ -570,6 +572,14 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                                             mBComment.getBase().getSeller_name())
                                     .putExtra(AChatLoad.Tage_Iv,
                                             mBComment.getBase().getAvatar()));
+                break;
+
+            case R.id.brand_detail_brand_iv://头像
+                if (null == mBComment)
+                    return;
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                        ABrandShopShare.class).putExtra(ABrandShopShare.Tage_Key,
+                        mBComment.getBase().getSeller_url()).putExtra(ABrandShopShare.Tage_Avatar_Key, mBComment.getBase().getAvatar()).putExtra(ABrandShopShare.Tage_Seller_Id,mBComment.getBase().getSeller_no()).putExtra(ABrandShopShare.Tage_Title,mBComment.getBase().getSeller_name()));
                 break;
             default:
                 break;

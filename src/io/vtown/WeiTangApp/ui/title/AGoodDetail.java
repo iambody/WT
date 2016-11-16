@@ -595,6 +595,7 @@ public class AGoodDetail extends ATitleBase {
 
         } else {// 自营品牌商品
             if (IsShangJia) {// 可以上架
+                tv_replace_sell.setVisibility(View.GONE);
                 tv_replace_sell.setText("一键代卖");
                 // rl_look_show.setVisibility(View.GONE);
             } else {// 已经上架过不可以上架了
