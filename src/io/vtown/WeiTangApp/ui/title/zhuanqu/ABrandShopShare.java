@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title.zhuanqu;
 
+import android.content.ClipboardManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -21,10 +22,9 @@ import cn.sharesdk.wechat.friends.Wechat;
 import cn.sharesdk.wechat.moments.WechatMoments;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.easy.channl.BChannl;
-import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.QRCodeUtil;
 import io.vtown.WeiTangApp.comment.util.SdCardUtils;
@@ -73,15 +73,16 @@ public class ABrandShopShare extends ATitleBase {
 
     private void IView() {
         brand_shop_share_null.setOnClickListener(this);
-        if(!StrUtils.isEmpty(seller_id)){
-            StrUtils.SetTxt(brand_shop_share_shop_ic,"店铺ID:"+seller_id);
+        if (!StrUtils.isEmpty(seller_id)) {
+            StrUtils.SetTxt(brand_shop_share_shop_ic, "店铺ID:" + seller_id);
         }
+        brand_shop_share_shop_ic.setOnClickListener(this);
         brandShopShareToWx.setOnClickListener(this);
         brandShopShareToFrends.setOnClickListener(this);
     }
 
     private void ToBeCode() {
-       // ISizeCodeIv();
+        // ISizeCodeIv();
         if (!StrUtils.isEmpty(seller_url)) {
             String InItCode = SdCardUtils.CodePath(BaseContext) + "brand_code.jpg";
             CreatQ(seller_url, InItCode);
@@ -94,19 +95,24 @@ public class ABrandShopShare extends ATitleBase {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
+                boolean success = false;
                 Bitmap logoBm = com.nostra13.universalimageloader.core.ImageLoader
                         .getInstance().loadImageSync(avatar);
-                boolean success = QRCodeUtil.createQRImage(Str, 800, 800,
-                        logoBm, Pathe);
-
+                if(logoBm != null){
+                    success = QRCodeUtil.createQRImage(Str, 800, 800,
+                            logoBm, Pathe);
+                }
                 if (success) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             MyBitMap = BitmapFactory.decodeFile(Pathe);
-                            brandShopCode.setImageBitmap(MyBitMap);
-                            brandShopCode.setVisibility(View.VISIBLE);
+                            if(null != MyBitMap && null != brandShopCode){
+                                brandShopCode.setImageBitmap(MyBitMap);
+                                brandShopCode.setVisibility(View.VISIBLE);
+                            }
+
+
 //							new ImagViewDialog(BaseContext, MyBitMap, screenWidth, 2)
 //									.show();
                         }
@@ -123,11 +129,11 @@ public class ABrandShopShare extends ATitleBase {
             avatar = getIntent().getStringExtra(Tage_Avatar_Key);
         }
 
-        if(getIntent().getExtras() != null && getIntent().getExtras().containsKey(Tage_Seller_Id)){
+        if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(Tage_Seller_Id)) {
             seller_id = getIntent().getExtras().getString(Tage_Seller_Id);
         }
 
-        if(getIntent().getExtras() != null && getIntent().getExtras().containsKey(Tage_Title)){
+        if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(Tage_Title)) {
             seller_title = getIntent().getExtras().getString(Tage_Title);
         }
     }
@@ -176,6 +182,9 @@ public class ABrandShopShare extends ATitleBase {
         switch (V.getId()) {
             case R.id.brand_shop_share_null:
                 overridePendingTransition(0, R.anim.slide_out);
+                if(MyBitMap != null){
+                    CacheUtil.BitMapRecycle(MyBitMap);
+                }
                 this.finish();
                 break;
 
@@ -185,6 +194,12 @@ public class ABrandShopShare extends ATitleBase {
 
             case R.id.brand_shop_share_to_frends://分享朋友圈
                 Share(2);
+                break;
+
+            case R.id.brand_shop_share_shop_ic://点击复制店铺ID
+                ClipboardManager c = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                c.setText(seller_id);
+                PromptManager.ShowCustomToast(BaseContext, "店铺ID复制成功");
                 break;
         }
     }
@@ -270,7 +285,10 @@ public class ABrandShopShare extends ATitleBase {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        CacheUtil.BitMapRecycle(MyBitMap);
+        if(MyBitMap != null){
+            CacheUtil.BitMapRecycle(MyBitMap);
+        }
+
         overridePendingTransition(0, R.anim.slide_out);
         mBind.unbind();
     }

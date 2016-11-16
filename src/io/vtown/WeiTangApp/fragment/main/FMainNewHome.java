@@ -58,6 +58,7 @@ import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.AMyLeader;
 import io.vtown.WeiTangApp.ui.title.myhome.AIntegralDetail;
 import io.vtown.WeiTangApp.ui.title.myhome.AInviteFriendRecord;
+import io.vtown.WeiTangApp.ui.title.myhome.AInviteTeamInfo;
 import io.vtown.WeiTangApp.ui.title.myhome.ANewCenter;
 import io.vtown.WeiTangApp.ui.title.AReturnDetail;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
@@ -602,7 +603,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //                    return;
 //                }
 //                if (Spuit.IsHaveActive_Get(BaseActivity)) {
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AInviteFriendRecord.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AInviteTeamInfo.class));
 //                }
 //
 //                if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {

@@ -731,6 +731,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyDialogStyleTop"
             />
+
+        <activity
+            android:name=".ui.title.myhome.AInviteTeamInfo"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->
 
 
