@@ -503,6 +503,7 @@ public class AGoodDetail extends ATitleBase {
             rl_good_detail_shoucang_log.setVisibility(View.GONE);
             right_iv.setVisibility(View.GONE);
             right_iv.setEnabled(false);
+            ShowErrorCanLoad(error);
             // BaseActivity.finish();
             IDataView(gooddetails_outlay, gooddetail_nodata_lay, NOVIEW_ERROR);
         }
