@@ -746,13 +746,13 @@ public class StrUtils {
     public static boolean checkMobile(Context context, String mobile) {
 
         if (isEmpty(mobile)) {
-            PromptManager.ShowMyToast(context, "请输入联系电话");
+            PromptManager.ShowMyToast(context, "请输入手机号");
             return false;
 
         }
 
         if (!isMobileNO(mobile)) {
-            PromptManager.ShowMyToast(context, "联系人电话输入有误");
+            PromptManager.ShowMyToast(context, "手机号输入有误");
             return false;
         }
         return true;

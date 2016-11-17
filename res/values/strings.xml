@@ -772,8 +772,7 @@
     <string name="invite_team_info_my_activity">直属活跃用户数</string>
     <string name="invite_team_info_yestaday_add">昨日新增用户</string>
     <string name="invite_team_info_yestaday_activity">昨日激活</string>
-
-
+    <string name="invite_friends_record_scen_key">请输入您下级的手机号</string>
 
 
 </resources>

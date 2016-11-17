@@ -6,9 +6,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.android.volley.Request;
+
+import java.util.HashMap;
+
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.three_two.BCTeamInfo;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
+import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
@@ -37,12 +46,39 @@ public class AInviteTeamInfo extends ATitleBase {
     * 昨日激活用户
     * */
     private View invite_info_my_yestaday_activity;
+    private BCTeamInfo mTeamInfo;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_invite_info);
+        SetTitleHttpDataLisenter(this);
         IView();
+        ICache();
+        IData();
 
+    }
+
+    private void ICache() {
+        String invite_info = CacheUtil.Invite_Team_Get(BaseContext);
+        if (StrUtils.isEmpty(invite_info)) {
+            PromptManager.showtextLoading(BaseContext, getResources()
+                    .getString(R.string.loading));
+        } else {
+            try {
+                mTeamInfo = JSON.parseObject(invite_info, BCTeamInfo.class);
+            } catch (Exception e) {
+                return;
+            }
+            RefrashView(mTeamInfo);
+        }
+
+
+    }
+
+    private void IData() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());
+        FBGetHttpData(map, Constants.Invite_Team_info, Request.Method.GET, 0, LOAD_INITIALIZE);
     }
 
     private void IView() {
@@ -51,14 +87,14 @@ public class AInviteTeamInfo extends ATitleBase {
         invite_info_my_activity_conter = findViewById(R.id.invite_info_my_activity_conter);
         invite_info_my_yestaday_add = findViewById(R.id.invite_info_my_yestaday_add);
         invite_info_my_yestaday_activity = findViewById(R.id.invite_info_my_yestaday_activity);
+    }
 
-        SetItemContent(invite_info_amount, R.drawable.center_iv6, R.string.invite_team_info_invite_amount, "22", true);
-        SetItemContent(invite_info_team_activity_conter, R.drawable.center_iv6, R.string.invite_team_info_team_activity, "22", false);
-        SetItemContent(invite_info_my_activity_conter, R.drawable.center_iv6, R.string.invite_team_info_my_activity, "22", false);
-        SetItemContent(invite_info_my_yestaday_add, R.drawable.center_iv6, R.string.invite_team_info_yestaday_add, "22", false);
-        SetItemContent(invite_info_my_yestaday_activity, R.drawable.center_iv6, R.string.invite_team_info_yestaday_activity, "22", false);
-
-
+    private void RefrashView(BCTeamInfo data) {
+        SetItemContent(invite_info_amount, R.drawable.center_iv6, R.string.invite_team_info_invite_amount, data.getInvite_num(), true);
+        SetItemContent(invite_info_team_activity_conter, R.drawable.center_iv6, R.string.invite_team_info_team_activity, data.getTeam_activate_num(), false);
+        SetItemContent(invite_info_my_activity_conter, R.drawable.center_iv6, R.string.invite_team_info_my_activity, data.getInvite_activate_num(), false);
+        SetItemContent(invite_info_my_yestaday_add, R.drawable.center_iv6, R.string.invite_team_info_yestaday_add, data.getRegister_num(), false);
+        SetItemContent(invite_info_my_yestaday_activity, R.drawable.center_iv6, R.string.invite_team_info_yestaday_activity, data.getActivate_num(), false);
     }
 
     private void SetItemContent(View VV, int imgsre, int ResourceTitlet, String txt2, boolean arrershow) {
@@ -90,35 +126,41 @@ public class AInviteTeamInfo extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
-
+        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+            return;
+        }
+        mTeamInfo = new BCTeamInfo();
+        mTeamInfo = JSON.parseObject(Data.getHttpResultStr(), BCTeamInfo.class);
+        CacheUtil.Invite_Team_Save(BaseContext, Data.getHttpResultStr());
+        RefrashView(mTeamInfo);
     }
 
     @Override
     protected void DataError(String error, int LoadType) {
-
+        PromptManager.ShowCustomToast(BaseContext, error);
     }
 
     @Override
     protected void NetConnect() {
-
+        NetError.setVisibility(View.GONE);
     }
 
     @Override
     protected void NetDisConnect() {
-
+        NetError.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void SetNetView() {
-
+        SetNetStatuse(NetError);
     }
 
     @Override
     protected void MyClick(View V) {
 
-        switch (V.getId()){
+        switch (V.getId()) {
             case R.id.invite_info_amount://邀请人数
-                PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,AInviteFriendRecord.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AInviteFriendRecord.class));
                 break;
         }
     }

@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -52,15 +55,17 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * Created by Yihuihua on 2016/10/12.
  */
 
-public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnLoadListener, LListView.IXListViewListener {
+public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnLoadListener, LListView.IXListViewListener, TextWatcher {
 
     private RefreshLayout invite_friends_refrash11;
     private LListView invite_friends_record_list;
     private View invite_friends_nodata_lay;
     private BUser bUser;
     private int page = 1;
+    private int scan_type = 0;
 
     private List<BCInviteFriends> datass = new ArrayList<BCInviteFriends>();
+    private List<BCInviteFriends> scan_datass = new ArrayList<BCInviteFriends>();
     private InviteFriendAdapter mAdapter;
 
     private TextView tv_invite_date_current;
@@ -86,9 +91,15 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
     private final int Type_Lv6 = 7;
     private final int Type_Lv7 = 8;
     private int click_type = Type_All;
-
+    private String phone = "";
+    private boolean isScan = false;
 
     private final int text_view_id = 1000;
+    private TextView invite_friends_record_filter;
+    private ImageView invite_friends_record_back_iv;
+    private ImageView invite_friends_record_sou_iv;
+    private ImageView invite_friends_record_title_delete;
+    private EditText invite_friends_record_title;
 
 
     @Override
@@ -160,22 +171,38 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             }
         }
 
+        if (!StrUtils.isEmpty(phone)) {
+            map.put("phone", phone);
+            scan_type = 2;
+        }
 
-        FBGetHttpData(map, Constants.Invite_Friends, Request.Method.GET, 0, loadtype);
+
+        FBGetHttpData(map, Constants.Invite_Friends, Request.Method.GET, scan_type, loadtype);
     }
 
     @Override
     protected void InitTile() {
         SetTitleTxt(getString(R.string.invite_friends));
-        SetRightText(getResources().getString(R.string.txt_filter));
-        right_txt.setOnClickListener(this);
+//        SetRightText(getResources().getString(R.string.txt_filter));
+        //       right_txt.setOnClickListener(this);
+
+        invite_friends_record_back_iv = (ImageView) findViewById(R.id.invite_friends_record_back_iv);
+        invite_friends_record_title = (EditText) findViewById(R.id.invite_friends_record_title);
+        invite_friends_record_title_delete = (ImageView) findViewById(R.id.invite_friends_record_title_delete);
+        invite_friends_record_sou_iv = (ImageView) findViewById(R.id.invite_friends_record_sou_iv);
+        invite_friends_record_filter = (TextView) findViewById(R.id.invite_friends_record_filter);
+        invite_friends_record_filter.setOnClickListener(this);
+        invite_friends_record_back_iv.setOnClickListener(this);
+        invite_friends_record_sou_iv.setOnClickListener(this);
+        invite_friends_record_title_delete.setOnClickListener(this);
+        invite_friends_record_title.addTextChangedListener(this);
 
         String shop_lvs = CacheUtil.Shop_Lv_Get(BaseContext);
         if (!StrUtils.isEmpty(shop_lvs)) {
-            right_txt.setVisibility(View.VISIBLE);
+            invite_friends_record_filter.setVisibility(View.VISIBLE);
             lv_list = JSON.parseArray(shop_lvs, String.class);
         } else {
-            right_txt.setVisibility(View.GONE);
+            invite_friends_record_filter.setVisibility(View.GONE);
         }
     }
 
@@ -280,8 +307,28 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 lv_list = JSON.parseArray(Data.getHttpResultStr(), String.class);
                 CacheUtil.Shop_Lv_Save(BaseContext, Data.getHttpResultStr());
                 if (lv_list.size() > 0) {
-                    right_txt.setVisibility(View.VISIBLE);
+                    invite_friends_record_filter.setVisibility(View.VISIBLE);
                 }
+
+                break;
+
+            case 2:
+                isScan = true;
+                invite_friends_record_list.hidefoot();
+                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                    invite_friends_record_list.setVisibility(View.GONE);
+                    invite_friends_nodata_lay.setVisibility(View.VISIBLE);
+                    invite_friends_nodata_lay.setClickable(false);
+                    ShowErrorCanLoad(getString(R.string.null_invite_friend));
+                    mAdapter.FreshData(new ArrayList<BCInviteFriends>());
+                    return;
+                }
+                scan_datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
+
+                invite_friends_record_list.setVisibility(View.VISIBLE);
+                invite_friends_nodata_lay.setVisibility(View.GONE);
+                //invite_friends_refrash.setRefreshing(false);
+                mAdapter.FreshData(scan_datass);
 
                 break;
         }
@@ -313,7 +360,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             TextView textView = new TextView(BaseContext);
             textView.setClickable(true);
             textView.setLayoutParams(textParams);
-            textView.setPadding(5, DimensionPixelUtil.dip2px(BaseContext,5), 5, DimensionPixelUtil.dip2px(BaseContext,5));
+            textView.setPadding(5, DimensionPixelUtil.dip2px(BaseContext, 5), 5, DimensionPixelUtil.dip2px(BaseContext, 5));
             textView.setGravity(Gravity.CENTER);
             textView.setTextColor(getResources().getColor(R.color.white));
             textView.setText(lv_list.get(i));
@@ -345,7 +392,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         mPopupWindow.setFocusable(true);
         ColorDrawable dw = new ColorDrawable(0xb0000000);
         mPopupWindow.setBackgroundDrawable(dw);
-        mPopupWindow.showAsDropDown(V, 0, 30);
+        mPopupWindow.showAsDropDown(V, 0, 0);
 
     }
 
@@ -415,12 +462,40 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 IData(page, LOAD_INITIALIZE);
                 break;
 
-            case R.id.right_txt:
+            case R.id.invite_friends_record_filter:
                 if (CheckNet(BaseContext)) return;
                 IPopupWindow(V);
                 break;
             case R.id.tv_shop_all:
                 LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends), Type_All);
+                break;
+
+            case R.id.invite_friends_record_back_iv://返回按钮
+                AInviteFriendRecord.this.finish();
+                overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
+                break;
+
+            case R.id.invite_friends_record_title_delete://删除搜索框内容
+                invite_friends_record_title.setText("");
+                invite_friends_record_title.setHint(R.string.invite_friends_record_scen_key);
+                if(scan_datass.size() == 0){
+                    invite_friends_record_list.setVisibility(View.VISIBLE);
+                    invite_friends_nodata_lay.setVisibility(View.GONE);
+                }
+
+                if (isScan) {
+                    mAdapter.FreshData(datass);
+                }
+                isScan = false;
+                break;
+
+            case R.id.invite_friends_record_sou_iv://搜索按钮
+                String scen_key = invite_friends_record_title.getText().toString();
+                if (StrUtils.checkMobile(BaseContext, scen_key)) {
+                    phone = scen_key;
+                    Current_Lv = Shop_All_Lv;
+                    IData(page, LOAD_INITIALIZE);
+                }
                 break;
 //            case text_view_id:
 //                LvSwitch(Shop_Lv1, lv_list.get(0), Type_Lv1);
@@ -454,6 +529,10 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
     private void LvSwitch(String switch_type, String titlename, int type) {
         if (type != click_type) {
+            invite_friends_record_title.setText("");
+            invite_friends_record_title.setHint(R.string.invite_friends_record_scen_key);
+            scan_type = 0;
+            phone = "";
             click_type = type;
             Current_Lv = switch_type;
             page = 1;
@@ -467,15 +546,35 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         mPopupWindow.dismiss();
     }
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (!StrUtils.isEmpty(s.toString())) {
+            invite_friends_record_title_delete.setVisibility(View.VISIBLE);
+        } else {
+            invite_friends_record_title_delete.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
     class OnPopClickListener implements View.OnClickListener {
         private int clickposition;
-        public OnPopClickListener(int position){
+
+        public OnPopClickListener(int position) {
             clickposition = position;
         }
 
         @Override
         public void onClick(View v) {
-            LvSwitch(clickposition+"", lv_list.get(clickposition), clickposition+2);
+            LvSwitch(clickposition + "", lv_list.get(clickposition), clickposition + 2);
         }
     }
 
@@ -513,7 +612,6 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
         page++;
         IData(page, LOAD_LOADMOREING);
     }
-
 
 
     class InviteFriendAdapter extends BaseAdapter {
@@ -622,10 +720,10 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             @Override
             public void LeftResult() {
 
-                ClipboardManager c= (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+                ClipboardManager c = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                 String content = friend.getPhone();
                 c.setText(content);
-                PromptManager.ShowCustomToast(BaseContext,"手机号复制成功");
+                PromptManager.ShowCustomToast(BaseContext, "手机号复制成功");
 
             }
 
@@ -644,45 +742,6 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
             }
         });
-
-//        final CustomDialog dialog = new CustomDialog(BaseContext,
-//                R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "电话联系", "微糖聊天");
-//        dialog.show();
-//        dialog.setTitleText("联系" + friend.getSeller_name());
-//        dialog.Settitles("人之相识，贵在相知，人之相知，贵在知心。—— 孟子");
-//        dialog.setCanceledOnTouchOutside(true);
-//        dialog.setcancelListener(new CustomDialog.oncancelClick() {
-//            @Override
-//            public void oncancelClick(View v) {
-//                if (CheckNet(BaseContext))
-//                    return;
-//                Intent intentPhone = new Intent(Intent.ACTION_CALL, Uri
-//                        .parse("tel:" + friend.getPhone()));
-//
-//                startActivity(intentPhone);
-//                dialog.dismiss();
-//
-//            }
-//        });
-//
-//        dialog.setConfirmListener(new CustomDialog.onConfirmClick() {
-//            @Override
-//            public void onConfirmCLick(View v) {
-//                if (CheckNet(BaseContext))
-//                    return;
-//                if (!StrUtils.isEmpty(friend.getSeller_id()))
-//                    PromptManager.SkipActivity(
-//                            BaseActivity,
-//                            new Intent(BaseActivity, AChatLoad.class)
-//                                    .putExtra(AChatLoad.Tage_TageId,
-//                                            friend.getSeller_id())
-//                                    .putExtra(AChatLoad.Tage_Name,
-//                                            friend.getSeller_name())
-//                                    .putExtra(AChatLoad.Tage_Iv,
-//                                            friend.getAvatar()));
-//                dialog.dismiss();
-//            }
-//        });
 
     }
 
@@ -742,15 +801,13 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
             if ("0".equals(friend.getIs_activate())) {
                 holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_putongdianpuxiaotubiao_nor));
-                holder.iv_lv.setImageResource(R.drawable.ic_putongdianpu_nor);
 
             } else {
                 holder.iv_friend_lv.setImageDrawable(BaseContext.getResources().getDrawable(R.drawable.ic_mingxingdianpuxiaotubiao_nor));
 
 
-                ImageLoaderUtil.Load2(friend.getMember_level_picture(), holder.iv_lv, R.drawable.error_iv2);
             }
-
+            ImageLoaderUtil.Load2(friend.getMember_level_picture(), holder.iv_lv, R.drawable.error_iv2);
             if (friends_datas.size() - 1 == position) {
                 holder.list_line.setVisibility(View.GONE);
             } else {

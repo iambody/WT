@@ -56,6 +56,7 @@ public class Constants {
     public static final int SOURCE_TYPE_MESSAGE = 1; // 源类型：消息
     public static final int SOURCE_TYPE_PAY = 2; // 源类型：支付
     public static final int SOURCE_TYPE_ORDER = 3; // 源类型：订单
+    public static final int SOURCE_TYPE_RETURN = 5; // 源类型：订单
     public static final int ACTION_PT_ORDER = 1;// 操作类型：普通下单
     public static final int ACTION_CG_ORDER = 2;// 操作类型：采购下单
     public static final int ACTION_TO_PAY = 3;// 操作类型：付款
@@ -949,6 +950,13 @@ public class Constants {
      * 等级
      */
     public static String Home_Level = "http://www.v-town.cc/levelrule.html";
+
+    /**
+     * 获取团队所有人数
+     */
+    public static String Invite_Team_info = Host
+            + "/v1/member/member/get-team";
+
     /**
      * 邀请直属下级列表
      */

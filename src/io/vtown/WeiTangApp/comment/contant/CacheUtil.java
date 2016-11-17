@@ -143,6 +143,12 @@ public class CacheUtil {
      * 我的上级缓存
      */
     private final static String Sp_My_Super = "my_super_sp";
+
+    /**
+     * 我的团队详情
+     */
+    private final static String Sp_My_Team = "my_team_sp";
+
     /**
      * 缓存首页数据
      */
@@ -551,6 +557,7 @@ public class CacheUtil {
         MyShow_Save(mpContext, "");
         Home_Save(mpContext, "");
         MyShow_Save(mpContext, "");
+        Invite_Team_Save(mpContext, "");
         Center_Set_Initve_Save(mpContext, "");
         Center_Wallet_Bank_List_Save(mpContext, "");
         Shop_Lv_Save(mpContext, "");
@@ -651,6 +658,32 @@ public class CacheUtil {
         SharedPreferences Sp = mPContext.getSharedPreferences(
                 Sp_Center_Set_Address, Context.MODE_PRIVATE);
         return Sp.getString("address", "");
+
+    }
+
+    /**
+     * 团队详情
+     */
+    public static void Invite_Team_Save(Context pContext, String myteam) {
+        SharedPreferences Sp = pContext.getSharedPreferences(
+                Sp_My_Team, Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+
+        editor.putString("myteam", myteam);
+
+        editor.commit();
+    }
+
+
+
+    /**
+     * 团队详情缓存获取
+     */
+    public static String  Invite_Team_Get(Context mPContext) {
+
+        SharedPreferences Sp = mPContext.getSharedPreferences(
+                Sp_My_Team, Context.MODE_PRIVATE);
+        return Sp.getString("myteam", "");
 
     }
 
