@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/ui_10_dip"
             android:focusable="true"
-            android:src="@drawable/new1"/>
+            android:src="@drawable/new1"
+            android:visibility="gone"/>
     </LinearLayout>
 </LinearLayout>

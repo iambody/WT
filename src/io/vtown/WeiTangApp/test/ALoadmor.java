@@ -4,15 +4,19 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.easy.mainsort.BSortGood;
+import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.view.custom.recycle.LoadMoreRecyclerView;
 import io.vtown.WeiTangApp.ui.ABase;
 
@@ -24,19 +28,34 @@ public class ALoadmor extends ABase {
     private MyItemRecyclerViewAdapter myItemRecyclerViewAdapter;
     private LoadMoreRecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private Button qiehuan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_loadmore);
-        myItemRecyclerViewAdapter=new MyItemRecyclerViewAdapter();
-        swipeRefreshLayout= (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
-        recyclerView= (LoadMoreRecyclerView) findViewById(R.id.list);
+        myItemRecyclerViewAdapter = new MyItemRecyclerViewAdapter();
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
+        recyclerView = (LoadMoreRecyclerView) findViewById(R.id.list);
+        qiehuan= (Button) findViewById(R.id.qiehuan);
+        qiehuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //切换网格模式
+                myItemRecyclerViewAdapter.switchMode(true);
+                recyclerView.switchLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                //切换正常模式
+//                myItemRecyclerViewAdapter.switchMode(false);
+//                recyclerView.switchLayoutManager(new LinearLayoutManager(ALoadmor.this));
+            }
+        });
+        recyclerView.setLoadingMore(false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myItemRecyclerViewAdapter);
         recyclerView.setAutoLoadMoreEnable(true);
-
-
+//        recyclerView.notifyMoreFinish(false);
+//        myItemRecyclerViewAdapter.notifyDataSetChanged();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -50,18 +69,25 @@ public class ALoadmor extends ABase {
                 recyclerView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        swipeRefreshLayout.setRefreshing(false);
-                        recyclerView.setLoadingMore(false);
+                        PromptManager.ShowCustomToast(BaseContext, "加载更多");
+//                        swipeRefreshLayout.setRefreshing(false);
+                         recyclerView.notifyMoreFinish(false);
                     }
                 }, 1000);
             }
         });
+
+//        recyclerView.setVisibility(View.GONE);
+//        recyclerView.getAdapter().notifyItemRemoved(recyclerView.getmLoadMorePosition());
+
+//        recyclerView.setAutoLoadMoreEnable(true);
+
     }
 
 
     public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-        private List<BSortGood> mValues;
+        private List<BSortGood> mValues = new ArrayList<>();
         private boolean mIsStagger;
 
 //        public MyItemRecyclerViewAdapter(List<BSortGood> items) {
@@ -83,6 +109,8 @@ public class ALoadmor extends ABase {
             mValues.addAll(datas);
         }
 
+
+
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             if (viewType == LoadMoreRecyclerView.TYPE_STAGGER) {
@@ -98,7 +126,7 @@ public class ALoadmor extends ABase {
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            BSortGood StaggerData = mValues.get(position);
+//            BSortGood StaggerData = mValues.get(position);
             if (mIsStagger) {
                 StaggerViewHolder staggerViewHolder = (StaggerViewHolder) holder;
 
@@ -111,7 +139,8 @@ public class ALoadmor extends ABase {
 
         @Override
         public int getItemCount() {
-            return mValues.size();
+            return 25;
+//            return mValues.size();
         }
 
         //九宫格的Holder

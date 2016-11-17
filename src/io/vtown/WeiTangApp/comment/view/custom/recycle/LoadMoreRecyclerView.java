@@ -360,4 +360,9 @@ public class LoadMoreRecyclerView extends RecyclerView {
         getAdapter().notifyItemRemoved(mLoadMorePosition);
         mIsLoadingMore = false;
     }
+
+
+    public int getmLoadMorePosition() {
+        return mLoadMorePosition;
+    }
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/item_main_sort_iv_stagger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/ui_2_dip"
+        >
+
+        <TextView
+            android:id="@+id/item_main_sort_name_stagger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="2"
+            android:paddingTop="@dimen/ui_5_dip"
+            android:textColor="@color/app_black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/item_main_sort_price_stagger"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:lines="1"
+                android:textColor="@color/app_fen"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/item_main_sort_oring_price_stagger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:layout_marginRight="@dimen/ui_5_dip"
+                android:textColor="@color/app_gray"
+                android:textSize="@dimen/ui_10_dip"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/ui_5_dip"
+            android:paddingTop="@dimen/ui_5_dip">
+
+            <TextView
+                android:id="@+id/item_main_sort_xiaoliang_stagger"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:lines="1"
+                android:textSize="@dimen/ui_12_dip"
+                android:textColor="@color/app_gray"/>
+
+            <TextView
+                android:id="@+id/item_main_sort_jifen_stagger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/ui_10_dip"
+                android:textSize="@dimen/ui_12_dip"
+                android:textColor="@color/app_gray"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

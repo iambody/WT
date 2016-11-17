@@ -50,7 +50,7 @@ public abstract class NHttpBase {
     /**
      * 超时时间
      */
-    private int SOCKET_TIMEOUT = 10 * 1000;
+    private int SOCKET_TIMEOUT = 20 * 1000;
 
     //    private RequestQueue queue;
     private StringRequest MyStringRequest;

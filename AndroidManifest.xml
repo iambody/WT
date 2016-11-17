@@ -722,7 +722,7 @@
             android:theme="@style/MySortDialogStyleTop"
             />
         <activity
-            android:name=".test.ARetrofitTest"
+            android:name=".test.ALoadmor"
             android:launchMode="singleTask"/>
 
         <activity

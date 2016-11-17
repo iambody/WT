@@ -49,6 +49,7 @@ import io.vtown.WeiTangApp.comment.view.custom.HomeScrollView;
 import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
+import io.vtown.WeiTangApp.test.ALoadmor;
 import io.vtown.WeiTangApp.test.ARetrofitTest;
 import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
@@ -578,7 +579,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         switch (view.getId()) {
             case R.id.fragment_newhome_iv_sao:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                        ARetrofitTest.class));
+                        ALoadmor.class));
 //                        CaptureActivity.class));
                 break;
             case R.id.fragment_newhome_iv_sou:

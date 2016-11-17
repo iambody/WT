@@ -9,15 +9,15 @@
         android:layout_height="@dimen/titlebarheingh"
         android:background="@color/app_fen"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingTop="10dp">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/new1"
+
+
             android:visibility="invisible"/>
 
         <RelativeLayout
@@ -47,13 +47,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/sort_good_textView"
-android:layout_centerVertical="true"
                 android:src="@drawable/sousou_gray"
                 />
         </RelativeLayout>
 
-        <ImageView
+        <RelativeLayout
+            android:id="@+id/main_sort_good_control_lay"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            >
+
+            <ImageView
+                android:id="@+id/main_sort_good_control_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ui_5_dip"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:src="@drawable/f_sort_iv_grd"/>
+        </RelativeLayout>
+        <!--<ImageView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +83,7 @@ android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:src="@drawable/new1"
-            android:visibility="invisible"/>
+            android:visibility="invisible"/>-->
     </LinearLayout>
     <!-- title*** -->
     <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu
@@ -150,20 +172,43 @@ android:layout_centerVertical="true"
         </RelativeLayout>
     </LinearLayout>
 
-    <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
-        android:id="@+id/fragment_sort_refrash"
+    <!-- <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+         android:id="@+id/fragment_sort_refrash"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_weight="1"
+         android:visibility="gone">
+
+         <ListView
+             android:id="@+id/fragment_sort_ls"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:divider="@color/app_line"
+             android:dividerHeight="@dimen/line_size2"
+             android:scrollbars="none"/>
+     </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
+ -->
+
+
+    <com.chanven.lib.cptr.PtrClassicFrameLayout
+        xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fragment_sort_frash_lay"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/app_line1"
+        cube_ptr:ptr_duration_to_close="200"
+        cube_ptr:ptr_duration_to_close_header="1000"
+        cube_ptr:ptr_keep_header_when_refresh="true"
+        cube_ptr:ptr_pull_to_fresh="false"
+        cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+        cube_ptr:ptr_resistance="1.7">
 
-        <ListView
-            android:id="@+id/fragment_sort_ls"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_sort_frash_recycleview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@color/app_line"
-            android:dividerHeight="@dimen/line_size2"
-            android:scrollbars="none"/>
-    </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
+            android:layout_height="match_parent"/>
+    </com.chanven.lib.cptr.PtrClassicFrameLayout>
 
     <include
         android:id="@+id/fragment_sort_nodata_lay"

@@ -6,6 +6,11 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
     >
+<Button
+    android:id="@+id/qiehuan"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="切换"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh_layout"
