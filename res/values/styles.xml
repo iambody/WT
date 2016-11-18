@@ -445,14 +445,14 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
-        <item name="android:clickable">true</item>
+        <item name="android:clickable">false</item>
         <item name="android:textColor">@color/gray</item>
-        <item name="android:paddingTop">@dimen/ui_15_dip</item>
-        <item name="android:paddingBottom">@dimen/ui_15_dip</item>
+        <item name="android:paddingTop">@dimen/ui_14_dip</item>
+
         <item name="android:paddingLeft">@dimen/ui_30_dip</item>
         <item name="android:paddingRight">@dimen/ui_30_dip</item>
 
     </style>
-
+    <!--<item name="android:paddingBottom">@dimen/ui_15_dip</item>-->
 
 </resources>

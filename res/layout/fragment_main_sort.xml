@@ -172,7 +172,7 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <!-- <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
+      <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
          android:id="@+id/fragment_sort_refrash"
          android:layout_width="match_parent"
          android:layout_height="0dp"
@@ -187,10 +187,10 @@
              android:dividerHeight="@dimen/line_size2"
              android:scrollbars="none"/>
      </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
- -->
 
 
-    <com.chanven.lib.cptr.PtrClassicFrameLayout
+
+    <!--<com.chanven.lib.cptr.PtrClassicFrameLayout
         xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fragment_sort_frash_lay"
         android:layout_width="match_parent"
@@ -208,7 +208,7 @@
             android:id="@+id/fragment_sort_frash_recycleview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-    </com.chanven.lib.cptr.PtrClassicFrameLayout>
+    </com.chanven.lib.cptr.PtrClassicFrameLayout>-->
 
     <include
         android:id="@+id/fragment_sort_nodata_lay"

@@ -88,10 +88,27 @@ public class AMianSort extends ABase {
     TextView popSortRangScoreTag;//积分的显示标题
     @BindView(R.id.pop_maitab_sort_hind_sousou_iv)
     ImageView popMaitabSortHindSousouIv;
+    @BindView(R.id.pop_maitab_sort_type_lay)
+    LinearLayout popMaitabSortTypeLay;
+    @BindView(R.id.pop_maitab_sort_price_lay)
+    LinearLayout popMaitabSortPriceLay;
+    @BindView(R.id.pop_maitab_sort_jifen_lay)
+    LinearLayout popMaitabSortJifenLay;
+    @BindView(R.id.pop_maitab_sort_branc_lay)
+    LinearLayout popMaitabSortBrancLay;
+    @BindView(R.id.pop_maitab_sort_type_state_tag)
+    TextView popMaitabSortTypeStateTag;
+    @BindView(R.id.pop_maitab_sort_price_down_state_tag)
+    TextView popMaitabSortPriceDownStateTag;
+    @BindView(R.id.pop_maitab_sort_jifen_state_tag)
+    TextView popMaitabSortJifenStateTag;
+    @BindView(R.id.pop_maitab_sort_branc_state_tag)
+    TextView popMaitabSortBrancStateTag;
 
 
     //我左侧的文本控制列表
     private List<TextView> MyLeft;
+    private List<LinearLayout> MyLeftLay;
     //我的二级ap
     private MySortAp mySortAp;
     private MyBrandAp myBrnadAp;
@@ -190,6 +207,11 @@ public class AMianSort extends ABase {
         MyLeft.add(popMaitabSortPrice);
         MyLeft.add(popMaitabSortJifen);
         MyLeft.add(popMaitabSortBranc);
+        MyLeftLay = new ArrayList<>();
+        MyLeftLay.add(popMaitabSortTypeLay);
+        MyLeftLay.add(popMaitabSortPriceLay);
+        MyLeftLay.add(popMaitabSortJifenLay);
+        MyLeftLay.add(popMaitabSortBrancLay);
 
         //开始二级分类的Ap的初始化
         mySortAp = new MySortAp();
@@ -204,7 +226,7 @@ public class AMianSort extends ABase {
         myRangScoreAp = new MyRangAp();
         popMaitabRangscoreLs.setAdapter(myRangScoreAp);
         if (catoryid.equals("0")) {//全部进来 应该请求的是价格
-            popMaitabSortType.setVisibility(View.GONE);
+            popMaitabSortTypeLay.setVisibility(View.GONE);
             LeftPostion = 1;
             CheckLeftPostion(LeftPostion);
             popMaitabSortLs.setVisibility(View.GONE);
@@ -241,8 +263,17 @@ public class AMianSort extends ABase {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (LeftPostion) {
                     case 0:
+                        if (position == mySortAp.GetSelectPostion()) {
+                            mySortAp.SetSelectPostion(-1);
+                            IsReSet = false;
+                            popMaitabSortTypeStateTag.setVisibility(View.INVISIBLE);
+                            return;
+                        }
                         mySortAp.SetSelectPostion(position);
                         IsReSet = false;
+                        //点击item后需要立马显示左侧类别按钮下边的tag
+                        popMaitabSortTypeStateTag.setText("(" + mySortAp.GetDatas().get(position).getCate_name() + ")");
+                        popMaitabSortTypeStateTag.setVisibility(View.VISIBLE);
                         break;
                     case 1:
                         break;
@@ -264,8 +295,19 @@ public class AMianSort extends ABase {
                     case 2:
                         break;
                     case 3:
+                        if (position == myBrnadAp.GetSelectPostion()) {
+                            myBrnadAp.SetSelectPostion(-1);
+                            IsReSet = false;
+                            popMaitabSortBrancStateTag.setVisibility(View.INVISIBLE);
+                            return;
+                        }
+
                         myBrnadAp.SetSelectPostion(position);
                         IsReSet = false;
+                        //品牌左边按钮的下边Tag的展示
+                        popMaitabSortBrancStateTag.setText(String.format("(%s)", myBrnadAp.GetDatas().get(position)));
+                        popMaitabSortBrancStateTag.setVisibility(View.VISIBLE);
+
                         break;
                 }
             }
@@ -277,14 +319,29 @@ public class AMianSort extends ABase {
                     case 0:
                         break;
                     case 1:
+                        if (position == myRangAp.GetSelectPostion()) {
+                            IsReSet = false;
+                            myRangAp.SetSelectPostion(-1);
+                            popMaitabSortPriceDownStateTag.setVisibility(View.INVISIBLE);
+                            return;
+                        }
+
                         IsReSet = false;
                         myRangAp.SetSelectPostion(position);
 
                         IsZiDingYiPrice = false;
                         ZiDingYiPrice = null;
-                        popSortRangPriceTag.setTextColor(getResources().getColor(R.color.app_black));
+                        popSortRangPriceTag.setTextColor(getResources().getColor(R.color.gray));
                         popSortRangPriceMinEd.setText("");
                         popSortRangPriceMaxEd.setText("");
+                        //需要对左侧按钮下边的Tag标签进行展示。。。。。。。。
+                        if (null == myRangAp.GetDatas().get(position).getMax())
+                            popMaitabSortPriceDownStateTag.setText("大于" + myRangAp.GetDatas().get(position).getMin());
+                        else
+                            popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)", "" + myRangAp.GetDatas().get(position).getMin(), "" + myRangAp.GetDatas().get(position).getMax()));
+
+                        popMaitabSortPriceDownStateTag.setVisibility(View.VISIBLE);
+
                         break;
                     case 2:
                         break;
@@ -303,15 +360,24 @@ public class AMianSort extends ABase {
                     case 1:
                         break;
                     case 2:
+                        if (position == myRangScoreAp.GetSelectPostion()) {
+                            IsReSet = false;
+                            myRangScoreAp.SetSelectPostion(-1);
+                            popMaitabSortJifenStateTag.setVisibility(View.INVISIBLE);
+                            return;
+                        }
+
                         IsReSet = false;
                         myRangScoreAp.SetSelectPostion(position);
 
                         IsZiDingYiScore = false;
                         ZiDingYiScore = null;
-                        popSortRangScoreTag.setTextColor(getResources().getColor(R.color.app_black));
+                        popSortRangScoreTag.setTextColor(getResources().getColor(R.color.gray));
                         popSortRangScoreMinEd.setText("");
                         popSortRangScoreMaxEd.setText("");
-
+//开始显示左侧按钮下边的tag标签
+                        popMaitabSortJifenStateTag.setText(myRangScoreAp.GetDatas().get(position).getMax() == null ? "(大于" + myRangScoreAp.GetDatas().get(position) + ")" : String.format("(%s-%s)", "" + myRangScoreAp.GetDatas().get(position).getMin(), "" + myRangScoreAp.GetDatas().get(position).getMax()));
+                        popMaitabSortJifenStateTag.setVisibility(View.VISIBLE);
                         break;
                     case 3:
                         break;
@@ -322,24 +388,36 @@ public class AMianSort extends ABase {
 
     private void CheckLeftPostion(int postion) {
         for (int i = 0; i < 4; i++) {
-            if (i == postion) {
-                MyLeft.get(i).setBackgroundColor(getResources().getColor(R.color.white));
+            if (i == postion) {//MyLeft
+                MyLeftLay.get(i).setBackgroundColor(getResources().getColor(R.color.white));
             } else {
-                MyLeft.get(i).setBackgroundColor(getResources().getColor(R.color.transparent));
+                MyLeftLay.get(i).setBackgroundColor(getResources().getColor(R.color.transparent));
             }
         }
     }
 
-    @OnClick({R.id.pop_maitab_sort_type, R.id.pop_maitab_sort_price, R.id.pop_maitab_sort_jifen, R.id.pop_maitab_sort_branc, R.id.pop_maitab_queding, R.id.pop_maitab_reset, R.id.pop_maitab_cancle, R.id.pop_sort_rang_price_bt, R.id.pop_sort_rang_score_bt, R.id.pop_maitab_sort_hind_sousou_iv})
+    //    ,R.id.pop_maitab_sort_type, R.id.pop_maitab_sort_price, R.id.pop_maitab_sort_jifen, R.id.pop_maitab_sort_branc
+    @OnClick({R.id.pop_maitab_sort_type_lay, R.id.pop_maitab_sort_price_lay, R.id.pop_maitab_sort_jifen_lay, R.id.pop_maitab_sort_branc_lay, R.id.pop_maitab_queding, R.id.pop_maitab_reset, R.id.pop_maitab_cancle, R.id.pop_sort_rang_price_bt, R.id.pop_sort_rang_score_bt, R.id.pop_maitab_sort_hind_sousou_iv})
     public void onClick(View view) {
         switch (view.getId()) {
+
+//            case R.id.pop_maitab_sort_type_lay://类型的左侧外层布局点击
+//                break;
+//            case R.id.pop_maitab_sort_price_lay://价格的左侧外层布局点击
+//                break;
+//            case R.id.pop_maitab_sort_jifen_lay://积分的左侧外层布局点击
+//                break;
+//            case R.id.pop_maitab_sort_branc_lay://品牌的左侧外层布局点击
+//                break;
+
             case R.id.pop_sort_rang_price_bt://价格区间的确定按钮
                 RangEdCommeint(popSortRangPriceMinEd, popSortRangPriceMaxEd, 1);
                 break;
             case R.id.pop_sort_rang_score_bt://积分区间的确定按钮
                 RangEdCommeint(popSortRangScoreMinEd, popSortRangScoreMaxEd, 2);
                 break;
-            case R.id.pop_maitab_sort_type:
+            case R.id.pop_maitab_sort_type_lay://类型的左侧外层布局点击
+//            case R.id.pop_maitab_sort_type://第一个类别********************************************
                 LeftPostion = 0;
                 CheckLeftPostion(LeftPostion);
 
@@ -354,7 +432,8 @@ public class AMianSort extends ABase {
                 popMaitabSortBrandGridview.setVisibility(View.GONE);
                 popMaitabSortLs.setVisibility(View.VISIBLE);
                 break;
-            case R.id.pop_maitab_sort_price:
+            case R.id.pop_maitab_sort_price_lay://价格的左侧外层布局点击
+//            case R.id.pop_maitab_sort_price://第二个价格*************************************
                 LeftPostion = 1;
                 CheckLeftPostion(LeftPostion);
 
@@ -366,7 +445,7 @@ public class AMianSort extends ABase {
                     popSortRangPriceMinEd.setText(ZiDingYiPrice.getMin());
                     popSortRangPriceMaxEd.setText(ZiDingYiPrice.getMax());
                 } else {
-                    popSortRangPriceTag.setTextColor(getResources().getColor(R.color.app_black));
+                    popSortRangPriceTag.setTextColor(getResources().getColor(R.color.gray));
                     popSortRangPriceMinEd.setText("");
                     popSortRangPriceMaxEd.setText("");
                 }
@@ -380,7 +459,8 @@ public class AMianSort extends ABase {
                 if (myRangAp.getCount() == 0)
                     Net_Rang_Price();
                 break;
-            case R.id.pop_maitab_sort_jifen:
+            case R.id.pop_maitab_sort_jifen_lay://积分的左侧外层布局点击
+//            case R.id.pop_maitab_sort_jifen://第三个积分*************************************
                 LeftPostion = 2;
                 CheckLeftPostion(LeftPostion);
 
@@ -392,7 +472,7 @@ public class AMianSort extends ABase {
                     popSortRangScoreMinEd.setText(ZiDingYiScore.getMin());
                     popSortRangScoreMaxEd.setText(ZiDingYiScore.getMax());
                 } else {
-                    popSortRangScoreTag.setTextColor(getResources().getColor(R.color.app_black));
+                    popSortRangScoreTag.setTextColor(getResources().getColor(R.color.gray));
                     popSortRangScoreMinEd.setText("");
                     popSortRangScoreMaxEd.setText("");
                 }
@@ -407,7 +487,8 @@ public class AMianSort extends ABase {
 
 
                 break;
-            case R.id.pop_maitab_sort_branc://
+            case R.id.pop_maitab_sort_branc_lay://品牌的左侧外层布局点击
+//            case R.id.pop_maitab_sort_branc:// 第四个品牌*************************************************
                 LeftPostion = 3;
                 CheckLeftPostion(LeftPostion);
                 //开始请求数据
@@ -554,6 +635,12 @@ public class AMianSort extends ABase {
 
                         ZiDingYiPrice = null;
                         ZiDingYiScore = null;
+                        //既然已经确定重置了那么就可以先把
+                        popMaitabSortTypeStateTag.setVisibility(View.INVISIBLE);
+                        popMaitabSortPriceDownStateTag.setVisibility(View.INVISIBLE);
+                        popMaitabSortJifenStateTag.setVisibility(View.INVISIBLE);
+                        popMaitabSortBrancStateTag.setVisibility(View.INVISIBLE);
+
 //                        sssssss
                     }
                 });
@@ -600,11 +687,13 @@ public class AMianSort extends ABase {
 
             if (myRangAp.GetSelectPostion() == -1) {//没选择
 
-
             } else {//已经选择
                 myRangAp.SetSelectPostion(-1);
-            }
 
+            }
+            //需要显示价格区间左侧的标签*********
+            popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)",popSortRangMinEd.getText().toString().trim(),popSortRangMaxEd.getText().toString().trim()));
+            popMaitabSortPriceDownStateTag.setVisibility(View.VISIBLE);
         } else {//积分的区间的处理
             IsZiDingYiScore = true;
             ZiDingYiScore = new BSortRang(popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim());
@@ -615,7 +704,9 @@ public class AMianSort extends ABase {
             } else {//已经选择过
                 myRangScoreAp.SetSelectPostion(-1);
             }
-
+            //需要显示积分左侧的标签
+            popMaitabSortJifenStateTag.setText(String.format("(%s-%s)",popSortRangMinEd.getText().toString().trim(),popSortRangMaxEd.getText().toString().trim()));
+            popMaitabSortJifenStateTag.setVisibility(View.VISIBLE);
         }
         PromptManager.ShowCustomToast(BaseContext, String.format("%s区间选择成功", 1 == i ? "价格" : "积分"));
         hintKbTwo();
@@ -636,6 +727,13 @@ public class AMianSort extends ABase {
 
                 if (IsRecover) {
                     mySortAp.SetSelectPostion(SecondSortId_Postion);
+                    if (SecondSortId_Postion != -1) {///需要展示价格下边的tag
+                        BSortCategory data = dataresult.get(SecondSortId_Postion);
+                        popMaitabSortTypeStateTag.setText(String.format("(%s)", data.getCate_name()));
+                        popMaitabSortTypeStateTag.setVisibility(View.VISIBLE);
+                    } else {
+                        popMaitabSortTypeStateTag.setVisibility(View.INVISIBLE);
+                    }
                 }
             }
 
@@ -662,6 +760,12 @@ public class AMianSort extends ABase {
 
             if (IsRecover) {
                 myBrnadAp.SetSelectPostion(BrandName_Postion);
+                if (BrandName_Postion != -1) {
+                    popMaitabSortBrancStateTag.setText(String.format("(%s)", dataresult.get(BrandName_Postion)));
+                    popMaitabSortBrancStateTag.setVisibility(View.VISIBLE);
+                } else {
+                    popMaitabSortBrancStateTag.setVisibility(View.INVISIBLE);
+                }
             }
             return;
         }
@@ -700,6 +804,17 @@ public class AMianSort extends ABase {
 
             if (IsRecover) {
                 myRangAp.SetSelectPostion(PriceSort_Postion);
+                if (PriceSort_Postion != -1) {
+                    if (ResultPrice.get(PriceSort_Postion).getMax() == null) {
+                        popMaitabSortPriceDownStateTag.setText("大于" + ResultPrice.get(PriceSort_Postion).getMin());
+                    } else
+                        popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)", "" + ResultPrice.get(PriceSort_Postion).getMin(), "" + ResultPrice.get(PriceSort_Postion).getMax()));
+
+                    popMaitabSortPriceDownStateTag.setVisibility(View.VISIBLE);
+                } else {
+                    popMaitabSortPriceDownStateTag.setVisibility(View.INVISIBLE);
+                }
+
             }
             return;
         }
@@ -736,6 +851,12 @@ public class AMianSort extends ABase {
 
             if (IsRecover) {
                 myRangScoreAp.SetSelectPostion(ScoreSort_Postion);
+                if (ScoreSort_Postion != -1) {
+                    popMaitabSortJifenStateTag.setText(ResultPrice.get(ScoreSort_Postion).getMax() == null ? "(大于" + ResultPrice.get(ScoreSort_Postion).getMin() + ")" : String.format("(%s-%s)", "" + ResultPrice.get(ScoreSort_Postion).getMin(), "" + ResultPrice.get(ScoreSort_Postion).getMax()));
+                    popMaitabSortJifenStateTag.setVisibility(View.VISIBLE);
+                } else {
+                    popMaitabSortJifenStateTag.setVisibility(View.INVISIBLE);
+                }
             }
             return;
         }

@@ -1,19 +1,19 @@
 package io.vtown.WeiTangApp.fragment.main;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,7 +23,6 @@ import com.chanven.lib.cptr.PtrClassicFrameLayout;
 import com.chanven.lib.cptr.PtrDefaultHandler;
 import com.chanven.lib.cptr.PtrFrameLayout;
 import com.chanven.lib.cptr.loadmore.OnLoadMoreListener;
-import com.chanven.lib.cptr.recyclerview.RecyclerAdapterWithHF;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +46,6 @@ import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
-import io.vtown.WeiTangApp.comment.view.DividerItemDecoration;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HBaseAdapter;
 import io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu;
@@ -55,6 +53,7 @@ import io.vtown.WeiTangApp.comment.view.pop.PMainTabSort;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.AMianSort;
+import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.ui.ASouSouGood;
 
 /**
@@ -85,10 +84,10 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     ImageView sortGoodShaixuanIv;//筛选的右边图片
     @BindView(R.id.sort_good_shaixuan_lay)
     RelativeLayout sortGoodShaixuanLay;//筛选的点击布局布局
-    //    @BindView(R.id.fragment_sort_ls)
-//    ListView fragmentSortLs;
-//    @BindView(R.id.fragment_sort_refrash)
-//    RefreshLayout fragmentSortRefrash;
+    @BindView(R.id.fragment_sort_ls)
+    ListView fragmentSortLs;
+    @BindView(R.id.fragment_sort_refrash)
+    RefreshLayout fragmentSortRefrash;
     @BindView(R.id.main_sort_good_control_iv)
     ImageView mainSortGoodControlIv;
     @BindView(R.id.iv_error)
@@ -99,21 +98,9 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     Button btnAddNewBankCard;
     @BindView(R.id.btn_add_new_alipay1)
     Button btnAddNewAlipay1;
-    @BindView(R.id.fragment_sort_frash_recycleview)
-    RecyclerView fragmentSortFrashRecycleview;
-    @BindView(R.id.fragment_sort_frash_lay)
-    PtrClassicFrameLayout fragmentSortFrashLay;
-    @BindView(R.id.main_sort_good_control_lay)
-    RelativeLayout mainSortGoodControlLay;
-
 
     //ls==>recycleview***************************
-    private SortRecycleAp sortRecycleAp;
-    //添加Header和Footer的封装类
-    private RecyclerAdapterWithHF HFAdapter;
-    private List<BSortGood> SortDatas = new ArrayList<>();
-    LinearLayoutManager layoutManager;
-    StaggeredGridLayoutManager staggeredGridLayoutManager;
+
     //ls==>recycleview***************************
     private View fragment_sort_nodata_lay;
     private boolean IsUpSortZoreClick = false;
@@ -230,8 +217,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
         if (LoadType == INITIALIZE) {
             PromptManager.showtextLoading(BaseContext, "加载中....");
             try {
-//                fragmentSortRefrash.setLoading(false);
-                fragmentSortFrashLay.refreshComplete();
+                fragmentSortRefrash.setLoading(false);
             } catch (Exception e) {
 
             }
@@ -275,67 +261,25 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
         fSortGoofdContainer.setCheckedBackground(R.color.app_fen);
 //        fSortGoofdContainer.SetCheckedTxtColor(getResources().getColor(R.color.gold));
         fSortGoofdContainer.setAdapter(new SortMenuAdapter());
-//        fragmentSortRefrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
-//        fragmentSortRefrash.setOnLoadListener(this);
+        fragmentSortRefrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        fragmentSortRefrash.setOnLoadListener(this);
 //        fragmentSortRefrash.setCanLoadMore(false);
 //        fragmentSortRefrash
         //上边选择的textview的设置
-
-        mySortAdapter = new SortAp();
-//        fragmentSortLs.setAdapter(mySortAdapter);
-//        fragmentSortLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                BSortGood data = (BSortGood) parent.getItemAtPosition(position);
-//                PromptManager.SkipActivity(BaseActivity,
-//                        new Intent(BaseActivity, AGoodDetail.class)
-//                                .putExtra("goodid", data.getId()));
-//            }
-//        });
-
-//开始设置recycleview和对应的Ap********************************
-        layoutManager = new LinearLayoutManager(BaseContext);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        fragmentSortFrashRecycleview.setLayoutManager(layoutManager);
-        fragmentSortFrashRecycleview.setHasFixedSize(true);
-        fragmentSortFrashRecycleview.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.VERTICAL, Color.TRANSPARENT, 1));
-        fragmentSortFrashRecycleview.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.HORIZONTAL, Color.TRANSPARENT, 1));
-
-        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-//
-        fragmentSortFrashLay.setLastUpdateTimeRelateObject(this);//设置刷新支持时间
-        fragmentSortFrashLay.setResistance(1.7f);
-        fragmentSortFrashLay.setDurationToCloseHeader(1000);
-        // 默认为false
-        fragmentSortFrashLay.setPullToRefresh(false);
-        // 默认为true
-        fragmentSortFrashLay.setKeepHeaderWhenRefresh(true);
-
-        sortRecycleAp = new SortRecycleAp();
-        HFAdapter = new RecyclerAdapterWithHF(sortRecycleAp);
-        fragmentSortFrashRecycleview.setAdapter(HFAdapter);
-//        fragmentSortFrashRecycleview.set
-        //下拉刷新
-        fragmentSortFrashLay.setPtrHandler(new PtrDefaultHandler() {
-            @Override
-            public void onRefreshBegin(PtrFrameLayout frame) {
-
-            }
-        });
-        //上拉加载更多
-        fragmentSortFrashLay.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void loadMore() {
-
-                PromptManager.ShowCustomToast(BaseContext, "加载lll");
-                if (IsGoodsGradview) {
-                    fragmentSortFrashLay.loadMoreComplete(true);
-                }
-//                fragmentSortFrashLay.loadMoreComplete(true);
-//                fragmentSortFrashLay.setLoadMoreEnable(false);
-            }
-        });
         GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
+        mySortAdapter = new SortAp();
+        fragmentSortLs.setAdapter(mySortAdapter);
+        fragmentSortLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BSortGood data = (BSortGood) parent.getItemAtPosition(position);
+                PromptManager.SkipActivity(BaseActivity,
+                        new Intent(BaseActivity, AGoodDetail.class)
+                                .putExtra("goodid", data.getId()));
+            }
+        });
+
+
     }
 
 
@@ -382,18 +326,13 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     /**
      * 开始获取商品列表
      */
-    @OnClick({R.id.fragment_main_sort_sou_lay, R.id.main_sort_good_control_lay, R.id.sort_good_zonghe, R.id.sort_good_jifen, R.id.sort_good_xiaoliang, R.id.sort_good_price_lay, R.id.sort_good_shaixuan_lay})
+    @OnClick({R.id.fragment_main_sort_sou_lay, R.id.main_sort_good_control_iv, R.id.sort_good_zonghe, R.id.sort_good_jifen, R.id.sort_good_xiaoliang, R.id.sort_good_price_lay, R.id.sort_good_shaixuan_lay})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.main_sort_good_control_lay:
+            case R.id.main_sort_good_control_iv:
                 IsGoodsGradview = !IsGoodsGradview;
-                sortRecycleAp.notifyDataSetChanged();
                 mainSortGoodControlIv.setImageResource(IsGoodsGradview ? R.drawable.f_sort_iv_grd : R.drawable.f_sort_iv_ls);
 //开始切换数据
-                if (IsGoodsGradview)
-                    fragmentSortFrashRecycleview.setLayoutManager(staggeredGridLayoutManager);
-                else
-                    fragmentSortFrashRecycleview.setLayoutManager(layoutManager);
 
                 break;
             case R.id.sort_good_zonghe://点击综合&&点击综合价格//积分//销量//全部清空
@@ -578,6 +517,8 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     }
 
 
+
+
     class SortMenuAdapter extends HBaseAdapter {
         @Override
         public List<String> getMenuItems() {
@@ -620,11 +561,7 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
             GetGoodsLs(CurrentPage, "weight", false, INITIALIZE);
 
 
-//            if (fragmentSortRefrash.isRefreshing()) fragmentSortRefrash.setRefreshing(false);
-            if (fragmentSortFrashLay.isRefreshing()) {
-                fragmentSortFrashLay.refreshComplete();
-            }
-
+            if (fragmentSortRefrash.isRefreshing()) fragmentSortRefrash.setRefreshing(false);
 //            PromptManager.ShowCustomToast(BaseContext, "位置==>" + MySortCategory.get(position).getCate_name());
         }
 
@@ -639,17 +576,14 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     public void onPause() {
         super.onPause();
 //sss
-//        if (fragmentSortRefrash.isRefreshing()) fragmentSortRefrash.setRefreshing(false);
-        if (fragmentSortFrashLay.isRefreshing()) {
-            fragmentSortFrashLay.refreshComplete();
-        }
+        if (fragmentSortRefrash.isRefreshing()) fragmentSortRefrash.setRefreshing(false);
     }
 
     @Override
     public void getResult(int Code, String Msg, BComment Data) {
 
         String ResultStr = Data.getHttpResultStr();
-        IDataView(fragmentSortFrashLay, fragment_sort_nodata_lay, NOVIEW_RIGHT);
+        IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_RIGHT);
         switch (Data.getHttpResultTage()) {
             case 0://获取列表
                 switch (Data.getHttpLoadType()) {
@@ -658,29 +592,24 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                         if (StrUtils.isEmpty(ResultStr)) {
                             PromptManager.ShowCustomToast(BaseContext, "暂无数据");
                             mySortAdapter.FrashData(new ArrayList<BSortGood>());
-                            IDataView(fragmentSortFrashLay, fragment_sort_nodata_lay, NOVIEW_ERROR);
+                            IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_ERROR);
                             ShowErrorCanLoad(getResources().getString(R.string.error_null_good));
                             ShowErrorIv(R.drawable.error_sou);
                             return;
                         }
-                        fragmentSortFrashRecycleview.smoothScrollToPosition(-20);
-                        SortDatas = JSON.parseArray(ResultStr, BSortGood.class);
+                        fragmentSortLs.smoothScrollToPosition(-20);
+                        List<BSortGood> ListGoods = JSON.parseArray(ResultStr, BSortGood.class);
 
-                        mySortAdapter.notifyDataSetChanged();
-                        if (SortDatas.size() < 20) {
-//                            fragmentSortRefrash.setCanLoadMore(false);
-//                            fragmentSortFrashLay.refreshComplete();
-                            fragmentSortFrashLay.setLoadMoreEnable(false);
+                        mySortAdapter.FrashData(ListGoods);
+                        if (ListGoods.size() < 20) {
+                            fragmentSortRefrash.setCanLoadMore(false);
                         }
-                        if (SortDatas.size() == 20) {
-//                            fragmentSortRefrash.setCanLoadMore(true);
-//                            fragmentSortFrashLay.refreshComplete();
-                            fragmentSortFrashLay.setLoadMoreEnable(true);
+                        if (ListGoods.size() == 20) {
+                            fragmentSortRefrash.setCanLoadMore(true);
                         }
                         break;
                     case LOADMOREING:
-//                        fragmentSortRefrash.setLoading(false);
-                        fragmentSortFrashLay.loadMoreComplete(true);
+                        fragmentSortRefrash.setLoading(false);
                         //
                         if (StrUtils.isEmpty(ResultStr)) {
                             PromptManager.ShowCustomToast(BaseContext, "没更多商品咯");
@@ -689,22 +618,20 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                         List<BSortGood> ListGoodsmore = JSON.parseArray(ResultStr, BSortGood.class);
                         mySortAdapter.AddFrashData(ListGoodsmore);
                         if (ListGoodsmore.size() < 20) {
-//                            fragmentSortRefrash.setCanLoadMore(false);
-                            fragmentSortFrashLay.setLoadMoreEnable(false);
+                            fragmentSortRefrash.setCanLoadMore(false);
                         }
                         if (ListGoodsmore.size() == 20) {
-//                            fragmentSortRefrash.setCanLoadMore(true);
-                            fragmentSortFrashLay.setLoadMoreEnable(true);
+                            fragmentSortRefrash.setCanLoadMore(true);
                         }
                         break;
                     case REFRESHING:
-                        fragmentSortFrashRecycleview.smoothScrollToPosition(-20);
-//                        fragmentSortRefrash.setRefreshing(false);
-                        fragmentSortFrashLay.refreshComplete();
+                        fragmentSortLs.smoothScrollToPosition(-20);
+                        fragmentSortRefrash.setRefreshing(false);
+
                         if (StrUtils.isEmpty(ResultStr)) {
                             PromptManager.ShowCustomToast(BaseContext, "暂无数据");
                             mySortAdapter.FrashData(new ArrayList<BSortGood>());
-                            IDataView(fragmentSortFrashLay, fragment_sort_nodata_lay, NOVIEW_ERROR);
+                            IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_ERROR);
                             ShowErrorCanLoad(getResources().getString(R.string.error_null_good));
                             ShowErrorIv(R.drawable.error_sou);
                             return;
@@ -713,12 +640,10 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
                         mySortAdapter.FrashData(ListGoodss);
                         if (ListGoodss.size() < 20) {
-//                            fragmentSortRefrash.setCanLoadMore(false);
-                            fragmentSortFrashLay.setLoadMoreEnable(false);
+                            fragmentSortRefrash.setCanLoadMore(false);
                         }
                         if (ListGoodss.size() == 20) {
-//                            fragmentSortRefrash.setCanLoadMore(true);
-                            fragmentSortFrashLay.setLoadMoreEnable(true);
+                            fragmentSortRefrash.setCanLoadMore(true);
                         }
 
                         break;
@@ -735,13 +660,12 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
     public void onError(String error, int LoadType) {
         switch (LoadType) {
             case REFRESHING:
-//                fragmentSortRefrash.setRefreshing(false);
-                fragmentSortFrashLay.refreshComplete();
-                IDataView(fragmentSortFrashLay, fragment_sort_nodata_lay, NOVIEW_ERROR);
+                fragmentSortRefrash.setRefreshing(false);
+                IDataView(fragmentSortRefrash, fragment_sort_nodata_lay, NOVIEW_ERROR);
                 break;
             case LOADMOREING:
-//                fragmentSortRefrash.setLoading(false);
-                fragmentSortFrashLay.loadMoreComplete(true);
+                fragmentSortRefrash.setLoading(false);
+
                 break;
         }
     }
@@ -849,9 +773,9 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
                 if (SortZongHe) //综合被点击{
                     GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
                 else if (SortPriceUp == 1) //价格升序
-                    GetGoodsLs(CurrentPage, "sell_price", true, INITIALIZE);
-                else if (SortPriceUp == 2) //价格降序
                     GetGoodsLs(CurrentPage, "sell_price", false, INITIALIZE);
+                else if (SortPriceUp == 2) //价格降序
+                    GetGoodsLs(CurrentPage, "sell_price", true, INITIALIZE);
                 else if (SortJiFenClick) //积分升序
                     GetGoodsLs(CurrentPage, "score", true, INITIALIZE);
                 else if (SortSellNumberClick)
@@ -938,10 +862,10 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 
 
     //recycleview的adapter
-    class SortRecycleAp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-
-        //        public void FrashData(List<BSortGood> ds) {
+//    class SortRecycleAp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+//        private List<BSortGood> SortDatas = new ArrayList<>();
+//
+//        public void FrashData(List<BSortGood> ds) {
 //            this.SortDatas = ds;
 //            this.notifyDataSetChanged();
 //        }
@@ -951,114 +875,60 @@ public class FMainSort extends FBase implements RefreshLayout.OnLoadListener {
 //            this.notifyDataSetChanged();
 //
 //        }
-        @Override
-        public int getItemViewType(int position) {
-            return IsGoodsGradview ? 1 : 2;
-        }
-
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-            if (viewType == 2) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item_goodsort, parent, false);
-                return new SortHolder(view);
-            } else {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item_goodsor_stagger, parent, false);
-                return new SortStagerHolder(view);
-            }
-
-//            View viewstager = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item_goodsor_stagger, parent, false);
-//            return IsGoodsGradview ? new SortStagerHolder(viewstager) : new SortHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            BSortGood bSortGood = SortDatas.get(position);
-            if (!IsGoodsGradview) {
-                SortHolder MyHolder = (SortHolder) holder;
-                ImageLoaderUtil.Load2(bSortGood.getCover(), MyHolder.itemMainSortIv, R.drawable.error_iv2);
-                StrUtils.SetTxt(MyHolder.itemMainSortName, bSortGood.getTitle());
-                StrUtils.SetTxt(MyHolder.itemMainSortJifen, String.format("积分：%s", bSortGood.getScore()));
-                StrUtils.SetTxt(MyHolder.itemMainSortXiaoliang, String.format("销量：%s", bSortGood.getSales()));
-                StrUtils.SetTxt(MyHolder.itemMainSortPrice, String.format("￥%s", StrUtils.SetTextForMony(bSortGood.getSell_price())));
-                if (!StrUtils.isEmpty(bSortGood.getOrig_price()) && !bSortGood.getOrig_price().equals("0")) {
-                    StrUtils.SetTxt(MyHolder.itemMainSortPriceYuan, String.format("￥%s", StrUtils.SetTextForMony(bSortGood.getOrig_price())));
-                    MyHolder.itemMainSortPriceYuan.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-                } else {
-                    MyHolder.itemMainSortPriceYuan.setVisibility(View.GONE);
-                }
-            } else {
-                SortStagerHolder sortStagerHolder = (SortStagerHolder) holder;
-                ImageLoaderUtil.Load2(bSortGood.getCover(), sortStagerHolder.itemMainSortIvStagger, R.drawable.error_iv2);
-                LinearLayout.LayoutParams PS = new LinearLayout.LayoutParams(screenWidth / 2,
-                        screenWidth / 2);
-                sortStagerHolder.itemMainSortIvStagger.setLayoutParams(PS);
-                StrUtils.SetTxt(sortStagerHolder.itemMainSortNameStagger, bSortGood.getTitle());
-                StrUtils.SetTxt(sortStagerHolder.itemMainSortXiaoliangStagger, String.format("销量%s", bSortGood.getSales()));
-                StrUtils.SetTxt(sortStagerHolder.itemMainSortJifenStagger, String.format("积分%s", bSortGood.getScore()));
-                StrUtils.SetTxt(sortStagerHolder.itemMainSortPriceStagger, String.format("￥%s", StrUtils.SetTextForMony(bSortGood.getSell_price())));
-
-                if (!StrUtils.isEmpty(bSortGood.getOrig_price()) && !bSortGood.getOrig_price().equals("0")) {
-                    StrUtils.SetTxt(sortStagerHolder.itemMainSortOringPriceStagger, String.format("￥%s", StrUtils.SetTextForMony(bSortGood.getOrig_price())));
-                    sortStagerHolder.itemMainSortOringPriceStagger.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-                } else {
-                    sortStagerHolder.itemMainSortOringPriceStagger.setVisibility(View.GONE);
-                }
-
-            }
-
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return SortDatas.size();
-        }
-
-        //注解Holder
-        class SortHolder extends RecyclerView.ViewHolder {
-            @BindView(R.id.item_main_sort_iv)
-            ImageView itemMainSortIv;
-            @BindView(R.id.item_main_sort_name)
-            TextView itemMainSortName;
-            @BindView(R.id.item_main_sort_xiaoliang)
-            TextView itemMainSortXiaoliang;
-            @BindView(R.id.item_main_sort_jifen)
-            TextView itemMainSortJifen;
-            @BindView(R.id.item_main_sort_price)
-            TextView itemMainSortPrice;
-            @BindView(R.id.item_main_sort_price_yuan)
-            TextView itemMainSortPriceYuan;
-
-            SortHolder(View view) {
-                super(view);
-                ButterKnife.bind(this, view);
-            }
-        }
-
-
-        class SortStagerHolder extends RecyclerView.ViewHolder {
-            @BindView(R.id.item_main_sort_iv_stagger)
-            ImageView itemMainSortIvStagger;
-            @BindView(R.id.item_main_sort_name_stagger)
-            TextView itemMainSortNameStagger;
-            @BindView(R.id.item_main_sort_xiaoliang_stagger)
-            TextView itemMainSortXiaoliangStagger;
-            @BindView(R.id.item_main_sort_jifen_stagger)
-            TextView itemMainSortJifenStagger;
-            @BindView(R.id.item_main_sort_price_stagger)
-            TextView itemMainSortPriceStagger;
-            @BindView(R.id.item_main_sort_oring_price_stagger)
-            TextView itemMainSortOringPriceStagger;
-
-            SortStagerHolder(View view) {
-                super(view);
-                ButterKnife.bind(this, view);
-            }
-        }
-
-
-    }
+//
+//        @Override
+//        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item_goodsort, parent, false);
+//
+//            return new SortHolder(view);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+//            SortHolder MyHolder = (SortHolder) holder;
+//            BSortGood bSortGood = SortDatas.get(position);
+//            //开始赋值
+//
+//
+//            ImageLoaderUtil.Load2(bSortGood.getCover(), MyHolder.itemMainSortIv, R.drawable.error_iv2);
+//            StrUtils.SetTxt(MyHolder.itemMainSortName, bSortGood.getTitle());
+//            StrUtils.SetTxt(MyHolder.itemMainSortJifen, String.format("积分：%s", bSortGood.getScore()));
+//            StrUtils.SetTxt(MyHolder.itemMainSortXiaoliang, String.format("销量：%s", bSortGood.getSales()));
+//            StrUtils.SetTxt(MyHolder.itemMainSortPrice, String.format("￥%s", StrUtils.SetTextForMony(bSortGood.getSell_price())));
+//            if (!StrUtils.isEmpty(bSortGood.getOrig_price()) && !bSortGood.getOrig_price().equals("0")) {
+//                StrUtils.SetTxt(MyHolder.itemMainSortPriceYuan, String.format("￥%s", StrUtils.SetTextForMony(bSortGood.getOrig_price())));
+//                MyHolder.itemMainSortPriceYuan.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+//            } else {
+//                MyHolder.itemMainSortPriceYuan.setVisibility(View.GONE);
+//            }
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return 0;
+//        }
+//
+//        //注解Holder
+//        class SortHolder extends RecyclerView.ViewHolder {
+//            @BindView(R.id.item_main_sort_iv)
+//            ImageView itemMainSortIv;
+//            @BindView(R.id.item_main_sort_name)
+//            TextView itemMainSortName;
+//            @BindView(R.id.item_main_sort_xiaoliang)
+//            TextView itemMainSortXiaoliang;
+//            @BindView(R.id.item_main_sort_jifen)
+//            TextView itemMainSortJifen;
+//            @BindView(R.id.item_main_sort_price)
+//            TextView itemMainSortPrice;
+//            @BindView(R.id.item_main_sort_price_yuan)
+//            TextView itemMainSortPriceYuan;
+//
+//            SortHolder(View view) {
+//                super(view);
+//                ButterKnife.bind(this, view);
+//            }
+//        }
+//    }
     //RecycleviewAp**************************
 
 
