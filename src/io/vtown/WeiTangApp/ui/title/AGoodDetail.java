@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,7 @@ import io.vtown.WeiTangApp.comment.view.ImageCycleView;
 import io.vtown.WeiTangApp.comment.view.ImageCycleView.ImageCycleViewListener;
 import io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView;
 import io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView.OnGetDistanceListener;
+import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase.OnPopupStutaChangerListener;
 import io.vtown.WeiTangApp.comment.view.pop.PReturnRule;
@@ -63,7 +65,7 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * @version 创建时间：2016-5-20 下午4:15:31
  * @author商品详情
  */
-public class AGoodDetail extends ATitleBase {
+public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefreshListener {
 
 
     ImageView gooddetail_up_title_back;
@@ -269,6 +271,7 @@ public class AGoodDetail extends ATitleBase {
     private TextView good_detail_xiangou;
     private LinearLayout good_detail_score;
     private TextView tv_goods_detail_score;
+    private SwipeRefreshLayout good_detail_refresh;
 
     @Override
     protected void InItBaseView() {
@@ -285,7 +288,7 @@ public class AGoodDetail extends ATitleBase {
         IIBundle();
         IBase();
 
-        IData(GoodsId);
+        IData(LOAD_INITIALIZE);
     }
 
 
@@ -297,17 +300,19 @@ public class AGoodDetail extends ATitleBase {
         IsShowPop = getIntent().getBooleanExtra("needshowpop", false);
     }
 
-    private void IData(String GoodId) {
-        PromptManager.showtextLoading(BaseContext,
-                getResources()
-                        .getString(R.string.xlistview_header_hint_loading));
+    private void IData(int loadtype) {
+        if(loadtype == LOAD_INITIALIZE){
+            PromptManager.showtextLoading(BaseContext,
+                    getResources()
+                            .getString(R.string.xlistview_header_hint_loading));
+        }
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("goods_id", GoodsId);
         map.put("extend", "1");
         map.put("member_id", user_Get.getId());
         map.put("buy_type", IsCaiGou ? "1" : "0");
         map.put("seller_id", user_Get.getSeller_id());
-        FBGetHttpData(map, Constants.GoodDetail, Method.GET, 0, LOAD_INITIALIZE);
+        FBGetHttpData(map, Constants.GoodDetail, Method.GET, 0, loadtype);
     }
 
     /**
@@ -332,6 +337,10 @@ public class AGoodDetail extends ATitleBase {
     }
 
     private void IBase() {
+        good_detail_refresh = (SwipeRefreshLayout) findViewById(R.id.good_detail_refresh);
+        good_detail_refresh.setOnRefreshListener(this);
+        good_detail_refresh.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
+        good_detail_refresh.setEnabled(false);
         good_detail_xiangou = (TextView) findViewById(R.id.good_detail_xiangou);
         tv_suggest_retail_orig_price = (TextView) findViewById(R.id.tv_suggest_retail_orig_price);
         gooddetail_up_title_back = (ImageView) findViewById(R.id.gooddetail_up_title_back);
@@ -520,9 +529,11 @@ public class AGoodDetail extends ATitleBase {
      */
     private void RefreshView(BGoodDetail datas) {
 //限购
+
         if (datas.getGoods_info().getBuy_left() != 0) {
 //            PromptManager.ShowCustomToast(BaseContext, "限购");
-            good_detail_xiangou.setText("限购：" + datas.getGoods_info().getBuy_left() + "件");
+           // good_detail_xiangou.setText("限购：" + datas.getGoods_info().getBuy_left() + "件");
+            good_detail_xiangou.setText(String.format("该商品每人限购%s件,您还可以购买%s",""+datas.getGoods_info().getBuy_max(),""+datas.getGoods_info().getBuy_left()));
             good_detail_xiangou.setVisibility(View.VISIBLE);
         } else {
             good_detail_xiangou.setVisibility(View.GONE);
@@ -715,11 +726,14 @@ public class AGoodDetail extends ATitleBase {
         // 判断是否在售中************************************
         if (!StrUtils.isEmpty(datas.getSale_status())
                 && datas.getSale_status().equals("100")) {
+            good_detail_refresh.setEnabled(false);
         } else {// 非在售状态
             tv_buy.setClickable(false);
             tv_buy.setText("非在售中");
             tv_buy.setBackgroundColor(getResources().getColor(R.color.app_gray));
             tv_replace_sell.setClickable(false);
+            good_detail_refresh.setEnabled(true);
+            good_detail_refresh.setRefreshing(false);
             tv_replace_sell.setVisibility(View.GONE);
         }
 
@@ -729,7 +743,7 @@ public class AGoodDetail extends ATitleBase {
     protected void NetConnect() {
         NetError.setVisibility(View.GONE);
         if (datas == null)
-            IData(GoodsId);
+            IData(LOAD_INITIALIZE);
 
 //        mHandler.postDelayed(mRandomMessageTimerTask, 1000);
 
@@ -816,7 +830,7 @@ public class AGoodDetail extends ATitleBase {
             case R.id.gooddetail_nodata_lay:// 获取数据失败时候重新获取
                 if (CheckNet(BaseContext))
                     return;
-                IData(GoodsId);
+                IData(LOAD_INITIALIZE);
                 break;
 
             case R.id.good_detail_shoucang_log:
@@ -1063,4 +1077,8 @@ public class AGoodDetail extends ATitleBase {
     private Handler mHandler = new Handler();
 
 
+    @Override
+    public void onRefresh() {
+        IData(LOAD_REFRESHING);
+    }
 }

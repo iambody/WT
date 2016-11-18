@@ -278,17 +278,21 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                     case LOAD_LOADMOREING:
                         invite_friends_record_list.stopLoadMore();
                         if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            invite_friends_record_list.hidefoot();
                             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.no_nore_invite_friend));
                             return;
                         }
-                        datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
+                        List<BCInviteFriends> more_datas = new ArrayList<BCInviteFriends>();
+
+                        more_datas = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
+                        datass.addAll(more_datas);
                         //invite_friends_refrash.setLoading(false);
-                        if (datass.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
-                            mAdapter.MergeFrashData(datass);
+                        if (more_datas.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
+                            mAdapter.MergeFrashData(more_datas);
                         } else {
-                            mAdapter.FreshAllData(datass);
+                            mAdapter.FreshAllData(more_datas);
                         }
-                        List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(datass);
+                        List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(more_datas);
                         if (allInviteDetailList2.size() == Constants.PageSize) {
                             //invite_friends_refrash.setCanLoadMore(true);
                             invite_friends_record_list.ShowFoot();
@@ -478,15 +482,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             case R.id.invite_friends_record_title_delete://删除搜索框内容
                 invite_friends_record_title.setText("");
                 invite_friends_record_title.setHint(R.string.invite_friends_record_scen_key);
-                if(scan_datass.size() == 0){
-                    invite_friends_record_list.setVisibility(View.VISIBLE);
-                    invite_friends_nodata_lay.setVisibility(View.GONE);
-                }
-
-                if (isScan) {
-                    mAdapter.FreshData(datass);
-                }
-                isScan = false;
+                deleteScanContent();
                 break;
 
             case R.id.invite_friends_record_sou_iv://搜索按钮
@@ -494,6 +490,8 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 if (StrUtils.checkMobile(BaseContext, scen_key)) {
                     phone = scen_key;
                     Current_Lv = Shop_All_Lv;
+                    PromptManager.showtextLoading(BaseContext, getResources()
+                            .getString(R.string.loading));
                     IData(page, LOAD_INITIALIZE);
                 }
                 break;
@@ -527,6 +525,37 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
     }
 
+    private void deleteScanContent(){
+        scan_type = 0;
+        phone = "";
+
+        if(scan_datass.size() == 0){
+            invite_friends_record_list.setVisibility(View.VISIBLE);
+            invite_friends_nodata_lay.setVisibility(View.GONE);
+        }
+
+        if (isScan) {
+            RefrashAp();
+        }
+        isScan = false;
+    }
+
+    private void RefrashAp(){
+        mAdapter.FreshData(datass);
+        List<BLInviteFriends> allInviteDetailList = getAllInviteDetailList(datass);
+        if (allInviteDetailList.size() == Constants.PageSize) {
+            //invite_friends_refrash.setCanLoadMore(true);
+            invite_friends_record_list.ShowFoot();
+            invite_friends_record_list.setPullLoadEnable(true);
+
+        }
+        if (allInviteDetailList.size() < Constants.PageSize) {
+            //invite_friends_refrash.setCanLoadMore(false);
+            invite_friends_record_list.hidefoot();
+            invite_friends_record_list.setPullLoadEnable(false);
+        }
+    }
+
     private void LvSwitch(String switch_type, String titlename, int type) {
         if (type != click_type) {
             invite_friends_record_title.setText("");
@@ -557,6 +586,7 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
             invite_friends_record_title_delete.setVisibility(View.VISIBLE);
         } else {
             invite_friends_record_title_delete.setVisibility(View.GONE);
+            deleteScanContent();
         }
     }
 

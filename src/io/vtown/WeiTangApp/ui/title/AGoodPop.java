@@ -678,6 +678,9 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                                             (arg2 == i) ? R.color.white
                                                     : R.color.app_black));
                         }
+                        if("0".equals(da.getStore())){
+                            PromptManager.ShowMyToast(BaseContext,getString(R.string.good_pop_select_good_no_stroe));
+                        }
                         //
                         IFView();
                         break;
@@ -739,6 +742,9 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                                     .setTextColor(getResources().getColor(
                                             (arg2 == i) ? R.color.white
                                                     : R.color.app_black));
+                        }
+                        if("0".equals(da.getStore())){
+                            PromptManager.ShowMyToast(BaseContext,getString(R.string.good_pop_select_good_no_stroe));
                         }
                         IFView();
                         break;
@@ -944,6 +950,10 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         }
         if (goods_num == 0) {
             PromptManager.ShowMyToast(BaseContext, "请选择数量");
+            return;
+        }
+        if("0".equals(blComment.getStore())){
+            PromptManager.ShowMyToast(BaseContext, getString(R.string.good_pop_select_good_no_stroe));
             return;
         }
         if(type == 1){

@@ -773,6 +773,7 @@
     <string name="invite_team_info_yestaday_add">昨日新增用户</string>
     <string name="invite_team_info_yestaday_activity">昨日激活</string>
     <string name="invite_friends_record_scen_key">请输入您下级的手机号</string>
+    <string name="good_pop_select_good_no_stroe">你选择的规格暂时没有货哦</string>
 
 
 </resources>
