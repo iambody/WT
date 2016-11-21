@@ -2,15 +2,9 @@ package io.vtown.WeiTangApp.ui.comment.order;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,12 +51,14 @@ import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
 import io.vtown.WeiTangApp.ui.title.center.myorder.AApplyTuikuan;
 import io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderDetail;
 import io.vtown.WeiTangApp.ui.title.center.myorder.ACenterMyOrderNoPayDetail;
 import io.vtown.WeiTangApp.ui.ui.AMainTab;
+import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
@@ -225,7 +221,10 @@ public class ACenterMyOrder extends ATitleBase implements
                                          int totalItemCount) {
                     }
                 }));
-        fragment_center_order_ls.setOnItemClickListener(this);
+        if(PDaiFu != Ket_Tage){
+            fragment_center_order_ls.setOnItemClickListener(this);
+        }
+
         fragent_centeroder_nodata_lay.setOnClickListener(this);
 
 
@@ -1015,9 +1014,9 @@ public class ACenterMyOrder extends ATitleBase implements
                 myItem = (CenterOrderOutsideItem) convertView.getTag();
             }
 
-            BLCenterOder data = datas.get(position);// 非未付订单列表
+            final BLCenterOder data = datas.get(position);// 非未付订单列表
 
-            LogUtils.i("**************good--id****************" + data.getId());
+            //LogUtils.i("**************good--id****************" + data.getId());
             ControlView(myItem, data, Integer.parseInt(data.getOrder_status()));
 
             StrUtils.SetTxt(myItem.tv_center_my_order_seller_order_sn,
@@ -1055,11 +1054,50 @@ public class ACenterMyOrder extends ATitleBase implements
                         @Override
                         public void onItemClick(AdapterView<?> parent,
                                                 View view, int position, long id) {
-                            Intent intent = new Intent(BaseContext,
-                                    AGoodDetail.class);
-                            intent.putExtra("goodid", datas.get(myItemPosition)
-                                    .getGoods().get(position).getGoods_id());
-                            PromptManager.SkipActivity(BaseActivity, intent);
+
+
+                            if (CheckNet(BaseContext))
+                                return;
+                            BLCenterOder bl_data = null;
+
+                            if (PDaiFu != Integer.parseInt(data.getOrder_status())) {
+                                int count = centerOrderOutsideAdapter.getCount();
+                                // if(count > 0){
+                                bl_data = (BLCenterOder) centerOrderOutsideAdapter
+                                        .getItem(myItemPosition);
+
+                                int order_status = Integer.parseInt(bl_data.getOrder_status());
+                                Intent intent = null;
+                                if (PDaiFu == Integer.parseInt(data.getOrder_status())) {
+                                    intent = new Intent(BaseContext,
+                                            ACenterMyOrderNoPayDetail.class);
+                                    intent.putExtra("order_sn", bl_data.getOrder_sn());
+
+                                } else {
+                                    intent = new Intent(BaseContext, ACenterMyOrderDetail.class);
+
+                                    intent.putExtra("Key_TageStr", order_status);
+                                }
+
+                                intent.putExtra("member_id", bl_data.getMember_id());
+                                intent.putExtra("seller_order_sn", bl_data.getSeller_order_sn());
+                                PromptManager.SkipActivity((Activity) BaseContext, intent);
+                                // }
+
+                            } else {
+                                int count = centerOrderNoPayAdapter.getCount();
+                                // if(count > 0){
+                                bl_data = (BLCenterOder) centerOrderNoPayAdapter
+                                        .getItem(myItemPosition);
+                                Intent intent = new Intent(BaseContext,
+                                        ACenterMyOrderNoPayDetail.class);
+                                intent.putExtra("order_sn", bl_data.getOrder_sn());
+                                intent.putExtra("member_id", bl_data.getMember_id());
+                                intent.putExtra("seller_order_sn", bl_data.getSeller_order_sn());
+                                PromptManager.SkipActivity((Activity) BaseContext, intent);
+                                // }
+
+                            }
                         }
                     });
 
@@ -1438,13 +1476,20 @@ public class ACenterMyOrder extends ATitleBase implements
             } else {
                 centerOrderNoPay = (CenterOrderNoPayItem) convertView.getTag();
             }
-            CenterOrderNoPayInsideAdapter centerOrderNoPayInside = new CenterOrderNoPayInsideAdapter(
+         final CenterOrderNoPayInsideAdapter centerOrderNoPayInside = new CenterOrderNoPayInsideAdapter(
                     R.layout.item_center_order_no_pay_inside, datas.get(
                     position).getSon_order());
             centerOrderNoPay.item_fragment_center_order_no_pay_outside
                     .setAdapter(centerOrderNoPayInside);
             StrUtils.SetTxt(centerOrderNoPay.tv_center_order_no_pay_order_sn,
                     datas.get(position).getOrder_sn());
+
+//            centerOrderNoPay.item_fragment_center_order_no_pay_outside.setOnItemClickListener(new OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                }
+//            });
 
             // float total_price =
             // Float.parseFloat(datas.get(position).getOrder_total_price())
@@ -1551,7 +1596,7 @@ public class ACenterMyOrder extends ATitleBase implements
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             CenterOrderNoPayInsideItem centerOrderNoPayInside = null;
             if (convertView == null) {
                 centerOrderNoPayInside = new CenterOrderNoPayInsideItem();
@@ -1581,14 +1626,33 @@ public class ACenterMyOrder extends ATitleBase implements
                         @Override
                         public void onItemClick(AdapterView<?> parent,
                                                 View view, int position, long id) {
+                            BLCenterOder bl_data = (BLCenterOder) centerOrderNoPayAdapter
+                                    .getItem(position);
                             Intent intent = new Intent(BaseContext,
-                                    AGoodDetail.class);
-                            intent.putExtra("goodid",
-                                    secoud_datas.get(myItemPosition).getGoods()
-                                            .get(position).getGoods_id());
-                            PromptManager.SkipActivity(BaseActivity, intent);
+                                    ACenterMyOrderNoPayDetail.class);
+                            intent.putExtra("order_sn", bl_data.getOrder_sn());
+                            intent.putExtra("member_id", bl_data.getMember_id());
+                            intent.putExtra("seller_order_sn", bl_data.getSeller_order_sn());
+                            PromptManager.SkipActivity((Activity) BaseContext, intent);
                         }
                     });
+
+            centerOrderNoPayInside.tv_center_order_no_pay_seller_name.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    BComment  bComment = new BComment(secoud_datas.get(position).getSeller_id(), secoud_datas.get(position).getSeller_name());
+                    Intent intent = null;
+                    if("0".equals(secoud_datas.get(position).getIs_brand())) {
+                        intent = new Intent(BaseContext, AShopDetail.class);
+                    }else {
+                        intent = new Intent(BaseContext,
+                                ABrandDetail.class);
+                    }
+                    intent.putExtra(BaseKey_Bean, bComment);
+                    PromptManager.SkipActivity(BaseActivity, intent);
+                }
+            });
 
             return convertView;
         }
@@ -1715,48 +1779,33 @@ public class ACenterMyOrder extends ATitleBase implements
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,
                             long id) {
-        if (CheckNet(BaseContext))
-            return;
-        BLCenterOder bl_data = null;
-
+        BComment bComment = null;
+        Intent intent = null;
+        String is_brand = "";
         if (PDaiFu != Ket_Tage) {
-            int count = centerOrderOutsideAdapter.getCount();
-            // if(count > 0){
-            bl_data = (BLCenterOder) centerOrderOutsideAdapter
-                    .getItem(position);
-
-            int order_status = Integer.parseInt(bl_data.getOrder_status());
-            Intent intent = null;
-            if (PDaiFu == order_status) {
-                intent = new Intent(BaseContext,
-                        ACenterMyOrderNoPayDetail.class);
-                intent.putExtra("order_sn", bl_data.getOrder_sn());
-
+//            BLCenterOder item = (BLCenterOder) centerOrderNoPayAdapter.getItem(position);
+//            List<BLDComment> son_order = item.getSon_order();
+//            is_brand = son_order.get(0).getIs_brand();
+//            bComment = new BComment(son_order.get(0).getSeller_id(), son_order.get(0).getSeller_name());
+            BLCenterOder item = (BLCenterOder) centerOrderOutsideAdapter.getItem(position);
+            bComment = new BComment(item.getSeller_id(), item.getSeller_name());
+            is_brand = bComment.getIs_brand();
+            if ("0".equals(is_brand)) {
+                intent = new Intent(BaseContext, AShopDetail.class);
             } else {
-                intent = new Intent(BaseContext, ACenterMyOrderDetail.class);
-
-                intent.putExtra("Key_TageStr", order_status);
+                intent = new Intent(BaseContext,
+                        ABrandDetail.class);
             }
 
-            intent.putExtra("member_id", bl_data.getMember_id());
-            intent.putExtra("seller_order_sn", bl_data.getSeller_order_sn());
-            PromptManager.SkipActivity((Activity) BaseContext, intent);
-            // }
+            intent.putExtra(BaseKey_Bean, bComment);
+            PromptManager.SkipActivity(BaseActivity, intent);
 
         } else {
-            int count = centerOrderNoPayAdapter.getCount();
-            // if(count > 0){
-            bl_data = (BLCenterOder) centerOrderNoPayAdapter
-                    .getItem(position);
-            Intent intent = new Intent(BaseContext,
-                    ACenterMyOrderNoPayDetail.class);
-            intent.putExtra("order_sn", bl_data.getOrder_sn());
-            intent.putExtra("member_id", bl_data.getMember_id());
-            intent.putExtra("seller_order_sn", bl_data.getSeller_order_sn());
-            PromptManager.SkipActivity((Activity) BaseContext, intent);
-            // }
 
         }
+
+
+
 
     }
 
@@ -1976,7 +2025,7 @@ public class ACenterMyOrder extends ATitleBase implements
                 PromptManager.ShowMyToast(BaseContext, "积分获取成功");
                 last_id = "";
                 IData(LOAD_INITIALIZE, Ket_Tage + "");
-              // centerOrderOutsideAdapter.RefreshPosition(Ket_Tage, 0, SelectPosition);
+                // centerOrderOutsideAdapter.RefreshPosition(Ket_Tage, 0, SelectPosition);
                 break;
 
             default:

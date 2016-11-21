@@ -14,6 +14,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 public class BLCenterOder extends BBase {
 	 private String id;//"id": 1340,
 	 private String member_id;//"member_id": 699,
+	private String is_brand;
 	 private String seller_id;//"seller_id": 480,
 	 private String order_sn;//"order_sn": "A2016072648564810972",
 	 private String order_status;//"order_status": 110,
@@ -35,6 +36,14 @@ public class BLCenterOder extends BBase {
 	private int advance_point;// "advance_point": 0,
 	private String point_time;//"point_time": 0,
 	private int is_have_point;
+
+	public String getIs_brand() {
+		return is_brand;
+	}
+
+	public void setIs_brand(String is_brand) {
+		this.is_brand = is_brand;
+	}
 
 	public int getIs_have_point() {
 		return is_have_point;

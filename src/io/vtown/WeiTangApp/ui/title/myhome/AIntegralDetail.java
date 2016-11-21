@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.ui.title.myhome;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -588,14 +589,21 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 case 1:
                     status_str = "正在到账";
                     holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.zidian));
+                    holder.tv_integral_point.setTextColor(getResources().getColor(R.color.white));
+                    holder.tv_integral_point.getPaint().setFlags(0);
                     break;
                 case 2:
                     status_str = "到账成功";
                     holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.huangdian));
+                    holder.tv_integral_point.setTextColor(getResources().getColor(R.color.white));
+                    holder.tv_integral_point.getPaint().setFlags(0);
                     break;
                 case 3:
                     status_str = "到账失败";
                     holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.lvdian));
+                    holder.tv_integral_point.setTextColor(getResources().getColor(R.color.app_gray));
+                    holder.tv_integral_point.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
+                    StrUtils.SetTxt(holder.tv_integral_point, point+"");
                     break;
             }
             StrUtils.SetTxt(holder.tv_integral_status, status_str);

@@ -2,6 +2,7 @@ package io.vtown.WeiTangApp.ui.title;
 
 import android.content.ClipboardManager;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -429,27 +430,43 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
             StrUtils.SetTxt(holder.tvReturnDay, data.getDateStr());
             StrUtils.SetTxt(holder.tvReturnTime, data.getDate());
             StrUtils.SetTxt(holder.tvReturnContent,data.getPhone()+"购买了"+data.getGoods_name()+",恭喜您获得返佣" );
-            StrUtils.SetTxt(holder.tvReturnPoint, String.format("+ %1$s元", StrUtils.SetTextForMony(data.getPrice())));
+
             int status = Integer.parseInt(data.getStatus());
             String status_str = "";
+            String return_point = "";
             switch (status) {
                 case 1:
                     status_str = "交易中";
+                    return_point = "+ %1$s元";
+                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.white));
+                    holder.tvReturnPoint.getPaint().setFlags(0);
                     break;
                 case 2:
                     status_str = "交易成功";
+                    return_point = "+ %1$s元";
+                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.white));
+                    holder.tvReturnPoint.getPaint().setFlags(0);
                     break;
                 case 3:
                     status_str = "交易失败";
+                    return_point = "%1$s元";
+                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.app_gray));
+                    holder.tvReturnPoint.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
                     break;
                 case 4:
                     status_str = "交易取消";
+                    return_point = "%1$s元";
+                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.app_gray));
+                    holder.tvReturnPoint.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
                     break;
                 case 5:
                     status_str = "已退款";
+                    return_point = "%1$s元";
+                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.app_gray));
+                    holder.tvReturnPoint.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
                     break;
             }
-
+            StrUtils.SetTxt(holder.tvReturnPoint, String.format(return_point, StrUtils.SetTextForMony(data.getPrice())));
             holder.tvReturnStatus.setText(status_str);
 
             holder.tvReturnContent.setOnClickListener(new View.OnClickListener() {
