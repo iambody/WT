@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="skmsakmska"/>
+
+
+    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@+id/swipeToLoadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--
+               <io.vtown.WeiTangApp.test.SwipHead
+                    android:id="@+id/head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+         -->
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/test_swipload_head"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <include
+            android:id="@id/swipe_load_more_footer"
+            layout="@layout/test_swipload_foot"/>
+        <!--  <io.vtown.WeiTangApp.test.SwipFoot
+             android:id="@+id/foots"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"/>-->
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+</LinearLayout>

@@ -722,7 +722,7 @@
             android:theme="@style/MySortDialogStyleTop"
             />
         <activity
-            android:name=".test.ALoadmor"
+            android:name=".test.ASwipLoadTest"
             android:launchMode="singleTask"/>
 
         <activity

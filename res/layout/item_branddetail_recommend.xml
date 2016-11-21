@@ -10,12 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/brand_detail_brand_item_iv_height"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitCenter"/>
 
-    <ImageView
+
+    <io.vtown.WeiTangApp.comment.view.DashedLineView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/line_size3"
-        android:src="@color/app_line"/>
+        android:layout_height="@dimen/line_size"
+
+        />
 
     <TextView
         android:id="@+id/item_branddetail_name"

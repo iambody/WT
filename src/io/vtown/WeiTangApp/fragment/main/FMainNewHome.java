@@ -51,6 +51,7 @@ import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.test.ALoadmor;
 import io.vtown.WeiTangApp.test.ARetrofitTest;
+import io.vtown.WeiTangApp.test.ASwipLoadTest;
 import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
@@ -561,7 +562,6 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             fragmentNewhomeSrollviw.setRefreshing(false);
         }
     }
-
 //    @Override
 //    public void onHiddenChanged(boolean hidden) {
 //        super.onHiddenChanged(hidden);
@@ -572,14 +572,13 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //        }
 //
 //    }
-
     @OnClick({R.id.fragment_newhome_iv_sao, R.id.fragment_newhome_iv_sou, R.id.fragment_newhome_iv_new, R.id.fragment_newhome_head_iv, R.id.fragment_newhome_bt_jifem, R.id.fragment_newhome_bt_fanyong, R.id.fragment_newhome_usertag})
     public void onClick(View view) {
 
         switch (view.getId()) {
             case R.id.fragment_newhome_iv_sao:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                        ALoadmor.class));
+                        ASwipLoadTest.class));
 //                        CaptureActivity.class));
                 break;
             case R.id.fragment_newhome_iv_sou:
