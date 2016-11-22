@@ -56,6 +56,7 @@
                             android:id="@+id/iv_friend_lv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             android:src="@drawable/ic_mingxingdianpuxiaotubiao_nor" />
 
                         <TextView
@@ -63,7 +64,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="中华人民共和国"
+
                             android:textColor="@color/grey" />
                     </LinearLayout>
 
@@ -85,7 +86,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="123456789"
                             android:textColor="@color/app_gray"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -138,10 +138,10 @@
 
                 <ImageView
                     android:id="@+id/iv_lv"
-                    android:layout_width="@dimen/shop_lv_width"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/shop_lv_height"
                     android:layout_gravity="center_vertical"
-                    android:scaleType="fitXY"
+                    android:scaleType="fitCenter"
                     android:layout_marginRight="10dp" />
 
 

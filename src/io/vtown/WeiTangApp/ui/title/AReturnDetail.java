@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -379,11 +380,19 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     BLAPropertyDetail item = (BLAPropertyDetail)returnInsideAdapter.getItem(position);
+                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,AGoodDetail.class).putExtra("goodid",item.getGoods_id()));
+                }
+            });
+
+            holder.lvReturnListOutside.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    BLAPropertyDetail item = (BLAPropertyDetail)returnInsideAdapter.getItem(position);
                     ClipboardManager c= (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
-                    String content = "【微糖商城】【返佣啦！】有人"+ DateUtils.timeStampToStr(Long.parseLong(item.getCreate_time()))+"购买了【"+item.getGoods_name()+"】，新增佣金为￥"+StrUtils.SetTextForMony(item.getPrice())+"元，祝您鸿图大展，财源广进！";
+                    String content = "【微糖商城】【返佣啦！】有人【"+ DateUtils.timeStampToStr(Long.parseLong(item.getCreate_time()))+"】购买了【"+item.getGoods_name()+"】，新增佣金为￥"+StrUtils.SetTextForMony(item.getPrice())+"元，祝您鸿图大展，财源广进！";
                     c.setText(content);
                     PromptManager.ShowCustomToast(BaseContext,"复制内容："+content);
-
+                    return true;
                 }
             });
             return convertView;
@@ -438,43 +447,38 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                 case 1:
                     status_str = "交易中";
                     return_point = "+ %1$s元";
-                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.white));
-                    holder.tvReturnPoint.getPaint().setFlags(0);
+                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_integral_bg_fen);
                     break;
                 case 2:
                     status_str = "交易成功";
                     return_point = "+ %1$s元";
-                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.white));
-                    holder.tvReturnPoint.getPaint().setFlags(0);
+                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_integral_bg_fen);
                     break;
                 case 3:
                     status_str = "交易失败";
                     return_point = "%1$s元";
-                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.app_gray));
-                    holder.tvReturnPoint.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
+                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_intergral_bg_gray);
                     break;
                 case 4:
                     status_str = "交易取消";
                     return_point = "%1$s元";
-                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.app_gray));
-                    holder.tvReturnPoint.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
+                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_intergral_bg_gray);
                     break;
                 case 5:
                     status_str = "已退款";
                     return_point = "%1$s元";
-                    holder.tvReturnPoint.setTextColor(getResources().getColor(R.color.app_gray));
-                    holder.tvReturnPoint.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
+                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_intergral_bg_gray);;
                     break;
             }
             StrUtils.SetTxt(holder.tvReturnPoint, String.format(return_point, StrUtils.SetTextForMony(data.getPrice())));
             holder.tvReturnStatus.setText(status_str);
 
-            holder.tvReturnContent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext,AGoodDetail.class).putExtra("goodid",data.getGoods_id()));
-                }
-            });
+//            holder.tvReturnContent.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
             return convertView;
         }
 
@@ -503,6 +507,8 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
         TextView tvReturnPoint;
         @BindView(R.id.tv_return_status)
         TextView tvReturnStatus;
+        @BindView(R.id.ll_return_point)
+        LinearLayout ll_return_point;
 
         ReturnInsideViewHolder(View view) {
             ButterKnife.bind(this, view);

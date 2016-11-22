@@ -51,7 +51,7 @@
                 android:background="@drawable/shap_sousou_bg"
                 android:gravity="center"
                 android:hint="@string/invite_friends_record_scen_key"
-                android:inputType="phone"
+                android:inputType="number"
                 android:padding="7dp"
                 android:textColor="@color/grey"
                 android:textSize="13sp" />

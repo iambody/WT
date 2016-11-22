@@ -589,20 +589,15 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 case 1:
                     status_str = "正在到账";
                     holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.zidian));
-                    holder.tv_integral_point.setTextColor(getResources().getColor(R.color.white));
-                    holder.tv_integral_point.getPaint().setFlags(0);
                     break;
                 case 2:
                     status_str = "到账成功";
                     holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.huangdian));
-                    holder.tv_integral_point.setTextColor(getResources().getColor(R.color.white));
-                    holder.tv_integral_point.getPaint().setFlags(0);
                     break;
                 case 3:
                     status_str = "到账失败";
                     holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.lvdian));
-                    holder.tv_integral_point.setTextColor(getResources().getColor(R.color.app_gray));
-                    holder.tv_integral_point.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
+                    holder.ll_integral_point_and_status.setBackgroundResource(R.drawable.shape_intergral_bg_gray);
                     StrUtils.SetTxt(holder.tv_integral_point, point+"");
                     break;
             }

@@ -33,9 +33,11 @@
 
             <include
                 android:id="@+id/view_my_shop"
+                android:visibility="gone"
                 layout="@layout/commentview_center"/>
 
             <View
+                android:visibility="gone"
                 style="@style/line_left2"/>
 
             <include

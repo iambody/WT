@@ -90,11 +90,11 @@ public class AInviteTeamInfo extends ATitleBase {
     }
 
     private void RefrashView(BCTeamInfo data) {
-        SetItemContent(invite_info_amount, R.drawable.center_iv6, R.string.invite_team_info_invite_amount, data.getInvite_num(), true);
-        SetItemContent(invite_info_team_activity_conter, R.drawable.center_iv6, R.string.invite_team_info_team_activity, data.getTeam_activate_num(), false);
-        SetItemContent(invite_info_my_activity_conter, R.drawable.center_iv6, R.string.invite_team_info_my_activity, data.getInvite_activate_num(), false);
-        SetItemContent(invite_info_my_yestaday_add, R.drawable.center_iv6, R.string.invite_team_info_yestaday_add, data.getRegister_num(), false);
-        SetItemContent(invite_info_my_yestaday_activity, R.drawable.center_iv6, R.string.invite_team_info_yestaday_activity, data.getActivate_num(), false);
+        SetItemContent(invite_info_amount, R.drawable.ic_yaoqingrenshu_nor, R.string.invite_team_info_invite_amount, data.getInvite_num(), true);
+        SetItemContent(invite_info_team_activity_conter, R.drawable.ic_tuanduihuoyueyonghu_nor, R.string.invite_team_info_team_activity, data.getTeam_activate_num(), false);
+        SetItemContent(invite_info_my_activity_conter, R.drawable.ic_zhishuhuoyueyonghu_nor, R.string.invite_team_info_my_activity, data.getInvite_activate_num(), false);
+        SetItemContent(invite_info_my_yestaday_add, R.drawable.ic_zuorixinzengyonghu_nor, R.string.invite_team_info_yestaday_add, data.getRegister_num(), false);
+        SetItemContent(invite_info_my_yestaday_activity, R.drawable.ic_zuorijihuoyonghu_nor, R.string.invite_team_info_yestaday_activity, data.getActivate_num(), false);
     }
 
     private void SetItemContent(View VV, int imgsre, int ResourceTitlet, String txt2, boolean arrershow) {
@@ -113,7 +113,7 @@ public class AInviteTeamInfo extends ATitleBase {
             VV.setOnClickListener(this);
         } else {
             VV.setBackgroundResource(R.color.white);
-            commentview_center_arrer.setVisibility(View.INVISIBLE);
+            commentview_center_arrer.setVisibility(View.GONE);
         }
 
 
