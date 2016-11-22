@@ -304,7 +304,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
                                 android:textSize="14sp"
-                                android:textColor="@color/grey" />
+                                android:textColor="@color/app_gray" />
 
                             <TextView
                                 android:id="@+id/good_detail_xiangou"

@@ -161,6 +161,8 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
      */
     private ImageCycleView gooddetail_banner;
 
+ private ImageView   good_detail_shopbus_log;
+
     private List<BDataGood> goods_attr;
 
     /**
@@ -338,6 +340,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     }
 
     private void IBase() {
+        good_detail_shopbus_log= (ImageView) findViewById(R.id.good_detail_shopbus_log);
         good_detail_refresh = (SwipeRefreshLayout) findViewById(R.id.good_detail_refresh);
         good_detail_refresh.setOnRefreshListener(this);
         good_detail_refresh.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
@@ -1016,12 +1019,13 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     public void getReciverMsg(BMessage event) {
         int msg_type = event.getMessageType();
         switch (msg_type) {
-            case AGoodPop.TYPE_ADD_SHOPBUS:
+            case AGoodPop.TYPE_ADD_SHOPBUS://加入购物车成功
 
                 break;
             case AGoodPop.TYPE_ADD_ONLINE:
 
                 break;
+
         }
     }
 

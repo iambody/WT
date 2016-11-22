@@ -447,8 +447,8 @@ public class AOderBeing extends ATitleBase {
     @Override
     protected void DataError(String error, int LoadTyp) {
         PromptManager.ShowMyToast(BaseContext, error);
+        ShowErrorCanLoad(error);
         if (LoadTyp == LOAD_INITIALIZE) {// 获取界面数据失败
-
             IDataView(oderbeing_out_lay, oderbeing_nodata_lay, NOVIEW_ERROR);
 
         }
