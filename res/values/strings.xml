@@ -765,7 +765,7 @@
     <string name="sousou_remen1">热门搜索</string>
     <string name="kaquan1">卡            券</string>
 
-    <!--团队人数页面-->
+    <!--//团队人数页面-->
     <string name="invite_team_info_title">团队详情</string>
     <string name="invite_team_info_invite_amount">邀请人数</string>
     <string name="invite_team_info_team_activity">团队活跃人数</string>

@@ -354,7 +354,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         right_iv = (ImageView) findViewById(R.id.good_detail_shoucang_log);
         right_left_iv = (ImageView) findViewById(R.id.good_detail_shopbus_log);
 
-
+//
         ll_good_detail_fanyong_log = (LinearLayout) findViewById(R.id.ll_good_detail_fanyong_log);
 
         rl_good_detail_lianxikefu_log = (LinearLayout) findViewById(R.id.rl_good_detail_lianxikefu_log);
