@@ -96,8 +96,8 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     /**
      * 查看show
      */
-    private RelativeLayout rl_look_show;// 查看show
-    private RelativeLayout rl_look_share;// 分享
+    private LinearLayout rl_look_show;// 查看show
+    private LinearLayout rl_look_share;// 分享
     /**
      * show头像
      */
@@ -250,11 +250,11 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     /**
      * 联系客服
      */
-    private RelativeLayout rl_good_detail_lianxikefu_log;
+    private LinearLayout rl_good_detail_lianxikefu_log;
     /**
      * 收藏
      */
-    private RelativeLayout rl_good_detail_shoucang_log;
+    private LinearLayout rl_good_detail_shoucang_log;
 
     /**
      * scrollview
@@ -272,6 +272,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     private LinearLayout good_detail_score;
     private TextView tv_goods_detail_score;
     private SwipeRefreshLayout good_detail_refresh;
+    private LinearLayout ll_good_detail_fanyong_log;
 
     @Override
     protected void InItBaseView() {
@@ -353,16 +354,19 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         right_iv = (ImageView) findViewById(R.id.good_detail_shoucang_log);
         right_left_iv = (ImageView) findViewById(R.id.good_detail_shopbus_log);
 
-        rl_good_detail_lianxikefu_log = (RelativeLayout) findViewById(R.id.rl_good_detail_lianxikefu_log);
-        rl_good_detail_shoucang_log = (RelativeLayout) findViewById(R.id.rl_good_detail_shoucang_log);
+
+        ll_good_detail_fanyong_log = (LinearLayout) findViewById(R.id.ll_good_detail_fanyong_log);
+
+        rl_good_detail_lianxikefu_log = (LinearLayout) findViewById(R.id.rl_good_detail_lianxikefu_log);
+        rl_good_detail_shoucang_log = (LinearLayout) findViewById(R.id.rl_good_detail_shoucang_log);
 
         gooddetail_random_message = (TextView) findViewById(R.id.gooddetail_random_message);
         ll_gooddetail_random_message = (LinearLayout) findViewById(R.id.ll_gooddetail_random_message);
         good_detail_fanyong_log = (ImageView) findViewById(R.id.good_detail_fanyong_log);
         tv_good_title = (TextView) findViewById(R.id.tv_good_title);
         good_detail_subtitle = (TextView) findViewById(R.id.good_detail_subtitle);
-        rl_look_show = (RelativeLayout) findViewById(R.id.rl_look_show);
-        rl_look_share = (RelativeLayout) findViewById(R.id.rl_look_share);
+        rl_look_show = (LinearLayout) findViewById(R.id.rl_look_show);
+        rl_look_share = (LinearLayout) findViewById(R.id.rl_look_share);
         iv_show_icon = (ImageView) findViewById(R.id.iv_show_icon);
         rl_look_share.setOnClickListener(this);
         // 回到顶部按钮
@@ -416,7 +420,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         // 初始化页面时关注设为不可用
         right_iv.setEnabled(false);
         right_left_iv.setOnClickListener(this);
-        good_detail_fanyong_log.setOnClickListener(this);
+        ll_good_detail_fanyong_log.setOnClickListener(this);
 
 
         ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
@@ -547,7 +551,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         } else {
             findViewById(R.id.gooddetail_price_zhonglay).setVisibility(View.VISIBLE);
         }
-        good_detail_fanyong_log.setVisibility(datas.getIs_fee() == 1 ? View.VISIBLE : View.GONE);
+        ll_good_detail_fanyong_log.setVisibility(datas.getIs_fee() == 1 ? View.VISIBLE : View.GONE);
         StrUtils.SetTxt(gooddetail_up_title, datas.getTitle());
         if (StrUtils.isEmpty(datas.getGoods_info().getSubtitle())) {//商品副标题
             good_detail_subtitle.setVisibility(View.GONE);
@@ -581,7 +585,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             good_detail_score.setVisibility(View.GONE);
         }else{
             good_detail_score.setVisibility(View.VISIBLE);
-            StrUtils.SetTxt(tv_goods_detail_score,datas.getScore()+"分");
+            StrUtils.SetTxt(tv_goods_detail_score,datas.getScore()+"");
         }
 
         // 判断是否品牌商品 1=》品牌商品进行判断=》标识是否可以代理
@@ -877,7 +881,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 good_detail_scrollview.fullScroll(View.FOCUS_UP);
                 break;
 
-            case R.id.good_detail_fanyong_log://返佣
+            case R.id.ll_good_detail_fanyong_log://返佣
                 showReturnPop();
                 break;
             default:

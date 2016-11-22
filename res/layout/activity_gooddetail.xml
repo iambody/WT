@@ -125,9 +125,13 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1" />
 
-                            <RelativeLayout
+                            <LinearLayout
+                                android:id="@+id/ll_good_detail_fanyong_log"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                android:visibility="gone"
                                 android:padding="@dimen/goos_detail_icons_padding">
 
                                 <ImageView
@@ -136,12 +140,24 @@
                                     android:layout_height="@dimen/goos_detail_icon_size"
                                     android:layout_centerInParent="true"
                                     android:src="@drawable/ic_fanyong_nor1"
-                                    android:visibility="gone" />
-                            </RelativeLayout>
+                                     />
 
-                            <RelativeLayout
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="返佣商品"
+                                    android:textSize="@dimen/goos_detail_icon_lable"
+                                    android:textColor="@color/grey"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
                                 android:padding="@dimen/goos_detail_icons_padding">
 
                                 <ImageView
@@ -151,12 +167,24 @@
                                     android:layout_centerInParent="true"
 
                                     android:src="@drawable/ic_gouwuche_nor_good_detail" />
-                            </RelativeLayout>
 
-                            <RelativeLayout
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="购物车"
+                                    android:textSize="@dimen/goos_detail_icon_lable"
+                                    android:textColor="@color/grey"
+                                    android:layout_height="wrap_content"
+                                   android:layout_marginTop="3dp"
+
+                                    android:id="@+id/textView3" />
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:id="@+id/rl_good_detail_shoucang_log"
                                 android:layout_width="wrap_content"
+                                android:orientation="vertical"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
                                 android:padding="@dimen/goos_detail_icons_padding">
 
                                 <ImageView
@@ -165,12 +193,24 @@
                                     android:layout_height="@dimen/goos_detail_icon_size"
                                     android:layout_centerInParent="true"
                                     android:src="@drawable/ic_shoucang_nor_good_detail" />
-                            </RelativeLayout>
 
-                            <RelativeLayout
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="收藏"
+                                    android:textSize="@dimen/goos_detail_icon_lable"
+                                    android:textColor="@color/grey"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:id="@+id/rl_good_detail_lianxikefu_log"
+                                android:orientation="vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
                                 android:padding="@dimen/goos_detail_icons_padding">
 
                                 <ImageView
@@ -179,12 +219,24 @@
                                     android:layout_height="@dimen/goos_detail_icon_size"
                                     android:layout_centerInParent="true"
                                     android:src="@drawable/ic_lianxikefu_nor_good_detail" />
-                            </RelativeLayout>
 
-                            <RelativeLayout
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="客服"
+                                    android:textSize="@dimen/goos_detail_icon_lable"
+                                    android:textColor="@color/grey"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:id="@+id/rl_look_show"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
                                 android:padding="@dimen/goos_detail_icons_padding">
 
                                 <ImageView
@@ -193,12 +245,22 @@
                                     android:layout_height="@dimen/goos_detail_icon_size"
                                     android:layout_centerInParent="true"
                                     android:src="@drawable/ic_chakanshangpinshow_nor_good_detail" />
-                            </RelativeLayout>
 
-                            <RelativeLayout
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="show"
+                                    android:textSize="@dimen/goos_detail_icon_lable"
+                                    android:textColor="@color/grey"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:id="@+id/rl_look_share"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
                                 android:padding="@dimen/goos_detail_icons_padding">
 
                                 <ImageView
@@ -207,7 +269,15 @@
                                     android:layout_height="@dimen/goos_detail_icon_size"
                                     android:layout_centerInParent="true"
                                     android:src="@drawable/ic_fenxiang_nor_good_detail" />
-                            </RelativeLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="分享"
+                                    android:textSize="@dimen/goos_detail_icon_lable"
+                                    android:textColor="@color/grey"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"/>
+                            </LinearLayout>
                         </LinearLayout>
 
                         <LinearLayout
