@@ -33,11 +33,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/ui_5_dip">
+        android:layout_marginLeft="@dimen/ui_5_dip"
+        android:paddingRight="@dimen/ui_5_dip">
 
         <TextView
             android:id="@+id/item_zhuanqu_in_sales"
             android:layout_width="wrap_content"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/app_gray"
@@ -48,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/ui_20_dip"
+
+            android:lines="1"
             android:textColor="@color/app_gray"
             android:textSize="@dimen/ui_12_dip"/>
     </LinearLayout>
@@ -58,7 +61,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/line_size6"
-        android:paddingLeft="@dimen/line_size6">
+        android:paddingLeft="@dimen/line_size6"
+        android:paddingRight="@dimen/ui_5_dip">
 
         <TextView
             android:id="@+id/item_zhuanqu_in_price"
@@ -74,7 +78,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="@dimen/ui_10_dip"
+            android:lines="1"
+
             android:textColor="@color/app_gray"
             android:textSize="@dimen/ui_12_dip"/>
     </LinearLayout>

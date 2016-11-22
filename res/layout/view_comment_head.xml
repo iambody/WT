@@ -3,14 +3,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/ui_10_dip"
+
     >
 
     <ProgressBar
         android:id="@+id/view_comment_head_progressbar"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginRight="@dimen/ui_10_dip"
-        android:layout_toLeftOf="@+id/view_comment_head_txt"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+
         android:indeterminateBehavior="repeat"
         android:indeterminateDrawable="@drawable/load_more"
         android:indeterminateOnly="true"
@@ -20,7 +22,10 @@
         android:id="@+id/view_comment_head_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ui_4_dip"
+        android:layout_below="@+id/view_comment_head_progressbar"
         android:layout_centerInParent="true"
         android:text="@string/frashing"
-        android:textColor="@color/app_gray"/>
+        android:textColor="@color/app_gray"
+        android:textSize="@dimen/ui_12_dip"/>
 </RelativeLayout>

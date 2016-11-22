@@ -259,13 +259,13 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
         PriceSort = new BSortRang("0", Constants.SortMax);
         ScoreSort = new BSortRang("0", Constants.SortMax);
         fSortGoofdContainer.setSwiped(false);
-        fSortGoofdContainer.SetLayoutColor(getResources().getColor(R.color.app_fen));
+//        fSortGoofdContainer.SetLayoutColor(getResources().getColor(R.color.app_fen));
         fSortGoofdContainer.setMenuItemPaddingLeft(50);
         fSortGoofdContainer.setMenuItemPaddingRight(50);
-        fSortGoofdContainer.SetBgColo(getResources().getColor(R.color.app_fen));
-
-        fSortGoofdContainer.setColorList(R.drawable.selector_menu_item_text1); //正常selector_menu_item_text // 正常selector_menu_item_text//非正常R.drawable.select_sort_up1
-        fSortGoofdContainer.setCheckedBackground(R.color.app_fen);
+//        fSortGoofdContainer.SetBgColo(getResources().getColor(R.color.app_fen));
+//
+//        fSortGoofdContainer.setColorList(R.drawable.selector_menu_item_text1); //正常selector_menu_item_text // 正常selector_menu_item_text//非正常R.drawable.select_sort_up1
+//        fSortGoofdContainer.setCheckedBackground(R.color.app_fen);
 //        fSortGoofdContainer.SetCheckedTxtColor(getResources().getColor(R.color.gold));
         fSortGoofdContainer.setAdapter(new SortMenuAdapter());
 //        fragmentSortRefrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
@@ -295,8 +295,8 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
         staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         swipeTarget.setLayoutManager(linearLayoutManager);
-        swipeTarget.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.VERTICAL, Color.TRANSPARENT, 2));
-        swipeTarget.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.HORIZONTAL, Color.TRANSPARENT, 3));
+        swipeTarget.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.VERTICAL, Color.TRANSPARENT, 3));
+        swipeTarget.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.HORIZONTAL, Color.TRANSPARENT, 5));
         sortRecycleAp = new SortRecycleAp();
         sortRecycleAp.SetOnItemClickListener(new MySortClickListener() {
             @Override
@@ -989,6 +989,7 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
                 if (!StrUtils.isEmpty(bSortGood.getOrig_price()) && !bSortGood.getOrig_price().equals("0")) {
                     StrUtils.SetTxt(MyHolder.itemMainSortPriceYuan, String.format("￥%s", StrUtils.SetTextForMony(bSortGood.getOrig_price())));
                     MyHolder.itemMainSortPriceYuan.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    MyHolder.itemMainSortPriceYuan.setVisibility(View.VISIBLE);
                 } else {
                     MyHolder.itemMainSortPriceYuan.setVisibility(View.GONE);
                 }
@@ -1006,6 +1007,7 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
                 if (!StrUtils.isEmpty(bSortGood.getOrig_price()) && !bSortGood.getOrig_price().equals("0")) {
                     StrUtils.SetTxt(sortStagerHolder.itemMainSortOringPriceStagger, String.format("￥%s", StrUtils.SetTextForMony(bSortGood.getOrig_price())));
                     sortStagerHolder.itemMainSortOringPriceStagger.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    sortStagerHolder.itemMainSortOringPriceStagger.setVisibility(View.VISIBLE);
                 } else {
                     sortStagerHolder.itemMainSortOringPriceStagger.setVisibility(View.GONE);
                 }

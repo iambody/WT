@@ -63,7 +63,7 @@
                 android:id="@+id/item_main_sort_oring_price_stagger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/ui_5_dip"
+                android:layout_marginRight="@dimen/ui_10_dip"
                 android:lines="1"
                 android:textColor="@color/app_gray"
                 android:textSize="@dimen/ui_10_dip"

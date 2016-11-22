@@ -197,7 +197,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         //上边赋值
         ImageLoaderUtil.Load2(Data.getSellerinfo().getCover(), fragmentNewhomeBg, R.drawable.error_iv1);
         ImageLoaderUtil.Load2(Data.getSellerinfo().getAvatar(), fragmentNewhomeHeadIv, R.drawable.error_iv2);
-        StrUtils.SetTxt(Text_fragment_newhome_RenShu, Data.getMySub());//邀请人数
+        StrUtils.SetTxt(Text_fragment_newhome_RenShu, Data.getTeam_num());//邀请人数
         StrUtils.SetTxt(Text_fragment_newhome_JiFen, Data.getIntegral() + "");//我的积分
         StrUtils.SetTxt(Text_fragment_newhome_YongJin, StrUtils.SetTextForMony(Data.getRebate()));//我的f返佣
         IsHaveXiaji = Data.getMySub().equals("0") ? false : true;
@@ -562,7 +562,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             fragmentNewhomeSrollviw.setRefreshing(false);
         }
     }
-//    @Override
+
+    //    @Override
 //    public void onHiddenChanged(boolean hidden) {
 //        super.onHiddenChanged(hidden);
 //        if (hidden) {
@@ -574,12 +575,11 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //    }
     @OnClick({R.id.fragment_newhome_iv_sao, R.id.fragment_newhome_iv_sou, R.id.fragment_newhome_iv_new, R.id.fragment_newhome_head_iv, R.id.fragment_newhome_bt_jifem, R.id.fragment_newhome_bt_fanyong, R.id.fragment_newhome_usertag})
     public void onClick(View view) {
-
         switch (view.getId()) {
             case R.id.fragment_newhome_iv_sao:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                        ASwipLoadTest.class));
-//                        CaptureActivity.class));
+//                        ASwipLoadTest.class));
+                        CaptureActivity.class));
                 break;
             case R.id.fragment_newhome_iv_sou:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ASouSouGood.class));
