@@ -571,7 +571,6 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
                 invite_friends_record_title.setText("");
                 invite_friends_record_title.setHint(R.string.invite_friends_record_scen_key);
                 page = nanor_page;
-                LogUtils.i("------------------nanor_page--------------"+nanor_page);
                 deleteScanContent();
                 break;
 

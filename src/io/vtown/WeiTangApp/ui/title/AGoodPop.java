@@ -307,7 +307,6 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_good_pop, null);
         overridePendingTransition(R.anim.slide_in, 0);
-
         SetTitleHttpDataLisenter(this);
         IData();
         IView();
@@ -374,11 +373,11 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
     private void toBuy() {
         HashMap<String, String> map = new HashMap<>();
         CommintData(map);
-        SerializableMap tmpmap=new SerializableMap();
+        SerializableMap tmpmap = new SerializableMap();
         tmpmap.setMap(map);
         Bundle bundle = new Bundle();
         bundle.putSerializable("DirectBuyInfo", tmpmap);
-        PromptManager.SkipActivity(BaseActivity,new Intent(BaseContext, AOderBeing.class).putExtras(bundle));
+        PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AOderBeing.class).putExtras(bundle));
         this.finish();
     }
 
@@ -678,8 +677,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                                             (arg2 == i) ? R.color.white
                                                     : R.color.app_black));
                         }
-                        if("0".equals(da.getStore())){
-                            PromptManager.ShowMyToast(BaseContext,getString(R.string.good_pop_select_good_no_stroe));
+                        if ("0".equals(da.getStore())) {
+                            PromptManager.ShowMyToast(BaseContext, getString(R.string.good_pop_select_good_no_stroe));
                         }
                         //
                         IFView();
@@ -743,8 +742,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                                             (arg2 == i) ? R.color.white
                                                     : R.color.app_black));
                         }
-                        if("0".equals(da.getStore())){
-                            PromptManager.ShowMyToast(BaseContext,getString(R.string.good_pop_select_good_no_stroe));
+                        if ("0".equals(da.getStore())) {
+                            PromptManager.ShowMyToast(BaseContext, getString(R.string.good_pop_select_good_no_stroe));
                         }
                         IFView();
                         break;
@@ -952,13 +951,13 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
             PromptManager.ShowMyToast(BaseContext, "请选择数量");
             return;
         }
-        if("0".equals(blComment.getStore())){
+        if ("0".equals(blComment.getStore())) {
             PromptManager.ShowMyToast(BaseContext, getString(R.string.good_pop_select_good_no_stroe));
             return;
         }
-        if(type == 1){
+        if (type == 1) {
             ConnectNet(1);
-        }else{
+        } else {
             //如果没绑定邀请码就先绑定
             if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {
                 ShowCustomDialog("请先绑定邀请码", getResources().getString(R.string.cancle),

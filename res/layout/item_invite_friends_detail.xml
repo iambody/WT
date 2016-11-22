@@ -138,7 +138,7 @@
 
                 <ImageView
                     android:id="@+id/iv_lv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/shop_lv_width"
                     android:layout_height="@dimen/shop_lv_height"
                     android:layout_gravity="center_vertical"
                     android:scaleType="fitCenter"
