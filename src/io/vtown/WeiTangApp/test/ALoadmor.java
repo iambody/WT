@@ -81,9 +81,45 @@ public class ALoadmor extends ABase {
 //        recyclerView.getAdapter().notifyItemRemoved(recyclerView.getmLoadMorePosition());
 
 //        recyclerView.setAutoLoadMoreEnable(true);
+        RecyclerView recyclerView = null;
 
+        StaggeredGridLayoutManager staggeredGridLayoutManager=null;
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if(newState==RecyclerView.SCROLL_STATE_IDLE){//停止滑动
+                  int LastPostion=  linearLayoutManager.findLastCompletelyVisibleItemPosition();
+                    int totalitemcountent=linearLayoutManager.getItemCount();
+//判断是否滚动到底部
+                    if(LastPostion==totalitemcountent-1){//是最后一个
+                    //最后一个就开始加载更多
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+            }
+        });
     }
-
+    LinearLayoutManager linearLayoutManager= null;
 
     public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

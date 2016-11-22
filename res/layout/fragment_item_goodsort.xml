@@ -33,9 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="left"
-            android:lines="1"
+            android:lines="2"
             android:ellipsize="end"
-            android:textSize="@dimen/ui_16_dip"
+            android:textSize="@dimen/ui_13_dip"
             />
 
         <LinearLayout

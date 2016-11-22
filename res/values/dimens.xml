@@ -646,6 +646,7 @@
     <dimen name="shop_lv_shape_width">55dp</dimen>
     <dimen name="shop_lv_shape_height">20dp</dimen>
     <dimen name="ui_4_dip">4dp</dimen>
+    <dimen name="ui_13_dip">13dp</dimen>
 
 
 </resources>

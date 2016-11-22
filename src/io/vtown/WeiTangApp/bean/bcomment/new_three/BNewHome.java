@@ -34,7 +34,7 @@ public class BNewHome extends BBase {
     //是否绑定机器人
     private int  is_ropot;
 
-
+    private String   team_num;//=54
     public BNewShop getSellerinfo() {
         return sellerinfo;
     }
@@ -161,5 +161,13 @@ public class BNewHome extends BBase {
 
     public void setIs_ropot(int is_ropot) {
         this.is_ropot = is_ropot;
+    }
+
+    public String getTeam_num() {
+        return team_num;
+    }
+
+    public void setTeam_num(String team_num) {
+        this.team_num = team_num;
     }
 }
