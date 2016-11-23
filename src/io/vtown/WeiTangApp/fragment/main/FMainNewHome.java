@@ -591,7 +591,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewCenter.class));
                 break;
             case R.id.fragment_newhome_renshu_lay:
-
+                if (CheckNet(BaseContext))
+                    return;
 //                if (IsHaveXiaji) {
 //                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AInviteFriendRecord.class));
 //                    return;
@@ -652,6 +653,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 break;
 //            fragment_newhome_qian_lay, fragment_newhome_yaoqing_lay, fragment_newhome_libao_lay
             case R.id.fragment_newhome_qian_lay://签到
+                if (CheckNet(BaseContext))
+                    return;
                 if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
                     ShowCustomDialog(getResources().getString(R.string.no_bind_code),
                             getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
@@ -702,6 +705,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 BeginSign();
                 break;
             case R.id.fragment_newhome_yaoqing_lay://邀请好友
+
                 if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
                     ShowCustomDialog(getResources().getString(R.string.no_bind_code),
                             getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
@@ -786,6 +790,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ACenterWallet.class));
                 break;
             case R.id.fragment_newhome_kaquan_lay:
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyCoupons.class));
                 break;
             case R.id.fragment_newhome_myshop_lay:
@@ -811,6 +817,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
                 break;
             case R.id.fragment_newhome_myoder_lay:
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ACenterMyOrder.class));
                 break;
         }
