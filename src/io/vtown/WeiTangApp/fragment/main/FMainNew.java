@@ -85,7 +85,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
 
     @Override
     public void InItView() {
-        BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_new,null);
+        BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_new, null);
         EventBus.getDefault().register(this, "NewReciver", BMessage.class);
         user_Get = Spuit.User_Get(BaseContext);
         IView();
@@ -112,175 +112,178 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
             }
         });
         new_zhushou_lay = (LinearLayout) BaseView.findViewById(R.id.new_zhushou_lay);
-            item_my_new_content = (TextView) BaseView.findViewById(R.id.item_my_new_content);
-            new_zhushou_time = (TextView) BaseView.findViewById(R.id.new_zhushou_time);
-            new_zhushou_lay.setOnClickListener(this);
+        item_my_new_content = (TextView) BaseView.findViewById(R.id.item_my_new_content);
+        new_zhushou_time = (TextView) BaseView.findViewById(R.id.new_zhushou_time);
+        new_zhushou_lay.setOnClickListener(this);
 
-            conversationList.addAll(loadConversationWithRecentChat());
+        conversationList.addAll(loadConversationWithRecentChat());
 
-            // IM的view
-            mynew_imlist = (CompleteListView) BaseView.findViewById(R.id.mynew_imlist);
-            ImHistoryAdapter = new ChatHistoryAdapter(BaseContext, conversationList);
-            mynew_imlist.setAdapter(ImHistoryAdapter);
-            mynew_imlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        // IM的view
+        mynew_imlist = (CompleteListView) BaseView.findViewById(R.id.mynew_imlist);
+        ImHistoryAdapter = new ChatHistoryAdapter(BaseContext, conversationList);
+        mynew_imlist.setAdapter(ImHistoryAdapter);
+        mynew_imlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view,
-                                        int position, long id) {
-                    EMConversation conversation = (EMConversation) ImHistoryAdapter
-                            .getItem(position);
-                    EMMessage latmessage = conversation.getLastMessage();
-                    EventBus.getDefault().post(new BMessage(BMessage.IM_MSG_READ));
-                    Intent intent = new Intent(BaseActivity, AChatInf.class);
-                    try {
-                        if (latmessage.direct == EMMessage.Direct.SEND) {// EMMessageDirectionSend
-                            // holder.name.setText(ReciverName);
-                            intent.putExtra("tagname", conversation.getUserName());
-                            String ReciverName = latmessage
-                                    .getStringAttribute("extReceiveNickname");
-                            intent.putExtra("title", latmessage
-                                    .getStringAttribute("extReceiveNickname"));
-                            intent.putExtra("iv", latmessage
-                                    .getStringAttribute("extReceiveHeadUrl"));
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                EMConversation conversation = (EMConversation) ImHistoryAdapter
+                        .getItem(position);
+                EMMessage latmessage = conversation.getLastMessage();
+                EventBus.getDefault().post(new BMessage(BMessage.IM_MSG_READ));
+                Intent intent = new Intent(BaseActivity, AChatInf.class);
+                try {
+                    if (latmessage.direct == EMMessage.Direct.SEND) {// EMMessageDirectionSend
+                        // holder.name.setText(ReciverName);
+                        intent.putExtra("tagname", conversation.getUserName());
+                        String ReciverName = latmessage
+                                .getStringAttribute("extReceiveNickname");
+                        intent.putExtra("title", latmessage
+                                .getStringAttribute("extReceiveNickname"));
+                        intent.putExtra("iv", latmessage
+                                .getStringAttribute("extReceiveHeadUrl"));
+
+                        startActivity(intent);
+                        conversation.resetUnreadMsgCount();
+                    }
+                    if (latmessage.direct == EMMessage.Direct.RECEIVE) {
+                        try {
+                            String ReciverName = conversation.getLastMessage()
+                                    .getStringAttribute("extSendNickname");
+
+                            String ReciverUrl = conversation.getLastMessage()
+                                    .getStringAttribute("extSendHeadUrl");
+                            intent.putExtra("tagname",
+                                    conversation.getUserName());
+
+                            intent.putExtra("title", ReciverName);
+                            intent.putExtra("iv", ReciverUrl);
 
                             startActivity(intent);
                             conversation.resetUnreadMsgCount();
-                        }
-                        if (latmessage.direct == EMMessage.Direct.RECEIVE) {
-                            try {
-                                String ReciverName = conversation.getLastMessage()
-                                        .getStringAttribute("extSendNickname");
-
-                                String ReciverUrl = conversation.getLastMessage()
-                                        .getStringAttribute("extSendHeadUrl");
-                                intent.putExtra("tagname",
-                                        conversation.getUserName());
-
-                                intent.putExtra("title", ReciverName);
-                                intent.putExtra("iv", ReciverUrl);
-
-                                startActivity(intent);
-                                conversation.resetUnreadMsgCount();
-                            } catch (Exception e) {
-
-                            }
-                        }
-                        for (int i = conversation.getAllMessages().size() - 1; i > 0; i--) {
-                            EMMessage mymewEmMessagesss = conversation
-                                    .getMessage(i);
-                            if (mymewEmMessagesss.direct == EMMessage.Direct.SEND) {
-                                intent.putExtra("tagname",
-                                        conversation.getUserName());
-                                try {
-                                    intent.putExtra(
-                                            "title",
-                                            mymewEmMessagesss
-                                                    .getStringAttribute("extReceiveNickname"));
-                                } catch (Exception e) {
-                                    intent.putExtra("title", "小糖果");
-                                }
-                                try {
-                                    intent.putExtra(
-                                            "iv",
-                                            mymewEmMessagesss
-                                                    .getStringAttribute("extReceiveHeadUrl"));
-
-                                } catch (Exception e) {
-                                }
-                                startActivity(intent);
-                                conversation.resetUnreadMsgCount();
-                                return;
-
-                            }
+                        } catch (Exception e) {
 
                         }
-                        intent.putExtra("tagname", conversation.getUserName());
-                        intent.putExtra("title", "小糖果");
-                        intent.putExtra("iv", "");
-                        startActivity(intent);
-                        conversation.resetUnreadMsgCount();
-
-                    } catch (Exception e) {
-
                     }
-
-                }
-
-            });
-            mynew_imlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-                @Override
-                public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                               int arg2, long arg3) {
-                    final EMConversation conversation = (EMConversation) ImHistoryAdapter
-                            .getItem(arg2);
-
-                    ShowCustomDialog("是否删除该条对话?", "取消", "删除", new IDialogResult() {
-
-                        @Override
-                        public void RightResult() {
-                            EMChatManager.getInstance().deleteConversation(
+                    for (int i = conversation.getAllMessages().size() - 1; i > 0; i--) {
+                        EMMessage mymewEmMessagesss = conversation
+                                .getMessage(i);
+                        if (mymewEmMessagesss.direct == EMMessage.Direct.SEND) {
+                            intent.putExtra("tagname",
                                     conversation.getUserName());
-                            refresh();
+                            try {
+                                intent.putExtra(
+                                        "title",
+                                        mymewEmMessagesss
+                                                .getStringAttribute("extReceiveNickname"));
+                            } catch (Exception e) {
+                                intent.putExtra("title", "小糖果");
+                            }
+                            try {
+                                intent.putExtra(
+                                        "iv",
+                                        mymewEmMessagesss
+                                                .getStringAttribute("extReceiveHeadUrl"));
+
+                            } catch (Exception e) {
+                            }
+                            startActivity(intent);
+                            conversation.resetUnreadMsgCount();
+                            return;
 
                         }
 
-                        @Override
-                        public void LeftResult() {
-                        }
-                    });
+                    }
+                    intent.putExtra("tagname", conversation.getUserName());
+                    intent.putExtra("title", "小糖果");
+                    intent.putExtra("iv", "");
+                    startActivity(intent);
+                    conversation.resetUnreadMsgCount();
 
-                    return true;
+                } catch (Exception e) {
+
                 }
-            });
-            // 消息的view
-            mynew_newlist = (CompleteListView) BaseView.findViewById(R.id.mynew_newlist);
 
-            myMew_Ap = new MyMew_Ap(R.layout.item_my_new);
-            mynew_newlist.setAdapter(myMew_Ap);
+            }
 
-            mynew_newlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        });
+        mynew_imlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
-                @Override
-                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                        long arg3) {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+                final EMConversation conversation = (EMConversation) ImHistoryAdapter
+                        .getItem(arg2);
 
-                    BLComment itemdata = (BLComment) arg0.getItemAtPosition(arg2);
-                    if (itemdata.getMessage_info() == null
-                            || StrUtils.isEmpty(itemdata.getMessage_info().getId())) {
-                        PromptManager.ShowCustomToast(BaseContext, "暂无消息");
-                    } else {
-                        PromptManager.SkipActivity(BaseActivity, new Intent(
-                                BaseActivity, AItemNew.class).putExtra("newtype",
-                                itemdata.getMessage_info().getSource_type()));
+                ShowCustomDialog("是否删除该条对话?", "取消", "删除", new IDialogResult() {
+
+                    @Override
+                    public void RightResult() {
+                        EMChatManager.getInstance().deleteConversation(
+                                conversation.getUserName());
+                        refresh();
 
                     }
 
+                    @Override
+                    public void LeftResult() {
+                    }
+                });
+
+                return true;
+            }
+        });
+        // 消息的view
+        mynew_newlist = (CompleteListView) BaseView.findViewById(R.id.mynew_newlist);
+
+        myMew_Ap = new MyMew_Ap(R.layout.item_my_new);
+        mynew_newlist.setAdapter(myMew_Ap);
+
+        mynew_newlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                    long arg3) {
+
+                BLComment itemdata = (BLComment) arg0.getItemAtPosition(arg2);
+                if (itemdata.getMessage_info() == null
+                        || StrUtils.isEmpty(itemdata.getMessage_info().getId())) {
+                    PromptManager.ShowCustomToast(BaseContext, "暂无消息");
+                } else {
+                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                            BaseActivity, AItemNew.class).putExtra("newtype",
+                            itemdata.getMessage_info().getSource_type()));
+
                 }
-            });
-
-            mynew_newlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-                @Override
-                public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                               int arg2, long arg3) {
-                    final BLComment itemdata = (BLComment) arg0
-                            .getItemAtPosition(arg2);
-                    ShowCustomDialog("是否删除该类型消息?", "取消", "确定", new IDialogResult() {
-
-                        @Override
-                        public void RightResult() {
-                            DeletByType(itemdata.getSource_type());
-                        }
-
-                        @Override
-                        public void LeftResult() {
-
-                        }
-                    });
-                    return true;
+                if (fragment_main_new_srollviw.isRefreshing()) {
+                    fragment_main_new_srollviw.setRefreshing(false);
                 }
-            });
+
+            }
+        });
+
+        mynew_newlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+                final BLComment itemdata = (BLComment) arg0
+                        .getItemAtPosition(arg2);
+                ShowCustomDialog("是否删除该类型消息?", "取消", "确定", new IDialogResult() {
+
+                    @Override
+                    public void RightResult() {
+                        DeletByType(itemdata.getSource_type());
+                    }
+
+                    @Override
+                    public void LeftResult() {
+
+                    }
+                });
+                return true;
+            }
+        });
 
     }
 
@@ -323,8 +326,8 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
                     .getString(R.string.loading));
         }
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("member_id",user_Get.getId());//"10015086"user_Get.getId()
-        map.put("api_version","3.1.0");
+        map.put("member_id", user_Get.getId());//"10015086"user_Get.getId()
+        map.put("api_version", "3.1.0");
         FBGetHttpData(map, Constants.My_New_ls, Request.Method.GET, 0, LoadType);
     }
 
@@ -585,7 +588,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
 
     @Override
     public void onRefresh() {
-       IData(REFRESHING);
+        IData(REFRESHING);
     }
 
 
