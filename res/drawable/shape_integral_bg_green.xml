@@ -3,5 +3,5 @@
     <!-- 圆角的透明的背景 -->
     <corners android:radius="2dp" />
 
-    <solid android:color="@color/forestgreen" />
+    <solid android:color="@color/green5" />
 </shape>

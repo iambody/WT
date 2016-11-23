@@ -56,6 +56,7 @@
     <!-- 自定义色值 -->
     <color name="province_line_border">#C7C7C7</color>
     <color name="app_fen">#FF4878</color>
+    <color name="app_fen4">#FF4747</color>
     <color name="app_fen3">#5cFF4878</color>
     <color name="app_fen1">#99FF4878</color>
     <color name="app_fen2">#abFF4878</color>
@@ -349,6 +350,9 @@
     <color name="seagreen">#2e8b57</color>
     <!-- 海绿色 -->
     <color name="forestgreen">#228b22</color>
+
+    <!-- 海绿色 -->
+    <color name="green5">#91bb19</color>
     <!-- 森林绿 -->
     <color name="lightseagreen">#20b2aa</color>
     <!-- 亮海蓝色 -->
