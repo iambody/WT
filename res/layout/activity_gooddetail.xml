@@ -66,6 +66,7 @@
                                 android:layout_height="200dp"
 
                                 android:scaleType="fitXY" />
+
                             <ImageView
                                 android:id="@+id/goodsdetail_vido_lay_controler_iv"
                                 android:layout_width="30dp"
@@ -119,13 +120,14 @@
                             android:layout_marginBottom="5dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="16dp"
+                            android:layout_marginTop="5dp"
                             android:orientation="horizontal">
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:orientation="vertical"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_height="wrap_content">
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/tv_good_title"
@@ -136,44 +138,39 @@
                                     android:textStyle="bold" />
 
 
+                                <TextView
+                                    android:id="@+id/good_detail_subtitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:textColor="@color/app_gray"
+                                    android:textSize="13sp" />
 
-
-
-
-
-
-                            <TextView
-                                android:id="@+id/good_detail_subtitle"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:textColor="@color/app_gray"
-                                android:textSize="13sp" />
-
-                            <TextView
-                                android:id="@+id/good_detail_xiangou"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:textColor="@color/app_fen1"
-                                android:textSize="12sp"
-                                android:visibility="gone" />
+                                <TextView
+                                    android:id="@+id/good_detail_xiangou"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:textColor="@color/app_fen1"
+                                    android:textSize="12sp"
+                                    android:visibility="gone" />
 
                             </LinearLayout>
-                            <ImageView
-                                android:layout_margin="7dp"
-                                android:layout_width="@dimen/line_size1"
 
+                            <ImageView
+                                android:layout_width="@dimen/line_size1"
                                 android:layout_height="@dimen/good_detail_line_height"
+
+                                android:layout_margin="7dp"
                                 android:src="@color/app_line" />
+
                             <LinearLayout
                                 android:id="@+id/rl_look_share"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
-                                android:padding="5dp"
                                 android:orientation="vertical"
-                                >
+                                android:padding="5dp">
 
                                 <ImageView
                                     android:id="@+id/iv_show_share"
@@ -218,10 +215,10 @@
 
                                 <TextView
                                     android:id="@+id/gooddetail_price_zhonglay"
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
-                                    android:layout_weight="1" />
+                                    android:layout_marginLeft="@dimen/ui_10_dip" />
 
                                 <TextView
                                     android:id="@+id/tv_suggest_retail_price"
@@ -254,10 +251,10 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="left|center_vertical"
+
+                                android:gravity="center_vertical"
                                 android:text="@string/fahuodi"
                                 android:textColor="@color/grey" />
 
@@ -265,7 +262,7 @@
                                 android:id="@+id/tv_send_address"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="50dp"
+                                android:layout_marginLeft="@dimen/ui_10_dip"
                                 android:text="@string/nullstr"
                                 android:textColor="@drawable/gray" />
                         </LinearLayout>
@@ -282,10 +279,10 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="left|center_vertical"
+
+                                android:gravity="center_vertical"
                                 android:text="@string/yunfei"
                                 android:textColor="@color/grey" />
 
@@ -293,7 +290,7 @@
                                 android:id="@+id/tv_freight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="62dp" />
+                                android:layout_marginLeft="@dimen/ui_10_dip" />
                         </LinearLayout>
 
 
@@ -316,10 +313,9 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:gravity="left|center_vertical"
+                                    android:gravity="center_vertical"
                                     android:text="@string/sales"
                                     android:textColor="@color/grey" />
 
@@ -327,7 +323,7 @@
                                     android:id="@+id/tv_goods_detail_sales"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="62dp"
+                                    android:layout_marginLeft="@dimen/ui_10_dip"
                                     android:textColor="@drawable/gray" />
                             </LinearLayout>
                         </LinearLayout>
@@ -351,10 +347,9 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:gravity="left|center_vertical"
+                                    android:gravity="center_vertical"
                                     android:text="@string/score"
                                     android:textColor="@color/grey" />
 
@@ -362,7 +357,7 @@
                                     android:id="@+id/tv_goods_detail_score"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="62dp"
+                                    android:layout_marginLeft="@dimen/ui_10_dip"
                                     android:textColor="@drawable/gray" />
                             </LinearLayout>
                         </LinearLayout>
@@ -478,9 +473,9 @@
                     android:layout_height="@dimen/comment_good_renzheng_iv_height"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/ui_10_dip"
-                    android:padding="8dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:padding="8dp"
                     android:src="@drawable/arrow_back" />
 
                 <TextView
@@ -521,9 +516,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/ui_10_dip"
                     android:background="@drawable/shape_good_detail_circle_gray_bg"
-                    android:padding="8dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:padding="8dp"
                     android:src="@drawable/arrow_back" />
 
                 <TextView
@@ -544,15 +539,13 @@
                     android:layout_height="@dimen/comment_good_renzheng_iv_height"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="@dimen/ui_10_dip"
-                    android:padding="8dp"
                     android:background="@drawable/shape_good_detail_circle_gray_bg"
+                    android:padding="8dp"
                     android:src="@drawable/ic_shoucang_nor"
                     android:visibility="visible" />
             </LinearLayout>
 
         </FrameLayout>
-
-
 
 
         <RelativeLayout
@@ -586,10 +579,10 @@
                 android:id="@+id/rl_good_detail_lianxikefu_log"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
                 android:layout_marginLeft="@dimen/good_detail_icon_margins"
                 android:layout_marginRight="@dimen/good_detail_icon_margins"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
                 android:padding="@dimen/goos_detail_icons_padding">
 
                 <ImageView
@@ -611,20 +604,20 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
                 android:layout_width="@dimen/line_size1"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp"
                 android:src="@color/app_line" />
 
             <LinearLayout
                 android:id="@+id/rl_look_show"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
                 android:layout_marginLeft="@dimen/good_detail_icon_margins"
                 android:layout_marginRight="@dimen/good_detail_icon_margins"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
                 android:padding="@dimen/goos_detail_icons_padding">
 
                 <ImageView
@@ -645,26 +638,25 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
                 android:layout_width="@dimen/line_size1"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp"
                 android:src="@color/app_line" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
                 android:layout_marginLeft="@dimen/good_detail_icon_margins"
                 android:layout_marginRight="@dimen/good_detail_icon_margins"
+                android:gravity="center_horizontal"
                 android:padding="@dimen/goos_detail_icons_padding">
 
                 <ImageView
                     android:id="@+id/good_detail_shopbus_log"
                     android:layout_width="@dimen/goos_detail_icon_size"
                     android:layout_height="@dimen/goos_detail_icon_size"
-                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
                     android:padding="3dp"
                     android:src="@drawable/ic_gouwuche_nor_good_detail" />
 
@@ -672,12 +664,13 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_below="@id/good_detail_shopbus_log"
+                    android:layout_centerHorizontal="true"
                     android:text="购物车"
                     android:textColor="@color/grey"
 
                     android:textSize="@dimen/goos_detail_icon_lable" />
-            </LinearLayout>
+            </RelativeLayout>
 
 
             <TextView
@@ -689,8 +682,8 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="@string/buy"
-                android:textStyle="bold"
-                android:textColor="@color/TextColorWhite" />
+                android:textColor="@color/TextColorWhite"
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="@dimen/line_size1"
