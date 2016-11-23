@@ -56,7 +56,7 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * Created by Yihuihua on 2016/10/12.
  */
 
-public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnLoadListener, LListView.IXListViewListener, TextWatcher {
+public class AInviteFriendRecord extends ATitleBase implements   LListView.IXListViewListener, TextWatcher {
 
     private RefreshLayout invite_friends_refrash11;
     private LListView invite_friends_record_list;
@@ -716,22 +716,22 @@ public class AInviteFriendRecord extends ATitleBase implements RefreshLayout.OnL
 
     }
 
-    @Override
-    public void OnLoadMore() {
-        page++;
-        if (scan_type == 0) {
-            nanor_page = page;
-        }
-
-        IData(page, LOAD_LOADMOREING);
-    }
-
-    @Override
-    public void OnFrash() {
-        page = 1;
-        nanor_page = 1;
-        IData(page, LOAD_REFRESHING);
-    }
+//    @Override
+//    public void OnLoadMore() {
+//        page++;
+//        if (scan_type == 0) {
+//            nanor_page = page;
+//        }
+//
+//        IData(page, LOAD_LOADMOREING);
+//    }
+//
+//    @Override
+//    public void OnFrash() {
+//        page = 1;
+//        nanor_page = 1;
+//        IData(page, LOAD_REFRESHING);
+//    }
 
 
     @Override

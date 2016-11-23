@@ -33,9 +33,9 @@
                 android:layout_gravity="center_vertical"
                 android:clickable="true"
                 android:focusable="true"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:src="@drawable/sao" />
+
+                android:src="@drawable/sao"
+                android:visibility="invisible"/>
 
             <RelativeLayout
                 android:id="@+id/newhome_sou_lay"
@@ -75,9 +75,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
- 				android:layout_marginLeft="10dp"
- 				android:layout_marginRight="10dp"
-                android:src="@drawable/new1" />
+
+                android:src="@drawable/new1"
+                android:visibility="invisible"/>
         </LinearLayout>
         <!-- title*** -->
 

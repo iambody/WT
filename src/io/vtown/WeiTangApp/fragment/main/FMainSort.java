@@ -376,7 +376,7 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
             case R.id.sort_good_zonghe://点击综合&&点击综合价格//积分//销量//全部清空
                 CurrentPage = 1;
                 if (!SortZongHe)
-                    ResetSort();
+                    ResetSort(true);
                 //  //开始请求数据！！！！！！！！！！！
                 break;
             case R.id.sort_good_price_lay://点击价格
@@ -477,7 +477,7 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
         }
     }
 
-    private void ResetSort() {
+    private void ResetSort(boolean istry) {
         SecondSortId = "";
         PriceSort = new BSortRang("0", Constants.SortMax);
         ScoreSort = new BSortRang("0", Constants.SortMax);
@@ -505,6 +505,7 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
         SortSellNumberClick = false;
         sortGoodXiaoliang.setTextColor(getResources().getColor(R.color.gray));
         //开始请求数据！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        if(istry)
         GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
     }
 
@@ -514,7 +515,6 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
      * @param Sorttype
      */
     private void NetSort(String Sorttype) {
-
         HashMap<String, String> map = new HashMap<>();
         map.put("pid", Sorttype);
         FBGetHttpData(map, Constants.Add_Good_Categoty, Request.Method.GET, 0, 11);
@@ -626,8 +626,9 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
             UpSortPostion = position;
             CurrentOutSortId = MySortCategory.get(UpSortPostion).getId();
             //重置
-            ResetSort();
-            GetGoodsLs(CurrentPage, "weight", false, INITIALIZE);
+            ResetSort(0==position);
+            if(0!=position)
+            GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
 
 
             if (swipeToLoadLayout.isRefreshing()) swipeToLoadLayout.setRefreshing(false);

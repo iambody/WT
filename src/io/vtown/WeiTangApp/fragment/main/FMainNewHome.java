@@ -234,7 +234,6 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                         switch (MBNewHome.getBanner().get(position).getAdvert_type()) {
 
                             case 1:// HT跳转
-
                                 PromptManager.SkipActivity(BaseActivity, new Intent(
                                         BaseActivity, AWeb.class).putExtra(
                                         AWeb.Key_Bean,

@@ -341,7 +341,7 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                     return;
                 }
                 // LastId=comments.get(comments.size()-1)
-                LastId = comments.get(comments.size() - 1).getId();
+                LastId = comments.get(comments.size() - 1).getMessage_id();
                 switch (Data.getHttpLoadType()) {
                     case 9:
                     case LOAD_INITIALIZE:
@@ -463,7 +463,7 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
             BNew data = datas.get(position);
             String datastr = DateUtils.timeStampToStr(StrUtils.toLong(data.getCreate_time()));
             String[] split = datastr.split(" ");
-            StrUtils.SetTxt(myItem.item_my_new_list_data, split[1]);
+            StrUtils.SetTxt(myItem.item_my_new_list_data, split[0]);
             StrUtils.SetTxt(myItem.item_my_new_title, data.getTitle());
             StrUtils.SetTxt(myItem.item_my_new_content, data.getContent());
             StrUtils.SetTxt(myItem.item_my_new_time, datastr);

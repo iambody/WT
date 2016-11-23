@@ -245,6 +245,7 @@ public class AMianSort extends ABase {
 
             }
 
+
         } else {//点击一级列表进来
             CheckLeftPostion(LeftPostion);
             popMaitabSortLs.setVisibility(View.VISIBLE);
@@ -255,6 +256,15 @@ public class AMianSort extends ABase {
             Net_Rang_Price();
             Net_Rang_Scro();
             NetBrandLs();
+        }
+//开始操作是否自定义过的价格和积分左侧下边的标识问题
+        if (IsZiDingYiPrice) {
+            popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)", "" + PriceSort.getMin(), "" + PriceSort.getMin()));
+            popMaitabSortPriceDownStateTag.setVisibility(View.VISIBLE);
+        }
+        if (IsZiDingYiScore) {
+            popMaitabSortJifenStateTag.setText(String.format("(%s-%s)", "" + ScoreSort.getMin(), "" + ScoreSort.getMin()));
+            popMaitabSortJifenStateTag.setVisibility(View.VISIBLE);
         }
 
 
@@ -585,7 +595,7 @@ public class AMianSort extends ABase {
                     BrnadSort = myBrnadAp.GetDatas().get(myBrnadAp.GetSelectPostion());
                     SortMessage.setBrandSort_Postion(myBrnadAp.GetSelectPostion());
                 }
-                PromptManager.ShowCustomToast(BaseContext, String.format("我的筛选品牌=>%s", BrnadSort));
+//                PromptManager.ShowCustomToast(BaseContext, String.format("我的筛选品牌=>%s", BrnadSort));
 
                 SortMessage.setBrandSort(BrnadSort);
                 //开始发送广播到fragment页面进行刷新列表
@@ -679,8 +689,9 @@ public class AMianSort extends ABase {
         //开始保存自定义区间的数据/////同时如果对应的价格或者积分如果已经选择过了/需要把已选择过的item进行去掉亚瑟处理
         //如果筛选区间已经选择过需要把上边的徐泽期间的title文字变成红色的  便于进行区别
 
-
+        IsReSet=false;
         if (1 == i) { //价格的区间的处理
+
             IsZiDingYiPrice = true;
             ZiDingYiPrice = new BSortRang(popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim());
             popSortRangPriceTag.setTextColor(getResources().getColor(R.color.app_fen));
@@ -692,7 +703,7 @@ public class AMianSort extends ABase {
 
             }
             //需要显示价格区间左侧的标签*********
-            popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)",popSortRangMinEd.getText().toString().trim(),popSortRangMaxEd.getText().toString().trim()));
+            popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)", popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim()));
             popMaitabSortPriceDownStateTag.setVisibility(View.VISIBLE);
         } else {//积分的区间的处理
             IsZiDingYiScore = true;
@@ -705,10 +716,10 @@ public class AMianSort extends ABase {
                 myRangScoreAp.SetSelectPostion(-1);
             }
             //需要显示积分左侧的标签
-            popMaitabSortJifenStateTag.setText(String.format("(%s-%s)",popSortRangMinEd.getText().toString().trim(),popSortRangMaxEd.getText().toString().trim()));
+            popMaitabSortJifenStateTag.setText(String.format("(%s-%s)", popSortRangMinEd.getText().toString().trim(), popSortRangMaxEd.getText().toString().trim()));
             popMaitabSortJifenStateTag.setVisibility(View.VISIBLE);
         }
-        PromptManager.ShowCustomToast(BaseContext, String.format("%s区间选择成功", 1 == i ? "价格" : "积分"));
+//        PromptManager.ShowCustomToast(BaseContext, String.format("%s区间选择成功", 1 == i ? "价格" : "积分"));
         hintKbTwo();
     }
 
@@ -860,7 +871,7 @@ public class AMianSort extends ABase {
             }
             return;
         }
-        PromptManager.showtextLoading(BaseContext, "筛选中");
+//        PromptManager.showtextLoading(BaseContext, "筛选中");
         NHttpBaseStr mbrandNHttpBaseStr = new NHttpBaseStr(BaseContext);
         mbrandNHttpBaseStr.setPostResult(new IHttpResult<String>() {
             @Override
@@ -960,7 +971,7 @@ public class AMianSort extends ABase {
             StrUtils.SetTxt(mmiten.pop_mainsort_sort_item_txt, da.getCate_name());
             if (selectItem == position && !IsJiaClear) {
 //                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
-                mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.red));
+                mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.app_fen));
             } else {
 //                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.transparent));
                 mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.black));
@@ -1042,7 +1053,7 @@ public class AMianSort extends ABase {
             StrUtils.SetTxt(mmiten.pop_mainsort_sort_brand_item_txt, da);
             if (selectItem == position && !IsJiaClear) {
 //                mmiten.pop_mainsort_sort_brand_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
-                mmiten.pop_mainsort_sort_brand_item_txt.setTextColor(getResources().getColor(R.color.red));
+                mmiten.pop_mainsort_sort_brand_item_txt.setTextColor(getResources().getColor(R.color.app_fen));
             } else {
 //                mmiten.pop_mainsort_sort_brand_item_txt.setBackgroundColor(getResources().getColor(R.color.transparent));
                 mmiten.pop_mainsort_sort_brand_item_txt.setTextColor(getResources().getColor(R.color.black));
@@ -1129,7 +1140,7 @@ public class AMianSort extends ABase {
             }
             if (selectItem == position && !IsJiaClear) {
 //                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.app_fen2));
-                mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.red));
+                mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.app_fen));
             } else {
 //                mmiten.pop_mainsort_sort_item_txt.setBackgroundColor(getResources().getColor(R.color.transparent));
                 mmiten.pop_mainsort_sort_item_txt.setTextColor(getResources().getColor(R.color.black));
