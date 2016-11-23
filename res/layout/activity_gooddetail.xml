@@ -127,6 +127,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center_vertical"
                                 android:orientation="vertical">
 
                                 <TextView
@@ -160,8 +162,7 @@
                             <ImageView
                                 android:layout_width="@dimen/line_size1"
                                 android:layout_height="@dimen/good_detail_line_height"
-
-                                android:layout_margin="7dp"
+                                android:layout_margin="8dp"
                                 android:src="@color/app_line" />
 
                             <LinearLayout
@@ -196,20 +197,14 @@
                             android:layout_marginBottom="5dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:layout_marginTop="5dp"
                             android:orientation="horizontal">
 
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="horizontal">
 
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:gravity="left|center_vertical"
+                                    android:gravity="center_vertical"
                                     android:text="@string/jianyilingshou"
                                     android:textColor="@color/grey" />
 
@@ -228,15 +223,16 @@
                                     android:layout_marginLeft="@dimen/ui_10_dip"
                                     android:text="@string/nullstr"
                                     android:textColor="@color/app_fen" />
-                            </LinearLayout>
+                                <TextView
+                                    android:id="@+id/tv_suggest_retail_orig_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/app_gray"
+                                    android:textSize="@dimen/ui_12_dip" />
 
-                            <TextView
-                                android:id="@+id/tv_suggest_retail_orig_price"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/app_gray"
-                                android:textSize="@dimen/ui_12_dip" />
+
+
                         </LinearLayout>
 
                         <View style="@style/line_left" />
@@ -253,7 +249,6 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
                                 android:gravity="center_vertical"
                                 android:text="@string/fahuodi"
                                 android:textColor="@color/grey" />
@@ -281,7 +276,6 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
                                 android:gravity="center_vertical"
                                 android:text="@string/yunfei"
                                 android:textColor="@color/grey" />

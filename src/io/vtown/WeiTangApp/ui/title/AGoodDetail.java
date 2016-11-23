@@ -552,13 +552,17 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     private void RefreshView(BGoodDetail datas) {
 //限购
 
-        if (datas.getGoods_info().getBuy_left() != 0) {
+        if (datas.getGoods_info().getBuy_max() == 0) {
+            good_detail_xiangou.setVisibility(View.GONE);
+        } else if (datas.getGoods_info().getBuy_left() != 0) {
 //            PromptManager.ShowCustomToast(BaseContext, "限购");
             // good_detail_xiangou.setText("限购：" + datas.getGoods_info().getBuy_left() + "件");
-            good_detail_xiangou.setText(String.format("该商品每人限购%s件,您还可以购买%s", "" + datas.getGoods_info().getBuy_max(), "" + datas.getGoods_info().getBuy_left()));
             good_detail_xiangou.setVisibility(View.VISIBLE);
+            good_detail_xiangou.setText(String.format("该商品每人限购%s件,您还可以购买%s件", "" + datas.getGoods_info().getBuy_max(), "" + datas.getGoods_info().getBuy_left()));
+
         } else {
-            good_detail_xiangou.setVisibility(View.GONE);
+            good_detail_xiangou.setVisibility(View.VISIBLE);
+            good_detail_xiangou.setText(String.format("该商品每人限购%s件,您已到达购买上限", "" + datas.getGoods_info().getBuy_max()));
         }
 
         if (!StrUtils.isEmpty(datas.getOrig_price()) && !datas.getOrig_price().equals("0")) {
@@ -797,7 +801,14 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             case R.id.tv_buy:
                 if (CheckNet(BaseContext))
                     return;
-                goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_BUY);
+                if(datas.getGoods_info().getBuy_max() == 0){
+                    goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_BUY);
+                }else if (datas.getGoods_info().getBuy_left() != 0 ) {
+                    goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_BUY);
+                } else {
+                    PromptManager.ShowCustomToast(BaseContext, "您已达购买上限");
+                }
+
                 break;
             case R.id.tv_replace_sell:
                 if (CheckNet(BaseContext))

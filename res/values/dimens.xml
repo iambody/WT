@@ -649,7 +649,7 @@
     <dimen name="ui_4_dip">4dp</dimen>
     <dimen name="ui_13_dip">13dp</dimen>
     <dimen name="good_detail_icon_margins">5dp</dimen>
-    <dimen name="good_detail_line_height">30dp</dimen>
+    <dimen name="good_detail_line_height">25dp</dimen>
 
 
 </resources>

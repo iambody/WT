@@ -221,7 +221,7 @@ public class ACenterMyOrder extends ATitleBase implements
                                          int totalItemCount) {
                     }
                 }));
-        if(PDaiFu != Ket_Tage){
+        if (PDaiFu != Ket_Tage) {
             fragment_center_order_ls.setOnItemClickListener(this);
         }
 
@@ -1058,44 +1058,27 @@ public class ACenterMyOrder extends ATitleBase implements
 
                             if (CheckNet(BaseContext))
                                 return;
-                            BLCenterOder bl_data = null;
+                            BLCenterOder bl_data = (BLCenterOder) centerOrderOutsideAdapter
+                                    .getItem(myItemPosition);
 
                             if (PDaiFu != Integer.parseInt(data.getOrder_status())) {
-                                int count = centerOrderOutsideAdapter.getCount();
-                                // if(count > 0){
-                                bl_data = (BLCenterOder) centerOrderOutsideAdapter
-                                        .getItem(myItemPosition);
 
-                                int order_status = Integer.parseInt(bl_data.getOrder_status());
-                                Intent intent = null;
-                                if (PDaiFu == Integer.parseInt(data.getOrder_status())) {
-                                    intent = new Intent(BaseContext,
-                                            ACenterMyOrderNoPayDetail.class);
-                                    intent.putExtra("order_sn", bl_data.getOrder_sn());
-
-                                } else {
-                                    intent = new Intent(BaseContext, ACenterMyOrderDetail.class);
-
-                                    intent.putExtra("Key_TageStr", order_status);
-                                }
-
+                                Intent intent = new Intent(BaseContext, ACenterMyOrderDetail.class);
+                                intent.putExtra("Key_TageStr", order_status);
                                 intent.putExtra("member_id", bl_data.getMember_id());
                                 intent.putExtra("seller_order_sn", bl_data.getSeller_order_sn());
                                 PromptManager.SkipActivity((Activity) BaseContext, intent);
-                                // }
+
 
                             } else {
-                                int count = centerOrderNoPayAdapter.getCount();
-                                // if(count > 0){
-                                bl_data = (BLCenterOder) centerOrderNoPayAdapter
-                                        .getItem(myItemPosition);
+
                                 Intent intent = new Intent(BaseContext,
                                         ACenterMyOrderNoPayDetail.class);
                                 intent.putExtra("order_sn", bl_data.getOrder_sn());
                                 intent.putExtra("member_id", bl_data.getMember_id());
                                 intent.putExtra("seller_order_sn", bl_data.getSeller_order_sn());
                                 PromptManager.SkipActivity((Activity) BaseContext, intent);
-                                // }
+
 
                             }
                         }
@@ -1476,7 +1459,7 @@ public class ACenterMyOrder extends ATitleBase implements
             } else {
                 centerOrderNoPay = (CenterOrderNoPayItem) convertView.getTag();
             }
-         final CenterOrderNoPayInsideAdapter centerOrderNoPayInside = new CenterOrderNoPayInsideAdapter(
+            final CenterOrderNoPayInsideAdapter centerOrderNoPayInside = new CenterOrderNoPayInsideAdapter(
                     R.layout.item_center_order_no_pay_inside, datas.get(
                     position).getSon_order());
             centerOrderNoPay.item_fragment_center_order_no_pay_outside
@@ -1641,11 +1624,11 @@ public class ACenterMyOrder extends ATitleBase implements
                 @Override
                 public void onClick(View v) {
 
-                    BComment  bComment = new BComment(secoud_datas.get(position).getSeller_id(), secoud_datas.get(position).getSeller_name());
+                    BComment bComment = new BComment(secoud_datas.get(position).getSeller_id(), secoud_datas.get(position).getSeller_name());
                     Intent intent = null;
-                    if("0".equals(secoud_datas.get(position).getIs_brand())) {
+                    if ("0".equals(secoud_datas.get(position).getIs_brand())) {
                         intent = new Intent(BaseContext, AShopDetail.class);
-                    }else {
+                    } else {
                         intent = new Intent(BaseContext,
                                 ABrandDetail.class);
                     }
@@ -1803,8 +1786,6 @@ public class ACenterMyOrder extends ATitleBase implements
         } else {
 
         }
-
-
 
 
     }
