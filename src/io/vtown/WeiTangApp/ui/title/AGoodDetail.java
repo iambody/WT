@@ -34,8 +34,11 @@ import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BDGoodDetailInstantInfo;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BGoodDetail;
 import io.vtown.WeiTangApp.bean.bcomment.easy.gooddetail.BDataGood;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -51,12 +54,15 @@ import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase.OnPopupStutaChangerListener;
 import io.vtown.WeiTangApp.comment.view.pop.PReturnRule;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AGoodShow;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
+import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
 import io.vtown.WeiTangApp.ui.ui.AMainTab;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
@@ -161,7 +167,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
      */
     private ImageCycleView gooddetail_banner;
 
- private ImageView   good_detail_shopbus_log;
+    private ImageView good_detail_shopbus_log;
 
     private List<BDataGood> goods_attr;
 
@@ -253,10 +259,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
      * 联系客服
      */
     private LinearLayout rl_good_detail_lianxikefu_log;
-    /**
-     * 收藏
-     */
-    private LinearLayout rl_good_detail_shoucang_log;
+
 
     /**
      * scrollview
@@ -265,7 +268,6 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
 
 
     private LinearLayout good_title_up;
-    private ImageView good_detail_fanyong_log;
     private TextView good_detail_subtitle;
     private LinearLayout good_detail_sales;
     private TextView tv_goods_detail_sales;
@@ -274,7 +276,10 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     private LinearLayout good_detail_score;
     private TextView tv_goods_detail_score;
     private SwipeRefreshLayout good_detail_refresh;
-    private LinearLayout ll_good_detail_fanyong_log;
+
+    private LinearLayout good_title_up_2;
+    private ImageView good_detail_title_up_shoucang;
+    private ImageView gooddetail_up_title_back_2;
 
     @Override
     protected void InItBaseView() {
@@ -304,7 +309,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     }
 
     private void IData(int loadtype) {
-        if(loadtype == LOAD_INITIALIZE){
+        if (loadtype == LOAD_INITIALIZE) {
             PromptManager.showtextLoading(BaseContext,
                     getResources()
                             .getString(R.string.xlistview_header_hint_loading));
@@ -340,11 +345,11 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     }
 
     private void IBase() {
-        good_detail_shopbus_log= (ImageView) findViewById(R.id.good_detail_shopbus_log);
+        good_detail_shopbus_log = (ImageView) findViewById(R.id.good_detail_shopbus_log);
         good_detail_refresh = (SwipeRefreshLayout) findViewById(R.id.good_detail_refresh);
         good_detail_refresh.setOnRefreshListener(this);
         good_detail_refresh.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
-        good_detail_refresh.setEnabled(false);
+
         good_detail_xiangou = (TextView) findViewById(R.id.good_detail_xiangou);
         tv_suggest_retail_orig_price = (TextView) findViewById(R.id.tv_suggest_retail_orig_price);
         gooddetail_up_title_back = (ImageView) findViewById(R.id.gooddetail_up_title_back);
@@ -352,20 +357,22 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         gooddetail_up_title_back.setOnClickListener(this);
 
         good_title_up = (LinearLayout) findViewById(R.id.good_title_up);
+        good_title_up_2 = (LinearLayout) findViewById(R.id.good_title_up_2);
         gooddetail_picview = (LinearLayout) findViewById(R.id.gooddetail_picview);
         right_right_iv = (ImageView) findViewById(R.id.good_detail_lianxikefu_log);
         right_iv = (ImageView) findViewById(R.id.good_detail_shoucang_log);
         right_left_iv = (ImageView) findViewById(R.id.good_detail_shopbus_log);
 
-//
-        ll_good_detail_fanyong_log = (LinearLayout) findViewById(R.id.ll_good_detail_fanyong_log);
+
+        gooddetail_up_title_back_2 = (ImageView) findViewById(R.id.gooddetail_up_title_back_2);
+        gooddetail_up_title_back_2.setOnClickListener(this);
+        good_detail_title_up_shoucang = (ImageView) findViewById(R.id.good_detail_title_up_shoucang);
+
 
         rl_good_detail_lianxikefu_log = (LinearLayout) findViewById(R.id.rl_good_detail_lianxikefu_log);
-        rl_good_detail_shoucang_log = (LinearLayout) findViewById(R.id.rl_good_detail_shoucang_log);
 
         gooddetail_random_message = (TextView) findViewById(R.id.gooddetail_random_message);
         ll_gooddetail_random_message = (LinearLayout) findViewById(R.id.ll_gooddetail_random_message);
-        good_detail_fanyong_log = (ImageView) findViewById(R.id.good_detail_fanyong_log);
         tv_good_title = (TextView) findViewById(R.id.tv_good_title);
         good_detail_subtitle = (TextView) findViewById(R.id.good_detail_subtitle);
         rl_look_show = (LinearLayout) findViewById(R.id.rl_look_show);
@@ -385,9 +392,11 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                         if (distance < screenHeight) {
                             rl_to_top.setVisibility(View.GONE);
                             good_title_up.setVisibility(View.GONE);
+                            good_title_up_2.setVisibility(View.VISIBLE);
                         } else {
                             rl_to_top.setVisibility(View.VISIBLE);
                             good_title_up.setVisibility(View.VISIBLE);
+                            good_title_up_2.setVisibility(View.GONE);
                         }
                     }
                 });
@@ -418,16 +427,18 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         rl_seller.setOnClickListener(this);
         tv_buy.setOnClickListener(this);
         tv_replace_sell.setOnClickListener(this);
+        good_detail_title_up_shoucang.setOnClickListener(this);
         right_iv.setOnClickListener(this);
         right_right_iv.setOnClickListener(this);
         // 初始化页面时关注设为不可用
         right_iv.setEnabled(false);
+        good_detail_title_up_shoucang.setEnabled(false);
         right_left_iv.setOnClickListener(this);
-        ll_good_detail_fanyong_log.setOnClickListener(this);
 
 
         ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
 
+        //
     }
 
     @Override
@@ -469,15 +480,18 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
 
                 IDataView(gooddetails_outlay, gooddetail_nodata_lay, NOVIEW_RIGHT);
                 RefreshView(datas);
+                good_detail_refresh.setRefreshing(false);
                 runRandomMessage = true;
                 mHandler.postDelayed(mRandomMessageTimerTask, 3000);
                 break;
 
             case 15:// 关注商品
-                right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
-                        : R.drawable.ic_shoucang_nor_good_detail);
+                right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press
+                        : R.drawable.ic_shoucang_nor);
 //                PromptManager.ShowMyToast(BaseContext, isAttention ? "关注商品成功"
 //                        : "取消关注商品成功");
+                good_detail_title_up_shoucang.setImageResource(isAttention ? R.drawable.ic_shoucang_press
+                        : R.drawable.ic_shoucang_nor);
                 break;
 
             case 2:// 订单生成实时查询
@@ -516,9 +530,10 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             // 数据初异常时不可用
             rl_good_detail_lianxikefu_log.setVisibility(View.GONE);
             right_right_iv.setVisibility(View.GONE);
-            rl_good_detail_shoucang_log.setVisibility(View.GONE);
             right_iv.setVisibility(View.GONE);
             right_iv.setEnabled(false);
+            good_detail_title_up_shoucang.setVisibility(View.GONE);
+            good_detail_title_up_shoucang.setEnabled(false);
             ShowErrorCanLoad(error);
             // BaseActivity.finish();
             IDataView(gooddetails_outlay, gooddetail_nodata_lay, NOVIEW_ERROR);
@@ -539,8 +554,8 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
 
         if (datas.getGoods_info().getBuy_left() != 0) {
 //            PromptManager.ShowCustomToast(BaseContext, "限购");
-           // good_detail_xiangou.setText("限购：" + datas.getGoods_info().getBuy_left() + "件");
-            good_detail_xiangou.setText(String.format("该商品每人限购%s件,您还可以购买%s",""+datas.getGoods_info().getBuy_max(),""+datas.getGoods_info().getBuy_left()));
+            // good_detail_xiangou.setText("限购：" + datas.getGoods_info().getBuy_left() + "件");
+            good_detail_xiangou.setText(String.format("该商品每人限购%s件,您还可以购买%s", "" + datas.getGoods_info().getBuy_max(), "" + datas.getGoods_info().getBuy_left()));
             good_detail_xiangou.setVisibility(View.VISIBLE);
         } else {
             good_detail_xiangou.setVisibility(View.GONE);
@@ -554,7 +569,6 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         } else {
             findViewById(R.id.gooddetail_price_zhonglay).setVisibility(View.VISIBLE);
         }
-        ll_good_detail_fanyong_log.setVisibility(datas.getIs_fee() == 1 ? View.VISIBLE : View.GONE);
         StrUtils.SetTxt(gooddetail_up_title, datas.getTitle());
         if (StrUtils.isEmpty(datas.getGoods_info().getSubtitle())) {//商品副标题
             good_detail_subtitle.setVisibility(View.GONE);
@@ -581,14 +595,14 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             good_detail_sales.setVisibility(View.GONE);
         } else {
             good_detail_sales.setVisibility(View.VISIBLE);
-            StrUtils.SetTxt(tv_goods_detail_sales, datas.getSales() + "件");
+            StrUtils.SetTxt(tv_goods_detail_sales, datas.getSales() + "笔");
         }
 
-        if(0 == datas.getScore()){
+        if (0 == datas.getScore()) {
             good_detail_score.setVisibility(View.GONE);
-        }else{
+        } else {
             good_detail_score.setVisibility(View.VISIBLE);
-            StrUtils.SetTxt(tv_goods_detail_score,datas.getScore()+"");
+            StrUtils.SetTxt(tv_goods_detail_score, datas.getScore() + "");
         }
 
         // 判断是否品牌商品 1=》品牌商品进行判断=》标识是否可以代理
@@ -626,14 +640,15 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         if (datas.getSeller_id() != null
                 && datas.getSeller_id().equals(user_Get.getSeller_id())) {// 我自己的商品
             tv_buy.setVisibility(View.GONE);
-            rl_good_detail_shoucang_log.setVisibility(View.GONE);
             right_iv.setVisibility(View.GONE);
+            good_detail_title_up_shoucang.setVisibility(View.GONE);
             rl_good_detail_lianxikefu_log.setVisibility(View.GONE);
             right_right_iv.setVisibility(View.GONE);
         }
 
         // 数据初始化完成时设置为可用
         right_iv.setEnabled(true);
+        good_detail_title_up_shoucang.setEnabled(true);
         StrUtils.SetTxt(tv_good_title, datas.getTitle());
         StrUtils.SetTxt(tv_suggest_retail_price,
                 StrUtils.SetTextForMony(datas.getSell_price()) + "元");
@@ -641,8 +656,10 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         if (!StrUtils.isEmpty(is_collect)) {
 
             isAttention = ("1".equals(is_collect)) ? true : false;
-            right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
-                    : R.drawable.ic_shoucang_nor_good_detail);
+            right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press
+                    : R.drawable.ic_shoucang_nor);
+            good_detail_title_up_shoucang.setImageResource(isAttention ? R.drawable.ic_shoucang_press
+                    : R.drawable.ic_shoucang_nor);
 
         }
         ImageLoaderUtil.Load2(datas.getAvatar(), iv_seller_icon,
@@ -733,14 +750,15 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         // 判断是否在售中************************************
         if (!StrUtils.isEmpty(datas.getSale_status())
                 && datas.getSale_status().equals("100")) {
-            good_detail_refresh.setEnabled(false);
+            //good_detail_refresh.setEnabled(false);
         } else {// 非在售状态
-            tv_buy.setClickable(false);
+            tv_buy.setClickable(true);
+            tv_buy.setEnabled(false);
             tv_buy.setText("非在售中");
             tv_buy.setBackgroundColor(getResources().getColor(R.color.app_gray));
             tv_replace_sell.setClickable(false);
-            good_detail_refresh.setEnabled(true);
-            good_detail_refresh.setRefreshing(false);
+            // good_detail_refresh.setEnabled(true);
+
             tv_replace_sell.setVisibility(View.GONE);
         }
 
@@ -772,6 +790,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.gooddetail_up_title_back:
+            case R.id.gooddetail_up_title_back_2:
                 BaseActivity.finish();
                 overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
                 break;
@@ -802,6 +821,55 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             case R.id.rl_look_share:// 分享
                 if (CheckNet(BaseContext))
                     return;
+
+                //判断是否符合分享条件*************
+
+
+                if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
+                    ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                            getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                            ANewBindCode.class));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                }
+                            });
+                    return;
+                }
+                if (Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                    ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                            maxtive.getActivitytitle());
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                            mBCommentss));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, AWeb.class).putExtra(
+                                            AWeb.Key_Bean,
+                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                                }
+                            });
+
+                    return;
+                }
+
+
+                //判断是否符合分享条件*************
                 // PromptManager.ShowCustomToast(BaseContext, "分享");
                 BNew mBNew = new BNew();
                 mBNew.setShare_url(datas.getGoods_url());
@@ -841,6 +909,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 break;
 
             case R.id.good_detail_shoucang_log:
+            case R.id.good_detail_title_up_shoucang:
                 if (CheckNet(BaseContext))
                     return;
                 isAttention = !isAttention;
@@ -884,9 +953,6 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 good_detail_scrollview.fullScroll(View.FOCUS_UP);
                 break;
 
-            case R.id.ll_good_detail_fanyong_log://返佣
-                showReturnPop();
-                break;
             default:
                 break;
         }

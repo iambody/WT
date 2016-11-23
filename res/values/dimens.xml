@@ -574,10 +574,10 @@
     <dimen name="login_margentop_log">40dp</dimen>
 
     <!--商品详情购物车，关注，联系客服等图标大小、-->
-    <dimen name="goos_detail_icon_size">22dp</dimen>
-    <dimen name="goos_detail_icon_lable">9sp</dimen>
+    <dimen name="goos_detail_icon_size">23dp</dimen>
+    <dimen name="goos_detail_icon_lable">10sp</dimen>
     <!--图标之间的padding值-->
-    <dimen name="goos_detail_icons_padding">10dp</dimen>
+    <dimen name="goos_detail_icons_padding">5dp</dimen>
     <dimen name="show_share_grad_delet_panding">5dp</dimen>
     <dimen name="newgoodedit_vido_height">120dp</dimen>
     <dimen name="new_goodedit_vido_play_iv">30dp</dimen>
@@ -608,7 +608,7 @@
     <dimen name="good_pop_addandsubview_height">40dp</dimen>
     <dimen name="good_pop_make_how_much_height">30dp</dimen>
     <dimen name="good_pop_price_store_height">80dp</dimen>
-    <dimen name="comment_good_renzheng_iv_height">30dp</dimen>
+    <dimen name="comment_good_renzheng_iv_height">35dp</dimen>
     <dimen name="comment_good_renzheng_txt_size">10dp</dimen>
     <dimen name="fragment_newhome_head_height">40dp</dimen>
     <dimen name="fragment_newhome_downlaytxt_size">14dp</dimen>
@@ -648,6 +648,8 @@
     <dimen name="shop_lv_shape_height">20dp</dimen>
     <dimen name="ui_4_dip">4dp</dimen>
     <dimen name="ui_13_dip">13dp</dimen>
+    <dimen name="good_detail_icon_margins">5dp</dimen>
+    <dimen name="good_detail_line_height">30dp</dimen>
 
 
 </resources>
