@@ -22,7 +22,8 @@
     <RelativeLayout
         android:id="@+id/gooddetails_outlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_weight="1"
+        android:layout_height="0dp">
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/good_detail_refresh"
@@ -136,8 +137,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="15sp"
+                                     />
 
 
                                 <TextView
@@ -228,6 +229,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="@dimen/ui_10_dip"
                                     android:textColor="@color/app_gray"
                                     android:textSize="@dimen/ui_12_dip" />
 
@@ -562,139 +564,141 @@
                 android:textSize="12sp" />
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/item_bg"
-            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/rl_good_detail_lianxikefu_log"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/good_detail_icon_margins"
-                android:layout_marginRight="@dimen/good_detail_icon_margins"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="@dimen/goos_detail_icons_padding">
-
-                <ImageView
-                    android:id="@+id/good_detail_lianxikefu_log"
-                    android:layout_width="@dimen/goos_detail_icon_size"
-                    android:layout_height="@dimen/goos_detail_icon_size"
-                    android:layout_centerInParent="true"
-                    android:padding="3dp"
-                    android:src="@drawable/ic_lianxikefu_nor_good_detail" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="客服"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/goos_detail_icon_lable"
-
-                    />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="@dimen/line_size1"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="7dp"
-                android:layout_marginTop="7dp"
-                android:src="@color/app_line" />
-
-            <LinearLayout
-                android:id="@+id/rl_look_show"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/good_detail_icon_margins"
-                android:layout_marginRight="@dimen/good_detail_icon_margins"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="@dimen/goos_detail_icons_padding">
-
-                <ImageView
-                    android:id="@+id/iv_show_icon"
-                    android:layout_width="@dimen/goos_detail_icon_size"
-                    android:layout_height="@dimen/goos_detail_icon_size"
-                    android:layout_centerInParent="true"
-                    android:padding="3dp"
-                    android:src="@drawable/ic_chakanshangpinshow_nor_good_detail" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="show"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/goos_detail_icon_lable" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="@dimen/line_size1"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="7dp"
-                android:layout_marginTop="7dp"
-                android:src="@color/app_line" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/good_detail_icon_margins"
-                android:layout_marginRight="@dimen/good_detail_icon_margins"
-                android:gravity="center_horizontal"
-                android:padding="@dimen/goos_detail_icons_padding">
-
-                <ImageView
-                    android:id="@+id/good_detail_shopbus_log"
-                    android:layout_width="@dimen/goos_detail_icon_size"
-                    android:layout_height="@dimen/goos_detail_icon_size"
-                    android:layout_centerHorizontal="true"
-                    android:padding="3dp"
-                    android:src="@drawable/ic_gouwuche_nor_good_detail" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/good_detail_shopbus_log"
-                    android:layout_centerHorizontal="true"
-                    android:text="购物车"
-                    android:textColor="@color/grey"
-
-                    android:textSize="@dimen/goos_detail_icon_lable" />
-            </RelativeLayout>
-
-
-            <TextView
-                android:id="@+id/tv_buy"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/select_fen_to_gray1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/buy"
-                android:textColor="@color/TextColorWhite"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="@dimen/line_size1"
-                android:layout_height="match_parent"
-                android:src="@color/app_line" />
-
-            <TextView
-                android:id="@+id/tv_replace_sell"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/select_fen_to_gray1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/yijiandaimai"
-                android:textColor="@color/TextColorWhite"
-                android:visibility="gone" />
-        </LinearLayout>
     </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/good_detail_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/item_bg"
+        android:visibility="gone"
+        android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/rl_good_detail_lianxikefu_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/good_detail_icon_margins"
+            android:layout_marginRight="@dimen/good_detail_icon_margins"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/goos_detail_icons_padding">
+
+            <ImageView
+                android:id="@+id/good_detail_lianxikefu_log"
+                android:layout_width="@dimen/goos_detail_icon_size"
+                android:layout_height="@dimen/goos_detail_icon_size"
+                android:layout_centerInParent="true"
+                android:padding="3dp"
+                android:src="@drawable/ic_lianxikefu_nor_good_detail" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="客服"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/goos_detail_icon_lable"
+
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/line_size1"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="7dp"
+            android:src="@color/app_line" />
+
+        <LinearLayout
+            android:id="@+id/rl_look_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/good_detail_icon_margins"
+            android:layout_marginRight="@dimen/good_detail_icon_margins"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/goos_detail_icons_padding">
+
+            <ImageView
+                android:id="@+id/iv_show_icon"
+                android:layout_width="@dimen/goos_detail_icon_size"
+                android:layout_height="@dimen/goos_detail_icon_size"
+                android:layout_centerInParent="true"
+                android:padding="3dp"
+                android:src="@drawable/ic_chakanshangpinshow_nor_good_detail" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="show"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/goos_detail_icon_lable" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/line_size1"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="7dp"
+            android:src="@color/app_line" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/good_detail_icon_margins"
+            android:layout_marginRight="@dimen/good_detail_icon_margins"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/goos_detail_icons_padding">
+
+            <ImageView
+                android:id="@+id/good_detail_shopbus_log"
+                android:layout_width="@dimen/goos_detail_icon_size"
+                android:layout_height="@dimen/goos_detail_icon_size"
+                android:layout_centerHorizontal="true"
+                android:padding="3dp"
+                android:src="@drawable/ic_gouwuche_nor_good_detail" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/good_detail_shopbus_log"
+                android:layout_centerHorizontal="true"
+                android:text="购物车"
+                android:textColor="@color/grey"
+
+                android:textSize="@dimen/goos_detail_icon_lable" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_buy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/select_fen_to_gray1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/buy"
+            android:textColor="@color/TextColorWhite"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="@dimen/line_size1"
+            android:layout_height="match_parent"
+            android:src="@color/app_line" />
+
+        <TextView
+            android:id="@+id/tv_replace_sell"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_fen_to_gray1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/yijiandaimai"
+            android:textColor="@color/TextColorWhite"
+            android:visibility="gone" />
+    </LinearLayout>
 </LinearLayout>

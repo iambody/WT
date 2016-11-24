@@ -280,6 +280,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     private LinearLayout good_title_up_2;
     private ImageView good_detail_title_up_shoucang;
     private ImageView gooddetail_up_title_back_2;
+    private LinearLayout good_detail_bottom_layout;
 
     @Override
     protected void InItBaseView() {
@@ -379,6 +380,8 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         rl_look_share = (LinearLayout) findViewById(R.id.rl_look_share);
         iv_show_icon = (ImageView) findViewById(R.id.iv_show_icon);
         rl_look_share.setOnClickListener(this);
+
+        good_detail_bottom_layout = (LinearLayout) findViewById(R.id.good_detail_bottom_layout);
         // 回到顶部按钮
         rl_to_top = (RelativeLayout) findViewById(R.id.rl_to_top);
         good_detail_scrollview = (ScrollDistanceScrollView) findViewById(R.id.good_detail_scrollview);
@@ -463,6 +466,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
 //                    BaseActivity.finish();
 //                    PromptManager.ShowCustomToast(BaseContext, Msg);
                     DataError("暂无商品信息", LOAD_INITIALIZE);
+                    good_detail_bottom_layout.setVisibility(View.GONE);
                     return;
                 }
 
@@ -477,7 +481,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                     return;
 
                 }
-
+                good_detail_bottom_layout.setVisibility(View.VISIBLE);
                 IDataView(gooddetails_outlay, gooddetail_nodata_lay, NOVIEW_RIGHT);
                 RefreshView(datas);
                 good_detail_refresh.setRefreshing(false);
@@ -528,6 +532,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         PromptManager.ShowCustomToast(BaseContext, error);
         if (LOAD_INITIALIZE == LoadTyp) {// 刚进来获取数据时候异常就不显示数据
             // 数据初异常时不可用
+            good_detail_bottom_layout.setVisibility(View.GONE);
             rl_good_detail_lianxikefu_log.setVisibility(View.GONE);
             right_right_iv.setVisibility(View.GONE);
             right_iv.setVisibility(View.GONE);

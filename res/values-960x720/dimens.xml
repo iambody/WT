@@ -23,4 +23,5 @@
   <dimen name="shop_lv_shape_height">20dp</dimen>
   <dimen name="good_detail_icon_margins">5dp</dimen>
   <dimen name="good_detail_line_height">30dp</dimen>
+  <dimen name="intergral_shape_radiu">4dp</dimen>
 </resources>

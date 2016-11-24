@@ -576,10 +576,12 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             if (TYPE_CONSUME.equals(data.getType())) {
                 holder.ll_integral_point_and_status.setBackgroundResource(R.drawable.shape_integral_bg_green);
                 StrUtils.SetTxt(holder.tv_integral_point, "-" + point);
+                holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.lvdian));
                 holder.tv_integral_status.setVisibility(View.GONE);
             } else {
                 holder.ll_integral_point_and_status.setBackgroundResource(R.drawable.shape_integral_bg_fen);
                 StrUtils.SetTxt(holder.tv_integral_point, "+" + point);
+                holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.huangdian));
                 holder.tv_integral_status.setVisibility(View.VISIBLE);
             }
 
@@ -588,11 +590,11 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             switch (status) {
                 case 1:
                     status_str = "正在到账";
-                    holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.zidian));
+                    //holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.huangdian));
                     break;
                 case 2:
                     status_str = "到账成功";
-                    holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.huangdian));
+
                     break;
                 case 3:
                     status_str = "到账失败";
