@@ -44,7 +44,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/pop_share_center1"
-                android:text="分享好友"/>
+                android:text="分享微信好友"/>
         </RelativeLayout>
 
         <View style="@style/line"/>
@@ -53,7 +53,7 @@
             android:id="@+id/pop_share_pyq"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/select_show_share_down"
+            android:background="@drawable/select_show_share_center"
             android:padding="5dp">
 
             <ImageView
@@ -77,6 +77,89 @@
                 android:layout_toRightOf="@+id/pop_share_center2"
                 android:text="分享朋友圈"/>
         </RelativeLayout>
+
+        //qq
+
+        <View style="@style/line"/>
+
+        <RelativeLayout
+            android:id="@+id/pop_share_qq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_show_share_center"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/pop_share_center3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/pop_share_center3"
+                android:src="@drawable/share_qq"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/pop_share_center3"
+                android:text="分享QQ好友"/>
+        </RelativeLayout>
+
+
+        //qq空间
+
+
+        <View style="@style/line"/>
+
+        <RelativeLayout
+            android:id="@+id/pop_share_qqkj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/select_show_share_down"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/pop_share_center4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/pop_share_center4"
+                android:src="@drawable/share_qqkj"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/pop_share_center4"
+                android:text="分享QQ空间"/>
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
 
 
     </LinearLayout>

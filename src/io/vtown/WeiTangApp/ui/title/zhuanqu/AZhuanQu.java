@@ -8,16 +8,23 @@ import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuan;
 import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuanQuBean;
 import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuanquGood;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -184,6 +191,54 @@ public class AZhuanQu extends ATitleBase {
             case R.id.right_iv:
                 if (CheckNet(BaseContext))
                     return;
+
+                //如果未绑定或者已绑定未激活的用户分享权限的判断***************************
+                if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
+                    ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                            getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                            ANewBindCode.class));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                }
+                            });
+                    return;
+                }
+                if (Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                    ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                            maxtive.getActivitytitle());
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                            mBCommentss));
+                                    BaseActivity.finish();
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, AWeb.class).putExtra(
+                                            AWeb.Key_Bean,
+                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                                }
+                            });
+
+                    return;
+                }
+
+
+                //如果未绑定或者已绑定未激活的用户分享权限的判断***************************
                 // PromptManager.ShowCustomToast(BaseContext, "分享");
                 BNew mBNew = new BNew();
                 mBNew.setShare_url(bdComment.getUrl());
