@@ -459,7 +459,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/titlebarheingh"
                 android:layout_alignParentTop="true"
-                android:background="@color/app_fen"
+                android:background="@color/item_bg"
                 android:orientation="horizontal"
                 android:visibility="gone">
 
@@ -472,7 +472,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="8dp"
-                    android:src="@drawable/arrow_back" />
+                    android:src="@drawable/ic_huiseback" />
 
                 <TextView
                     android:id="@+id/gooddetail_up_title"
@@ -484,7 +484,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:lines="1"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/grey" />
 
                 <ImageView
                     android:id="@+id/good_detail_title_up_shoucang"
@@ -493,7 +493,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="@dimen/ui_10_dip"
                     android:padding="8dp"
-                    android:src="@drawable/ic_shoucang_nor"
+                    android:src="@drawable/ic_shoucang_nor_good_detail"
                     android:visibility="visible" />
             </LinearLayout>
 
@@ -535,8 +535,7 @@
                     android:layout_height="@dimen/comment_good_renzheng_iv_height"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="@dimen/ui_10_dip"
-                    android:background="@drawable/shape_good_detail_circle_gray_bg"
-                    android:padding="8dp"
+
                     android:src="@drawable/ic_shoucang_nor"
                     android:visibility="visible" />
             </LinearLayout>
@@ -582,6 +581,8 @@
             android:layout_marginLeft="@dimen/good_detail_icon_margins"
             android:layout_marginRight="@dimen/good_detail_icon_margins"
             android:gravity="center_horizontal"
+            android:focusable="true"
+            android:clickable="true"
             android:orientation="vertical"
             android:padding="@dimen/goos_detail_icons_padding">
 
@@ -617,6 +618,8 @@
             android:layout_marginLeft="@dimen/good_detail_icon_margins"
             android:layout_marginRight="@dimen/good_detail_icon_margins"
             android:gravity="center_horizontal"
+            android:focusable="true"
+            android:clickable="true"
             android:orientation="vertical"
             android:padding="@dimen/goos_detail_icons_padding">
 
@@ -649,6 +652,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/good_detail_icon_margins"
             android:layout_marginRight="@dimen/good_detail_icon_margins"
+
             android:gravity="center_horizontal"
             android:padding="@dimen/goos_detail_icons_padding">
 
@@ -657,6 +661,8 @@
                 android:layout_width="@dimen/goos_detail_icon_size"
                 android:layout_height="@dimen/goos_detail_icon_size"
                 android:layout_centerHorizontal="true"
+                android:focusable="true"
+                android:clickable="true"
                 android:padding="3dp"
                 android:src="@drawable/ic_gouwuche_nor_good_detail" />
 

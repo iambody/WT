@@ -490,12 +490,12 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 break;
 
             case 15:// 关注商品
-                right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press
+                right_iv.setImageResource(isAttention ?R.drawable.ic_shoucang_press
                         : R.drawable.ic_shoucang_nor);
 //                PromptManager.ShowMyToast(BaseContext, isAttention ? "关注商品成功"
 //                        : "取消关注商品成功");
-                good_detail_title_up_shoucang.setImageResource(isAttention ? R.drawable.ic_shoucang_press
-                        : R.drawable.ic_shoucang_nor);
+                good_detail_title_up_shoucang.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
+                        :R.drawable.ic_shoucang_nor_good_detail);
                 break;
 
             case 2:// 订单生成实时查询
@@ -666,9 +666,9 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
 
             isAttention = ("1".equals(is_collect)) ? true : false;
             right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press
-                    : R.drawable.ic_shoucang_nor);
-            good_detail_title_up_shoucang.setImageResource(isAttention ? R.drawable.ic_shoucang_press
-                    : R.drawable.ic_shoucang_nor);
+                     : R.drawable.ic_shoucang_nor);
+            good_detail_title_up_shoucang.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
+                    : R.drawable.ic_shoucang_nor_good_detail);
 
         }
         ImageLoaderUtil.Load2(datas.getAvatar(), iv_seller_icon,
@@ -959,6 +959,8 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 break;
             // 跳转购物车
             case R.id.good_detail_shopbus_log:
+                if (CheckNet(BaseContext))
+                    return;
                 EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_four));
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                         AMainTab.class).putExtra("a", "1"));
