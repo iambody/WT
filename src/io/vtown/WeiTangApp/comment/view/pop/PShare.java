@@ -162,6 +162,11 @@ public class PShare extends PopupWindow implements OnClickListener {
                 sp.setImageUrl(ShareBeanNew.getShare_log());
                 break;
             case 3://新浪微博
+//                platform = ShareSDK.getPlatform(pContext, QZone.NAME);
+//                sp.setTitle(ShareBeanNew.getShare_title());
+//                sp.setTitleUrl(ShareBeanNew.getShare_url()); // 标题的超链接
+//                sp.setText(ShareBeanNew.getShare_content());
+//                sp.setImageUrl(ShareBeanNew.getShare_log());
                 break;
 
         }

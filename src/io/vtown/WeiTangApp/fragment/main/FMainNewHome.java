@@ -231,6 +231,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                     public void onImageClick(int position, View imageView) {
 //                        PromptManager.ShowCustomToast(BaseContext, "点击位置=》" + position);
 //                        if(true)return;
+
                         switch (MBNewHome.getBanner().get(position).getAdvert_type()) {
 
                             case 1:// HT跳转
