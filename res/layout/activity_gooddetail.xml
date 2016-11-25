@@ -648,11 +648,13 @@
             android:src="@color/app_line" />
 
         <RelativeLayout
+            android:id="@+id/good_detail_shopbus_log_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/good_detail_icon_margins"
             android:layout_marginRight="@dimen/good_detail_icon_margins"
-
+            android:focusable="true"
+            android:clickable="true"
             android:gravity="center_horizontal"
             android:padding="@dimen/goos_detail_icons_padding">
 
@@ -661,8 +663,6 @@
                 android:layout_width="@dimen/goos_detail_icon_size"
                 android:layout_height="@dimen/goos_detail_icon_size"
                 android:layout_centerHorizontal="true"
-                android:focusable="true"
-                android:clickable="true"
                 android:padding="3dp"
                 android:src="@drawable/ic_gouwuche_nor_good_detail" />
 

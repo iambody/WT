@@ -134,13 +134,14 @@
 
 
             </LinearLayout>
-            <View style="@style/line_left"/>
+
 
             <LinearLayout
                 android:id="@+id/share_my_shop_url"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
+                android:visibility="gone"
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="0dp"
@@ -238,20 +239,20 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="@dimen/insulate_view_height"
                 android:src="@color/app_bg" />
             <include
                 android:id="@+id/shop_guize"
                 layout="@layout/commentview_txtarrow" />
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="@dimen/insulate_view_height"
                 android:src="@color/app_bg" />
 
 
             <LinearLayout
                 android:id="@+id/ll_shop_id"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"

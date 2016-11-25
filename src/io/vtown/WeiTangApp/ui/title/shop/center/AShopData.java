@@ -106,7 +106,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     private View shop_introduce;
     private TextView tv_conment1;
     private TextView tv_conment2;
-    private ImageView shop_qr_code_iv;
+
    // private TextView shop_data_name;
 
     /**
@@ -116,7 +116,6 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     /**
      * 分享
      */
-   // private TextView share_my_shop_url;
 
     /**
      * 电话号码
@@ -171,7 +170,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     private View myView;
     private BNewHome MBNewHome;
     private boolean IsAvater=false;
-    private LinearLayout share_my_shop_url;
+
 
     @Override
     protected void InItBaseView() {
@@ -227,9 +226,8 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
     private void IView() {
         //shop_data_name = (TextView) findViewById(R.id.shop_data_name);
 
-        shop_qr_code_iv = (ImageView) findViewById(R.id.shop_qr_code_iv);
         tab_shop_iv = (CircleImageView) findViewById(R.id.tab_shop_iv);
-        share_my_shop_url = (LinearLayout) findViewById(R.id.share_my_shop_url);
+
 
         tv_phone_numb = (TextView) findViewById(R.id.tv_phone_numb);
         authentication = findViewById(R.id.authentication);
@@ -253,49 +251,11 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
         SetItemContent(account_safe, R.string.account_safe, "",0);
 
 
-        IItCodeIv();
-        share_my_shop_url.setOnClickListener(this);
+
+
     }
 
-    // 设置二维码的图片
-    private void IItCodeIv() {
 
-        String Path = SdCardUtils.CodePath(BaseContext) + "shopcode.jpg";
-        CreatQ(MBNewHome.getSellerinfo().getSeller_url(), Path);
-    }
-
-    private void CreatQ(final String seller_url, final String path2) {
-
-
-        // 如果不存在就进行吹
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                String avatar = Spuit.Shop_Get(getApplicationContext()).getAvatar();
-                Bitmap logoBm = com.nostra13.universalimageloader.core.ImageLoader
-                        .getInstance().loadImageSync(avatar);
-                boolean success = QRCodeUtil.createQRImage(seller_url, 800,
-                        800, logoBm, path2);
-
-                if (success) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            qrBitmap = BitmapFactory.decodeFile(path2);
-                            shop_qr_code_iv.setImageBitmap(qrBitmap);
-                            shop_qr_code_iv.setVisibility(View.VISIBLE);
-                            //share_my_shop_url.setVisibility(View.VISIBLE);
-                            QrscaleWidth = 2;
-                            QrscaleHeight = (screenHeight * 2 / screenWidth);
-
-                        }
-                    });
-                }
-            }
-        }).start();
-    }
 
     private void SetItemContent(View VV, int ResourceTitle,
                                 String ResourceRight, int type) {
@@ -404,12 +364,6 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
                 PromptManager.SkipResultActivity(BaseActivity, intent1, 101);
                 break;
 
-            case R.id.share_my_shop_url://分享店铺二维码
-                //ShareShopUrl();
-                if (null != qrBitmap)
-                    new ImagViewDialog(BaseContext, qrBitmap, screenWidth, 1)
-                            .show();
-                break;
 
             case R.id.authentication:
                 if (isLogin_RenZheng_Set) {
@@ -728,7 +682,7 @@ public class AShopData extends ATitleBase implements OnLongClickListener {
                         EventBus.getDefault().post(
                                 new BMessage(
                                         BMessage.Tage_Shop_data_cover_change));
-                        IItCodeIv();
+
 
                     }
                     if (2 == Type) {

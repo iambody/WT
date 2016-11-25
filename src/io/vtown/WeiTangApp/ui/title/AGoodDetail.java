@@ -281,6 +281,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     private ImageView good_detail_title_up_shoucang;
     private ImageView gooddetail_up_title_back_2;
     private LinearLayout good_detail_bottom_layout;
+    private RelativeLayout good_detail_shopbus_log_layout;
 
     @Override
     protected void InItBaseView() {
@@ -362,6 +363,8 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         gooddetail_picview = (LinearLayout) findViewById(R.id.gooddetail_picview);
         right_right_iv = (ImageView) findViewById(R.id.good_detail_lianxikefu_log);
         right_iv = (ImageView) findViewById(R.id.good_detail_shoucang_log);
+
+        good_detail_shopbus_log_layout = (RelativeLayout) findViewById(R.id.good_detail_shopbus_log_layout);
         right_left_iv = (ImageView) findViewById(R.id.good_detail_shopbus_log);
 
 
@@ -436,7 +439,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         // 初始化页面时关注设为不可用
         right_iv.setEnabled(false);
         good_detail_title_up_shoucang.setEnabled(false);
-        right_left_iv.setOnClickListener(this);
+        good_detail_shopbus_log_layout.setOnClickListener(this);
 
 
         ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
@@ -958,7 +961,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                         .getGoods_info().getVid()));
                 break;
             // 跳转购物车
-            case R.id.good_detail_shopbus_log:
+            case R.id.good_detail_shopbus_log_layout:
                 if (CheckNet(BaseContext))
                     return;
                 EventBus.getDefault().post(new BMessage(BMessage.Tage_Tab_four));
