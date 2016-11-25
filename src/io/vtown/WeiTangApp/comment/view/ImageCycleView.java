@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.comment.view;
 
 import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 
 import java.util.ArrayList;
@@ -220,7 +221,12 @@ public class ImageCycleView extends LinearLayout {
         @Override
         public void run() {
             if (mImageViews != null) {
+//                if (mAdvPager.getCurrentItem() == MyImageUrlList.size() - 1) {
+//                    mAdvPager.setCurrentItem(0);
+//                } else {
                 mAdvPager.setCurrentItem(mAdvPager.getCurrentItem() + 1);
+//                }
+//                PromptManager.ShowCustomToast(mContext, "自动轮播" +mAdvPager.getCurrentItem());
                 if (!isStop) { // if isStop=true //当你退出后 要把这个给停下来 不然 这个一直存在
                     // 就一直在后台循环
                     mHandler.postDelayed(mImageTimerTask, 3000);
@@ -248,9 +254,13 @@ public class ImageCycleView extends LinearLayout {
 
         @Override
         public void onPageSelected(int index) {
+//            PromptManager.ShowCustomToast(mContext, "onPageSelected--" + index);
+            if(index>=mImageViews.length)
             index = index % mImageViews.length;
+//                index =   mImageViews.length%index;
             // 设置当前显示的图片
             mImageIndex = index;
+//            mAdvPager.setCurrentItem(mImageIndex);
             // 设置图片滚动指示器背
             mImageViews[index]
                     .setBackgroundResource(R.drawable.banner_dian_focus);
@@ -261,7 +271,7 @@ public class ImageCycleView extends LinearLayout {
                             .setBackgroundResource(R.drawable.banner_dian_blur);
                 }
             }
-            if(onPageChangelistenr!=null)
+            if (onPageChangelistenr != null)
                 onPageChangelistenr.onPagerPostion(index);
         }
     }
@@ -309,6 +319,7 @@ public class ImageCycleView extends LinearLayout {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
+            final int postionmmm=position;
             String imageUrl = mAdList.get(position % mAdList.size());
             ImageView imageView = null;
             if (mImageViewCacheList.isEmpty()) {
@@ -322,7 +333,7 @@ public class ImageCycleView extends LinearLayout {
                     @Override
                     public void onClick(View v) {
                         mImageCycleViewListener.onImageClick(
-                                position % mAdList.size(), v);
+                                mImageIndex>= mAdList.size()? mImageIndex % mAdList.size():mImageIndex, v);
                     }
                 });
             } else {
@@ -330,7 +341,7 @@ public class ImageCycleView extends LinearLayout {
             }
             imageView.setTag(imageUrl);
             container.addView(imageView);
-            mImageCycleViewListener.displayImage(imageUrl, imageView, position);
+            mImageCycleViewListener.displayImage(imageUrl, imageView,  mImageIndex>= mAdList.size()? mImageIndex % mAdList.size():mImageIndex);
             return imageView;
         }
 

@@ -174,6 +174,7 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
         if (StrUtils.isEmpty(Mycache)) {//不存在缓存***
             IGetCategoryData();
         } else {//存在缓存****
+
             MySortCategory = JSON.parseArray(Mycache, BSortCategory.class);
             MySortCategory.add(0, new BSortCategory("0", "全部"));
             IBase();
@@ -276,15 +277,7 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
         GetGoodsLs(CurrentPage, "weight", true, INITIALIZE);
 //        mySortAdapter = new SortAp();
 //        fragmentSortLs.setAdapter(mySortAdapter);
-//        fragmentSortLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                BSortGood data = (BSortGood) parent.getItemAtPosition(position);
-//                PromptManager.SkipActivity(BaseActivity,
-//                        new Intent(BaseActivity, AGoodDetail.class)
-//                                .putExtra("goodid", data.getId()));
-//            }
-//        });
+
         IRecycleview();
 
     }

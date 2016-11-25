@@ -201,6 +201,7 @@ public class AZhuanQu extends ATitleBase {
                                 public void RightResult() {
                                     PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
                                             ANewBindCode.class));
+                                    //
                                 }
 
                                 @Override
