@@ -428,14 +428,14 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         tv_buy = (TextView) findViewById(R.id.tv_buy);
         tv_replace_sell = (TextView) findViewById(R.id.tv_replace_sell);
 
-
+        rl_good_detail_lianxikefu_log.setOnClickListener(this);
         rl_look_show.setOnClickListener(this);
         rl_seller.setOnClickListener(this);
         tv_buy.setOnClickListener(this);
         tv_replace_sell.setOnClickListener(this);
         good_detail_title_up_shoucang.setOnClickListener(this);
         right_iv.setOnClickListener(this);
-        right_right_iv.setOnClickListener(this);
+        //right_right_iv.setOnClickListener(this);
         // 初始化页面时关注设为不可用
         right_iv.setEnabled(false);
         good_detail_title_up_shoucang.setEnabled(false);
@@ -935,7 +935,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 AttentionGood(isAttention);
                 break;
 
-            case R.id.good_detail_lianxikefu_log:
+            case R.id.rl_good_detail_lianxikefu_log:
                 if (CheckNet(BaseContext))
                     return;
                 // PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
