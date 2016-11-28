@@ -607,7 +607,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             good_detail_sales.setVisibility(View.GONE);
         } else {
             good_detail_sales.setVisibility(View.VISIBLE);
-            StrUtils.SetTxt(tv_goods_detail_sales, datas.getSales() + "笔");
+            StrUtils.SetTxt(tv_goods_detail_sales, datas.getSales() + "件");
         }
 
         if (0 == datas.getScore()) {

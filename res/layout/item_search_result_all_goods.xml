@@ -93,7 +93,6 @@
                     android:id="@+id/tv_search_result_all_good_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="123"
                     android:textColor="@color/app_fen"
                     android:textSize="12dp" />
 
