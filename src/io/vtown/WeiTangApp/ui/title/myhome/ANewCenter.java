@@ -62,14 +62,14 @@ public class ANewCenter extends ATitleBase {
         view_about_me = findViewById(R.id.view_about_me);
         btn_quit = (Button) findViewById(R.id.btn_quit);
 
-        SetItemContent(view_personal_data, R.drawable.shop_grad9, R.string.my_personal_data);
-        SetItemContent(view_my_address, R.drawable.address_iv, R.string._my_address);
+        SetItemContent(view_personal_data, R.drawable.ic_zhanghuxiangqing_nor, R.string.my_personal_data);
+        SetItemContent(view_my_address, R.drawable.ic_wodedizhi_nor, R.string._my_address);
         SetItemContent(view_my_shop, R.drawable.shop_grad8, R.string._my_shop);
         SetItemContent(view_my_show, R.drawable.center_iv1, R.string._my_show);
-        SetItemContent(view_good_soucang, R.drawable.center_iv6, R.string.my_good_shouchang);
-        SetItemContent(view_shop_guanzhu, R.drawable.center_iv7, R.string.my_shop_guanzhu);
-        SetItemContent(view_scan_record, R.drawable.center_iv8, R.string.my_scan_record);
-        SetItemContent(view_about_me, R.drawable.tab1_nor, R.string.about_w_town);
+        SetItemContent(view_good_soucang, R.drawable.ic_shangpinguanzhu_nor, R.string.my_good_shouchang);
+        SetItemContent(view_shop_guanzhu, R.drawable.ic_dianpushoucang_nor, R.string.my_shop_guanzhu);
+        SetItemContent(view_scan_record, R.drawable.ic_liulanjilu_nor, R.string.my_scan_record);
+        SetItemContent(view_about_me, R.drawable.ic_guanyu_nor, R.string.about_w_town);
         btn_quit.setOnClickListener(this);
 
     }

@@ -105,6 +105,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
     private ImageView invite_friends_record_sou_iv;
     private ImageView invite_friends_record_title_delete;
     private EditText invite_friends_record_title;
+    private List<BCInviteFriends>  more_datas = new ArrayList<BCInviteFriends>();
 
 
     @Override
@@ -290,7 +291,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.no_nore_invite_friend));
                             return;
                         }
-                        List<BCInviteFriends> more_datas = new ArrayList<BCInviteFriends>();
+                        //List<BCInviteFriends> more_datas = new ArrayList<BCInviteFriends>();
 
                         more_datas = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
                         if (more_datas.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
@@ -398,7 +399,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                             needLoadMore = false;
                             return;
                         }
-                        List<BCInviteFriends> more_datas = new ArrayList<BCInviteFriends>();
+
 
                         more_datas = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
 
@@ -788,6 +789,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
         public int getCount() {
             Log.i("tests","getCount长度"+datas.size());
             Log.i("tests","getCount长度datass"+datass.size());
+            Log.i("tests","getCount长度more_datas====》"+more_datas.size());
             return this.datas.size();
         }
 
@@ -812,9 +814,10 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
         public void FreshAllData(List<BCInviteFriends> more_datas1) {
             Log.i("tests","FreshAllData长度前====》"+datas.size());
+            Log.i("tests","FreshAllData长度前more_datas====》"+more_datas.size());
             this.datas.addAll(more_datas1);
             this.notifyDataSetChanged();
-
+            Log.i("tests","FreshAllData长度后more_datas====》"+more_datas.size());
             Log.i("tests","FreshAllData长度后====》"+datas.size());
         }
 

@@ -538,10 +538,10 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             good_detail_bottom_layout.setVisibility(View.GONE);
             rl_good_detail_lianxikefu_log.setVisibility(View.GONE);
             right_right_iv.setVisibility(View.GONE);
-            right_iv.setVisibility(View.GONE);
-            right_iv.setEnabled(false);
-            good_detail_title_up_shoucang.setVisibility(View.GONE);
-            good_detail_title_up_shoucang.setEnabled(false);
+//            right_iv.setVisibility(View.GONE);
+//            right_iv.setEnabled(false);
+//            good_detail_title_up_shoucang.setVisibility(View.GONE);
+//            good_detail_title_up_shoucang.setEnabled(false);
             ShowErrorCanLoad(error);
             // BaseActivity.finish();
             IDataView(gooddetails_outlay, gooddetail_nodata_lay, NOVIEW_ERROR);
@@ -762,6 +762,12 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         // 判断是否在售中************************************
         if (!StrUtils.isEmpty(datas.getSale_status())
                 && datas.getSale_status().equals("100")) {
+
+            tv_buy.setClickable(true);
+            tv_buy.setEnabled(true);
+            tv_buy.setText("买");
+            tv_buy.setBackgroundResource(R.drawable.select_fen_to_gray1);
+
             //good_detail_refresh.setEnabled(false);
         } else {// 非在售状态
             tv_buy.setClickable(true);
@@ -1174,6 +1180,6 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
 
     @Override
     public void onRefresh() {
-        IData(LOAD_REFRESHING);
+        IData(LOAD_INITIALIZE);
     }
 }
