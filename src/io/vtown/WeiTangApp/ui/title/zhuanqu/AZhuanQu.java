@@ -210,19 +210,15 @@ public class AZhuanQu extends ATitleBase {
                             });
                     return;
                 }
-                if (Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                if (  !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
                     ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
                             getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
                             new IDialogResult() {
                                 @Override
                                 public void RightResult() {
-                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
-                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
-                                            maxtive.getActivitytitle());
-                                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
-                                            mBCommentss));
-                                    BaseActivity.finish();
+                                    IData(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getActivityid());
+                                            //刷新数据就可以！！！！！！！！！！！！！！！！！！！！！
+
                                 }
 
                                 @Override

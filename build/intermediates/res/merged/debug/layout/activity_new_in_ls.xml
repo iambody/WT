@@ -10,8 +10,8 @@
         android:id="@+id/mynew_new_inlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/app_bg"
-        android:dividerHeight="@dimen/line_size"
+        android:divider="@null"
+
         android:scrollbars="none"
 
         />

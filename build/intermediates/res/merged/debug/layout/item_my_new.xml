@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:gravity="clip_vertical"
             android:lines="1"
+            android:ellipsize="end"
             android:text="@string/nullstr"
             android:textColor="@color/gray"/>
 

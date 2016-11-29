@@ -18,6 +18,7 @@ import io.vtown.WeiTangApp.bean.bcache.BHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.ViewUtils;
 import io.vtown.WeiTangApp.comment.view.pop.PHomeSelect.SeleckClickListener;
 
 import android.content.Context;
@@ -140,6 +141,11 @@ public class PShare extends PopupWindow implements OnClickListener {
     }
 
     private void ShareQQ(int type) {
+        //判断是否安装微信
+        if (!ViewUtils.isQQClientAvailable(pContext)) {
+            PromptManager.ShowCustomToast(pContext, "请先安装手机QQ");
+            return;
+        }
         Platform platform = null;
         ShareParams sp = new ShareParams();
         switch (type) {
@@ -191,7 +197,10 @@ public class PShare extends PopupWindow implements OnClickListener {
     }
 
     private void Share(int Type) {
-
+        if (!ViewUtils.isWeixinAvilible(pContext)) {
+            PromptManager.ShowCustomToast(pContext, "请先安装手机微信");
+            return;
+        }
         Platform platform = null;
         ShareParams sp = new ShareParams();
         switch (Type) {

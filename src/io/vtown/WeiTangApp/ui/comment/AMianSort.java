@@ -259,11 +259,11 @@ public class AMianSort extends ABase {
         }
 //开始操作是否自定义过的价格和积分左侧下边的标识问题
         if (IsZiDingYiPrice) {
-            popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)", "" + PriceSort.getMin(), "" + PriceSort.getMin()));
+            popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)", "" + PriceSort.getMin(), "" + PriceSort.getMax()));
             popMaitabSortPriceDownStateTag.setVisibility(View.VISIBLE);
         }
         if (IsZiDingYiScore) {
-            popMaitabSortJifenStateTag.setText(String.format("(%s-%s)", "" + ScoreSort.getMin(), "" + ScoreSort.getMin()));
+            popMaitabSortJifenStateTag.setText(String.format("(%s-%s)", "" + ScoreSort.getMin(), "" + ScoreSort.getMax()));
             popMaitabSortJifenStateTag.setVisibility(View.VISIBLE);
         }
 

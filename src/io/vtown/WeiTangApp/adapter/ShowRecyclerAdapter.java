@@ -517,7 +517,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             } else {//视频  直接取出视频封面分享
                 bnew.setShare_log(MyShareShow.getPre_url());
             }
-            PShowShare showShare = new PShowShare(mContext, bnew);
+            PShowShare showShare = new PShowShare(mContext,SActivity, bnew);
             showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
                 @Override
                 public void GetResultType(int ResultType) {

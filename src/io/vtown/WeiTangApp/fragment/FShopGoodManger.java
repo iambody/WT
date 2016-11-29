@@ -1119,7 +1119,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
                 bnew.setShare_content(getResources().getString(R.string.share_app) + "  " + dattt.getTitle());
                 bnew.setShare_log(StrUtils.isEmpty(dattt.getCover()) ? dattt.getGoods_info().getIntro().get(0) : dattt.getCover());
                 bnew.setShare_url(dattt.getGoods_url());
-                PShowShare showShare = new PShowShare(BaseContext, bnew);
+                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew);
                 showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
                     @Override
                     public void GetResultType(int ResultType) {

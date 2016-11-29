@@ -208,6 +208,32 @@
                     </LinearLayout>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/ll_center_my_order_get_integral_tips"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/app_bg"
+                        android:layout_height="@dimen/insulate_view_height" />
+
+                    <TextView
+                        android:id="@+id/tv_center_my_order_get_integral_tips"
+                        android:layout_width="match_parent"
+                        android:text="温馨提示："
+                        android:paddingBottom="8dp"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/order_list_good_number"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/ll_center_my_order_express_message"
@@ -352,6 +378,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/tv_center_my_order_get_integral"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/select_fen_to_gray1"
+                    android:gravity="center"
+                    android:padding="@dimen/order_detail_layout_padding"
+                    android:text="获取积分"
+                    android:textColor="@color/TextColorWhite"
+                    android:textSize="@dimen/comment_label_txtsize" />
+
+                <ImageView
+                    android:layout_width="@dimen/line_size1"
+                    android:layout_height="match_parent"
+                    android:src="@color/app_line" />
 
                 <TextView
                     android:id="@+id/tv_center_my_order_apply_refund"

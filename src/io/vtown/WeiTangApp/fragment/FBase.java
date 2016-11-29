@@ -239,7 +239,7 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
      * 左右选择弹出框的封装
      */
 
-    public void ShowCustomDialog(String title, String Left, String Right,
+       public void ShowCustomDialog(String title, String Left, String Right,
                                  final IDialogResult mDialogResult) {
         final CustomDialog dialog = new CustomDialog(BaseContext,
                 R.style.mystyle, R.layout.dialog_purchase_cancel, 1, Left,

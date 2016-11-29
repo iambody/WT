@@ -875,7 +875,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                 bnew.setShare_content(getResources().getString(R.string.share_app) + "  " + databean.getTitle());
                 bnew.setShare_log(StrUtils.isEmpty(databean.getCover()) ? databean.getGoods_info().getIntro().get(0) : databean.getCover());
                 bnew.setShare_url(databean.getGoods_url());
-                PShowShare showShare = new PShowShare(BaseContext, bnew);
+                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew);
                 showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
                     @Override
                     public void GetResultType(int ResultType) {

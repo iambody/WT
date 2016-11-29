@@ -39,20 +39,29 @@
             <ImageView
                 android:layout_width="@dimen/sousou_historr_item_iv_height"
                 android:layout_height="@dimen/sousou_historr_item_iv_height"
-                android:layout_marginLeft="@dimen/ui_10_dip"
-                android:src="@drawable/sousou"/>
+
+                android:src="@drawable/sousou_gray"/>
 
             <EditText
                 android:id="@+id/sousou_sou_ed"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/ui_10_dip"
                 android:background="@null"
                 android:hint="@string/sousou_hint"
-                android:textColor="@color/sousou_ed"
-                android:textColorHint="@color/sousou_ed"
+                android:textColor="@color/app_gray"
+                android:textColorHint="@color/app_gray"
                 android:textSize="15dp"/>
+ss
+            <ImageView
+                android:id="@+id/sousou_sou_ed_cha"
+                android:layout_width="@dimen/sousou_historr_item_iv_height"
+                android:layout_height="@dimen/sousou_historr_item_iv_height"
+                android:src="@drawable/cha_gray"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
         <TextView
@@ -71,32 +80,32 @@
     </LinearLayout>
     <!-- title*** -->
 
-    <RelativeLayout
-        android:id="@+id/goodsousou_toshop_sousou_txt_lay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/select_white_to_gray"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone">
+    <!-- <RelativeLayout
+         android:id="@+id/goodsousou_toshop_sousou_txt_lay"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/select_white_to_gray"
+         android:clickable="true"
+         android:focusable="true"
+         android:visibility="gone">
 
-        <ImageView
-            android:layout_width="@dimen/sousou_historr_item_iv_height"
-            android:layout_height="@dimen/sousou_historr_item_iv_height"
-            android:layout_centerVertical="true"
+         <ImageView
+             android:layout_width="@dimen/sousou_historr_item_iv_height"
+             android:layout_height="@dimen/sousou_historr_item_iv_height"
+             android:layout_centerVertical="true"
 
-            android:layout_toLeftOf="@+id/goodsousou_toshop_sousou_txt"
-            android:src="@drawable/shop_log"/>
+             android:layout_toLeftOf="@+id/goodsousou_toshop_sousou_txt"
+             android:src="@drawable/shop_log"/>
 
-        <TextView
-            android:id="@+id/goodsousou_toshop_sousou_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textColor="@color/gray"/>
-    </RelativeLayout>
+         <TextView
+             android:id="@+id/goodsousou_toshop_sousou_txt"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+             android:gravity="center"
+             android:padding="10dp"
+             android:textColor="@color/gray"/>
+     </RelativeLayout>-->
 
     <ImageView
         android:id="@+id/goodsousou_toshop_sousou_txt_downbg"
@@ -156,7 +165,7 @@
                         android:layout_height="wrap_content"
 
                         android:padding="@dimen/ui_10_dip"
-                        android:text="@string/sousou_remen"
+                        android:text="@string/sousou_remen1"
                         android:textColor="@color/app_gray"
                         />
 

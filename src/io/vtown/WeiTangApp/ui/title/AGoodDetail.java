@@ -860,7 +860,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                             });
                     return;
                 }
-                if (Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                if ( !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
                     ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
                             getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
                             new IDialogResult() {

@@ -2,87 +2,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-   >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="@color/item_bg"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
 
-        android:paddingTop="5dp"
-        android:paddingRight="10dp" >
+        android:paddingRight="10dp"
+        android:paddingTop="5dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/item_center_order_no_pay_detail_in_iv"
                 android:layout_width="@dimen/item_shop_purchase_height"
                 android:layout_height="@dimen/item_shop_purchase_height"
-                android:scaleType="fitXY"
-                />
+                android:scaleType="fitXY" />
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/item_center_order_no_pay_detail_in_name"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/error_network"
                 android:textColor="@color/grey"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/order_list_inside_price_size"
-                android:text="@string/error_network" />
-
+                android:textSize="@dimen/order_list_inside_price_size" />
 
             <TextView
-                android:id="@+id/item_center_order_no_pay_detail_in_price"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/nullstr"
-                android:textSize="@dimen/order_list_inside_price_size"
-                android:textColor="@color/app_fen" />
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/item_center_order_no_pay_detail_in_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nullstr"
+                    android:textColor="@color/app_fen"
+                    android:textSize="@dimen/order_list_inside_price_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/item_center_order_no_pay_detail_in_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/nullstr"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/order_list_inside_price_size" />
+            </LinearLayout>
 
         </LinearLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal" >
 
 
-
-            <TextView
-                android:id="@+id/item_center_order_no_pay_detail_in_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:textColor="@color/app_gray"
-                android:textSize="@dimen/order_list_inside_price_size"
-                android:text="@string/nullstr" />
-        </RelativeLayout>
-
-        </LinearLayout>
     </LinearLayout>
-    
 
 
 </LinearLayout>

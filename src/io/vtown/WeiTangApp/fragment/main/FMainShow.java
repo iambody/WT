@@ -583,11 +583,12 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
                 } else {//视频  直接取出视频封面分享
                     bnew.setShare_log(datBlComment.getPre_url());
                 }
-                PShowShare showShare = new PShowShare(BaseContext, bnew);
+                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew);
                 showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
                     @Override
                     public void GetResultType(int ResultType) {
                         switch (ResultType) {
+
                             case 3:
                                 if (datBlComment.getIs_type().equals("0")) {// 照片
                                     //如果是照片  只需要把照片数组和商品id 传到show分享即可

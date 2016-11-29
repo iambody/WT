@@ -678,7 +678,7 @@ public class AShow extends ATitleBase implements IXListViewListener {
                 } else {//视频  直接取出视频封面分享
                     bnew.setShare_log(datBlComment.getPre_url());
                 }
-                PShowShare showShare = new PShowShare(BaseContext, bnew);
+                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew);
                 showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
                     @Override
                     public void GetResultType(int ResultType) {
