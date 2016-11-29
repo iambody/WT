@@ -63,7 +63,6 @@ public class ASouSouShop extends ATitileNoBase {
 		SetTitleHttpDataLisenter(this);
 		if (!StrUtils.isEmpty(ToSouShop)) {
 			sousou_shop_ed.setText(ToSouShop);
-
 			hintKbTwo();
 			ShopSouNet(ToSouShop);
 		}

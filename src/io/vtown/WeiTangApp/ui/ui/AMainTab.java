@@ -285,6 +285,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
                 // PromptManager.ShowCustomToast(BaseCotext, "注销广播");
                 break;
             case BMessage.Tage_Tab_ShopBus:
+                //
 //                ShopBadgeView.setBadgeCount(bMessage.getTabShopBusNumber());
 
                 break;

@@ -77,7 +77,7 @@
     <string name="grad8">店铺预览</string>
     <string name="grad9">我要合作</string>
     <!-- 搜索 界面 -->
-    <string name="sousou_hint">搜索微糖商品</string>
+    <string name="sousou_hint">搜索微糖商品/店铺</string>
     <string name="sousou_shop_hint">搜索微糖店铺</string>
     <string name="sousou_remen">热门商品</string>
     <string name="sousou_history">历史搜索</string>

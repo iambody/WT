@@ -245,6 +245,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
             fragment_shopbus_refrash.setRefreshing(false);
         }
         if (StrUtils.isEmpty(ShopData)) {
+            Spuit.ShopBusNumber_Save(BaseContext,0);
             onError(Constants.SucessToError, Type);
             maintab_shopbus_right_iv.setVisibility(View.GONE);
             maintab_shopbus_down_lay.setVisibility(View.GONE);
@@ -259,6 +260,7 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
         BShopBus bComment = JSON.parseObject(ShopData,
                 BShopBus.class);
         if (bComment.getPT() == null) {//没数据
+            Spuit.ShopBusNumber_Save(BaseContext,0);
             onError(Constants.SucessToError, Type);
             maintab_shopbus_right_iv.setVisibility(View.GONE);
             maintab_shopbus_down_lay.setVisibility(View.GONE);
