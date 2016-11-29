@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +57,7 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * Created by Yihuihua on 2016/10/12.
  */
 
-public class AInviteFriendRecord extends ATitleBase implements   LListView.IXListViewListener, TextWatcher {
+public class AInviteFriendRecord extends ATitleBase implements LListView.IXListViewListener, TextWatcher {
 
     private RefreshLayout invite_friends_refrash11;
     private LListView invite_friends_record_list;
@@ -165,20 +166,23 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
         map.put("seller_id", bUser.getSeller_id());//"1014719"
         map.put("page", page + "");
         map.put("pagesize", Constants.PageSize + "");
-        if (!Shop_All_Lv.equals(Current_Lv)) {
-
-            map.put("member_level", Current_Lv);
-            map.put("is_activate", "1");
-        } else {
-            if (click_type == Type_Activites) {
-                map.put("is_activate", "0");
-            }
-        }
-
         if (!StrUtils.isEmpty(phone)) {
             map.put("phone", phone);
             scan_type = 2;
+        }else{
+            if (!Shop_All_Lv.equals(Current_Lv)) {
+
+                map.put("member_level", Current_Lv);
+                map.put("is_activate", "1");
+            } else {
+                if (click_type == Type_Activites) {
+                    map.put("is_activate", "0");
+                }
+            }
         }
+
+
+
 
 
         FBGetHttpData(map, Constants.Invite_Friends, Request.Method.GET, scan_type, loadtype);
@@ -225,8 +229,8 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
                             if (Shop_All_Lv.equals(Current_Lv)) {
                                 CacheUtil.My_Invite_Friends_Save(BaseContext, Data.getHttpResultStr());
                             }
-
-                            mAdapter.FreshData(new ArrayList<BCInviteFriends>());
+                            datass.clear();
+                            mAdapter.FreshData(datass);
                             return;
                         }
                         datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
@@ -294,7 +298,7 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
                         } else {
                             mAdapter.FreshAllData(more_datas);
                         }
-
+                        Log.i("tests","datass.size()长度"+ datass.size());
                         datass.addAll(more_datas);
                         List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(more_datas);
                         if (allInviteDetailList2.size() == Constants.PageSize) {
@@ -576,9 +580,12 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
 
             case R.id.invite_friends_record_sou_iv://搜索按钮
                 String scen_key = invite_friends_record_title.getText().toString();
-
+                if (StrUtils.isEmpty(scen_key)) {
+                    PromptManager.ShowCustomToast(BaseContext, "请输入您要搜索的手机号");
+                    return;
+                }
                 phone = scen_key;
-                Current_Lv = Shop_All_Lv;
+                //Current_Lv = Shop_All_Lv;
                 PromptManager.showtextLoading(BaseContext, getResources()
                         .getString(R.string.loading));
                 page = 1;
@@ -622,6 +629,9 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
         if (datass.size() > 0) {
             invite_friends_record_list.setVisibility(View.VISIBLE);
             invite_friends_nodata_lay.setVisibility(View.GONE);
+        }else{
+            invite_friends_record_list.setVisibility(View.GONE);
+            invite_friends_nodata_lay.setVisibility(View.VISIBLE);
         }
 
         if (isScan) {
@@ -645,17 +655,18 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
 //            invite_friends_record_list.setPullLoadEnable(false);
 //        }
 
-        if (needLoadMore){
+        if (needLoadMore) {
             invite_friends_record_list.ShowFoot();
             invite_friends_record_list.setPullLoadEnable(true);
-        }else{
+        } else {
             invite_friends_record_list.hidefoot();
             invite_friends_record_list.setPullLoadEnable(false);
         }
     }
 
     private void LvSwitch(String switch_type, String titlename, int type) {
-        if (type != click_type) {
+
+        if (type != click_type ||scan_type == 2) {//
             invite_friends_record_title.setText("");
             invite_friends_record_title.setHint(R.string.invite_friends_record_scen_key);
             scan_type = 0;
@@ -744,6 +755,7 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
     @Override
     public void onLoadMore() {
         page++;
+        Log.i("tests","page==>"+ page);
         if (scan_type == 0) {
             nanor_page = page;
         }
@@ -773,6 +785,8 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
 
         @Override
         public int getCount() {
+            Log.i("tests","getCount长度"+datas.size());
+            Log.i("tests","getCount长度datass"+datass.size());
             return this.datas.size();
         }
 
@@ -795,9 +809,12 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
             this.notifyDataSetChanged();
         }
 
-        public void FreshAllData(List<BCInviteFriends> more_datas) {
-            this.datas.addAll(more_datas);
+        public void FreshAllData(List<BCInviteFriends> more_datas1) {
+            Log.i("tests","FreshAllData长度前====》"+datas.size());
+            this.datas.addAll(more_datas1);
             this.notifyDataSetChanged();
+
+            Log.i("tests","FreshAllData长度后====》"+datas.size());
         }
 
         public void MergeFrashData(List<BCInviteFriends> dattaa) {
@@ -806,6 +823,7 @@ public class AInviteFriendRecord extends ATitleBase implements   LListView.IXLis
                 this.datas.add(dattaa.get(i));
             }
             this.notifyDataSetChanged();
+            Log.i("tests","MergeFrashData长度"+datas.size());
         }
 
 
