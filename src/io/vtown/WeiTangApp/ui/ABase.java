@@ -156,6 +156,7 @@ public class ABase extends Activity {
     private int PicType;// 1==>selectpice；；；2==》goodshow;3==>goodshare
 
     private NHttpBaseStr MyNHttpBaseStr;
+    protected int PageSize3 = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -472,12 +473,14 @@ public class ABase extends Activity {
     }
 
     protected void ShowErrorCanLoad(String ErrorTxt) {
-        if(StrUtils.ISNullStr(ErrorTxt))return;
+        if (StrUtils.ISNullStr(ErrorTxt)) return;
         ((TextView) findViewById(R.id.error_kong)).setText(ErrorTxt);
     }
-    protected void ShowErrorIv(int  ResouceId) {
+
+    protected void ShowErrorIv(int ResouceId) {
         ((ImageView) findViewById(R.id.iv_error)).setImageResource(ResouceId);
     }
+
     /**
      * 左右选择弹出框的封装
      */
