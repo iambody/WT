@@ -118,9 +118,11 @@ public class PShare extends PopupWindow implements OnClickListener {
 
             case R.id.pop_share_qq://QQ好友
                 ShareQQ(1);
+                PShare.this.dismiss();
                 break;
             case R.id.pop_share_qqkj://QQ朋友圈
                 ShareQQ(2);
+                PShare.this.dismiss();
                 break;
             case R.id.pop_share_haoyou:
                 Share(1);

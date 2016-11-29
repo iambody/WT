@@ -1064,7 +1064,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             if (PDaiFu != Integer.parseInt(data.getOrder_status())) {
 
                                 Intent intent = new Intent(BaseContext, ACenterMyOrderDetail.class);
-                                intent.putExtra("Key_TageStr", order_status);
+                                intent.putExtra("Key_TageStr", Integer.parseInt(data.getOrder_status()));
                                 intent.putExtra("member_id", bl_data.getMember_id());
                                 intent.putExtra("seller_order_sn", bl_data.getSeller_order_sn());
                                 PromptManager.SkipActivity((Activity) BaseContext, intent);

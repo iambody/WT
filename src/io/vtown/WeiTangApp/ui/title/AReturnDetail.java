@@ -48,7 +48,6 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
     @BindView(R.id.retrun_detail_list)
     LListView retrunDetailList;
     private Unbinder mBind;
-    private View mRootView;
     private View retrun_detail_nodata_lay;
     private String lastid = "";
     private BUser mUser;
@@ -58,9 +57,8 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
     @Override
     protected void InItBaseView() {
 
-        mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_return_detail, null);
-        setContentView(mRootView);
-        mBind = ButterKnife.bind(this, mRootView);
+        setContentView(R.layout.activity_return_detail);
+        mBind = ButterKnife.bind(this);
         SetTitleHttpDataLisenter(this);
         mUser = Spuit.User_Get(BaseContext);
         IView();
@@ -70,7 +68,7 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
 
 
     private void IView() {
-        retrun_detail_nodata_lay = ViewHolder.get(mRootView, R.id.retrun_detail_nodata_lay);
+        retrun_detail_nodata_lay = findViewById(R.id.retrun_detail_nodata_lay);
         retrun_detail_nodata_lay.setOnClickListener(this);
         retrunDetailList.setXListViewListener(this);
         retrunDetailList.setPullLoadEnable(true);

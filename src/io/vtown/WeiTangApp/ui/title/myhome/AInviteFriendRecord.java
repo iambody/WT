@@ -246,6 +246,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                         List<BLInviteFriends> allInviteDetailList = getAllInviteDetailList(datass);
                         if (allInviteDetailList.size() == Constants.PageSize) {
                             //invite_friends_refrash.setCanLoadMore(true);
+                            needLoadMore = true;
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
 
@@ -254,6 +255,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                             //invite_friends_refrash.setCanLoadMore(false);
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
+                            needLoadMore = false;
                         }
 
                         break;
@@ -275,12 +277,14 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                             //invite_friends_refrash.setCanLoadMore(true);
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
+                            needLoadMore = true;
                         }
 
                         if (allInviteDetailList1.size() < Constants.PageSize) {
                             //invite_friends_refrash.setCanLoadMore(false);
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
+                            needLoadMore = false;
                         }
                         break;
 
@@ -307,11 +311,13 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                             //invite_friends_refrash.setCanLoadMore(true);
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
+                            needLoadMore = true;
                         }
                         if (allInviteDetailList2.size() < Constants.PageSize) {
                             //invite_friends_refrash.setCanLoadMore(false);
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
+                            needLoadMore = false;
                         }
                         break;
                 }
@@ -349,14 +355,14 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                         List<BLInviteFriends> allInviteDetailList = getAllInviteDetailList(scan_datass);
                         if (allInviteDetailList.size() == Constants.PageSize) {
                             //invite_friends_refrash.setCanLoadMore(true);
-                            needLoadMore = true;
+
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
 
                         }
                         if (allInviteDetailList.size() < Constants.PageSize) {
                             //invite_friends_refrash.setCanLoadMore(false);
-                            needLoadMore = false;
+
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
                         }
@@ -376,14 +382,14 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
                         List<BLInviteFriends> allInviteDetailList1 = getAllInviteDetailList(scan_datass);
                         if (allInviteDetailList1.size() == Constants.PageSize) {
-                            needLoadMore = true;
+
                             //invite_friends_refrash.setCanLoadMore(true);
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
                         }
 
                         if (allInviteDetailList1.size() < Constants.PageSize) {
-                            needLoadMore = false;
+
                             //invite_friends_refrash.setCanLoadMore(false);
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
@@ -396,7 +402,6 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                         if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                             invite_friends_record_list.hidefoot();
                             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.no_nore_invite_friend));
-                            needLoadMore = false;
                             return;
                         }
 
@@ -413,12 +418,10 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                         List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(more_datas);
                         if (allInviteDetailList2.size() == Constants.PageSize) {
                             //invite_friends_refrash.setCanLoadMore(true);
-                            needLoadMore = true;
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
                         }
                         if (allInviteDetailList2.size() < Constants.PageSize) {
-                            needLoadMore = false;
                             //invite_friends_refrash.setCanLoadMore(false);
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);

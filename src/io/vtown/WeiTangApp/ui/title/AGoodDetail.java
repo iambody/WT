@@ -282,6 +282,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     private ImageView gooddetail_up_title_back_2;
     private LinearLayout good_detail_bottom_layout;
     private RelativeLayout good_detail_shopbus_log_layout;
+    private ImageView good_detail_add_shopbus_status;
 
     @Override
     protected void InItBaseView() {
@@ -366,7 +367,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
 
         good_detail_shopbus_log_layout = (RelativeLayout) findViewById(R.id.good_detail_shopbus_log_layout);
         right_left_iv = (ImageView) findViewById(R.id.good_detail_shopbus_log);
-
+        good_detail_add_shopbus_status = (ImageView) findViewById(R.id.good_detail_add_shopbus_status);
 
         gooddetail_up_title_back_2 = (ImageView) findViewById(R.id.gooddetail_up_title_back_2);
         gooddetail_up_title_back_2.setOnClickListener(this);
@@ -1113,7 +1114,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         int msg_type = event.getMessageType();
         switch (msg_type) {
             case AGoodPop.TYPE_ADD_SHOPBUS://加入购物车成功
-
+                good_detail_add_shopbus_status.setVisibility(View.VISIBLE);
                 break;
             case AGoodPop.TYPE_ADD_ONLINE:
 

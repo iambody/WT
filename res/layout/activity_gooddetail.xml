@@ -286,6 +286,7 @@
                                 android:id="@+id/tv_freight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textColor="@drawable/gray"
                                 android:layout_marginLeft="@dimen/ui_10_dip" />
                         </LinearLayout>
 
@@ -676,6 +677,14 @@
                 android:textColor="@color/grey"
 
                 android:textSize="@dimen/goos_detail_icon_lable" />
+
+            <ImageView
+                android:id="@+id/good_detail_add_shopbus_status"
+                android:layout_width="7dp"
+                android:src="@drawable/tabcent_pr"
+                android:visibility="gone"
+                android:layout_toRightOf="@id/good_detail_shopbus_log"
+                android:layout_height="7dp" />
         </RelativeLayout>
 
 
