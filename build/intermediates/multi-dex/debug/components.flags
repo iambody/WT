@@ -1,7 +1,7 @@
--injars 'D:\Wtapp\WT\build\intermediates\transforms\jarMerging\debug\jars\1\1f\combined.jar'
--outjars 'D:\Wtapp\WT\build\intermediates\multi-dex\debug\componentClasses.jar'
+-injars 'D:\wt_work\WT\build\intermediates\transforms\jarMerging\debug\jars\1\1f\combined.jar'
+-outjars 'D:\wt_work\WT\build\intermediates\multi-dex\debug\componentClasses.jar'
 
--libraryjars 'D:\AnsroidStudioSdk\build-tools\24.0.0\lib\shrinkedAndroid.jar'
+-libraryjars 'D:\jdk\build-tools\24.0.0\lib\shrinkedAndroid.jar'
 
 -forceprocessing
 -dontoptimize
@@ -10,7 +10,7 @@
 -dontpreverify
 -dontnote **
 -dontwarn **
--printconfiguration 'D:\Wtapp\WT\build\intermediates\multi-dex\debug\components.flags'
+-printconfiguration 'D:\wt_work\WT\build\intermediates\multi-dex\debug\components.flags'
 
 
 -keep public class * extends android.app.Instrumentation {

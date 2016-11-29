@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/shopbus_item_log2" />
+            android:src="@drawable/shopbus_item_log2"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/item_shopbus_out_shoptxt"

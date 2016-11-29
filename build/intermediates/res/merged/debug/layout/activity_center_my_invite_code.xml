@@ -37,21 +37,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:paddingTop="@dimen/center_my_invite_code_padding"
                     android:paddingBottom="@dimen/center_my_invite_code_padding"
+                    android:paddingTop="@dimen/center_my_invite_code_padding"
                     android:textColor="@color/app_fen"
                     android:textSize="@dimen/center_my_invite_code_txt_size"
                     />
+
                 <ImageView
                     android:id="@+id/tv_my_invite_code_copy_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="6dp"
-                    android:layout_toRightOf="@+id/tv_my_invite_code"
                     android:layout_alignParentTop="true"
+                    android:layout_marginBottom="-5dp"
+                    android:layout_toRightOf="@+id/tv_my_invite_code"
                     android:clickable="true"
                     android:focusable="true"
-android:layout_marginBottom="-5dp"
+                    android:padding="6dp"
                     android:src="@drawable/center_iv2"/>
             </RelativeLayout>
 
@@ -67,14 +68,14 @@ android:layout_marginBottom="-5dp"
                 android:textSize="@dimen/center_my_invite_code_txt_all_size"
                 android:visibility="gone"/>-->
 
-          <!--  <TextView
-                android:id="@+id/tv_my_invite_code_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/center_my_invite_code_desc_padding"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/center_my_invite_code_txt_all_size"/>-->
+            <!--  <TextView
+                  android:id="@+id/tv_my_invite_code_desc"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:padding="@dimen/center_my_invite_code_desc_padding"
+                  android:textColor="@color/grey"
+                  android:textSize="@dimen/center_my_invite_code_txt_all_size"/>-->
 
             <ImageView
                 android:id="@+id/my_invite_code_iv"
@@ -82,6 +83,15 @@ android:layout_marginBottom="-5dp"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/my_invite_code_rules"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ui_10_dip"
+                android:gravity="center"
+                android:textColor="@color/app_gray"
+                />
         </LinearLayout>
     </ScrollView>
 
@@ -100,8 +110,8 @@ android:layout_marginBottom="-5dp"
             <View
                 android:layout_width="0dp"
                 android:layout_height="@dimen/line_size"
-                android:layout_marginRight="@dimen/center_my_invite_code_line_margin"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="@dimen/center_my_invite_code_line_margin"
                 android:layout_weight="1"
 
                 android:background="@drawable/invitercode_line_shape"/>

@@ -1,18 +1,18 @@
 [
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\net_warning_bar_bg.9.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\net_warning_bar_bg.9.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\zidian.9.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xhdpi\\zidian.9.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\zidian.9.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\zidian.9.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\huangdian.9.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xhdpi\\huangdian.9.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\huangdian.9.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\huangdian.9.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\lvdian.9.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xhdpi\\lvdian.9.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\lvdian.9.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xhdpi\\lvdian.9.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\net_warning_bar_bg.9.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xhdpi\\net_warning_bar_bg.9.png"
     }
 ]

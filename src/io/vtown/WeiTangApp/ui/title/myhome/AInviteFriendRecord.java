@@ -296,6 +296,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                         if (more_datas.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
                             mAdapter.MergeFrashData(more_datas);
                         } else {
+                            Log.i("tests","more_datas长度-----------------》"+ more_datas.size());
                             mAdapter.FreshAllData(more_datas);
                         }
                         Log.i("tests","datass.size()长度"+ datass.size());

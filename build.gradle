@@ -6,15 +6,13 @@ buildscript {
         maven { url "https://jitpack.io" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:2.2.2'
         classpath 'com.github.dcendents:android-maven-plugin:1.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-
     }
 }
 
 //------  maven依赖-------
-apply plugin: 'android-apt'
 
 allprojects {
     repositories {
@@ -23,17 +21,33 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
+apply plugin: 'android-apt'
+
+
+
+
 //------  maven依赖-------
 dependencies {
     compile fileTree(include: '*.jar', dir: 'libs')
-    //            compile 'cn.bingoogolapple:bga-badgeview:latestVersion@aar'
-    //    compile 'com.nineoldandroids:library:2.4.0'
     //    compile 'cn.bingoogolapple:bga-badgeview:latestVersion@aar'
     compile 'com.android.support:support-v4:24.2.0'
     compile 'com.android.support:recyclerview-v7:24.2.0'
+    compile 'com.github.Aspsine:SwipeToLoadLayout:1.0.3'
     //butterkin注解
+    //    compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    //retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    //compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.chanven.lib:cptr:1.1.0'
+    //Retrofit回调库
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    //添加RXJAVa
+    compile 'io.reactivex:rxjava:1.1.5'
+    compile 'io.reactivex:rxandroid:1.2.0'
+    //转换库
+    compile 'com.squareup.retrofit2:converter-scalars:+'
     compile files('libs/Volley.jar')
 }
 
@@ -53,6 +67,7 @@ android {
     buildToolsVersion '24.0.0'
 
     aaptOptions { cruncherEnabled = false }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -69,7 +84,12 @@ android {
         // Move the tests to tests/java, tests/res, etc...
         instrumentTest.setRoot('tests')
 
-
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
     }

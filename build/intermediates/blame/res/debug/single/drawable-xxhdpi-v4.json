@@ -1,66 +1,94 @@
 [
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\ic_launcher.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_shoujihao_nor.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_shoujihao_nor.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_2.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\app_refresh_people_2.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_fenxiang_nor.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_fenxiang_nor.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\test1.jpg",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\test1.jpg"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_tuanduihuoyueyonghu_nor.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_tuanduihuoyueyonghu_nor.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\error_iv1.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\error_iv1.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_0.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-480dpi\\app_refresh_people_0.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_3.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\app_refresh_people_3.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\test1.jpg",
+        "source": "D:\\wt_work\\WT\\res\\drawable-480dpi\\test1.jpg"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_0.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\app_refresh_people_0.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\chat_default_image.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\chat_default_image.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\no_data.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xxhdpi\\no_data.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\no_data.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\no_data.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_1.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\app_refresh_people_1.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\error_iv2.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-480dpi\\error_iv2.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\testiv.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\testiv.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_3.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-480dpi\\app_refresh_people_3.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_xiangce_nor.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xxhdpi\\ic_xiangce_nor.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_loading_selected.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-480dpi\\icon_loading_selected.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\selpiccamera.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xxhdpi\\selpiccamera.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_zuorixinzengyonghu_nor.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_zuorixinzengyonghu_nor.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_shoujihao_nor.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xxhdpi\\ic_shoujihao_nor.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\testiv.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-480dpi\\testiv.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\chat_default_image.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xxhdpi\\chat_default_image.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_yaoqingrenshu_nor.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_yaoqingrenshu_nor.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\chat_default_head.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-xxhdpi\\chat_default_head.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_xiangce_nor.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_xiangce_nor.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\error_iv2.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\error_iv2.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\selpiccamera.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\selpiccamera.png"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_loading_selected.png",
-        "source": "D:\\Wtapp\\WT\\res\\drawable-480dpi\\icon_loading_selected.png"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\chat_default_head.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\chat_default_head.png"
+    },
+    {
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_1.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-480dpi\\app_refresh_people_1.png"
+    },
+    {
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_zuorijihuoyonghu_nor.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_zuorijihuoyonghu_nor.png"
+    },
+    {
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\error_iv1.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-480dpi\\error_iv1.png"
+    },
+    {
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_putongdianpu_nor.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_putongdianpu_nor.png"
+    },
+    {
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_refresh_people_2.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-480dpi\\app_refresh_people_2.png"
+    },
+    {
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_zhishuhuoyueyonghu_nor.png",
+        "source": "D:\\wt_work\\WT\\res\\drawable-xxhdpi\\ic_zhishuhuoyueyonghu_nor.png"
     }
 ]

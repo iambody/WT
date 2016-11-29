@@ -1,10 +1,10 @@
 [
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\raw\\ssl.cer",
-        "source": "D:\\Wtapp\\WT\\res\\raw\\ssl.cer"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\raw\\ssl.cer",
+        "source": "D:\\wt_work\\WT\\res\\raw\\ssl.cer"
     },
     {
-        "merged": "D:\\Wtapp\\WT\\build\\intermediates\\res\\merged\\debug\\raw\\beep.ogg",
-        "source": "D:\\Wtapp\\WT\\res\\raw\\beep.ogg"
+        "merged": "D:\\wt_work\\WT\\build\\intermediates\\res\\merged\\debug\\raw\\beep.ogg",
+        "source": "D:\\wt_work\\WT\\res\\raw\\beep.ogg"
     }
 ]

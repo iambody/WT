@@ -18,11 +18,12 @@
             android:background="@color/white"
             android:orientation="vertical" >
 
-            <RelativeLayout
-                android:id="@+id/rl_set_icon"
+            <!--<RelativeLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:visibility="gone"
                 android:padding="10dp" >
 
 
@@ -48,7 +49,7 @@
                         android:visibility="gone"
                        />
 
-                    <!--分享-->
+                    &lt;!&ndash;分享&ndash;&gt;
 
 
                     <TextView
@@ -91,50 +92,134 @@
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/gray" />
                 </LinearLayout>
-            </RelativeLayout>
+            </RelativeLayout>-->
 
-            <ImageView
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:src="@color/app_bg" />
-
+                android:layout_height="@dimen/insulate_view_height"
+                android:background="@color/app_bg"/>
             <LinearLayout
-                android:id="@+id/ll_shop_id"
+                android:id="@+id/ll_set_icon"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="10dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/shop_id"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/comment_label_txtsize" />
-
+               android:gravity="center_vertical"
+                android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="@string/long_click_copy"
-                    android:textColor="@color/app_gray"
-                    android:textSize="10sp" />
-
-                <TextView
-                    android:id="@+id/tv_shop_id"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nullstr"
-                    android:textColor="@color/app_gray"
-                    android:textSize="@dimen/comment_label_txtsize" />
+                    android:text="@string/shop_icon"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize"/>
+
+                <io.vtown.WeiTangApp.comment.view.CircleImageView
+                    android:id="@+id/tab_shop_iv"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center_vertical"
+                     />
+
+
+                <ImageView
+
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/arrow_right" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/share_my_shop_url"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="我的二维码"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize"/>
+
+                <io.vtown.WeiTangApp.comment.view.CircleImageView
+                    android:id="@+id/shop_qr_code_iv"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    />
+                <ImageView
+
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/arrow_right" />
+
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@color/app_bg" />
+                android:layout_height="@dimen/insulate_view_height"
+                android:background="@color/app_bg"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/center_set_personal_data_phone_top_buttom_magrin"
+                android:layout_marginTop="@dimen/center_set_personal_data_phone_top_buttom_magrin"
+                android:paddingLeft="@dimen/center_set_personal_data_phone_left_right_padding"
+                android:paddingRight="@dimen/center_set_personal_data_phone_left_right_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_phone_numb"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize"/>
+
+                <TextView
+                    android:id="@+id/tv_phone_numb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/nullstr"
+                    android:textColor="@color/app_gray"
+                    android:textSize="@dimen/comment_label_txtsize"/>
+            </RelativeLayout>
+
+            <View style="@style/line_left"/>
+
+            <include
+                android:id="@+id/authentication"
+                layout="@layout/commentview_txtarrow"/>
+
+            <View style="@style/line_left"/>
+
+            <include
+                android:id="@+id/account_safe"
+                layout="@layout/commentview_txtarrow"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/insulate_view_height"
+                android:background="@color/app_bg"/>
+
+
 
             <include
                 android:id="@+id/shop_cover"
@@ -154,15 +239,55 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="@dimen/insulate_view_height"
                 android:src="@color/app_bg" />
             <include
                 android:id="@+id/shop_guize"
                 layout="@layout/commentview_txtarrow" />
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="@dimen/insulate_view_height"
                 android:src="@color/app_bg" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_shop_id"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shop_id"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/comment_label_txtsize" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/app_gray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tv_shop_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nullstr"
+                    android:textColor="@color/app_gray"
+
+                    android:textSize="@dimen/comment_label_txtsize" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/app_bg" />
         </LinearLayout>
     </ScrollView>
 
