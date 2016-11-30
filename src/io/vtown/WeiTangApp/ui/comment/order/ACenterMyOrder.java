@@ -65,7 +65,7 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * @version 创建时间：2016-8-18 下午1:37:57
  */
 public class ACenterMyOrder extends ATitleBase implements
-        OnItemClickListener, RefreshLayout.OnLoadListener {
+        RefreshLayout.OnLoadListener {
     /**
      * 标记 分别是 全部，代付款，已付款，待收货，退货,关闭 订单状态 10:代付款 20:已付款 待发货 30:已发货 待收货 40:退款中
      * 50:仲裁处理中 100:已完成 110:已取消 60拒绝退款，70同意退款
@@ -202,7 +202,7 @@ public class ACenterMyOrder extends ATitleBase implements
                 R.layout.item_fragment_center_order_outside);
         centerOrderNoPayAdapter = new CenterOrderNoPayAdapter(
                 R.layout.item_center_order_no_pay_outside);
-        fragment_center_order_ls.setOnItemClickListener(this);
+
 
         fragment_center_order_ls.setAdapter(centerOrderOutsideAdapter);
 
@@ -221,9 +221,6 @@ public class ACenterMyOrder extends ATitleBase implements
                                          int totalItemCount) {
                     }
                 }));
-        if (PDaiFu != Ket_Tage) {
-            fragment_center_order_ls.setOnItemClickListener(this);
-        }
 
         fragent_centeroder_nodata_lay.setOnClickListener(this);
 
@@ -971,6 +968,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
                 convertView = inflater.inflate(ResourceId, null);
                 myItem = new CenterOrderOutsideItem();
+                myItem.ll_center_order_shopname = (LinearLayout)convertView.findViewById(R.id.ll_center_order_shopname);
                 myItem.fragment_center_order_shopname = (TextView) convertView
                         .findViewById(R.id.fragment_center_order_shopname);
                 myItem.fragment_center_order_cancel_order = (TextView) convertView
@@ -1299,6 +1297,28 @@ public class ACenterMyOrder extends ATitleBase implements
                 }
             });
 
+            myItem.ll_center_order_shopname.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = null;
+                    String is_brand = "";
+                    if (PDaiFu != Ket_Tage) {
+                        BComment bComment = new BComment(blComment.getSeller_id(), blComment.getSeller_name());
+                        is_brand = blComment.getIs_brand();
+                        if ("0".equals(is_brand)) {
+                            intent = new Intent(BaseContext, AShopDetail.class);
+                        } else {
+                            intent = new Intent(BaseContext,
+                                    ABrandDetail.class);
+                        }
+
+                        intent.putExtra(BaseKey_Bean, bComment);
+                        PromptManager.SkipActivity(BaseActivity, intent);
+
+                    }
+                }
+            });
+
         }
 
         /**
@@ -1321,6 +1341,7 @@ public class ACenterMyOrder extends ATitleBase implements
             TextView fragment_center_order_apply_refunding;// 申请退款中
             TextView fragment_center_order_get_integral;// 获取积分
             TextView fragment_center_order_is_get_integral;//已获取积分
+            LinearLayout ll_center_order_shopname;
             LinearLayout ll_center_my_order_seller_order_sn;
             CompleteListView item_fragment_center_order_ls;
 
@@ -1790,36 +1811,36 @@ public class ACenterMyOrder extends ATitleBase implements
 
     // *************************************************************************
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position,
-                            long id) {
-        BComment bComment = null;
-        Intent intent = null;
-        String is_brand = "";
-        if (PDaiFu != Ket_Tage) {
-//            BLCenterOder item = (BLCenterOder) centerOrderNoPayAdapter.getItem(position);
-//            List<BLDComment> son_order = item.getSon_order();
-//            is_brand = son_order.get(0).getIs_brand();
-//            bComment = new BComment(son_order.get(0).getSeller_id(), son_order.get(0).getSeller_name());
-            BLCenterOder item = (BLCenterOder) centerOrderOutsideAdapter.getItem(position);
-            bComment = new BComment(item.getSeller_id(), item.getSeller_name());
-            is_brand = item.getIs_brand();
-            if ("0".equals(is_brand)) {
-                intent = new Intent(BaseContext, AShopDetail.class);
-            } else {
-                intent = new Intent(BaseContext,
-                        ABrandDetail.class);
-            }
-
-            intent.putExtra(BaseKey_Bean, bComment);
-            PromptManager.SkipActivity(BaseActivity, intent);
-
-        } else {
-
-        }
-
-
-    }
+//    @Override
+//    public void onItemClick(AdapterView<?> parent, View view, int position,
+//                            long id) {
+//        BComment bComment = null;
+//        Intent intent = null;
+//        String is_brand = "";
+//        if (PDaiFu != Ket_Tage) {
+////            BLCenterOder item = (BLCenterOder) centerOrderNoPayAdapter.getItem(position);
+////            List<BLDComment> son_order = item.getSon_order();
+////            is_brand = son_order.get(0).getIs_brand();
+////            bComment = new BComment(son_order.get(0).getSeller_id(), son_order.get(0).getSeller_name());
+//            BLCenterOder item = (BLCenterOder) centerOrderOutsideAdapter.getItem(position);
+//            bComment = new BComment(item.getSeller_id(), item.getSeller_name());
+//            is_brand = item.getIs_brand();
+//            if ("0".equals(is_brand)) {
+//                intent = new Intent(BaseContext, AShopDetail.class);
+//            } else {
+//                intent = new Intent(BaseContext,
+//                        ABrandDetail.class);
+//            }
+//
+//            intent.putExtra(BaseKey_Bean, bComment);
+//            PromptManager.SkipActivity(BaseActivity, intent);
+//
+//        } else {
+//
+//        }
+//
+//
+//    }
 
 
     /**

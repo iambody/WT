@@ -29,6 +29,7 @@
             android:paddingBottom="6dp"
              >
 <LinearLayout
+    android:id="@+id/ll_center_order_shopname"
     android:layout_width="0dp"
     android:layout_weight="1"
     android:orientation="horizontal"
