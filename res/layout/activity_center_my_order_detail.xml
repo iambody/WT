@@ -87,6 +87,7 @@
                     android:orientation="vertical" >
 
                     <RelativeLayout
+                        android:id="@+id/rl_relation_seller"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/order_detail_layout_padding" >
@@ -97,6 +98,14 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:src="@drawable/ic_tiaozhuan_nor"
+                            android:visibility="gone"
+                            android:layout_toRightOf="@id/tv_center_my_order_shop_name"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="14dp" />
 
                         <LinearLayout
                             android:id="@+id/ll_center_my_order_contact_seller"
@@ -201,9 +210,9 @@
                                 android:id="@+id/tv_center_my_order_post_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/app_fen"
-                                android:textSize="@dimen/order_detail_goods_postage_size"
-                                android:visibility="gone" />
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/order_detail_goods_total_price_size"
+                                android:visibility="visible" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

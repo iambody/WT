@@ -1007,6 +1007,7 @@ public class ACenterMyOrder extends ATitleBase implements
                         .findViewById(R.id.fragment_center_order_is_over);
                 myItem.fragment_center_order_apply_refunding = (TextView) convertView
                         .findViewById(R.id.fragment_center_order_apply_refunding);
+                myItem.ll_center_my_order_seller_order_sn = (LinearLayout)convertView.findViewById(R.id.ll_center_my_order_seller_order_sn) ;
                 myItem.tv_center_my_order_seller_order_sn = (TextView) convertView
                         .findViewById(R.id.tv_center_my_order_seller_order_sn);
                 convertView.setTag(myItem);
@@ -1269,6 +1270,35 @@ public class ACenterMyOrder extends ATitleBase implements
                         }
                     });
 
+            myItem.ll_center_my_order_seller_order_sn.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (CheckNet(BaseContext))
+                        return;
+
+                    if (PDaiFu != Integer.parseInt(blComment.getOrder_status())) {
+
+                        Intent intent = new Intent(BaseContext, ACenterMyOrderDetail.class);
+                        intent.putExtra("Key_TageStr", Integer.parseInt(blComment.getOrder_status()));
+                        intent.putExtra("member_id", blComment.getMember_id());
+                        intent.putExtra("seller_order_sn", blComment.getSeller_order_sn());
+                        PromptManager.SkipActivity((Activity) BaseContext, intent);
+
+
+                    } else {
+
+                        Intent intent = new Intent(BaseContext,
+                                ACenterMyOrderNoPayDetail.class);
+                        intent.putExtra("order_sn", blComment.getOrder_sn());
+                        intent.putExtra("member_id", blComment.getMember_id());
+                        intent.putExtra("seller_order_sn", blComment.getSeller_order_sn());
+                        PromptManager.SkipActivity((Activity) BaseContext, intent);
+
+
+                    }
+                }
+            });
+
         }
 
         /**
@@ -1291,6 +1321,7 @@ public class ACenterMyOrder extends ATitleBase implements
             TextView fragment_center_order_apply_refunding;// 申请退款中
             TextView fragment_center_order_get_integral;// 获取积分
             TextView fragment_center_order_is_get_integral;//已获取积分
+            LinearLayout ll_center_my_order_seller_order_sn;
             CompleteListView item_fragment_center_order_ls;
 
             TextView item_fragment_center_order_allnum;// 多少件商品
@@ -1772,7 +1803,7 @@ public class ACenterMyOrder extends ATitleBase implements
 //            bComment = new BComment(son_order.get(0).getSeller_id(), son_order.get(0).getSeller_name());
             BLCenterOder item = (BLCenterOder) centerOrderOutsideAdapter.getItem(position);
             bComment = new BComment(item.getSeller_id(), item.getSeller_name());
-            is_brand = bComment.getIs_brand();
+            is_brand = item.getIs_brand();
             if ("0".equals(is_brand)) {
                 intent = new Intent(BaseContext, AShopDetail.class);
             } else {

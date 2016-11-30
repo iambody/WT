@@ -111,6 +111,15 @@
                                 android:textSize="@dimen/order_detail_goods_total_price_size" />
 
 
+                          <TextView
+                              android:id="@+id/tv_center_my_no_pay_order_post_price"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="@color/grey"
+                              android:textSize="@dimen/order_detail_goods_total_price_size"
+                              android:visibility="visible" />
+
+
                         </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>

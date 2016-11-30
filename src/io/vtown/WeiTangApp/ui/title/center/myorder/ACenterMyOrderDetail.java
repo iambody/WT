@@ -4,6 +4,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BDCenterOrderDetail;
+import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BLCenterOder;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -19,6 +20,7 @@ import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FCenterOder;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
+import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
 import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
@@ -45,6 +47,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 
@@ -52,6 +55,7 @@ import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
@@ -286,6 +290,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
     private TextView tv_center_my_order_get_integral;
     private LinearLayout ll_center_my_order_get_integral_tips;
     private TextView tv_center_my_order_get_integral_tips;
+    private RelativeLayout rl_relation_seller;
 
     @Override
     protected void InItBaseView() {
@@ -442,7 +447,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
 
         tv_center_my_order_is_delay = (TextView) findViewById(R.id.tv_center_my_order_is_delay);
-
+        rl_relation_seller = (RelativeLayout) findViewById(R.id.rl_relation_seller);
         tv_center_my_order_shop_name = (TextView) findViewById(R.id.tv_center_my_order_shop_name);
         ll_center_my_order_contact_seller = (LinearLayout) findViewById(R.id.ll_center_my_order_contact_seller);
         lv_center_my_order_goods = (CompleteListView) findViewById(R.id.lv_center_my_order_goods);
@@ -553,6 +558,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
         // look_center_my_order_express_speed.setOnClickListener(this);
         tv_center_my_order_close_buy_agian.setOnClickListener(this);
         center_my_order_detail_nodata_lay.setOnClickListener(this);
+        rl_relation_seller.setOnClickListener(this);
         ll_center_my_order_contact_seller.setOnClickListener(this);
         tv_center_my_order_get_integral.setOnClickListener(this);
 
@@ -1029,6 +1035,20 @@ public class ACenterMyOrderDetail extends ATitleBase {
                         ANew.class));
                 break;
 
+//            case R.id.rl_relation_seller://查看店铺
+//                BComment bComment = new BComment(order_detail.getSeller_id(), order_detail.getSeller_name());
+//               String  is_brand = order_detail.getIs_brand();
+//                if ("0".equals(is_brand)) {
+//                    intent = new Intent(BaseContext, AShopDetail.class);
+//                } else {
+//                    intent = new Intent(BaseContext,
+//                            ABrandDetail.class);
+//                }
+//
+//                intent.putExtra(BaseKey_Bean, bComment);
+//                PromptManager.SkipActivity(BaseActivity, intent);
+//
+//                break;
         }
     }
 

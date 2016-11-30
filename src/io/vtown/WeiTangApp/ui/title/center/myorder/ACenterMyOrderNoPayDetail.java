@@ -137,6 +137,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 	private TextView tv_center_my_order_no_pay_total_price;
 	private LinearLayout ll_center_order_no_pay_used_balance_and_coupons;
 	private TextView tv_center_order_no_pay_used_coupons;
+	private TextView tv_center_my_no_pay_order_post_price;
 
 	@Override
 	protected void InItBaseView() {
@@ -197,7 +198,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 		tv_center_my_order_no_pay_cancel_order = (TextView) findViewById(R.id.tv_center_my_order_no_pay_cancel_order);
 		tv_center_my_order_no_pay_to_pay = (TextView) findViewById(R.id.tv_center_my_order_no_pay_to_pay);
 		tv_center_my_order_no_pay_total_price = (TextView) findViewById(R.id.tv_center_my_order_no_pay_total_price);
-
+		tv_center_my_no_pay_order_post_price = (TextView) findViewById(R.id.tv_center_my_no_pay_order_post_price);
 		center_my_order_no_pay_address.setOnClickListener(this);
 		tv_center_my_order_no_pay_cancel_order.setOnClickListener(this);
 		tv_center_my_order_no_pay_to_pay.setOnClickListener(this);
@@ -236,6 +237,12 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 //				tv_center_my_order_no_pay_total_price,
 //				String.format("￥%1$s",
 //						StrUtils.SetTextForMony(data2.getOrder_total_price())));
+
+		float postageF = Float.parseFloat(data2.getPostage_money());
+		String postage = String.format("(含运费%1$s元)",
+				StrUtils.SetTextForMony(postageF + ""));
+		StrUtils.SetTxt(tv_center_my_no_pay_order_post_price,
+				postageF == 0.0f ? "(免邮费)" : postage);
 
 		StrUtils.SetMoneyFormat(BaseContext,tv_center_my_order_no_pay_total_price,data2.getOrder_total_price(),17);
 
