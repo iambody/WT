@@ -295,7 +295,6 @@ public abstract class ATitleBase extends ABase implements
             v.setVisibility(View.GONE);
         }
     }
-
     @Override
     public void getResult(int Code, String Msg, BComment Data) {
         DataResult(Code, Msg, Data);
@@ -309,7 +308,6 @@ public abstract class ATitleBase extends ABase implements
     @Override
     public void onClick(View arg0) {
         MyClick(arg0);
-
     }
 
 

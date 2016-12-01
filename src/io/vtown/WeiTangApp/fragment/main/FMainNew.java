@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.fragment.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,7 +83,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
     private TextView item_my_new_content;
     private TextView new_zhushou_time;
     private CustomSwipeToRefresh fragment_main_new_srollviw;
-
+    private boolean IShow = true;
     @Override
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_new, null);
@@ -91,7 +92,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
         IView();
         SetTitleHttpDataLisenter(this);
         ICache();
-
+        refresh();
     }
 
     @Override
@@ -585,7 +586,33 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
                 break;
         }
     }
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (IShow) {
+            Log.i("homewave", "隐藏");
 
+        }
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            Log.i("homewave", "隐藏");
+
+        } else {
+            Log.i("homewave", "显示");
+            refresh();
+        }
+
+    }
     @Override
     public void onRefresh() {
         IData(REFRESHING);

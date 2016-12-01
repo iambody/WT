@@ -151,8 +151,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                                 Intent shopOrderIntent = new Intent(BaseContext,
                                         AShopOrderManager.class);
                                 shopOrderIntent.putExtra("order_stutas", 3);
-                                shopOrderIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                shopOrderIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent);
 
                                 EventBus.getDefault().post(
@@ -162,8 +162,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                             case Constants.ACTION_CG_ORDER:// 采购下单
                                 Intent shopGoodIntent = new Intent(BaseContext,
                                         AShopOrderManager.class);
-                                shopGoodIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                shopGoodIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopGoodIntent);
 
                                 EventBus.getDefault().post(
@@ -173,8 +173,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                             case Constants.ACTION_TO_PAY:// 付款
                                 Intent shopOrderIntent6 = new Intent(BaseContext,
                                         AShopOrderManager.class);
-                                shopOrderIntent6.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                shopOrderIntent6.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent6);
 
                                 EventBus.getDefault().post(
@@ -184,8 +184,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                             case Constants.ACTION_CG_SEND:// 采购订单发货
                                 Intent shopGoodIntent1 = new Intent(BaseContext,
                                         AShopPurchaseOrder.class);
-                                shopGoodIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                shopGoodIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopGoodIntent1);
 
                                 EventBus.getDefault().post(
@@ -195,8 +195,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                             case Constants.ACTION_PT_SEND:// 普通订单发货
                                 Intent shopOrderIntent1 = new Intent(BaseContext,
                                         ACenterMyOrder.class);
-                                shopOrderIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                shopOrderIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent1);
 
                                 EventBus.getDefault().post(
@@ -206,8 +206,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                             case Constants.ACTION_CG_REFUND:// 采购订单同意退款
                                 Intent shopOrderIntent2 = new Intent(BaseContext,
                                         AShopPurchaseOrder.class);
-                                shopOrderIntent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                shopOrderIntent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent2);
 
                                 EventBus.getDefault().post(
@@ -226,8 +226,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                                 // BaseActivity.finish();
                                 Intent shopOrderIntent3 = new Intent(BaseContext,
                                         ACenterMyOrder.class);
-                                shopOrderIntent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                shopOrderIntent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent3);
 
                                 EventBus.getDefault().post(
@@ -237,8 +237,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                             case Constants.ACTION_CG_UNREFUND:// 采购订单拒绝退款
                                 Intent shopOrderIntent4 = new Intent(BaseContext,
                                         AShopPurchaseOrder.class);
-                                shopOrderIntent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                shopOrderIntent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent4);
 
                                 EventBus.getDefault().post(
@@ -250,8 +250,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                             case Constants.ACTION_PT_MODIFY_PRICE://订单修改价格
                                 Intent shopOrderIntent5 = new Intent(BaseContext,
                                         ACenterMyOrder.class);
-                                shopOrderIntent5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                shopOrderIntent5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent5);
 
                                 EventBus.getDefault().post(

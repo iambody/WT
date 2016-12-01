@@ -346,7 +346,7 @@ public class AMianSort extends ABase {
                         popSortRangPriceMaxEd.setText("");
                         //需要对左侧按钮下边的Tag标签进行展示。。。。。。。。
                         if (null == myRangAp.GetDatas().get(position).getMax())
-                            popMaitabSortPriceDownStateTag.setText("大于" + myRangAp.GetDatas().get(position).getMin());
+                            popMaitabSortPriceDownStateTag.setText("(大于" + myRangAp.GetDatas().get(position).getMin()+")");
                         else
                             popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)", "" + myRangAp.GetDatas().get(position).getMin(), "" + myRangAp.GetDatas().get(position).getMax()));
 
@@ -386,7 +386,7 @@ public class AMianSort extends ABase {
                         popSortRangScoreMinEd.setText("");
                         popSortRangScoreMaxEd.setText("");
 //开始显示左侧按钮下边的tag标签
-                        popMaitabSortJifenStateTag.setText(myRangScoreAp.GetDatas().get(position).getMax() == null ? "(大于" + myRangScoreAp.GetDatas().get(position) + ")" : String.format("(%s-%s)", "" + myRangScoreAp.GetDatas().get(position).getMin(), "" + myRangScoreAp.GetDatas().get(position).getMax()));
+                        popMaitabSortJifenStateTag.setText(myRangScoreAp.GetDatas().get(position).getMax() == null ? "(大于" + myRangScoreAp.GetDatas().get(position).getMin() + ")" : String.format("(%s-%s)", "" + myRangScoreAp.GetDatas().get(position).getMin(), "" + myRangScoreAp.GetDatas().get(position).getMax()));
                         popMaitabSortJifenStateTag.setVisibility(View.VISIBLE);
                         break;
                     case 3:
