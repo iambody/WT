@@ -74,7 +74,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
     private BUser user_Get;
     // IM会话记录列表
     private ChatHistoryAdapter ImHistoryAdapter;
-    // ls
+    // lssss
     private CompleteListView mynew_imlist;
     // 所有的会话列表
     private List<EMConversation> conversationList = new ArrayList<EMConversation>();
