@@ -112,7 +112,7 @@ public class ChatHistoryAdapter extends BaseAdapter {
 				// holder.name.setText(ReciverName);
 				String ReciverName = conversation.getLastMessage()
 						.getStringAttribute("extReceiveNickname");
-				StrUtils.SetTxt(holder.name, ReciverName);
+				StrUtils.SetTxt(holder.name, ReciverName);//mymewEmMessage.getUserName()
 				ImageLoaderUtil.Load2(conversation.getLastMessage()
 						.getStringAttribute("extReceiveHeadUrl"),
 						holder.avatar, R.drawable.new_im);
@@ -123,7 +123,7 @@ public class ChatHistoryAdapter extends BaseAdapter {
 				try {
 					String ReciverName = conversation.getLastMessage()
 							.getStringAttribute("extSendNickname");
-					StrUtils.SetTxt(holder.name, ReciverName);
+					StrUtils.SetTxt(holder.name,  ReciverName);//mymewEmMessage.getUserName()
 					ImageLoaderUtil.Load2(conversation.getLastMessage()
 							.getStringAttribute("extSendHeadUrl"),
 							holder.avatar, R.drawable.new_im);
@@ -139,6 +139,8 @@ public class ChatHistoryAdapter extends BaseAdapter {
 					if (mymewEmMessagesss.direct == EMMessage.Direct.SEND) {
 						StrUtils.SetTxt(holder.name, mymewEmMessagesss
 								.getStringAttribute("extReceiveNickname"));
+
+//						StrUtils.SetTxt(holder.name,  mymewEmMessage.getUserName());
 						ImageLoaderUtil.Load2(mymewEmMessagesss
 								.getStringAttribute("extReceiveHeadUrl"),
 								holder.avatar, R.drawable.new_im);

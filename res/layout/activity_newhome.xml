@@ -77,7 +77,7 @@
                 android:layout_gravity="center_vertical"
 
                 android:src="@drawable/new1"
-                android:visibility="invisible"/>
+                android:visibility="visible"/>
         </LinearLayout>
         <!-- title*** -->
 

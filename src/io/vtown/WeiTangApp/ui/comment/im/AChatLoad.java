@@ -1,17 +1,6 @@
 package io.vtown.WeiTangApp.ui.comment.im;
 
-import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.bean.bcomment.BUser;
-import io.vtown.WeiTangApp.comment.contant.Constants;
-import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.ui.ABase;
-
-import java.util.Iterator;
-import java.util.List;
-
 import android.app.ActivityManager;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -30,6 +19,16 @@ import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMChatOptions;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.util.NetUtils;
+
+import java.util.Iterator;
+import java.util.List;
+
+import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.ui.ABase;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -68,8 +67,8 @@ public class AChatLoad extends ABase {
 	private void IBasebun() {
 		if (getIntent().getExtras() != null
 				&& getIntent().getExtras().containsKey(Tage_TageId)) {
-			TageId = Constants.ImHost + getIntent().getStringExtra(Tage_TageId);
-
+			//TageId = "渴望未来";//Constants.ImHost + getIntent().getStringExtra(Tage_TageId);
+			TageId = Constants.ImHost + getIntent().getStringExtra(Tage_TageId);//getIntent().getStringExtra(Tage_Name);
 		} else {
 			PromptManager.ShowCustomToast(BaseContext, "selleid没有进入 For  Test");
 			BaseActivity.finish();
@@ -77,6 +76,7 @@ public class AChatLoad extends ABase {
 		if (getIntent().getExtras() != null
 				&& getIntent().getExtras().containsKey(Tage_Name)) {
 			TageName = getIntent().getStringExtra(Tage_Name);
+
 		}
 		if (getIntent().getExtras() != null
 				&& getIntent().getExtras().containsKey(Tage_Iv)) {

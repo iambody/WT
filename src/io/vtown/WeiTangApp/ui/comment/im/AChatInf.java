@@ -5,10 +5,12 @@ import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
+import io.vtown.WeiTangApp.fragment.main.FMainNew;
 import io.vtown.WeiTangApp.ui.ABase;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.im.MyImListView.OnRefreshListener;
@@ -112,6 +114,7 @@ public class AChatInf extends ABase implements OnClickListener {
 	// NewMessageBroadcastReceiver msgReceiver = new
 	// NewMessageBroadcastReceiver();
 	MessageBroadcastReceiver msgReceiver = new MessageBroadcastReceiver();
+
 	private AnimationDrawable voiceAnimation = null;// 语音图片动画
 
 	// 赋值粘贴文本
@@ -147,6 +150,7 @@ public class AChatInf extends ABase implements OnClickListener {
 	private String TagerAvater = "";
 
 	private boolean IsHelper = false;// ishepler
+
 
 	class MessageBroadcastReceiver extends BroadcastReceiver {
 		@Override
@@ -192,6 +196,7 @@ public class AChatInf extends ABase implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		// EventBus.getDefault().register(this, "GetImMessage", BMessage.class);
 		InItBase();
+
 	}
 
 	// public void GetImMessage(BMessage message) {
@@ -202,7 +207,6 @@ public class AChatInf extends ABase implements OnClickListener {
 
 	// 初始化
 	private void InItBase() {
-
 		// 注册广播
 		IntentFilter intentFilter = new IntentFilter(EMChatManager
 				.getInstance().getNewMessageBroadcastAction());
@@ -511,9 +515,9 @@ public class AChatInf extends ABase implements OnClickListener {
 			message.addBody(body);
 			try {
 				// 增加自己特定的属性，目前SDK支持int、boolean、String这三种属性，可以设置多个扩展属性
-				message.setAttribute("extSendNickname", mBShop.getSeller_name());
+				message.setAttribute("extSendNickname", mBUser.getSeller_name());
 				message.setAttribute("extReceiveNickname", Title);
-				message.setAttribute("extSendHeadUrl", mBShop.getAvatar());// TagerAvater
+				message.setAttribute("extSendHeadUrl", mBUser.getHead_img());// TagerAvater
 				message.setAttribute("extReceiveHeadUrl", TagerAvater);
 			} catch (Exception e) {
 
@@ -647,7 +651,7 @@ public class AChatInf extends ABase implements OnClickListener {
 								OtherHead, R.drawable.chat_default_head);
 
 				} else {// 自己
-					ImageLoaderUtil.Load2(mBShop.getAvatar(), OtherHead,
+					ImageLoaderUtil.Load2(mBUser.getHead_img(), OtherHead,
 							R.drawable.chat_default_head);
 
 				}
@@ -975,15 +979,16 @@ public class AChatInf extends ABase implements OnClickListener {
 			// 修改发送方式
 			EMMessage message = EMMessage.createSendMessage(EMMessage.Type.TXT);
 			TextMessageBody txtBody = new TextMessageBody(content);
+			String msgId = message.getMsgId();
 
 			try {
 				// 增加自己特定的属性，目前SDK支持int、boolean、String这三种属性，可以设置多个扩展属性
-				message.setAttribute("extSendNickname", mBShop.getSeller_name());
+				message.setAttribute("extSendNickname", mBUser.getSeller_name());
 				message.setAttribute("extReceiveNickname", Title);
-				message.setAttribute("extSendHeadUrl", mBShop.getAvatar());// TagerAvater
+				message.setAttribute("extSendHeadUrl", mBUser.getHead_img());// TagerAvater
 				message.setAttribute("extReceiveHeadUrl", TagerAvater);
 			} catch (Exception e) {
-
+				LogUtils.i(e.toString());
 			}
 			message.setReceipt(chatname);
 			message.addBody(txtBody);
@@ -991,12 +996,15 @@ public class AChatInf extends ABase implements OnClickListener {
 
 			try {
 				EMChatManager.getInstance().sendMessage(message);
+
+
 			} catch (EaseMobException e) {
 				e.printStackTrace();
 			}
-
 			// 修改发送方式
 			edittv.setText("");
+
+			EventBus.getDefault().post(new BMessage(11186));
 			hintKbTwo();
 
 			chat_listview.setSelection(chat_listview.getBottom());
@@ -1056,4 +1064,9 @@ public class AChatInf extends ABase implements OnClickListener {
 		return super.onKeyDown(keyCode, event);
 	}
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		unregisterReceiver(msgReceiver);
+	}
 }

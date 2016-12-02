@@ -40,6 +40,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.DateUtils;
@@ -53,7 +54,7 @@ import io.vtown.WeiTangApp.ui.comment.im.AChatInf;
 import io.vtown.WeiTangApp.ui.title.mynew.AItemNew;
 
 /**
- * Created by Yihuihua on 2016/10/28.
+ * Created by Yihuihua on 2016/10/28.1111
  */
 
 public class FMainNew extends FBase implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
@@ -130,7 +131,13 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
                                     int position, long id) {
                 EMConversation conversation = (EMConversation) ImHistoryAdapter
                         .getItem(position);
+
+
                 EMMessage latmessage = conversation.getLastMessage();
+                LogUtils.i("========from========"+latmessage.getFrom());
+                LogUtils.i("========tagname========"+conversation.getUserName());
+                LogUtils.i("========latmessage.getUserName()========"+latmessage.getUserName());
+
                 EventBus.getDefault().post(new BMessage(BMessage.IM_MSG_READ));
                 Intent intent = new Intent(BaseActivity, AChatInf.class);
                 try {
@@ -143,7 +150,6 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
                                 .getStringAttribute("extReceiveNickname"));
                         intent.putExtra("iv", latmessage
                                 .getStringAttribute("extReceiveHeadUrl"));
-
                         startActivity(intent);
                         conversation.resetUnreadMsgCount();
                     }
@@ -151,7 +157,6 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
                         try {
                             String ReciverName = conversation.getLastMessage()
                                     .getStringAttribute("extSendNickname");
-
                             String ReciverUrl = conversation.getLastMessage()
                                     .getStringAttribute("extSendHeadUrl");
                             intent.putExtra("tagname",
@@ -166,6 +171,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
 
                         }
                     }
+
                     for (int i = conversation.getAllMessages().size() - 1; i > 0; i--) {
                         EMMessage mymewEmMessagesss = conversation
                                 .getMessage(i);
@@ -455,7 +461,6 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
                         sortList.add(new Pair<Long, EMConversation>(
                                 conversation.getLastMessage().getMsgTime(),
                                 conversation));
-                        String ssss = conversation.getUserName();
 
                     } else {
                         HeplerConversation = conversation;
@@ -730,11 +735,17 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
             TextView item_my_new_time;//
         }
     }
-
+public String ssss = "";
     public void NewReciver(BMessage message) {
         switch (message.getMessageType()) {
             case BMessage.Tage_New_Kill:
                 BaseActivity.finish();
+
+                break;
+
+            case 11186:
+
+
 
                 break;
 
@@ -748,4 +759,18 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+    private void getDaaa(String msgId){
+        loadConversationWithRecentChat();
+        //根据消息id获取message
+        EMMessage message = EMChatManager.getInstance().getMessage(msgId);
+        //获取自定义的属性，第2个参数为返回的默认值
+
+
+
+            LogUtils.i("------------------loadConversationWithRecentChat-------Name-----------"+ message.getStringAttribute("extReceiveNickname",null));
+        LogUtils.i("------------------loadConversationWithRecentChat-------url-----------"+ message.getStringAttribute("extReceiveHeadUrl", null));
+
+    }
+
 }

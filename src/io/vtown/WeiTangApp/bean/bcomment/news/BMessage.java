@@ -260,6 +260,8 @@ public class BMessage {
     private boolean IsSort_Price_ZiDingYi;
     private boolean IsSort_Score_ZiDingYi;
 
+    private String MsgId;
+
     //如果是透明的筛选页面点击透明的搜索 需要先跳转到搜索在进行通知销毁数据
     public static final int SortToSouSou=3099;
 
@@ -271,6 +273,14 @@ public class BMessage {
     public BMessage(int messageType) {
         super();
         this.MessageType = messageType;
+    }
+
+    public String getMsgId() {
+        return MsgId;
+    }
+
+    public void setMsgId(String msgId) {
+        MsgId = msgId;
     }
 
     public String getGoodMangeAlterNUmbe() {
