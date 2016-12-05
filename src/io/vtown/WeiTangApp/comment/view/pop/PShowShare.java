@@ -72,6 +72,8 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     private ImageView iv_pic_vedio_share_icon;
     private TextView tv_pic_vedio_share_title;
     private View show_share_line;
+    private boolean isPic;
+    private boolean isUrl;
 
     public void SetShareListener(ShowShareInterListener result) {
         this.MShowShareInterListener = result;
@@ -81,7 +83,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         public void GetResultType(int ResultType);//1代表 好友；；2代表朋友圈  ；；3代表show分享  4代表取消
     }
 
-    public PShowShare(Context context, Activity mactivity, BNew sharebeanNew) {
+    public PShowShare(Context context, Activity mactivity, BNew sharebeanNew, boolean isPic, boolean isUrl) {
         this.mContext = context;
         this.activity = mactivity;
         if (null == sharebeanNew) {
@@ -90,7 +92,8 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         }
         this.mShareBeanNew = sharebeanNew;
         mRootView = LayoutInflater.from(context).inflate(R.layout.pop_show_share, null);
-
+        this.isPic = isPic;
+        this.isUrl = isUrl;
         IPop();
         IView();
 
@@ -109,23 +112,14 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         show_share_to_show.setOnClickListener(this);
         show_share_cancel.setOnClickListener(this);
 
-    }
-
-    /*
-    * 是图片分享还是视频分享
-    * */
-    public void setPicAndVedioShareTitle(boolean isPic) {
         if (isPic) {
             tv_pic_vedio_share_title.setText("图片分享");
+            iv_pic_vedio_share_icon.setImageResource(R.drawable.ic_jiugonggefenxiang_nor);
         } else {
             tv_pic_vedio_share_title.setText("视频分享");
+            iv_pic_vedio_share_icon.setImageResource(R.drawable.ic_shipinfenxiang_nor);
         }
-    }
 
-    /*
-    * 是否包含Url
-    * */
-    public void isHaveUrl(boolean isUrl) {
         if (isUrl) {
             show_share_line.setVisibility(View.VISIBLE);
             show_share_to_weixin.setVisibility(View.VISIBLE);
@@ -133,7 +127,9 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
             show_share_line.setVisibility(View.GONE);
             show_share_to_weixin.setVisibility(View.GONE);
         }
+
     }
+
 
     private void IPop() {
         setContentView(mRootView);

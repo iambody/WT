@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/pop_show_center2"
-                android:src="@drawable/sharer_weixin" />
+                android:src="@drawable/ic_shangpinfenxiang_nor" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/pop_show_center3"
-                android:src="@drawable/ic_shipin_nor" />
+                android:src="@drawable/ic_jiugonggefenxiang_nor" />
 
             <TextView
                 android:id="@+id/tv_pic_vedio_share_title"
