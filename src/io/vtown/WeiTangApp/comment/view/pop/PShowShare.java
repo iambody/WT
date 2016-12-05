@@ -1,12 +1,15 @@
 package io.vtown.WeiTangApp.comment.view.pop;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -51,12 +54,24 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 
     private BNew mShareBeanNew;
     protected String BaseKey_Bean = "abasebeankey";
-    private RelativeLayout show_share_to_friends, show_share_to_weixin, show_share_to_show;
+    private RelativeLayout show_share_to_pic_vedio, show_share_to_weixin, show_share_to_show;
     private TextView show_share_cancel;
     public boolean IsErWeiMaShare = false;
 
+    public static final int SHARE_TO_SHOW = 110;//分享Show标识
+    public static final int SHARE_TO_WXCHAT = 111;//分享微信好友
+    public static final int SHARE_TO_FRIENDS = 112;//分享朋友圈
+    public static final int SHARE_TO_QQCHAT = 113;//分享QQ好友
+    public static final int SHARE_TO_QZONE = 114;//分享空间
+    public static final int SHARE_TO_SINAWB = 115;//分享微薄
+    public static final int SHARE_PIC_VEDIO = 116;//分享图片/视屏
+
 
     private ShowShareInterListener MShowShareInterListener;
+    private AlertDialog dialog;
+    private ImageView iv_pic_vedio_share_icon;
+    private TextView tv_pic_vedio_share_title;
+    private View show_share_line;
 
     public void SetShareListener(ShowShareInterListener result) {
         this.MShowShareInterListener = result;
@@ -82,15 +97,42 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     }
 
     private void IView() {
-        show_share_to_friends = (RelativeLayout) mRootView.findViewById(R.id.show_share_to_friends);
+        show_share_to_pic_vedio = (RelativeLayout) mRootView.findViewById(R.id.show_share_to_pic_vedio);
+        show_share_line = mRootView.findViewById(R.id.show_share_line);
         show_share_to_weixin = (RelativeLayout) mRootView.findViewById(R.id.show_share_to_weixin);
         show_share_to_show = (RelativeLayout) mRootView.findViewById(R.id.show_share_to_show);
+        iv_pic_vedio_share_icon = (ImageView) mRootView.findViewById(R.id.iv_pic_vedio_share_icon);
+        tv_pic_vedio_share_title = (TextView) mRootView.findViewById(R.id.tv_pic_vedio_share_title);
         show_share_cancel = (TextView) mRootView.findViewById(R.id.show_share_cancel);
-        show_share_to_friends.setOnClickListener(this);
+        show_share_to_pic_vedio.setOnClickListener(this);
         show_share_to_weixin.setOnClickListener(this);
         show_share_to_show.setOnClickListener(this);
         show_share_cancel.setOnClickListener(this);
 
+    }
+
+    /*
+    * 是图片分享还是视频分享
+    * */
+    public void setPicAndVedioShareTitle(boolean isPic) {
+        if (isPic) {
+            tv_pic_vedio_share_title.setText("图片分享");
+        } else {
+            tv_pic_vedio_share_title.setText("视频分享");
+        }
+    }
+
+    /*
+    * 是否包含Url
+    * */
+    public void isHaveUrl(boolean isUrl) {
+        if (isUrl) {
+            show_share_line.setVisibility(View.VISIBLE);
+            show_share_to_weixin.setVisibility(View.VISIBLE);
+        } else {
+            show_share_line.setVisibility(View.GONE);
+            show_share_to_weixin.setVisibility(View.GONE);
+        }
     }
 
     private void IPop() {
@@ -111,7 +153,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.show_share_to_friends://分享好友
+            case R.id.show_share_to_pic_vedio://分享好友
                 //权限888888888888888888888
                 //如果未绑定或者已绑定未激活的用户分享权限的判断***************************
                 if (!Spuit.IsHaveBind_Get(activity) && !Spuit.IsHaveBind_JiQi_Get(activity)) {//未绑定邀请码
@@ -163,14 +205,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 
                     return;
                 }
-//权限888888888888888888888
-                //判断是否安装微信
-                if(!ViewUtils.isWeixinAvilible(activity)){
-                    PromptManager.ShowCustomToast(activity,"请先安装手机微信");
-                    return;
-                }
-                Share(1);
-                MShowShareInterListener.GetResultType(1);
+                MShowShareInterListener.GetResultType(SHARE_PIC_VEDIO);
                 this.dismiss();
                 break;
             case R.id.show_share_to_weixin://分享朋友圈
@@ -226,23 +261,73 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                     return;
                 }
 //权限888888888888888888888
-                //判断是否安装微信
-                if(!ViewUtils.isWeixinAvilible(activity)){
-                    PromptManager.ShowCustomToast(activity,"请先安装手机微信");
-                    return;
-                }             Share(2);
-                MShowShareInterListener.GetResultType(2);
+
+//                Share(2);
+                showShareDialog();
+
                 this.dismiss();
                 break;
             case R.id.show_share_to_show://show分享
-                MShowShareInterListener.GetResultType(3);
+                MShowShareInterListener.GetResultType(SHARE_TO_SHOW);
                 this.dismiss();
                 break;
             case R.id.show_share_cancel://取消
-                MShowShareInterListener.GetResultType(4);
+                //MShowShareInterListener.GetResultType(4);
                 this.dismiss();
                 break;
+
+            case R.id.ll_share_2_wxchat://分享微信
+                PromptManager.ShowCustomToast(mContext, "分享微信");
+                controlType(SHARE_TO_WXCHAT);
+                break;
+
+            case R.id.ll_share_2_wxfriends://分享朋友圈
+                PromptManager.ShowCustomToast(mContext, "分享朋友圈");
+                controlType(SHARE_TO_FRIENDS);
+                break;
+
+            case R.id.ll_share_2_qq://分享QQ
+                PromptManager.ShowCustomToast(mContext, "分享QQ");
+                controlType(SHARE_TO_QQCHAT);
+                break;
+
+            case R.id.ll_share_2_qzone://分享空间
+                PromptManager.ShowCustomToast(mContext, "分享空间");
+                controlType(SHARE_TO_QZONE);
+                break;
+            case R.id.ll_share_2_sinawb://分享微博
+                PromptManager.ShowCustomToast(mContext, "分享微博");
+                controlType(SHARE_TO_SINAWB);
+                break;
         }
+    }
+
+    private void controlType(int resultType) {
+        MShowShareInterListener.GetResultType(resultType);
+        if (resultType == SHARE_TO_WXCHAT || resultType == SHARE_TO_FRIENDS) {
+            //判断是否安装微信
+            if (!ViewUtils.isWeixinAvilible(activity)) {
+                PromptManager.ShowCustomToast(activity, "请先安装手机微信");
+                return;
+            }
+            Share(resultType);
+        }
+        dialog.dismiss();
+    }
+
+    private void showShareDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_show_share, null);
+        builder.setView(view);
+        dialog = builder.create();
+        dialog.setCanceledOnTouchOutside(true);
+        view.findViewById(R.id.ll_share_2_wxchat).setOnClickListener(this);
+        view.findViewById(R.id.ll_share_2_wxfriends).setOnClickListener(this);
+        view.findViewById(R.id.ll_share_2_qq).setOnClickListener(this);
+        view.findViewById(R.id.ll_share_2_qzone).setOnClickListener(this);
+        view.findViewById(R.id.ll_share_2_sinawb).setOnClickListener(this);
+
+        dialog.show();
     }
 
 

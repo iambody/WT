@@ -1,7 +1,10 @@
 package io.vtown.WeiTangApp.ui.title.myhome;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,15 +14,20 @@ import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
+import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.AExitNull;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
+import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.title.ASearchResult;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.set.AAboutWt;
@@ -43,10 +51,12 @@ public class ANewCenter extends ATitleBase {
     private View view_my_address;
     private View view_my_shop;
     private Button btn_quit;
+    private View baseView;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_new_center);
+        baseView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_new_center, null);
         IView();
     }
 
@@ -148,8 +158,24 @@ public class ANewCenter extends ATitleBase {
                 break;
 
             case R.id.view_about_me://关于我们
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AAboutWt.class));
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        AAboutWt.class));
+                BNew bnew = new BNew();
+                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew);
+                showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
+                    @Override
+                    public void GetResultType(int ResultType) {
+                        switch (ResultType) {
+
+
+
+                        }
+                    }
+                });
+                showShare.showAtLocation(baseView, Gravity.BOTTOM, 0, 0);
+
+                showShare.setPicAndVedioShareTitle(false);
+                showShare.isHaveUrl(false);
                 break;
 
             case R.id.view_my_address://我的地址
@@ -190,6 +216,8 @@ public class ANewCenter extends ATitleBase {
         }
 
     }
+
+
 
     @Override
     protected void InItBundle(Bundle bundle) {

@@ -19,7 +19,8 @@
         android:padding="@dimen/line_size1">
 
         <RelativeLayout
-            android:id="@+id/show_share_to_friends"
+
+            android:id="@+id/show_share_to_show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/select_show_share_up"
@@ -32,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/pop_show_center1"
-                android:src="@drawable/share_wxpy" />
+                android:src="@drawable/ic_show_press"/>
 
             <ImageView
                 android:id="@+id/pop_show_center1"
@@ -46,10 +47,12 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/pop_show_center1"
-                android:text="分享好友" />
+                android:text="Show分享" />
         </RelativeLayout>
 
-        <View style="@style/line" />
+        <View
+            android:id="@+id/show_share_line"
+            style="@style/line1" />
 
         <RelativeLayout
             android:id="@+id/show_share_to_weixin"
@@ -77,13 +80,13 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/pop_show_center2"
-                android:text="分享朋友圈" />
+                android:text="商品分享" />
         </RelativeLayout>
 
-        <View style="@style/line" />
+        <View style="@style/line1" />
 
         <RelativeLayout
-            android:id="@+id/show_share_to_show"
+            android:id="@+id/show_share_to_pic_vedio"
             android:layout_width="match_parent"
 
             android:layout_height="wrap_content"
@@ -97,19 +100,21 @@
                 android:layout_centerInParent="true" />
 
             <ImageView
+                android:id="@+id/iv_pic_vedio_share_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/pop_show_center3"
-                android:src="@drawable/ic_show_press" />
+                android:src="@drawable/ic_shipin_nor" />
 
             <TextView
+                android:id="@+id/tv_pic_vedio_share_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/pop_show_center3"
-                android:text="show分享" />
+                android:text="图片分享" />
         </RelativeLayout>
 
     </LinearLayout>
