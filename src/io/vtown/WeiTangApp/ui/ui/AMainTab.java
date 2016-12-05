@@ -121,7 +121,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         Fragments = new ArrayList<FBase>();
         FMainHome = new FMainNewHome();//new FMainHome();
         FMainShop = new FMainSort(); //FMainShop();
-        FMainShow = new FMainShow();//FMainShow();FMainNewShow
+        FMainShow = new FMainNewShow();//FMainShow();FMainNewShow
         FMainShopBus = new FMainShopBus();
        // FMainCenter = new FMainCenter();
         FMainNew = new FMainNew();

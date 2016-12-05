@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebarheingh"
+        android:background="@color/app_fen">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="SHOW"
+            android:textColor="@color/white"
+            android:textSize="18dp"/>
+
+        <ImageView
+            android:id="@+id/fragment_main_show_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ui_10_dip"
+            android:clickable="true"
+
+            android:src="@drawable/ic_jiahao_add"/>
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/fragment_main_show_neterrorview"
+        layout="@layout/net_status_bar_info_top"
+        android:clickable="true"
+        android:visibility="gone"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 刷新的数据-->
+
+        <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+            android:id="@+id/swipeToLoadLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/app_bg">
+
+            <include
+                android:id="@id/swipe_refresh_header"
+                layout="@layout/view_comment_head"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/swipe_target"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <include
+                android:id="@id/swipe_load_more_footer"
+                layout="@layout/view_comment_foot"/>
+        </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+
+
+        <!-- 刷新的数据-->
+        <TextView
+            android:id="@+id/maintab_new_show_uptxt"
+            android:layout_width="@dimen/show_up_top_height"
+            android:layout_height="@dimen/show_up_top_height"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/select_show_up"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="TOP"
+            android:textColor="@color/white"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <include
+        android:id="@+id/maintab_new_show_nodata_lay"
+        layout="@layout/commentview_nodata"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"/>
+
+
+</LinearLayout>

@@ -5,6 +5,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuan;
 import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuanQuBean;
 import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BZhuanquGood;
@@ -67,11 +68,13 @@ public class AZhuanQu extends ATitleBase {
     private CompleteListView zhuanqu_ls;
     private ImageView zhuanqu_banner_iv;
     private BZhuan bdComment;
+    private BUser MuBUser;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_zhaunqu);
         BaseView = LayoutInflater.from(this).inflate(R.layout.activity_zhaunqu, null);
+        MuBUser = Spuit.User_Get(this);
         IBunds();
         IBasV();
         SetTitleHttpDataLisenter(this);
@@ -83,6 +86,7 @@ public class AZhuanQu extends ATitleBase {
                 getResources().getString(R.string.loading));
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("activity_id", ActivitId);
+        map.put("invite_code", MuBUser.getInvite_code());
         FBGetHttpData(map, Constants.HuoDongZhuanQu, Method.GET, 0,
                 LOAD_INITIALIZE);
 
@@ -210,14 +214,14 @@ public class AZhuanQu extends ATitleBase {
                             });
                     return;
                 }
-                if (  !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
                     ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
                             getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
                             new IDialogResult() {
                                 @Override
                                 public void RightResult() {
                                     IData(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getActivityid());
-                                            //刷新数据就可以！！！！！！！！！！！！！！！！！！！！！
+                                    //刷新数据就可以！！！！！！！！！！！！！！！！！！！！！
 
                                 }
 

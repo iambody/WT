@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONException;
 import com.android.volley.Request;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -583,7 +584,7 @@ public class FMainShow extends FBase implements RefreshLayout.OnLoadListener, Vi
                 } else {//视频  直接取出视频封面分享
                     bnew.setShare_log(datBlComment.getPre_url());
                 }
-                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew,false,false);
+                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew);
                 showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
                     @Override
                     public void GetResultType(int ResultType) {

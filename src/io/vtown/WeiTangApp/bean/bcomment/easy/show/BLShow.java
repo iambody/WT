@@ -11,7 +11,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
  */
 public class BLShow extends BBase {
     private String create_time;// =1469604641
-    private BLDComment goodinfo = new BLDComment();
+    private BLBComment goodinfo;
     private String goods_id;// =1019
     private String goods_sid;// =1019
     private String goodurl;// =http://dev.vt.m.v-town.cn/goods/index/index?goods_id=1019&type=goods
@@ -23,9 +23,9 @@ public class BLShow extends BBase {
     private String mygoodurl;// =
     private String pre_url;// =http://fs.v-town.cc/cover_afeCKKLTn1Fckdy0gWNgQqyZQnj7A.jpg
     private String qrcode;// =
-    private String ratio;// =0
+    //    private String ratio;// =0
     private String seller_id;// =619
-    private BLDComment sellerinfo = new BLDComment();
+    private BLBComment sellerinfo = new BLBComment();
     private String sendnumber;// =0
     private String vid;// =http://fs.v-town.cc/video_6XVZv4GDDS86lJEK.mp4
 
@@ -37,11 +37,11 @@ public class BLShow extends BBase {
         this.create_time = create_time;
     }
 
-    public BLDComment getGoodinfo() {
+    public BLBComment getGoodinfo() {
         return goodinfo;
     }
 
-    public void setGoodinfo(BLDComment goodinfo) {
+    public void setGoodinfo(BLBComment goodinfo) {
         this.goodinfo = goodinfo;
     }
 
@@ -125,13 +125,13 @@ public class BLShow extends BBase {
         this.qrcode = qrcode;
     }
 
-    public String getRatio() {
-        return ratio;
-    }
-
-    public void setRatio(String ratio) {
-        this.ratio = ratio;
-    }
+//    public String getRatio() {
+//        return ratio;
+//    }
+//
+//    public void setRatio(String ratio) {
+//        this.ratio = ratio;
+//    }
 
     public String getSeller_id() {
         return seller_id;
@@ -141,11 +141,11 @@ public class BLShow extends BBase {
         this.seller_id = seller_id;
     }
 
-    public BLDComment getSellerinfo() {
+    public BLBComment getSellerinfo() {
         return sellerinfo;
     }
 
-    public void setSellerinfo(BLDComment sellerinfo) {
+    public void setSellerinfo(BLBComment sellerinfo) {
         this.sellerinfo = sellerinfo;
     }
 
@@ -164,5 +164,4 @@ public class BLShow extends BBase {
     public void setVid(String vid) {
         this.vid = vid;
     }
-
 }
