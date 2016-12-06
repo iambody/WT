@@ -13,6 +13,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
@@ -60,7 +61,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     FrameLayout flAddNewShowGood;
     @BindView(R.id.tv_add_new_show_good_share)
     TextView tvAddNewShowGoodShare;
-
+    private Unbinder mBinder;
     private static final int TYPE_PIC = 123;
     private static final int TYPE_VEDIO = 124;
     private int current_type = TYPE_PIC;
@@ -68,6 +69,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_add_new_show);
+        mBinder = ButterKnife.bind(this);
         IView();
     }
 
@@ -167,10 +169,15 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if(isChecked){
-
+            flAddNewShowGood.setVisibility(View.VISIBLE);
         }else{
-
+            flAddNewShowGood.setVisibility(View.GONE);
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mBinder.unbind();
+    }
 }

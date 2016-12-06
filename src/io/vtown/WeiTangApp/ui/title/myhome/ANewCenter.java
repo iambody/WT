@@ -34,6 +34,7 @@ import io.vtown.WeiTangApp.ui.title.center.set.AAboutWt;
 import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
 import io.vtown.WeiTangApp.ui.title.center.set.APersonalData;
 import io.vtown.WeiTangApp.ui.title.shop.center.AShopData;
+import io.vtown.WeiTangApp.ui.ui.AAddNewShow;
 
 /**
  * Created by Yihuihua on 2016/10/31.
@@ -158,8 +159,11 @@ public class ANewCenter extends ATitleBase {
                 break;
 
             case R.id.view_about_me://关于我们
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        AAboutWt.class));
+
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AAboutWt.class));
+                        AAddNewShow.class));
 //                BNew bnew = new BNew();
 //                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew);
 //                showShare.SetShareListener(new PShowShare.ShowShareInterListener() {

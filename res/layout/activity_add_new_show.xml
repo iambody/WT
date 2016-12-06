@@ -114,8 +114,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/center_set_personal_data_clear_cache_height"
                 android:layout_marginTop="10dp"
-                android:layout_paddingLeft="@dimen/center_set_personal_data_clear_cache_left_right_margin"
-                android:layout_paddingRight="@dimen/center_set_personal_data_clear_cache_left_right_margin"
+                android:paddingLeft="@dimen/center_set_personal_data_clear_cache_left_right_margin"
+                android:paddingRight="@dimen/center_set_personal_data_clear_cache_left_right_margin"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -134,7 +134,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
-                />
 
                 <io.vtown.WeiTangApp.comment.view.custom.switchButtonView.EaseSwitchButton
                     android:id="@+id/sb_add_new_show_select_good"
