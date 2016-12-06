@@ -54,6 +54,7 @@ import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
+import io.vtown.WeiTangApp.ui.ui.AAddNewShow;
 
 /**
  * Created by datutu on 2016/12/5.
@@ -196,7 +197,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_main_show_add://添加show
-
+PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.class));
 
                 break;
         }
