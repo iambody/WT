@@ -741,6 +741,11 @@
             android:name=".ui.ui.AAddNewShow"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.ui.AAddShowGoodLs"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->
 
 

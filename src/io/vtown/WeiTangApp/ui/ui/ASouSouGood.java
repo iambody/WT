@@ -148,6 +148,10 @@ public class ASouSouGood extends ATitileNoBase {
     /**
      * 搜索下边提示跳转到搜索店铺
      */
+
+    public static final String From_Add_Show = "from_add_show";
+
+    private boolean isFromShow;
 //    private TextView goodsousou_toshop_sousou_txt;
 //    private RelativeLayout goodsousou_toshop_sousou_txt_lay;
 
@@ -157,6 +161,8 @@ public class ASouSouGood extends ATitileNoBase {
     protected void InItBaseView() {
         setContentView(R.layout.activity_sousou);
         mDaoSouRecord = DaoSouRecord.getInstance(BaseContext);
+        EventBus.getDefault().register(this,"getEventMsg",BMessage.class);
+        IBundler();
         IView();
         ICacherRecommend();
 
@@ -164,6 +170,10 @@ public class ASouSouGood extends ATitileNoBase {
 //        if (getIntent().getBooleanExtra("isfromsort", false)) {
 //            EventBus.getDefault().post(new BMessage(BMessage.SortToSouSou));
 //        }
+    }
+
+    private void IBundler() {
+        isFromShow =  getIntent().getBooleanExtra(From_Add_Show,false);
     }
 
     /**
@@ -338,7 +348,7 @@ public class ASouSouGood extends ATitileNoBase {
 //                                ACommentList.Tage_ResultKey,
 //                                ACommentList.Tage_SouGoodResultItem).putExtra(
 //                                ACommentList.Tage_BeanKey, data));
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASearchResult.class).putExtra("search_key", DATA.getTitle()));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, isFromShow?AAddShowGoodLs.class:ASearchResult.class).putExtra("search_key", DATA.getTitle()));
 
 
                 AddCacheData(DATA);
@@ -749,7 +759,7 @@ public class ASouSouGood extends ATitileNoBase {
 //                                                    .putExtra(
 //                                                            ACommentList.Tage_BeanKey,
 //                                                            data));
-                            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASearchResult.class).putExtra("search_key", DATA.getTitle()));
+                            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, isFromShow?AAddShowGoodLs.class:ASearchResult.class).putExtra("search_key", DATA.getTitle()));
 
 
                         }
@@ -800,7 +810,7 @@ public class ASouSouGood extends ATitileNoBase {
 //                                ACommentList.Tage_BeanKey, data));
 
 
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASearchResult.class).putExtra("search_key", sousou_sou_ed.getText().toString()));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, isFromShow?AAddShowGoodLs.class:ASearchResult.class).putExtra("search_key", sousou_sou_ed.getText().toString()));
 
                 break;
             case R.id.sousou_history_ls_clearn:// 清理全部历史记录
@@ -858,4 +868,24 @@ public class ASouSouGood extends ATitileNoBase {
 
     }
 
+    public void getEventMsg(BMessage event){
+
+        int messageType = event.getMessageType();
+        switch (messageType){
+            case BMessage.From_Search_Lv_Finish:
+                ASouSouGood.this.finish();
+                break;
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try{
+            EventBus.getDefault().unregister(this);
+        }catch (Exception e){
+
+        }
+    }
 }

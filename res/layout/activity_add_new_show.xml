@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_bg"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <include layout="@layout/titlebar" />
@@ -10,7 +11,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:focusable="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,7 +22,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/center_wallet_tixian_margin"
+                android:layout_marginTop="@dimen/center_wallet_tixian_margin"
+                android:layout_marginRight="@dimen/center_wallet_tixian_margin"
+                android:layout_marginLeft="@dimen/center_wallet_tixian_margin"
                 android:orientation="horizontal">
 
                 <TextView
@@ -97,7 +101,6 @@
                 android:id="@+id/et_add_new_show_txt_content"
                 android:layout_width="fill_parent"
                 android:layout_height="100dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/shap_rect_no_circular_bg"
                 android:gravity="left|top"
 
@@ -114,17 +117,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/center_set_personal_data_clear_cache_height"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="@dimen/center_set_personal_data_clear_cache_left_right_margin"
-                android:paddingRight="@dimen/center_set_personal_data_clear_cache_left_right_margin"
                 android:background="@color/white"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/center_set_personal_data_clear_cache_left_right_margin"
+                android:paddingRight="@dimen/center_set_personal_data_clear_cache_left_right_margin">
 
                 <TextView
                     android:id="@+id/tv_delete_cache_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+
                     android:text="添加分享商品"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/comment_label_txtsize" />
@@ -139,8 +142,6 @@
                     android:id="@+id/sb_add_new_show_select_good"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/center_set_personal_data_clear_cache_buttom_margin"
-                    android:layout_marginRight="10dp"
                     android:contentDescription="@null" />
             </LinearLayout>
 
@@ -176,8 +177,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/item_bg"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/iv_add_new_show_good_icon"
@@ -189,10 +190,10 @@
                         android:src="@drawable/error_iv2" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
 
@@ -271,7 +272,15 @@
 
                         </LinearLayout>
 
+
                     </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/arrow_right" />
                 </LinearLayout>
 
             </FrameLayout>
@@ -288,7 +297,7 @@
         android:background="@drawable/select_fen_to_gray"
         android:gravity="center"
         android:padding="10dp"
-        android:text="@string/shareshow"
+        android:text="@string/createshow"
         android:textColor="@color/TextColorWhite" />
 
 

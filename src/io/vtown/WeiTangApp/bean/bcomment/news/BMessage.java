@@ -2,6 +2,7 @@ package io.vtown.WeiTangApp.bean.bcomment.news;
 
 import io.vtown.WeiTangApp.bean.bcomment.easy.addgood.BCategory;
 import io.vtown.WeiTangApp.bean.bcomment.easy.mainsort.BSortRang;
+import io.vtown.WeiTangApp.bean.bcomment.three_one.search.BLSearchShopAndGood;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -198,6 +199,10 @@ public class BMessage {
     //购物车有结算  开始刷新购物车
     public static final int Shop_Frash = 1703;
 
+    public static final int From_Search_Lv_Finish = 55621;
+
+
+
 
     public String GoodMangeAlterNUmbe;
     public int GoodMangeAlterPostion;
@@ -220,6 +225,7 @@ public class BMessage {
     public static final int Tage_Select_Pic_Good_Desc = 7790;
     public static final int Tage_Select_Pic_ID_Face = 7791;
     public static final int Tage_Select_Pic_ID_Back = 7792;
+    public static final int Tage_Select_Pic_Add_Show = 7793;
     //新创建的首页的四个fragment之间的信息传递
     //在首页fragment获取数据后 刷新购物车数量的提示
     public static final int Tage_MainTab_ShopBus = 853;
@@ -260,6 +266,8 @@ public class BMessage {
     private boolean IsSort_Price_ZiDingYi;
     private boolean IsSort_Score_ZiDingYi;
 
+    private BLSearchShopAndGood mSearchGood;
+
     private String MsgId;
 
     //如果是透明的筛选页面点击透明的搜索 需要先跳转到搜索在进行通知销毁数据
@@ -289,6 +297,14 @@ public class BMessage {
 
     public void setGoodMangeAlterNUmbe(String goodMangeAlterNUmbe) {
         GoodMangeAlterNUmbe = goodMangeAlterNUmbe;
+    }
+
+    public BLSearchShopAndGood getmSearchGood() {
+        return mSearchGood;
+    }
+
+    public void setmSearchGood(BLSearchShopAndGood mSearchGood) {
+        this.mSearchGood = mSearchGood;
     }
 
     public static int getTageShopData() {
