@@ -1,4 +1,6 @@
-package io.vtown.WeiTangApp.comment.util;
+package io.vtown.WeiTangApp.comment.download;
+
+import android.util.Log;
 
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -13,15 +15,22 @@ import java.io.File;
  */
 
 public class DownFileUtils {
+    private DownLoadListener downLoadListener;
+
+    public void SetResult(DownLoadListener ResultLister) {
+        this.downLoadListener = ResultLister;
+    }
+
     //这里Demo展示的是下载一个apk文件路径，下载后安装//其他文件可以删除文件的安装
-    public void xUtilsHttpUtilDonLoadFile(String downLoadUrl, String savePath) {
+    public void xUtilsHttpUtilDonLoadFile(String downLoadUrl, String savePath, File filepath, final String name) {
         //保存位置
         //关于下边的File.separator原文The system-dependent string used to separate components in filenames ('/').
         //其实就是代表了一个斜杠
-        final File filepath = new File(savePath + File.separator + "MyDownLoadText" + File.separator + downLoadUrl);//仅创建路径的File对象
-        if (!filepath.exists()) {
-            filepath.mkdir();//如果路径不存在就先创建路径
-        }
+//        final File filepath = new File(savePath);
+//        final File filepath = new File(savePath + File.separator + "MyDownLoadText" + File.separator + downLoadUrl);//仅创建路径的File对象
+//        if (!filepath.exists()) {
+//            filepath.mkdir();//如果路径不存在就先创建路径
+//        }
         // 准备进度条Progress弹窗
 //        final ProgressDialog dialog = new ProgressDialog(this);
 //        dialog.setCancelable(true);// 设置是否可以通过点击Back键取消
@@ -38,36 +47,49 @@ public class DownFileUtils {
             第四个参数：如果从请求返回信息中获取到文件名，下载完成后自动重命名。
             第五个参数：下载的监听
          */
-        HttpHandler handler = http.download(downLoadUrl, filepath.getPath(), true, true, new RequestCallBack<File>() {
+        HttpHandler handler = http.download(downLoadUrl, savePath, true, true, new RequestCallBack<File>() {
             @Override
             public void onStart() {
+                Log.i("filetest", " 开始下载。。。。。。。。。。。。");
 //                dialog.show();//展示关闭弹窗
-//                Log.i("开", "onStart: 开始下载");
+//
             }
+
             @Override
             public void onLoading(long total, long current, boolean isUploading) {
 //                Log.i("下载中", "onLoading:总共： " + total + "已下" + current);
 //                dialog.setMax((int) total);
 //                dialog.setProgress((int) current);
             }
+
             @Override
             public void onSuccess(ResponseInfo<File> responseInfo) {
-//                dialog.dismiss();//关闭弹窗
-//                //安装下载的文件（如果不是apk这里可以不用安装，下载完成后自己看着办吧）
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.setDataAndType(Uri.fromFile(new File(filepath.getPath().toString())), "application/vnd.android.package-archive");
-//                startActivity(intent);
-//                //卸载
-//                  /*    Uri packageURI = Uri.parse("package:com.demo.CanavaCancel");//package:com.demo.CanavaCancel应用的包名
-//                        Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageURI);
-//                         startActivity(uninstallIntent);*/
-//                Log.i("完成", "onStart: 下载完成");
+                Log.i("filetest", " 下载成功。。。。。。。。。。。。" + responseInfo.result.getPath());
+                responseInfo.result.renameTo(new File(responseInfo.result.getPath().replace(responseInfo.result.getName(), name + ".jpg")));
+                Log.i("filetest", " 下载成功修改。。。。。。。。。。。。" + responseInfo.result.getName());
+                downLoadListener.DownLoadOk();
             }
+
             @Override
             public void onFailure(HttpException error, String msg) {
-//                dialog.dismiss();//关闭弹窗
-//                Log.i("取消", "onStart: 下载失败" + error.toString());
+                downLoadListener.DownLoadError();
+                Log.i("filetest", " 下载失败。。。。。。。。。。。。" + error.toString());
             }
         });
     }
+
+    public static String getPathFromFilepath(final String filepath) {
+        int pos = filepath.lastIndexOf('/');
+        if (pos != -1) {
+            return filepath.substring(0, pos);
+        }
+        return "";
+    }
+
+    public interface DownLoadListener {
+        void DownLoadOk();
+
+        void DownLoadError();
+    }
+
 }

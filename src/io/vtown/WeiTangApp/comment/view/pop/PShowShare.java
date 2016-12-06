@@ -22,6 +22,8 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.tencent.qzone.QZone;
 import cn.sharesdk.wechat.friends.Wechat;
 import cn.sharesdk.wechat.moments.WechatMoments;
 import io.vtown.WeiTangApp.R;
@@ -42,6 +44,8 @@ import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
 
+import static io.vtown.WeiTangApp.comment.view.pop.PShowShare.SHARE_GOODS_ERROR;
+
 /**
  * Created by Yihuihua on 2016/9/7.
  */
@@ -54,6 +58,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 
     private BNew mShareBeanNew;
     protected String BaseKey_Bean = "abasebeankey";
+    // 图片(九宫格)和视频分享 ，，商品分享，，Show分享
     private RelativeLayout show_share_to_pic_vedio, show_share_to_weixin, show_share_to_show;
     private TextView show_share_cancel;
     public boolean IsErWeiMaShare = false;
@@ -67,6 +72,9 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     public static final int SHARE_PIC_VEDIO = 116;//分享图片/视屏
 
 
+    //三方分享时候
+    public static final int SHARE_GOODS_OK = 119;//分享商品成功
+    public static final int SHARE_GOODS_ERROR = 120;//分享商品成功
     private ShowShareInterListener MShowShareInterListener;
     private AlertDialog dialog;
     private ImageView iv_pic_vedio_share_icon;
@@ -83,6 +91,11 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         public void GetResultType(int ResultType);//1代表 好友；；2代表朋友圈  ；；3代表show分享  4代表取消
     }
 
+    /**
+     * @param sharebeanNew 分享的实体
+     * @param isPic        分享是否是图片
+     * @param isUrl        分享是否是带商品
+     */
     public PShowShare(Context context, Activity mactivity, BNew sharebeanNew, boolean isPic, boolean isUrl) {
         this.mContext = context;
         this.activity = mactivity;
@@ -149,7 +162,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.show_share_to_pic_vedio://分享好友
+            case R.id.show_share_to_pic_vedio://最下边！！！！！ 图片(九宫格)和视频分享 ===》需要权限判断
                 //权限888888888888888888888
                 //如果未绑定或者已绑定未激活的用户分享权限的判断***************************
                 if (!Spuit.IsHaveBind_Get(activity) && !Spuit.IsHaveBind_JiQi_Get(activity)) {//未绑定邀请码
@@ -201,10 +214,17 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 
                     return;
                 }
+              String  aa=  mShareBeanNew.getShare_url();
+                if (!isPic && !isUrl) {
+                    controlType(SHARE_TO_FRIENDS);
+                    this.dismiss();
+                    return;
+                }
                 MShowShareInterListener.GetResultType(SHARE_PIC_VEDIO);
+
                 this.dismiss();
                 break;
-            case R.id.show_share_to_weixin://分享朋友圈
+            case R.id.show_share_to_weixin://中间！！！！！商品分享=====》需要权限
                 //权限888888888888888888888
                 //如果未绑定或者已绑定未激活的用户分享权限的判断***************************
                 if (!Spuit.IsHaveBind_Get(activity) && !Spuit.IsHaveBind_JiQi_Get(activity)) {//未绑定邀请码
@@ -263,7 +283,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 
                 this.dismiss();
                 break;
-            case R.id.show_share_to_show://show分享
+            case R.id.show_share_to_show://最上边！！！！！show分享====》不需要权限
                 MShowShareInterListener.GetResultType(SHARE_TO_SHOW);
                 this.dismiss();
                 break;
@@ -273,41 +293,50 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                 break;
 
             case R.id.ll_share_2_wxchat://分享微信
-                PromptManager.ShowCustomToast(mContext, "分享微信");
+//                PromptManager.ShowCustomToast(mContext, "分享微信");
                 controlType(SHARE_TO_WXCHAT);
                 break;
 
             case R.id.ll_share_2_wxfriends://分享朋友圈
-                PromptManager.ShowCustomToast(mContext, "分享朋友圈");
+//                PromptManager.ShowCustomToast(mContext, "分享朋友圈");
                 controlType(SHARE_TO_FRIENDS);
                 break;
 
             case R.id.ll_share_2_qq://分享QQ
-                PromptManager.ShowCustomToast(mContext, "分享QQ");
+//                PromptManager.ShowCustomToast(mContext, "分享QQ");
                 controlType(SHARE_TO_QQCHAT);
                 break;
 
             case R.id.ll_share_2_qzone://分享空间
-                PromptManager.ShowCustomToast(mContext, "分享空间");
+//                PromptManager.ShowCustomToast(mContext, "分享空间");
                 controlType(SHARE_TO_QZONE);
                 break;
             case R.id.ll_share_2_sinawb://分享微博
-                PromptManager.ShowCustomToast(mContext, "分享微博");
+//                PromptManager.ShowCustomToast(mContext, "分享微博");ss
                 controlType(SHARE_TO_SINAWB);
                 break;
         }
     }
 
     private void controlType(int resultType) {
-        MShowShareInterListener.GetResultType(resultType);
+
         if (resultType == SHARE_TO_WXCHAT || resultType == SHARE_TO_FRIENDS) {
             //判断是否安装微信
             if (!ViewUtils.isWeixinAvilible(activity)) {
                 PromptManager.ShowCustomToast(activity, "请先安装手机微信");
                 return;
             }
-            Share(resultType);
         }
+        if (resultType == SHARE_TO_QQCHAT || resultType == SHARE_TO_QZONE) {
+            //判断是否安装微信
+            if (!ViewUtils.isQQClientAvailable(activity)) {
+                PromptManager.ShowCustomToast(activity, "请先安装手机QQ");
+                return;
+            }
+        }
+        Share(resultType);
+        PromptManager.showLoading(mContext);
+        if(dialog!=null)
         dialog.dismiss();
     }
 
@@ -333,7 +362,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         Platform.ShareParams sp = new Platform.ShareParams();
 
         switch (Type) {
-            case 1:// 好友分享
+            case SHARE_TO_WXCHAT:// 好友分享
                 platform = ShareSDK.getPlatform(mContext, Wechat.NAME);
                 sp.setShareType(Platform.SHARE_WEBPAGE);// S
                 sp.setText(mShareBeanNew.getShare_content());
@@ -341,13 +370,30 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                 sp.setTitle(mShareBeanNew.getShare_title());//
                 sp.setUrl(mShareBeanNew.getShare_url());
                 break;
-            case 2:// 朋友圈分享
+            case SHARE_TO_FRIENDS:// 朋友圈分享
                 platform = ShareSDK.getPlatform(mContext, WechatMoments.NAME);
                 sp.setShareType(Platform.SHARE_WEBPAGE);
                 sp.setText(mShareBeanNew.getShare_content());
                 sp.setImageUrl(mShareBeanNew.getShare_log());
                 sp.setTitle(mShareBeanNew.getShare_title());//
                 sp.setUrl(mShareBeanNew.getShare_url());
+                break;
+            case SHARE_TO_QQCHAT://QQ好友
+                platform = ShareSDK.getPlatform(mContext, QQ.NAME);
+                sp.setTitle(mShareBeanNew.getShare_title());
+                sp.setTitleUrl(mShareBeanNew.getShare_url()); // 标题的超链接
+                sp.setText(mShareBeanNew.getShare_content());
+                sp.setImageUrl(mShareBeanNew.getShare_log());
+                break;
+            case SHARE_TO_QZONE://QQ空间
+                platform = ShareSDK.getPlatform(mContext, QZone.NAME);
+                sp.setTitle(mShareBeanNew.getShare_title());
+                sp.setTitleUrl(mShareBeanNew.getShare_url()); // 标题的超链接
+                sp.setText(mShareBeanNew.getShare_content());
+                sp.setImageUrl(mShareBeanNew.getShare_log());
+                break;
+            case SHARE_TO_SINAWB://微博
+
                 break;
             default:
                 break;
@@ -358,6 +404,8 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
             @Override
             public void onError(Platform arg0, int arg1, Throwable arg2) {
                 PromptManager.ShowCustomToast(mContext, "分享取消");
+                MShowShareInterListener.GetResultType(SHARE_GOODS_ERROR);
+                PromptManager.closeLoading();
                 PShowShare.this.dismiss();
             }
 
@@ -365,12 +413,16 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
             public void onComplete(Platform arg0, int arg1,
                                    HashMap<String, Object> arg2) {
                 PromptManager.ShowCustomToast(mContext, "分享完成");
+                MShowShareInterListener.GetResultType(SHARE_GOODS_OK);
+                PromptManager.closeLoading();
                 PShowShare.this.dismiss();
             }
 
             @Override
             public void onCancel(Platform arg0, int arg1) {
                 PromptManager.ShowCustomToast(mContext, "分享取消");
+                MShowShareInterListener.GetResultType(SHARE_GOODS_ERROR);
+                PromptManager.closeLoading();
                 PShowShare.this.dismiss();
             }
         });

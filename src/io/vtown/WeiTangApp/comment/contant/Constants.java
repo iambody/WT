@@ -32,7 +32,6 @@ import android.widget.TextView;
 
 /**
  * @author Yihuihua
- *
  */
 public class Constants {
     /**
@@ -100,6 +99,7 @@ public class Constants {
     public static String PicQrCach = Environment.getExternalStorageDirectory()
             + "/WtAndroid/cach/qr/";
 
+
     /**
      * 用户协议
      */
@@ -124,8 +124,9 @@ public class Constants {
      * 生产环境
      */
 // 	public static String Host = "https://api.v-town.cc";
-
     // 接口配置参数*******************************************************************
+    //分享视频时候需要用视频地址做一个播放网页
+    public static String VidoShareHtml = Host+"/pages/video.html?vid=";
     /**
      * 首页的URL
      */
@@ -173,7 +174,7 @@ public class Constants {
     public static int PageSize2 = 20;
     //	public static int PageSize3 = 2000;
     //筛选商品时候的最大价格和积分
-    public static String SortMax="900001";
+    public static String SortMax = "900001";
     //搜素是 浏览记录的最大缓存条数
     public static int SouSouHeistory = 12;
     /**
@@ -466,7 +467,6 @@ public class Constants {
             + "/v1/order/member/get-point";
 
 
-
     /**
      * 我的-->我的订单-->订单详情--退款申请
      */
@@ -726,7 +726,7 @@ public class Constants {
     /**
      * 立即购买
      */
-    public static String Direct_Buy= Host + "/v1/order/order/direct-buy";
+    public static String Direct_Buy = Host + "/v1/order/order/direct-buy";
 
     /**
      * 商品上架
@@ -986,15 +986,15 @@ public class Constants {
     /**
      * 品牌列表关键字
      */
-    public static String  BrandsLs=Host +"/v1/goods/search/keywords";
+    public static String BrandsLs = Host + "/v1/goods/search/keywords";
     /**
      * 筛选时候价格的区间段列表
      */
-    public static String  MainSort_Price_Rang=Host +"/v1/goods/search/price";
+    public static String MainSort_Price_Rang = Host + "/v1/goods/search/price";
     /**
      * 筛选时候积分的区间段列表
      */
-    public static String  MainSort_Score_Rang=Host +"/v1/goods/search/score";
+    public static String MainSort_Score_Rang = Host + "/v1/goods/search/score";
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************

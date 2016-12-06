@@ -1118,20 +1118,20 @@ public class StrUtils {
 
     // BLShow
 
-    public static BLShow BDtoBL_BLShow(BGoodDetail data) {
-        BLShow blComment = new BLShow();
-        blComment.setId(data.getId());
-        blComment.setSeller_id(data.getSeller_id());
-        blComment.setIs_type(data.getGoods_info().getRtype());
-        blComment.setImgarr(data.getGoods_info().getRoll());
-        blComment.setGoodurl(data.getGoods_url());
-        blComment.setPre_url(data.getCover());
-        blComment.setVid(data.getGoods_info().getVid());
-        blComment.getGoodinfo().setTitle(data.getTitle());
-        blComment.getSellerinfo().setSeller_name(data.getSeller_name());
-        blComment.setGoods_id(data.getId());
-        return blComment;
-    }
+//    public static BLShow BDtoBL_BLShow(BGoodDetail data) {
+//        BLShow blComment = new BLShow();
+//        blComment.setId(data.getId());
+//        blComment.setSeller_id(data.getSeller_id());
+//        blComment.setIs_type(data.getGoods_info().getRtype());
+//        blComment.setImgarr(data.getGoods_info().getRoll());
+//        blComment.setGoodurl(data.getGoods_url());
+//        blComment.setPre_url(data.getCover());
+//        blComment.setVid(data.getGoods_info().getVid());
+//        blComment.getGoodinfo().setTitle(data.getTitle());
+//        blComment.getSellerinfo().setSeller_name(data.getSeller_name());
+//        blComment.setGoods_id(data.getId());
+//        return blComment;
+//    }
 
     /**
      * 支付宝输入中文时校验

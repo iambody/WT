@@ -3,7 +3,6 @@ package io.vtown.WeiTangApp.bean.bcomment.easy.show;
 import java.util.List;
 
 import io.vtown.WeiTangApp.bean.BBase;
-import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
@@ -11,7 +10,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
  */
 public class BLShow extends BBase {
     private String create_time;// =1469604641
-    private BLBComment goodinfo;
+    private String goodinfo;
     private String goods_id;// =1019
     private String goods_sid;// =1019
     private String goodurl;// =http://dev.vt.m.v-town.cn/goods/index/index?goods_id=1019&type=goods
@@ -25,7 +24,7 @@ public class BLShow extends BBase {
     private String qrcode;// =
     //    private String ratio;// =0
     private String seller_id;// =619
-    private BLBComment sellerinfo = new BLBComment();
+    private BLBShow sellerinfo = new BLBShow();
     private String sendnumber;// =0
     private String vid;// =http://fs.v-town.cc/video_6XVZv4GDDS86lJEK.mp4
 
@@ -37,11 +36,11 @@ public class BLShow extends BBase {
         this.create_time = create_time;
     }
 
-    public BLBComment getGoodinfo() {
+    public String getGoodinfo() {
         return goodinfo;
     }
 
-    public void setGoodinfo(BLBComment goodinfo) {
+    public void setGoodinfo(String goodinfo) {
         this.goodinfo = goodinfo;
     }
 
@@ -141,11 +140,11 @@ public class BLShow extends BBase {
         this.seller_id = seller_id;
     }
 
-    public BLBComment getSellerinfo() {
+    public BLBShow getSellerinfo() {
         return sellerinfo;
     }
 
-    public void setSellerinfo(BLBComment sellerinfo) {
+    public void setSellerinfo(BLBShow sellerinfo) {
         this.sellerinfo = sellerinfo;
     }
 

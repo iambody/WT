@@ -1,12 +1,15 @@
 package io.vtown.WeiTangApp.fragment.main;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +18,13 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.android.volley.Request;
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,13 +37,17 @@ import io.vtown.WeiTangApp.adapter.MyIvdapter;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
+import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLBShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.download.DownFileUtils;
+import io.vtown.WeiTangApp.comment.download.DownFileUtils.DownLoadListener;
 import io.vtown.WeiTangApp.comment.util.DateUtils;
+import io.vtown.WeiTangApp.comment.util.SdCardUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
@@ -51,8 +60,8 @@ import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
+import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
-import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
 import io.vtown.WeiTangApp.ui.ui.AAddNewShow;
 
@@ -75,7 +84,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     private MyShowAdapter myShowAdapter;
     // recycleview***************************
 
-
+    private boolean IShow = true;
     private BUser MyUser;
     /**
      * 当前的最后item的lastid
@@ -90,10 +99,37 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_main_new_show, null);
         ButterKnife.bind(this, BaseView);
+        SetTitleHttpDataLisenter(this);
         MyUser = Spuit.User_Get(BaseContext);
         IBaseView();
-//        ICacheData();
-//        IData(LastId, REFRESHING);
+        ICacheData();
+        IData(LastId, INITIALIZE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (IShow) {
+            Log.i("homewave", "显示");
+            PromptManager.closeLoading();
+        }
+
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            Log.i("homewave", "隐藏");
+
+            IShow = false;
+
+        } else {
+            Log.i("homewave", "显示");
+            PromptManager.closeLoading();
+            IShow = true;
+        }
+
     }
 
     /**
@@ -104,11 +140,42 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
         swipeTarget.setLayoutManager(LinearShowLayoutManager);
         myShowAdapter = new MyShowAdapter(BaseContext);
         swipeTarget.setAdapter(myShowAdapter);
-//        IData(LastId, REFRESHING);
+
+        swipeToLoadLayout.setOnLoadMoreListener(this);
+        swipeToLoadLayout.setOnRefreshListener(this);
+//        IData(LastId, INITIALIZE);
+        swipeTarget.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (recyclerView.canScrollVertically(-1)) {//顶部
+                    maintabNewShowUptxt.setVisibility(View.VISIBLE);
+                } else {
+                    maintabNewShowUptxt.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     //基础的缓存数据
     private void ICacheData() {
+        // 缓存中有show的数据进行处理
+        String CachData = Spuit.Show_GetStr(BaseContext);
+        if (!StrUtils.isEmpty(CachData)) {
+            List<BLShow> data = new ArrayList<BLShow>();
+            // 开始解析*************************
+            data = JSON.parseArray(CachData, BLShow.class);// ();
+            myShowAdapter.FrashData(data);
+            IsCache = true;
+        } else {// 没有数据就直接显示空白
+            IsCache = false;
+
+        }
     }
 
     /**
@@ -121,7 +188,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                     PromptManager.showtextLoading(BaseContext, getResources()
                             .getString(R.string.loading));
                 } else {
-                    swipeToLoadLayout.setRefreshing(true);
+//                    swipeToLoadLayout.setSwipingToRefreshToDefaultScrollingDuration(1000);
                 }
                 break;
             case REFRESHING:
@@ -134,8 +201,8 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
         }
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("seller_id", MyUser.getSeller_id());
-        map.put("lastid", LastId);
-        // map.put("pagesize", "10");
+        map.put("lastid", lastId);
+        map.put("pagesize", "" + Constants.PageSize2);
         FBGetHttpData(map, Constants.Show_ls, Request.Method.GET, 0, initialize);
 
     }
@@ -151,26 +218,76 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             case 0://获取列表
                 switch (Data.getHttpLoadType()) {
                     case INITIALIZE:
+
                         if (IsCache) {//有缓存时候会进行下拉效果的动画操作 所以获取时候要停止
                             swipeToLoadLayout.setRefreshing(false);
                         }
+                        String NetStr = Data.getHttpResultStr();
+                        Spuit.Show_SaveStr(BaseContext, NetStr);
+                        if (StrUtils.isEmpty(NetStr)) {//如果是空的
+
+                            return;
+                        }
+                        //开始解析数据********************************************
+
+                        List<BLShow> ShowDatas = JSON.parseArray(NetStr, BLShow.class);
+                        myShowAdapter.FrashData(ShowDatas);
+                        if (ShowDatas.size() < Constants.PageSize2) {
+                            swipeToLoadLayout.setLoadMoreEnabled(false);
+                        }
+                        if (ShowDatas.size() == Constants.PageSize2) {
+                            swipeToLoadLayout.setLoadMoreEnabled(true);
+                        }
+                        //标记最后位置
+                        LastId = ShowDatas.get(ShowDatas.size() - 1).getId();
                         break;
                     case LOADHind://偷偷刷新的 没有任何动画效果 无需处理
                     case REFRESHING://正常刷新有效果
                         if (Data.getHttpLoadType() == REFRESHING)
                             swipeToLoadLayout.setRefreshing(false);
-
+                        String NetStr_Frash = Data.getHttpResultStr();
+                        Spuit.Show_SaveStr(BaseContext, NetStr_Frash);
+                        if (StrUtils.isEmpty(NetStr_Frash)) {//如果是空的
+                            //不需要做处理（）！！！！！！！
+                            return;
+                        }
+                        //开始解析数据********************************************
+                        List<BLShow> ShowFrashDatas = JSON.parseArray(NetStr_Frash, BLShow.class);
+                        myShowAdapter.FrashData(ShowFrashDatas);
+                        if (ShowFrashDatas.size() < Constants.PageSize2) {
+                            swipeToLoadLayout.setLoadMoreEnabled(false);
+                        }
+                        if (ShowFrashDatas.size() == Constants.PageSize2) {
+                            swipeToLoadLayout.setLoadMoreEnabled(true);
+                        }
+                        //标记最后位置
+                        LastId = ShowFrashDatas.get(ShowFrashDatas.size() - 1).getId();
                         break;
                     case LOADMOREING:
                         swipeToLoadLayout.setLoadingMore(false);
-
+                        //开始解析数据********************************************
+                        String NetStr_LoadMore = Data.getHttpResultStr();
+                        if (StrUtils.isEmpty(NetStr_LoadMore)) {//如果是空的
+                            //不需要做处理（）！！！！！！！
+                            return;
+                        }
+                        //开始解析数据********************************************
+                        List<BLShow> ShowLoadDatas = JSON.parseArray(NetStr_LoadMore, BLShow.class);
+                        myShowAdapter.FrashAllData(ShowLoadDatas);
+                        if (ShowLoadDatas.size() < Constants.PageSize2) {
+                            swipeToLoadLayout.setLoadMoreEnabled(false);
+                        }
+                        if (ShowLoadDatas.size() == Constants.PageSize2) {
+                            swipeToLoadLayout.setLoadMoreEnabled(true);
+                        }
+                        //标记最后位置
+                        LastId = ShowLoadDatas.get(ShowLoadDatas.size() - 1).getId();
                         break;
 
                 }
                 break;
             case 11://删除我的Show成功
                 break;
-
         }
     }
 
@@ -183,9 +300,10 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                 }
                 break;
             case REFRESHING:
-
+                swipeToLoadLayout.setRefreshing(false);
                 break;
             case LOADMOREING:
+                swipeToLoadLayout.setLoadingMore(false);
                 break;
             case LOADHind:
                 break;
@@ -197,20 +315,20 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_main_show_add://添加show
-PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.class));
-
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AAddNewShow.class));
                 break;
         }
     }
 
     @Override
     public void onLoadMore() {
-
+        IData(LastId, LOADMOREING);
     }
 
     @Override
     public void onRefresh() {
-
+        LastId = "";
+        IData(LastId, REFRESHING);
     }
 
 
@@ -228,7 +346,6 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
 
         private LayoutInflater inflater;
         private Context mContext;
-
 
         public MyShowAdapter(Context context) {
             super();
@@ -284,22 +401,25 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             BLShow bShow = datas.get(position);
+            boolean IsHaveGoodInf = !bShow.getGoods_id().equals("0");//是否包含商品
+            boolean IsMyShow = bShow.getSellerinfo().getId().equals(MyUser.getSeller_id());
+            BLBShow GoodsData = null;
+            if (IsHaveGoodInf) {
+                GoodsData = JSON.parseObject(bShow.getGoodinfo(), BLBShow.class);
+            }
             switch (getItemViewType(position)) {
                 case Show_Grid://多张图片******************************
                     final List<String> Urls = bShow.getImgarr();
                     MyShowItem grid_item = (MyShowItem) holder;
                     ImageLoaderUtil.Load2(bShow.getSellerinfo().getAvatar(), grid_item.my_show_item_icon_grid, R.drawable.error_iv2);
                     StrUtils.SetTxt(grid_item.my_show_item_name_grid, bShow.getSellerinfo().getSeller_name());
-//                    StrUtils.SetTxt(grid_item.my_show_item_time_grid, IsShowDetaiDate ? StrUtils.longtostr(bShow.getCreate_time()) : DateUtils.convertTimeToFormat(bShow.getCreate_time()));
+                    StrUtils.SetTxt(grid_item.my_show_item_time_grid, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
 
                     grid_item.comment_show_share_iv_grid.setOnClickListener(new ShareShowClick(datas.get(position)));
+                    grid_item.comment_show_gooddetail_iv_grid.setVisibility(IsHaveGoodInf ? View.VISIBLE : View.GONE);
                     grid_item.comment_show_gooddetail_iv_grid.setOnClickListener(new LookDetailClick(datas.get(position)));
-//                    if (mClickHeaderIv) {
-//                        grid_item.my_show_item_icon_grid.setClickable(true);
-//                        grid_item.my_show_item_icon_grid.setOnClickListener(new LookShowClick(datas.get(position)));
-//                    } else {
-//                        grid_item.my_show_item_icon_grid.setClickable(false);
-//                    }
+                    //点击头像********
+                    grid_item.my_show_item_icon_grid.setOnClickListener(new LookShowClick(datas.get(position)));
 
                     if (isMyShow(bShow.getSeller_id())) {
                         grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
@@ -343,16 +463,12 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
                     ImageLoaderUtil.Load2(bShow.getSellerinfo().getAvatar(), video_item.my_show_item_icon_video, R.drawable.error_iv2);
                     StrUtils.SetTxt(video_item.my_show_item_name_video, bShow.getSellerinfo().getSeller_name());
 
-//                    StrUtils.SetTxt(video_item.my_show_item_time_video, IsShowDetaiDate ? StrUtils.longtostr(bShow.getCreate_time()) : DateUtils.convertTimeToFormat(bShow.getCreate_time()));
+                    StrUtils.SetTxt(video_item.my_show_item_time_video, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
                     video_item.comment_show_share_iv_video.setOnClickListener(new ShareShowClick(datas.get(position)));
+                    video_item.comment_show_gooddetail_iv_video.setVisibility(IsHaveGoodInf ? View.VISIBLE : View.GONE);
                     video_item.comment_show_gooddetail_iv_video.setOnClickListener(new LookDetailClick(datas.get(position)));
-
-//                    if (mClickHeaderIv) {
-//                        video_item.my_show_item_icon_video.setClickable(true);
-//                        video_item.my_show_item_icon_video.setOnClickListener(new LookShowClick(datas.get(position)));
-//                    } else {
-//                        video_item.my_show_item_icon_video.setClickable(false);
-//                    }
+                    //点击头像********
+                    video_item.my_show_item_icon_video.setOnClickListener(new LookShowClick(datas.get(position)));
 
                     if (isMyShow(bShow.getSeller_id())) {
                         video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
@@ -392,16 +508,12 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
                     ImageLoaderUtil.Load2(bShow.getSellerinfo().getAvatar(), pic_item.my_show_item_icon_pic, R.drawable.error_iv2);
                     StrUtils.SetTxt(pic_item.my_show_item_name_pic, bShow.getSellerinfo().getSeller_name());
 
-//                    StrUtils.SetTxt(pic_item.my_show_item_time_pic, IsShowDetaiDate ? StrUtils.longtostr(bShow.getCreate_time()) : DateUtils.convertTimeToFormat(bShow.getCreate_time()));
+                    StrUtils.SetTxt(pic_item.my_show_item_time_pic, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
                     pic_item.comment_show_share_iv_pic.setOnClickListener(new ShareShowClick(datas.get(position)));
+                    pic_item.comment_show_gooddetail_iv_pic.setVisibility(IsHaveGoodInf ? View.VISIBLE : View.GONE);
                     pic_item.comment_show_gooddetail_iv_pic.setOnClickListener(new LookDetailClick(datas.get(position)));
-
-//                    if (mClickHeaderIv) {
-//                        pic_item.my_show_item_icon_pic.setClickable(true);
-//                        pic_item.my_show_item_icon_pic.setOnClickListener(new LookShowClick(datas.get(position)));
-//                    } else {
-//                        pic_item.my_show_item_icon_pic.setClickable(false);
-//                    }
+                    //点击头像********
+                    pic_item.my_show_item_icon_pic.setOnClickListener(new LookShowClick(datas.get(position)));
 
                     if (isMyShow(bShow.getSeller_id())) {
                         pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
@@ -461,6 +573,7 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
             this.datas = datas1;
             this.notifyDataSetChanged();
         }
+
         public void FrashAllData(List<BLShow> datas2) {
             this.datas.addAll(datas2);
             this.notifyDataSetChanged();
@@ -583,15 +696,24 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
          * 查看show
          */
         class LookShowClick implements View.OnClickListener {
-            BShow MyShareShow;
+            BLShow MyShareShow;
+            boolean IsBrand;
 
-            public LookShowClick(BShow myShareShow) {
+            public LookShowClick(BLShow myShareShow) {
                 MyShareShow = myShareShow;
+                IsBrand = myShareShow.getSellerinfo().getIs_brand().equals("1");
             }
 
+            //品牌商点击进入品牌店铺&&普通app用户点击进入其他的Show页面（老的错误逻辑）
             @Override
             public void onClick(View v) {
-                {
+                if (IsBrand) {   // 品牌店铺发布的show===>跳转到品牌商详情页面
+                    BComment mBComment = new BComment(MyShareShow.getSellerinfo().getId(), MyShareShow.getSellerinfo().getSeller_name());
+                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                            BaseActivity, ABrandDetail.class).putExtra(
+                            BaseKey_Bean, mBComment));
+
+                } else { //自营店铺(普通用户发布的show)==》跳转到其他show页面
                     Intent intent = new Intent(BaseActivity,
                             ARecyclerOtherShow.class);
                     intent.putExtra(
@@ -608,6 +730,7 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
                     PromptManager.SkipActivity(BaseActivity, intent);
                 }
             }
+
         }
 
         /**
@@ -635,67 +758,213 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
         class ShareShowClick implements View.OnClickListener {
 
             BLShow MyShareShow;
+            boolean IsHaveGoods_Share;
+            boolean IsVido;
 
             public ShareShowClick(BLShow myShareShow) {
                 MyShareShow = myShareShow;
+                IsHaveGoods_Share = !myShareShow.getGoods_id().equals("0");
+                IsVido = myShareShow.getIs_type().equals("1");
             }
 
             @Override
             public void onClick(View v) {
 
-                BNew bnew = new BNew();
-                bnew.setShare_title(mContext.getResources().getString(R.string.share_app) + "  " + MyShareShow.getGoodinfo().getTitle());
-                bnew.setShare_content(mContext.getResources().getString(R.string.share_app) + "  " + MyShareShow.getGoodinfo().getTitle());
+                PShowShare myshare = null;//new PShowShare(BaseContext, BaseActivity, new BNew(), true, true);
 
-                bnew.setShare_url(MyShareShow.getGoodurl());
-                if (MyShareShow.getIs_type().equals("0")) {//照片直接取出第一张进行分享
-                    bnew.setShare_log(MyShareShow.getImgarr().get(0));
-                } else {//视频  直接取出视频封面分享
-                    bnew.setShare_log(MyShareShow.getPre_url());
-                }
-                PShowShare showShare=null;
-//                PShowShare showShare = new PShowShare(mContext, BaseActivity, bnew);
-                showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
-                    @Override
-                    public void GetResultType(int ResultType) {
-                        switch (ResultType) {
-                            case 3:
-                                if (MyShareShow.getIs_type().equals("0")) {// 照片
-                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
-                                    BShowShare MyBShowShare = new BShowShare();
-                                    MyBShowShare.setImgarr(MyShareShow.getImgarr());
-                                    MyBShowShare.setGoods_id(MyShareShow.getGoods_id());
-                                    MyBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
-                                    PromptManager
-                                            .SkipActivity(
-                                                    BaseActivity,
-                                                    new Intent(BaseActivity, ShowSelectPic.class).putExtra(
-                                                            ShowSelectPic.Key_Data,
-                                                            MyBShowShare));
-
-                                } else {// 视频
-                                    BShowShare MyVidoBShowShare = new BShowShare();
-                                    MyVidoBShowShare.setVido_pre_url(MyShareShow.getPre_url());
-                                    MyVidoBShowShare.setVido_Vid(MyShareShow.getVid());
-                                    MyVidoBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
-                                    MyVidoBShowShare.setGoods_id(MyShareShow.getGoods_id());
-                                    PromptManager.SkipActivity(
-                                            BaseActivity,
-                                            new Intent(BaseActivity, AGoodVidoShare.class)
-                                                    .putExtra(AGoodVidoShare.Key_VidoFromShow,
-                                                            true).putExtra(
-                                                    AGoodVidoShare.Key_VidoData,
-                                                    MyVidoBShowShare));
-
-                                }
-                                break;
-                        }
+                if (IsHaveGoods_Share) { //带商品连接********************
+                    BNew bnew = new BNew();
+                    BLBShow GoodInf = JSON.parseObject(MyShareShow.getGoodinfo(), BLBShow.class);
+                    bnew.setShare_title(GoodInf.getTitle());
+                    bnew.setShare_content(GoodInf.getTitle());
+                    bnew.setShare_url(MyShareShow.getGoodurl());
+                    if (MyShareShow.getIs_type().equals("0")) {//照片直接取出第一张进行分享
+                        bnew.setShare_log(MyShareShow.getImgarr().get(0));
+                        myshare = new PShowShare(BaseContext, BaseActivity, bnew, true, true);
+                    } else {//视频  直接取出视频封面分享
+                        bnew.setShare_log(MyShareShow.getPre_url());
+                        myshare = new PShowShare(BaseContext, BaseActivity, bnew, false, true);
                     }
-                });
-                showShare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
+                    myshare.SetShareListener(new PShowShare.ShowShareInterListener() {
+                        @Override
+                        public void GetResultType(int ResultType) {
+                            switch (ResultType) {
+                                case PShowShare.SHARE_TO_SHOW://Show分享
+                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
+                                    //   Show分享********************************************************************
+                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
+                                    if (!IsVido) {// 照片
+//                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
+                                        BShowShare MyBShowShare = new BShowShare();
+                                        MyBShowShare.setImgarr(MyShareShow.getImgarr());
+                                        MyBShowShare.setGoods_id(MyShareShow.getGoods_id());
+                                        MyBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
+                                        PromptManager
+                                                .SkipActivity(
+                                                        BaseActivity,
+                                                        new Intent(BaseActivity, ShowSelectPic.class).putExtra(
+                                                                ShowSelectPic.Key_Data,
+                                                                MyBShowShare));
+
+                                    } else {// 视频
+                                        BShowShare MyVidoBShowShare = new BShowShare();
+                                        MyVidoBShowShare.setVido_pre_url(MyShareShow.getPre_url());
+                                        MyVidoBShowShare.setVido_Vid(MyShareShow.getVid());
+                                        MyVidoBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
+                                        MyVidoBShowShare.setGoods_id(MyShareShow.getGoods_id());
+                                        PromptManager.SkipActivity(
+                                                BaseActivity,
+                                                new Intent(BaseActivity, AGoodVidoShare.class)
+                                                        .putExtra(AGoodVidoShare.Key_VidoFromShow,
+                                                                true).putExtra(
+                                                        AGoodVidoShare.Key_VidoData,
+                                                        MyVidoBShowShare));
+
+                                    }
+                                    //   Show分享********************************************************************
+                                    break;
+                                case PShowShare.SHARE_GOODS_OK://三方分享成功
+                                    break;
+                                case PShowShare.SHARE_GOODS_ERROR://三方分享失败
+                                    break;
+                                case PShowShare.SHARE_PIC_VEDIO://九宫格或者视频分享
 
 
+                                    if (!IsVido)
+                                        Pic9ShowBegin(MyShareShow.getImgarr());
+
+                                    PromptManager.ShowCustomToast(BaseContext, "九宫格分享");
+                                    break;
+                            }
+                        }
+                    });
+
+//
+                    //带商品连接********************
+                } else {//不带商品连接*********************
+                    BNew bnew = new BNew();
+                    BLBShow SellInf = MyShareShow.getSellerinfo();
+                    bnew.setShare_title(SellInf.getSeller_name());
+                    bnew.setShare_content(StrUtils.isEmpty(MyShareShow.getIntro()) ? SellInf.getSeller_name() : MyShareShow.getIntro());
+                    bnew.setShare_log(SellInf.getAvatar());
+
+                    if (MyShareShow.getIs_type().equals("0")) {//照片直接取出第一张进行分享
+                        myshare = new PShowShare(BaseContext, BaseActivity, bnew, true, false);
+                    } else {//视频  直接取出视频封面分享
+                        bnew.setShare_url(Constants.VidoShareHtml + MyShareShow.getVid());
+                        myshare = new PShowShare(BaseContext, BaseActivity, bnew, false, false);
+                    }
+                    myshare.SetShareListener(new PShowShare.ShowShareInterListener() {
+                        @Override
+                        public void GetResultType(int ResultType) {
+                            switch (ResultType) {
+                                case PShowShare.SHARE_TO_SHOW://Show分享
+                                    //   Show分享********************************************************************
+                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
+                                    if (!IsVido) {// 照片
+//                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
+                                        BShowShare MyBShowShare = new BShowShare();
+                                        MyBShowShare.setImgarr(MyShareShow.getImgarr());
+                                        MyBShowShare.setGoods_id(MyShareShow.getGoods_id());
+                                        MyBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
+                                        PromptManager
+                                                .SkipActivity(
+                                                        BaseActivity,
+                                                        new Intent(BaseActivity, ShowSelectPic.class).putExtra(
+                                                                ShowSelectPic.Key_Data,
+                                                                MyBShowShare));
+
+                                    } else {// 视频
+                                        BShowShare MyVidoBShowShare = new BShowShare();
+                                        MyVidoBShowShare.setVido_pre_url(MyShareShow.getPre_url());
+                                        MyVidoBShowShare.setVido_Vid(MyShareShow.getVid());
+                                        MyVidoBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
+                                        MyVidoBShowShare.setGoods_id(MyShareShow.getGoods_id());
+                                        PromptManager.SkipActivity(
+                                                BaseActivity,
+                                                new Intent(BaseActivity, AGoodVidoShare.class)
+                                                        .putExtra(AGoodVidoShare.Key_VidoFromShow,
+                                                                true).putExtra(
+                                                        AGoodVidoShare.Key_VidoData,
+                                                        MyVidoBShowShare));
+
+                                    }
+                                    //   Show分享********************************************************************
+                                    break;
+                                case PShowShare.SHARE_GOODS_OK://三方分享成功
+                                    break;
+                                case PShowShare.SHARE_GOODS_ERROR://三方分享失败
+                                    break;
+                                case PShowShare.SHARE_PIC_VEDIO://九宫格或者视频分享
+                                    //开始九宫格分享！！！！！！！！！！！！
+                                    //开始九宫格分享！！！！！！！！！！！！
+                                    //开始九宫格分享！！！！！！！！！！！！
+                                    PromptManager.ShowCustomToast(BaseContext, "九宫格分享");
+                                    if (!IsVido)
+                                        Pic9ShowBegin(MyShareShow.getImgarr());
+                                    break;
+                            }
+                        }
+                    });
+
+                    //不带商品的连接结束******************
+                }
+
+                myshare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
             }
+//                BNew bnew = new BNew();
+//                bnew.setShare_title(mContext.getResources().getString(R.string.share_app) + "  " + MyShareShow.getGoodinfo().getTitle());
+//                bnew.setShare_content(mContext.getResources().getString(R.string.share_app) + "  " + MyShareShow.getGoodinfo().getTitle());
+//
+//                bnew.setShare_url(MyShareShow.getGoodurl());
+//                if (MyShareShow.getIs_type().equals("0")) {//照片直接取出第一张进行分享
+//                    bnew.setShare_log(MyShareShow.getImgarr().get(0));
+//                } else {//视频  直接取出视频封面分享
+//                    bnew.setShare_log(MyShareShow.getPre_url());
+//                }
+//                PShowShare showShare = null;
+//                PShowShare showShare = new PShowShare(mContext, BaseActivity, bnew);
+//                showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
+//                    @Override
+//                    public void GetResultType(int ResultType) {
+//                        switch (ResultType) {
+//                            case 3:
+//                                if (MyShareShow.getIs_type().equals("0")) {// 照片
+//                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
+//                                    BShowShare MyBShowShare = new BShowShare();
+//                                    MyBShowShare.setImgarr(MyShareShow.getImgarr());
+//                                    MyBShowShare.setGoods_id(MyShareShow.getGoods_id());
+//                                    MyBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
+//                                    PromptManager
+//                                            .SkipActivity(
+//                                                    BaseActivity,
+//                                                    new Intent(BaseActivity, ShowSelectPic.class).putExtra(
+//                                                            ShowSelectPic.Key_Data,
+//                                                            MyBShowShare));
+//
+//                                } else {// 视频
+//                                    BShowShare MyVidoBShowShare = new BShowShare();
+//                                    MyVidoBShowShare.setVido_pre_url(MyShareShow.getPre_url());
+//                                    MyVidoBShowShare.setVido_Vid(MyShareShow.getVid());
+//                                    MyVidoBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
+//                                    MyVidoBShowShare.setGoods_id(MyShareShow.getGoods_id());
+//                                    PromptManager.SkipActivity(
+//                                            BaseActivity,
+//                                            new Intent(BaseActivity, AGoodVidoShare.class)
+//                                                    .putExtra(AGoodVidoShare.Key_VidoFromShow,
+//                                                            true).putExtra(
+//                                                    AGoodVidoShare.Key_VidoData,
+//                                                    MyVidoBShowShare));
+//
+//                                }
+//                                break;
+//                        }
+//                    }
+//                });
+//                showShare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
+//
+//
+//            }
         }
 
         class DeleteShowClick implements View.OnClickListener {
@@ -707,7 +976,7 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
 
             @Override
             public void onClick(View v) {
-                ShowCustomDialog(DeleteBShow.getId(), DeleteBShow.getSeller_id());
+                ShowCustomDialog(DeleteBShow.getId(), DeleteBShow.getSellerinfo().getId());
             }
         }
 
@@ -741,7 +1010,6 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
 //                       DeletMyShow(ShowId, seller_id);
 
 
-
                 }
             });
         }
@@ -749,6 +1017,96 @@ PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, AAddNewShow.cla
 
     }
 
+    int CountNumber = 0;
+    public void RecursionDeleteFile(File file){
+        if(file.isFile()){
+            file.delete();
+            return;
+        }
+        if(file.isDirectory()){
+            File[] childFile = file.listFiles();
+            if(childFile == null || childFile.length == 0){
+                file.delete();
+                return;
+            }
+            for(File f : childFile){
+                RecursionDeleteFile(f);
+            }
+            file.delete();
+        }
+    }
+    private void Pic9ShowBegin(final List<String> imgarr) {
+
+        if(SdCardUtils.GetPicShowPath().exists()){
+            RecursionDeleteFile(SdCardUtils.GetPicShowPath());
+        }
+        for (int i = 0; i < imgarr.size(); i++) {
+            final int postion = i;
+            DownFileUtils dd = new DownFileUtils();
+            dd.SetResult(new DownLoadListener() {
+                @Override
+                public void DownLoadOk() {
+                    CountNumber = CountNumber + 1;
+                    if (CountNumber == imgarr.size()) {
+                        sharemuil(SdCardUtils.GetPicShowPath());
+                    }
+                    Log.i("downshow", "成功" + postion);
+                }
+
+                @Override
+                public void DownLoadError() {
+                    CountNumber = CountNumber + 1;
+                    if (CountNumber == imgarr.size()) {
+                        sharemuil(SdCardUtils.GetPicShowPath());
+                    }
+                    Log.i("downshow", "失败" + postion);
+
+                }
+            });
+            dd.xUtilsHttpUtilDonLoadFile(imgarr.get(i), SdCardUtils.GetPicShowPath().getPath(), SdCardUtils.GetPicShowPath(), imgarr.get(i));
+        }
+
+
+    }
+
+    private void sharemuil(File... files) {
+        Intent intent = new Intent();
+        ComponentName comp = new ComponentName("com.tencent.mm",
+                "com.tencent.mm.ui.tools.ShareToTimeLineUI");
+        intent.setComponent(comp);
+        intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+        intent.setType("image/*");
+
+        ArrayList<Uri> imageUris = new ArrayList<Uri>();
+
+        for (File f : files) {
+            File[] filels = f.listFiles();
+            for (int i = 0; i < filels.length; i++) {
+                File file = filels[i];
+                if (checkIsImageFile(file.getPath())) {
+                    imageUris.add(Uri.fromFile(file));
+                }
+            }
+
+        }
+        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+        intent.putExtra("Kdescription", "wwwwwwwwwwwwwwwwwwww");
+        startActivity(intent);
+    }
+
+    private boolean checkIsImageFile(String fName) {
+        boolean isImageFile = false;
+        // 获取扩展名
+        String FileEnd = fName.substring(fName.lastIndexOf(".") + 1,
+                fName.length()).toLowerCase();
+        if (FileEnd.equals("jpg") || FileEnd.equals("png") || FileEnd.equals("gif")
+                || FileEnd.equals("jpeg") || FileEnd.equals("bmp")) {
+            isImageFile = true;
+        } else {
+            isImageFile = false;
+        }
+        return isImageFile;
+    }
 
     /**
      * 删除我自己的show

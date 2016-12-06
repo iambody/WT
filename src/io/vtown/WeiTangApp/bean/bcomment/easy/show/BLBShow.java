@@ -6,7 +6,7 @@ import io.vtown.WeiTangApp.bean.BBase;
  * Created by datutu on 2016/12/5.
  */
 
-public class BLBComment extends BBase {
+public class BLBShow extends BBase {
 //sellerinfo 的******************************
    private String  id;//": 1014716,
     private String  is_brand;//": 1,

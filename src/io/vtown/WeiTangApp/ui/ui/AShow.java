@@ -668,57 +668,57 @@ public class AShow extends ATitleBase implements IXListViewListener {
 
             @Override
             public void onClick(View arg0) {
-                BNew bnew = new BNew();
-                bnew.setShare_title(getResources().getString(R.string.share_app) + "  " + datBlComment.getGoodinfo().getTitle());
-                bnew.setShare_content(getResources().getString(R.string.share_app) + "  " + datBlComment.getGoodinfo().getTitle());
-
-                bnew.setShare_url(datBlComment.getGoodurl());
-                if (datBlComment.getIs_type().equals("0")) {//照片直接取出第一张进行分享
-                    bnew.setShare_log(datBlComment.getImgarr().get(0));
-                } else {//视频  直接取出视频封面分享
-                    bnew.setShare_log(datBlComment.getPre_url());
-                }
-                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew,false,false);
-                showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
-                    @Override
-                    public void GetResultType(int ResultType) {
-                        switch (ResultType) {
-                            case 3:
-                                if (datBlComment.getIs_type().equals("0")) {// 照片
-                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
-                                    BShowShare MyBShowShare = new BShowShare();
-                                    MyBShowShare.setImgarr(datBlComment.getImgarr());
-                                    MyBShowShare.setGoods_id(datBlComment.getGoods_id());
-                                    MyBShowShare.setIntro(StrUtils.NullToStr3(datBlComment.getIntro()));
-                                    PromptManager
-                                            .SkipActivity(
-                                                    BaseActivity,
-                                                    new Intent(BaseActivity, ShowSelectPic.class).putExtra(
-                                                            ShowSelectPic.Key_Data,
-                                                            MyBShowShare));
-
-                                } else {// 视频
-                                    BShowShare MyVidoBShowShare = new BShowShare();
-                                    MyVidoBShowShare.setVido_pre_url(datBlComment.getPre_url());
-                                    MyVidoBShowShare.setVido_Vid(datBlComment.getVid());
-                                    MyVidoBShowShare.setIntro(StrUtils.NullToStr3(datBlComment.getIntro()));
-                                    MyVidoBShowShare.setGoods_id(datBlComment.getGoods_id());
-                                    PromptManager.SkipActivity(
-                                            BaseActivity,
-                                            new Intent(BaseActivity, AGoodVidoShare.class)
-                                                    .putExtra(AGoodVidoShare.Key_VidoFromShow,
-                                                            true).putExtra(
-                                                    AGoodVidoShare.Key_VidoData,
-                                                    MyVidoBShowShare));
-
-                                }
-                                break;
-
-
-                        }
-                    }
-                });
-                showShare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
+//                BNew bnew = new BNew();
+//                bnew.setShare_title(getResources().getString(R.string.share_app) + "  " + datBlComment.getGoodinfo().getTitle());
+//                bnew.setShare_content(getResources().getString(R.string.share_app) + "  " + datBlComment.getGoodinfo().getTitle());
+//
+//                bnew.setShare_url(datBlComment.getGoodurl());
+//                if (datBlComment.getIs_type().equals("0")) {//照片直接取出第一张进行分享
+//                    bnew.setShare_log(datBlComment.getImgarr().get(0));
+//                } else {//视频  直接取出视频封面分享
+//                    bnew.setShare_log(datBlComment.getPre_url());
+//                }
+//                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew,false,false);
+//                showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
+//                    @Override
+//                    public void GetResultType(int ResultType) {
+//                        switch (ResultType) {
+//                            case 3:
+//                                if (datBlComment.getIs_type().equals("0")) {// 照片
+//                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
+//                                    BShowShare MyBShowShare = new BShowShare();
+//                                    MyBShowShare.setImgarr(datBlComment.getImgarr());
+//                                    MyBShowShare.setGoods_id(datBlComment.getGoods_id());
+//                                    MyBShowShare.setIntro(StrUtils.NullToStr3(datBlComment.getIntro()));
+//                                    PromptManager
+//                                            .SkipActivity(
+//                                                    BaseActivity,
+//                                                    new Intent(BaseActivity, ShowSelectPic.class).putExtra(
+//                                                            ShowSelectPic.Key_Data,
+//                                                            MyBShowShare));
+//
+//                                } else {// 视频
+//                                    BShowShare MyVidoBShowShare = new BShowShare();
+//                                    MyVidoBShowShare.setVido_pre_url(datBlComment.getPre_url());
+//                                    MyVidoBShowShare.setVido_Vid(datBlComment.getVid());
+//                                    MyVidoBShowShare.setIntro(StrUtils.NullToStr3(datBlComment.getIntro()));
+//                                    MyVidoBShowShare.setGoods_id(datBlComment.getGoods_id());
+//                                    PromptManager.SkipActivity(
+//                                            BaseActivity,
+//                                            new Intent(BaseActivity, AGoodVidoShare.class)
+//                                                    .putExtra(AGoodVidoShare.Key_VidoFromShow,
+//                                                            true).putExtra(
+//                                                    AGoodVidoShare.Key_VidoData,
+//                                                    MyVidoBShowShare));
+//
+//                                }
+//                                break;
+//
+//
+//                        }
+//                    }
+//                });
+//                showShare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
 
 
             }

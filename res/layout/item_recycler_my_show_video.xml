@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical"
               android:paddingBottom="5dp"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
               android:paddingTop="5dp"
-    android:paddingRight="10dp"
-    android:paddingLeft="10dp"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-   >
+    >
+
     <include
         android:id="@+id/my_show_video_head"
-
         layout="@layout/comment_my_show_layout"/>
 
     <io.vtown.WeiTangApp.comment.view.CopyTextView
         android:id="@+id/my_show_content_video_title"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/new_show_item_headwidth"
-        android:textColor="@color/grey"
-        android:layout_height="wrap_content" />
-
-
-
-
+        android:textColor="@color/grey"/>
 
 
     <!-- 视频播放的相对布局 -->
@@ -32,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/new_show_item_headwidth"
-        android:visibility="visible" >
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/item_recycler_my_show_vido_image"
@@ -50,28 +47,24 @@
             android:layout_centerInParent="true"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/video_player" />
+            android:src="@drawable/video_player"/>
     </RelativeLayout>
 
 
+    <!--  <TextView
+          android:id="@+id/my_show_video_create_time"
+          android:layout_width="match_parent"
 
-  <!--  <TextView
-        android:id="@+id/my_show_video_create_time"
-        android:layout_width="match_parent"
-
-        android:paddingTop="5dp"
-        android:textSize="12dp"
-        android:textColor="@color/app_gray"
-        android:layout_height="wrap_content" />-->
+          android:paddingTop="5dp"
+          android:textSize="12dp"
+          android:textColor="@color/app_gray"
+          android:layout_height="wrap_content" />-->
 
     <include
         android:id="@+id/comment_show_operation_video"
         layout="@layout/comment_show_operation_layout"
 
         />
-
-
-
 
 
 </LinearLayout>
