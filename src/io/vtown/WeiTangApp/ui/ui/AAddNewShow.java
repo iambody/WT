@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,6 +35,7 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.PicImageItem;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.three_one.search.BLSearchShopAndGood;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
@@ -43,6 +45,7 @@ import io.vtown.WeiTangApp.comment.view.select_pic.PicSelActivity;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.ALoactePhotoPager;
+import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderVido;
 
 /**
@@ -58,6 +61,8 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     ImageView ivAddNewShowVedioBg;
     @BindView(R.id.iv_add_new_show_vedio_control_icon)
     ImageView ivAddNewShowVedioControlIcon;
+    @BindView(R.id.iv_add_new_show_goodinfo_arraw)
+    ImageView ivAddNewShowGoodInfoArraw;
     @BindView(R.id.rl_add_new_show_vedio_layout)
     RelativeLayout rlAddNewShowVedioLayout;
     @BindView(R.id.gv_add_new_show_pics)
@@ -80,30 +85,57 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     TextView tvAddNewShowGoodPrice;
     @BindView(R.id.tv_add_new_show_good_origprice)
     TextView tvAddNewShowGoodOrigprice;
+    @BindView(R.id.ll_add_new_show_pic_vedio_layout)
+    LinearLayout llAddNewShowPicVedioLayout;
     @BindView(R.id.ll_add_new_show_good)
     LinearLayout llAddNewShowGood;
     @BindView(R.id.fl_add_new_show_good)
     FrameLayout flAddNewShowGood;
+    @BindView(R.id.fl_add_new_show_pic_vedio_layout)
+    FrameLayout flAddNewShowPicVedioLayout;
     @BindView(R.id.tv_add_new_show_good_share)
     TextView tvAddNewShowGoodShare;
     private Unbinder mBinder;
-    private static final int TYPE_PIC = 123;
-    private static final int TYPE_VEDIO = 124;
+    private static final int TYPE_PIC = 0;
+    private static final int TYPE_VEDIO = 1;
     private int current_type = TYPE_PIC;
     List<PicImageItem> datas = new ArrayList<PicImageItem>();
     private int width = 0;
     private MyGridAdapter myGridAdapter;
+    private String mCordVidoPath;
+    private List<String> imgs;
+    public static final String KEY_CREATE_SHOW_TYPE = "key_create_show_type";//创建Show类型
+    public static final String KEY_CREATE_SHOW_GOODINFO = "key_create_show_goodinfo";//从商品详情过来的商品数据
+    public static final int CREATE_TYPE_GOODDETAIL_PIC = 888;//商品详情--图片
+    public static final int CREATE_TYPE_GOODDETAIL_VEDIO = 777;//商品详情--视频
+    public static final int CREATE_TYPE_SHOW = 999;//正常类型（在Show列表发Show）
+    private int Create_Type;
+    private BLSearchShopAndGood mGoodInfo;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_add_new_show);
         EventBus.getDefault().register(this, "getEventMsg", BMessage.class);
         mBinder = ButterKnife.bind(this);
+        IBundle();
         IView();
         IGrid();
     }
 
+    private void IBundle() {
+        Create_Type = getIntent().getIntExtra(KEY_CREATE_SHOW_TYPE,CREATE_TYPE_SHOW);
+        mGoodInfo = getIntent().getParcelableExtra(KEY_CREATE_SHOW_GOODINFO);
+    }
+
     private void IView() {
+        if(Create_Type != CREATE_TYPE_SHOW){
+            sbAddNewShowSelectGood.setVisibility(View.GONE);
+            ivAddNewShowGoodInfoArraw.setVisibility(View.GONE);
+            llAddNewShowGood.setEnabled(false);
+        }
+        if(mGoodInfo != null){
+            setGoodInfo();
+        }
         sbAddNewShowSelectGood.setChecked(true);
         sbAddNewShowSelectGood.setOnCheckedChangeListener(this);
     }
@@ -111,8 +143,41 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     @Override
     protected void InitTile() {
         SetTitleTxt("发布Show");
-
         SetRightText("添加");
+    }
+
+    private void submitShow(){
+        SetTitleHttpDataLisenter(this);
+        HashMap<String, String> map = new HashMap<>();
+        if(mGoodInfo != null && sbAddNewShowSelectGood.isChecked()){
+            map.put("goods_id",mGoodInfo.getGoods_info_id());
+            map.put("is_add_url","1");//是否只分享商品链接 0-否 1-允许
+        }else{
+            map.put("is_add_url","0");//是否只分享商品链接 0-否 1-允许
+        }
+
+        map.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());
+        if(current_type == TYPE_VEDIO && !StrUtils.isEmpty(mCordVidoPath)){
+            map.put("vid",mCordVidoPath);//视频地址
+        }
+
+        if(current_type == TYPE_PIC && imgs.size()>0){
+            for (int i =1;i<imgs.size();i++){
+                map.put("cid"+i,imgs.get(i-1));
+            }
+        }
+        String s = etAddNewShowTxtContent.getText().toString();
+        if(StrUtils.isEmpty(s)){
+            PromptManager.ShowCustomToast(BaseContext,"请输入您要分享的内容");
+            return;
+        }
+        map.put("intro",s);//文字简介
+        map.put("is_type",current_type+"");//图片还是视频0图片1视频
+
+        map.put("pre_url","");//缩略图地址
+        if(imgs.size() == 1){
+            map.put("ratio","");//图片比例，一张图片时，必传
+        }
 
     }
 
@@ -126,15 +191,6 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         gvAddNewShowPics.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
-
-//                if (getArrayData() != null && getArrayData().size() > 0) {
-//                    for (PicImageItem item : getArrayData()) {
-//                        getArrayData().remove(item);
-//                    }
-//                }
-
-//                setArrayData(showpics);
-
                 Intent mIntent = new Intent(BaseContext,
                         ALoactePhotoPager.class);
                 mIntent.putExtra("position", arg2);
@@ -156,16 +212,18 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     @Override
     protected void NetConnect() {
-
+        NetError.setVisibility(View.GONE);
     }
 
     @Override
     protected void NetDisConnect() {
+        NetError.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     protected void SetNetView() {
+        SetNetStatuse(NetError);
 
     }
 
@@ -209,24 +267,36 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 current_type = TYPE_PIC;
                 ControlClick(R.id.tv_add_new_show_pic);
                 rlAddNewShowVedioLayout.setVisibility(View.GONE);
-                gvAddNewShowPics.setVisibility(View.VISIBLE);
+                if(imgs != null && imgs.size()>0){
+                    gvAddNewShowPics.setVisibility(View.VISIBLE);
+                }
+
 
                 break;
             case R.id.tv_add_new_show_vedio:
                 current_type = TYPE_VEDIO;
                 ControlClick(R.id.tv_add_new_show_vedio);
-                gvAddNewShowPics.setVisibility(View.GONE);
-                rlAddNewShowVedioLayout.setVisibility(View.VISIBLE);
-
+               gvAddNewShowPics.setVisibility(View.GONE);
+                if(!StrUtils.isEmpty(mCordVidoPath)){
+                    SetRightText("重录");
+                    rlAddNewShowVedioLayout.setVisibility(View.VISIBLE);
+                }
                 break;
-            case R.id.iv_add_new_show_vedio_control_icon:
-
+            case R.id.iv_add_new_show_vedio_control_icon://播放视频
+                if (StrUtils.isEmpty(mCordVidoPath)) {
+                    PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.picurlerror));
+                    return;
+                }
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                        AVidemplay.class).putExtra(AVidemplay.VidoKey, mCordVidoPath)
+                        .putExtra("issd", true));
                 break;
-            case R.id.rl_add_new_show_add_good:
+            case R.id.rl_add_new_show_add_good://增加商品
             case R.id.ll_add_new_show_good:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, ASouSouGood.class).putExtra(ASouSouGood.From_Add_Show, true));
                 break;
-            case R.id.tv_add_new_show_good_share:
+            case R.id.tv_add_new_show_good_share://发布Show按钮
+                createShow();
                 break;
             case R.id.right_txt:
                 if (TYPE_PIC == current_type) {
@@ -236,6 +306,17 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                             ARecoderVido.class));
                 }
                 break;
+        }
+    }
+
+    /*
+    * 发布Show
+    * */
+    private void createShow() {
+        if(imgs.size() > 0 || !StrUtils.isEmpty(mCordVidoPath)){
+
+        }else{
+            PromptManager.ShowCustomToast(BaseContext,"请选择您要分享的图片或视频");
         }
     }
 
@@ -264,50 +345,64 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         int messageType = event.getMessageType();
         switch (messageType) {
             case BMessage.From_Search_Lv_Finish:
-                BLSearchShopAndGood goodInfo = event.getmSearchGood();
-                setGoodInfo(goodInfo);
+                mGoodInfo = event.getmSearchGood();
+                setGoodInfo();
                 break;
 
             case BMessage.Tage_Select_Pic_Add_Show://选择图片返回的数据
-                List<String> imgs = event.getTmpArrayList();
-                if (imgs != null && imgs.size() > 0) {
+                imgs = event.getTmpArrayList();
+                setGridViewPic();
+                break;
 
-                    for (String path : imgs) {
-                        PicImageItem item = new PicImageItem("", path);
-                        datas.add(item);
-                    }
-
-                    myGridAdapter.update();
+            case 290://视频
+                mCordVidoPath = event.getReCordVidoPath();
+                if (!StrUtils.isEmpty(mCordVidoPath)) {
+                    rlAddNewShowVedioLayout.setVisibility(View.VISIBLE);
+                    ivAddNewShowVedioBg.setImageBitmap(createVideoThumbnail(mCordVidoPath));
                 }
                 break;
         }
     }
 
-    private void setGoodInfo(BLSearchShopAndGood goodInfo) {
-        if (goodInfo != null) {
+    /*
+    * 设置GridView中的图片
+    * */
+    private void setGridViewPic(){
+        if (imgs != null && imgs.size() > 0) {
+            gvAddNewShowPics.setVisibility(View.VISIBLE);
+            for (String path : imgs) {
+                PicImageItem item = new PicImageItem("", path);
+                datas.add(item);
+            }
+            myGridAdapter.update();
+        }
+    }
+
+    private void setGoodInfo() {
+        if (mGoodInfo != null) {
             rlAddNewShowAddGood.setVisibility(View.GONE);
             llAddNewShowGood.setVisibility(View.VISIBLE);
-            ImageLoaderUtil.Load2(goodInfo.getAvatar(), ivAddNewShowGoodIcon, R.drawable.error_iv2);
-            StrUtils.SetTxt(ivAddNewShowGoodName, goodInfo.getTitle());
-            StrUtils.SetMoneyFormat(BaseContext, tvAddNewShowGoodPrice, goodInfo.getSell_price(), 15);
-            if ("0".equals(goodInfo.getOrig_price()) || StrUtils.isEmpty(goodInfo.getOrig_price())) {
+            ImageLoaderUtil.Load2(mGoodInfo.getAvatar(), ivAddNewShowGoodIcon, R.drawable.error_iv2);
+            StrUtils.SetTxt(ivAddNewShowGoodName, mGoodInfo.getTitle());
+            StrUtils.SetMoneyFormat(BaseContext, tvAddNewShowGoodPrice, mGoodInfo.getSell_price(), 15);
+            if ("0".equals(mGoodInfo.getOrig_price()) || StrUtils.isEmpty(mGoodInfo.getOrig_price())) {
                 tvAddNewShowGoodOrigprice.setVisibility(View.INVISIBLE);
             } else {
                 tvAddNewShowGoodOrigprice.setVisibility(View.VISIBLE);
-                StrUtils.SetTxt(tvAddNewShowGoodOrigprice, StrUtils.SetTextForMony(goodInfo.getOrig_price()));
+                StrUtils.SetTxt(tvAddNewShowGoodOrigprice, StrUtils.SetTextForMony(mGoodInfo.getOrig_price()));
                 tvAddNewShowGoodOrigprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             }
 
-            if (goodInfo.getScore() > 0) {
+            if (mGoodInfo.getScore() > 0) {
                 tvAddNewShowGoodScore.setVisibility(View.VISIBLE);
-                StrUtils.SetTxt(tvAddNewShowGoodScore, "积分：" + goodInfo.getScore());
+                StrUtils.SetTxt(tvAddNewShowGoodScore, "积分：" + mGoodInfo.getScore());
             } else {
                 tvAddNewShowGoodScore.setVisibility(View.GONE);
             }
 
-            if (goodInfo.getSales() > 0) {
+            if (mGoodInfo.getSales() > 0) {
                 tvAddNewShowGoodSales.setVisibility(View.VISIBLE);
-                StrUtils.SetTxt(tvAddNewShowGoodSales, "销量：" + goodInfo.getSales() + "件");
+                StrUtils.SetTxt(tvAddNewShowGoodSales, "销量：" + mGoodInfo.getSales() + "件");
             } else {
                 tvAddNewShowGoodSales.setVisibility(View.GONE);
             }

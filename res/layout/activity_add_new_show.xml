@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:focusable="true">
+        android:focusable="true"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,11 +21,12 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/ll_add_new_show_pic_vedio_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/center_wallet_tixian_margin"
-                android:layout_marginRight="@dimen/center_wallet_tixian_margin"
                 android:layout_marginLeft="@dimen/center_wallet_tixian_margin"
+                android:layout_marginRight="@dimen/center_wallet_tixian_margin"
+                android:layout_marginTop="@dimen/center_wallet_tixian_margin"
                 android:orientation="horizontal">
 
                 <TextView
@@ -56,8 +58,12 @@
             </LinearLayout>
 
             <FrameLayout
+
+                android:id="@+id/fl_add_new_show_pic_vedio_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="visible">
 
                 <RelativeLayout
                     android:id="@+id/rl_add_new_show_vedio_layout"
@@ -87,11 +93,13 @@
                     android:id="@+id/gv_add_new_show_pics"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:background="@drawable/shape_show_select_pic_bg"
                     android:horizontalSpacing="3dp"
                     android:numColumns="3"
                     android:scrollbars="none"
+                    android:visibility="gone"
                     android:verticalSpacing="3dp" />
 
             </FrameLayout>
@@ -101,9 +109,9 @@
                 android:id="@+id/et_add_new_show_txt_content"
                 android:layout_width="fill_parent"
                 android:layout_height="100dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/shap_rect_no_circular_bg"
                 android:gravity="left|top"
-
                 android:hint="@string/szhuan_saying"
                 android:paddingBottom="5dp"
                 android:paddingLeft="10dp"
@@ -276,6 +284,7 @@
                     </LinearLayout>
 
                     <ImageView
+                        android:id="@+id/iv_add_new_show_goodinfo_arraw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"

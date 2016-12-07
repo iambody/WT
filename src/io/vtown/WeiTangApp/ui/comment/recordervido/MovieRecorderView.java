@@ -161,7 +161,7 @@ public class MovieRecorderView extends LinearLayout implements OnErrorListener {
 		if (mCamera != null) {
 			mCamera.setPreviewCallback(null);
 			mCamera.stopPreview();
-			mCamera.lock();
+//			mCamera.lock();
 			mCamera.release();
 			mCamera = null;
 		}
