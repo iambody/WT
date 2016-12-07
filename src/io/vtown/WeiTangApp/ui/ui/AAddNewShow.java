@@ -38,6 +38,7 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.PicImageItem;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.three_one.search.BLSearchShopAndGood;
 import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUPLoadUtil;
@@ -110,7 +111,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     private int width = 0;
     private MyGridAdapter myGridAdapter;
     private String mCordVidoPath;
-    private List<String> imgs;
+    private List<String> imgs = new ArrayList<String>();
     private List<String> upload_sucess_pics = new ArrayList<String>();
     public static final String KEY_CREATE_SHOW_TYPE = "key_create_show_type";//创建Show类型
     public static final String KEY_CREATE_SHOW_GOODINFO = "key_create_show_goodinfo";//从商品详情过来的商品数据
@@ -161,7 +162,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         PromptManager.showLoading(BaseContext);
         HashMap<String, String> map = new HashMap<>();
         if (mGoodInfo != null && sbAddNewShowSelectGood.isChecked()) {
-            map.put("goods_id", mGoodInfo.getGoods_info_id());
+            map.put("goods_id", mGoodInfo.getId());//id就是good_id
             map.put("is_add_url", "1");//是否只分享商品链接 0-否 1-允许
         } else {
             map.put("is_add_url", "0");//是否只分享商品链接 0-否 1-允许
@@ -172,7 +173,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             map.put("vid", upload_qiniu_video_url);//视频地址
             map.put("pre_url", upload_qiniu_video_cover_url);//缩略图地址
         }
-
+        getUploadSuccessPics();
         if (current_type == TYPE_PIC && upload_sucess_pics.size() > 0) {
             map.put("pre_url", upload_sucess_pics.get(0));//缩略图地址
             for (int i = 0; i < upload_sucess_pics.size() - 1; i++) {
@@ -341,8 +342,13 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             PromptManager.ShowCustomToast(BaseContext, "请输入您要分享的内容");
             return;
         }
-        if (imgs.size() == 0 || StrUtils.isEmpty(mCordVidoPath)) {
-            PromptManager.ShowCustomToast(BaseContext, "请选择您要分享的图片或视频");
+        if(current_type == TYPE_PIC && imgs.size() == 0){
+            PromptManager.ShowCustomToast(BaseContext, "请添加您要分享的图片");
+            return;
+        }
+
+        if(current_type ==TYPE_VEDIO && StrUtils.isEmpty(mCordVidoPath)){
+            PromptManager.ShowCustomToast(BaseContext, "请添加您要分享的视频");
             return;
         }
 
@@ -585,8 +591,9 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
             return;
         }
-        DescPicNeedUpNumber = 0;
+        DescPicNeedUpNumber = datas.size();
         DescPicCountNumber = 0;
+
 
         for (int i = 0; i < datas.size(); i++) {
             final int Postion = i;
@@ -611,6 +618,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                     if (DescPicNeedUpNumber == DescPicCountNumber) {
                         // 上传描述完毕
                         submitShow(content);
+                        LogUtils.i("***********************上传完毕***************************");
                     }
                 }
 
@@ -621,12 +629,13 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                     if (DescPicCountNumber == DescPicNeedUpNumber) {
                         // 上传描述完毕
                         submitShow(content);
+                        LogUtils.i("====================上传完毕==================="+HostUrl);
                     }
                 }
             });
             dLoadUtils.UpLoad();
         }
-        getUploadSuccessPics();
+
 
     }
 
