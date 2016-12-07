@@ -124,7 +124,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     private void IBundle() {
         Create_Type = getIntent().getIntExtra(KEY_CREATE_SHOW_TYPE,CREATE_TYPE_SHOW);
-        mGoodInfo = getIntent().getParcelableExtra(KEY_CREATE_SHOW_GOODINFO);
+        mGoodInfo = (BLSearchShopAndGood) getIntent().getSerializableExtra(KEY_CREATE_SHOW_GOODINFO);
     }
 
     private void IView() {
@@ -532,4 +532,9 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             ButterKnife.bind(this, view);
         }
     }
+
+
+    /****************************************************上传七牛***************************************************************/
+
+
 }
