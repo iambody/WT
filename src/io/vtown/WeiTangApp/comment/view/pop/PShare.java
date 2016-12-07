@@ -13,8 +13,10 @@ import cn.sharesdk.wechat.friends.Wechat;
 
 import cn.sharesdk.wechat.moments.WechatMoments;
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcache.BHome;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
@@ -49,7 +51,7 @@ public class PShare extends PopupWindow implements OnClickListener {
     /**
      * view
      */
-    private RelativeLayout pop_share_haoyou, pop_share_pyq, pop_share_qq, pop_share_qqkj;
+    private RelativeLayout pop_share_haoyou, pop_share_pyq, pop_share_qq, pop_share_qqkj, pop_share_show;
     private TextView pop_share_cancle;
     /**
      * 回掉接口
@@ -66,11 +68,17 @@ public class PShare extends PopupWindow implements OnClickListener {
     private BNew ShareBeanNew;
 
     public boolean IsErWeiMaShare = false;
+    /**
+     * 商品PoP点击Show分享 通知商品详情页面进行跳转到发show页面
+     */
+    public static final int TYPE_GOODDETAIL_TO_SHOW = 1144;
+    //是否需要显示show转发
+    private boolean IsNoShowShare;
 
-    public PShare(Context pContext, BNew sharebeanNew) {
+    public PShare(Context pContext, BNew sharebeanNew, boolean IsHaveShowShare) {
         super();
         this.pContext = pContext;
-
+        this.IsNoShowShare = IsHaveShowShare;
         BaseView = LayoutInflater.from(pContext).inflate(R.layout.pop_share,
                 null);
         this.ShareBeanNew = sharebeanNew;
@@ -85,6 +93,7 @@ public class PShare extends PopupWindow implements OnClickListener {
     }
 
     private void IView() {
+        pop_share_show = ViewHolder.get(BaseView, R.id.pop_share_show);
         pop_share_haoyou = ViewHolder.get(BaseView, R.id.pop_share_haoyou);
         pop_share_pyq = ViewHolder.get(BaseView, R.id.pop_share_pyq);
         pop_share_cancle = ViewHolder.get(BaseView, R.id.pop_share_cancle);
@@ -96,6 +105,8 @@ public class PShare extends PopupWindow implements OnClickListener {
         pop_share_pyq.setOnClickListener(this);
         pop_share_qq.setOnClickListener(this);
         pop_share_qqkj.setOnClickListener(this);
+        pop_share_show.setOnClickListener(this);
+        pop_share_show.setVisibility(IsNoShowShare ? View.GONE : View.VISIBLE);
 
     }
 
@@ -136,7 +147,11 @@ public class PShare extends PopupWindow implements OnClickListener {
                 PShare.this.dismiss();
                 break;
 
+            case R.id.pop_share_show://发show
+                PShare.this.dismiss();
+                EventBus.getDefault().post(new BMessage(TYPE_GOODDETAIL_TO_SHOW));
 
+                break;
             default:
                 break;
         }

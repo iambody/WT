@@ -121,7 +121,7 @@ public class AQRCode extends ATitleBase {
 	 * 微信分享弹出框 BVivew 代表目前activity的view
 	 */
 	protected void ShowPsssss(View BVivew, BNew mBNew) {
-		PShare da = new PShare(BaseContext, mBNew);
+		PShare da = new PShare(BaseContext, mBNew,true);
 		da.setIsErWeiMaShare(true);
 		da.showAtLocation(BVivew, Gravity.BOTTOM, 0, 0);
 	}

@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,8 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
+import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLBShow;
+import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -32,6 +36,7 @@ import io.vtown.WeiTangApp.comment.view.CopyTextView;
 import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
+import io.vtown.WeiTangApp.comment.view.pop.PShare;
 import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
@@ -56,7 +61,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int FootView = 102;//增加底部加载更多
     // private int Show_Txt = 114;
 
-    private List<BShow> datas = new ArrayList<BShow>();
+    private List<BLShow> datas = new ArrayList<BLShow>();
 
     private LayoutInflater inflater;
 
@@ -76,7 +81,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     //是否可以加载更多
 //    private boolean IsCanLoadMore = false;
 
-    public ShowRecyclerAdapter(Context context, int screenWidth,View Mybaseview,Activity activity,boolean clickHeaderIv) {
+    public ShowRecyclerAdapter(Context context, int screenWidth, View Mybaseview, Activity activity, boolean clickHeaderIv) {
         super();
         this.mContext = context;
 //        this.mScreenWidth = screenWidth;
@@ -112,7 +117,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 holder = new MyShowSinglePicItem(inflater.inflate(R.layout.item_recycle_my_show_single_pic, parent, false));
                 break;
             case Show_Null:
-                holder = new NullItem(inflater.inflate(R.layout.item_show_null,parent,false));
+                holder = new NullItem(inflater.inflate(R.layout.item_show_null, parent, false));
                 break;
         }
         return holder;
@@ -130,9 +135,9 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemViewType(int position) {
-        if(datas.size() == 0){
+        if (datas.size() == 0) {
             return Show_Null;
-        }else if(datas.get(position).getIs_type().equals("1")) {//视频
+        } else if (datas.get(position).getIs_type().equals("1")) {//视频
             return Show_Video;
         } else if (datas.get(position).getImgarr().size() == 1) {//一张图片
             return Show_Pic;
@@ -147,23 +152,25 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
 
-        BShow bShow = datas.get(position);
+        BLShow bShow = datas.get(position);
+        boolean IsHaveGoodInf = !bShow.getGoods_id().equals("0");
         switch (getItemViewType(position)) {
             case Show_Grid:
                 final List<String> Urls = bShow.getImgarr();
                 MyShowItem grid_item = (MyShowItem) holder;
                 ImageLoaderUtil.Load2(bShow.getSellerinfo().getAvatar(), grid_item.my_show_item_icon_grid, R.drawable.error_iv2);
                 StrUtils.SetTxt(grid_item.my_show_item_name_grid, bShow.getSellerinfo().getSeller_name());
-                StrUtils.SetTxt(grid_item.my_show_item_time_grid, IsShowDetaiDate ? StrUtils.longtostr(bShow.getCreate_time()) : DateUtils.convertTimeToFormat(bShow.getCreate_time()));
-
+                StrUtils.SetTxt(grid_item.my_show_item_time_grid, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
+                grid_item.comment_show_share_iv_grid.setVisibility(IsHaveGoodInf?View.VISIBLE:View.GONE);
+                grid_item.comment_show_gooddetail_iv_grid.setVisibility(IsHaveGoodInf?View.VISIBLE:View.GONE);
                 grid_item.comment_show_share_iv_grid.setOnClickListener(new ShareShowClick(datas.get(position)));
                 grid_item.comment_show_gooddetail_iv_grid.setOnClickListener(new LookDetailClick(datas.get(position)));
-                if(mClickHeaderIv){
-                    grid_item.my_show_item_icon_grid.setClickable(true);
-                    grid_item.my_show_item_icon_grid.setOnClickListener(new LookShowClick(datas.get(position)));
-                }else{
-                    grid_item.my_show_item_icon_grid.setClickable(false);
-                }
+//                if(mClickHeaderIv){
+//                    grid_item.my_show_item_icon_grid.setClickable(true);
+//                    grid_item.my_show_item_icon_grid.setOnClickListener(new LookShowClick(datas.get(position)));
+//                }else{
+                grid_item.my_show_item_icon_grid.setClickable(false);
+//                }
 
                 if (isMyShow(bShow.getSeller_id())) {
                     grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
@@ -173,7 +180,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
                 //StrUtils.SetTxt(grid_item.my_show_content_title, datas.get(position).getIntro());
                 SetIntro(grid_item.my_show_content_title, datas.get(position).getIntro());
-                StrUtils.SetTxt(grid_item.comment_show_transmit_numb_grid, "有" + (StrUtils.isEmpty(bShow.getSendnumber())?"0": bShow.getSendnumber())+ "人转发");
+                StrUtils.SetTxt(grid_item.comment_show_transmit_numb_grid, "有" + (StrUtils.isEmpty(bShow.getSendnumber()) ? "0" : bShow.getSendnumber()) + "人转发");
                 // 赋数据
                 grid_item.item_recycler_my_show_gridview.setAdapter(new MyIvdapter(mContext, Urls));
                 grid_item.item_recycler_my_show_gridview
@@ -207,16 +214,18 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 ImageLoaderUtil.Load2(bShow.getSellerinfo().getAvatar(), video_item.my_show_item_icon_video, R.drawable.error_iv2);
                 StrUtils.SetTxt(video_item.my_show_item_name_video, bShow.getSellerinfo().getSeller_name());
 
-                StrUtils.SetTxt(video_item.my_show_item_time_video, IsShowDetaiDate ? StrUtils.longtostr(bShow.getCreate_time()) : DateUtils.convertTimeToFormat(bShow.getCreate_time()));
+                StrUtils.SetTxt(video_item.my_show_item_time_video, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
+                video_item.comment_show_share_iv_video.setVisibility(IsHaveGoodInf?View.VISIBLE:View.GONE);
+                video_item.comment_show_gooddetail_iv_video.setVisibility(IsHaveGoodInf?View.VISIBLE:View.GONE);
                 video_item.comment_show_share_iv_video.setOnClickListener(new ShareShowClick(datas.get(position)));
                 video_item.comment_show_gooddetail_iv_video.setOnClickListener(new LookDetailClick(datas.get(position)));
 
-                if(mClickHeaderIv){
-                    video_item.my_show_item_icon_video.setClickable(true);
-                    video_item.my_show_item_icon_video.setOnClickListener(new LookShowClick(datas.get(position)));
-                }else{
-                    video_item.my_show_item_icon_video.setClickable(false);
-                }
+//                if(mClickHeaderIv){
+//                    video_item.my_show_item_icon_video.setClickable(true);
+//                    video_item.my_show_item_icon_video.setOnClickListener(new LookShowClick(datas.get(position)));
+//                }else{
+                video_item.my_show_item_icon_video.setClickable(false);
+//                }
 
                 if (isMyShow(bShow.getSeller_id())) {
                     video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
@@ -225,20 +234,20 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     video_item.my_show_item_delete_video.setVisibility(View.GONE);
                 }
 
-               // StrUtils.SetTxt(video_item.my_show_content_video_title, datas.get(position).getIntro());
+                // StrUtils.SetTxt(video_item.my_show_content_video_title, datas.get(position).getIntro());
 
                 SetIntro(video_item.my_show_content_video_title, datas.get(position).getIntro());
 
                 video_item.my_show_content_video_title.setVisibility(StrUtils.isEmpty(datas.get(position).getIntro()) ? View.GONE : View.VISIBLE);
 
 
-                StrUtils.SetTxt(video_item.comment_show_transmit_numb_video, "有" + (StrUtils.isEmpty(bShow.getSendnumber())?"0": bShow.getSendnumber())+ "人转发");
+                StrUtils.SetTxt(video_item.comment_show_transmit_numb_video, "有" + (StrUtils.isEmpty(bShow.getSendnumber()) ? "0" : bShow.getSendnumber()) + "人转发");
                 try {
                     ImageLoaderUtil.Load2(bShow.getPre_url(),
                             video_item.item_recycler_my_show_vido_image, R.drawable.error_iv1);
                 } catch (Exception e) {
                 }
-               final String vid = bShow.getVid();
+                final String vid = bShow.getVid();
                 video_item.item_recycler_my_show_vido_control_image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -256,16 +265,18 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 ImageLoaderUtil.Load2(bShow.getSellerinfo().getAvatar(), pic_item.my_show_item_icon_pic, R.drawable.error_iv2);
                 StrUtils.SetTxt(pic_item.my_show_item_name_pic, bShow.getSellerinfo().getSeller_name());
 
-                StrUtils.SetTxt(pic_item.my_show_item_time_pic, IsShowDetaiDate ? StrUtils.longtostr(bShow.getCreate_time()) : DateUtils.convertTimeToFormat(bShow.getCreate_time()));
+                StrUtils.SetTxt(pic_item.my_show_item_time_pic, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
+                pic_item.comment_show_share_iv_pic.setVisibility(IsHaveGoodInf?View.VISIBLE:View.GONE);
+                pic_item.comment_show_gooddetail_iv_pic.setVisibility(IsHaveGoodInf?View.VISIBLE:View.GONE);
                 pic_item.comment_show_share_iv_pic.setOnClickListener(new ShareShowClick(datas.get(position)));
                 pic_item.comment_show_gooddetail_iv_pic.setOnClickListener(new LookDetailClick(datas.get(position)));
 
-                if(mClickHeaderIv){
-                    pic_item.my_show_item_icon_pic.setClickable(true);
-                    pic_item.my_show_item_icon_pic.setOnClickListener(new LookShowClick(datas.get(position)));
-                }else{
-                    pic_item.my_show_item_icon_pic.setClickable(false);
-                }
+//                if(mClickHeaderIv){
+//                    pic_item.my_show_item_icon_pic.setClickable(true);
+//                    pic_item.my_show_item_icon_pic.setOnClickListener(new LookShowClick(datas.get(position)));
+//                }else{
+                pic_item.my_show_item_icon_pic.setClickable(false);
+//                }
 
                 if (isMyShow(bShow.getSeller_id())) {
                     pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
@@ -275,7 +286,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
                 SetIntro(pic_item.my_show_content_single_pic_title, datas.get(position).getIntro());
 
-                StrUtils.SetTxt(pic_item.comment_show_transmit_numb_pic, "有" + (StrUtils.isEmpty(bShow.getSendnumber())?"0": bShow.getSendnumber())+ "人转发");
+                StrUtils.SetTxt(pic_item.comment_show_transmit_numb_pic, "有" + (StrUtils.isEmpty(bShow.getSendnumber()) ? "0" : bShow.getSendnumber()) + "人转发");
                 final List<String> urls = bShow.getImgarr();
                 try {
                     ImageLoaderUtil.Load2(urls.get(0),
@@ -306,27 +317,27 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     }
 
-    private void SetIntro(TextView view,String intro){
-        if(StrUtils.isEmpty(intro)){
+    private void SetIntro(TextView view, String intro) {
+        if (StrUtils.isEmpty(intro)) {
             view.setVisibility(View.GONE);
-        }else{
+        } else {
             view.setVisibility(View.VISIBLE);
-            StrUtils.SetTxt(view,intro);
+            StrUtils.SetTxt(view, intro);
         }
     }
 
     @Override
     public int getItemCount() {
-        return  datas.size();
+        return datas.size();
     }
 
 
-    public void FrashData(List<BShow> datas1) {
+    public void FrashData(List<BLShow> datas1) {
         this.datas = datas1;
         this.notifyDataSetChanged();
     }
 
-    public void FrashAllData(List<BShow> datas2) {
+    public void FrashAllData(List<BLShow> datas2) {
         this.datas.addAll(datas2);
         this.notifyDataSetChanged();
     }
@@ -430,14 +441,14 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    class NullItem extends RecyclerView.ViewHolder{
+    class NullItem extends RecyclerView.ViewHolder {
 
         private ImageView iv_no_data;
         private TextView tv_no_show_data;
 
-        public NullItem(View itemView){
+        public NullItem(View itemView) {
             super(itemView);
-           iv_no_data =  (ImageView) itemView.findViewById(R.id.iv_no_data);
+            iv_no_data = (ImageView) itemView.findViewById(R.id.iv_no_data);
             tv_no_show_data = (TextView) itemView.findViewById(R.id.tv_no_show_data);
         }
     }
@@ -446,9 +457,9 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
      * 查看show
      */
     class LookShowClick implements View.OnClickListener {
-        BShow MyShareShow;
+        BLShow MyShareShow;
 
-        public LookShowClick(BShow myShareShow) {
+        public LookShowClick(BLShow myShareShow) {
             MyShareShow = myShareShow;
         }
 
@@ -478,9 +489,9 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
      */
 
     class LookDetailClick implements View.OnClickListener {
-        BShow MyShareShow;
+        BLShow MyShareShow;
 
-        public LookDetailClick(BShow myShareShow) {
+        public LookDetailClick(BLShow myShareShow) {
             MyShareShow = myShareShow;
         }
 
@@ -498,9 +509,9 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
      */
     class ShareShowClick implements View.OnClickListener {
 
-        BShow MyShareShow;
+        BLShow MyShareShow;
 
-        public ShareShowClick(BShow myShareShow) {
+        public ShareShowClick(BLShow myShareShow) {
             MyShareShow = myShareShow;
         }
 
@@ -508,8 +519,8 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public void onClick(View v) {
 
             BNew bnew = new BNew();
-            bnew.setShare_title(mContext.getResources().getString(R.string.share_app) + "  " + MyShareShow.getGoodinfo().getTitle());
-            bnew.setShare_content(mContext.getResources().getString(R.string.share_app) + "  " + MyShareShow.getGoodinfo().getTitle());
+            bnew.setShare_title(mContext.getResources().getString(R.string.share_app) + "  " + JSON.parseObject(MyShareShow.getGoodinfo(), BLBShow.class).getTitle());
+            bnew.setShare_content(mContext.getResources().getString(R.string.share_app) + "  " + JSON.parseObject(MyShareShow.getGoodinfo(), BLBShow.class).getTitle());
 
             bnew.setShare_url(MyShareShow.getGoodurl());
             if (MyShareShow.getIs_type().equals("0")) {//照片直接取出第一张进行分享
@@ -517,59 +528,63 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             } else {//视频  直接取出视频封面分享
                 bnew.setShare_log(MyShareShow.getPre_url());
             }
-            PShowShare showShare = new PShowShare(mContext,SActivity, bnew,false,false);
-            showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
-                @Override
-                public void GetResultType(int ResultType) {
-                    switch (ResultType) {
-                        case 3:
-                            if (MyShareShow.getIs_type().equals("0")) {// 照片
-                                //如果是照片  只需要把照片数组和商品id 传到show分享即可
-                                BShowShare MyBShowShare = new BShowShare();
-                                MyBShowShare.setImgarr(MyShareShow.getImgarr());
-                                MyBShowShare.setGoods_id(MyShareShow.getGoods_id());
-                                MyBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
-                                PromptManager
-                                        .SkipActivity(
-                                                SActivity,
-                                                new Intent(SActivity, ShowSelectPic.class).putExtra(
-                                                        ShowSelectPic.Key_Data,
-                                                        MyBShowShare));
+            PShare da = new PShare(mContext, bnew,true);
+            da.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
 
-                            } else {// 视频
-                                BShowShare MyVidoBShowShare = new BShowShare();
-                                MyVidoBShowShare.setVido_pre_url(MyShareShow.getPre_url());
-                                MyVidoBShowShare.setVido_Vid(MyShareShow.getVid());
-                                MyVidoBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
-                                MyVidoBShowShare.setGoods_id(MyShareShow.getGoods_id());
-                                PromptManager.SkipActivity(
-                                        SActivity,
-                                        new Intent(SActivity, AGoodVidoShare.class)
-                                                .putExtra(AGoodVidoShare.Key_VidoFromShow,
-                                                        true).putExtra(
-                                                AGoodVidoShare.Key_VidoData,
-                                                MyVidoBShowShare));
-
-                            }
-                            break;
-                    }
-                }
-            });
-            showShare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
+//            PShowShare showShare = new PShowShare(mContext, SActivity, bnew, false, false);
+//            showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
+//                @Override
+//                public void GetResultType(int ResultType) {
+//                    switch (ResultType) {
+//                        case 3:
+//                            if (MyShareShow.getIs_type().equals("0")) {// 照片
+//                                //如果是照片  只需要把照片数组和商品id 传到show分享即可
+//                                BShowShare MyBShowShare = new BShowShare();
+//                                MyBShowShare.setImgarr(MyShareShow.getImgarr());
+//                                MyBShowShare.setGoods_id(MyShareShow.getGoods_id());
+//                                MyBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
+//                                PromptManager
+//                                        .SkipActivity(
+//                                                SActivity,
+//                                                new Intent(SActivity, ShowSelectPic.class).putExtra(
+//                                                        ShowSelectPic.Key_Data,
+//                                                        MyBShowShare));
+//
+//                            } else {// 视频
+//                                BShowShare MyVidoBShowShare = new BShowShare();
+//                                MyVidoBShowShare.setVido_pre_url(MyShareShow.getPre_url());
+//                                MyVidoBShowShare.setVido_Vid(MyShareShow.getVid());
+//                                MyVidoBShowShare.setIntro(StrUtils.NullToStr3(MyShareShow.getIntro()));
+//                                MyVidoBShowShare.setGoods_id(MyShareShow.getGoods_id());
+//                                PromptManager.SkipActivity(
+//                                        SActivity,
+//                                        new Intent(SActivity, AGoodVidoShare.class)
+//                                                .putExtra(AGoodVidoShare.Key_VidoFromShow,
+//                                                        true).putExtra(
+//                                                AGoodVidoShare.Key_VidoData,
+//                                                MyVidoBShowShare));
+//
+//                            }
+//                            break;
+//                    }
+//                }
+//            });
+//            showShare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
 
 
         }
     }
 
-    class DeleteShowClick implements View.OnClickListener{
-        BShow DeleteBShow;
-        public DeleteShowClick(BShow myShareShow){
+    class DeleteShowClick implements View.OnClickListener {
+        BLShow DeleteBShow;
+
+        public DeleteShowClick(BLShow myShareShow) {
             DeleteBShow = myShareShow;
         }
 
         @Override
         public void onClick(View v) {
-            ShowCustomDialog(DeleteBShow.getId(),DeleteBShow.getSeller_id());
+            ShowCustomDialog(DeleteBShow.getId(), DeleteBShow.getSeller_id());
         }
     }
 
@@ -581,7 +596,7 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
      * @param
      * @param
      */
-    private void ShowCustomDialog(final String ShowId,final String seller_id) {
+    private void ShowCustomDialog(final String ShowId, final String seller_id) {
         final CustomDialog dialog = new CustomDialog(mContext,
                 R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "取消", "删除");
         dialog.show();
@@ -600,11 +615,11 @@ public class ShowRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             @Override
             public void onConfirmCLick(View v) {
                 dialog.dismiss();
-                if(SActivity instanceof ARecyclerMyShow){
-                    ((ARecyclerMyShow)SActivity).DeletMyShow(ShowId,seller_id);
+                if (SActivity instanceof ARecyclerMyShow) {
+                    ((ARecyclerMyShow) SActivity).DeletMyShow(ShowId, seller_id);
 
-                }else if(SActivity instanceof ARecyclerOtherShow){
-                    ((ARecyclerOtherShow)SActivity).DeletMyShow(ShowId,seller_id);
+                } else if (SActivity instanceof ARecyclerOtherShow) {
+                    ((ARecyclerOtherShow) SActivity).DeletMyShow(ShowId, seller_id);
                 }
 
 

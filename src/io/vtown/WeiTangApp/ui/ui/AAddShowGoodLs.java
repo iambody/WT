@@ -27,10 +27,12 @@ import butterknife.Unbinder;
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.three_one.search.BLSearchShopAndGood;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.ui.ATitleBase;
@@ -42,25 +44,27 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
     @BindView(R.id.swipe_target)
     ListView swipeTarget;
     @BindView(R.id.swipeToLoadLayout)
-   SwipeToLoadLayout swipeToLoadLayout;
+    SwipeToLoadLayout swipeToLoadLayout;
     private Unbinder mBinder;
     private int mPage = 1;
     private String mTitle;
     private View search_result_lv_nodata_lay;
     private List<BLSearchShopAndGood> datas = new ArrayList<BLSearchShopAndGood>();
     private ShowSearchResultAdapter mSearchResultAdapter;
+    private BUser MyUser;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_add_show_ls);
         mBinder = ButterKnife.bind(this);
+        MyUser= Spuit.User_Get(BaseContext);
         IBundle();
         IBase();
         IData(LOAD_INITIALIZE);
     }
 
     private void IBundle() {
-        mTitle =  getIntent().getStringExtra("search_key");
+        mTitle = getIntent().getStringExtra("search_key");
     }
 
     private void IBase() {
@@ -74,12 +78,13 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
 
     private void IData(int loadtype) {
         SetTitleHttpDataLisenter(this);
-        if(loadtype == LOAD_INITIALIZE){
+        if (loadtype == LOAD_INITIALIZE) {
             PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
         }
         HashMap<String, String> map = new HashMap<>();
         map.put("keyword", mTitle);
         map.put("page", mPage + "");
+        map.put("member_id",MyUser.getMember_id());
         map.put("pagesize", Constants.PageSize + "");
         FBGetHttpData(map, Constants.Search_Goodinfo, Request.Method.GET, 0, loadtype);
     }
@@ -124,14 +129,14 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
                     swipeToLoadLayout.setLoadMoreEnabled(false);
                 }
 
-               mSearchResultAdapter.notifyDataSetChanged();
+                mSearchResultAdapter.notifyDataSetChanged();
 
                 break;
 
             case LOAD_REFRESHING:
                 swipeToLoadLayout.setRefreshing(false);
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    PromptManager.ShowCustomToast(BaseContext,"没有最新的了");
+                    PromptManager.ShowCustomToast(BaseContext, "没有最新的了");
                     return;
                 }
                 datas = JSON.parseArray(Data.getHttpResultStr(), BLSearchShopAndGood.class);
@@ -145,8 +150,8 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
 
             case LOAD_LOADMOREING:
                 swipeToLoadLayout.setLoadingMore(false);
-                if(StrUtils.isEmpty(Data.getHttpResultStr())){
-                    PromptManager.ShowCustomToast(BaseContext,"没有更多了");
+                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                    PromptManager.ShowCustomToast(BaseContext, "没有更多了");
                     return;
                 }
                 List<BLSearchShopAndGood> data_more = new ArrayList<BLSearchShopAndGood>();
@@ -167,8 +172,8 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
 
     @Override
     protected void DataError(String error, int LoadType) {
-        PromptManager.ShowCustomToast(BaseContext,error);
-        if(LoadType == LOAD_INITIALIZE){
+        PromptManager.ShowCustomToast(BaseContext, error);
+        if (LoadType == LOAD_INITIALIZE) {
             swipeToLoadLayout.setVisibility(View.GONE);
             search_result_lv_nodata_lay.setVisibility(View.VISIBLE);
             ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
@@ -308,6 +313,7 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
             ButterKnife.bind(this, view);
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

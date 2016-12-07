@@ -117,15 +117,52 @@
         //qq空间
 
 
+
+
+
+        <View style="@style/line1"/>
+
+        <RelativeLayout
+            android:id="@+id/pop_share_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_show_share_center"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/pop_share_center5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/pop_share_center5"
+                android:src="@drawable/ic_show_press"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/pop_share_center5"
+                android:text="发SHOW"/>
+        </RelativeLayout>
+
+
         <View style="@style/line1"/>
 
         <RelativeLayout
             android:id="@+id/pop_share_qqkj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/select_show_share_down"
             android:clickable="true"
             android:focusable="true"
-            android:background="@drawable/select_show_share_down"
             android:padding="5dp">
 
             <ImageView
@@ -149,18 +186,6 @@
                 android:layout_toRightOf="@+id/pop_share_center4"
                 android:text="分享QQ空间"/>
         </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
 
     </LinearLayout>
 

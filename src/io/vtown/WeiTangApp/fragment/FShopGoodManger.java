@@ -776,7 +776,7 @@ public class FShopGoodManger extends FBase implements RefreshLayout.OnLoadListen
          * 微信分享弹出框 BVivew 代表目前activity的view
          */
         protected void ShowP(View BVivew, BNew bNew) {
-            PShare da = new PShare(BaseContext, bNew);
+            PShare da = new PShare(BaseContext, bNew,true);
             da.showAtLocation(BVivew, Gravity.BOTTOM, 0, 0);
         }
 

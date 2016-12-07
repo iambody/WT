@@ -19,7 +19,6 @@
         android:padding="@dimen/line_size1">
 
         <RelativeLayout
-
             android:id="@+id/show_share_to_show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

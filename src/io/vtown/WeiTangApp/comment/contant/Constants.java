@@ -125,8 +125,12 @@ public class Constants {
      */
 // 	public static String Host = "https://api.v-town.cc";
     // 接口配置参数*******************************************************************
+    //视频拼接网页的 开发==》host
+    public static String H5Host_Dev = "http://dev.vt.h5.v-town.cn";
+    //视频拼接网页的 生产==》host
+//    public static String H5Host_Dev = "https://h5.v-town.cc";
     //分享视频时候需要用视频地址做一个播放网页
-    public static String VidoShareHtml = Host+"/pages/video.html?vid=";
+    public static String VidoShareHtml = H5Host_Dev + "/pages/video.html?vid=";
     /**
      * 首页的URL
      */

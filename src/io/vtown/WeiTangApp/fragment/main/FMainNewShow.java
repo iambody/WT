@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -52,6 +54,7 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.CopyTextView;
+import io.vtown.WeiTangApp.comment.view.DividerItemDecoration;
 import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
@@ -94,6 +97,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
      * 是否存在缓存
      */
     private boolean IsCache;
+
 
     @Override
     public void InItView() {
@@ -138,6 +142,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     private void IBaseView() {
         LinearShowLayoutManager = new LinearLayoutManager(BaseContext);
         swipeTarget.setLayoutManager(LinearShowLayoutManager);
+        swipeTarget.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.VERTICAL, Color.TRANSPARENT, 1));
         myShowAdapter = new MyShowAdapter(BaseContext);
         swipeTarget.setAdapter(myShowAdapter);
 
@@ -311,11 +316,14 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     }
 
 
-    @OnClick({R.id.fragment_main_show_add})
+    @OnClick({R.id.fragment_main_show_add,R.id.maintab_new_show_uptxt})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_main_show_add://添加show
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AAddNewShow.class));
+                break;
+            case R.id.maintab_new_show_uptxt:
+                swipeTarget.smoothScrollToPosition(0);
                 break;
         }
     }
@@ -769,7 +777,6 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
             @Override
             public void onClick(View v) {
-
                 PShowShare myshare = null;//new PShowShare(BaseContext, BaseActivity, new BNew(), true, true);
 
                 if (IsHaveGoods_Share) { //带商品连接********************
@@ -828,12 +835,15 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                                 case PShowShare.SHARE_GOODS_ERROR://三方分享失败
                                     break;
                                 case PShowShare.SHARE_PIC_VEDIO://九宫格或者视频分享
-
-
                                     if (!IsVido)
-                                        Pic9ShowBegin(MyShareShow.getImgarr());
+                                        try {
+                                            Pic9ShowBegin(MyShareShow.getImgarr(), StrUtils.isEmpty(MyShareShow.getIntro()) ? "微糖商城#" : MyShareShow.getIntro());
+                                        } catch (Exception e) {
+                                            PromptManager.closeLoading();
+                                            PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.jiugongge_error));
+                                        }
 
-                                    PromptManager.ShowCustomToast(BaseContext, "九宫格分享");
+//                                    PromptManager.ShowCustomToast(BaseContext, "九宫格分享");
                                     break;
                             }
                         }
@@ -899,9 +909,15 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                                     //开始九宫格分享！！！！！！！！！！！！
                                     //开始九宫格分享！！！！！！！！！！！！
                                     //开始九宫格分享！！！！！！！！！！！！
-                                    PromptManager.ShowCustomToast(BaseContext, "九宫格分享");
-                                    if (!IsVido)
-                                        Pic9ShowBegin(MyShareShow.getImgarr());
+//                                    PromptManager.ShowCustomToast(BaseContext, "九宫格分享");
+                                    if (!IsVido) {
+                                        try {
+                                            Pic9ShowBegin(MyShareShow.getImgarr(), StrUtils.isEmpty(MyShareShow.getIntro()) ? "微糖商城#" : MyShareShow.getIntro());
+                                        } catch (Exception e) {
+                                            PromptManager.closeLoading();
+                                            PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.jiugongge_error));
+                                        }
+                                    }
                                     break;
                             }
                         }
@@ -967,6 +983,9 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 //            }
         }
 
+        /**
+         * 删除show
+         */
         class DeleteShowClick implements View.OnClickListener {
             BLShow DeleteBShow;
 
@@ -1018,58 +1037,68 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     }
 
     int CountNumber = 0;
-    public void RecursionDeleteFile(File file){
-        if(file.isFile()){
+
+    public void RecursionDeleteFile(File file) {
+        if (file.isFile()) {
             file.delete();
             return;
         }
-        if(file.isDirectory()){
+        if (file.isDirectory()) {
             File[] childFile = file.listFiles();
-            if(childFile == null || childFile.length == 0){
+            if (childFile == null || childFile.length == 0) {
                 file.delete();
                 return;
             }
-            for(File f : childFile){
+            for (File f : childFile) {
                 RecursionDeleteFile(f);
             }
             file.delete();
         }
     }
-    private void Pic9ShowBegin(final List<String> imgarr) {
 
-        if(SdCardUtils.GetPicShowPath().exists()){
-            RecursionDeleteFile(SdCardUtils.GetPicShowPath());
+    private void Pic9ShowBegin(final List<String> imgarr, final String Content) {
+        CountNumber = 0;
+        PromptManager.showLoading(BaseContext);
+        File sdCards = Environment.getExternalStorageDirectory();
+        final File test = new File(sdCards + "/wtshowpic");
+        if (test.exists()) {
+            RecursionDeleteFile(test);
         }
+
         for (int i = 0; i < imgarr.size(); i++) {
+            final File downshow = new File(sdCards, "/wtshowpic/" + StrUtils.GetPic(imgarr.get(i), 8));
             final int postion = i;
             DownFileUtils dd = new DownFileUtils();
             dd.SetResult(new DownLoadListener() {
                 @Override
                 public void DownLoadOk() {
+                    Log.i("filetest", "成功" + postion);
                     CountNumber = CountNumber + 1;
                     if (CountNumber == imgarr.size()) {
-                        sharemuil(SdCardUtils.GetPicShowPath());
+                        sharemuil(Content, test);
                     }
-                    Log.i("downshow", "成功" + postion);
+
                 }
 
                 @Override
                 public void DownLoadError() {
+                    Log.i("filetest", "失败" + postion);
                     CountNumber = CountNumber + 1;
                     if (CountNumber == imgarr.size()) {
-                        sharemuil(SdCardUtils.GetPicShowPath());
+                        sharemuil(Content, test);
                     }
-                    Log.i("downshow", "失败" + postion);
+
 
                 }
             });
-            dd.xUtilsHttpUtilDonLoadFile(imgarr.get(i), SdCardUtils.GetPicShowPath().getPath(), SdCardUtils.GetPicShowPath(), imgarr.get(i));
+            dd.xUtilsHttpUtilDonLoadFile(imgarr.get(i), downshow.getPath(), downshow, StrUtils.GetPic(imgarr.get(i), 8));
         }
 
 
     }
 
-    private void sharemuil(File... files) {
+    private void sharemuil(String content, File... files) {
+        PromptManager.closeLoading();
         Intent intent = new Intent();
         ComponentName comp = new ComponentName("com.tencent.mm",
                 "com.tencent.mm.ui.tools.ShareToTimeLineUI");
@@ -1090,7 +1119,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
         }
         intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
-        intent.putExtra("Kdescription", "wwwwwwwwwwwwwwwwwwww");
+        intent.putExtra("Kdescription", content);
         startActivity(intent);
     }
 

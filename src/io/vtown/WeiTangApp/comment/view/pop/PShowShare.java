@@ -214,12 +214,13 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 
                     return;
                 }
-              String  aa=  mShareBeanNew.getShare_url();
-                if (!isPic && !isUrl) {
+                String aa = mShareBeanNew.getShare_url();
+                if (!isPic) {
                     controlType(SHARE_TO_FRIENDS);
                     this.dismiss();
                     return;
                 }
+
                 MShowShareInterListener.GetResultType(SHARE_PIC_VEDIO);
 
                 this.dismiss();
@@ -336,8 +337,8 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         }
         Share(resultType);
         PromptManager.showLoading(mContext);
-        if(dialog!=null)
-        dialog.dismiss();
+        if (dialog != null)
+            dialog.dismiss();
     }
 
     private void showShareDialog() {

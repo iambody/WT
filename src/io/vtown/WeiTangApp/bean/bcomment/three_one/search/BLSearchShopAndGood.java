@@ -29,6 +29,7 @@ public class BLSearchShopAndGood extends BBase {
     private String seller_name;//"seller_name":"旺铺301-2016",
     private String avatar;//"avatar":"http://fs.v-town.cc/DefaultSellerAvatar.jpg"
 
+    private String goodsurl;
     public int getScore() {
         return score;
     }
@@ -171,5 +172,34 @@ public class BLSearchShopAndGood extends BBase {
 
     public void setIntro(String intro) {
         this.intro = intro;
+    }
+
+    public String getGoodsurl() {
+        return goodsurl;
+    }
+
+    public void setGoodsurl(String goodsurl) {
+        this.goodsurl = goodsurl;
+    }
+
+    public BLSearchShopAndGood() {
+    }
+
+    public BLSearchShopAndGood(String seller_name, String avatar, int sales, int score, String sell_price, String orig_price) {
+        this.seller_name = seller_name;
+        this.avatar = avatar;
+        this.sales = sales;
+        this.score = score;
+        this.sell_price = sell_price;
+        this.orig_price = orig_price;
+    }
+    public BLSearchShopAndGood(String  id,String seller_name, String avatar, int sales, int score, String sell_price, String orig_price) {
+        this.id=id;
+        this.seller_name = seller_name;
+        this.avatar = avatar;
+        this.sales = sales;
+        this.score = score;
+        this.sell_price = sell_price;
+        this.orig_price = orig_price;
     }
 }

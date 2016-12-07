@@ -34,7 +34,15 @@ public class SdCardUtils {
         File aaaa = new File(sdCards, "/wtshowspic/" + "photo3.jpg");
         return aaaa;
     }
-
+    public static File GetPicShowOutPath() {
+        File sdCards = Environment.getExternalStorageDirectory();
+        File test = new File(sdCards + "/wtshowspic");
+        if (test.exists()) {
+            RecursionDeleteFile(test);
+        }
+        File aaaa = new File(sdCards, "/wtshowspic/" + "photo3.jpg");
+        return aaaa;
+    }
     public static void RecursionDeleteFile(File file) {
         if (file.isFile()) {
             file.delete();

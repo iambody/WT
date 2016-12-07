@@ -38,6 +38,7 @@ import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
+import io.vtown.WeiTangApp.bean.bcomment.three_one.search.BLSearchShopAndGood;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -54,6 +55,7 @@ import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase;
 import io.vtown.WeiTangApp.comment.view.pop.PPurchase.OnPopupStutaChangerListener;
 import io.vtown.WeiTangApp.comment.view.pop.PReturnRule;
+import io.vtown.WeiTangApp.comment.view.pop.PShare;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AGoodShow;
@@ -63,6 +65,7 @@ import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
+import io.vtown.WeiTangApp.ui.ui.AAddNewShow;
 import io.vtown.WeiTangApp.ui.ui.AMainTab;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
@@ -494,12 +497,12 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 break;
 
             case 15:// 关注商品
-                right_iv.setImageResource(isAttention ?R.drawable.ic_shoucang_press
+                right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press
                         : R.drawable.ic_shoucang_nor);
 //                PromptManager.ShowMyToast(BaseContext, isAttention ? "关注商品成功"
 //                        : "取消关注商品成功");
                 good_detail_title_up_shoucang.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
-                        :R.drawable.ic_shoucang_nor_good_detail);
+                        : R.drawable.ic_shoucang_nor_good_detail);
                 break;
 
             case 2:// 订单生成实时查询
@@ -670,7 +673,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
 
             isAttention = ("1".equals(is_collect)) ? true : false;
             right_iv.setImageResource(isAttention ? R.drawable.ic_shoucang_press
-                     : R.drawable.ic_shoucang_nor);
+                    : R.drawable.ic_shoucang_nor);
             good_detail_title_up_shoucang.setImageResource(isAttention ? R.drawable.ic_shoucang_press_good_detail
                     : R.drawable.ic_shoucang_nor_good_detail);
 
@@ -816,9 +819,9 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             case R.id.tv_buy:
                 if (CheckNet(BaseContext))
                     return;
-                if(datas.getGoods_info().getBuy_max() == 0){
+                if (datas.getGoods_info().getBuy_max() == 0) {
                     goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_BUY);
-                }else if (datas.getGoods_info().getBuy_left() != 0 ) {
+                } else if (datas.getGoods_info().getBuy_left() != 0) {
                     goPopActivity(AGoodPop.TYPE_GOOD_DETAIL_BUY);
                 } else {
                     PromptManager.ShowCustomToast(BaseContext, "您已达购买上限");
@@ -867,7 +870,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                             });
                     return;
                 }
-                if ( !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
                     ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
                             getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
                             new IDialogResult() {
@@ -1109,7 +1112,11 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
 //        GoodsPollUtils.stopPollingService(BaseContext);
     }
 
-
+    /**
+     * 事件总线
+     *
+     * @param event
+     */
     public void getReciverMsg(BMessage event) {
         int msg_type = event.getMessageType();
         switch (msg_type) {
@@ -1117,6 +1124,13 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 good_detail_add_shopbus_status.setVisibility(View.VISIBLE);
                 break;
             case AGoodPop.TYPE_ADD_ONLINE:
+
+                break;
+            case PShare.TYPE_GOODDETAIL_TO_SHOW:  //开始跳转到发SHOW页面
+                Intent MyIntens = new Intent(BaseActivity, AAddNewShow.class);
+                MyIntens.putExtra(AAddNewShow.KEY_CREATE_SHOW_TYPE, AAddNewShow.CREATE_TYPE_GOODDETAIL_PIC);
+                MyIntens.putExtra(AAddNewShow.KEY_CREATE_SHOW_GOODINFO, new BLSearchShopAndGood(datas.getId(),datas.getSeller_name(), datas.getAvatar(), datas.getSales(), datas.getScore(), datas.getSell_price(), datas.getOrig_price()));
+                PromptManager.SkipActivity(BaseActivity, MyIntens);
 
                 break;
 

@@ -22,6 +22,8 @@ import io.vtown.WeiTangApp.adapter.ShowRecyclerAdapter;
 import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLBShow;
+import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
@@ -59,13 +61,13 @@ public class ARecyclerMyShow extends ATitleBase {
     private LinearLayoutManager MLinearLayoutManager;
     private boolean IsCanLoadMore = false;
     private boolean IsLoadingMore = false;
-    private View mRootView ;
-    private  View comment_myshow_no__lay;
+    private View mRootView;
+    private View comment_myshow_no__lay;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_recycler_my_show);
-        this.mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_recycler_my_show,null);
+        this.mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_recycler_my_show, null);
         SetTitleHttpDataLisenter(this);
         String seller_id = getIntent().getStringExtra("seller_id");
         if (StrUtils.isEmpty(seller_id)) {
@@ -75,14 +77,14 @@ public class ARecyclerMyShow extends ATitleBase {
         }
         user_get = Spuit.User_Get(BaseContext);
 //        bShop = Spuit.Shop_Get(BaseContext);
-        MBNewHome= JSON.parseObject( CacheUtil.NewHome_Get(BaseContext), BNewHome.class);
+        MBNewHome = JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class);
         IView();
         ICache();
         IData(lastid, LOAD_INITIALIZE);
     }
 
     private void IView() {
-        comment_myshow_no__lay=findViewById(R.id.comment_myshow_no__lay);
+        comment_myshow_no__lay = findViewById(R.id.comment_myshow_no__lay);
         HeadView = LayoutInflater.from(BaseContext).inflate(R.layout.view_othershow, null);
 
         center_show_head = (CircleImageView) HeadView.findViewById(R.id.center_show_head);
@@ -99,7 +101,7 @@ public class ARecyclerMyShow extends ATitleBase {
         recyclerview_my_show = (RecyclerView) findViewById(R.id.recyclerview_my_show);
         recyclerview_my_show.setLayoutManager(MLinearLayoutManager);
         recyclerview_my_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
-        myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth,mRootView,this,false);
+        myShowAdapter = new ShowRecyclerAdapter(BaseContext, screenWidth, mRootView, this, false);
 
         MyHeadAdapter = new HeaderViewRecyclerAdapter(myShowAdapter);
         MyHeadAdapter.addHeaderView(HeadView);
@@ -108,9 +110,9 @@ public class ARecyclerMyShow extends ATitleBase {
             @Override
             public void onLoadMore(int currentPage) {
 
-                if(!IsLoadingMore){
+                if (!IsLoadingMore) {
                     if (IsCanLoadMore) {
-                        PromptManager.ShowCustomToast(BaseContext, "开始sss");
+//                        PromptManager.ShowCustomToast(BaseContext, "开始sss");
                         createLoadMoreView();
                     }
                 }
@@ -123,21 +125,17 @@ public class ARecyclerMyShow extends ATitleBase {
 
     private void ICache() {
         String CacheStr = CacheUtil.MyShow_Get(BaseContext);
-        if (StrUtils.isEmpty(CacheStr)){
+        if (StrUtils.isEmpty(CacheStr)) {
             PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.xlistview_header_hint_loading));
             return;
         }
 
         // 开始显示缓存数据
 
-        List<BShow> datas = new ArrayList<BShow>();
-        try {
-            datas = JSON.parseArray(CacheStr, BShow.class);
+        List<BLShow> datas = new ArrayList<BLShow>();
 
-        } catch (Exception e) {
+        datas = JSON.parseArray(CacheStr, BLShow.class);
 
-            return;
-        }
         myShowAdapter.FrashData(datas);
     }
 
@@ -175,7 +173,7 @@ public class ARecyclerMyShow extends ATitleBase {
      * 删除我自己的show
      */
 
-    public void DeletMyShow(String ShowId,String seller_id) {
+    public void DeletMyShow(String ShowId, String seller_id) {
         HashMap<String, String> mHashMap = new HashMap<String, String>();
 
         mHashMap.put("id", ShowId);
@@ -205,16 +203,16 @@ public class ARecyclerMyShow extends ATitleBase {
                 }
 
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    CacheUtil.MyShow_Save(BaseContext,"");
-                    myShowAdapter.FrashData(new ArrayList<BShow>());
+                    CacheUtil.MyShow_Save(BaseContext, "");
+                    myShowAdapter.FrashData(new ArrayList<BLShow>());
                     IDataView(recyclerview_my_show, comment_myshow_no__lay, NOVIEW_ERROR);
                     ShowErrorIv(R.drawable.error_show);
                     ShowErrorCanLoad(getResources().getString(R.string.younoshow));
                     return;
                 }
-                CacheUtil.MyShow_Save(BaseContext,Data.getHttpResultStr());
-                List<BShow> datas = new ArrayList<BShow>();
-                datas = JSON.parseArray(Data.getHttpResultStr(), BShow.class);
+                CacheUtil.MyShow_Save(BaseContext, Data.getHttpResultStr());
+                List<BLShow> datas = new ArrayList<BLShow>();
+                datas = JSON.parseArray(Data.getHttpResultStr(), BLShow.class);
                 lastid = datas.get(datas.size() - 1).getId();
                 myShowAdapter.FrashData(datas);
                 IsCanLoadMore = datas.size() == Constants.PageSize ? true : false;
@@ -224,11 +222,11 @@ public class ARecyclerMyShow extends ATitleBase {
             case LOAD_LOADMOREING:
                 HindLoadMore();
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    IsCanLoadMore=false;
+                    IsCanLoadMore = false;
                     return;
                 }
-                List<BShow> datass = new ArrayList<BShow>();
-                datass = JSON.parseArray(Data.getHttpResultStr(), BShow.class);
+                List<BLShow> datass = new ArrayList<BLShow>();
+                datass = JSON.parseArray(Data.getHttpResultStr(), BLShow.class);
                 lastid = datass.get(datass.size() - 1).getId();
                 myShowAdapter.FrashAllData(datass);
                 IsCanLoadMore = datass.size() == Constants.PageSize ? true : false;

@@ -279,7 +279,7 @@ public class StrUtils {
 
     public static String toInt_price(String obj) {
 
-            return Integer.parseInt(obj) * 100 + "";
+        return Integer.parseInt(obj) * 100 + "";
 
     }
 
@@ -1309,9 +1309,9 @@ public class StrUtils {
     * 识别手机号
     *
     * */
-    public static String getTelnum(String sParam){
+    public static String getTelnum(String sParam) {
 
-        if(sParam.length()<=0)
+        if (sParam.length() <= 0)
             return "";
         Pattern pattern = Pattern.compile("(1|861)(3|5|8)\\d{9}$*");
         Matcher matcher = pattern.matcher(sParam);
@@ -1324,5 +1324,15 @@ public class StrUtils {
             bf.deleteCharAt(len - 1);
         }
         return bf.toString();
+    }
+
+    //分享九宫格图片时候
+    public static String GetPic(String Str, int Lenght) {
+        try {
+            return Str.substring(Str.length() - Lenght, Str.length());
+        } catch (Exception e) {
+            return "" + new java.util.Random().nextInt(1000000);
+        }
+
     }
 }
