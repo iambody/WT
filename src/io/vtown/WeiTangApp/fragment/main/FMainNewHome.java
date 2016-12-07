@@ -323,19 +323,19 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         fragment_newhome_yaoqing_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_yaoqing_lay);
         fragment_newhome_libao_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_libao_lay);
         fragment_newhome_temai_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_temai_lay);
-        SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian);
-        SetDownLay(fragment_newhome_yaoqing_lay, getResources().getString(R.string.newhome_yaoqing), R.drawable.newhome_down_freads);
-        SetDownLay(fragment_newhome_libao_lay, getResources().getString(R.string.newhome_libao), R.drawable.newhome_down_libao);
-        SetDownLay(fragment_newhome_temai_lay, getResources().getString(R.string.newhome_temai), R.drawable.newhome_down_temai);
+        SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian_1);
+        SetDownLay(fragment_newhome_yaoqing_lay, getResources().getString(R.string.newhome_yaoqing), R.drawable.newhome_down_freads_1);
+        SetDownLay(fragment_newhome_libao_lay, getResources().getString(R.string.newhome_libao), R.drawable.newhome_down_libao_1);
+        SetDownLay(fragment_newhome_temai_lay, getResources().getString(R.string.newhome_temai), R.drawable.newhome_down_temai_1);
         //下边布局3.1*******************
         fragment_newhome_wallet_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_wallet_lay);
         fragment_newhome_kaquan_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_kaquan_lay);
         fragment_newhome_myshop_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_myshop_lay);
         fragment_newhome_myoder_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_myoder_lay);
-        SetDownLay(fragment_newhome_wallet_lay, getResources().getString(R.string.newhome_wallet), R.drawable.f_home_qianbao);
-        SetDownLay(fragment_newhome_kaquan_lay, getResources().getString(R.string.newhome_kaquan), R.drawable.f_home_kaquan);
-        SetDownLay(fragment_newhome_myshop_lay, getResources().getString(R.string.newhome_myshangji), R.drawable.f_home_dianpu);
-        SetDownLay(fragment_newhome_myoder_lay, getResources().getString(R.string.newhome_wodeoder), R.drawable.f_home_oder);
+        SetDownLay(fragment_newhome_wallet_lay, getResources().getString(R.string.newhome_wallet), R.drawable.f_home_qianbao_1);
+        SetDownLay(fragment_newhome_kaquan_lay, getResources().getString(R.string.newhome_kaquan), R.drawable.f_home_kaquan_1);
+        SetDownLay(fragment_newhome_myshop_lay, getResources().getString(R.string.newhome_myshangji), R.drawable.f_home_dianpu_1);
+        SetDownLay(fragment_newhome_myoder_lay, getResources().getString(R.string.newhome_wodeoder), R.drawable.f_home_oder_1);
 
 
         fragmentNewhomeHeadIv.setBorderWidth(5);
@@ -372,7 +372,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             UiHelper.SetShapeColor(fragmentNewhomeUsertag, getResources().getColor(R.color.app_fen1));
             fragmentNewhomeUsertag.setTextColor(getResources().getColor(R.color.white));
 //激活才能邀请好友未激活不能邀请好友
-            ((ImageView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(R.drawable.newhome_down_qian);
+            ((ImageView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(R.drawable.newhome_down_qian_1);
             ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.gray));
         } else {//未激活
             //设置shape的背景色和字体颜色
@@ -382,7 +382,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.weijihuo1));
             Spuit.IsHaveActive_Set(BaseContext, false);
             //激活才能邀请好友未激活不能邀请好友
-            ((ImageView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(R.drawable.newhome_down_qian_pre);
+            ((ImageView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(R.drawable.newhome_down_qian_pre_1);
             ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.app_gray));
 
 
@@ -421,11 +421,11 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         //是否已经签到
         if (Data.getIs_attendance() == 1) {// 已经签到
             IsHomeSign = true;
-            SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
+            SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre_1);
             ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.app_line));
         } else {
             IsHomeSign = false;
-            SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian);
+            SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian_1);
             ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.gray));
         }
 
@@ -452,7 +452,6 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 
     //设置下边
     private void SetDownLay(View V, String Downtitle, int ResouceId) {//
-
         V.setOnClickListener(this);
         ((TextView) V.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setText(Downtitle);
         ((ImageView) V.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(ResouceId);
@@ -546,7 +545,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 break;
             case 10://开始签到
                 IsHomeSign = true;
-                SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
+                SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre_1);
                 //需要进行缓存本地
                 INetData(LOADHind);
                 break;

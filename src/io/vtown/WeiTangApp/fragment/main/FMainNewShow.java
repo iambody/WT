@@ -98,7 +98,10 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
      */
     private boolean IsCache;
 
-
+    /**
+     * 保存需要删除的recycleview的位置 当后台交互成功后直接移除
+     */
+    private int Postion;
     @Override
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_main_new_show, null);
@@ -292,6 +295,9 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                 }
                 break;
             case 11://删除我的Show成功
+                myShowAdapter.GetAllData().remove(Postion);
+                myShowAdapter.notifyItemRemoved(Postion);
+                myShowAdapter.notifyItemRangeChanged(0,myShowAdapter.GetAllData().size()-Postion);
                 break;
         }
     }
@@ -431,7 +437,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
                     if (isMyShow(bShow.getSeller_id())) {
                         grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
-                        grid_item.my_show_item_delete_grid.setOnClickListener(new DeleteShowClick(datas.get(position)));
+                        grid_item.my_show_item_delete_grid.setOnClickListener(new DeleteShowClick(datas.get(position),position));
                     } else {
                         grid_item.my_show_item_delete_grid.setVisibility(View.GONE);
                     }
@@ -480,7 +486,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
                     if (isMyShow(bShow.getSeller_id())) {
                         video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
-                        video_item.my_show_item_delete_video.setOnClickListener(new DeleteShowClick(datas.get(position)));
+                        video_item.my_show_item_delete_video.setOnClickListener(new DeleteShowClick(datas.get(position),position));
                     } else {
                         video_item.my_show_item_delete_video.setVisibility(View.GONE);
                     }
@@ -525,7 +531,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
                     if (isMyShow(bShow.getSeller_id())) {
                         pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
-                        pic_item.my_show_item_delete_pic.setOnClickListener(new DeleteShowClick(datas.get(position)));
+                        pic_item.my_show_item_delete_pic.setOnClickListener(new DeleteShowClick(datas.get(position),position));
                     } else {
                         pic_item.my_show_item_delete_pic.setVisibility(View.GONE);
                     }
@@ -586,7 +592,9 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             this.datas.addAll(datas2);
             this.notifyDataSetChanged();
         }
-
+        public List<BLShow> GetAllData(  ) {
+            return datas;
+        }
         //多张图片holder***************************************************
         class MyShowItem extends RecyclerView.ViewHolder {
             private CopyTextView my_show_content_title;
@@ -988,14 +996,16 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
          */
         class DeleteShowClick implements View.OnClickListener {
             BLShow DeleteBShow;
+            int Mypostion;
 
-            public DeleteShowClick(BLShow myShareShow) {
+            public DeleteShowClick(BLShow myShareShow,int Postion) {
                 DeleteBShow = myShareShow;
+                Mypostion=Postion;
             }
 
             @Override
             public void onClick(View v) {
-                ShowCustomDialog(DeleteBShow.getId(), DeleteBShow.getSellerinfo().getId());
+                ShowCustomDialog(DeleteBShow.getId(), Mypostion);
             }
         }
 
@@ -1007,7 +1017,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
          * @param
          * @param
          */
-        private void ShowCustomDialog(final String ShowId, final String seller_id) {
+        private void ShowCustomDialog(final String ShowId, final int Postion) {
             final CustomDialog dialog = new CustomDialog(mContext,
                     R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "取消", "删除");
             dialog.show();
@@ -1026,7 +1036,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                 @Override
                 public void onConfirmCLick(View v) {
                     dialog.dismiss();
-//                       DeletMyShow(ShowId, seller_id);
+                       DeletMyShow(ShowId, Postion);
 
 
                 }
@@ -1142,6 +1152,8 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
      */
 
     private void DeletMyShow(String ShowId, int postion) {
+        PromptManager.showLoading(BaseContext);
+        Postion=postion;
         HashMap<String, String> mHashMap = new HashMap<String, String>();
         mHashMap.put("id", ShowId);
         mHashMap.put("seller_id", MyUser.getSeller_id());

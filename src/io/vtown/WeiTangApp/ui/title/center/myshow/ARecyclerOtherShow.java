@@ -28,7 +28,6 @@ import java.util.List;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.adapter.MyIvdapter;
-import io.vtown.WeiTangApp.adapter.ShowRecyclerAdapter;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;

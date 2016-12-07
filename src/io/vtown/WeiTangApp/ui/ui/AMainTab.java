@@ -212,7 +212,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
             maintab_shopbus.SetIsShowTage(false);
         }
         if (CurrentPostion == 4) {//当前处于show的fragment
-            maintab_show_iv.setImageResource(R.drawable.tab3_f_nor);
+            maintab_show_iv.setImageResource(R.drawable.tab3_f_nor_1);
             switchContent(CurrentFragment, Fragments.get(postion), R.id.maintab_fragmentlay);
 
             CurrentPostion = postion;

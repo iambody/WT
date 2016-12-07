@@ -612,7 +612,7 @@
     <dimen name="comment_good_renzheng_txt_size">10dp</dimen>
     <dimen name="fragment_newhome_head_height">40dp</dimen>
     <dimen name="fragment_newhome_downlaytxt_size">14dp</dimen>
-    <dimen name="fragment_newhome_downlayiv_height">30dp</dimen>
+    <dimen name="fragment_newhome_downlayiv_height">40dp</dimen>
     <dimen name="xls_foot_txt_size">12dp</dimen>
     <dimen name="login_aggren_size">12dp</dimen>
     <dimen name="fragment_newhome_level_height">25dp</dimen>
