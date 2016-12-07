@@ -19,6 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,9 +37,13 @@ import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.PicImageItem;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.three_one.search.BLSearchShopAndGood;
+import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.net.qiniu.NUPLoadUtil;
+import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
+import io.vtown.WeiTangApp.comment.util.NetUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
@@ -104,6 +111,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     private MyGridAdapter myGridAdapter;
     private String mCordVidoPath;
     private List<String> imgs;
+    private List<String> upload_sucess_pics = new ArrayList<String>();
     public static final String KEY_CREATE_SHOW_TYPE = "key_create_show_type";//创建Show类型
     public static final String KEY_CREATE_SHOW_GOODINFO = "key_create_show_goodinfo";//从商品详情过来的商品数据
     public static final int CREATE_TYPE_GOODDETAIL_PIC = 888;//商品详情--图片
@@ -111,6 +119,8 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     public static final int CREATE_TYPE_SHOW = 999;//正常类型（在Show列表发Show）
     private int Create_Type;
     private BLSearchShopAndGood mGoodInfo;
+    private String upload_qiniu_video_url = "";
+    private String upload_qiniu_video_cover_url = "";
 
     @Override
     protected void InItBaseView() {
@@ -123,17 +133,17 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     }
 
     private void IBundle() {
-        Create_Type = getIntent().getIntExtra(KEY_CREATE_SHOW_TYPE,CREATE_TYPE_SHOW);
+        Create_Type = getIntent().getIntExtra(KEY_CREATE_SHOW_TYPE, CREATE_TYPE_SHOW);
         mGoodInfo = (BLSearchShopAndGood) getIntent().getSerializableExtra(KEY_CREATE_SHOW_GOODINFO);
     }
 
     private void IView() {
-        if(Create_Type != CREATE_TYPE_SHOW){
+        if (Create_Type != CREATE_TYPE_SHOW) {
             sbAddNewShowSelectGood.setVisibility(View.GONE);
             ivAddNewShowGoodInfoArraw.setVisibility(View.GONE);
             llAddNewShowGood.setEnabled(false);
         }
-        if(mGoodInfo != null){
+        if (mGoodInfo != null) {
             setGoodInfo();
         }
         sbAddNewShowSelectGood.setChecked(true);
@@ -146,39 +156,49 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         SetRightText("添加");
     }
 
-    private void submitShow(){
+    private void submitShow(String intro) {
         SetTitleHttpDataLisenter(this);
+        PromptManager.showLoading(BaseContext);
         HashMap<String, String> map = new HashMap<>();
-        if(mGoodInfo != null && sbAddNewShowSelectGood.isChecked()){
-            map.put("goods_id",mGoodInfo.getGoods_info_id());
-            map.put("is_add_url","1");//是否只分享商品链接 0-否 1-允许
-        }else{
-            map.put("is_add_url","0");//是否只分享商品链接 0-否 1-允许
+        if (mGoodInfo != null && sbAddNewShowSelectGood.isChecked()) {
+            map.put("goods_id", mGoodInfo.getGoods_info_id());
+            map.put("is_add_url", "1");//是否只分享商品链接 0-否 1-允许
+        } else {
+            map.put("is_add_url", "0");//是否只分享商品链接 0-否 1-允许
         }
 
         map.put("seller_id", Spuit.User_Get(BaseContext).getSeller_id());
-        if(current_type == TYPE_VEDIO && !StrUtils.isEmpty(mCordVidoPath)){
-            map.put("vid",mCordVidoPath);//视频地址
+        if (current_type == TYPE_VEDIO && !StrUtils.isEmpty(upload_qiniu_video_url)) {
+            map.put("vid", upload_qiniu_video_url);//视频地址
+            map.put("pre_url", upload_qiniu_video_cover_url);//缩略图地址
         }
 
-        if(current_type == TYPE_PIC && imgs.size()>0){
-            for (int i =1;i<imgs.size();i++){
-                map.put("cid"+i,imgs.get(i-1));
+        if (current_type == TYPE_PIC && upload_sucess_pics.size() > 0) {
+            map.put("pre_url", upload_sucess_pics.get(0));//缩略图地址
+            for (int i = 0; i < upload_sucess_pics.size() - 1; i++) {
+                map.put("cid" + i + 1, upload_sucess_pics.get(i));
             }
         }
-        String s = etAddNewShowTxtContent.getText().toString();
-        if(StrUtils.isEmpty(s)){
-            PromptManager.ShowCustomToast(BaseContext,"请输入您要分享的内容");
-            return;
-        }
-        map.put("intro",s);//文字简介
-        map.put("is_type",current_type+"");//图片还是视频0图片1视频
 
-        map.put("pre_url","");//缩略图地址
-        if(imgs.size() == 1){
-            map.put("ratio","");//图片比例，一张图片时，必传
+        map.put("intro", intro);//文字简介
+        map.put("is_type", current_type + "");//图片还是视频0图片1视频
+
+        if (datas.size() == 1) {
+            map.put("ratio", "1");//图片比例，一张图片时，必传
         }
 
+        FBGetHttpData(map, Constants.Create_Show, Request.Method.POST, 0, LOAD_INITIALIZE);
+
+    }
+
+    //获取所以上传成功的图片链接
+    private void getUploadSuccessPics() {
+        for (int i = 0; i < datas.size(); i++) {
+            String weburl = datas.get(i).getWeburl();
+            if (!StrUtils.isEmpty(weburl)) {
+                upload_sucess_pics.add(weburl);
+            }
+        }
     }
 
 
@@ -202,12 +222,12 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
-
+        AAddNewShow.this.finish();
     }
 
     @Override
     protected void DataError(String error, int LoadType) {
-
+        PromptManager.ShowCustomToast(BaseContext,error);
     }
 
     @Override
@@ -267,7 +287,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 current_type = TYPE_PIC;
                 ControlClick(R.id.tv_add_new_show_pic);
                 rlAddNewShowVedioLayout.setVisibility(View.GONE);
-                if(imgs != null && imgs.size()>0){
+                if (imgs != null && imgs.size() > 0) {
                     gvAddNewShowPics.setVisibility(View.VISIBLE);
                 }
 
@@ -276,8 +296,8 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             case R.id.tv_add_new_show_vedio:
                 current_type = TYPE_VEDIO;
                 ControlClick(R.id.tv_add_new_show_vedio);
-               gvAddNewShowPics.setVisibility(View.GONE);
-                if(!StrUtils.isEmpty(mCordVidoPath)){
+                gvAddNewShowPics.setVisibility(View.GONE);
+                if (!StrUtils.isEmpty(mCordVidoPath)) {
                     SetRightText("重录");
                     rlAddNewShowVedioLayout.setVisibility(View.VISIBLE);
                 }
@@ -313,11 +333,31 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     * 发布Show
     * */
     private void createShow() {
-        if(imgs.size() > 0 || !StrUtils.isEmpty(mCordVidoPath)){
 
-        }else{
-            PromptManager.ShowCustomToast(BaseContext,"请选择您要分享的图片或视频");
+        if (CheckNet(BaseContext))
+            return;
+        String content = etAddNewShowTxtContent.getText().toString().trim();
+        if (StrUtils.isEmpty(content)) {
+            PromptManager.ShowCustomToast(BaseContext, "请输入您要分享的内容");
+            return;
         }
+        if (imgs.size() == 0 || StrUtils.isEmpty(mCordVidoPath)) {
+            PromptManager.ShowCustomToast(BaseContext, "请选择您要分享的图片或视频");
+            return;
+        }
+
+        if (mGoodInfo == null && sbAddNewShowSelectGood.isChecked()) {
+            PromptManager.ShowCustomToast(BaseContext, "点击“+”选择您要分享的商品");
+            return;
+        }
+        PromptManager.showtextLoading3(this, getResources().getString(R.string.addgooding));
+
+        if (current_type == TYPE_PIC) {
+            uploadPics(content);
+        } else {
+            uploadVideo(content);
+        }
+
     }
 
     private void toPicSelect(int type) {
@@ -367,7 +407,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     /*
     * 设置GridView中的图片
     * */
-    private void setGridViewPic(){
+    private void setGridViewPic() {
         if (imgs != null && imgs.size() > 0) {
             gvAddNewShowPics.setVisibility(View.VISIBLE);
             for (String path : imgs) {
@@ -534,7 +574,115 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     }
 
 
-    /****************************************************上传七牛***************************************************************/
+    /****************************************************
+     * 上传七牛
+     ***************************************************************/
+    private int DescPicNeedUpNumber;
+    private int DescPicCountNumber;
 
+    private void uploadPics(final String content) {
+        if (!NetUtil.isConnected(BaseContext)) {//检查网络
+            PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
+            return;
+        }
+        DescPicNeedUpNumber = 0;
+        DescPicCountNumber = 0;
+
+        for (int i = 0; i < datas.size(); i++) {
+            final int Postion = i;
+            if (!StrUtils.isEmpty(datas.get(Postion).getWeburl())) {
+                continue;
+            }
+            NUPLoadUtil dLoadUtils = new NUPLoadUtil(BaseContext, new File(
+                    datas.get(Postion).getPathurl()), StrUtils.UploadQNName("show"));
+
+            dLoadUtils.SetUpResult1(new NUPLoadUtil.UpResult1() {
+
+                @Override
+                public void Progress(String arg0, double arg1) {
+
+                }
+
+                @Override
+                public void Onerror() {
+                    datas.get(Postion).setWeburl("");
+                    DescPicCountNumber = DescPicCountNumber + 1;
+
+                    if (DescPicNeedUpNumber == DescPicCountNumber) {
+                        // 上传描述完毕
+                        submitShow(content);
+                    }
+                }
+
+                @Override
+                public void Complete(String HostUrl, String Url) {
+                    datas.get(Postion).setWeburl(HostUrl);
+                    DescPicCountNumber = DescPicCountNumber + 1;
+                    if (DescPicCountNumber == DescPicNeedUpNumber) {
+                        // 上传描述完毕
+                        submitShow(content);
+                    }
+                }
+            });
+            dLoadUtils.UpLoad();
+        }
+        getUploadSuccessPics();
+
+    }
+
+    private void uploadVideo(final String content) {
+        if (!NetUtil.isConnected(BaseContext)) {//检查网络
+            PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
+            return;
+        }
+        //先上传封面
+        NUpLoadUtils dLoadUtils = new NUpLoadUtils(BaseContext,
+                Bitmap2Bytes(createVideoThumbnail(mCordVidoPath)),
+                StrUtils.UploadQNName("photo"));
+        dLoadUtils.SetUpResult(new NUpLoadUtils.UpResult() {
+            @Override
+            public void Progress(String arg0, double arg1) {
+            }
+
+            @Override
+            public void Onerror() {
+                upload_qiniu_video_cover_url = "";
+            }
+
+            @Override
+            public void Complete(String HostUrl, String Url) {
+                upload_qiniu_video_cover_url = HostUrl;
+            }
+        });
+        dLoadUtils.UpLoad();
+
+
+        NUPLoadUtil dLoadUtils1 = new NUPLoadUtil(BaseContext, new File(
+                mCordVidoPath), StrUtils.UploadVido("vid"));
+        dLoadUtils1.SetUpResult1(new NUPLoadUtil.UpResult1()
+
+        {
+            @Override
+            public void Progress(String arg0, double arg1) {
+
+            }
+
+            @Override
+            public void Onerror() {
+                upload_qiniu_video_url = "";
+                // 上传视频完毕
+                submitShow(content);
+            }
+
+            @Override
+            public void Complete(String HostUrl, String Url) {
+                upload_qiniu_video_url = HostUrl;
+                // 上传视频完毕
+                submitShow(content);
+            }
+        });
+        dLoadUtils.UpLoad();
+
+    }
 
 }

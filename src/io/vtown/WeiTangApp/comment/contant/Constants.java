@@ -212,6 +212,11 @@ public class Constants {
      * 获取一级Show列表
      */
     public static String Show_ls = Host + "/v1/show/show/list";
+
+    /**
+     * 发Show
+     */
+    public static String Create_Show = Host + "/v1/show/show/append";
     /**
      * 店铺详情（Show点击头像进去）
      */
