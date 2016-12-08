@@ -482,7 +482,7 @@ public class ACenterMyOrder extends ATitleBase implements
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         BLCenterOder itemdata = (BLCenterOder) centerOrderOutsideAdapter.getItem(position);
         int order_status = Integer.parseInt(itemdata.getOrder_status());
-        final String order_sn = itemdata.getOrder_sn();
+        final String order_sn = itemdata.getSeller_order_sn();
         final String member_id = itemdata.getMember_id();
         if(order_status == PAgreeTuiKuan || order_status == PClose || order_status == PCancel){
             ShowCustomDialog("确认要删除此订单？\n（订单删除后将无法恢复）", "取消", "确定", new IDialogResult() {
