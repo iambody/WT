@@ -782,6 +782,8 @@
     <string name="good_pop_select_good_no_stroe">你选择的规格暂时没有货哦</string>
     <string name="frashing">刷新中·····</string>
     <string name="jiugongge_error">网络君不给力,发送失败.......</string>
+    <string name="invite_team_info_benyue_activity">本月团队活跃人数</string>
+    <string name="invite_team_info_benyue_zhishu">本月团队直属人数</string>
 
 
 </resources>

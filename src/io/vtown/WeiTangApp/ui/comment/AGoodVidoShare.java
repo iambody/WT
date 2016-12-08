@@ -155,6 +155,7 @@ public class AGoodVidoShare extends ATitleBase {
         switch (Data.getHttpResultTage()) {
             case 5:
                 PromptManager.ShowCustomToast(BaseContext, "转发成功");
+                Show_Award();//show分享成功就获取积分
                 BaseActivity.finish();
 
                 break;

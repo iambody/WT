@@ -1129,7 +1129,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             case PShare.TYPE_GOODDETAIL_TO_SHOW:  //开始跳转到发SHOW页面
                 Intent MyIntens = new Intent(BaseActivity, AAddNewShow.class);
                 MyIntens.putExtra(AAddNewShow.KEY_CREATE_SHOW_TYPE, AAddNewShow.CREATE_TYPE_GOODDETAIL_PIC);
-                MyIntens.putExtra(AAddNewShow.KEY_CREATE_SHOW_GOODINFO, new BLSearchShopAndGood(datas.getId(),datas.getSeller_name(), datas.getAvatar(), datas.getSales(), datas.getScore(), datas.getSell_price(), datas.getOrig_price()));
+                MyIntens.putExtra(AAddNewShow.KEY_CREATE_SHOW_GOODINFO, new BLSearchShopAndGood(datas.getId(),datas.getTitle(),datas.getSeller_name(), datas.getCover(), datas.getSales(), datas.getScore(), datas.getSell_price(), datas.getOrig_price()));
                 PromptManager.SkipActivity(BaseActivity, MyIntens);
 
                 break;

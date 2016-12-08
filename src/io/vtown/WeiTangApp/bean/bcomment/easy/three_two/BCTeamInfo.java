@@ -18,13 +18,6 @@ public class BCTeamInfo extends BBase {
     private String month_sub_activate_num;//"month_sub_activate_num": 4,
     private String month_activate_num;//   "month_activate_num": 4,
 
-    public String getMonth_sub_activate_num() {
-        return month_sub_activate_num;
-    }
-
-    public void setMonth_sub_activate_num(String month_sub_activate_num) {
-        this.month_sub_activate_num = month_sub_activate_num;
-    }
 
     public String getActivate_num() {
         return activate_num;
@@ -80,5 +73,21 @@ public class BCTeamInfo extends BBase {
 
     public void setMember_id(String member_id) {
         this.member_id = member_id;
+    }
+
+    public String getMonth_activate_num() {
+        return month_activate_num;
+    }
+
+    public void setMonth_activate_num(String month_activate_num) {
+        this.month_activate_num = month_activate_num;
+    }
+
+    public String getMonth_sub_activate_num() {
+        return month_sub_activate_num;
+    }
+
+    public void setMonth_sub_activate_num(String month_sub_activate_num) {
+        this.month_sub_activate_num = month_sub_activate_num;
     }
 }

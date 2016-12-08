@@ -1004,6 +1004,10 @@ public class Constants {
      * 筛选时候积分的区间段列表
      */
     public static String MainSort_Score_Rang = Host + "/v1/goods/search/score";
+    /**
+     * 转发show完毕后 需要交互后台添加每天一次的show奖励
+     */
+    public static String UpShow_AWard=Host+"/v1/member/point/show-point";
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************

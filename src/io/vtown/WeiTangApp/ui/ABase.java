@@ -75,6 +75,7 @@ import android.widget.TextView;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
+import com.android.volley.Request;
 import com.easemob.chat.EMMessage;
 import com.easemob.chat.ImageMessageBody;
 import com.easemob.chat.TextMessageBody;
@@ -298,7 +299,7 @@ public class ABase extends Activity {
      * 微信分享弹出框 BVivew 代表目前activity的view
      */
     protected void ShowP(View BVivew, BNew mBNew) {
-        PShare da = new PShare(BaseContext, mBNew,false);
+        PShare da = new PShare(BaseContext, mBNew, false);
         da.showAtLocation(BVivew, Gravity.BOTTOM, 0, 0);
     }
 
@@ -790,5 +791,24 @@ public class ABase extends Activity {
         EventBus.getDefault().post(new BMessage(SentType));
     }
 
+    /**
+     * 发show的奖励 交互 （发完show 需要和后台确认便于后台增加show积分）
+     */
+    protected void Show_Award() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());
+        NHttpBaseStr NHttpBase = new NHttpBaseStr(BaseContext);
+        NHttpBase.setPostResult(new IHttpResult<String>() {
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
 
+            }
+
+            @Override
+            public void onError(String error, int LoadType) {
+
+            }
+        });
+        NHttpBase.getData(Constants.UpShow_AWard, map, Request.Method.POST);
+    }
 }

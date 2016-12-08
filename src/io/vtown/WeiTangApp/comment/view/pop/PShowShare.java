@@ -163,57 +163,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.show_share_to_pic_vedio://最下边！！！！！ 图片(九宫格)和视频分享 ===》需要权限判断
-                //权限888888888888888888888
-                //如果未绑定或者已绑定未激活的用户分享权限的判断***************************
-                if (!Spuit.IsHaveBind_Get(activity) && !Spuit.IsHaveBind_JiQi_Get(activity)) {//未绑定邀请码
-                    ShowCustomDialog(activity.getResources().getString(R.string.no_bind_code),
-                            activity.getResources().getString(R.string.quxiao), activity.getResources().getString(R.string.bind_code),
-                            new IDialogResult() {
-                                @Override
-                                public void RightResult() {
-                                    PShowShare.this.dismiss();
-                                    PromptManager.SkipActivity(activity, new Intent(activity,
-                                            ANewBindCode.class));
-                                    //
-                                }
 
-                                @Override
-                                public void LeftResult() {
-
-                                }
-                            });
-                    return;
-                }
-                if (!Spuit.IsHaveActive_Get(activity)) {//绑定邀请码未激活
-                    ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(activity), BNewHome.class).getIntegral() < 10000 ? activity.getResources().getString(R.string.to_Jihuo_toqiandao1) : activity.getResources().getString(R.string.to_Jihuo_toqiandao2),
-                            activity.getResources().getString(R.string.look_guize), activity.getResources().getString(R.string.to_jihuo1),
-                            new IDialogResult() {
-                                @Override
-                                public void RightResult() {
-
-                                    BActive maxtive = Spuit.Jihuo_get(activity);
-                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
-                                            maxtive.getActivitytitle());
-                                    PromptManager.SkipActivity(activity, new Intent(
-                                            activity, AZhuanQu.class).putExtra(BaseKey_Bean,
-                                            mBCommentss));
-                                    PShowShare.this.dismiss();
-
-                                }
-
-                                @Override
-                                public void LeftResult() {
-                                    PShowShare.this.dismiss();
-                                    PromptManager.SkipActivity(activity, new Intent(
-                                            activity, AWeb.class).putExtra(
-                                            AWeb.Key_Bean,
-                                            new BComment(Constants.Homew_JiFen, activity.getResources().getString(R.string.jifenguize))));
-
-                                }
-                            });
-
-                    return;
-                }
                 String aa = mShareBeanNew.getShare_url();
                 if (!isPic) {
                     controlType(SHARE_TO_FRIENDS);

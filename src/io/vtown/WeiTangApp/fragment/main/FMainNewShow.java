@@ -42,12 +42,16 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLBShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.download.DownFileUtils;
 import io.vtown.WeiTangApp.comment.download.DownFileUtils.DownLoadListener;
+import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.util.DateUtils;
 import io.vtown.WeiTangApp.comment.util.SdCardUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -59,13 +63,19 @@ import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
+import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
+import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
 import io.vtown.WeiTangApp.ui.ui.AAddNewShow;
 
 /**
@@ -102,6 +112,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
      * 保存需要删除的recycleview的位置 当后台交互成功后直接移除
      */
     private int Postion;
+
     @Override
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_main_new_show, null);
@@ -297,7 +308,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             case 11://删除我的Show成功
                 myShowAdapter.GetAllData().remove(Postion);
                 myShowAdapter.notifyItemRemoved(Postion);
-                myShowAdapter.notifyItemRangeChanged(0,myShowAdapter.GetAllData().size()-Postion);
+                myShowAdapter.notifyItemRangeChanged(0, myShowAdapter.GetAllData().size() - Postion);
                 break;
         }
     }
@@ -322,7 +333,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     }
 
 
-    @OnClick({R.id.fragment_main_show_add,R.id.maintab_new_show_uptxt})
+    @OnClick({R.id.fragment_main_show_add, R.id.maintab_new_show_uptxt})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_main_show_add://添加show
@@ -437,7 +448,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
                     if (isMyShow(bShow.getSeller_id())) {
                         grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
-                        grid_item.my_show_item_delete_grid.setOnClickListener(new DeleteShowClick(datas.get(position),position));
+                        grid_item.my_show_item_delete_grid.setOnClickListener(new DeleteShowClick(datas.get(position), position));
                     } else {
                         grid_item.my_show_item_delete_grid.setVisibility(View.GONE);
                     }
@@ -486,7 +497,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
                     if (isMyShow(bShow.getSeller_id())) {
                         video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
-                        video_item.my_show_item_delete_video.setOnClickListener(new DeleteShowClick(datas.get(position),position));
+                        video_item.my_show_item_delete_video.setOnClickListener(new DeleteShowClick(datas.get(position), position));
                     } else {
                         video_item.my_show_item_delete_video.setVisibility(View.GONE);
                     }
@@ -531,7 +542,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
                     if (isMyShow(bShow.getSeller_id())) {
                         pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
-                        pic_item.my_show_item_delete_pic.setOnClickListener(new DeleteShowClick(datas.get(position),position));
+                        pic_item.my_show_item_delete_pic.setOnClickListener(new DeleteShowClick(datas.get(position), position));
                     } else {
                         pic_item.my_show_item_delete_pic.setVisibility(View.GONE);
                     }
@@ -592,9 +603,11 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             this.datas.addAll(datas2);
             this.notifyDataSetChanged();
         }
-        public List<BLShow> GetAllData(  ) {
+
+        public List<BLShow> GetAllData() {
             return datas;
         }
+
         //多张图片holder***************************************************
         class MyShowItem extends RecyclerView.ViewHolder {
             private CopyTextView my_show_content_title;
@@ -730,20 +743,25 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                             BaseKey_Bean, mBComment));
 
                 } else { //自营店铺(普通用户发布的show)==》跳转到其他show页面
-                    Intent intent = new Intent(BaseActivity,
-                            ARecyclerOtherShow.class);
-                    intent.putExtra(
-                            "abasebeankey",
-                            new BComment(
-                                    MyShareShow.getSeller_id(),
-                                    MyShareShow.getSellerinfo().getCover(),
-                                    MyShareShow.getSellerinfo()
-                                            .getAvatar(), MyShareShow
-                                    .getSellerinfo()
-                                    .getSeller_name(), MyShareShow
-                                    .getSellerinfo()
-                                    .getIs_brand()));
-                    PromptManager.SkipActivity(BaseActivity, intent);
+                    //如果是我的show
+                    if (MyShareShow.getSeller_id().equals(MyUser.getSeller_id())) {//是我自己发的
+                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ARecyclerMyShow.class).putExtra("seller_id", MyUser.getSeller_id()));
+                    } else {
+                        Intent intent = new Intent(BaseActivity,
+                                ARecyclerOtherShow.class);
+                        intent.putExtra(
+                                "abasebeankey",
+                                new BComment(
+                                        MyShareShow.getSeller_id(),
+                                        MyShareShow.getSellerinfo().getCover(),
+                                        MyShareShow.getSellerinfo()
+                                                .getAvatar(), MyShareShow
+                                        .getSellerinfo()
+                                        .getSeller_name(), MyShareShow
+                                        .getSellerinfo()
+                                        .getIs_brand()));
+                        PromptManager.SkipActivity(BaseActivity, intent);
+                    }
                 }
             }
 
@@ -785,6 +803,11 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
             @Override
             public void onClick(View v) {
+                //判断发show的权限！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+                //权限888888888888888888888
+                //如果未绑定或者已绑定未激活的用户分享权限的判断***************************
+                if (CheckLimite()) return;
+                //判断发show的权限！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
                 PShowShare myshare = null;//new PShowShare(BaseContext, BaseActivity, new BNew(), true, true);
 
                 if (IsHaveGoods_Share) { //带商品连接********************
@@ -998,9 +1021,9 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             BLShow DeleteBShow;
             int Mypostion;
 
-            public DeleteShowClick(BLShow myShareShow,int Postion) {
+            public DeleteShowClick(BLShow myShareShow, int Postion) {
                 DeleteBShow = myShareShow;
-                Mypostion=Postion;
+                Mypostion = Postion;
             }
 
             @Override
@@ -1036,7 +1059,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                 @Override
                 public void onConfirmCLick(View v) {
                     dialog.dismiss();
-                       DeletMyShow(ShowId, Postion);
+                    DeletMyShow(ShowId, Postion);
 
 
                 }
@@ -1044,6 +1067,52 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
         }
 
 
+    }
+
+    private boolean CheckLimite() {
+        if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
+            ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                    getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                    new IDialogResult() {
+                        @Override
+                        public void RightResult() {
+                            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                    ANewBindCode.class));
+                        }
+
+                        @Override
+                        public void LeftResult() {
+                        }
+                    });
+            return true;
+        }
+        if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+            ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                    getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
+                    new IDialogResult() {
+                        @Override
+                        public void RightResult() {
+                            BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                            BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                    maxtive.getActivitytitle());
+                            PromptManager.SkipActivity(BaseActivity, new Intent(
+                                    BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                    mBCommentss));
+                        }
+
+                        @Override
+                        public void LeftResult() {
+                            PromptManager.SkipActivity(BaseActivity, new Intent(
+                                    BaseActivity, AWeb.class).putExtra(
+                                    AWeb.Key_Bean,
+                                    new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                        }
+                    });
+
+            return true;
+        }
+        return false;
     }
 
     int CountNumber = 0;
@@ -1153,11 +1222,32 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
     private void DeletMyShow(String ShowId, int postion) {
         PromptManager.showLoading(BaseContext);
-        Postion=postion;
+        Postion = postion;
         HashMap<String, String> mHashMap = new HashMap<String, String>();
         mHashMap.put("id", ShowId);
         mHashMap.put("seller_id", MyUser.getSeller_id());
         FBGetHttpData(mHashMap, Constants.MyShowDelete, Request.Method.DELETE, 11,
                 postion + 11);
     }
+
+//    /**
+//     * 发show的奖励 交互 （发完show 需要和后台确认便于后台增加show积分）
+//     */
+//    private void Show_Award() {
+//        HashMap<String, String> map = new HashMap<>();
+//        map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());
+//        NHttpBaseStr NHttpBase = new NHttpBaseStr(BaseContext);
+//        NHttpBase.setPostResult(new IHttpResult<String>() {
+//            @Override
+//            public void getResult(int Code, String Msg, String Data) {
+//
+//            }
+//
+//            @Override
+//            public void onError(String error, int LoadType) {
+//
+//            }
+//        });
+//        NHttpBase.getData(Constants.UpShow_AWard, map, Request.Method.POST);
+//    }
 }

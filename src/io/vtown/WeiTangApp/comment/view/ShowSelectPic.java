@@ -157,6 +157,7 @@ public class ShowSelectPic extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
+        Show_Award();//show分享成功就获取积分
         PromptManager.closeTextLoading3();
         PromptManager.ShowCustomToast(BaseContext, "Show分享成功");
         BaseActivity.finish();

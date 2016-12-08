@@ -46,9 +46,16 @@ public class AInviteTeamInfo extends ATitleBase {
     * 昨日激活用户
     * */
     private View invite_info_my_yestaday_activity;
+    /**
+     * 本月活跃人数
+     */
+    private View invite_info_my_benyue_activity;
+    /**
+     * 本月直属
+     */
+    private View invite_info_my_benyue_zhishu;
+
     private BCTeamInfo mTeamInfo;
-    private View invite_info_team_activity_month;
-    private View invite_info_my_activity_month;
 
     @Override
     protected void InItBaseView() {
@@ -89,8 +96,10 @@ public class AInviteTeamInfo extends ATitleBase {
         invite_info_my_activity_conter = findViewById(R.id.invite_info_my_activity_conter);
         invite_info_my_yestaday_add = findViewById(R.id.invite_info_my_yestaday_add);
         invite_info_my_yestaday_activity = findViewById(R.id.invite_info_my_yestaday_activity);
-        invite_info_team_activity_month = findViewById(R.id.invite_info_team_activity_month);
-        invite_info_my_activity_month = findViewById(R.id.invite_info_my_activity_month);
+
+
+        invite_info_my_benyue_activity= findViewById(R.id.invite_info_my_benyue_activity);
+        invite_info_my_benyue_zhishu= findViewById(R.id.invite_info_my_benyue_zhishu);
     }
 
     private void RefrashView(BCTeamInfo data) {
@@ -99,8 +108,10 @@ public class AInviteTeamInfo extends ATitleBase {
         SetItemContent(invite_info_my_activity_conter, R.drawable.ic_zhishuhuoyueyonghu_nor, R.string.invite_team_info_my_activity, data.getInvite_activate_num(), false);
         SetItemContent(invite_info_my_yestaday_add, R.drawable.ic_zuorixinzengyonghu_nor, R.string.invite_team_info_yestaday_add, data.getRegister_num(), false);
         SetItemContent(invite_info_my_yestaday_activity, R.drawable.ic_zuorijihuoyonghu_nor, R.string.invite_team_info_yestaday_activity, data.getActivate_num(), false);
-        SetItemContent(invite_info_team_activity_month, R.drawable.ic_zuorijihuoyonghu_nor, R.string.invite_team_info_month_add, data.getActivate_num(), false);
-        SetItemContent(invite_info_my_activity_month, R.drawable.ic_zuorijihuoyonghu_nor, R.string.invite_team_info_month_activity, data.getActivate_num(), false);
+   //
+        SetItemContent(invite_info_my_benyue_activity, R.drawable.ic_benyuehuoyue_nor, R.string.invite_team_info_benyue_activity, data.getMonth_activate_num(), false);
+        SetItemContent(invite_info_my_benyue_zhishu, R.drawable.ic_benyuezhishu_nor, R.string.invite_team_info_benyue_zhishu, data.getMonth_sub_activate_num(), false);
+
     }
 
     private void SetItemContent(View VV, int imgsre, int ResourceTitlet, String txt2, boolean arrershow) {
@@ -119,7 +130,7 @@ public class AInviteTeamInfo extends ATitleBase {
             VV.setOnClickListener(this);
         } else {
             VV.setBackgroundResource(R.color.white);
-            commentview_center_arrer.setVisibility(View.GONE);
+            commentview_center_arrer.setVisibility(View.INVISIBLE);
         }
 
 

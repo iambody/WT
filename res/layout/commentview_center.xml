@@ -36,7 +36,6 @@
         android:id="@+id/commentview_center_arrer"
         android:layout_width="@dimen/center_comment_arrow_height"
         android:layout_height="@dimen/center_comment_arrow_height"
-
         android:layout_gravity="center_vertical"
         android:layout_marginRight="5dp"
         android:src="@drawable/arrow_right" />

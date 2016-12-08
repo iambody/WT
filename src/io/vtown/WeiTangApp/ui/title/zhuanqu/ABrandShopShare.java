@@ -1,6 +1,7 @@
 package io.vtown.WeiTangApp.ui.title.zhuanqu;
 
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
 
 import java.util.HashMap;
 
@@ -22,14 +25,20 @@ import cn.sharesdk.wechat.friends.Wechat;
 import cn.sharesdk.wechat.moments.WechatMoments;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.QRCodeUtil;
 import io.vtown.WeiTangApp.comment.util.SdCardUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 
 /**
  * Created by Yihuihua on 2016/11/15.
@@ -98,7 +107,7 @@ public class ABrandShopShare extends ATitleBase {
                 boolean success = false;
                 Bitmap logoBm = com.nostra13.universalimageloader.core.ImageLoader
                         .getInstance().loadImageSync(avatar);
-                if(logoBm != null){
+                if (logoBm != null) {
                     success = QRCodeUtil.createQRImage(Str, 800, 800,
                             logoBm, Pathe);
                 }
@@ -107,7 +116,7 @@ public class ABrandShopShare extends ATitleBase {
                         @Override
                         public void run() {
                             MyBitMap = BitmapFactory.decodeFile(Pathe);
-                            if(null != MyBitMap && null != brandShopCode){
+                            if (null != MyBitMap && null != brandShopCode) {
                                 brandShopCode.setImageBitmap(MyBitMap);
                                 brandShopCode.setVisibility(View.VISIBLE);
                             }
@@ -182,17 +191,115 @@ public class ABrandShopShare extends ATitleBase {
         switch (V.getId()) {
             case R.id.brand_shop_share_null:
                 overridePendingTransition(0, R.anim.slide_out);
-                if(MyBitMap != null){
+                if (MyBitMap != null) {
                     CacheUtil.BitMapRecycle(MyBitMap);
                 }
                 this.finish();
                 break;
 
             case R.id.brand_shop_share_to_wx://分享微信
+                //需要进行全线处理*********
+                //判断是否符合分享条件*************
+
+
+                if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
+                    ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                            getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                            ANewBindCode.class));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                }
+                            });
+                    return;
+                }
+                if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                    ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                            maxtive.getActivitytitle());
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                            mBCommentss));
+                                    BaseActivity.finish();
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, AWeb.class).putExtra(
+                                            AWeb.Key_Bean,
+                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                                }
+                            });
+
+                    return;
+                }
+
+
                 Share(1);
                 break;
 
             case R.id.brand_shop_share_to_frends://分享朋友圈
+                //需要进行全线处理*********
+                //判断是否符合分享条件*************
+
+
+                if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
+                    ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                            getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                            ANewBindCode.class));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                }
+                            });
+                    return;
+                }
+                if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                    ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                            maxtive.getActivitytitle());
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                            mBCommentss));
+                                    BaseActivity.finish();
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, AWeb.class).putExtra(
+                                            AWeb.Key_Bean,
+                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                                }
+                            });
+
+                    return;
+                }
+
+
                 Share(2);
                 break;
 
@@ -285,7 +392,7 @@ public class ABrandShopShare extends ATitleBase {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(MyBitMap != null){
+        if (MyBitMap != null) {
             CacheUtil.BitMapRecycle(MyBitMap);
         }
 

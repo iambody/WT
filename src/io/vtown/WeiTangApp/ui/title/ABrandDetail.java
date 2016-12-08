@@ -553,8 +553,8 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                 CollecNetDo(!IsCollect);
                 break;
             case R.id.brandshop_sou_lay://搜搜
-                if( mBComment.getAgent() == null){
-                    PromptManager.ShowCustomToast(BaseContext,"店铺没有商品，无法搜索");
+                if (mBComment.getAgent() == null) {
+                    PromptManager.ShowCustomToast(BaseContext, "店铺没有商品，无法搜索");
                     return;
                 }
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AShopGoodSou.class).putExtra("Sellid", mBComment.getBase().getId()).putExtra("Sellname", mBComment.getBase().getSeller_name()));
@@ -579,7 +579,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                     return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ABrandShopShare.class).putExtra(ABrandShopShare.Tage_Key,
-                        mBComment.getBase().getSeller_url()).putExtra(ABrandShopShare.Tage_Avatar_Key, mBComment.getBase().getAvatar()).putExtra(ABrandShopShare.Tage_Seller_Id,mBComment.getBase().getSeller_no()).putExtra(ABrandShopShare.Tage_Title,mBComment.getBase().getSeller_name()));
+                        mBComment.getBase().getSeller_url()).putExtra(ABrandShopShare.Tage_Avatar_Key, mBComment.getBase().getAvatar()).putExtra(ABrandShopShare.Tage_Seller_Id, mBComment.getBase().getSeller_no()).putExtra(ABrandShopShare.Tage_Title, mBComment.getBase().getSeller_name()));
                 break;
             default:
                 break;

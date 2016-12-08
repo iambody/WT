@@ -26,7 +26,8 @@
                 android:gravity="left|top"
                 android:hint="@string/szhuan_saying"
                 android:padding="@dimen/line_size4"
-                android:textColor="@color/gray"></EditText>
+                android:textColor="@color/gray"
+                android:textSize="@dimen/ui_14_dip"/>
 
 
             <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
