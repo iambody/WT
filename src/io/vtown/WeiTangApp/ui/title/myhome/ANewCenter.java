@@ -159,27 +159,9 @@ public class ANewCenter extends ATitleBase {
                 break;
 
             case R.id.view_about_me://关于我们
-//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-//                        AAboutWt.class));
-
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AAddNewShow.class));
-//                BNew bnew = new BNew();
-//                PShowShare showShare = new PShowShare(BaseContext,BaseActivity, bnew);
-//                showShare.SetShareListener(new PShowShare.ShowShareInterListener() {
-//                    @Override
-//                    public void GetResultType(int ResultType) {
-//                        switch (ResultType) {
-//
-//
-//
-//                        }
-//                    }
-//                });
-//                showShare.showAtLocation(baseView, Gravity.BOTTOM, 0, 0);
-//
-//                showShare.setPicAndVedioShareTitle(false);
-//                showShare.isHaveUrl(false);
+                        AAboutWt.class));
+
                 break;
 
             case R.id.view_my_address://我的地址
