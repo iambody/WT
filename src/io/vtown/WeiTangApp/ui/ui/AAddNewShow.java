@@ -174,11 +174,11 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             map.put("vid", upload_qiniu_video_url);//视频地址
             map.put("pre_url", upload_qiniu_video_cover_url);//缩略图地址
         }
-        getUploadSuccessPics();
+        //getUploadSuccessPics();
         if (current_type == TYPE_PIC && upload_sucess_pics.size() > 0) {
             map.put("pre_url", upload_sucess_pics.get(0));//缩略图地址
             for (int i = 0; i < upload_sucess_pics.size() ; i++) {
-                map.put("cid" + i +1, upload_sucess_pics.get(i));
+                map.put("cid" + (i +1), upload_sucess_pics.get(i));
             }
         }
 
@@ -193,15 +193,6 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     }
 
-    //获取所以上传成功的图片链接
-    private void getUploadSuccessPics() {
-        for (int i = 0; i < datas.size(); i++) {
-            String weburl = datas.get(i).getWeburl();
-            if (!StrUtils.isEmpty(weburl)) {
-                upload_sucess_pics.add(weburl);
-            }
-        }
-    }
 
 
     private void IGrid() {
@@ -300,7 +291,6 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 ControlClick(R.id.tv_add_new_show_vedio);
                 gvAddNewShowPics.setVisibility(View.GONE);
                 if (!StrUtils.isEmpty(mCordVidoPath)) {
-                    SetRightText("重录");
                     rlAddNewShowVedioLayout.setVisibility(View.VISIBLE);
                 }
                 break;
@@ -335,14 +325,10 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     * 发布Show
     * */
     private void createShow() {
-
         if (CheckNet(BaseContext))
             return;
         String content = etAddNewShowTxtContent.getText().toString().trim();
-        if (StrUtils.isEmpty(content)) {
-            PromptManager.ShowCustomToast(BaseContext, "请输入您要分享的内容");
-            return;
-        }
+
         if(current_type == TYPE_PIC && imgs.size() == 0){
             PromptManager.ShowCustomToast(BaseContext, "请添加您要分享的图片");
             return;
@@ -350,6 +336,11 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
         if(current_type ==TYPE_VEDIO && StrUtils.isEmpty(mCordVidoPath)){
             PromptManager.ShowCustomToast(BaseContext, "请添加您要分享的视频");
+            return;
+        }
+
+        if (StrUtils.isEmpty(content)) {
+            PromptManager.ShowCustomToast(BaseContext, "请输入您要分享的内容");
             return;
         }
 
@@ -362,7 +353,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         if (current_type == TYPE_PIC) {
             uploadPics(content);
         } else {
-            uploadVideo(content);
+            uploadVideoCover(content);
         }
 
     }
@@ -404,6 +395,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             case 290://视频
                 mCordVidoPath = event.getReCordVidoPath();
                 if (!StrUtils.isEmpty(mCordVidoPath)) {
+                    SetRightText("重录");
                     rlAddNewShowVedioLayout.setVisibility(View.VISIBLE);
                     ivAddNewShowVedioBg.setImageBitmap(createVideoThumbnail(mCordVidoPath));
                 }
@@ -472,19 +464,26 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         exitEdit();
     }
 
+
     private void exitEdit() {
-        ShowCustomDialog("退出此次编辑？", "取消", "退出", new IDialogResult() {
-            @Override
-            public void LeftResult() {
+        String content = etAddNewShowTxtContent.getText().toString().trim();
+        if (StrUtils.isEmpty(content) && imgs.size() == 0&&StrUtils.isEmpty(mCordVidoPath)&&mGoodInfo == null) {
+            AAddNewShow.this.finish();
+        }else{
+            ShowCustomDialog("退出此次编辑？", "取消", "退出", new IDialogResult() {
+                @Override
+                public void LeftResult() {
 
-            }
+                }
 
-            @Override
-            public void RightResult() {
-                finish();
-                overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
-            }
-        });
+                @Override
+                public void RightResult() {
+                    finish();
+                    overridePendingTransition(R.anim.push_rigth_in, R.anim.push_rigth_out);
+                }
+            });
+        }
+
     }
 
     @Override
@@ -613,24 +612,22 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
                 @Override
                 public void Onerror() {
-                    datas.get(Postion).setWeburl("");
                     DescPicCountNumber = DescPicCountNumber + 1;
 
                     if (DescPicNeedUpNumber == DescPicCountNumber) {
                         // 上传描述完毕
                         submitShow(content);
-                        LogUtils.i("***********************上传完毕***************************");
                     }
                 }
 
                 @Override
                 public void Complete(String HostUrl, String Url) {
-                    datas.get(Postion).setWeburl(HostUrl);
+                    //datas.get(Postion).setWeburl(HostUrl);
+                    upload_sucess_pics.add(HostUrl);
                     DescPicCountNumber = DescPicCountNumber + 1;
                     if (DescPicCountNumber == DescPicNeedUpNumber) {
                         // 上传描述完毕
                         submitShow(content);
-                        LogUtils.i("====================上传完毕==================="+HostUrl);
                     }
                 }
             });
@@ -640,7 +637,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     }
 
-    private void uploadVideo(final String content) {
+    private void uploadVideoCover(final String content) {
         if (!NetUtil.isConnected(BaseContext)) {//检查网络
             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
             return;
@@ -657,16 +654,23 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             @Override
             public void Onerror() {
                 upload_qiniu_video_cover_url = "";
+                uploadVideo(content);
             }
 
             @Override
             public void Complete(String HostUrl, String Url) {
                 upload_qiniu_video_cover_url = HostUrl;
+                uploadVideo(content);
             }
         });
         dLoadUtils.UpLoad();
 
 
+
+
+    }
+
+    private void uploadVideo(final String content){
         NUPLoadUtil dLoadUtils1 = new NUPLoadUtil(BaseContext, new File(
                 mCordVidoPath), StrUtils.UploadVido("vid"));
         dLoadUtils1.SetUpResult1(new NUPLoadUtil.UpResult1()
@@ -691,7 +695,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 submitShow(content);
             }
         });
-        dLoadUtils.UpLoad();
+        dLoadUtils1.UpLoad();
 
     }
 

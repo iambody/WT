@@ -62,6 +62,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
     private final static String TYPE_BUY_OWN = "5";
     private final static String TYPE_BUY_FRIEND = "6";
     private final static String TYPE_CONSUME = "7";
+    private final static String TYPE_SHARE = "8";
     private String Current_Type = TYPE_ALL;
     private PopupWindow popupWindow;
     private IntegralOutsideAdapter mAdapter;
@@ -165,6 +166,11 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
                     if (TYPE_CONSUME.equals(Current_Type)) {
                         ShowErrorCanLoad(getResources().getString(R.string.null_integral_consume));
+
+                    }
+
+                    if (TYPE_SHARE.equals(Current_Type)) {
+                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_share));
 
                     }
                     return;
@@ -325,6 +331,10 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             case R.id.tv_consume://每日消耗
                 IntegralSwitch(TYPE_CONSUME,getResources().getString(R.string.integral_title_concume));
                 break;
+
+            case R.id.tv_share://分享
+                IntegralSwitch(TYPE_SHARE,getResources().getString(R.string.integral_title_share));
+                break;
             case R.id.integral_detail_nodata_lay:
                 if (CheckNet(BaseContext)) return;
 
@@ -396,6 +406,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
         TextView tv_own_buy = (TextView) view.findViewById(R.id.tv_own_buy);
         TextView tv_friend_buy = (TextView) view.findViewById(R.id.tv_friend_buy);
         TextView tv_consume = (TextView) view.findViewById(R.id.tv_consume);
+        TextView tv_share = (TextView) view.findViewById(R.id.tv_share);
 
 
         tv_all_integral.setOnClickListener(this);
@@ -406,6 +417,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
         tv_own_buy.setOnClickListener(this);
         tv_friend_buy.setOnClickListener(this);
         tv_consume.setOnClickListener(this);
+        tv_share.setOnClickListener(this);
 
 
         popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT,
