@@ -159,6 +159,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     private void submitShow(String intro) {
         SetTitleHttpDataLisenter(this);
+        PromptManager.closeTextLoading3();
         PromptManager.showLoading(BaseContext);
         HashMap<String, String> map = new HashMap<>();
         if (mGoodInfo != null && sbAddNewShowSelectGood.isChecked()) {
@@ -176,8 +177,8 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         getUploadSuccessPics();
         if (current_type == TYPE_PIC && upload_sucess_pics.size() > 0) {
             map.put("pre_url", upload_sucess_pics.get(0));//缩略图地址
-            for (int i = 0; i < upload_sucess_pics.size() - 1; i++) {
-                map.put("cid" + i + 1, upload_sucess_pics.get(i));
+            for (int i = 0; i < upload_sucess_pics.size() ; i++) {
+                map.put("cid" + i +1, upload_sucess_pics.get(i));
             }
         }
 

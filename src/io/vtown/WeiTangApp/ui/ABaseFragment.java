@@ -73,7 +73,6 @@ public abstract class ABaseFragment extends FragmentActivity {
 	/**
 	 * 网络断开时候需要的DO()
 	 */
-
 	protected abstract void NetDisConnect();
 
 	/**
