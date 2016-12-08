@@ -177,8 +177,8 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         //getUploadSuccessPics();
         if (current_type == TYPE_PIC && upload_sucess_pics.size() > 0) {
             map.put("pre_url", upload_sucess_pics.get(0));//缩略图地址
-            for (int i = 0; i < upload_sucess_pics.size() ; i++) {
-                map.put("cid" + (i +1), upload_sucess_pics.get(i));
+            for (int i = 0; i < upload_sucess_pics.size(); i++) {
+                map.put("cid" + (i + 1), upload_sucess_pics.get(i));
             }
         }
 
@@ -192,7 +192,6 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         FBGetHttpData(map, Constants.Create_Show, Request.Method.POST, 0, LOAD_INITIALIZE);
 
     }
-
 
 
     private void IGrid() {
@@ -215,12 +214,16 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
+        //調用接口
+        Show_Award();
+        //發通知
+        EventBus.getDefault().post(new BMessage(BMessage.Tage_Show_Hind_Load));
         AAddNewShow.this.finish();
     }
 
     @Override
     protected void DataError(String error, int LoadType) {
-        PromptManager.ShowCustomToast(BaseContext,error);
+        PromptManager.ShowCustomToast(BaseContext, error);
     }
 
     @Override
@@ -329,12 +332,12 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             return;
         String content = etAddNewShowTxtContent.getText().toString().trim();
 
-        if(current_type == TYPE_PIC && imgs.size() == 0){
+        if (current_type == TYPE_PIC && imgs.size() == 0) {
             PromptManager.ShowCustomToast(BaseContext, "请添加您要分享的图片");
             return;
         }
 
-        if(current_type ==TYPE_VEDIO && StrUtils.isEmpty(mCordVidoPath)){
+        if (current_type == TYPE_VEDIO && StrUtils.isEmpty(mCordVidoPath)) {
             PromptManager.ShowCustomToast(BaseContext, "请添加您要分享的视频");
             return;
         }
@@ -467,9 +470,9 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     private void exitEdit() {
         String content = etAddNewShowTxtContent.getText().toString().trim();
-        if (StrUtils.isEmpty(content) && imgs.size() == 0&&StrUtils.isEmpty(mCordVidoPath)&&mGoodInfo == null) {
+        if (StrUtils.isEmpty(content) && imgs.size() == 0 && StrUtils.isEmpty(mCordVidoPath) && mGoodInfo == null) {
             AAddNewShow.this.finish();
-        }else{
+        } else {
             ShowCustomDialog("退出此次编辑？", "取消", "退出", new IDialogResult() {
                 @Override
                 public void LeftResult() {
@@ -666,11 +669,9 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         dLoadUtils.UpLoad();
 
 
-
-
     }
 
-    private void uploadVideo(final String content){
+    private void uploadVideo(final String content) {
         NUPLoadUtil dLoadUtils1 = new NUPLoadUtil(BaseContext, new File(
                 mCordVidoPath), StrUtils.UploadVido("vid"));
         dLoadUtils1.SetUpResult1(new NUPLoadUtil.UpResult1()

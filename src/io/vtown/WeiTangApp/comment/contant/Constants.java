@@ -464,6 +464,12 @@ public class Constants {
             + "/v1/order/member/confirm";
 
     /**
+     * 我的-->我的订单-->订单详情--删除订单
+     */
+    public static String Center_My_Order_Delete_Order = Host
+            + "/v1/order/order/remove-order";
+
+    /**
      * 我的-->我的订单-->订单详情--延期收货
      */
     public static String Center_My_Order_Delayreceive = Host

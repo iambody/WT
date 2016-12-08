@@ -65,7 +65,7 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * @version 创建时间：2016-8-18 下午1:37:57
  */
 public class ACenterMyOrder extends ATitleBase implements
-        RefreshLayout.OnLoadListener {
+        RefreshLayout.OnLoadListener, AdapterView.OnItemLongClickListener {
     /**
      * 标记 分别是 全部，代付款，已付款，待收货，退货,关闭 订单状态 10:代付款 20:已付款 待发货 30:已发货 待收货 40:退款中
      * 50:仲裁处理中 100:已完成 110:已取消 60拒绝退款，70同意退款
@@ -205,6 +205,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
 
         fragment_center_order_ls.setAdapter(centerOrderOutsideAdapter);
+        fragment_center_order_ls.setOnItemLongClickListener(this);
 
         // 设置滚动时不从网上加载图片
         fragment_center_order_ls
@@ -386,6 +387,17 @@ public class ACenterMyOrder extends ATitleBase implements
                 2, 1116);
     }
 
+    /*
+    * 删除订单
+    * */
+    private void deleteOrder(String order_sn, String member_id) {
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("order_sn", order_sn);
+        map.put("member_id", member_id);
+        FBGetHttpData(map, Constants.Center_My_Order_Delete_Order, Method.POST,
+                7, 1116);
+    }
+
     /**
      * 取消订单
      */
@@ -464,6 +476,30 @@ public class ACenterMyOrder extends ATitleBase implements
     public void OnFrash() {
         last_id = "";
         IData(LOAD_REFRESHING, Ket_Tage + "");
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        BLCenterOder itemdata = (BLCenterOder) centerOrderOutsideAdapter.getItem(position);
+        int order_status = Integer.parseInt(itemdata.getOrder_status());
+        final String order_sn = itemdata.getOrder_sn();
+        final String member_id = itemdata.getMember_id();
+        if(order_status == PAgreeTuiKuan || order_status == PClose || order_status == PCancel){
+            ShowCustomDialog("确认要删除此订单？\n（订单删除后将无法恢复）", "取消", "确定", new IDialogResult() {
+                @Override
+                public void LeftResult() {
+
+                }
+
+                @Override
+                public void RightResult() {
+                    deleteOrder(order_sn,member_id);
+                }
+            });
+
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -968,7 +1004,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
                 convertView = inflater.inflate(ResourceId, null);
                 myItem = new CenterOrderOutsideItem();
-                myItem.ll_center_order_shopname = (LinearLayout)convertView.findViewById(R.id.ll_center_order_shopname);
+                myItem.ll_center_order_shopname = (LinearLayout) convertView.findViewById(R.id.ll_center_order_shopname);
                 myItem.fragment_center_order_shopname = (TextView) convertView
                         .findViewById(R.id.fragment_center_order_shopname);
                 myItem.fragment_center_order_cancel_order = (TextView) convertView
@@ -1005,7 +1041,7 @@ public class ACenterMyOrder extends ATitleBase implements
                         .findViewById(R.id.fragment_center_order_is_over);
                 myItem.fragment_center_order_apply_refunding = (TextView) convertView
                         .findViewById(R.id.fragment_center_order_apply_refunding);
-                myItem.ll_center_my_order_seller_order_sn = (LinearLayout)convertView.findViewById(R.id.ll_center_my_order_seller_order_sn) ;
+                myItem.ll_center_my_order_seller_order_sn = (LinearLayout) convertView.findViewById(R.id.ll_center_my_order_seller_order_sn);
                 myItem.tv_center_my_order_seller_order_sn = (TextView) convertView
                         .findViewById(R.id.tv_center_my_order_seller_order_sn);
                 convertView.setTag(myItem);
@@ -2059,6 +2095,12 @@ public class ACenterMyOrder extends ATitleBase implements
                 last_id = "";
                 IData(LOAD_INITIALIZE, Ket_Tage + "");
                 // centerOrderOutsideAdapter.RefreshPosition(Ket_Tage, 0, SelectPosition);
+                break;
+
+            case 7://删除订单
+                PromptManager.ShowMyToast(BaseContext, "订单删除成功");
+                last_id = "";
+                IData(LOAD_INITIALIZE, Ket_Tage + "");
                 break;
 
             default:
