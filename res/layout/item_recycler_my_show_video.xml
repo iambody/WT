@@ -6,7 +6,7 @@
               android:orientation="vertical"
               android:paddingBottom="5dp"
               android:paddingLeft="10dp"
-              android:paddingRight="10dp"
+
               android:paddingTop="5dp"
     >
 
@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/new_show_item_headwidth"
+        android:paddingRight="@dimen/ui_10_dip"
         android:visibility="visible">
 
         <ImageView

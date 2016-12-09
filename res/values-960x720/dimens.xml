@@ -7,6 +7,7 @@
   <dimen name="login_margentop_log">50dp</dimen>
 
   <dimen name="shop_user_hright">50dp</dimen>
+  <dimen name="shop_user_hright6">70dp</dimen>
   <dimen name="shop_user_hright1">55dp</dimen>
   <dimen name="show_share_grad_delet_panding">5dp</dimen>
   <dimen name="newgoodedit_vido_height">120dp</dimen>

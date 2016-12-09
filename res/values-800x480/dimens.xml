@@ -6,6 +6,7 @@
 
 
     <dimen name="shop_user_hright">45dp</dimen>
+
     <dimen name="shop_user_hright1">50dp</dimen>
     <dimen name="show_share_grad_delet_panding">5dp</dimen>
     <dimen name="newgoodedit_vido_height">100dp</dimen>

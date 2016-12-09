@@ -75,9 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-
                 android:src="@drawable/new1"
-                android:visibility="visible"/>
+                android:visibility="invisible"/>
         </LinearLayout>
         <!-- title*** -->
 

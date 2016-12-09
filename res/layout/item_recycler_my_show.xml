@@ -6,8 +6,7 @@
               android:orientation="vertical"
               android:paddingBottom="5dp"
               android:paddingTop="5dp"
-              android:paddingLeft="10dp"
-              android:paddingRight="10dp" >
+              android:paddingLeft="10dp"  >
 
     <include
         android:id="@+id/my_show_grid_head"
@@ -19,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/new_show_item_headwidth"
-
+android:paddingRight="@dimen/ui_10_dip"
         android:textColor="@color/grey"/>
 
 
@@ -31,7 +30,8 @@
         android:horizontalSpacing="5dp"
         android:numColumns="3"
         android:verticalSpacing="5dp"
-        android:visibility="visible"/>
+        android:visibility="visible"
+        android:paddingRight="@dimen/ui_10_dip"/>
 
     <include
         android:id="@+id/comment_show_operation_grid"
