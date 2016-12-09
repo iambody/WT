@@ -263,7 +263,7 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
 
             BLSearchShopAndGood blSearchShopAndGood = datas.get(position);
 
-            ImageLoaderUtil.Load2(blSearchShopAndGood.getAvatar(), goods.ivSearchResultShowAllGoodIcon, R.drawable.error_iv2);
+            ImageLoaderUtil.Load2(blSearchShopAndGood.getCover(), goods.ivSearchResultShowAllGoodIcon, R.drawable.error_iv2);
             StrUtils.SetTxt(goods.tvSearchResultShowAllGoodName, blSearchShopAndGood.getTitle());
             StrUtils.SetMoneyFormat(BaseContext, goods.tvSearchResultShowAllGoodPrice, blSearchShopAndGood.getSell_price(), 15);
             if ("0".equals(blSearchShopAndGood.getOrig_price()) || StrUtils.isEmpty(blSearchShopAndGood.getOrig_price())) {

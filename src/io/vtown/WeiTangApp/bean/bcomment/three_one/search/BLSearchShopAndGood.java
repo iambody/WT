@@ -197,7 +197,7 @@ public class BLSearchShopAndGood extends BBase {
         this.id=id;
         this.title=title;
         this.seller_name = seller_name;
-        this.avatar = avatar;
+        this.cover = avatar;
         this.sales = sales;
         this.score = score;
         this.sell_price = sell_price;

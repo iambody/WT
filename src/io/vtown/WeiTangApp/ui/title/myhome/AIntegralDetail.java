@@ -118,6 +118,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
         map.put("type", type);
         map.put("page_num", Constants.PageSize + "");
         map.put("last_id", lastid);
+        map.put("api_version", "3.1.3");
         FBGetHttpData(map, Constants.Integral_Detail, Request.Method.GET, 0, loadtype);
     }
 
@@ -613,6 +614,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                     holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.lvdian));
                     holder.ll_integral_point_and_status.setBackgroundResource(R.drawable.shape_intergral_bg_gray);
                     StrUtils.SetTxt(holder.tv_integral_point, point+"");
+                    holder.tv_integral_point.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     break;
             }
             StrUtils.SetTxt(holder.tv_integral_status, status_str);

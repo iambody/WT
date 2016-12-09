@@ -97,6 +97,8 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     LinearLayout llAddNewShowPicVedioLayout;
     @BindView(R.id.ll_add_new_show_good)
     LinearLayout llAddNewShowGood;
+    @BindView(R.id.ll_add_new_show_add_good_layout)
+    LinearLayout llAddNewShowAddGoodLayout;
     @BindView(R.id.fl_add_new_show_good)
     FrameLayout flAddNewShowGood;
     @BindView(R.id.fl_add_new_show_pic_vedio_layout)
@@ -140,7 +142,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     private void IView() {
         if (Create_Type != CREATE_TYPE_SHOW) {
-            sbAddNewShowSelectGood.setVisibility(View.GONE);
+            llAddNewShowAddGoodLayout.setVisibility(View.GONE);
             ivAddNewShowGoodInfoArraw.setVisibility(View.GONE);
             llAddNewShowGood.setEnabled(false);
         }
@@ -160,7 +162,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     private void submitShow(String intro) {
         SetTitleHttpDataLisenter(this);
         PromptManager.closeTextLoading3();
-        PromptManager.showLoading(BaseContext);
+        //PromptManager.showLoading(BaseContext);
         HashMap<String, String> map = new HashMap<>();
         if (mGoodInfo != null && sbAddNewShowSelectGood.isChecked()) {
             map.put("goods_id", mGoodInfo.getId());//id就是good_id
@@ -214,6 +216,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
+        PromptManager.closeTextLoading3();
         //調用接口
         Show_Award();
         //發通知
@@ -224,6 +227,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     @Override
     protected void DataError(String error, int LoadType) {
         PromptManager.ShowCustomToast(BaseContext, error);
+        PromptManager.closeTextLoading3();
     }
 
     @Override
@@ -424,7 +428,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         if (mGoodInfo != null) {
             rlAddNewShowAddGood.setVisibility(View.GONE);
             llAddNewShowGood.setVisibility(View.VISIBLE);
-            ImageLoaderUtil.Load2(mGoodInfo.getAvatar(), ivAddNewShowGoodIcon, R.drawable.error_iv2);
+            ImageLoaderUtil.Load2(mGoodInfo.getCover(), ivAddNewShowGoodIcon, R.drawable.error_iv2);
             StrUtils.SetTxt(ivAddNewShowGoodName, mGoodInfo.getTitle());
             StrUtils.SetMoneyFormat(BaseContext, tvAddNewShowGoodPrice, mGoodInfo.getSell_price(), 15);
             if ("0".equals(mGoodInfo.getOrig_price()) || StrUtils.isEmpty(mGoodInfo.getOrig_price())) {

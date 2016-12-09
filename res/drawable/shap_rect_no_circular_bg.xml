@@ -6,7 +6,7 @@
     <solid android:color="@color/white" />
     
      <stroke
-        android:width="@dimen/line_size1"
-        android:color="@color/app_gray" />
+        android:width="@dimen/line_size3"
+        android:color="@color/item_bg" />
 
 </shape>

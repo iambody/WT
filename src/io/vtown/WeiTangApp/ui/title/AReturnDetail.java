@@ -458,20 +458,23 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                 case 3:
                     status_str = "交易失败";
                     return_point = "%1$s元";
-                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_intergral_bg_gray);
+                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_integral_bg_green);
                     holder.item_return_detail_inside_img.setImageDrawable(getResources().getDrawable(R.drawable.lvdian));
+                    holder.tvReturnPoint.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     break;
                 case 4:
                     status_str = "交易取消";
                     return_point = "%1$s元";
-                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_intergral_bg_gray);
+                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_integral_bg_green);
                     holder.item_return_detail_inside_img.setImageDrawable(getResources().getDrawable(R.drawable.lvdian));
+                    holder.tvReturnPoint.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     break;
                 case 5:
                     status_str = "已退款";
                     return_point = "%1$s元";
-                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_intergral_bg_gray);;
+                    holder.ll_return_point.setBackgroundResource(R.drawable.shape_integral_bg_green);;
                     holder.item_return_detail_inside_img.setImageDrawable(getResources().getDrawable(R.drawable.lvdian));
+                    holder.tvReturnPoint.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     break;
             }
             StrUtils.SetTxt(holder.tvReturnPoint, String.format(return_point, StrUtils.SetTextForMony(data.getPrice())));

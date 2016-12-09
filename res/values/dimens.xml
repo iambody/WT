@@ -651,6 +651,7 @@
     <dimen name="good_detail_icon_margins">5dp</dimen>
     <dimen name="good_detail_line_height">25dp</dimen>
     <dimen name="intergral_shape_radiu">4dp</dimen>
+    <dimen name="shape_left_right_radius">4dp</dimen>
 
 
 </resources>

@@ -69,7 +69,6 @@
                     android:id="@+id/rl_add_new_show_vedio_layout"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/vidoshare_height"
-                    android:background="@color/item_bg"
                     android:visibility="gone">
 
                     <ImageView
@@ -122,6 +121,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_add_new_show_add_good_layout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/center_set_personal_data_clear_cache_height"
                 android:layout_marginTop="10dp"
