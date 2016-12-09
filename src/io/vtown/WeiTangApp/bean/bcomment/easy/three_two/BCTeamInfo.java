@@ -17,7 +17,15 @@ public class BCTeamInfo extends BBase {
     private String activate_num;//"activate_num":40
     private String month_sub_activate_num;//"month_sub_activate_num": 4,
     private String month_activate_num;//   "month_activate_num": 4,
+    private String sub_activate_num;//昨日直属活跃人数
 
+    public String getSub_activate_num() {
+        return sub_activate_num;
+    }
+
+    public void setSub_activate_num(String sub_activate_num) {
+        this.sub_activate_num = sub_activate_num;
+    }
 
     public String getActivate_num() {
         return activate_num;
