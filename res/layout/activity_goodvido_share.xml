@@ -17,6 +17,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
+
             <RelativeLayout
                 android:id="@+id/good_vido_lay"
                 android:layout_width="match_parent"
@@ -38,7 +40,6 @@
                     android:focusable="true"
                     android:src="@drawable/video_player"/>
             </RelativeLayout>
-
             <EditText
                 android:id="@+id/good_vido_share_ed"
                 android:layout_width="fill_parent"
@@ -46,7 +47,9 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/shap_corner"
                 android:gravity="left|top"
-                android:hint="@string/szhuan_saying">
+                android:hint="@string/szhuan_saying"
+                android:textColor="@drawable/gray"
+                android:textSize="@dimen/ui_14_dip">
             </EditText>
 
             <TextView

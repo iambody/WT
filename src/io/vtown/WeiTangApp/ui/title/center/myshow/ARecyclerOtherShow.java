@@ -34,7 +34,10 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLBShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -51,14 +54,18 @@ import io.vtown.WeiTangApp.comment.view.custom.EndlessRecyclerOnScrollListener;
 import io.vtown.WeiTangApp.comment.view.custom.HeaderViewRecyclerAdapter;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.main.FMainNewShow;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
+import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
@@ -86,7 +93,7 @@ public class ARecyclerOtherShow extends ATitleBase {
     protected void InItBaseView() {
         setContentView(R.layout.acvitty_recycler_other_show);
         this.mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.acvitty_recycler_other_show, null);
-        MyUser=Spuit.User_Get(this);
+        MyUser = Spuit.User_Get(this);
         SetTitleHttpDataLisenter(this);
         IBundlle();
         IHeaderView();
@@ -102,7 +109,7 @@ public class ARecyclerOtherShow extends ATitleBase {
     }
 
     private void IHeaderView() {
-        comment_othershow_no__lay=findViewById(R.id.comment_othershow_no__lay);
+        comment_othershow_no__lay = findViewById(R.id.comment_othershow_no__lay);
         HeadView = LayoutInflater.from(BaseContext).inflate(R.layout.view_othershow, null);
         center_show_head = (CircleImageView) HeadView.findViewById(R.id.center_show_head);
         center_show_bg = (ImageView) HeadView.findViewById(R.id.comment_othershow_bg);
@@ -121,7 +128,7 @@ public class ARecyclerOtherShow extends ATitleBase {
         recyclerview_other_show = (RecyclerView) findViewById(R.id.recyclerview_other_show);
         recyclerview_other_show.setLayoutManager(mLinearLayoutManager);
         recyclerview_other_show.addItemDecoration(new RecyclerCommentItemDecoration(BaseContext, RecyclerCommentItemDecoration.VERTICAL_LIST, R.drawable.shape_show_divider_line));
-        mShowAdapter = new OtherShowAdapter(BaseContext );
+        mShowAdapter = new OtherShowAdapter(BaseContext);
         mHeadAdapter = new HeaderViewRecyclerAdapter(mShowAdapter);
         mHeadAdapter.addHeaderView(HeadView);
         recyclerview_other_show.setAdapter(mHeadAdapter);//myShowAdapter
@@ -264,16 +271,16 @@ public class ARecyclerOtherShow extends ATitleBase {
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.center_show_head:
+                if(!baseBcBComment.getIs_brand().equals("1"))return;
                 PromptManager.SkipActivity(
                         BaseActivity,
-                        new Intent(BaseActivity, baseBcBComment.getIs_brand()
-                                .equals("1") ? ABrandDetail.class
-                                : AShopDetail.class).putExtra(
+                        new Intent(BaseActivity,  ABrandDetail.class ).putExtra(
                                 ACommentList.Tage_ResultKey,
                                 ACommentList.Tage_HomePopBrand).putExtra(
                                 BaseKey_Bean,
                                 new BComment(baseBcBComment.getId(), baseBcBComment
                                         .getSeller_name())));
+                BaseActivity.finish();
 //                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 //                        AShopDetail.class).putExtra(BaseKey_Bean, baseBcBComment));
 
@@ -291,7 +298,6 @@ public class ARecyclerOtherShow extends ATitleBase {
     protected void SaveBundle(Bundle bundle) {
 
     }
-
 
 
     //外层的ap***********************************************************************************************************
@@ -320,16 +326,16 @@ public class ARecyclerOtherShow extends ATitleBase {
             RecyclerView.ViewHolder holder = null;
             switch (viewType) {
                 case Show_Grid:
-                    holder = new  MyShowItem(inflater.inflate(R.layout.item_recycler_my_show, parent, false));
+                    holder = new MyShowItem(inflater.inflate(R.layout.item_recycler_my_show, parent, false));
                     break;
                 case Show_Video:
-                    holder = new  MyShowVideoItem(inflater.inflate(R.layout.item_recycler_my_show_video, parent, false));
+                    holder = new MyShowVideoItem(inflater.inflate(R.layout.item_recycler_my_show_video, parent, false));
                     break;
                 case Show_Pic:
-                    holder = new  MyShowSinglePicItem(inflater.inflate(R.layout.item_recycle_my_show_single_pic, parent, false));
+                    holder = new MyShowSinglePicItem(inflater.inflate(R.layout.item_recycle_my_show_single_pic, parent, false));
                     break;
                 case Show_Null:
-                    holder = new  NullItem(inflater.inflate(R.layout.item_show_null, parent, false));
+                    holder = new NullItem(inflater.inflate(R.layout.item_show_null, parent, false));
                     break;
             }
             return holder;
@@ -372,23 +378,23 @@ public class ARecyclerOtherShow extends ATitleBase {
             switch (getItemViewType(position)) {
                 case Show_Grid://多张图片******************************
                     final List<String> Urls = bShow.getImgarr();
-                   MyShowItem grid_item = ( MyShowItem) holder;
+                    MyShowItem grid_item = (MyShowItem) holder;
                     ImageLoaderUtil.Load2(bShow.getSellerinfo().getAvatar(), grid_item.my_show_item_icon_grid, R.drawable.error_iv2);
                     StrUtils.SetTxt(grid_item.my_show_item_name_grid, bShow.getSellerinfo().getSeller_name());
                     StrUtils.SetTxt(grid_item.my_show_item_time_grid, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
 
-                    grid_item.comment_show_share_iv_grid.setOnClickListener(new  ShareShowClick(datas.get(position)));
+                    grid_item.comment_show_share_iv_grid.setOnClickListener(new ShareShowClick(datas.get(position)));
                     grid_item.comment_show_gooddetail_iv_grid.setVisibility(IsHaveGoodInf ? View.VISIBLE : View.GONE);
-                    grid_item.comment_show_gooddetail_iv_grid.setOnClickListener(new  LookDetailClick(datas.get(position)));
+                    grid_item.comment_show_gooddetail_iv_grid.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
-                    grid_item.my_show_item_icon_grid.setClickable(false);
-//                    grid_item.my_show_item_icon_grid.setOnClickListener(new  LookShowClick(datas.get(position)));
+                    grid_item.my_show_item_icon_grid.setClickable(true);
+                    grid_item.my_show_item_icon_grid.setOnClickListener(new  LookShowClick(datas.get(position)));
 
 //                    if (isMyShow(bShow.getSeller_id())) {
 //                        grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
 //                        grid_item.my_show_item_delete_grid.setOnClickListener(new  DeleteShowClick(datas.get(position)));
 //                    } else {
-                        grid_item.my_show_item_delete_grid.setVisibility(View.GONE);
+                    grid_item.my_show_item_delete_grid.setVisibility(View.GONE);
 //                    }
                     //StrUtils.SetTxt(grid_item.my_show_content_title, datas.get(position).getIntro());
                     SetIntro(grid_item.my_show_content_title, datas.get(position).getIntro());
@@ -422,23 +428,23 @@ public class ARecyclerOtherShow extends ATitleBase {
                     break;
 
                 case Show_Video://小视频******************************
-                     MyShowVideoItem video_item = ( MyShowVideoItem) holder;
+                    MyShowVideoItem video_item = (MyShowVideoItem) holder;
                     ImageLoaderUtil.Load2(bShow.getSellerinfo().getAvatar(), video_item.my_show_item_icon_video, R.drawable.error_iv2);
                     StrUtils.SetTxt(video_item.my_show_item_name_video, bShow.getSellerinfo().getSeller_name());
 
                     StrUtils.SetTxt(video_item.my_show_item_time_video, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
-                    video_item.comment_show_share_iv_video.setOnClickListener(new  ShareShowClick(datas.get(position)));
+                    video_item.comment_show_share_iv_video.setOnClickListener(new ShareShowClick(datas.get(position)));
                     video_item.comment_show_gooddetail_iv_video.setVisibility(IsHaveGoodInf ? View.VISIBLE : View.GONE);
-                    video_item.comment_show_gooddetail_iv_video.setOnClickListener(new  LookDetailClick(datas.get(position)));
+                    video_item.comment_show_gooddetail_iv_video.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
-                    video_item.my_show_item_icon_video.setClickable(false);
-//                    video_item.my_show_item_icon_video.setOnClickListener(new  LookShowClick(datas.get(position)));
+                    video_item.my_show_item_icon_video.setClickable(true);
+                    video_item.my_show_item_icon_video.setOnClickListener(new  LookShowClick(datas.get(position)));
 
 //                    if (isMyShow(bShow.getSeller_id())) {
 //                        video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
 //                        video_item.my_show_item_delete_video.setOnClickListener(new  DeleteShowClick(datas.get(position)));
 //                    } else {
-                        video_item.my_show_item_delete_video.setVisibility(View.GONE);
+                    video_item.my_show_item_delete_video.setVisibility(View.GONE);
 //                    }
 
                     // StrUtils.SetTxt(video_item.my_show_content_video_title, datas.get(position).getIntro());
@@ -468,23 +474,23 @@ public class ARecyclerOtherShow extends ATitleBase {
                     break;
 
                 case Show_Pic://一张图片******************************
-                     MyShowSinglePicItem pic_item = ( MyShowSinglePicItem) holder;
+                    MyShowSinglePicItem pic_item = (MyShowSinglePicItem) holder;
                     ImageLoaderUtil.Load2(bShow.getSellerinfo().getAvatar(), pic_item.my_show_item_icon_pic, R.drawable.error_iv2);
                     StrUtils.SetTxt(pic_item.my_show_item_name_pic, bShow.getSellerinfo().getSeller_name());
 
                     StrUtils.SetTxt(pic_item.my_show_item_time_pic, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
-                    pic_item.comment_show_share_iv_pic.setOnClickListener(new  ShareShowClick(datas.get(position)));
+                    pic_item.comment_show_share_iv_pic.setOnClickListener(new ShareShowClick(datas.get(position)));
                     pic_item.comment_show_gooddetail_iv_pic.setVisibility(IsHaveGoodInf ? View.VISIBLE : View.GONE);
-                    pic_item.comment_show_gooddetail_iv_pic.setOnClickListener(new  LookDetailClick(datas.get(position)));
+                    pic_item.comment_show_gooddetail_iv_pic.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
-                    pic_item.my_show_item_icon_pic.setClickable(false);
-//                    pic_item.my_show_item_icon_pic.setOnClickListener(new  LookShowClick(datas.get(position)));
+                    pic_item.my_show_item_icon_pic.setClickable(true);
+                    pic_item.my_show_item_icon_pic.setOnClickListener(new  LookShowClick(datas.get(position)));
 
 //                    if (isMyShow(bShow.getSeller_id())) {
 //                        pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
 //                        pic_item.my_show_item_delete_pic.setOnClickListener(new  DeleteShowClick(datas.get(position)));
 //                    } else {
-                        pic_item.my_show_item_delete_pic.setVisibility(View.GONE);
+                    pic_item.my_show_item_delete_pic.setVisibility(View.GONE);
 //                    }
                     SetIntro(pic_item.my_show_content_single_pic_title, datas.get(position).getIntro());
 
@@ -672,6 +678,7 @@ public class ARecyclerOtherShow extends ATitleBase {
             //品牌商点击进入品牌店铺&&普通app用户点击进入其他的Show页面（老的错误逻辑）
             @Override
             public void onClick(View v) {
+
                 if (IsBrand) {   // 品牌店铺发布的show===>跳转到品牌商详情页面
                     BComment mBComment = new BComment(MyShareShow.getSellerinfo().getId(), MyShareShow.getSellerinfo().getSeller_name());
                     PromptManager.SkipActivity(BaseActivity, new Intent(
@@ -679,20 +686,20 @@ public class ARecyclerOtherShow extends ATitleBase {
                             BaseKey_Bean, mBComment));
 
                 } else { //自营店铺(普通用户发布的show)==》跳转到其他show页面
-                    Intent intent = new Intent(BaseActivity,
-                            ARecyclerOtherShow.class);
-                    intent.putExtra(
-                            "abasebeankey",
-                            new BComment(
-                                    MyShareShow.getSeller_id(),
-                                    MyShareShow.getSellerinfo().getCover(),
-                                    MyShareShow.getSellerinfo()
-                                            .getAvatar(), MyShareShow
-                                    .getSellerinfo()
-                                    .getSeller_name(), MyShareShow
-                                    .getSellerinfo()
-                                    .getIs_brand()));
-                    PromptManager.SkipActivity(BaseActivity, intent);
+//                    Intent intent = new Intent(BaseActivity,
+//                            ARecyclerOtherShow.class);
+//                    intent.putExtra(
+//                            "abasebeankey",
+//                            new BComment(
+//                                    MyShareShow.getSeller_id(),
+//                                    MyShareShow.getSellerinfo().getCover(),
+//                                    MyShareShow.getSellerinfo()
+//                                            .getAvatar(), MyShareShow
+//                                    .getSellerinfo()
+//                                    .getSeller_name(), MyShareShow
+//                                    .getSellerinfo()
+//                                    .getIs_brand()));
+//                    PromptManager.SkipActivity(BaseActivity, intent);
                 }
             }
 
@@ -734,6 +741,59 @@ public class ARecyclerOtherShow extends ATitleBase {
 
             @Override
             public void onClick(View v) {
+                //权限
+
+                //判断是否符合分享条件*************
+
+
+                if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
+                    ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                            getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                            ANewBindCode.class));
+                                }
+                                @Override
+                                public void LeftResult() {
+                                }
+                            });
+                    return;
+                }
+                if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                    ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                            maxtive.getActivitytitle());
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                            mBCommentss));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, AWeb.class).putExtra(
+                                            AWeb.Key_Bean,
+                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                                }
+                            });
+
+                    return;
+                }
+
+
+                //判断是否符合分享条件*************
+
+                //权限
+
+
                 PShowShare myshare = null;//new PShowShare(BaseContext, BaseActivity, new BNew(), true, true);
 
                 if (IsHaveGoods_Share) { //带商品连接********************
@@ -952,7 +1012,7 @@ public class ARecyclerOtherShow extends ATitleBase {
 
             @Override
             public void onClick(View v) {
-                ShowCustomDialog(DeleteBShow.getId(), DeleteBShow.getSellerinfo().getId());
+                ShowDDDCustomDialog(DeleteBShow.getId(), DeleteBShow.getSellerinfo().getId());
             }
         }
 
@@ -964,7 +1024,7 @@ public class ARecyclerOtherShow extends ATitleBase {
          * @param
          * @param
          */
-        private void ShowCustomDialog(final String ShowId, final String seller_id) {
+        private void ShowDDDCustomDialog(final String ShowId, final String seller_id) {
             final CustomDialog dialog = new CustomDialog(mContext,
                     R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "取消", "删除");
             dialog.show();
@@ -1094,5 +1154,5 @@ public class ARecyclerOtherShow extends ATitleBase {
         return isImageFile;
     }
 
-    
+
 }

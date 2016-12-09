@@ -218,7 +218,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     protected void DataResult(int Code, String Msg, BComment Data) {
         PromptManager.closeTextLoading3();
         //調用接口
-        Show_Award();
+//        Show_Award();
         //發通知
         EventBus.getDefault().post(new BMessage(BMessage.Tage_Show_Hind_Load));
         AAddNewShow.this.finish();

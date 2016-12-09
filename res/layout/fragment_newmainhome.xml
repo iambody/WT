@@ -5,7 +5,7 @@
                 android:background="@color/app_bg"
                 android:orientation="vertical">
 
-   <!-- <android.support.v4.widget.SwipeRefreshLayout-->
+    <!-- <android.support.v4.widget.SwipeRefreshLayout-->
     <io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh
         android:id="@+id/fragment_newhome_srollviw"
         android:layout_width="match_parent"
@@ -47,16 +47,27 @@
                             android:layout_height="@dimen/fragment_newhome_up_wave_height"
                             android:layout_centerHorizontal="true"/>
 
-
-                        <io.vtown.WeiTangApp.comment.view.CircleImageView
-                            android:id="@+id/fragment_newhome_head_iv"
+                        <RelativeLayout
                             android:layout_width="@dimen/shop_user_hright"
-                            android:layout_height="@dimen/shop_user_hright"
-                            android:layout_centerInParent="true"
-                            android:clickable="true"
-                            android:focusable="true"
-                            />
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true">
 
+                            <io.vtown.WeiTangApp.comment.view.CircleImageView
+                                android:id="@+id/fragment_newhome_head_iv"
+                                android:layout_width="@dimen/shop_user_hright"
+                                android:layout_height="@dimen/shop_user_hright"
+                                android:layout_centerInParent="true"
+                                android:clickable="true"
+                                android:focusable="true"
+                                />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/f_home_maozi"/>
+                        </RelativeLayout>
 
                     </RelativeLayout>
 
@@ -82,10 +93,10 @@
                             android:layout_marginLeft="@dimen/line_size6"
                             android:layout_toRightOf="@id/fragment_newhome_username"
                             android:background="@drawable/shap_home_bind"
+                            android:clickable="true"
                             android:paddingLeft="@dimen/line_size6"
                             android:paddingRight="@dimen/line_size6"
                             android:textColor="@color/gray"
-                            android:clickable="true"
                             android:textSize="10dp"/>
                     </RelativeLayout>
                 </RelativeLayout>
@@ -136,16 +147,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
-                  <!--  <TextView
-                        android:id="@+id/fragment_newhome_banner_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:background="@color/transparent1"
-                        android:gravity="center"
-                        android:padding="@dimen/ui_10_dip"
-                        android:textColor="@color/TextColorWhite"
-                        android:textSize="@dimen/fragment_newhome_banner_title_size"/>-->
+                    <!--  <TextView
+                          android:id="@+id/fragment_newhome_banner_title"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_alignParentBottom="true"
+                          android:background="@color/transparent1"
+                          android:gravity="center"
+                          android:padding="@dimen/ui_10_dip"
+                          android:textColor="@color/TextColorWhite"
+                          android:textSize="@dimen/fragment_newhome_banner_title_size"/>-->
                 </RelativeLayout>
                 <!--我的banner*** -->
                 <!-- 下边布局 -->
@@ -240,7 +251,7 @@
             </LinearLayout>
         </io.vtown.WeiTangApp.comment.view.custom.HomeScrollView>
     </io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh>
-   <!-- </android.support.v4.widget.SwipeRefreshLayout>-->
+    <!-- </android.support.v4.widget.SwipeRefreshLayout>-->
     <!--title-->
     <include
         android:id="@+id/fragment_newhome_putitle_lay"

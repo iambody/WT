@@ -34,6 +34,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.adapter.MyIvdapter;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
@@ -44,6 +45,7 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
@@ -117,11 +119,21 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_main_new_show, null);
         ButterKnife.bind(this, BaseView);
+        EventBus.getDefault().register(this, "MainShowReciverMessage", BMessage.class);
         SetTitleHttpDataLisenter(this);
         MyUser = Spuit.User_Get(BaseContext);
         IBaseView();
         ICacheData();
         IData(LastId, INITIALIZE);
+    }
+
+    public void MainShowReciverMessage(BMessage MsMessage) {
+        switch (MsMessage.getMessageType()) {
+            case BMessage.Tage_Show_Hind_Load://偷偷加载数据
+                IData(LastId, LOADHind);
+                break;
+
+        }
     }
 
     @Override
@@ -337,6 +349,9 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_main_show_add://添加show
+                //权限判定！！！！！！！！！！！！！！
+                if (CheckLimite()) return;
+                //权限判定！！！！！！！！！！！！！！！！！！！
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AAddNewShow.class));
                 break;
             case R.id.maintab_new_show_uptxt:
@@ -445,7 +460,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                     grid_item.comment_show_gooddetail_iv_grid.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
                     grid_item.my_show_item_icon_grid.setOnClickListener(new LookShowClick(datas.get(position)));
-
+                   grid_item.my_show_item_is_top.setVisibility(bShow.getIs_top()==1?View.VISIBLE:View.GONE);
                     if (isMyShow(bShow.getSeller_id())) {
                         grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
                         grid_item.my_show_item_delete_grid.setOnClickListener(new DeleteShowClick(datas.get(position), position));
@@ -494,7 +509,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                     video_item.comment_show_gooddetail_iv_video.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
                     video_item.my_show_item_icon_video.setOnClickListener(new LookShowClick(datas.get(position)));
-
+                    video_item.my_show_item_is_top.setVisibility(bShow.getIs_top()==1?View.VISIBLE:View.GONE);
                     if (isMyShow(bShow.getSeller_id())) {
                         video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
                         video_item.my_show_item_delete_video.setOnClickListener(new DeleteShowClick(datas.get(position), position));
@@ -539,7 +554,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                     pic_item.comment_show_gooddetail_iv_pic.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
                     pic_item.my_show_item_icon_pic.setOnClickListener(new LookShowClick(datas.get(position)));
-
+                    pic_item.my_show_item_is_top.setVisibility(bShow.getIs_top()==1?View.VISIBLE:View.GONE);
                     if (isMyShow(bShow.getSeller_id())) {
                         pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
                         pic_item.my_show_item_delete_pic.setOnClickListener(new DeleteShowClick(datas.get(position), position));
@@ -610,6 +625,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
         //多张图片holder***************************************************
         class MyShowItem extends RecyclerView.ViewHolder {
+            private ImageView my_show_item_is_top;
             private CopyTextView my_show_content_title;
             private CompleteGridView item_recycler_my_show_gridview;
             private View my_show_grid_head;
@@ -625,7 +641,9 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
             public MyShowItem(View itemView) {
                 super(itemView);
+
                 my_show_grid_head = itemView.findViewById(R.id.my_show_grid_head);
+                my_show_item_is_top= (ImageView) my_show_grid_head.findViewById(R.id.my_show_item_is_top);
                 my_show_item_icon_grid = (CircleImageView) my_show_grid_head.findViewById(R.id.my_show_item_icon);
                 my_show_item_name_grid = (TextView) my_show_grid_head.findViewById(R.id.my_show_item_name);
                 my_show_item_time_grid = (TextView) my_show_grid_head.findViewById(R.id.my_show_item_time);
@@ -645,6 +663,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
         //一个小视频holder***************************************************
         class MyShowVideoItem extends RecyclerView.ViewHolder {
+            private ImageView my_show_item_is_top;
             private CopyTextView my_show_content_video_title;
             private ImageView item_recycler_my_show_vido_image;
             private ImageView item_recycler_my_show_vido_control_image;
@@ -660,7 +679,9 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
             public MyShowVideoItem(View itemView) {
                 super(itemView);
+
                 my_show_video_head = itemView.findViewById(R.id.my_show_video_head);
+                my_show_item_is_top= (ImageView) my_show_video_head.findViewById(R.id.my_show_item_is_top);
                 my_show_item_icon_video = (CircleImageView) my_show_video_head.findViewById(R.id.my_show_item_icon);
                 my_show_item_name_video = (TextView) my_show_video_head.findViewById(R.id.my_show_item_name);
                 my_show_item_time_video = (TextView) my_show_video_head.findViewById(R.id.my_show_item_time);
@@ -679,6 +700,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
         //一张图片holder***************************************************
         class MyShowSinglePicItem extends RecyclerView.ViewHolder {
+            private ImageView my_show_item_is_top;
             private CopyTextView my_show_content_single_pic_title;
             private ImageView item_recycler_my_show_single_pic;
             private View my_show_single_pic_head;
@@ -694,6 +716,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             public MyShowSinglePicItem(View itemView) {
                 super(itemView);
                 my_show_single_pic_head = itemView.findViewById(R.id.my_show_single_pic_head);
+                my_show_item_is_top = (ImageView) my_show_single_pic_head.findViewById(R.id.my_show_item_is_top);
                 my_show_item_icon_pic = (CircleImageView) my_show_single_pic_head.findViewById(R.id.my_show_item_icon);
                 my_show_item_name_pic = (TextView) my_show_single_pic_head.findViewById(R.id.my_show_item_name);
                 my_show_item_time_pic = (TextView) my_show_single_pic_head.findViewById(R.id.my_show_item_time);
@@ -737,10 +760,24 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             @Override
             public void onClick(View v) {
                 if (IsBrand) {   // 品牌店铺发布的show===>跳转到品牌商详情页面
-                    BComment mBComment = new BComment(MyShareShow.getSellerinfo().getId(), MyShareShow.getSellerinfo().getSeller_name());
-                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseActivity, ABrandDetail.class).putExtra(
-                            BaseKey_Bean, mBComment));
+//                    BComment mBComment = new BComment(MyShareShow.getSellerinfo().getId(), MyShareShow.getSellerinfo().getSeller_name());
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                            BaseActivity, ABrandDetail.class).putExtra(
+//                            BaseKey_Bean, mBComment));
+                    Intent intent = new Intent(BaseActivity,
+                            ARecyclerOtherShow.class);
+                    intent.putExtra(
+                            "abasebeankey",
+                            new BComment(
+                                    MyShareShow.getSeller_id(),
+                                    MyShareShow.getSellerinfo().getCover(),
+                                    MyShareShow.getSellerinfo()
+                                            .getAvatar(), MyShareShow
+                                    .getSellerinfo()
+                                    .getSeller_name(), MyShareShow
+                                    .getSellerinfo()
+                                    .getIs_brand()));
+                    PromptManager.SkipActivity(BaseActivity, intent);
 
                 } else { //自营店铺(普通用户发布的show)==》跳转到其他show页面
                     //如果是我的show
@@ -828,9 +865,9 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                         public void GetResultType(int ResultType) {
                             switch (ResultType) {
                                 case PShowShare.SHARE_TO_SHOW://Show分享
-                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
+//                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
                                     //   Show分享********************************************************************
-                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
+//                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
                                     if (!IsVido) {// 照片
 //                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
                                         BShowShare MyBShowShare = new BShowShare();
@@ -862,6 +899,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                                     //   Show分享********************************************************************
                                     break;
                                 case PShowShare.SHARE_GOODS_OK://三方分享成功
+                                    Show_Award();
                                     break;
                                 case PShowShare.SHARE_GOODS_ERROR://三方分享失败
                                     break;
@@ -901,7 +939,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                             switch (ResultType) {
                                 case PShowShare.SHARE_TO_SHOW://Show分享
                                     //   Show分享********************************************************************
-                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
+//                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
                                     if (!IsVido) {// 照片
 //                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
                                         BShowShare MyBShowShare = new BShowShare();
@@ -933,6 +971,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                                     //   Show分享********************************************************************
                                     break;
                                 case PShowShare.SHARE_GOODS_OK://三方分享成功
+                                    Show_Award();
                                     break;
                                 case PShowShare.SHARE_GOODS_ERROR://三方分享失败
                                     break;
@@ -1177,6 +1216,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     }
 
     private void sharemuil(String content, File... files) {
+        Show_Award();
         PromptManager.closeLoading();
         Intent intent = new Intent();
         ComponentName comp = new ComponentName("com.tencent.mm",
@@ -1230,24 +1270,24 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                 postion + 11);
     }
 
-//    /**
-//     * 发show的奖励 交互 （发完show 需要和后台确认便于后台增加show积分）
-//     */
-//    private void Show_Award() {
-//        HashMap<String, String> map = new HashMap<>();
-//        map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());
-//        NHttpBaseStr NHttpBase = new NHttpBaseStr(BaseContext);
-//        NHttpBase.setPostResult(new IHttpResult<String>() {
-//            @Override
-//            public void getResult(int Code, String Msg, String Data) {
-//
-//            }
-//
-//            @Override
-//            public void onError(String error, int LoadType) {
-//
-//            }
-//        });
-//        NHttpBase.getData(Constants.UpShow_AWard, map, Request.Method.POST);
-//    }
+    /**
+     * 发show的奖励 交互 （发完show 需要和后台确认便于后台增加show积分）
+     */
+    private void Show_Award() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());
+        NHttpBaseStr NHttpBase = new NHttpBaseStr(BaseContext);
+        NHttpBase.setPostResult(new IHttpResult<String>() {
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
+
+            }
+
+            @Override
+            public void onError(String error, int LoadType) {
+
+            }
+        });
+        NHttpBase.getData(Constants.UpShow_AWard, map, Request.Method.POST);
+    }
 }

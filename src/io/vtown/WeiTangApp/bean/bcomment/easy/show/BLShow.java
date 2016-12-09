@@ -27,7 +27,7 @@ public class BLShow extends BBase {
     private BLBShow sellerinfo = new BLBShow();
     private String sendnumber;// =0
     private String vid;// =http://fs.v-town.cc/video_6XVZv4GDDS86lJEK.mp4
-
+    private int is_top;
     public String getCreate_time() {
         return create_time;
     }
@@ -162,5 +162,14 @@ public class BLShow extends BBase {
 
     public void setVid(String vid) {
         this.vid = vid;
+    }
+
+
+    public int getIs_top() {
+        return is_top;
+    }
+
+    public void setIs_top(int is_top) {
+        this.is_top = is_top;
     }
 }
