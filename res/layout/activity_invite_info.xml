@@ -23,6 +23,22 @@
             layout="@layout/commentview_center" />
 
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/insulate_view_height"
+            android:background="@color/app_bg" />
+
+        <include
+            android:id="@+id/invite_info_team_activity_conter"
+            layout="@layout/commentview_center" />
+
+        <View style="@style/line_left2" />
+
+        <include
+            android:id="@+id/invite_info_my_activity_conter"
+            layout="@layout/commentview_center" />
+
+
 
         <View
             android:layout_width="match_parent"
@@ -58,20 +74,7 @@
             layout="@layout/commentview_center" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/insulate_view_height"
-        android:background="@color/app_bg" />
 
-    <include
-        android:id="@+id/invite_info_team_activity_conter"
-        layout="@layout/commentview_center" />
-
-    <View style="@style/line_left2" />
-
-    <include
-        android:id="@+id/invite_info_my_activity_conter"
-        layout="@layout/commentview_center" />
 
 
 </LinearLayout>

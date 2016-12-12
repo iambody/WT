@@ -604,10 +604,11 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
                 case 1:
                     status_str = "正在到账";
                     //holder.iv_dot_integral.setImageDrawable(getResources().getDrawable(R.drawable.huangdian));
+                    holder.tv_integral_point.getPaint().setFlags(0);
                     break;
                 case 2:
                     status_str = "到账成功";
-
+                    holder.tv_integral_point.getPaint().setFlags(0);
                     break;
                 case 3:
                     status_str = "到账失败";

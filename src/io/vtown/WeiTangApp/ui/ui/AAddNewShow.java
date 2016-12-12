@@ -1,9 +1,12 @@
 package io.vtown.WeiTangApp.ui.ui;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +37,13 @@ import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
 import io.vtown.WeiTangApp.bean.bcomment.easy.PicImageItem;
+import io.vtown.WeiTangApp.bean.bcomment.easy.comment.BUpData;
+import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.bean.bcomment.three_one.search.BLSearchShopAndGood;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
@@ -47,11 +55,16 @@ import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.NetUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.custom.switchButtonView.EaseSwitchButton;
+import io.vtown.WeiTangApp.comment.view.pop.PPicOrVedioShare;
+import io.vtown.WeiTangApp.comment.view.pop.PShare;
+import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.comment.view.select_pic.PicSelActivity;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.comment.ALoactePhotoPager;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.recordervido.ARecoderVido;
@@ -125,11 +138,16 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     private String upload_qiniu_video_url = "";
     private String upload_qiniu_video_cover_url = "";
 
+    private BUser MyUser;
+    private View BaseView;
+
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_add_new_show);
+        BaseView = LayoutInflater.from(this).inflate(R.layout.activity_add_new_show, null);
         EventBus.getDefault().register(this, "getEventMsg", BMessage.class);
         mBinder = ButterKnife.bind(this);
+        MyUser = Spuit.User_Get(this);
         IBundle();
         IView();
         IGrid();
@@ -334,37 +352,269 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     private void createShow() {
         if (CheckNet(BaseContext))
             return;
+        //有商品链接
+        if (mGoodInfo != null && sbAddNewShowSelectGood.isChecked()) {
+            Send_Pic_Or_Vido_Url(current_type == TYPE_PIC);
+        } else {
+            //没有商品链接
+            Send_Pic_Or_Vido_No_Url(current_type == TYPE_PIC);
+        }
+
+
+//        SendShow();
+
+    }
+
+    //带商品链接的图片==>上边发show直接SendShow//中间三方分享直接用商品// 下边九宫格分享直接用本地  ==》不用上传图片！！！！！
+    private void Send_Pic_Or_Vido_Url(final boolean IsPic) {
+        if (!IsPic) {
+            //帶商品鏈接視頻
+
+
+            final PPicOrVedioShare myshare = new PPicOrVedioShare(BaseContext, false, true);
+
+            myshare.setOnPicOrVedioShareListener(new PPicOrVedioShare.OnPicOrVedioShareListener() {
+                @Override
+                public void showStatus(int type) {
+                    switch (type) {
+                        case PPicOrVedioShare.SHOW_SHARE:
+                            if (Checked())
+                                SendShow();
+                            break;
+                        case PPicOrVedioShare.GOOD_SHARE:
+                            BNew ShareNew = new BNew();
+                            ShareNew.setShare_title(mGoodInfo.getTitle());
+                            ShareNew.setShare_content(mGoodInfo.getTitle());
+                            ShareNew.setShare_log(mGoodInfo.getCover());
+                            ShareNew.setShare_url(mGoodInfo.getGoodsurl());
+                            PShare da = new PShare(BaseContext, ShareNew, true);
+                            da.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
+                            da.GetShareResult(new PShare.ShareResultIntface() {
+                                @Override
+                                public void ShareResult(int ResultType) {
+                                    switch (ResultType) {
+                                        case 1://分享成功
+                                            //TODO 调用加积分接口
+                                            Show_Award();
+                                            break;
+                                        case 0://分享失败
+                                            break;
+                                    }
+                                }
+                            });
+
+                            break;
+                        case PPicOrVedioShare.VEDIO_SHARE:
+                            To_Share_NoUrl_Vido(myshare);
+
+                            break;
+                    }
+                }
+
+
+            });
+
+
+            return;
+        }
+        BNew ShareNew = new BNew();
+        ShareNew.setShare_title(mGoodInfo.getTitle());
+        ShareNew.setShare_content(mGoodInfo.getTitle());
+        ShareNew.setShare_log(mGoodInfo.getCover());
+        ShareNew.setShare_url(mGoodInfo.getGoodsurl());
+        //开始弹出框分享******************************
+        PShowShare myshare = new PShowShare(BaseContext, BaseActivity, ShareNew, true, true);
+        myshare.SetShareListener(new PShowShare.ShowShareInterListener() {
+            @Override
+            public void GetResultType(int ResultType) {
+                switch (ResultType) {
+                    case PShowShare.SHARE_TO_SHOW://Show分享
+                        if (Checked())
+                            SendShow();
+                        break;
+                    case PShowShare.SHARE_GOODS_OK://三方分享成功
+                        Show_Award();
+                        break;
+                    case PShowShare.SHARE_GOODS_ERROR://三方分享失败
+
+                        break;
+                    case PShowShare.SHARE_PIC_VEDIO://九宫格 分享
+                        if (Checked() && IsPic)
+                            try {
+                                Pic9Show(imgs, StrUtils.isEmpty(etAddNewShowTxtContent.getText().toString().trim()) ? "微糖商城#" : etAddNewShowTxtContent.getText().toString().trim());
+                            } catch (Exception e) {
+                                PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.jiugongge_error));
+                            }
+
+                        break;
+                }
+            }
+
+
+        });
+    }
+
+    //不带商品链接的！！！！！！！！！！！！！！！！！！！！！
+    private void Send_Pic_Or_Vido_No_Url(final boolean IsPic) {
+        if (!Checked()) return;
+
+        final PPicOrVedioShare myshare = new PPicOrVedioShare(BaseContext, IsPic, false);
+
+        myshare.setOnPicOrVedioShareListener(new PPicOrVedioShare.OnPicOrVedioShareListener() {
+            @Override
+            public void showStatus(int type) {
+                switch (type) {
+                    case PPicOrVedioShare.SHOW_SHARE:
+                        if (Checked())
+                            SendShow();
+                        break;
+                    case PPicOrVedioShare.PIC_SHARE:
+                        if (Checked())
+                            try {
+                                Pic9Show(imgs, StrUtils.isEmpty(etAddNewShowTxtContent.getText().toString().trim()) ? "微糖商城#" : etAddNewShowTxtContent.getText().toString().trim());
+                            } catch (Exception e) {
+                                PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.jiugongge_error));
+                            }
+                        break;
+                    case PPicOrVedioShare.VEDIO_SHARE:
+                        To_Share_NoUrl_Vido(myshare);
+
+                        break;
+                }
+            }
+
+
+        });
+
+
+    }
+
+    //点击pop下边按钮后需要操作===》分享不带url在视频
+    private void To_Share_NoUrl_Vido(final PPicOrVedioShare Pop) {
+        //开始上传视频
+
+        NUPLoadUtil dLoadUtils1 = new NUPLoadUtil(BaseContext, new File(
+                mCordVidoPath), StrUtils.UploadVido("vid"));
+        dLoadUtils1.SetUpResult1(new NUPLoadUtil.UpResult1()
+
+        {
+            @Override
+            public void Progress(String arg0, double arg1) {
+
+            }
+
+            @Override
+            public void Onerror() {
+                upload_qiniu_video_url = "";
+                Pop.dismiss();
+                PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.http_exception_error));
+            }
+
+            @Override
+            public void Complete(String HostUrl, String Url) {
+                upload_qiniu_video_url = HostUrl;
+                // 上传视频完毕==》开始分享不带url的视频
+                Pop.dismiss();
+                To_NoUrl_Vido_Share(Constants.VidoShareHtml + Url);
+
+
+            }
+
+
+        });
+        dLoadUtils1.UpLoad();
+
+
+    }
+
+    //上传完毕不带url在视频后需要对视频进行分享操作
+    private void To_NoUrl_Vido_Share(String Url) {
+        BNew MyBnew = new BNew();
+        MyBnew.setShare_title(MyUser.getSeller_name());
+        MyBnew.setShare_content(StrUtils.isEmpty(etAddNewShowTxtContent.getText().toString().trim()) ? MyUser.getSeller_name() : etAddNewShowTxtContent.getText().toString().trim());
+        MyBnew.setShare_log(MyUser.getHead_img());
+        MyBnew.setShare_url(Url);
+        PShare da = new PShare(BaseContext, MyBnew, true);
+        da.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
+        da.GetShareResult(new PShare.ShareResultIntface() {
+            @Override
+            public void ShareResult(int ResultType) {
+                switch (ResultType) {
+                    case 1://分享成功
+                        //TODO 调用加积分接口
+                        Show_Award();
+                        break;
+                    case 0://分享失败
+                        break;
+                }
+            }
+        });
+    }
+
+    //發show時候的判斷
+    private boolean Checked() {
         String content = etAddNewShowTxtContent.getText().toString().trim();
 
         if (current_type == TYPE_PIC && imgs.size() == 0) {
             PromptManager.ShowCustomToast(BaseContext, "请添加您要分享的图片");
-            return;
+            return false;
         }
 
         if (current_type == TYPE_VEDIO && StrUtils.isEmpty(mCordVidoPath)) {
             PromptManager.ShowCustomToast(BaseContext, "请添加您要分享的视频");
-            return;
+            return false;
         }
 
         if (StrUtils.isEmpty(content)) {
             PromptManager.ShowCustomToast(BaseContext, "请输入您要分享的内容");
-            return;
+            return false;
         }
 
         if (mGoodInfo == null && sbAddNewShowSelectGood.isChecked()) {
             PromptManager.ShowCustomToast(BaseContext, "点击“+”选择您要分享的商品");
-            return;
+            return false;
         }
+        return true;
+    }
+
+    //发show 的方法*********************************************************
+    private void SendShow() {
+
         PromptManager.showtextLoading3(this, getResources().getString(R.string.addgooding));
 
         if (current_type == TYPE_PIC) {
-            uploadPics(content);
+            uploadPics(etAddNewShowTxtContent.getText().toString().trim());
         } else {
-            uploadVideoCover(content);
+            uploadVideoCover(etAddNewShowTxtContent.getText().toString().trim());
         }
+    }
+    //九宫格分享方法********
+
+    private void Pic9Show(List<String> imgs, String s) {
+        Show_Award();
+        Intent intent = new Intent();
+        ComponentName comp = new ComponentName("com.tencent.mm",
+                "com.tencent.mm.ui.tools.ShareToTimeLineUI");
+        intent.setComponent(comp);
+        intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+        intent.setType("image/*");
+        ArrayList<Uri> imageUris = new ArrayList<Uri>();
+
+        for (int i = 0; i < imgs.size(); i++) {
+            if (checkIsImageFile(imgs.get(i))) {
+                imageUris.add(Uri.fromFile(new File(imgs.get(i))));
+            }
+        }
+
+
+        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+        intent.putExtra("Kdescription", s);
+        startActivity(intent);
+
 
     }
 
+    //九宫格分析方法。。。。。。。。
     private void toPicSelect(int type) {
         if (9 - datas.size() > 0) {
             Intent intent = new Intent(BaseContext, PicSelActivity.class);

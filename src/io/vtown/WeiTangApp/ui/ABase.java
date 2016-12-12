@@ -811,4 +811,19 @@ public class ABase extends Activity {
         });
         NHttpBase.getData(Constants.UpShow_AWard, map, Request.Method.POST);
     }
+
+    //判断是否是图片
+    protected boolean checkIsImageFile(String fName) {
+        boolean isImageFile = false;
+        // 获取扩展名
+        String FileEnd = fName.substring(fName.lastIndexOf(".") + 1,
+                fName.length()).toLowerCase();
+        if (FileEnd.equals("jpg") || FileEnd.equals("png") || FileEnd.equals("gif")
+                || FileEnd.equals("jpeg") || FileEnd.equals("bmp")) {
+            isImageFile = true;
+        } else {
+            isImageFile = false;
+        }
+        return isImageFile;
+    }
 }

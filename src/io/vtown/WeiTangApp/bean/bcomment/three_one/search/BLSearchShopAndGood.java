@@ -203,4 +203,17 @@ public class BLSearchShopAndGood extends BBase {
         this.sell_price = sell_price;
         this.orig_price = orig_price;
     }
+
+
+    public BLSearchShopAndGood(String  id,String title,String seller_name, String avatar, int sales, int score, String sell_price, String orig_price,String goodsurl) {
+        this.id=id;
+        this.title=title;
+        this.seller_name = seller_name;
+        this.cover = avatar;
+        this.sales = sales;
+        this.score = score;
+        this.sell_price = sell_price;
+        this.orig_price = orig_price;
+        this.goodsurl=goodsurl;
+    }
 }

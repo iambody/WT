@@ -448,12 +448,14 @@ public class AReturnDetail extends ATitleBase implements LListView.IXListViewLis
                     return_point = "+ %1$s元";
                     holder.ll_return_point.setBackgroundResource(R.drawable.shape_integral_bg_fen);
                     holder.item_return_detail_inside_img.setImageDrawable(getResources().getDrawable(R.drawable.huangdian));
+                    holder.tvReturnPoint.getPaint().setFlags(0);
                     break;
                 case 2:
                     status_str = "交易成功";
                     return_point = "+ %1$s元";
                     holder.ll_return_point.setBackgroundResource(R.drawable.shape_integral_bg_fen);
                     holder.item_return_detail_inside_img.setImageDrawable(getResources().getDrawable(R.drawable.huangdian));
+                    holder.tvReturnPoint.getPaint().setFlags(0);
                     break;
                 case 3:
                     status_str = "交易失败";

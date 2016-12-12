@@ -75,6 +75,18 @@ public class PShare extends PopupWindow implements OnClickListener {
     //是否需要显示show转发
     private boolean IsNoShowShare;
 
+
+
+
+    //成功失败的暴露接口
+    private ShareResultIntface MShareResultIntface;
+    /**
+     * 暴露成功失败的结果
+     */
+    public void GetShareResult(ShareResultIntface result) {
+        this.MShareResultIntface = result;
+    }
+
     public PShare(Context pContext, BNew sharebeanNew, boolean IsHaveShowShare) {
         super();
         this.pContext = pContext;
@@ -198,16 +210,25 @@ public class PShare extends PopupWindow implements OnClickListener {
             @Override
             public void onError(Platform arg0, int arg1, Throwable arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享取消");
+                if(null!=MShareResultIntface){
+                    MShareResultIntface.ShareResult(0);
+                }
             }
 
             @Override
             public void onComplete(Platform arg0, int arg1,
                                    HashMap<String, Object> arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享完成");
+                if(null!=MShareResultIntface){
+                    MShareResultIntface.ShareResult(1);
+                }
             }
 
             @Override
             public void onCancel(Platform arg0, int arg1) {
+                if(null!=MShareResultIntface){
+                    MShareResultIntface.ShareResult(0);
+                }
             }
         });
         platform.share(sp);
@@ -264,16 +285,25 @@ public class PShare extends PopupWindow implements OnClickListener {
             @Override
             public void onError(Platform arg0, int arg1, Throwable arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享取消");
+                if(null!=MShareResultIntface){
+                    MShareResultIntface.ShareResult(0);
+                }
             }
 
             @Override
             public void onComplete(Platform arg0, int arg1,
                                    HashMap<String, Object> arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享完成");
+                if(null!=MShareResultIntface){
+                    MShareResultIntface.ShareResult(1);
+                }
             }
 
             @Override
             public void onCancel(Platform arg0, int arg1) {
+                if(null!=MShareResultIntface){
+                    MShareResultIntface.ShareResult(0);
+                }
             }
         });
         platform.share(sp);
@@ -285,5 +315,15 @@ public class PShare extends PopupWindow implements OnClickListener {
 
     public void setIsErWeiMaShare(boolean isErWeiMaShare) {
         IsErWeiMaShare = isErWeiMaShare;
+    }
+
+
+
+
+    public interface ShareResultIntface {
+        //0代表失败 1代表成功
+        public void ShareResult(int ResultType);
+
+
     }
 }

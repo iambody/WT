@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_margin="30dp"
+
+    android:background="@color/transparent"
+    android:orientation="vertical"
+    android:padding="@dimen/line_size1">
+
+
+    <TextView
+        android:id="@+id/show_pic_or_vedio_share_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/select_show_share_down_up"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="14dp"
+        android:text="取消" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/line_size1"
+        android:layout_above="@+id/show_pic_or_vedio_share_cancel"
+        android:layout_alignLeft="@+id/show_pic_or_vedio_share_cancel"
+        android:layout_alignStart="@+id/show_pic_or_vedio_share_cancel">
+
+        <RelativeLayout
+            android:id="@+id/show_pic_or_vedio_share_to_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_show_share_up"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/pop_show_center1"
+                android:src="@drawable/ic_show_press"/>
+
+            <ImageView
+                android:id="@+id/pop_show_center1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/pop_show_center1"
+                android:text="Show分享" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/show_share_line"
+            style="@style/line1" />
+
+        <RelativeLayout
+            android:id="@+id/show_pic_or_vedio_share_to_weixin"
+            style="@style/clickstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/pop_show_center2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/pop_show_center2"
+                android:src="@drawable/ic_shangpinfenxiang_nor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/pop_show_center2"
+                android:text="商品分享" />
+        </RelativeLayout>
+
+        <View style="@style/line1" />
+
+        <RelativeLayout
+            android:id="@+id/show_pic_or_vedio_share_to_pic_vedio"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_show_share_down"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/pop_show_center3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/iv_pic_or_vedio_pic_vedio_share_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/pop_show_center3"
+                android:src="@drawable/ic_jiugonggefenxiang_nor" />
+
+            <TextView
+                android:id="@+id/tv_pic_or_vedio_pic_vedio_share_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/pop_show_center3"
+                android:text="图片分享" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

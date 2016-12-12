@@ -1140,7 +1140,7 @@ public class ARecyclerOtherShow extends ATitleBase {
         startActivity(intent);
     }
 
-    private boolean checkIsImageFile(String fName) {
+    protected boolean checkIsImageFile(String fName) {
         boolean isImageFile = false;
         // 获取扩展名
         String FileEnd = fName.substring(fName.lastIndexOf(".") + 1,
