@@ -266,6 +266,12 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 //                PromptManager.ShowCustomToast(mContext, "分享微博");ss
                 controlType(SHARE_TO_SINAWB);
                 break;
+
+            case R.id.dialog_show_share_cancel:
+                if(null != dialog){
+                    dialog.dismiss();
+                }
+                break;
         }
     }
 
@@ -302,6 +308,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         view.findViewById(R.id.ll_share_2_qq).setOnClickListener(this);
         view.findViewById(R.id.ll_share_2_qzone).setOnClickListener(this);
         view.findViewById(R.id.ll_share_2_sinawb).setOnClickListener(this);
+        view.findViewById(R.id.dialog_show_share_cancel).setOnClickListener(this);
 
         dialog.show();
     }

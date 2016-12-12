@@ -616,9 +616,9 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     //九宫格分析方法。。。。。。。。
     private void toPicSelect(int type) {
-        if (9 - datas.size() > 0) {
+        if (9 - imgs.size() > 0) {
             Intent intent = new Intent(BaseContext, PicSelActivity.class);
-            intent.putExtra(PicSelActivity.Select_Img_Size_str, 9 - datas.size());
+            intent.putExtra(PicSelActivity.Select_Img_Size_str, 9 - imgs.size());
             intent.putExtra(PicSelActivity.Select_Img_Type, type);
             startActivity(intent);
         } else {
@@ -645,7 +645,13 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 break;
 
             case BMessage.Tage_Select_Pic_Add_Show://选择图片返回的数据
-                imgs = event.getTmpArrayList();
+                List<String> tmpArrayList = event.getTmpArrayList();
+                for (String pathUrl:tmpArrayList) {
+                    if(!imgs.contains(pathUrl)){
+                        imgs.add(pathUrl);
+                    }
+                }
+
                 setGridViewPic();
                 break;
 
@@ -773,7 +779,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
         public int getCount() {
 
-            return datas.size();
+            return imgs.size();
 
 
         }
@@ -804,17 +810,17 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            if (!StrUtils.isEmpty(datas.get(position).getPathurl())) {
-                holder.itemAddNewShowImage.setImageBitmap(StrUtils.GetBitMapFromPath(datas.get(position).getPathurl()));
-            } else {
-                String path = datas.get(position).getWeburl();
-                ImageLoaderUtil.Load2(path, holder.itemAddNewShowImage, R.drawable.error_iv2);
-            }
+//            if (!StrUtils.isEmpty(imgs.get(position))) {
+                holder.itemAddNewShowImage.setImageBitmap(StrUtils.GetBitMapFromPath(imgs.get(position)));
+//            } else {
+//                String path = datas.get(position).getWeburl();
+//                ImageLoaderUtil.Load2(path, holder.itemAddNewShowImage, R.drawable.error_iv2);
+//            }
             final int MyPostion = position;
             holder.itemAddNewShowDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    datas.remove(MyPostion);
+                    imgs.remove(MyPostion);
                     notifyDataSetChanged();
                 }
             });
