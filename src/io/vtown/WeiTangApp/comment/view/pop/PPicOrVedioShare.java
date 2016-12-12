@@ -83,9 +83,11 @@ public class PPicOrVedioShare extends PopupWindow implements View.OnClickListene
         show_pic_or_vedio_share_to_pic_vedio = (RelativeLayout) mRootView.findViewById(R.id.show_pic_or_vedio_share_to_pic_vedio);
         iv_pic_or_vedio_pic_vedio_share_icon = (ImageView) mRootView.findViewById(R.id.iv_pic_or_vedio_pic_vedio_share_icon);
         tv_pic_or_vedio_pic_vedio_share_title = (TextView) mRootView.findViewById(R.id.tv_pic_or_vedio_pic_vedio_share_title);
+        TextView show_pic_or_vedio_share_cancel = (TextView) mRootView.findViewById(R.id.show_pic_or_vedio_share_cancel);
         show_pic_or_vedio_share_to_show.setOnClickListener(this);
         show_pic_or_vedio_share_to_weixin.setOnClickListener(this);
         show_pic_or_vedio_share_to_pic_vedio.setOnClickListener(this);
+        show_pic_or_vedio_share_cancel.setOnClickListener(this);
 
         if(IsUrl){
             show_pic_or_vedio_share_to_weixin.setVisibility(View.VISIBLE);
@@ -121,6 +123,10 @@ public class PPicOrVedioShare extends PopupWindow implements View.OnClickListene
 
             case R.id.show_pic_or_vedio_share_to_pic_vedio://图片或视频分享
                 mListener.showStatus(isPic?PIC_SHARE:VEDIO_SHARE);
+                break;
+
+            case R.id.show_pic_or_vedio_share_cancel:
+                PPicOrVedioShare.this.dismiss();
                 break;
 
 
