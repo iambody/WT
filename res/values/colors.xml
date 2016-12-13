@@ -54,6 +54,7 @@
     <color name="transparent7">#ffffffff</color>
     <color name="TextColorWhite">#ffffffff</color>
 <color name="transparent4">#55000000</color>
+    <color name="transparent4a">#74000000</color>
     <!-- 自定义色值 -->
     <color name="province_line_border">#C7C7C7</color>
     <color name="app_fen">#FF4878</color>

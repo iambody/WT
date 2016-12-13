@@ -296,6 +296,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                         .getColor(R.color.TextColorWhite) : getResources()
                         .getColor(R.color.app_fen));
 
+
     }
 
     @OnClick({R.id.right_txt, R.id.tv_add_new_show_pic, R.id.tv_add_new_show_vedio, R.id.iv_add_new_show_vedio_control_icon, R.id.rl_add_new_show_add_good, R.id.ll_add_new_show_good, R.id.tv_add_new_show_good_share})
@@ -303,16 +304,16 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         switch (V.getId()) {
             case R.id.tv_add_new_show_pic:
                 current_type = TYPE_PIC;
+                SetRightText( "添加" );
                 ControlClick(R.id.tv_add_new_show_pic);
                 rlAddNewShowVedioLayout.setVisibility(View.GONE);
                 if (imgs != null && imgs.size() > 0) {
                     gvAddNewShowPics.setVisibility(View.VISIBLE);
                 }
-
-
                 break;
             case R.id.tv_add_new_show_vedio:
                 current_type = TYPE_VEDIO;
+                SetRightText( "录制" );
                 ControlClick(R.id.tv_add_new_show_vedio);
                 gvAddNewShowPics.setVisibility(View.GONE);
                 if (!StrUtils.isEmpty(mCordVidoPath)) {
@@ -368,7 +369,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     //带商品链接的图片==>上边发show直接SendShow//中间三方分享直接用商品// 下边九宫格分享直接用本地  ==》不用上传图片！！！！！
     private void Send_Pic_Or_Vido_Url(final boolean IsPic) {
         if (!IsPic) {
-            if (!Checked()) return;
+
             //帶商品鏈接視頻
             final PPicOrVedioShare myshare = new PPicOrVedioShare(BaseContext, false, true);
             myshare.setOnPicOrVedioShareListener(new PPicOrVedioShare.OnPicOrVedioShareListener() {
@@ -407,6 +408,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                             break;
                         case PPicOrVedioShare.VEDIO_SHARE:
                             myshare.dismiss();
+                            if (!Checked()) return;
                             To_Share_NoUrl_Vido(myshare);
 
                             break;
@@ -588,9 +590,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     //发show 的方法*********************************************************
     private void SendShow() {
-
         PromptManager.showtextLoading3(this, getResources().getString(R.string.addgooding));
-
         if (current_type == TYPE_PIC) {
             uploadPics(etAddNewShowTxtContent.getText().toString().trim());
         } else {

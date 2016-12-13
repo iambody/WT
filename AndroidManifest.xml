@@ -746,6 +746,10 @@
             android:name=".ui.ui.AAddShowGoodLs"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.title.center.myshow.ANewGoodShow"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->
 
 
@@ -887,10 +891,11 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
-                <data android:scheme="tencent100371282" />
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent100371282"/>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
             <!-- 微信分享*************************** -->
         </activity>

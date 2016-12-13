@@ -2,6 +2,7 @@ package io.vtown.WeiTangApp.comment.view.pop;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -78,7 +79,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     public static final int SHARE_GOODS_OK = 119;//分享商品成功
     public static final int SHARE_GOODS_ERROR = 120;//分享商品成功
     private ShowShareInterListener MShowShareInterListener;
-    private AlertDialog dialog ;
+    private Dialog dialog;
     private ImageView iv_pic_vedio_share_icon;
     private TextView tv_pic_vedio_share_title;
     private View show_share_line;
@@ -166,9 +167,64 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.show_share_to_pic_vedio://最下边！！！！！ 图片(九宫格)和视频分享 ===》需要权限判断
                 String aa = mShareBeanNew.getShare_url();
+
                 if (!isPic) {
-                    controlType(SHARE_TO_FRIENDS);
+//                    controlType(SHARE_TO_FRIENDS);
+                    mShareBeanNew.setShare_url(mShareBeanNew.getShare_vido_url());
+                    if (!Spuit.IsHaveBind_Get(activity) && !Spuit.IsHaveBind_JiQi_Get(activity)) {//未绑定邀请码
+                        ShowCustomDialog(activity.getResources().getString(R.string.no_bind_code),
+                                activity.getResources().getString(R.string.quxiao), activity.getResources().getString(R.string.bind_code),
+                                new IDialogResult() {
+                                    @Override
+                                    public void RightResult() {
+                                        PShowShare.this.dismiss();
+                                        PromptManager.SkipActivity(activity, new Intent(activity,
+                                                ANewBindCode.class));
+                                        //
+                                    }
+
+                                    @Override
+                                    public void LeftResult() {
+
+                                    }
+                                });
+                        return;
+                    }
+                    if (!Spuit.IsHaveActive_Get(activity)) {//绑定邀请码未激活
+                        ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(activity), BNewHome.class).getIntegral() < 10000 ? activity.getResources().getString(R.string.to_Jihuo_toqiandao1) : activity.getResources().getString(R.string.to_Jihuo_toqiandao2),
+                                activity.getResources().getString(R.string.look_guize), activity.getResources().getString(R.string.to_jihuo1),
+                                new IDialogResult() {
+                                    @Override
+                                    public void RightResult() {
+
+                                        BActive maxtive = Spuit.Jihuo_get(activity);
+                                        BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                                maxtive.getActivitytitle());
+                                        PromptManager.SkipActivity(activity, new Intent(
+                                                activity, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                                mBCommentss));
+                                        PShowShare.this.dismiss();
+
+                                    }
+
+                                    @Override
+                                    public void LeftResult() {
+                                        PShowShare.this.dismiss();
+                                        PromptManager.SkipActivity(activity, new Intent(
+                                                activity, AWeb.class).putExtra(
+                                                AWeb.Key_Bean,
+                                                new BComment(Constants.Homew_JiFen, activity.getResources().getString(R.string.jifenguize))));
+
+                                    }
+                                });
+
+                        return;
+                    }
+//权限888888888888888888888
+
+//                Share(2);
                     this.dismiss();
+                    showShareDialog();
                     return;
                 }
                 //是图片直接回调通知九宫格
@@ -270,7 +326,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                 break;
 
             case R.id.dialog_show_share_cancel:
-                if(null != dialog){
+                if (null != dialog) {
                     dialog.dismiss();
                 }
                 break;
@@ -300,12 +356,15 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     }
 
     private void showShareDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+//        AlertDialog.Builder builder = new AlertDialog.Builder(activity,R.style.mystyle_dialog);
         View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_show_share, null);
-        builder.setView(view);
-        dialog = builder.create();
-
-        dialog.setCanceledOnTouchOutside(true);
+//        builder.setView(view);
+//        dialog = builder.create();
+        if (dialog == null) {
+            dialog = new Dialog(activity, R.style.mystyle_dialog);
+            dialog.setContentView(view);
+            dialog.setCanceledOnTouchOutside(true);
+        }
         view.findViewById(R.id.ll_share_2_wxchat).setOnClickListener(this);
         view.findViewById(R.id.ll_share_2_wxfriends).setOnClickListener(this);
         view.findViewById(R.id.ll_share_2_qq).setOnClickListener(this);

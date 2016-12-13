@@ -653,6 +653,7 @@
     <dimen name="good_detail_line_height">25dp</dimen>
     <dimen name="intergral_shape_radiu">4dp</dimen>
     <dimen name="shape_left_right_radius">4dp</dimen>
+    <dimen name="ui_40_dip">40dp</dimen>
 
 
 </resources>

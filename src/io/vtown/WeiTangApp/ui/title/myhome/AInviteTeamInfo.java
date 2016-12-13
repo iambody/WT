@@ -106,7 +106,7 @@ public class AInviteTeamInfo extends ATitleBase {
         SetItemContent(invite_info_amount, R.drawable.ic_yaoqingrenshu_nor, R.string.invite_team_info_invite_amount, data.getInvite_num(), true);
         SetItemContent(invite_info_team_activity_conter, R.drawable.ic_tuanduihuoyueyonghu_nor, R.string.invite_team_info_team_activity, data.getTeam_activate_num(), false);
         SetItemContent(invite_info_my_activity_conter, R.drawable.ic_zhishuhuoyueyonghu_nor, R.string.invite_team_info_my_activity, data.getInvite_activate_num(), false);
-        SetItemContent(invite_info_my_yestaday_add, R.drawable.ic_zuorixinzengyonghu_nor, R.string.invite_team_info_yestaday_add, data.getRegister_num(), false);
+        SetItemContent(invite_info_my_yestaday_add, R.drawable.ic_zuorixinzengyonghu_nor, R.string.invite_team_info_yestaday_add, data.getActivate_num(), false);
         SetItemContent(invite_info_my_yestaday_activity, R.drawable.ic_zuorijihuoyonghu_nor, R.string.invite_team_info_yestaday_activity, data.getSub_activate_num(), false);
    //
         SetItemContent(invite_info_my_benyue_activity, R.drawable.ic_benyuehuoyue_nor, R.string.invite_team_info_benyue_activity, data.getMonth_activate_num(), false);

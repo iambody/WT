@@ -332,9 +332,9 @@ public class PromptManager {
             TextView text = (TextView) layout.findViewById(R.id.jiazai);
             sd = (LinearLayout) layout.findViewById(R.id.sd);
             text.setText(content2);
-            LinearLayout.LayoutParams ps = new LinearLayout.LayoutParams(140,
-                    140);
-            loadingbar.setLayoutParams(ps);
+            LinearLayout.LayoutParams ps = new LinearLayout.LayoutParams(50,
+                    50);
+//            loadingbar.setLayoutParams(ps);
             textdialog3.setCanceledOnTouchOutside(false);
 
             textdialog3.setCancelable(false);

@@ -15,7 +15,7 @@ public class BNew extends BBase {
 	private String share_content;// ": "永奎怀孕啦……",
 	private String share_url;// ": "http://www.qq.com"
 	private String qrcode;
-
+	private String share_vido_url;//纯视频的合成播放视频网页的url
 	// 消息列表*********ANew****************************
 	private String id;// ": "219",
 	private String member_id;// ": "2",
@@ -225,6 +225,11 @@ private String message_id;
 		this.system_message_id = system_message_id;
 	}
 
-	 
+	public String getShare_vido_url() {
+		return share_vido_url;
+	}
 
+	public void setShare_vido_url(String share_vido_url) {
+		this.share_vido_url = share_vido_url;
+	}
 }

@@ -63,6 +63,8 @@ import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ANewGoodShow;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
 import io.vtown.WeiTangApp.ui.ui.AAddNewShow;
@@ -910,9 +912,26 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             case R.id.rl_look_show:
                 if (CheckNet(BaseContext))
                     return;
+//                Intent intent = new Intent(BaseActivity,
+//                        ARecyclerOtherShow.class);
+//                intent.putExtra(
+//                        "abasebeankey",
+//                        new BComment(
+//                                datas.getSeller_id(),
+//                                datas.getGoods_info().getCover(),
+//                                datas.getAvatar(), datas.getSeller_name(), datas
+//                                .getIs_agent()));
+//                PromptManager.SkipActivity(BaseActivity, intent);
+
+
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        AGoodShow.class).putExtra(
+//                        AGoodShow.Tage_GoodSid,
+//                        datas.getGoods_sid().equals("0") ? datas.getId() : datas
+//                                .getGoods_sid()));
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        AGoodShow.class).putExtra(
-                        AGoodShow.Tage_GoodSid,
+                        ANewGoodShow.class).putExtra(
+                        ANewGoodShow.Tage_GoodSid,
                         datas.getGoods_sid().equals("0") ? datas.getId() : datas
                                 .getGoods_sid()));
                 break;

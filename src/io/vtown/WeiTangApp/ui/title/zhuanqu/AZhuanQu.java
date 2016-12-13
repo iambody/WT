@@ -21,6 +21,7 @@ import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.comment.view.pop.PShare;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
@@ -35,6 +36,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -246,7 +248,9 @@ public class AZhuanQu extends ATitleBase {
                 mBNew.setShare_content(bdComment.getContent());
                 mBNew.setShare_title(bdComment.getTitle());
                 mBNew.setShare_log(bdComment.getPic_path());
-                ShowP(BaseView, mBNew);
+//                ShowP(BaseView, mBNew);
+                PShare da = new PShare(BaseContext, mBNew, true);
+                da.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
                 break;
         }
     }

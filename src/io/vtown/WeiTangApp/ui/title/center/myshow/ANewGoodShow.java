@@ -1,17 +1,12 @@
-package io.vtown.WeiTangApp.fragment.main;
+package io.vtown.WeiTangApp.ui.title.center.myshow;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,36 +21,28 @@ import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.adapter.MyIvdapter;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLBShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
-import io.vtown.WeiTangApp.bean.bcomment.easy.show.BShow;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
-import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.download.DownFileUtils;
-import io.vtown.WeiTangApp.comment.download.DownFileUtils.DownLoadListener;
-import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.util.DateUtils;
-import io.vtown.WeiTangApp.comment.util.SdCardUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
@@ -66,314 +53,229 @@ import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
-import io.vtown.WeiTangApp.event.interf.IHttpResult;
-import io.vtown.WeiTangApp.fragment.FBase;
+import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
-import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
-import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
-import io.vtown.WeiTangApp.ui.ui.AAddNewShow;
 
 /**
- * Created by datutu on 2016/12/5.
+ * Created by datutu on 2016/12/13.
  */
 
-public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefreshListener {
-    @BindView(R.id.swipeToLoadLayout)
-    SwipeToLoadLayout swipeToLoadLayout;
-    @BindView(R.id.maintab_new_show_uptxt)
-    TextView maintabNewShowUptxt;
-    @BindView(R.id.fragment_main_show_add)
-    ImageView fragmentMainShowAdd;
+public class ANewGoodShow extends ATitleBase implements OnLoadMoreListener, OnRefreshListener {
     @BindView(R.id.swipe_target)
     RecyclerView swipeTarget;
-    // recycleview***************************
-    private LinearLayoutManager LinearShowLayoutManager;
-    private StaggeredGridLayoutManager StaggeredGridLayoutManager;
-    private MyShowAdapter myShowAdapter;
-    // recycleview***************************
-
-    private boolean IShow = true;
-    private BUser MyUser;
-    /**
-     * 当前的最后item的lastid
-     */
+    @BindView(R.id.swipeToLoadLayout)
+    SwipeToLoadLayout swipeToLoadLayout;
+    // 基view
+    private View BaseView;
+    // 记录最后一条show的id提供分页加载
     private String LastId = "";
-    /**
-     * 是否存在缓存
-     */
-    private boolean IsCache;
 
-    /**
-     * 保存需要删除的recycleview的位置 当后台交互成功后直接移除
-     */
-    private int Postion;
+    private BUser mBUser;
+    // 无数据时候的view
+    private View NoDataView;
 
-    @Override
-    public void InItView() {
-        BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_main_new_show, null);
-        ButterKnife.bind(this, BaseView);
-        EventBus.getDefault().register(this, "MainShowReciverMessage", BMessage.class);
-        SetTitleHttpDataLisenter(this);
-        MyUser = Spuit.User_Get(BaseContext);
-        IBaseView();
-        ICacheData();
-        IData(LastId, INITIALIZE);
-    }
+    // 详情页带过来的数据
+    private String Goods_Sid;
+    public final static String Tage_GoodSid = "gooddetaisid";
 
-    public void MainShowReciverMessage(BMessage MsMessage) {
-        switch (MsMessage.getMessageType()) {
-            case BMessage.Tage_Show_Hind_Load://偷偷加载数据
-                IData(LastId, LOADHind);
-                break;
-
-        }
-    }
+    private GoodsShowAdapter MyGoodsShowAdapter;
+    private LinearLayoutManager LinearShowLayoutManager;
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if (IShow) {
-            Log.i("homewave", "显示");
-            PromptManager.closeLoading();
-        }
-
+    protected void InItBaseView() {
+        setContentView(R.layout.activity_newgoods_show);
+        BaseView=LayoutInflater.from(this).inflate(R.layout.activity_newgoods_show,null);
+        ButterKnife.bind(this);
+        mBUser = Spuit.User_Get(BaseActivity);
+        IBund();
+        IBase();
+        IData(Goods_Sid, LOAD_INITIALIZE);
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (hidden) {
-            Log.i("homewave", "隐藏");
-
-            IShow = false;
-
-        } else {
-            Log.i("homewave", "显示");
-            PromptManager.closeLoading();
-            IShow = true;
-        }
-
-    }
-
-    /**
-     * 基础UI
-     */
-    private void IBaseView() {
+    private void IBase() {
         LinearShowLayoutManager = new LinearLayoutManager(BaseContext);
         swipeTarget.setLayoutManager(LinearShowLayoutManager);
         swipeTarget.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.VERTICAL, Color.TRANSPARENT, 1));
-        myShowAdapter = new MyShowAdapter(BaseContext);
-        swipeTarget.setAdapter(myShowAdapter);
-
+        MyGoodsShowAdapter = new GoodsShowAdapter(BaseContext);
+        NoDataView = findViewById(R.id.goodsnewhow_nodata_lay);
+        swipeTarget.setAdapter(MyGoodsShowAdapter);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
-//        IData(LastId, INITIALIZE);
-        swipeTarget.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
 
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (recyclerView.canScrollVertically(-1)) {//顶部
-                    maintabNewShowUptxt.setVisibility(View.VISIBLE);
-                } else {
-                    maintabNewShowUptxt.setVisibility(View.GONE);
-                }
-            }
-        });
     }
 
-    //基础的缓存数据
-    private void ICacheData() {
-        // 缓存中有show的数据进行处理
-        String CachData = Spuit.Show_GetStr(BaseContext);
-        if (!StrUtils.isEmpty(CachData)) {
-            List<BLShow> data = new ArrayList<BLShow>();
-            // 开始解析*************************
-            data = JSON.parseArray(CachData, BLShow.class);// ();
-            myShowAdapter.FrashData(data);
-            IsCache = true;
-        } else {// 没有数据就直接显示空白
-            IsCache = false;
+    private void IBund() {
+        if (null == getIntent().getExtras()
+                || !getIntent().getExtras().containsKey(Tage_GoodSid))
+            BaseActivity.finish();
 
-        }
+        Goods_Sid = getIntent().getStringExtra(Tage_GoodSid);
+        SetTitleHttpDataLisenter(this);
     }
 
-    /**
-     * 的数据请求
-     */
-    private void IData(String lastId, int initialize) {
-        switch (initialize) {
-            case INITIALIZE:
-                if (!IsCache) {
-                    PromptManager.showtextLoading(BaseContext, getResources()
-                            .getString(R.string.loading));
-                } else {
-//                    swipeToLoadLayout.setSwipingToRefreshToDefaultScrollingDuration(1000);
-                }
-                break;
-            case REFRESHING:
 
-                break;
-            case LOADMOREING:
-                break;
-            case LOADHind:
-                break;
-        }
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("seller_id", MyUser.getSeller_id());
-        map.put("lastid", lastId);
-        map.put("pagesize", "" + Constants.PageSize2);
-        FBGetHttpData(map, Constants.Show_ls, Request.Method.GET, 0, initialize);
+
+    @Override
+    protected void InitTile() {
+        SetTitleTxt("Show");
+    }
+
+    private void IData(String goods_sid, int loadtype) {
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+        hashMap.put("goods_sid", goods_sid);
+        hashMap.put("lastid", LastId);
+        hashMap.put("pagesize", Constants.PageSize + "");
+        hashMap.put("seller_id", mBUser.getSeller_id());
+        FBGetHttpData(hashMap, Constants.GoodsShow, Request.Method.GET, 0, loadtype);
 
     }
 
     @Override
-    public void InitCreate(Bundle d) {
-
-    }
-
-    @Override
-    public void getResult(int Code, String Msg, BComment Data) {
+    protected void DataResult(int Code, String Msg, BComment Data) {
         switch (Data.getHttpResultTage()) {
-            case 0://获取列表
-                switch (Data.getHttpLoadType()) {
-                    case INITIALIZE:
-
-                        if (IsCache) {//有缓存时候会进行下拉效果的动画操作 所以获取时候要停止
-                            swipeToLoadLayout.setRefreshing(false);
+            case 0:// 获取列表数据*************************
+                switch (Data.getHttpLoadType()) {// 获取show列表的
+                    case LOAD_INITIALIZE:
+                    case LOAD_REFRESHING:
+                        if(LOAD_REFRESHING==Data.getHttpLoadType())swipeToLoadLayout.setRefreshing(false);
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {// 如果是空的
+                            // TODO没数据需要怎么处理？
+                            if (LOAD_REFRESHING == LOAD_INITIALIZE
+                                    || LOAD_REFRESHING == LOAD_REFRESHING) {// 非加载更多
+                                IDataView(swipeToLoadLayout, NoDataView,
+                                        NOVIEW_ERROR);
+                                ShowErrorCanLoad("暂无相关Show");
+                                ShowErrorIv(R.drawable.error_show);
+                            }
+                            break;
                         }
-                        String NetStr = Data.getHttpResultStr();
-                        Spuit.Show_SaveStr(BaseContext, NetStr);
-                        if (StrUtils.isEmpty(NetStr)) {//如果是空的
+                        IDataView(swipeToLoadLayout, NoDataView, NOVIEW_RIGHT);
+                        // 解析数据**********************
+                        List<BLShow> blComments = JSON.parseArray(
+                                Data.getHttpResultStr(), BLShow.class);
 
-                            return;
+                        if (blComments.size() == 0) {
+                            DataError(Msg, Data.getHttpLoadType());
                         }
-                        //开始解析数据********************************************
+                        LastId = blComments.get(blComments.size() - 1).getId();
 
-                        List<BLShow> ShowDatas = JSON.parseArray(NetStr, BLShow.class);
-                        myShowAdapter.FrashData(ShowDatas);
-                        if (ShowDatas.size() < Constants.PageSize2) {
+                        if (blComments.size() < 10) {
                             swipeToLoadLayout.setLoadMoreEnabled(false);
-                        }
-                        if (ShowDatas.size() == Constants.PageSize2) {
+                        } else {
                             swipeToLoadLayout.setLoadMoreEnabled(true);
                         }
-                        //标记最后位置
-                        LastId = ShowDatas.get(ShowDatas.size() - 1).getId();
-                        break;
-                    case LOADHind://偷偷刷新的 没有任何动画效果 无需处理
-                    case REFRESHING://正常刷新有效果
-                        if (Data.getHttpLoadType() == REFRESHING)
+
+                        if (Data.getHttpLoadType() == LOAD_REFRESHING) {
                             swipeToLoadLayout.setRefreshing(false);
-                        String NetStr_Frash = Data.getHttpResultStr();
-                        Spuit.Show_SaveStr(BaseContext, NetStr_Frash);
-                        if (StrUtils.isEmpty(NetStr_Frash)) {//如果是空的
-                            //不需要做处理（）！！！！！！！
-                            return;
                         }
-                        //开始解析数据********************************************
-                        List<BLShow> ShowFrashDatas = JSON.parseArray(NetStr_Frash, BLShow.class);
-                        myShowAdapter.FrashData(ShowFrashDatas);
-                        if (ShowFrashDatas.size() < Constants.PageSize2) {
-                            swipeToLoadLayout.setLoadMoreEnabled(false);
-                        }
-                        if (ShowFrashDatas.size() == Constants.PageSize2) {
-                            swipeToLoadLayout.setLoadMoreEnabled(true);
-                        }
-                        //标记最后位置
-                        LastId = ShowFrashDatas.get(ShowFrashDatas.size() - 1).getId();
+                        MyGoodsShowAdapter.FrashData(blComments);
                         break;
-                    case LOADMOREING:
+                    case LOAD_LOADMOREING:
                         swipeToLoadLayout.setLoadingMore(false);
-                        //开始解析数据********************************************
-                        String NetStr_LoadMore = Data.getHttpResultStr();
-                        if (StrUtils.isEmpty(NetStr_LoadMore)) {//如果是空的
-                            //不需要做处理（）！！！！！！！
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            PromptManager.ShowCustomToast(BaseContext, "暂无更多show");
                             return;
                         }
-                        //开始解析数据********************************************
-                        List<BLShow> ShowLoadDatas = JSON.parseArray(NetStr_LoadMore, BLShow.class);
-                        myShowAdapter.FrashAllData(ShowLoadDatas);
-                        if (ShowLoadDatas.size() < Constants.PageSize2) {
-                            swipeToLoadLayout.setLoadMoreEnabled(false);
+                        List<BLShow> blCommentsss = JSON.parseArray(
+                                Data.getHttpResultStr(), BLShow.class);
+
+                        if (blCommentsss.size() == 0) {
+                            DataError(Msg, Data.getHttpLoadType());
                         }
-                        if (ShowLoadDatas.size() == Constants.PageSize2) {
+                        LastId = blCommentsss.get(blCommentsss.size() - 1).getId();
+
+                        if (blCommentsss.size() < 10) {
+                            swipeToLoadLayout.setLoadMoreEnabled(false);
+                        } else {
                             swipeToLoadLayout.setLoadMoreEnabled(true);
                         }
-                        //标记最后位置
-                        LastId = ShowLoadDatas.get(ShowLoadDatas.size() - 1).getId();
+                        MyGoodsShowAdapter.AddFrashData(blCommentsss);
                         break;
-
+                    default:
+                        break;
                 }
+
                 break;
-            case 11://删除我的Show成功
-                myShowAdapter.GetAllData().remove(Postion);
-                myShowAdapter.notifyItemRemoved(Postion);
-                myShowAdapter.notifyItemRangeChanged(0, myShowAdapter.GetAllData().size() - Postion);
+
+            default:
                 break;
         }
+
+
     }
 
     @Override
-    public void onError(String error, int LoadType) {
+    protected void DataError(String error, int LoadType) {
         switch (LoadType) {
-            case INITIALIZE:
-                if (IsCache) {//有缓存时候会进行下拉效果的动画操作 所以获取时候要停止
-                    swipeToLoadLayout.setRefreshing(false);
-                }
+            case LOAD_INITIALIZE:
+                IDataView(swipeToLoadLayout, NoDataView, NOVIEW_ERROR);
+                ShowErrorCanLoad("暂无相关Show");
+                ShowErrorIv(R.drawable.error_show);
                 break;
-            case REFRESHING:
+            case LOAD_REFRESHING:
                 swipeToLoadLayout.setRefreshing(false);
+                IDataView(swipeToLoadLayout, NoDataView, NOVIEW_ERROR);
                 break;
-            case LOADMOREING:
+            case LOAD_LOADMOREING:
                 swipeToLoadLayout.setLoadingMore(false);
                 break;
-            case LOADHind:
+            default:
                 break;
         }
     }
 
+    @Override
+    protected void NetConnect() {
 
-    @OnClick({R.id.fragment_main_show_add, R.id.maintab_new_show_uptxt})
-    public void onClick(View V) {
-        switch (V.getId()) {
-            case R.id.fragment_main_show_add://添加show
-                //权限判定！！！！！！！！！！！！！！
-                if (CheckLimite()) return;
-                //权限判定！！！！！！！！！！！！！！！！！！！
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AAddNewShow.class));
-                break;
-            case R.id.maintab_new_show_uptxt:
-                swipeTarget.smoothScrollToPosition(0);
-                break;
-        }
+    }
+
+    @Override
+    protected void NetDisConnect() {
+
+    }
+
+    @Override
+    protected void SetNetView() {
+
+    }
+
+    @Override
+    protected void MyClick(View V) {
+
+    }
+
+    @Override
+    protected void InItBundle(Bundle bundle) {
+
+    }
+
+    @Override
+    protected void SaveBundle(Bundle bundle) {
+
     }
 
     @Override
     public void onLoadMore() {
-        IData(LastId, LOADMOREING);
+        IData(Goods_Sid, LOAD_LOADMOREING);
     }
 
     @Override
     public void onRefresh() {
         LastId = "";
-        IData(LastId, REFRESHING);
+        IData(Goods_Sid, LOAD_REFRESHING);
     }
 
+//AP*****************
 
-    //外层的ap***********************************************************************************************************
-    public class MyShowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    public class GoodsShowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         private static final int Show_Grid = 111;
         private static final int Show_Video = 112;
@@ -387,7 +289,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
         private LayoutInflater inflater;
         private Context mContext;
 
-        public MyShowAdapter(Context context) {
+        public GoodsShowAdapter(Context context) {
             super();
             this.mContext = context;
             this.inflater = LayoutInflater.from(context);
@@ -442,7 +344,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             BLShow bShow = datas.get(position);
             boolean IsHaveGoodInf = !bShow.getGoods_id().equals("0");//是否包含商品
-            boolean IsMyShow = bShow.getSellerinfo().getId().equals(MyUser.getSeller_id());
+            boolean IsMyShow = bShow.getSellerinfo().getId().equals(mBUser.getSeller_id());
             BLBShow GoodsData = null;
             if (IsHaveGoodInf) {
                 GoodsData = JSON.parseObject(bShow.getGoodinfo(), BLBShow.class);
@@ -456,17 +358,19 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                     StrUtils.SetTxt(grid_item.my_show_item_time_grid, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
 
                     grid_item.comment_show_share_iv_grid.setOnClickListener(new ShareShowClick(datas.get(position)));
-                    grid_item.comment_show_gooddetail_iv_grid.setVisibility(IsHaveGoodInf ? View.VISIBLE : View.GONE);
+                    grid_item.comment_show_gooddetail_iv_grid.setVisibility(  View.GONE);
+                    grid_item.comment_show_share_iv_grid.setVisibility(  View.GONE);
                     grid_item.comment_show_gooddetail_iv_grid.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
+                    grid_item.my_show_item_icon_grid.setClickable(true);
                     grid_item.my_show_item_icon_grid.setOnClickListener(new LookShowClick(datas.get(position)));
-                   grid_item.my_show_item_is_top.setVisibility(bShow.getIs_top()==1?View.VISIBLE:View.GONE);
-                    if (isMyShow(bShow.getSeller_id())) {
-                        grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
-                        grid_item.my_show_item_delete_grid.setOnClickListener(new DeleteShowClick(datas.get(position), position));
-                    } else {
-                        grid_item.my_show_item_delete_grid.setVisibility(View.GONE);
-                    }
+
+//                    if (isMyShow(bShow.getSeller_id())) {
+//                        grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
+//                        grid_item.my_show_item_delete_grid.setOnClickListener(new  DeleteShowClick(datas.get(position)));
+//                    } else {
+                    grid_item.my_show_item_delete_grid.setVisibility(View.GONE);
+//                    }
                     //StrUtils.SetTxt(grid_item.my_show_content_title, datas.get(position).getIntro());
                     SetIntro(grid_item.my_show_content_title, datas.get(position).getIntro());
                     StrUtils.SetTxt(grid_item.comment_show_transmit_numb_grid, "有" + (StrUtils.isEmpty(bShow.getSendnumber()) ? "0" : bShow.getSendnumber()) + "人转发");
@@ -505,17 +409,19 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
                     StrUtils.SetTxt(video_item.my_show_item_time_video, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
                     video_item.comment_show_share_iv_video.setOnClickListener(new ShareShowClick(datas.get(position)));
-                    video_item.comment_show_gooddetail_iv_video.setVisibility(IsHaveGoodInf ? View.VISIBLE : View.GONE);
+                    video_item.comment_show_gooddetail_iv_video.setVisibility(  View.GONE);
+                    video_item.comment_show_share_iv_video.setVisibility(  View.GONE);
                     video_item.comment_show_gooddetail_iv_video.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
+                    video_item.my_show_item_icon_video.setClickable(true);
                     video_item.my_show_item_icon_video.setOnClickListener(new LookShowClick(datas.get(position)));
-                    video_item.my_show_item_is_top.setVisibility(bShow.getIs_top()==1?View.VISIBLE:View.GONE);
-                    if (isMyShow(bShow.getSeller_id())) {
-                        video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
-                        video_item.my_show_item_delete_video.setOnClickListener(new DeleteShowClick(datas.get(position), position));
-                    } else {
-                        video_item.my_show_item_delete_video.setVisibility(View.GONE);
-                    }
+
+//                    if (isMyShow(bShow.getSeller_id())) {
+//                        video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
+//                        video_item.my_show_item_delete_video.setOnClickListener(new  DeleteShowClick(datas.get(position)));
+//                    } else {
+                    video_item.my_show_item_delete_video.setVisibility(View.GONE);
+//                    }
 
                     // StrUtils.SetTxt(video_item.my_show_content_video_title, datas.get(position).getIntro());
 
@@ -550,17 +456,19 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
                     StrUtils.SetTxt(pic_item.my_show_item_time_pic, DateUtils.convertTimeToFormat(StrUtils.toLong(bShow.getCreate_time())));
                     pic_item.comment_show_share_iv_pic.setOnClickListener(new ShareShowClick(datas.get(position)));
-                    pic_item.comment_show_gooddetail_iv_pic.setVisibility(IsHaveGoodInf ? View.VISIBLE : View.GONE);
+                    pic_item.comment_show_gooddetail_iv_pic.setVisibility(  View.GONE);
+                    pic_item.comment_show_share_iv_pic.setVisibility(  View.GONE);
                     pic_item.comment_show_gooddetail_iv_pic.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
+                    pic_item.my_show_item_icon_pic.setClickable(true);
                     pic_item.my_show_item_icon_pic.setOnClickListener(new LookShowClick(datas.get(position)));
-                    pic_item.my_show_item_is_top.setVisibility(bShow.getIs_top()==1?View.VISIBLE:View.GONE);
-                    if (isMyShow(bShow.getSeller_id())) {
-                        pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
-                        pic_item.my_show_item_delete_pic.setOnClickListener(new DeleteShowClick(datas.get(position), position));
-                    } else {
-                        pic_item.my_show_item_delete_pic.setVisibility(View.GONE);
-                    }
+
+//                    if (isMyShow(bShow.getSeller_id())) {
+//                        pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
+//                        pic_item.my_show_item_delete_pic.setOnClickListener(new  DeleteShowClick(datas.get(position)));
+//                    } else {
+                    pic_item.my_show_item_delete_pic.setVisibility(View.GONE);
+//                    }
                     SetIntro(pic_item.my_show_content_single_pic_title, datas.get(position).getIntro());
 
                     StrUtils.SetTxt(pic_item.comment_show_transmit_numb_pic, "有" + (StrUtils.isEmpty(bShow.getSendnumber()) ? "0" : bShow.getSendnumber()) + "人转发");
@@ -614,18 +522,18 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             this.notifyDataSetChanged();
         }
 
+        public void AddFrashData(List<BLShow> datas1) {
+            this.datas.addAll(datas1);
+            this.notifyDataSetChanged();
+        }
+
         public void FrashAllData(List<BLShow> datas2) {
             this.datas.addAll(datas2);
             this.notifyDataSetChanged();
         }
 
-        public List<BLShow> GetAllData() {
-            return datas;
-        }
-
         //多张图片holder***************************************************
         class MyShowItem extends RecyclerView.ViewHolder {
-            private ImageView my_show_item_is_top;
             private CopyTextView my_show_content_title;
             private CompleteGridView item_recycler_my_show_gridview;
             private View my_show_grid_head;
@@ -641,9 +549,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
             public MyShowItem(View itemView) {
                 super(itemView);
-
                 my_show_grid_head = itemView.findViewById(R.id.my_show_grid_head);
-                my_show_item_is_top= (ImageView) my_show_grid_head.findViewById(R.id.my_show_item_is_top);
                 my_show_item_icon_grid = (CircleImageView) my_show_grid_head.findViewById(R.id.my_show_item_icon);
                 my_show_item_name_grid = (TextView) my_show_grid_head.findViewById(R.id.my_show_item_name);
                 my_show_item_time_grid = (TextView) my_show_grid_head.findViewById(R.id.my_show_item_time);
@@ -663,7 +569,6 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
         //一个小视频holder***************************************************
         class MyShowVideoItem extends RecyclerView.ViewHolder {
-            private ImageView my_show_item_is_top;
             private CopyTextView my_show_content_video_title;
             private ImageView item_recycler_my_show_vido_image;
             private ImageView item_recycler_my_show_vido_control_image;
@@ -679,9 +584,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
             public MyShowVideoItem(View itemView) {
                 super(itemView);
-
                 my_show_video_head = itemView.findViewById(R.id.my_show_video_head);
-                my_show_item_is_top= (ImageView) my_show_video_head.findViewById(R.id.my_show_item_is_top);
                 my_show_item_icon_video = (CircleImageView) my_show_video_head.findViewById(R.id.my_show_item_icon);
                 my_show_item_name_video = (TextView) my_show_video_head.findViewById(R.id.my_show_item_name);
                 my_show_item_time_video = (TextView) my_show_video_head.findViewById(R.id.my_show_item_time);
@@ -700,7 +603,6 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
         //一张图片holder***************************************************
         class MyShowSinglePicItem extends RecyclerView.ViewHolder {
-            private ImageView my_show_item_is_top;
             private CopyTextView my_show_content_single_pic_title;
             private ImageView item_recycler_my_show_single_pic;
             private View my_show_single_pic_head;
@@ -716,7 +618,6 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             public MyShowSinglePicItem(View itemView) {
                 super(itemView);
                 my_show_single_pic_head = itemView.findViewById(R.id.my_show_single_pic_head);
-                my_show_item_is_top = (ImageView) my_show_single_pic_head.findViewById(R.id.my_show_item_is_top);
                 my_show_item_icon_pic = (CircleImageView) my_show_single_pic_head.findViewById(R.id.my_show_item_icon);
                 my_show_item_name_pic = (TextView) my_show_single_pic_head.findViewById(R.id.my_show_item_name);
                 my_show_item_time_pic = (TextView) my_show_single_pic_head.findViewById(R.id.my_show_item_time);
@@ -759,46 +660,28 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             //品牌商点击进入品牌店铺&&普通app用户点击进入其他的Show页面（老的错误逻辑）
             @Override
             public void onClick(View v) {
+
                 if (IsBrand) {   // 品牌店铺发布的show===>跳转到品牌商详情页面
-//                    BComment mBComment = new BComment(MyShareShow.getSellerinfo().getId(), MyShareShow.getSellerinfo().getSeller_name());
-//                    PromptManager.SkipActivity(BaseActivity, new Intent(
-//                            BaseActivity, ABrandDetail.class).putExtra(
-//                            BaseKey_Bean, mBComment));
-                    Intent intent = new Intent(BaseActivity,
-                            ARecyclerOtherShow.class);
-                    intent.putExtra(
-                            "abasebeankey",
-                            new BComment(
-                                    MyShareShow.getSeller_id(),
-                                    MyShareShow.getSellerinfo().getCover(),
-                                    MyShareShow.getSellerinfo()
-                                            .getAvatar(), MyShareShow
-                                    .getSellerinfo()
-                                    .getSeller_name(), MyShareShow
-                                    .getSellerinfo()
-                                    .getIs_brand()));
-                    PromptManager.SkipActivity(BaseActivity, intent);
+                    BComment mBComment = new BComment(MyShareShow.getSellerinfo().getId(), MyShareShow.getSellerinfo().getSeller_name());
+                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                            BaseActivity, ABrandDetail.class).putExtra(
+                            BaseKey_Bean, mBComment));
 
                 } else { //自营店铺(普通用户发布的show)==》跳转到其他show页面
-                    //如果是我的show
-                    if (MyShareShow.getSeller_id().equals(MyUser.getSeller_id())) {//是我自己发的
-                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ARecyclerMyShow.class).putExtra("seller_id", MyUser.getSeller_id()));
-                    } else {
-                        Intent intent = new Intent(BaseActivity,
-                                ARecyclerOtherShow.class);
-                        intent.putExtra(
-                                "abasebeankey",
-                                new BComment(
-                                        MyShareShow.getSeller_id(),
-                                        MyShareShow.getSellerinfo().getCover(),
-                                        MyShareShow.getSellerinfo()
-                                                .getAvatar(), MyShareShow
-                                        .getSellerinfo()
-                                        .getSeller_name(), MyShareShow
-                                        .getSellerinfo()
-                                        .getIs_brand()));
-                        PromptManager.SkipActivity(BaseActivity, intent);
-                    }
+//                    Intent intent = new Intent(BaseActivity,
+//                            ARecyclerOtherShow.class);
+//                    intent.putExtra(
+//                            "abasebeankey",
+//                            new BComment(
+//                                    MyShareShow.getSeller_id(),
+//                                    MyShareShow.getSellerinfo().getCover(),
+//                                    MyShareShow.getSellerinfo()
+//                                            .getAvatar(), MyShareShow
+//                                    .getSellerinfo()
+//                                    .getSeller_name(), MyShareShow
+//                                    .getSellerinfo()
+//                                    .getIs_brand()));
+//                    PromptManager.SkipActivity(BaseActivity, intent);
                 }
             }
 
@@ -840,14 +723,63 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
             @Override
             public void onClick(View v) {
-                //判断发show的权限！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-                //权限888888888888888888888
-                //如果未绑定或者已绑定未激活的用户分享权限的判断***************************
-                if (CheckLimite()) return;
-                //判断发show的权限！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+                //权限
+
+                //判断是否符合分享条件*************
+
+
+                if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
+                    ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                            getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                            ANewBindCode.class));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                }
+                            });
+                    return;
+                }
+                if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                    ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
+                            new IDialogResult() {
+                                @Override
+                                public void RightResult() {
+                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                            maxtive.getActivitytitle());
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                            mBCommentss));
+                                }
+
+                                @Override
+                                public void LeftResult() {
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, AWeb.class).putExtra(
+                                            AWeb.Key_Bean,
+                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                                }
+                            });
+
+                    return;
+                }
+
+
+                //判断是否符合分享条件*************
+
+                //权限
+
+
                 PShowShare myshare = null;//new PShowShare(BaseContext, BaseActivity, new BNew(), true, true);
 
-                if (IsHaveGoods_Share) {//带商品连接********************
+                if (IsHaveGoods_Share) { //带商品连接********************
                     BNew bnew = new BNew();
                     BLBShow GoodInf = JSON.parseObject(MyShareShow.getGoodinfo(), BLBShow.class);
                     bnew.setShare_title(GoodInf.getTitle());
@@ -858,7 +790,6 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                         myshare = new PShowShare(BaseContext, BaseActivity, bnew, true, true);
                     } else {//视频  直接取出视频封面分享
                         bnew.setShare_log(MyShareShow.getPre_url());
-                        bnew.setShare_vido_url(Constants.VidoShareHtml+MyShareShow.getVid());
                         myshare = new PShowShare(BaseContext, BaseActivity, bnew, false, true);
                     }
                     myshare.SetShareListener(new PShowShare.ShowShareInterListener() {
@@ -866,9 +797,9 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                         public void GetResultType(int ResultType) {
                             switch (ResultType) {
                                 case PShowShare.SHARE_TO_SHOW://Show分享
-//                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
+                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
                                     //   Show分享********************************************************************
-//                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
+                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
                                     if (!IsVido) {// 照片
 //                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
                                         BShowShare MyBShowShare = new BShowShare();
@@ -900,14 +831,13 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                                     //   Show分享********************************************************************
                                     break;
                                 case PShowShare.SHARE_GOODS_OK://三方分享成功
-                                    Show_Award();
                                     break;
                                 case PShowShare.SHARE_GOODS_ERROR://三方分享失败
                                     break;
                                 case PShowShare.SHARE_PIC_VEDIO://九宫格或者视频分享
                                     if (!IsVido)
                                         try {
-                                            Pic9ShowBegin(MyShareShow.getImgarr(), StrUtils.isEmpty(MyShareShow.getIntro()) ? "微糖商城#" : MyShareShow.getIntro());
+//                                            Pic9ShowBegin(MyShareShow.getImgarr(), StrUtils.isEmpty(MyShareShow.getIntro()) ? "微糖商城#" : MyShareShow.getIntro());
                                         } catch (Exception e) {
                                             PromptManager.closeLoading();
                                             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.jiugongge_error));
@@ -932,7 +862,6 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                         myshare = new PShowShare(BaseContext, BaseActivity, bnew, true, false);
                     } else {//视频  直接取出视频封面分享
                         bnew.setShare_url(Constants.VidoShareHtml + MyShareShow.getVid());
-                        bnew.setShare_vido_url(Constants.VidoShareHtml+MyShareShow.getVid());
                         myshare = new PShowShare(BaseContext, BaseActivity, bnew, false, false);
                     }
                     myshare.SetShareListener(new PShowShare.ShowShareInterListener() {
@@ -941,7 +870,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                             switch (ResultType) {
                                 case PShowShare.SHARE_TO_SHOW://Show分享
                                     //   Show分享********************************************************************
-//                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
+                                    PromptManager.ShowCustomToast(BaseContext, "SHOW分享");
                                     if (!IsVido) {// 照片
 //                                    //如果是照片  只需要把照片数组和商品id 传到show分享即可
                                         BShowShare MyBShowShare = new BShowShare();
@@ -973,7 +902,6 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                                     //   Show分享********************************************************************
                                     break;
                                 case PShowShare.SHARE_GOODS_OK://三方分享成功
-                                    Show_Award();
                                     break;
                                 case PShowShare.SHARE_GOODS_ERROR://三方分享失败
                                     break;
@@ -984,7 +912,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 //                                    PromptManager.ShowCustomToast(BaseContext, "九宫格分享");
                                     if (!IsVido) {
                                         try {
-                                            Pic9ShowBegin(MyShareShow.getImgarr(), StrUtils.isEmpty(MyShareShow.getIntro()) ? "微糖商城#" : MyShareShow.getIntro());
+//                                            Pic9ShowBegin(MyShareShow.getImgarr(), StrUtils.isEmpty(MyShareShow.getIntro()) ? "微糖商城#" : MyShareShow.getIntro());
                                         } catch (Exception e) {
                                             PromptManager.closeLoading();
                                             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.jiugongge_error));
@@ -1060,16 +988,14 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
          */
         class DeleteShowClick implements View.OnClickListener {
             BLShow DeleteBShow;
-            int Mypostion;
 
-            public DeleteShowClick(BLShow myShareShow, int Postion) {
+            public DeleteShowClick(BLShow myShareShow) {
                 DeleteBShow = myShareShow;
-                Mypostion = Postion;
             }
 
             @Override
             public void onClick(View v) {
-                ShowCustomDialog(DeleteBShow.getId(), Mypostion);
+                ShowDDDCustomDialog(DeleteBShow.getId(), DeleteBShow.getSellerinfo().getId());
             }
         }
 
@@ -1081,7 +1007,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
          * @param
          * @param
          */
-        private void ShowCustomDialog(final String ShowId, final int Postion) {
+        private void ShowDDDCustomDialog(final String ShowId, final String seller_id) {
             final CustomDialog dialog = new CustomDialog(mContext,
                     R.style.mystyle, R.layout.dialog_purchase_cancel, 1, "取消", "删除");
             dialog.show();
@@ -1100,7 +1026,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                 @Override
                 public void onConfirmCLick(View v) {
                     dialog.dismiss();
-                    DeletMyShow(ShowId, Postion);
+//                       DeletMyShow(ShowId, seller_id);
 
 
                 }
@@ -1110,186 +1036,5 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 
     }
 
-    private boolean CheckLimite() {
-        if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
-            ShowCustomDialog(getResources().getString(R.string.no_bind_code),
-                    getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
-                    new IDialogResult() {
-                        @Override
-                        public void RightResult() {
-                            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                                    ANewBindCode.class));
-                        }
 
-                        @Override
-                        public void LeftResult() {
-                        }
-                    });
-            return true;
-        }
-        if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
-            ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
-                    getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
-                    new IDialogResult() {
-                        @Override
-                        public void RightResult() {
-                            BActive maxtive = Spuit.Jihuo_get(BaseContext);
-                            BComment mBCommentss = new BComment(maxtive.getActivityid(),
-                                    maxtive.getActivitytitle());
-                            PromptManager.SkipActivity(BaseActivity, new Intent(
-                                    BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
-                                    mBCommentss));
-                        }
-
-                        @Override
-                        public void LeftResult() {
-                            PromptManager.SkipActivity(BaseActivity, new Intent(
-                                    BaseActivity, AWeb.class).putExtra(
-                                    AWeb.Key_Bean,
-                                    new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
-
-                        }
-                    });
-
-            return true;
-        }
-        return false;
-    }
-
-    int CountNumber = 0;
-
-    public void RecursionDeleteFile(File file) {
-        if (file.isFile()) {
-            file.delete();
-            return;
-        }
-        if (file.isDirectory()) {
-            File[] childFile = file.listFiles();
-            if (childFile == null || childFile.length == 0) {
-                file.delete();
-                return;
-            }
-            for (File f : childFile) {
-                RecursionDeleteFile(f);
-            }
-            file.delete();
-        }
-    }
-
-    private void Pic9ShowBegin(final List<String> imgarr, final String Content) {
-        CountNumber = 0;
-        PromptManager.showLoading(BaseContext);
-        File sdCards = Environment.getExternalStorageDirectory();
-        final File test = new File(sdCards + "/wtshowpic");
-        if (test.exists()) {
-            RecursionDeleteFile(test);
-        }
-
-        for (int i = 0; i < imgarr.size(); i++) {
-            final File downshow = new File(sdCards, "/wtshowpic/" + StrUtils.GetPic(imgarr.get(i), 8));
-            final int postion = i;
-            DownFileUtils dd = new DownFileUtils();
-            dd.SetResult(new DownLoadListener() {
-                @Override
-                public void DownLoadOk() {
-                    Log.i("filetest", "成功" + postion);
-                    CountNumber = CountNumber + 1;
-                    if (CountNumber == imgarr.size()) {
-                        sharemuil(Content, test);
-                    }
-
-                }
-
-                @Override
-                public void DownLoadError() {
-                    Log.i("filetest", "失败" + postion);
-                    CountNumber = CountNumber + 1;
-                    if (CountNumber == imgarr.size()) {
-                        sharemuil(Content, test);
-                    }
-
-
-                }
-            });
-            dd.xUtilsHttpUtilDonLoadFile(imgarr.get(i), downshow.getPath(), downshow, StrUtils.GetPic(imgarr.get(i), 8));
-        }
-
-
-    }
-
-    private void sharemuil(String content, File... files) {
-        Show_Award();
-        PromptManager.closeLoading();
-        Intent intent = new Intent();
-        ComponentName comp = new ComponentName("com.tencent.mm",
-                "com.tencent.mm.ui.tools.ShareToTimeLineUI");
-        intent.setComponent(comp);
-        intent.setAction(Intent.ACTION_SEND_MULTIPLE);
-        intent.setType("image/*");
-
-        ArrayList<Uri> imageUris = new ArrayList<Uri>();
-
-        for (File f : files) {
-            File[] filels = f.listFiles();
-            for (int i = 0; i < filels.length; i++) {
-                File file = filels[i];
-                if (checkIsImageFile(file.getPath())) {
-                    imageUris.add(Uri.fromFile(file));
-                }
-            }
-
-        }
-        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
-        intent.putExtra("Kdescription", content);
-        startActivity(intent);
-    }
-
-    private boolean checkIsImageFile(String fName) {
-        boolean isImageFile = false;
-        // 获取扩展名
-        String FileEnd = fName.substring(fName.lastIndexOf(".") + 1,
-                fName.length()).toLowerCase();
-        if (FileEnd.equals("jpg") || FileEnd.equals("png") || FileEnd.equals("gif")
-                || FileEnd.equals("jpeg") || FileEnd.equals("bmp")) {
-            isImageFile = true;
-        } else {
-            isImageFile = false;
-        }
-        return isImageFile;
-    }
-
-    /**
-     * 删除我自己的show
-     */
-
-    private void DeletMyShow(String ShowId, int postion) {
-        PromptManager.showLoading(BaseContext);
-        Postion = postion;
-        HashMap<String, String> mHashMap = new HashMap<String, String>();
-        mHashMap.put("id", ShowId);
-        mHashMap.put("seller_id", MyUser.getSeller_id());
-        FBGetHttpData(mHashMap, Constants.MyShowDelete, Request.Method.DELETE, 11,
-                postion + 11);
-    }
-
-    /**
-     * 发show的奖励 交互 （发完show 需要和后台确认便于后台增加show积分）
-     */
-    private void Show_Award() {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());
-        NHttpBaseStr NHttpBase = new NHttpBaseStr(BaseContext);
-        NHttpBase.setPostResult(new IHttpResult<String>() {
-            @Override
-            public void getResult(int Code, String Msg, String Data) {
-
-            }
-
-            @Override
-            public void onError(String error, int LoadType) {
-
-            }
-        });
-        NHttpBase.getData(Constants.UpShow_AWard, map, Request.Method.POST);
-    }
 }

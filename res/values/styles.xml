@@ -18,6 +18,14 @@
         <item name="android:outAnimation">@anim/dialog_out</item>
     </style>
 
+    <style name="mystyle_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <style name="main_menu_animstyless">
         <item name="android:windowEnterAnimation">@anim/dialog_in</item>
         <item name="android:windowExitAnimation">@anim/dialog_out</item>
@@ -405,6 +413,7 @@
         <item name="android:gravity">center</item>
         <item name="android:clickable">true</item>
     </style>
+
     <style name="style_sort_up_txt2">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
