@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_margin="30dp"
-    android:background="@color/transparent"
-    android:layout_height="wrap_content">
+android:background="@color/transparent"
+    android:layout_height="wrap_content"
+    style="@style/loading">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:layout_above="@+id/dialog_show_share_cancel"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+
         android:background="@drawable/shap_corner"
         android:orientation="vertical"
         android:padding="@dimen/line_size1"
@@ -175,7 +177,10 @@
     </RelativeLayout>
 
     </LinearLayout>
-
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/ui_10_dip"
+    android:src="@color/transparent"/>
     <TextView
         android:id="@+id/dialog_show_share_cancel"
         android:layout_width="match_parent"
@@ -185,10 +190,11 @@
         android:focusable="true"
         android:gravity="center"
         android:padding="14dp"
+
         android:text="取消"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/linearLayout"
-        android:layout_alignStart="@+id/linearLayout" />
+
+         />
 
 
-</RelativeLayout>
+</LinearLayout>

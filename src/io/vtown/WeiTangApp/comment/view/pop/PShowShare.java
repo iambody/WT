@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -76,7 +78,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     public static final int SHARE_GOODS_OK = 119;//分享商品成功
     public static final int SHARE_GOODS_ERROR = 120;//分享商品成功
     private ShowShareInterListener MShowShareInterListener;
-    private AlertDialog dialog;
+    private AlertDialog dialog ;
     private ImageView iv_pic_vedio_share_icon;
     private TextView tv_pic_vedio_share_title;
     private View show_share_line;
@@ -229,9 +231,10 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
 //权限888888888888888888888
 
 //                Share(2);
+                this.dismiss();
                 showShareDialog();
 
-                this.dismiss();
+
                 break;
             case R.id.show_share_to_show://最上边！！！！！show分享====》不需要权限
                 MShowShareInterListener.GetResultType(SHARE_TO_SHOW);
@@ -301,6 +304,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_show_share, null);
         builder.setView(view);
         dialog = builder.create();
+
         dialog.setCanceledOnTouchOutside(true);
         view.findViewById(R.id.ll_share_2_wxchat).setOnClickListener(this);
         view.findViewById(R.id.ll_share_2_wxfriends).setOnClickListener(this);
@@ -308,7 +312,8 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
         view.findViewById(R.id.ll_share_2_qzone).setOnClickListener(this);
         view.findViewById(R.id.ll_share_2_sinawb).setOnClickListener(this);
         view.findViewById(R.id.dialog_show_share_cancel).setOnClickListener(this);
-
+        WindowManager.LayoutParams attributes = dialog.getWindow().getAttributes();
+        attributes.gravity = Gravity.BOTTOM;
         dialog.show();
     }
 
