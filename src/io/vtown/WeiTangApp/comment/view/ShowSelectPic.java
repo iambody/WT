@@ -168,7 +168,7 @@ public class ShowSelectPic extends ATitleBase {
     @Override
     protected void DataError(String error, int LoadType) {
         PromptManager.closeTextLoading3();
-        PromptManager.ShowCustomToast(BaseContext, "上传失败请重试");
+        PromptManager.ShowCustomToast(BaseContext, error);
 
 
     }

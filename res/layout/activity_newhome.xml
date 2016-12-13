@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/titlebarheingh"
             android:background="@color/app_fen"
             android:orientation="horizontal"
-            android:padding="10dp" >
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/newhome_select_iv"
@@ -24,7 +24,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/home_select"
-                android:visibility="gone" />
+                android:visibility="gone"/>
 
             <ImageView
                 android:id="@+id/newhome_sao_iv"
@@ -48,26 +48,26 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal"
-                android:padding="5dp" >
+                android:padding="5dp">
 
                 <TextView
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/home_souso"
                     android:textColor="@color/app_gray"
-                    android:textSize="15dp"
-                    android:id="@+id/textView"/>
+                    android:textSize="15dp"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/textView"
+                    android:layout_toStartOf="@+id/textView"
                     android:clickable="true"
                     android:focusable="true"
-                    android:src="@drawable/sousou_gray"
-                   android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/textView"
-                    android:layout_toStartOf="@+id/textView"/>
+                    android:src="@drawable/sousou_gray"/>
             </RelativeLayout>
 
             <ImageView
@@ -84,17 +84,19 @@
             android:id="@+id/neterrorview"
             layout="@layout/net_status_bar_info_top"
             android:clickable="true"
-            android:visibility="gone" />
+            android:visibility="gone"/>
     </LinearLayout>
+
     <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
         android:id="@+id/activity_home_refrash"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-    <ListView
-        android:id="@+id/newhome_ls"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none" />
+
+        <ListView
+            android:id="@+id/newhome_ls"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"/>
     </io.vtown.WeiTangApp.comment.view.custom.RefreshLayout>
 </LinearLayout>

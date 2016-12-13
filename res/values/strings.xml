@@ -784,6 +784,8 @@
     <string name="jiugongge_error">网络君不给力,发送失败.......</string>
     <string name="invite_team_info_benyue_activity">本月团队活跃人数</string>
     <string name="invite_team_info_benyue_zhishu">本月团队直属人数</string>
+    <string name="readying">准备中..........</string>
+    <string name="pleaseadd">请添加图片</string>
 
 
 </resources>

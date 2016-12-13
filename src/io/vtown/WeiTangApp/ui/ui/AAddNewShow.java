@@ -368,20 +368,21 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     //带商品链接的图片==>上边发show直接SendShow//中间三方分享直接用商品// 下边九宫格分享直接用本地  ==》不用上传图片！！！！！
     private void Send_Pic_Or_Vido_Url(final boolean IsPic) {
         if (!IsPic) {
+            if (!Checked()) return;
             //帶商品鏈接視頻
-
-
             final PPicOrVedioShare myshare = new PPicOrVedioShare(BaseContext, false, true);
-
             myshare.setOnPicOrVedioShareListener(new PPicOrVedioShare.OnPicOrVedioShareListener() {
                 @Override
                 public void showStatus(int type) {
                     switch (type) {
                         case PPicOrVedioShare.SHOW_SHARE:
-                            if (Checked())
+                            if (Checked()) {
+                                myshare.dismiss();
                                 SendShow();
+                            }
                             break;
                         case PPicOrVedioShare.GOOD_SHARE:
+                            myshare.dismiss();
                             BNew ShareNew = new BNew();
                             ShareNew.setShare_title(mGoodInfo.getTitle());
                             ShareNew.setShare_content(mGoodInfo.getTitle());
@@ -405,6 +406,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
                             break;
                         case PPicOrVedioShare.VEDIO_SHARE:
+                            myshare.dismiss();
                             To_Share_NoUrl_Vido(myshare);
 
                             break;
@@ -413,8 +415,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
 
             });
-
-
+            myshare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
             return;
         }
         BNew ShareNew = new BNew();
@@ -423,14 +424,16 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         ShareNew.setShare_log(mGoodInfo.getCover());
         ShareNew.setShare_url(mGoodInfo.getGoodsurl());
         //开始弹出框分享******************************
-        PShowShare myshare = new PShowShare(BaseContext, BaseActivity, ShareNew, true, true);
+        final PShowShare myshare = new PShowShare(BaseContext, BaseActivity, ShareNew, true, true);
         myshare.SetShareListener(new PShowShare.ShowShareInterListener() {
             @Override
             public void GetResultType(int ResultType) {
                 switch (ResultType) {
                     case PShowShare.SHARE_TO_SHOW://Show分享
-                        if (Checked())
+                        if (Checked()) {
+                            myshare.dismiss();
                             SendShow();
+                        }
                         break;
                     case PShowShare.SHARE_GOODS_OK://三方分享成功
                         Show_Award();
@@ -441,6 +444,9 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                     case PShowShare.SHARE_PIC_VEDIO://九宫格 分享
                         if (Checked() && IsPic)
                             try {
+                                if (imgs.size() == 0) {
+                                    PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.pleaseadd));
+                                }
                                 Pic9Show(imgs, StrUtils.isEmpty(etAddNewShowTxtContent.getText().toString().trim()) ? "微糖商城#" : etAddNewShowTxtContent.getText().toString().trim());
                             } catch (Exception e) {
                                 PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.jiugongge_error));
@@ -452,31 +458,34 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
 
         });
+        myshare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
     }
 
     //不带商品链接的！！！！！！！！！！！！！！！！！！！！！
     private void Send_Pic_Or_Vido_No_Url(final boolean IsPic) {
         if (!Checked()) return;
-
         final PPicOrVedioShare myshare = new PPicOrVedioShare(BaseContext, IsPic, false);
-
         myshare.setOnPicOrVedioShareListener(new PPicOrVedioShare.OnPicOrVedioShareListener() {
             @Override
             public void showStatus(int type) {
                 switch (type) {
                     case PPicOrVedioShare.SHOW_SHARE:
-                        if (Checked())
+                        if (Checked()) {
+                            myshare.dismiss();
                             SendShow();
+                        }
                         break;
                     case PPicOrVedioShare.PIC_SHARE:
                         if (Checked())
                             try {
+                                myshare.dismiss();
                                 Pic9Show(imgs, StrUtils.isEmpty(etAddNewShowTxtContent.getText().toString().trim()) ? "微糖商城#" : etAddNewShowTxtContent.getText().toString().trim());
                             } catch (Exception e) {
                                 PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.jiugongge_error));
                             }
                         break;
                     case PPicOrVedioShare.VEDIO_SHARE:
+                        myshare.dismiss();
                         To_Share_NoUrl_Vido(myshare);
 
                         break;
@@ -485,14 +494,14 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
 
         });
-
+        myshare.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
 
     }
 
     //点击pop下边按钮后需要操作===》分享不带url在视频
     private void To_Share_NoUrl_Vido(final PPicOrVedioShare Pop) {
         //开始上传视频
-
+        PromptManager.showtextLoading3(BaseContext, getResources().getString(R.string.readying));
         NUPLoadUtil dLoadUtils1 = new NUPLoadUtil(BaseContext, new File(
                 mCordVidoPath), StrUtils.UploadVido("vid"));
         dLoadUtils1.SetUpResult1(new NUPLoadUtil.UpResult1()
@@ -500,11 +509,11 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         {
             @Override
             public void Progress(String arg0, double arg1) {
-
             }
 
             @Override
             public void Onerror() {
+                PromptManager.closeTextLoading3();
                 upload_qiniu_video_url = "";
                 Pop.dismiss();
                 PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.http_exception_error));
@@ -512,12 +521,11 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
             @Override
             public void Complete(String HostUrl, String Url) {
+                PromptManager.closeTextLoading3();
                 upload_qiniu_video_url = HostUrl;
                 // 上传视频完毕==》开始分享不带url的视频
                 Pop.dismiss();
                 To_NoUrl_Vido_Share(Constants.VidoShareHtml + Url);
-
-
             }
 
 
@@ -535,7 +543,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         MyBnew.setShare_log(MyUser.getHead_img());
         MyBnew.setShare_url(Url);
         PShare da = new PShare(BaseContext, MyBnew, true);
-        da.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
+
         da.GetShareResult(new PShare.ShareResultIntface() {
             @Override
             public void ShareResult(int ResultType) {
@@ -549,6 +557,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 }
             }
         });
+        da.showAtLocation(BaseView, Gravity.BOTTOM, 0, 0);
     }
 
     //發show時候的判斷

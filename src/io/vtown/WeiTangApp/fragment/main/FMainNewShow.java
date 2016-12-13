@@ -847,7 +847,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                 //判断发show的权限！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
                 PShowShare myshare = null;//new PShowShare(BaseContext, BaseActivity, new BNew(), true, true);
 
-                if (IsHaveGoods_Share) { //带商品连接********************
+                if (IsHaveGoods_Share) {//带商品连接********************
                     BNew bnew = new BNew();
                     BLBShow GoodInf = JSON.parseObject(MyShareShow.getGoodinfo(), BLBShow.class);
                     bnew.setShare_title(GoodInf.getTitle());

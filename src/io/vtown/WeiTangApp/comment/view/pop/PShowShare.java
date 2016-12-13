@@ -163,14 +163,13 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.show_share_to_pic_vedio://最下边！！！！！ 图片(九宫格)和视频分享 ===》需要权限判断
-
                 String aa = mShareBeanNew.getShare_url();
                 if (!isPic) {
                     controlType(SHARE_TO_FRIENDS);
                     this.dismiss();
                     return;
                 }
-
+                //是图片直接回调通知九宫格
                 MShowShareInterListener.GetResultType(SHARE_PIC_VEDIO);
 
                 this.dismiss();

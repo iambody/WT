@@ -167,6 +167,7 @@ public class AGoodVidoShare extends ATitleBase {
 
     @Override
     protected void DataError(String error, int LoadType) {
+        PromptManager.ShowCustomToast(BaseContext, error);
     }
 
     @Override
