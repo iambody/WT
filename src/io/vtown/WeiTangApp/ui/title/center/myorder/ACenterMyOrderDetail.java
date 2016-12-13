@@ -635,23 +635,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
             if ("0".equals(order_detail2.getRefund())) {
                 tv_center_my_order_apply_refund.setVisibility(View.VISIBLE);
 
-                if (0 == order_detail2.getIs_have_point()) {
-                    ll_center_my_order_get_integral_tips.setVisibility(View.GONE);
-                    tv_center_my_order_get_integral.setVisibility(View.GONE);
-                } else {
-                    if (0 == order_detail2.getAdvance_point()) {
-                        // myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
-                        ll_center_my_order_get_integral_tips.setVisibility(View.GONE);
-                        tv_center_my_order_get_integral.setVisibility(View.VISIBLE);
-                    } else {
-                        tv_center_my_order_apply_refund.setVisibility(View.GONE);
-                        tv_center_my_order_get_integral.setVisibility(View.GONE);
-                        ll_center_my_order_get_integral_tips.setVisibility(View.VISIBLE);
-                        StrUtils.SetTxt(tv_center_my_order_get_integral_tips, "温馨提示：您已在" + DateUtils.timeStampToStr(Long.parseLong(order_detail2.getPoint_time())) + "获取积分,获取积分后不能再进行申请退款操作");
-                        /// myItem.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
 
-                    }
-                }
 
 
                 if ("0".equals(order_detail2.getRemind_time())) {
@@ -663,6 +647,24 @@ public class ACenterMyOrderDetail extends ATitleBase {
             } else {
                 tv_center_my_order_apply_refund.setVisibility(View.GONE);
                 tv_center_my_order_remind_send_out.setVisibility(View.GONE);
+            }
+
+            if (0 == order_detail2.getIs_have_point()) {
+                ll_center_my_order_get_integral_tips.setVisibility(View.GONE);
+                tv_center_my_order_get_integral.setVisibility(View.GONE);
+            } else {
+                if (0 == order_detail2.getAdvance_point()) {
+                    // myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                    ll_center_my_order_get_integral_tips.setVisibility(View.GONE);
+                    tv_center_my_order_get_integral.setVisibility(View.VISIBLE);
+                } else {
+                    tv_center_my_order_apply_refund.setVisibility(View.GONE);
+                    tv_center_my_order_get_integral.setVisibility(View.GONE);
+                    ll_center_my_order_get_integral_tips.setVisibility(View.VISIBLE);
+                    StrUtils.SetTxt(tv_center_my_order_get_integral_tips, "温馨提示：您已在" + DateUtils.timeStampToStr(Long.parseLong(order_detail2.getPoint_time())) + "获取积分,获取积分后不能再进行申请退款操作");
+                    /// myItem.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
+
+                }
             }
         }
 

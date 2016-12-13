@@ -65,7 +65,7 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * @version 创建时间：2016-8-18 下午1:37:57
  */
 public class ACenterMyOrder extends ATitleBase implements
-        RefreshLayout.OnLoadListener, AdapterView.OnItemLongClickListener {
+        RefreshLayout.OnLoadListener{
     /**
      * 标记 分别是 全部，代付款，已付款，待收货，退货,关闭 订单状态 10:代付款 20:已付款 待发货 30:已发货 待收货 40:退款中
      * 50:仲裁处理中 100:已完成 110:已取消 60拒绝退款，70同意退款
@@ -205,7 +205,6 @@ public class ACenterMyOrder extends ATitleBase implements
 
 
         fragment_center_order_ls.setAdapter(centerOrderOutsideAdapter);
-        fragment_center_order_ls.setOnItemLongClickListener(this);
 
         // 设置滚动时不从网上加载图片
         fragment_center_order_ls
@@ -478,29 +477,6 @@ public class ACenterMyOrder extends ATitleBase implements
         IData(LOAD_REFRESHING, Ket_Tage + "");
     }
 
-    @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        BLCenterOder itemdata = (BLCenterOder) centerOrderOutsideAdapter.getItem(position);
-        int order_status = Integer.parseInt(itemdata.getOrder_status());
-        final String order_sn = itemdata.getSeller_order_sn();
-        final String member_id = itemdata.getMember_id();
-        if(order_status == PAgreeTuiKuan || order_status == PClose || order_status == PCancel){
-            ShowCustomDialog("确认要删除此订单？\n（订单删除后将无法恢复）", "取消", "确定", new IDialogResult() {
-                @Override
-                public void LeftResult() {
-
-                }
-
-                @Override
-                public void RightResult() {
-                    deleteOrder(order_sn,member_id);
-                }
-            });
-
-            return true;
-        }
-        return false;
-    }
 
     /**
      * 外层list的Ap
@@ -729,22 +705,6 @@ public class ACenterMyOrder extends ATitleBase implements
                         myItem.fragment_center_order_apply_for_tuikuan_commiont
                                 .setVisibility(View.VISIBLE);
 
-                        if (0 == data.getIs_have_point()) {
-                            myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
-                            myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
-                        } else {
-                            if (0 == data.getAdvance_point()) {
-                                myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
-                                myItem.fragment_center_order_get_integral.setVisibility(View.VISIBLE);
-                            } else {
-                                myItem.fragment_center_order_apply_for_tuikuan_commiont.setVisibility(View.GONE);
-                                myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
-                                myItem.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
-
-                            }
-                        }
-
-
                         if ("0".equals(data.getRemind_time())) {
                             myItem.fragment_center_order_remind_fahuo
                                     .setVisibility(View.VISIBLE);
@@ -759,6 +719,21 @@ public class ACenterMyOrder extends ATitleBase implements
                                 .setVisibility(View.GONE);
                         myItem.fragment_center_order_remind_fahuo
                                 .setVisibility(View.GONE);
+                    }
+
+                    if (0 == data.getIs_have_point()) {
+                        myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                        myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
+                    } else {
+                        if (0 == data.getAdvance_point()) {
+                            myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                            myItem.fragment_center_order_get_integral.setVisibility(View.VISIBLE);
+                        } else {
+                            myItem.fragment_center_order_apply_for_tuikuan_commiont.setVisibility(View.GONE);
+                            myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
+                            myItem.fragment_center_order_is_get_integral.setVisibility(View.VISIBLE);
+
+                        }
                     }
 
                     myItem.fragment_center_order_cancel_order
@@ -1044,6 +1019,7 @@ public class ACenterMyOrder extends ATitleBase implements
                 myItem.ll_center_my_order_seller_order_sn = (LinearLayout) convertView.findViewById(R.id.ll_center_my_order_seller_order_sn);
                 myItem.tv_center_my_order_seller_order_sn = (TextView) convertView
                         .findViewById(R.id.tv_center_my_order_seller_order_sn);
+                myItem.center_order_remove = (TextView) convertView.findViewById(R.id.center_order_remove);
                 convertView.setTag(myItem);
             } else {
                 myItem = (CenterOrderOutsideItem) convertView.getTag();
@@ -1052,7 +1028,13 @@ public class ACenterMyOrder extends ATitleBase implements
             final BLCenterOder data = datas.get(position);// 非未付订单列表
 
             //LogUtils.i("**************good--id****************" + data.getId());
-            ControlView(myItem, data, Integer.parseInt(data.getOrder_status()));
+            int order_status = Integer.parseInt(data.getOrder_status());
+            ControlView(myItem, data, order_status);
+            if(PClose == order_status || PCancel == order_status || PAgreeTuiKuan == order_status){
+                myItem.center_order_remove.setVisibility(View.VISIBLE);
+            }else{
+                myItem.center_order_remove.setVisibility(View.GONE);
+            }
 
             StrUtils.SetTxt(myItem.tv_center_my_order_seller_order_sn,
                     data.getSeller_order_sn());
@@ -1355,12 +1337,32 @@ public class ACenterMyOrder extends ATitleBase implements
                 }
             });
 
+            myItem.center_order_remove.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ShowCustomDialog("确认要删除此订单？\n（订单删除后将无法恢复）", "取消", "确定", new IDialogResult() {
+                        @Override
+                        public void LeftResult() {
+
+                        }
+
+                        @Override
+                        public void RightResult() {
+                            deleteOrder(blComment.getSeller_order_sn(),blComment.getMember_id());
+                        }
+                    });
+
+
+                }
+            });
+
         }
 
         /**
          * 外层的
          */
         class CenterOrderOutsideItem {
+            TextView center_order_remove;//删除订单
             TextView tv_center_my_order_seller_order_sn;// 订单编号
             TextView fragment_center_order_shopname;// 店名
             TextView fragment_center_order_cancel_order;// 取消订单

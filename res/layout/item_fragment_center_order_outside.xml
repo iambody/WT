@@ -270,6 +270,17 @@
             >
 
             <TextView
+                android:id="@+id/center_order_remove"
+                android:layout_width="wrap_content"
+                android:text="删除订单"
+                android:background="@drawable/shape_daifu_daifa_btn_bg"
+                android:gravity="center"
+                android:padding="@dimen/order_list_txt_padding"
+                android:textSize="@dimen/order_list_button_txt"
+                android:textColor="@color/app_fen"
+                android:visibility="gone"
+                android:layout_height="wrap_content" />
+            <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
