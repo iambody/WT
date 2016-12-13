@@ -3,7 +3,7 @@
     android:id="@+id/ll_rootview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+android:background="@color/app_bg"
     android:orientation="vertical">
 
     <LinearLayout
@@ -22,7 +22,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="45dip"
-            android:background="#666666">
+            android:background="@color/app_fen">
 
 
 
@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="87dip"
                 android:layout_alignParentBottom="true"
-                android:background="#e0000000"
+                android:background="@color/light_gray"
                 android:clickable="true">
 
                 <HorizontalScrollView

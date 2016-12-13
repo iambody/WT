@@ -303,19 +303,19 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
         Current_Type = Select_Img_Type_int;
         setContentView(R.layout.com_mark_utils_picsel);
 
-        DisplayMetrics outMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
-        mScreenHeight = outMetrics.heightPixels;
-        int mScreenWidth = outMetrics.widthPixels;
-
-        Window window = getWindow();
-        WindowManager.LayoutParams layoutParams = window.getAttributes();
-        //设置窗口的大小及透明度
-
-        layoutParams.width = mScreenWidth - 50;
-        layoutParams.height = mScreenHeight - 50;
-
-        window.setAttributes(layoutParams);
+//        DisplayMetrics outMetrics = new DisplayMetrics();
+//        getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
+//        mScreenHeight = outMetrics.heightPixels;
+//        int mScreenWidth = outMetrics.widthPixels;
+//
+//        Window window = getWindow();
+//        WindowManager.LayoutParams layoutParams = window.getAttributes();
+//        //设置窗口的大小及透明度
+//
+//        layoutParams.width = mScreenWidth - 50;
+//        layoutParams.height = mScreenHeight - 50;
+//
+//        window.setAttributes(layoutParams);
 
         ArrayList<String> pics = getIntent().getStringArrayListExtra(
                 RESULT_PICS_ARRAY);

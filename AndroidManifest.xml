@@ -613,8 +613,9 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".comment.view.select_pic.PicSelActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/Transparent"></activity>
+           ></activity>
 
         <activity
             android:name=".ui.title.shop.goodmanger.ANewGoodMangerEdit"
