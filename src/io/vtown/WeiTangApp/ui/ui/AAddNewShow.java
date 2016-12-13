@@ -173,7 +173,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     @Override
     protected void InitTile() {
-        SetTitleTxt("发布Show");
+        SetTitleTxt("发布");
         SetRightText("添加");
     }
 

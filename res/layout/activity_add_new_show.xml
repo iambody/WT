@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_bg"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_bg"
+              android:focusableInTouchMode="true"
+              android:orientation="vertical">
 
-    <include layout="@layout/titlebar" />
+    <include layout="@layout/titlebar"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     android:gravity="center"
                     android:padding="@dimen/center_wallet_tixian_padding"
                     android:text="图片"
-                    android:textColor="@color/TextColorWhite" />
+                    android:textColor="@color/TextColorWhite"/>
 
                 <TextView
                     android:id="@+id/tv_add_new_show_vedio"
@@ -54,7 +54,7 @@
 
                     android:padding="@dimen/center_wallet_tixian_padding"
                     android:text="视频"
-                    android:textColor="@color/app_fen" />
+                    android:textColor="@color/app_fen"/>
             </LinearLayout>
 
             <FrameLayout
@@ -76,7 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
-                        android:scaleType="fitCenter" />
+                        android:scaleType="fitCenter"/>
 
                     <ImageView
                         android:id="@+id/iv_add_new_show_vedio_control_icon"
@@ -85,7 +85,7 @@
                         android:layout_centerInParent="true"
                         android:clickable="true"
                         android:focusable="true"
-                        android:src="@drawable/video_player" />
+                        android:src="@drawable/video_player"/>
                 </RelativeLayout>
 
                 <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
@@ -98,8 +98,8 @@
                     android:horizontalSpacing="3dp"
                     android:numColumns="3"
                     android:scrollbars="none"
-                    android:visibility="gone"
-                    android:verticalSpacing="3dp" />
+                    android:verticalSpacing="3dp"
+                    android:visibility="gone"/>
 
             </FrameLayout>
 
@@ -107,9 +107,9 @@
             <EditText
                 android:id="@+id/et_add_new_show_txt_content"
                 android:layout_width="fill_parent"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/shap_rect_no_circular_bg"
+                android:background="@color/white"
                 android:gravity="left|top"
                 android:hint="@string/szhuan_saying"
                 android:paddingBottom="5dp"
@@ -136,21 +136,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:text="添加分享商品"
+                    android:text="分享商品"
                     android:textColor="@color/grey"
-                    android:textSize="@dimen/comment_label_txtsize" />
+                    android:textSize="@dimen/comment_label_txtsize"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
 
                 <io.vtown.WeiTangApp.comment.view.custom.switchButtonView.EaseSwitchButton
                     android:id="@+id/sb_add_new_show_select_good"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"/>
             </LinearLayout>
 
             <FrameLayout
@@ -168,15 +168,29 @@
                     android:visibility="visible">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_height="wrap_content"
+                        android:text="添加商品"
+
+                        android:textColor="@color/gray"
+                        android:padding="@dimen/ui_10_dip"
+                        />
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_centerInParent="true"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_jiahao_nor" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/ui_10_dip"
+                        android:src="@drawable/arrow_right"/>
+                    <!-- <ImageView
+                         android:layout_width="70dp"
+                         android:layout_height="70dp"
+                         android:layout_centerInParent="true"
+                         android:padding="10dp"
+                         android:src="@drawable/ic_jiahao_nor" />-->
 
                 </RelativeLayout>
 
@@ -195,7 +209,7 @@
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/error_iv2" />
+                        android:src="@drawable/error_iv2"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -213,12 +227,12 @@
                             android:maxLines="2"
                             android:text="@string/nullstr"
                             android:textColor="@color/gray"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"/>
 
 
                         <LinearLayout
@@ -237,7 +251,7 @@
                                 android:layout_weight="1"
                                 android:text="销量"
                                 android:textColor="@color/app_gray"
-                                android:textSize="12dp" />
+                                android:textSize="12dp"/>
 
                             <TextView
                                 android:id="@+id/tv_add_new_show_good_score"
@@ -247,14 +261,14 @@
                                 android:layout_weight="1"
                                 android:text="积分"
                                 android:textColor="@color/app_gray"
-                                android:textSize="12dp" />
+                                android:textSize="12dp"/>
 
                         </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -268,7 +282,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="123"
                                 android:textColor="@color/app_fen"
-                                android:textSize="12dp" />
+                                android:textSize="12dp"/>
 
                             <TextView
                                 android:id="@+id/tv_add_new_show_good_origprice"
@@ -276,7 +290,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:textColor="@color/app_gray"
-                                android:textSize="12dp" />
+                                android:textSize="12dp"/>
 
                         </LinearLayout>
 
@@ -289,7 +303,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/arrow_right" />
+                        android:src="@drawable/arrow_right"/>
                 </LinearLayout>
 
             </FrameLayout>
@@ -307,7 +321,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/createshow"
-        android:textColor="@color/TextColorWhite" />
+        android:textColor="@color/TextColorWhite"/>
 
 
 </LinearLayout>

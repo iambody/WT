@@ -2243,14 +2243,15 @@ public class ACenterMyOrder extends ATitleBase implements
     }
 
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMainTab.class));
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMainTab.class));
+//
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 
     @Override
     protected void onDestroy() {

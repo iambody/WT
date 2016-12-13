@@ -155,8 +155,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent);
 
-                                EventBus.getDefault().post(
-                                        new BMessage(BMessage.Tage_New_Kill));
+//                                EventBus.getDefault().post(
+//                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
                             case Constants.ACTION_CG_ORDER:// 采购下单
@@ -166,8 +166,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopGoodIntent);
 
-                                EventBus.getDefault().post(
-                                        new BMessage(BMessage.Tage_New_Kill));
+//                                EventBus.getDefault().post(
+//                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
                             case Constants.ACTION_TO_PAY:// 付款
@@ -177,8 +177,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent6);
 
-                                EventBus.getDefault().post(
-                                        new BMessage(BMessage.Tage_New_Kill));
+//                                EventBus.getDefault().post(
+//                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
                             case Constants.ACTION_CG_SEND:// 采购订单发货
@@ -188,8 +188,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopGoodIntent1);
 
-                                EventBus.getDefault().post(
-                                        new BMessage(BMessage.Tage_New_Kill));
+//                                EventBus.getDefault().post(
+//                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
                             case Constants.ACTION_PT_SEND:// 普通订单发货
@@ -199,8 +199,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent1);
 
-                                EventBus.getDefault().post(
-                                        new BMessage(BMessage.Tage_New_Kill));
+//                                EventBus.getDefault().post(
+//                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
                             case Constants.ACTION_CG_REFUND:// 采购订单同意退款
@@ -210,8 +210,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent2);
 
-                                EventBus.getDefault().post(
-                                        new BMessage(BMessage.Tage_New_Kill));
+//                                EventBus.getDefault().post(
+//                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
                             case Constants.ACTION_PT_REFUND:// 普通订单同意退款
@@ -230,8 +230,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent3);
 
-                                EventBus.getDefault().post(
-                                        new BMessage(BMessage.Tage_New_Kill));
+//                                EventBus.getDefault().post(
+//                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
                             case Constants.ACTION_CG_UNREFUND:// 采购订单拒绝退款
@@ -241,8 +241,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent4);
 
-                                EventBus.getDefault().post(
-                                        new BMessage(BMessage.Tage_New_Kill));
+//                                EventBus.getDefault().post(
+//                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
 
@@ -254,8 +254,8 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(shopOrderIntent5);
 
-                                EventBus.getDefault().post(
-                                        new BMessage(BMessage.Tage_New_Kill));
+//                                EventBus.getDefault().post(
+//                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
 
