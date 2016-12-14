@@ -7,6 +7,6 @@
     
      <stroke
         android:width="1dp"
-        android:color="@color/app_fen" />
+        android:color="@color/app_gray" />
 
 </shape>

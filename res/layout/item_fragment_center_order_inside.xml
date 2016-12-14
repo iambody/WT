@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12.00"
-                    android:textColor="@color/salmon"
+                    android:textColor="@color/app_gray"
                     android:textSize="@dimen/order_list_inside_price_size"
 
                     android:textStyle="bold" />

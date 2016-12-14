@@ -576,13 +576,13 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             return false;
         }
 
-        if (StrUtils.isEmpty(content)) {
-            PromptManager.ShowCustomToast(BaseContext, "请输入您要分享的内容");
-            return false;
-        }
+//        if (StrUtils.isEmpty(content)) {
+//            PromptManager.ShowCustomToast(BaseContext, "请输入您要分享的内容");
+//            return false;
+//        }
 
         if (mGoodInfo == null && sbAddNewShowSelectGood.isChecked()) {
-            PromptManager.ShowCustomToast(BaseContext, "点击“+”选择您要分享的商品");
+            PromptManager.ShowCustomToast(BaseContext, "请选择您要分享的商品");
             return false;
         }
         return true;

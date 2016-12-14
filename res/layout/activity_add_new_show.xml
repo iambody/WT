@@ -107,7 +107,7 @@
             <EditText
                 android:id="@+id/et_add_new_show_txt_content"
                 android:layout_width="fill_parent"
-                android:layout_height="80dp"
+                android:layout_height="@dimen/add_new_show_edittext_height"
                 android:layout_marginTop="8dp"
                 android:background="@color/white"
                 android:gravity="left|top"
@@ -117,6 +117,7 @@
                 android:paddingRight="10dp"
                 android:paddingTop="5dp"
                 android:textColor="@color/gray"
+                android:maxLength="255"
                 android:textSize="@dimen/comment_label_txtsize"></EditText>
 
 

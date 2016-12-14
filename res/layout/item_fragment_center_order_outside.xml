@@ -55,16 +55,16 @@
 </LinearLayout>
 
 
-            
+
 
             <TextView
                 android:id="@+id/fragment_center_order_pay_to"
                 style="@style/bt_textview"
-                
+
                 android:text="去付款"
                  android:textSize="@dimen/order_list_button_txt"
                 android:visibility="gone" />
-            
+
             <TextView
                 android:id="@+id/fragment_center_order_cancel_order"
                 style="@style/bt_textview"
@@ -141,7 +141,7 @@
                 android:text="再次购买"
                  android:textSize="@dimen/order_list_button_txt"
                 android:visibility="gone" />
-            
+
             <TextView
                 android:id="@+id/fragment_center_order_delayreceive"
                 style="@style/bt_textview"
@@ -195,7 +195,7 @@
                  android:textSize="@dimen/order_list_button_txt"
                 android:textColor="@color/app_gray"
                 android:visibility="gone" />
-            
+
             <TextView
                 android:id="@+id/fragment_center_order_is_delaytime"
                 android:layout_width="wrap_content"
@@ -277,7 +277,7 @@
                 android:gravity="center"
                 android:padding="@dimen/order_list_txt_padding"
                 android:textSize="@dimen/order_list_button_txt"
-                android:textColor="@color/app_fen"
+                android:textColor="@color/app_gray"
                 android:visibility="gone"
                 android:layout_height="wrap_content" />
             <TextView
@@ -308,7 +308,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/nullstr"
                 android:layout_marginLeft="5dp"
-                android:textColor="@color/app_fen"
+                android:textColor="@color/grey"
                 android:textSize="15dp" />
 
             <TextView

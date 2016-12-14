@@ -39,4 +39,5 @@
     <dimen name="good_detail_icon_margins">5dp</dimen>
     <dimen name="good_detail_line_height">30dp</dimen>
     <dimen name="intergral_shape_radiu">4dp</dimen>
+    <dimen name="add_new_show_edittext_height">80dp</dimen>
 </resources>

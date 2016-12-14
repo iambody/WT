@@ -62,7 +62,7 @@
                     android:text="123"
                     android:textStyle="bold"
 
-                    android:textColor="@color/salmon" />
+                    android:textColor="@color/app_gray" />
 
                 <TextView
                     android:id="@+id/item_fragment_center_order_no_pay_in_number"

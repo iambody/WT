@@ -44,6 +44,7 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
+import io.vtown.WeiTangApp.comment.view.dialog.CommonDialog;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
@@ -905,6 +906,41 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             }
         });
 
+    }
+
+    private void ControlFriendDialog(final BLInviteFriends friend){
+        List<String> strs = new ArrayList<>();
+        strs.add("复制手机号");
+        strs.add("发送信息");
+        CommonDialog commonDialog = new CommonDialog(AInviteFriendRecord.this,strs);
+        commonDialog.setOnCommonDialogClickListener(new CommonDialog.OnCommonDialogClickListener() {
+            @Override
+            public void clickPosition(int position) {
+                switch (position){
+                    case 0:
+                        ClipboardManager c = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                        String content = friend.getPhone();
+                        c.setText(content);
+                        PromptManager.ShowCustomToast(BaseContext, "手机号复制成功");
+
+                        break;
+
+                    case 1:
+                        if (!StrUtils.isEmpty(friend.getSeller_id()))
+                            PromptManager.SkipActivity(
+                                    BaseActivity,
+                                    new Intent(BaseActivity, AChatLoad.class)
+                                            .putExtra(AChatLoad.Tage_TageId,
+                                                    friend.getSeller_id())
+                                            .putExtra(AChatLoad.Tage_Name,
+                                                    friend.getSeller_name())
+                                            .putExtra(AChatLoad.Tage_Iv,
+                                                    friend.getAvatar()));
+                        break;
+                }
+            }
+        });
+        commonDialog.show();
     }
 
 
