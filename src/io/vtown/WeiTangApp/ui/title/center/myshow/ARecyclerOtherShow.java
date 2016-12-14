@@ -102,6 +102,12 @@ public class ARecyclerOtherShow extends ATitleBase {
 
     }
 
+    @Override
+    protected void onResume() {
+        PromptManager.closeLoading();
+        super.onResume();
+    }
+
     private void IBundlle() {
         if (getIntent().getExtras() == null
                 && !getIntent().getExtras().containsKey(BaseKey_Bean))

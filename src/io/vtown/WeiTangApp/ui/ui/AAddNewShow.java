@@ -255,6 +255,8 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
     @Override
     protected void NetDisConnect() {
+        PromptManager.closeTextLoading3();
+        PromptManager.ShowCustomToast(BaseContext,getResources().getString(R.string.network_not_connected));
         NetError.setVisibility(View.VISIBLE);
 
     }
@@ -304,7 +306,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         switch (V.getId()) {
             case R.id.tv_add_new_show_pic:
                 current_type = TYPE_PIC;
-                SetRightText( "添加" );
+                SetRightText("添加");
                 ControlClick(R.id.tv_add_new_show_pic);
                 rlAddNewShowVedioLayout.setVisibility(View.GONE);
                 if (imgs != null && imgs.size() > 0) {
@@ -313,7 +315,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 break;
             case R.id.tv_add_new_show_vedio:
                 current_type = TYPE_VEDIO;
-                SetRightText( "录制" );
+                SetRightText("录制");
                 ControlClick(R.id.tv_add_new_show_vedio);
                 gvAddNewShowPics.setVisibility(View.GONE);
                 if (!StrUtils.isEmpty(mCordVidoPath)) {
@@ -655,8 +657,8 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
 
             case BMessage.Tage_Select_Pic_Add_Show://选择图片返回的数据
                 List<String> tmpArrayList = event.getTmpArrayList();
-                for (String pathUrl:tmpArrayList) {
-                    if(!imgs.contains(pathUrl)){
+                for (String pathUrl : tmpArrayList) {
+                    if (!imgs.contains(pathUrl)) {
                         imgs.add(pathUrl);
                     }
                 }
@@ -820,7 +822,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
             }
 
 //            if (!StrUtils.isEmpty(imgs.get(position))) {
-                holder.itemAddNewShowImage.setImageBitmap(StrUtils.GetBitMapFromPath(imgs.get(position)));
+            holder.itemAddNewShowImage.setImageBitmap(StrUtils.GetBitMapFromPath(imgs.get(position)));
 //            } else {
 //                String path = datas.get(position).getWeburl();
 //                ImageLoaderUtil.Load2(path, holder.itemAddNewShowImage, R.drawable.error_iv2);

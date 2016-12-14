@@ -907,7 +907,17 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 mBNew.setShare_content(datas.getTitle());
                 mBNew.setShare_title(datas.getTitle());
                 mBNew.setShare_log(datas.getCover());
-                ShowP(mView, mBNew);
+//                ShowP(mView, mBNew);
+                PShare da = new PShare(BaseContext, mBNew, false);
+                da.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
+                da.GetShareResult(new PShare.ShareResultIntface() {
+                    @Override
+                    public void ShareResult(int ResultType) {
+                        if(1==ResultType){
+                            Show_Award();
+                        }
+                    }
+                });
                 break;
             case R.id.rl_look_show:
                 if (CheckNet(BaseContext))

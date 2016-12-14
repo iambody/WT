@@ -204,7 +204,11 @@ public class ARecyclerMyShow extends ATitleBase {
                 LOAD_INITIALIZE);
 
     }
-
+    @Override
+    protected void onResume() {
+        PromptManager.closeLoading();
+        super.onResume();
+    }
     @Override
     protected void InitTile() {
         SetTitleTxt("我的SHOW");
