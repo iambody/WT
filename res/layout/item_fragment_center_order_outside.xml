@@ -277,7 +277,7 @@
                 android:gravity="center"
                 android:padding="@dimen/order_list_txt_padding"
                 android:textSize="@dimen/order_list_button_txt"
-                android:textColor="@color/app_gray"
+                android:textColor="@color/black"
                 android:visibility="gone"
                 android:layout_height="wrap_content" />
             <TextView

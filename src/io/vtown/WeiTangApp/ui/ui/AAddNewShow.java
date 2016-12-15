@@ -662,7 +662,6 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                         imgs.add(pathUrl);
                     }
                 }
-
                 setGridViewPic();
                 break;
 
@@ -681,6 +680,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     * 设置GridView中的图片
     * */
     private void setGridViewPic() {
+        datas.clear();
         if (imgs != null && imgs.size() > 0) {
             gvAddNewShowPics.setVisibility(View.VISIBLE);
             for (String path : imgs) {
@@ -832,6 +832,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 @Override
                 public void onClick(View v) {
                     imgs.remove(MyPostion);
+                    datas.remove(MyPostion);
                     notifyDataSetChanged();
                 }
             });
