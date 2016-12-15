@@ -1121,7 +1121,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
                 tv_good_integral.setVisibility(View.VISIBLE);
 
-                StrUtils.SetColorsTxt(BaseContext, tv_good_integral, R.color.app_fen, "获得积分：", _score + "分");
+                StrUtils.SetColorsTxt(BaseContext, tv_good_integral, R.color.app_fen, "积分：", _score + "分");
             }
 
 
