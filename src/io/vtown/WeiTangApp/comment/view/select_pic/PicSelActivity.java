@@ -243,8 +243,7 @@ public class PicSelActivity extends Activity implements ListImageDirPopupWindow.
         View view = LayoutInflater.from(getApplicationContext()).inflate(
                 R.layout.com_mark_utils_picsel_list_dir, null);
         mListImageDirPopupWindow = new ListImageDirPopupWindow(
-                LayoutParams.MATCH_PARENT, (int) (mScreenHeight - dip2px(this,
-                110)), mImageFloders, view);
+                LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, mImageFloders, view);
 
         mListImageDirPopupWindow.setOnDismissListener(new OnDismissListener() {
 
