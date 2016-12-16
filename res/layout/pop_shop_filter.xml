@@ -7,8 +7,9 @@
 
     <LinearLayout
         android:id="@+id/ll_pop_shop_filter"
-        android:layout_width="80dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:background="@color/black"
         android:orientation="vertical">
 
         <TextView
@@ -19,11 +20,11 @@
             android:background="@drawable/select_home_item"
             android:clickable="true"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="8dp"
             android:text="@string/invite_friends"
             android:textColor="@color/white" />
 
-        <View
+       <!-- <View
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
             android:background="@color/white" />
@@ -37,7 +38,7 @@
             android:gravity="center"
             android:padding="5dp"
             android:text="@string/invite_friends_no_activites"
-            android:textColor="@color/white" />
+            android:textColor="@color/white" />-->
 
       <View
             android:layout_width="match_parent"

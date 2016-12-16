@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,9 @@ import java.util.List;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLLevelName;
 import io.vtown.WeiTangApp.bean.bcomment.easy.wallet.BLAPropertyList;
+import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BLIntegralType;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.integral_detail.BCIntegralDetail;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.integral_detail.BLIntegralDetails;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
@@ -67,19 +70,32 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
     private PopupWindow popupWindow;
     private IntegralOutsideAdapter mAdapter;
     private List<BCIntegralDetail> mDatas;
+    private List<BLIntegralType> type_datas = new ArrayList<BLIntegralType>();
 
 
 
     @Override
     protected void InItBaseView() {
-
         setContentView(R.layout.activity_integral_detail);
         SetTitleHttpDataLisenter(this);
         mUser = Spuit.User_Get(BaseContext);
         IView();
+        ITypeCache();
         ICache();
+        IvData();
         IData(Current_Type, LOAD_INITIALIZE);
+    }
 
+    private void ITypeCache() {
+        String type_lvs = CacheUtil.Integral_Type_Get(BaseContext);
+        if (!StrUtils.isEmpty(type_lvs)) {
+
+            type_datas = JSON.parseArray(type_lvs, BLIntegralType.class);
+        }
+    }
+
+    private void IvData() {
+        FBGetHttpData(new HashMap<String, String>(), Constants.Integral_Type, Request.Method.GET, 1, LOAD_INITIALIZE);
     }
 
 
@@ -124,132 +140,151 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
     @Override
     protected void InitTile() {
-
         SetTitleTxt(getString(R.string.integral_title_all));
         SetRightText(getResources().getString(R.string.txt_filter));
+        if(type_datas.size()>0){
+            right_txt.setVisibility(View.VISIBLE);
+        }else{
+            right_txt.setVisibility(View.GONE);
+        }
         right_txt.setOnClickListener(this);
     }
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
-        switch (Data.getHttpLoadType()) {
-            case LOAD_INITIALIZE:
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    integral_detail_list.setVisibility(View.GONE);
-                    integral_detail_nodata_lay.setVisibility(View.VISIBLE);
-                    ShowErrorIv(R.drawable.pic_jifenmingxi);
-                    integral_detail_nodata_lay.setClickable(false);
-                    mAdapter.FreshData(new ArrayList<BCIntegralDetail>());
 
-                    if (TYPE_ALL.equals(Current_Type)) {
-                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
-                        CacheUtil.Integral_Detail_Save(BaseContext, Data.getHttpResultStr());
-                    }
-                    if (TYPE_SYSTEM.equals(Current_Type)) {
-                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_system));
-                    }
-                    if (TYPE_PAST.equals(Current_Type)) {
-                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_past));
-                    }
-                    if (TYPE_ACTIVATION.equals(Current_Type)) {
-                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_activation));
-                    }
-                    if (TYPE_INVITE.equals(Current_Type)) {
-                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_invite));
+        switch (Data.getHttpResultTage()){
+            case 0:
+                switch (Data.getHttpLoadType()) {
+                    case LOAD_INITIALIZE:
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            integral_detail_list.setVisibility(View.GONE);
+                            integral_detail_nodata_lay.setVisibility(View.VISIBLE);
+                            ShowErrorIv(R.drawable.pic_jifenmingxi);
+                            integral_detail_nodata_lay.setClickable(false);
+                            mAdapter.FreshData(new ArrayList<BCIntegralDetail>());
 
-                    }
-                    if (TYPE_BUY_OWN.equals(Current_Type)) {
-                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_own_buy));
-                    }
-                    if (TYPE_BUY_FRIEND.equals(Current_Type)) {
-                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_friend_buy));
-                    }
+                            if (TYPE_ALL.equals(Current_Type)) {
+                                ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
+                                CacheUtil.Integral_Detail_Save(BaseContext, Data.getHttpResultStr());
+                            }
+                            if (TYPE_SYSTEM.equals(Current_Type)) {
+                                ShowErrorCanLoad(getResources().getString(R.string.null_integral_system));
+                            }
+                            if (TYPE_PAST.equals(Current_Type)) {
+                                ShowErrorCanLoad(getResources().getString(R.string.null_integral_past));
+                            }
+                            if (TYPE_ACTIVATION.equals(Current_Type)) {
+                                ShowErrorCanLoad(getResources().getString(R.string.null_integral_activation));
+                            }
+                            if (TYPE_INVITE.equals(Current_Type)) {
+                                ShowErrorCanLoad(getResources().getString(R.string.null_integral_invite));
 
-                    if (TYPE_CONSUME.equals(Current_Type)) {
-                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_consume));
+                            }
+                            if (TYPE_BUY_OWN.equals(Current_Type)) {
+                                ShowErrorCanLoad(getResources().getString(R.string.null_integral_own_buy));
+                            }
+                            if (TYPE_BUY_FRIEND.equals(Current_Type)) {
+                                ShowErrorCanLoad(getResources().getString(R.string.null_integral_friend_buy));
+                            }
 
-                    }
+                            if (TYPE_CONSUME.equals(Current_Type)) {
+                                ShowErrorCanLoad(getResources().getString(R.string.null_integral_consume));
 
-                    if (TYPE_SHARE.equals(Current_Type)) {
-                        ShowErrorCanLoad(getResources().getString(R.string.null_integral_share));
+                            }
 
-                    }
-                    return;
+                            if (TYPE_SHARE.equals(Current_Type)) {
+                                ShowErrorCanLoad(getResources().getString(R.string.null_integral_share));
+
+                            }
+                            return;
+                        }
+                        integral_detail_list.setVisibility(View.VISIBLE);
+                        integral_detail_nodata_lay.setVisibility(View.GONE);
+                        mDatas = new ArrayList<BCIntegralDetail>();
+                        mDatas = JSON.parseArray(Data.getHttpResultStr(), BCIntegralDetail.class);
+                        mAdapter.FreshData(mDatas);
+                        if (TYPE_ALL.equals(Current_Type)) {
+                            CacheUtil.Integral_Detail_Save(BaseContext, Data.getHttpResultStr());
+                        }
+                        List<BLIntegralDetails> data = getAllIntegralDetailList(mDatas);
+                        lastid = data.get(data.size() - 1).getId();
+
+                        if (data.size() == Constants.PageSize) {
+                            integral_detail_list.ShowFoot();
+                            integral_detail_list.setPullLoadEnable(true);
+                        }
+
+                        if (data.size() < Constants.PageSize) {
+                            integral_detail_list.hidefoot();
+                            integral_detail_list.setPullLoadEnable(false);
+                        }
+
+                        break;
+
+                    case LOAD_REFRESHING:
+                        integral_detail_list.stopRefresh();
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            PromptManager.ShowCustomToast(BaseContext, getString(R.string.no_new_integral_detail));
+                            // ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
+                            return;
+                        }
+
+
+                        mDatas = JSON.parseArray(Data.getHttpResultStr(), BCIntegralDetail.class);
+                        mAdapter.FreshData(mDatas);
+                        List<BLIntegralDetails> data1 = getAllIntegralDetailList(mDatas);
+                        lastid = data1.get(data1.size() - 1).getId();
+                        if (data1.size() == Constants.PageSize) {
+                            integral_detail_list.ShowFoot();
+                            integral_detail_list.setPullLoadEnable(true);
+                        }
+
+                        if (data1.size() < Constants.PageSize) {
+                            integral_detail_list.hidefoot();
+                            integral_detail_list.setPullLoadEnable(false);
+                        }
+                        break;
+
+                    case LOAD_LOADMOREING:
+                        integral_detail_list.stopLoadMore();
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            PromptManager.ShowCustomToast(BaseContext, getString(R.string.no_more_integral_detail));
+                            // ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
+                            return;
+                        }
+                        mDatas = JSON.parseArray(Data.getHttpResultStr(), BCIntegralDetail.class);
+                        if (mDatas.get(0).getMonth().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getMonth())) {
+                            mAdapter.MergeFrashData(mDatas);
+                        } else {
+                            mAdapter.FreshDataAll(mDatas);
+                        }
+
+                        List<BLIntegralDetails> data2 = getAllIntegralDetailList(mDatas);
+                        lastid = data2.get(data2.size() - 1).getId();
+                        if (data2.size() == Constants.PageSize) {
+                            integral_detail_list.ShowFoot();
+                            integral_detail_list.setPullLoadEnable(true);
+                        }
+
+                        if (data2.size() < Constants.PageSize) {
+                            integral_detail_list.hidefoot();
+                            integral_detail_list.setPullLoadEnable(false);
+                        }
+                        break;
                 }
-                integral_detail_list.setVisibility(View.VISIBLE);
-                integral_detail_nodata_lay.setVisibility(View.GONE);
-                mDatas = new ArrayList<BCIntegralDetail>();
-                mDatas = JSON.parseArray(Data.getHttpResultStr(), BCIntegralDetail.class);
-                mAdapter.FreshData(mDatas);
-                if (TYPE_ALL.equals(Current_Type)) {
-                    CacheUtil.Integral_Detail_Save(BaseContext, Data.getHttpResultStr());
-                }
-                List<BLIntegralDetails> data = getAllIntegralDetailList(mDatas);
-                lastid = data.get(data.size() - 1).getId();
-
-                if (data.size() == Constants.PageSize) {
-                    integral_detail_list.ShowFoot();
-                    integral_detail_list.setPullLoadEnable(true);
-                }
-
-                if (data.size() < Constants.PageSize) {
-                    integral_detail_list.hidefoot();
-                    integral_detail_list.setPullLoadEnable(false);
-                }
-
                 break;
 
-            case LOAD_REFRESHING:
-                integral_detail_list.stopRefresh();
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    PromptManager.ShowCustomToast(BaseContext, getString(R.string.no_new_integral_detail));
-                    // ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
-                    return;
-                }
+            case 1:
 
-
-                mDatas = JSON.parseArray(Data.getHttpResultStr(), BCIntegralDetail.class);
-                mAdapter.FreshData(mDatas);
-                List<BLIntegralDetails> data1 = getAllIntegralDetailList(mDatas);
-                lastid = data1.get(data1.size() - 1).getId();
-                if (data1.size() == Constants.PageSize) {
-                    integral_detail_list.ShowFoot();
-                    integral_detail_list.setPullLoadEnable(true);
-                }
-
-                if (data1.size() < Constants.PageSize) {
-                    integral_detail_list.hidefoot();
-                    integral_detail_list.setPullLoadEnable(false);
-                }
-                break;
-
-            case LOAD_LOADMOREING:
-                integral_detail_list.stopLoadMore();
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    PromptManager.ShowCustomToast(BaseContext, getString(R.string.no_more_integral_detail));
-                    // ShowErrorCanLoad(getResources().getString(R.string.null_integral_detail));
-                    return;
-                }
-                mDatas = JSON.parseArray(Data.getHttpResultStr(), BCIntegralDetail.class);
-                if (mDatas.get(0).getMonth().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getMonth())) {
-                    mAdapter.MergeFrashData(mDatas);
-                } else {
-                    mAdapter.FreshDataAll(mDatas);
-                }
-
-                List<BLIntegralDetails> data2 = getAllIntegralDetailList(mDatas);
-                lastid = data2.get(data2.size() - 1).getId();
-                if (data2.size() == Constants.PageSize) {
-                    integral_detail_list.ShowFoot();
-                    integral_detail_list.setPullLoadEnable(true);
-                }
-
-                if (data2.size() < Constants.PageSize) {
-                    integral_detail_list.hidefoot();
-                    integral_detail_list.setPullLoadEnable(false);
+                type_datas = JSON.parseArray(Data.getHttpResultStr(),BLIntegralType.class);
+                CacheUtil.Integral_Type_Save(BaseContext,Data.getHttpResultStr());
+                if(type_datas.size()>0){
+                    right_txt.setVisibility(View.VISIBLE);
                 }
                 break;
         }
+
     }
 
     private List<BLIntegralDetails> getAllIntegralDetailList(List<BCIntegralDetail> datas) {
@@ -309,33 +344,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
             case R.id.tv_all_integral://全部
                 IntegralSwitch(TYPE_ALL,getResources().getString(R.string.integral_title_all));
                 break;
-            case R.id.tv_system://系统赠送
-                IntegralSwitch(TYPE_SYSTEM,getResources().getString(R.string.integral_title_system1));
-                break;
-            case R.id.tv_past://每日签到
-                IntegralSwitch(TYPE_PAST,getResources().getString(R.string.integral_title_past));
-                break;
-            case R.id.tv_invite_register://邀请注册
-                IntegralSwitch(TYPE_INVITE,getResources().getString(R.string.integral_title_invite));
-                break;
-            case R.id.tv_friend_activation://下级激活
-                IntegralSwitch(TYPE_ACTIVATION,getResources().getString(R.string.integral_title_updata));
-                break;
-            case R.id.tv_own_buy://我买东西
-                IntegralSwitch(TYPE_BUY_OWN,getResources().getString(R.string.integral_title_own_buy));
-                break;
-            case R.id.tv_friend_buy://Ta买商品
-                IntegralSwitch(TYPE_BUY_FRIEND,getResources().getString(R.string.integral_title_friend_buy));
-                break;
 
-
-            case R.id.tv_consume://每日消耗
-                IntegralSwitch(TYPE_CONSUME,getResources().getString(R.string.integral_title_concume));
-                break;
-
-            case R.id.tv_share://分享
-                IntegralSwitch(TYPE_SHARE,getResources().getString(R.string.integral_title_share));
-                break;
             case R.id.integral_detail_nodata_lay:
                 if (CheckNet(BaseContext)) return;
 
@@ -399,26 +408,47 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
 
         View view = View.inflate(BaseContext, R.layout.pop_integral_filter,
                 null);
+        LinearLayout ll_integral_type_layout = (LinearLayout) view.findViewById(R.id.ll_integral_type_layout);
         TextView tv_all_integral = (TextView) view.findViewById(R.id.tv_all_integral);
-        TextView tv_system = (TextView) view.findViewById(R.id.tv_system);
-        TextView tv_past = (TextView) view.findViewById(R.id.tv_past);
-        TextView tv_invite_register = (TextView) view.findViewById(R.id.tv_invite_register);
-        TextView tv_friend_activation = (TextView) view.findViewById(R.id.tv_friend_activation);
-        TextView tv_own_buy = (TextView) view.findViewById(R.id.tv_own_buy);
-        TextView tv_friend_buy = (TextView) view.findViewById(R.id.tv_friend_buy);
-        TextView tv_consume = (TextView) view.findViewById(R.id.tv_consume);
-        TextView tv_share = (TextView) view.findViewById(R.id.tv_share);
-
-
         tv_all_integral.setOnClickListener(this);
-        tv_system.setOnClickListener(this);
-        tv_past.setOnClickListener(this);
-        tv_invite_register.setOnClickListener(this);
-        tv_friend_activation.setOnClickListener(this);
-        tv_own_buy.setOnClickListener(this);
-        tv_friend_buy.setOnClickListener(this);
-        tv_consume.setOnClickListener(this);
-        tv_share.setOnClickListener(this);
+
+        LinearLayout.LayoutParams contentParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
+        for(int i = 0; i < type_datas.size();i++){
+            TextView textView = new TextView(BaseContext);
+            View line = new View(BaseContext);
+            textView.setText(type_datas.get(i).getName());
+            textView.setTextColor(getResources().getColor(R.color.white));
+            textView.setClickable(true);
+            textView.setLayoutParams(contentParams);
+             textView.setPadding(5, DimensionPixelUtil.dip2px(BaseContext, 8), 5, DimensionPixelUtil.dip2px(BaseContext, 8));
+            textView.setGravity(Gravity.CENTER);
+            line.setBackgroundResource(R.color.white);
+            line.setLayoutParams(lineParams);
+            ll_integral_type_layout.addView(textView);
+            ll_integral_type_layout.addView(line);
+            textView.setOnClickListener(new OnPopClickListener(i));
+}
+
+//        TextView tv_system = (TextView) view.findViewById(R.id.tv_system);
+//        TextView tv_past = (TextView) view.findViewById(R.id.tv_past);
+//        TextView tv_invite_register = (TextView) view.findViewById(R.id.tv_invite_register);
+//        TextView tv_friend_activation = (TextView) view.findViewById(R.id.tv_friend_activation);
+//        TextView tv_own_buy = (TextView) view.findViewById(R.id.tv_own_buy);
+//        TextView tv_friend_buy = (TextView) view.findViewById(R.id.tv_friend_buy);
+//        TextView tv_consume = (TextView) view.findViewById(R.id.tv_consume);
+//        TextView tv_share = (TextView) view.findViewById(R.id.tv_share);
+
+
+
+//        tv_system.setOnClickListener(this);
+//        tv_past.setOnClickListener(this);
+//        tv_invite_register.setOnClickListener(this);
+//        tv_friend_activation.setOnClickListener(this);
+//        tv_own_buy.setOnClickListener(this);
+//        tv_friend_buy.setOnClickListener(this);
+//        tv_consume.setOnClickListener(this);
+//        tv_share.setOnClickListener(this);
 
 
         popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -426,7 +456,7 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
         popupWindow.setFocusable(true);
         ColorDrawable dw = new ColorDrawable(0xb0000000);
         popupWindow.setBackgroundDrawable(dw);
-        popupWindow.showAsDropDown(V, 0, 30);
+        popupWindow.showAsDropDown(V, 0, 0);
     }
 
 
@@ -641,5 +671,19 @@ public class AIntegralDetail extends ATitleBase implements LListView.IXListViewL
     class IntegralOutsideHoler {
         TextView integral_month;
         CompleteListView lv_integral_list_outside;
+    }
+
+
+    class OnPopClickListener implements View.OnClickListener {
+        private int clickposition;
+
+        public OnPopClickListener(int position) {
+            clickposition = position;
+        }
+
+        @Override
+        public void onClick(View v) {
+            IntegralSwitch(type_datas.get(clickposition).getId()+"",type_datas.get(clickposition).getName());
+        }
     }
 }

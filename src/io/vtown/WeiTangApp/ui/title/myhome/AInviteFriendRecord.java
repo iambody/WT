@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -30,6 +31,7 @@ import java.util.List;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.BLLevelName;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.invite_friends.BCInviteFriends;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.invite_friends.BLInviteFriends;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
@@ -75,32 +77,17 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
     private TextView tv_invite_date_current;
     private PopupWindow mPopupWindow;
-    List<String> lv_list = new ArrayList<String>();
+    List<BLLevelName> lv_list = new ArrayList<BLLevelName>();
     private final String Shop_All_Lv = "";
-    private final String Shop_Lv1 = "0";
-    private final String Shop_Lv2 = "1";
-    private final String Shop_Lv3 = "2";
-    private final String Shop_Lv4 = "3";
-    private final String Shop_Lv5 = "4";
-    private final String Shop_Lv6 = "5";
-    private final String Shop_Lv7 = "6";
     private String Current_Lv = Shop_All_Lv;
 
-    private final int Type_Activites = 1;
-    private final int Type_All = 0;
-    private final int Type_Lv1 = 2;
-    private final int Type_Lv2 = 3;
-    private final int Type_Lv3 = 4;
-    private final int Type_Lv4 = 5;
-    private final int Type_Lv5 = 6;
-    private final int Type_Lv6 = 7;
-    private final int Type_Lv7 = 8;
+
+    private final int Type_All = 110;
+
     private int click_type = Type_All;
     private String phone = "";
     private boolean isScan = false;
     private boolean needLoadMore = false;
-
-    private final int text_view_id = 1000;
     private TextView invite_friends_record_filter;
     private ImageView invite_friends_record_back_iv;
     private ImageView invite_friends_record_sou_iv;
@@ -159,7 +146,9 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
     }
 
     private void ILvData() {
-        FBGetHttpData(new HashMap<String, String>(), Constants.Shop_lv_list, Request.Method.GET, 1, LOAD_INITIALIZE);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("api_version","3.1.3");
+        FBGetHttpData(map, Constants.Shop_lv_list, Request.Method.GET, 1, LOAD_INITIALIZE);
     }
 
     private void IData(int page, int loadtype) {
@@ -167,7 +156,8 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
         map.put("member_id", bUser.getMember_id());//"10014952"
         map.put("seller_id", bUser.getSeller_id());//"1014719"
         map.put("page", page + "");
-        map.put("pagesize",PageSize3 + "");
+        map.put("pagesize",Constants.PageSize + "");
+
         if (!StrUtils.isEmpty(phone)) {
             map.put("phone", phone);
             scan_type = 2;
@@ -175,18 +165,13 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             if (!Shop_All_Lv.equals(Current_Lv)) {
 
                 map.put("member_level", Current_Lv);
-                map.put("is_activate", "1");
-            } else {
-                if (click_type == Type_Activites) {
+                if ("-1".equals(Current_Lv)) {//如果是普通店铺，是否激活就传0
                     map.put("is_activate", "0");
+                }else{
+                    map.put("is_activate", "1");
                 }
             }
         }
-
-
-
-
-
         FBGetHttpData(map, Constants.Invite_Friends, Request.Method.GET, scan_type, loadtype);
     }
 
@@ -210,7 +195,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
         String shop_lvs = CacheUtil.Shop_Lv_Get(BaseContext);
         if (!StrUtils.isEmpty(shop_lvs)) {
             invite_friends_record_filter.setVisibility(View.VISIBLE);
-            lv_list = JSON.parseArray(shop_lvs, String.class);
+            lv_list = JSON.parseArray(shop_lvs, BLLevelName.class);
         } else {
             invite_friends_record_filter.setVisibility(View.GONE);
         }
@@ -242,18 +227,15 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
                         invite_friends_record_list.setVisibility(View.VISIBLE);
                         invite_friends_nodata_lay.setVisibility(View.GONE);
-                        //invite_friends_refrash.setRefreshing(false);
                         mAdapter.FreshData(datass);
                         List<BLInviteFriends> allInviteDetailList = getAllInviteDetailList(datass);
-                        if (allInviteDetailList.size() == PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(true);
+                        if (allInviteDetailList.size() == Constants.PageSize) {
                             needLoadMore = true;
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
 
                         }
-                        if (allInviteDetailList.size() < PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(false);
+                        if (allInviteDetailList.size() < Constants.PageSize) {
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
                             needLoadMore = false;
@@ -268,21 +250,16 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                             return;
                         }
                         datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-
-                        //invite_friends_refrash.setRefreshing(false);
-
                         mAdapter.FreshData(datass);
 
                         List<BLInviteFriends> allInviteDetailList1 = getAllInviteDetailList(datass);
-                        if (allInviteDetailList1.size() == PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(true);
+                        if (allInviteDetailList1.size() == Constants.PageSize) {
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
                             needLoadMore = true;
                         }
 
-                        if (allInviteDetailList1.size() < PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(false);
+                        if (allInviteDetailList1.size() < Constants.PageSize) {
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
                             needLoadMore = false;
@@ -298,24 +275,20 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                         }
                         //List<BCInviteFriends> more_datas = new ArrayList<BCInviteFriends>();
 
-                        more_datas = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-                        if (more_datas.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
-                            mAdapter.MergeFrashData(more_datas);
+                        datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
+                        if (datass.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
+                            mAdapter.MergeFrashData(datass);
                         } else {
-                            Log.i("tests","more_datas长度-----------------》"+ more_datas.size());
-                            mAdapter.FreshAllData(more_datas);
+                            mAdapter.FreshAllData(datass);
                         }
-                        Log.i("tests","datass.size()长度"+ datass.size());
-                        datass.addAll(more_datas);
-                        List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(more_datas);
-                        if (allInviteDetailList2.size() == PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(true);
+
+                        List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(datass);
+                        if (allInviteDetailList2.size() == Constants.PageSize) {
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
                             needLoadMore = true;
                         }
-                        if (allInviteDetailList2.size() < PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(false);
+                        if (allInviteDetailList2.size() < Constants.PageSize) {
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
                             needLoadMore = false;
@@ -325,7 +298,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                 break;
             case 1:
 
-                lv_list = JSON.parseArray(Data.getHttpResultStr(), String.class);
+                lv_list = JSON.parseArray(Data.getHttpResultStr(), BLLevelName.class);
                 CacheUtil.Shop_Lv_Save(BaseContext, Data.getHttpResultStr());
                 if (lv_list.size() > 0) {
                     invite_friends_record_filter.setVisibility(View.VISIBLE);
@@ -350,20 +323,15 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
                         invite_friends_record_list.setVisibility(View.VISIBLE);
                         invite_friends_nodata_lay.setVisibility(View.GONE);
-                        //invite_friends_refrash.setRefreshing(false);
                         mAdapter.FreshData(scan_datass);
 
                         List<BLInviteFriends> allInviteDetailList = getAllInviteDetailList(scan_datass);
-                        if (allInviteDetailList.size() == PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(true);
-
+                        if (allInviteDetailList.size() == Constants.PageSize) {
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
 
                         }
-                        if (allInviteDetailList.size() < PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(false);
-
+                        if (allInviteDetailList.size() < Constants.PageSize) {
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
                         }
@@ -376,22 +344,15 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                             return;
                         }
                         scan_datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-
-                        //invite_friends_refrash.setRefreshing(false);
-
                         mAdapter.FreshData(scan_datass);
 
                         List<BLInviteFriends> allInviteDetailList1 = getAllInviteDetailList(scan_datass);
-                        if (allInviteDetailList1.size() == PageSize3) {
-
-                            //invite_friends_refrash.setCanLoadMore(true);
+                        if (allInviteDetailList1.size() == Constants.PageSize) {
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
                         }
 
-                        if (allInviteDetailList1.size() < PageSize3) {
-
-                            //invite_friends_refrash.setCanLoadMore(false);
+                        if (allInviteDetailList1.size() < Constants.PageSize) {
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
                         }
@@ -405,25 +366,18 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                             PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.no_nore_invite_friend));
                             return;
                         }
-
-
-                        more_datas = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
-
-                        //invite_friends_refrash.setLoading(false);
-                        if (more_datas.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
-                            mAdapter.MergeFrashData(more_datas);
+                        scan_datass = JSON.parseArray(Data.getHttpResultStr(), BCInviteFriends.class);
+                        if (scan_datass.get(0).getDate().equals(mAdapter.GetApData().get(mAdapter.getCount() - 1).getDate())) {
+                            mAdapter.MergeFrashData(scan_datass);
                         } else {
-                            mAdapter.FreshAllData(more_datas);
+                            mAdapter.FreshAllData(scan_datass);
                         }
-                        //scan_datass.addAll(more_datas);
-                        List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(more_datas);
-                        if (allInviteDetailList2.size() == PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(true);
+                        List<BLInviteFriends> allInviteDetailList2 = getAllInviteDetailList(scan_datass);
+                        if (allInviteDetailList2.size() == Constants.PageSize) {
                             invite_friends_record_list.ShowFoot();
                             invite_friends_record_list.setPullLoadEnable(true);
                         }
-                        if (allInviteDetailList2.size() < PageSize3) {
-                            //invite_friends_refrash.setCanLoadMore(false);
+                        if (allInviteDetailList2.size() < Constants.PageSize) {
                             invite_friends_record_list.hidefoot();
                             invite_friends_record_list.setPullLoadEnable(false);
                         }
@@ -438,23 +392,12 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
     }
 
-    private void showLvPop(View V, List<String> lv_list) {
+    private void showLvPop(View V, List<BLLevelName> lv_list) {
         View view = LayoutInflater.from(BaseContext).inflate(R.layout.pop_shop_filter, null);
         LinearLayout ll_pop_shop_filter = (LinearLayout) view.findViewById(R.id.ll_pop_shop_filter);
         TextView tv_shop_all = (TextView) view.findViewById(R.id.tv_shop_all);
-//        TextView tv_shop_lv1 = (TextView) view.findViewById(R.id.tv_shop_lv1);
-//        TextView tv_shop_lv2 = (TextView) view.findViewById(R.id.tv_shop_lv2);
-//        TextView tv_shop_lv3 = (TextView) view.findViewById(R.id.tv_shop_lv3);
-//        TextView tv_shop_lv4 = (TextView) view.findViewById(R.id.tv_shop_lv4);
-//        TextView tv_shop_lv5 = (TextView) view.findViewById(R.id.tv_shop_lv5);
-//        TextView tv_shop_lv6 = (TextView) view.findViewById(R.id.tv_shop_lv6);
-//        TextView tv_shop_lv7 = (TextView) view.findViewById(R.id.tv_shop_lv7);
-        TextView tv_shop_no_activate = (TextView) view.findViewById(R.id.tv_shop_no_activate);
-
-
         LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
-        //List<TextView> txviews = new ArrayList<TextView>();
         for (int i = 0; i < lv_list.size(); i++) {
             View line = new View(BaseContext);
             line.setBackgroundResource(R.color.white);
@@ -462,33 +405,15 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             TextView textView = new TextView(BaseContext);
             textView.setClickable(true);
             textView.setLayoutParams(textParams);
-            textView.setPadding(5, DimensionPixelUtil.dip2px(BaseContext, 5), 5, DimensionPixelUtil.dip2px(BaseContext, 5));
+            textView.setPadding(5, DimensionPixelUtil.dip2px(BaseContext, 8), 5, DimensionPixelUtil.dip2px(BaseContext, 8));
             textView.setGravity(Gravity.CENTER);
             textView.setTextColor(getResources().getColor(R.color.white));
-            textView.setText(lv_list.get(i));
+            textView.setText(lv_list.get(i).getLevel_name());
             textView.setOnClickListener(new OnPopClickListener(i));
             ll_pop_shop_filter.addView(textView);
             ll_pop_shop_filter.addView(line);
         }
-
-//        tv_shop_lv1.setText(lv_list.get(0));
-//        tv_shop_lv2.setText(lv_list.get(1));
-//        tv_shop_lv3.setText(lv_list.get(2));
-//        tv_shop_lv4.setText(lv_list.get(3));
-//        tv_shop_lv5.setText(lv_list.get(4));
-//        tv_shop_lv6.setText(lv_list.get(5));
-//        tv_shop_lv7.setText(lv_list.get(6));
-
         tv_shop_all.setOnClickListener(this);
-//        tv_shop_lv1.setOnClickListener(this);
-//        tv_shop_lv2.setOnClickListener(this);
-//        tv_shop_lv3.setOnClickListener(this);
-//        tv_shop_lv4.setOnClickListener(this);
-//        tv_shop_lv5.setOnClickListener(this);
-//        tv_shop_lv6.setOnClickListener(this);
-//        tv_shop_lv7.setOnClickListener(this);
-        tv_shop_no_activate.setOnClickListener(this);
-
         mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         mPopupWindow.setFocusable(true);
@@ -594,34 +519,10 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                 //Current_Lv = Shop_All_Lv;
                 PromptManager.showtextLoading(BaseContext, getResources()
                         .getString(R.string.loading));
+                datass = mAdapter.GetApData();
                 page = 1;
                 IData(page, LOAD_INITIALIZE);
 
-                break;
-//            case text_view_id:
-//                LvSwitch(Shop_Lv1, lv_list.get(0), Type_Lv1);
-//                break;
-//            case R.id.tv_shop_lv2:
-//                LvSwitch(Shop_Lv2, lv_list.get(1), Type_Lv2);
-//                break;
-//            case R.id.tv_shop_lv3:
-//                LvSwitch(Shop_Lv3, lv_list.get(2), Type_Lv3);
-//                break;
-//            case R.id.tv_shop_lv4:
-//                LvSwitch(Shop_Lv4, lv_list.get(3), Type_Lv4);
-//                break;
-//            case R.id.tv_shop_lv5:
-//                LvSwitch(Shop_Lv5, lv_list.get(4), Type_Lv5);
-//                break;
-//            case R.id.tv_shop_lv6:
-//                LvSwitch(Shop_Lv6, lv_list.get(5), Type_Lv6);
-//                break;
-//
-//            case R.id.tv_shop_lv7:
-//                LvSwitch(Shop_Lv7, lv_list.get(6), Type_Lv7);
-//                break;
-            case R.id.tv_shop_no_activate:
-                LvSwitch(Shop_All_Lv, getResources().getString(R.string.invite_friends_no_activites), Type_Activites);
                 break;
         }
 
@@ -648,19 +549,6 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
     private void RefrashAp() {
         mAdapter.FreshData(datass);
-//        List<BLInviteFriends> allInviteDetailList = getAllInviteDetailList(datass);
-//        if (allInviteDetailList.size()/nanor_page == PageSize3) {
-//            //invite_friends_refrash.setCanLoadMore(true);
-//            invite_friends_record_list.ShowFoot();
-//            invite_friends_record_list.setPullLoadEnable(true);
-//
-//        }
-//        if (allInviteDetailList.size()/nanor_page < PageSize3) {
-//            //invite_friends_refrash.setCanLoadMore(false);
-//            invite_friends_record_list.hidefoot();
-//            invite_friends_record_list.setPullLoadEnable(false);
-//        }
-
         if (needLoadMore) {
             invite_friends_record_list.ShowFoot();
             invite_friends_record_list.setPullLoadEnable(true);
@@ -710,6 +598,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
     }
 
+
     class OnPopClickListener implements View.OnClickListener {
         private int clickposition;
 
@@ -719,7 +608,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
         @Override
         public void onClick(View v) {
-            LvSwitch(clickposition + "", lv_list.get(clickposition), clickposition + 2);
+            LvSwitch(lv_list.get(clickposition).getLevel_id()+"", lv_list.get(clickposition).getLevel_name(), lv_list.get(clickposition).getLevel_id());
         }
     }
 
@@ -754,14 +643,15 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
     @Override
     public void onRefresh() {
         page = 1;
-        nanor_page = 1;
+        if (scan_type == 0) {
+            nanor_page = 1;
+        }
         IData(page, LOAD_REFRESHING);
     }
 
     @Override
     public void onLoadMore() {
         page++;
-        Log.i("tests","page==>"+ page);
         if (scan_type == 0) {
             nanor_page = page;
         }

@@ -631,7 +631,7 @@
     <dimen name="fragment_up_lay_height">70dp</dimen>
     <dimen name="fragment_up_lay_margintop_height">30dp</dimen>
     <dimen name="fragment_shop_up_lay_txt_pading">12dp</dimen>
-    <dimen name="pop_intgraldetail_width">100dp</dimen>
+    <dimen name="pop_intgraldetail_width">120dp</dimen>
     <dimen name="login_log_margintop_height">40dp</dimen>
     <dimen name="login_phon_margintop_height">60dp</dimen>
     <dimen name="login_phon_margintop_height1">30dp</dimen>

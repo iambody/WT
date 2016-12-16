@@ -116,6 +116,11 @@ public class CacheUtil {
      */
     private final static String SP_Shop_Lv = "shoplv";
 
+    /**
+     * 积分明细筛选类型缓存
+     */
+    private final static String SP_Integral_Type_Lv = "integraltype";
+
     private final static String Sp_MynewHome = "mynewhome";
 
     /**
@@ -538,6 +543,37 @@ public class CacheUtil {
         SharedPreferences Sp = context.getSharedPreferences(
                 SP_Shop_Lv, Context.MODE_PRIVATE);
         return Sp.getString("shoplv", "");
+    }
+
+
+    /**
+     * 积分明细筛选类型列表
+     *
+     * @param pcContext
+     * @param walletStr
+     */
+    public static void Integral_Type_Save(Context pcContext,
+                                    String integral) {
+        SharedPreferences Sp = pcContext.getSharedPreferences(
+                SP_Integral_Type_Lv, Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+
+        editor.putString("integraltype", integral);
+
+        editor.commit();
+    }
+
+
+    /**
+     * 积分明细筛选类型列表缓存
+     *
+     * @param context
+     * @return
+     */
+    public static String Integral_Type_Get(Context context) {
+        SharedPreferences Sp = context.getSharedPreferences(
+                SP_Integral_Type_Lv, Context.MODE_PRIVATE);
+        return Sp.getString("integraltype", "");
     }
 
 
