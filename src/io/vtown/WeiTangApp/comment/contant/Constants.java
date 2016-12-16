@@ -989,11 +989,7 @@ public class Constants {
      */
     public static String Integral_Detail = Host
             + "/v1/member/point/list";
-    /**
-     * 获取积分明细筛选类型
-     */
-    public static String Integral_Type = Host
-            + "/v1/member/point/get-type";
+
 
     /**
      * 店铺内进行搜索
