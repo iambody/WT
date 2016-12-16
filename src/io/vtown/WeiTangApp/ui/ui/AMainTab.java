@@ -199,7 +199,6 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     }
 
     private void NetFragmentChange(int Type) {
-
         FMainHome.SetNetStatuse(Type);
         FMainShow.SetNetStatuse(Type);
         FMainShopBus.SetNetStatuse(Type);
@@ -207,7 +206,6 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 
     @Override
     public void ListenerTabPostion(int postion) {
-
         if (postion == 2) {
             maintab_shopbus.SetIsShowTage(false);
         }
@@ -243,7 +241,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         for (int i = 0; i < RadioButtons.size(); i++) {
             RadioButtons.get(i).setRadioButtonChecked(false);
         }
-        maintab_show_iv.setImageResource(R.drawable.tab3_f_pre);
+        maintab_show_iv.setImageResource(R.drawable.tab3_f_nor_1);
         switchContent(CurrentFragment, FMainShow, R.id.maintab_fragmentlay);
 
         CurrentPostion = 4;

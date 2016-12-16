@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.android.volley.Cache;
 import com.android.volley.Request;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
@@ -48,6 +50,7 @@ import io.vtown.WeiTangApp.comment.view.WaveView;
 import io.vtown.WeiTangApp.comment.view.custom.HomeScrollView;
 import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
+import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.test.ALoadmor;
 import io.vtown.WeiTangApp.test.ARetrofitTest;
@@ -148,7 +151,10 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         MyUser = Spuit.User_Get(BaseContext);
         SetTitleHttpDataLisenter(this);
         IBase();
+        //开始偷偷加载聊天的品牌商的列表数据
+        IBrandLsData();
     }
+
 
     /**
      * 开始处理缓存数据//if存在先显示数据后偷偷加载数据else直接显示数据
@@ -549,6 +555,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 //需要进行缓存本地
                 INetData(LOADHind);
                 break;
+
+
         }
 
 
@@ -671,7 +679,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                             });
                     return;
                 }
-                if ( !Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+                if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
                     ShowCustomDialog(MBNewHome.getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
                             getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
                             new IDialogResult() {
@@ -892,5 +900,27 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         }
 
 
+    }
+
+
+    private void IBrandLsData() {
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("member_id", MyUser.getId());//"10015086"user_Get.getId()
+//        FBGetHttpData(map, Constants.Im_Chat_Brand_Ls, Request.Method.GET, 142, LOADHind);
+        NHttpBaseStr BaNHttpBaseStr = new NHttpBaseStr(BaseContext);
+        BaNHttpBaseStr.setPostResult(new IHttpResult<String>() {
+            @Override
+            public void getResult(int Code, String Msg, String Data) {
+                if (!StrUtils.isEmpty(Data)) {
+                    CacheUtil.Im_Brand_Save(BaseContext, Data);
+                }
+            }
+
+            @Override
+            public void onError(String error, int LoadType) {
+
+            }
+        });
+        BaNHttpBaseStr.getData(Constants.Im_Chat_Brand_Ls, map, Request.Method.GET);
     }
 }

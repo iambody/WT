@@ -153,7 +153,10 @@ public class CacheUtil {
      * 我的团队详情
      */
     private final static String Sp_My_Team = "my_team_sp";
-
+    /**
+     * 我的团队详情
+     */
+    private final static String Sp_Brand_Ls = "brand_ls_sp";
     /**
      * 缓存首页数据
      */
@@ -966,6 +969,23 @@ public class CacheUtil {
         SharedPreferences Sp = pContext.getSharedPreferences(Sp_Short_Scroe_Range_ls,
                 Context.MODE_PRIVATE);
         return Sp.getString("newhomesortscroerangstr", "");
+    }
+
+    //聊天时候品牌商
+
+
+    public static void Im_Brand_Save(Context PContext, String Str) {
+        SharedPreferences Sp = PContext.getSharedPreferences(Sp_Brand_Ls,
+                Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+        editor.putString("brandls", Str);
+        editor.commit();
+    }
+
+    public static String Im_Brand_Get(Context pContext) {
+        SharedPreferences Sp = pContext.getSharedPreferences(Sp_Brand_Ls,
+                Context.MODE_PRIVATE);
+        return Sp.getString("brandls", "");
     }
 }
 

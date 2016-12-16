@@ -204,11 +204,13 @@ public class ARecyclerMyShow extends ATitleBase {
                 LOAD_INITIALIZE);
 
     }
+
     @Override
     protected void onResume() {
         PromptManager.closeLoading();
         super.onResume();
     }
+
     @Override
     protected void InitTile() {
         SetTitleTxt("我的SHOW");
@@ -216,18 +218,21 @@ public class ARecyclerMyShow extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
-
-
         switch (Data.getHttpLoadType()) {
             case LOAD_INITIALIZE:
                 if (91 == Data.getHttpResultTage()) {// 删除
                     PromptManager.ShowCustomToast(BaseContext, "删除成功");
-
+                    if (myShowAdapter.GetDatas().size() == 1) {
+                        IDataView(recyclerview_my_show, comment_myshow_no__lay, NOVIEW_ERROR);
+                        ShowErrorIv(R.drawable.error_show);
+                        ShowErrorCanLoad(getResources().getString(R.string.younoshowss));
+                        return;
+                    }
 //                    IData(lastid, LOAD_INITIALIZE);
                     myShowAdapter.GetDatas().remove(DeletePostion);
                     myShowAdapter.notifyItemRemoved(DeletePostion);
                     myShowAdapter.notifyItemRangeRemoved(0, myShowAdapter.GetDatas().size() - DeletePostion);
-                    lastid =   myShowAdapter.GetDatas().get(myShowAdapter.GetDatas().size()-1).getId();
+                    lastid = myShowAdapter.GetDatas().get(myShowAdapter.GetDatas().size() - 1).getId();
                     return;
                 }
 
@@ -1007,7 +1012,7 @@ public class ARecyclerMyShow extends ATitleBase {
                 DownFileUtils dd = new DownFileUtils();
                 dd.SetResult(new DownFileUtils.DownLoadListener() {
                     @Override
-                    public void DownLoadOk() {
+                    public void DownLoadOk(String path) {
                         Log.i("filetest", "成功" + postion);
                         CountNumber = CountNumber + 1;
                         if (CountNumber == imgarr.size()) {
@@ -1017,7 +1022,7 @@ public class ARecyclerMyShow extends ATitleBase {
                     }
 
                     @Override
-                    public void DownLoadError() {
+                    public void DownLoadError(String msg) {
                         Log.i("filetest", "失败" + postion);
                         CountNumber = CountNumber + 1;
                         if (CountNumber == imgarr.size()) {
@@ -1032,6 +1037,7 @@ public class ARecyclerMyShow extends ATitleBase {
 
 
         }
+
         public void RecursionDeleteFile(File file) {
             if (file.isFile()) {
                 file.delete();
@@ -1049,6 +1055,7 @@ public class ARecyclerMyShow extends ATitleBase {
                 file.delete();
             }
         }
+
         private boolean checkIsImageFile(String fName) {
             boolean isImageFile = false;
             // 获取扩展名
@@ -1096,7 +1103,7 @@ public class ARecyclerMyShow extends ATitleBase {
 
             public DeleteShowClick(BLShow myShareShow, int Postion) {
                 DeleteBShow = myShareShow;
-                MYDELETpOSTION=Postion;
+                MYDELETpOSTION = Postion;
             }
 
             @Override

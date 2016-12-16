@@ -21,14 +21,15 @@
 
         <ImageView
             android:id="@+id/fragment_main_show_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:padding="@dimen/ui_14_dip"
             android:layout_marginRight="@dimen/ui_10_dip"
             android:clickable="true"
 
-            android:src="@drawable/ic_jiahao_add"/>
+            android:src="@drawable/ic_fashow_nor"/>
     </RelativeLayout>
 
     <include

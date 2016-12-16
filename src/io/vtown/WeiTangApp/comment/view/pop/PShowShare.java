@@ -377,7 +377,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     }
 
 
-    private void Share(int Type) {
+    private void Share(final int Type) {
         ShareSDK.initSDK(mContext);
         Platform platform = null;
         Platform.ShareParams sp = new Platform.ShareParams();
@@ -434,6 +434,7 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
             public void onComplete(Platform arg0, int arg1,
                                    HashMap<String, Object> arg2) {
                 PromptManager.ShowCustomToast(mContext, "分享完成");
+                if(SHARE_TO_FRIENDS==Type||SHARE_TO_FRIENDS==Type)
                 MShowShareInterListener.GetResultType(SHARE_GOODS_OK);
                 PromptManager.closeLoading();
                 PShowShare.this.dismiss();

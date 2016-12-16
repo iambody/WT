@@ -1094,7 +1094,7 @@ public class ARecyclerOtherShow extends ATitleBase {
             DownFileUtils dd = new DownFileUtils();
             dd.SetResult(new DownFileUtils.DownLoadListener() {
                 @Override
-                public void DownLoadOk() {
+                public void DownLoadOk(String path) {
                     Log.i("filetest", "成功" + postion);
                     CountNumber = CountNumber + 1;
                     if (CountNumber == imgarr.size()) {
@@ -1104,7 +1104,7 @@ public class ARecyclerOtherShow extends ATitleBase {
                 }
 
                 @Override
-                public void DownLoadError() {
+                public void DownLoadError(String msg) {
                     Log.i("filetest", "失败" + postion);
                     CountNumber = CountNumber + 1;
                     if (CountNumber == imgarr.size()) {

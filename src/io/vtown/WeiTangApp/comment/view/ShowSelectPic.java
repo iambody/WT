@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.comment.view;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.select_pic.PicSelActivity;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.ALoactePhotoPager;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
@@ -76,6 +78,7 @@ public class ShowSelectPic extends ATitleBase {
     private int NeedUpNumber = 0;
     private BUser MyUser;
 
+    private boolean IsUpLoading;
 
     @Override
     protected void InItBaseView() {
@@ -157,6 +160,7 @@ public class ShowSelectPic extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
+        IsUpLoading = false;
         Show_Award();//show分享成功就获取积分
         PromptManager.closeTextLoading3();
         PromptManager.ShowCustomToast(BaseContext, "Show分享成功");
@@ -182,7 +186,7 @@ public class ShowSelectPic extends ATitleBase {
     @Override
     protected void NetDisConnect() {
         NetError.setVisibility(View.VISIBLE);
-
+        PromptManager.closeTextLoading3();
     }
 
     @Override
@@ -251,8 +255,10 @@ public class ShowSelectPic extends ATitleBase {
             return;
         }
 
-
-        ImageShareShow();
+        try {
+            ImageShareShow();
+        } catch (Exception e) {
+        }
 
 
     }
@@ -261,8 +267,6 @@ public class ShowSelectPic extends ATitleBase {
      * 图片分享时候 需要先上传图片完毕在根据上传后的七牛返回的URL分享Show
      */
     private void ImageShareShow() {
-
-
         // 计算下需要上传的图片信息和 总的图片的信息****************
         NeedUpNumber = 0;
 
@@ -278,6 +282,7 @@ public class ShowSelectPic extends ATitleBase {
             UpOverToShare();
             return;
         }
+        IsUpLoading = true;
         // 如果有需要上传的图片===》开始对上边处理过需要上传图片的信息进行上传处理****************
         PromptManager.showtextLoading3(BaseContext, getResources()
                 .getString(R.string.uploading));
@@ -517,5 +522,25 @@ public class ShowSelectPic extends ATitleBase {
         } catch (Exception e) {
             return;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && IsUpLoading) {
+            ShowCustomDialog(getResources().getString(R.string.uploding), getResources().getString(R.string.fangqi), getResources().getString(R.string.tuichu), new IDialogResult() {
+                @Override
+                public void LeftResult() {
+
+                }
+
+                @Override
+                public void RightResult() {
+                    PromptManager.closeTextLoading3();
+                }
+            });
+
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -123,12 +123,12 @@ public class Constants {
     /**
      * 生产环境
      */
-// 	public static String Host = "https://api.v-town.cc";
+//    public static String Host = "https://api.v-town.cc";
     // 接口配置参数*******************************************************************
     //视频拼接网页的 开发==》host
-    public static String H5Host_Dev = "http://dev.vt.h5.v-town.cn";
+//    public static String H5Host_Dev = "http://dev.vt.h5.v-town.cn";
     //视频拼接网页的 生产==》host
-//    public static String H5Host_Dev = "https://h5.v-town.cc";
+    public static String H5Host_Dev = "https://h5.v-town.cc";
     //分享视频时候需要用视频地址做一个播放网页
     public static String VidoShareHtml = H5Host_Dev + "/pages/video.html?vid=";
     /**
@@ -1019,7 +1019,15 @@ public class Constants {
     /**
      * 转发show完毕后 需要交互后台添加每天一次的show奖励
      */
-    public static String UpShow_AWard=Host+"/v1/member/point/show-point";
+    public static String UpShow_AWard = Host + "/v1/member/point/show-point";
+    /**
+     * 聊天时候用到的品牌商列表
+     */
+    public static String Im_Chat_Brand_Ls = Host + "/v1/api/api/get-brand-list";
+    /**
+     * 获取积分明细筛选类型
+     */
+    public static String Integral_Type = Host+ "/v1/member/point/get-type";
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
@@ -1035,7 +1043,7 @@ public class Constants {
     /**
      * 正式环境的key
      */
-// 	public static String SignKey = "hkf%t5SMv1HtrVS!Y%B!NPNS!!0cWgy";
+//    public static String SignKey = "hkf%t5SMv1HtrVS!Y%B!NPNS!!0cWgy";
 
     // 微糖小助手sheng'chuan'j生产
     // public static String WtHelper = "v-town000111222";

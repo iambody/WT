@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +55,9 @@ import io.vtown.WeiTangApp.comment.net.qiniu.NUPLoadUtil;
 import io.vtown.WeiTangApp.comment.net.qiniu.NUpLoadUtils;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.NetUtil;
+import io.vtown.WeiTangApp.comment.util.SdCardUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
@@ -256,7 +260,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     @Override
     protected void NetDisConnect() {
         PromptManager.closeTextLoading3();
-        PromptManager.ShowCustomToast(BaseContext,getResources().getString(R.string.network_not_connected));
+        PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.network_not_connected));
         NetError.setVisibility(View.VISIBLE);
 
     }
@@ -340,6 +344,14 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 break;
             case R.id.right_txt:
                 if (TYPE_PIC == current_type) {
+                    //分享商品时候下载的的失败的图片
+                    File sdCards = Environment.getExternalStorageDirectory();
+                    final File sharesdkfile = new File(sdCards + "/Mob/io.vtown.WeiTangApp/cache/images/");
+                    if (sharesdkfile.exists()) {
+                        SdCardUtils.deleteAllFiles(sharesdkfile);
+//                        PromptManager.ShowCustomToast(BaseContext, "存在文件夹 已经删除");
+                    }
+
                     toPicSelect(PicSelActivity.Tage_Add_New_Show);
                 } else {
                     PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
@@ -371,7 +383,6 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     //带商品链接的图片==>上边发show直接SendShow//中间三方分享直接用商品// 下边九宫格分享直接用本地  ==》不用上传图片！！！！！
     private void Send_Pic_Or_Vido_Url(final boolean IsPic) {
         if (!IsPic) {
-
             //帶商品鏈接視頻
             final PPicOrVedioShare myshare = new PPicOrVedioShare(BaseContext, false, true);
             myshare.setOnPicOrVedioShareListener(new PPicOrVedioShare.OnPicOrVedioShareListener() {
@@ -602,7 +613,8 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     //九宫格分享方法********
 
     private void Pic9Show(List<String> imgs, String s) {
-        Show_Award();
+        Log.i("picpic", "长度" + imgs.size());
+
         Intent intent = new Intent();
         ComponentName comp = new ComponentName("com.tencent.mm",
                 "com.tencent.mm.ui.tools.ShareToTimeLineUI");
@@ -612,16 +624,26 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
         ArrayList<Uri> imageUris = new ArrayList<Uri>();
 
         for (int i = 0; i < imgs.size(); i++) {
+            Log.i("picpic", "图片URL==》" + i + "=>" + imgs.get(i));
+//           PromptManager.ShowCustomToast(BaseContext, imgs.get(i));
             if (checkIsImageFile(imgs.get(i))) {
                 imageUris.add(Uri.fromFile(new File(imgs.get(i))));
             }
         }
-
-
+        //判断是否安装微信
+        if (!ViewUtils.isWeixinAvilible(BaseContext)) {
+            PromptManager.ShowCustomToast(BaseContext, "请先安装手机微信");
+            return;
+        }
         intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
         intent.putExtra("Kdescription", s);
-        startActivity(intent);
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            return;
+        }
 
+        Show_Award();
 
     }
 
@@ -662,6 +684,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                         imgs.add(pathUrl);
                     }
                 }
+
                 setGridViewPic();
                 break;
 
@@ -832,7 +855,6 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
                 @Override
                 public void onClick(View v) {
                     imgs.remove(MyPostion);
-                    datas.remove(MyPostion);
                     notifyDataSetChanged();
                 }
             });

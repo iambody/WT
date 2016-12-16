@@ -15,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.Scroller;
 
+import io.vtown.WeiTangApp.comment.view.custom.CustomHScrollView;
+
 public class HorizontalListView extends AdapterView<ListAdapter> {
 
 	public boolean mAlwaysOverrideTouch = true;
@@ -36,6 +38,8 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	public HorizontalListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initView();
+		mGestureDetector = new GestureDetector(new YScrollDetector());
+		setFadingEdgeLength(0);
 	}
 
 	private synchronized void initView() {
@@ -370,4 +374,22 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 		}
 	};
 
+
+	private GestureDetector mGestureDetector;
+	View.OnTouchListener mGestureListener;
+
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		return super.onInterceptTouchEvent(ev) && mGestureDetector.onTouchEvent(ev);
+	}
+	// Return false if we're scrolling in the x direction
+	class YScrollDetector extends GestureDetector.SimpleOnGestureListener {
+		@Override
+		public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+			if(Math.abs(distanceY) > Math.abs(distanceX)) {
+				return true;
+			}
+			return false;
+		}
+	}
 }

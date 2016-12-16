@@ -7,6 +7,7 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.framework.Platform.ShareParams;
+import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.tencent.qzone.QZone;
 import cn.sharesdk.wechat.friends.Wechat;
@@ -51,7 +52,7 @@ public class PShare extends PopupWindow implements OnClickListener {
     /**
      * view
      */
-    private RelativeLayout pop_share_haoyou, pop_share_pyq, pop_share_qq, pop_share_qqkj, pop_share_show;
+    private RelativeLayout pop_share_haoyou, pop_share_pyq, pop_share_qq, pop_share_qqkj, pop_share_show, pop_share_weibo;
     private TextView pop_share_cancle;
     /**
      * 回掉接口
@@ -76,10 +77,9 @@ public class PShare extends PopupWindow implements OnClickListener {
     private boolean IsNoShowShare;
 
 
-
-
     //成功失败的暴露接口
     private ShareResultIntface MShareResultIntface;
+
     /**
      * 暴露成功失败的结果
      */
@@ -111,13 +111,14 @@ public class PShare extends PopupWindow implements OnClickListener {
         pop_share_cancle = ViewHolder.get(BaseView, R.id.pop_share_cancle);
         pop_share_qq = ViewHolder.get(BaseView, R.id.pop_share_qq);
         pop_share_qqkj = ViewHolder.get(BaseView, R.id.pop_share_qqkj);
-
+        pop_share_weibo = ViewHolder.get(BaseView, R.id.pop_share_weibo);
         pop_share_cancle.setOnClickListener(this);
         pop_share_haoyou.setOnClickListener(this);
         pop_share_pyq.setOnClickListener(this);
         pop_share_qq.setOnClickListener(this);
         pop_share_qqkj.setOnClickListener(this);
         pop_share_show.setOnClickListener(this);
+        pop_share_weibo.setOnClickListener(this);
         pop_share_show.setVisibility(IsNoShowShare ? View.GONE : View.VISIBLE);
 
     }
@@ -138,7 +139,9 @@ public class PShare extends PopupWindow implements OnClickListener {
     @Override
     public void onClick(View arg0) {
         switch (arg0.getId()) {
-
+            case R.id.pop_share_weibo://新浪微博
+                ShareSina();
+                break;
             case R.id.pop_share_qq://QQ好友
                 ShareQQ(1);
                 PShare.this.dismiss();
@@ -167,6 +170,41 @@ public class PShare extends PopupWindow implements OnClickListener {
             default:
                 break;
         }
+    }
+
+    private void ShareSina() {
+        Platform platform = null;
+        ShareParams sp = new ShareParams();
+        platform = ShareSDK.getPlatform(pContext, SinaWeibo.NAME);
+//        platform.SSOSetting(true);
+//        disableSSOWhenAuthorize
+        platform.SSOSetting(false);
+        sp.setTitle(ShareBeanNew.getShare_title());
+        sp.setTitleUrl(ShareBeanNew.getShare_url()); // 标题的超链接
+        sp.setText(ShareBeanNew.getShare_content());
+        sp.setImageUrl(ShareBeanNew.getShare_log());
+        platform.setPlatformActionListener(new PlatformActionListener() {
+
+            @Override
+            public void onError(Platform arg0, int arg1, Throwable arg2) {
+                PromptManager.ShowCustomToast(pContext, "分享取消");
+
+            }
+
+            @Override
+            public void onComplete(Platform arg0, int arg1,
+                                   HashMap<String, Object> arg2) {
+                PromptManager.ShowCustomToast(pContext, "分享完成");
+
+            }
+
+            @Override
+            public void onCancel(Platform arg0, int arg1) {
+
+            }
+        });
+        platform.share(sp);
+
     }
 
     private void ShareQQ(int type) {
@@ -210,7 +248,7 @@ public class PShare extends PopupWindow implements OnClickListener {
             @Override
             public void onError(Platform arg0, int arg1, Throwable arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享取消");
-                if(null!=MShareResultIntface){
+                if (null != MShareResultIntface) {
                     MShareResultIntface.ShareResult(0);
                 }
             }
@@ -219,14 +257,15 @@ public class PShare extends PopupWindow implements OnClickListener {
             public void onComplete(Platform arg0, int arg1,
                                    HashMap<String, Object> arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享完成");
-                if(null!=MShareResultIntface){
-                    MShareResultIntface.ShareResult(1);
+                if (null != MShareResultIntface) {
+
+//                    MShareResultIntface.ShareResult(1);
                 }
             }
 
             @Override
             public void onCancel(Platform arg0, int arg1) {
-                if(null!=MShareResultIntface){
+                if (null != MShareResultIntface) {
                     MShareResultIntface.ShareResult(0);
                 }
             }
@@ -285,7 +324,7 @@ public class PShare extends PopupWindow implements OnClickListener {
             @Override
             public void onError(Platform arg0, int arg1, Throwable arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享取消");
-                if(null!=MShareResultIntface){
+                if (null != MShareResultIntface) {
                     MShareResultIntface.ShareResult(0);
                 }
             }
@@ -294,14 +333,14 @@ public class PShare extends PopupWindow implements OnClickListener {
             public void onComplete(Platform arg0, int arg1,
                                    HashMap<String, Object> arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享完成");
-                if(null!=MShareResultIntface){
+                if (null != MShareResultIntface) {
                     MShareResultIntface.ShareResult(1);
                 }
             }
 
             @Override
             public void onCancel(Platform arg0, int arg1) {
-                if(null!=MShareResultIntface){
+                if (null != MShareResultIntface) {
                     MShareResultIntface.ShareResult(0);
                 }
             }
@@ -316,8 +355,6 @@ public class PShare extends PopupWindow implements OnClickListener {
     public void setIsErWeiMaShare(boolean isErWeiMaShare) {
         IsErWeiMaShare = isErWeiMaShare;
     }
-
-
 
 
     public interface ShareResultIntface {

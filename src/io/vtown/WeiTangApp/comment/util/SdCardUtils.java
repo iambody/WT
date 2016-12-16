@@ -34,6 +34,7 @@ public class SdCardUtils {
         File aaaa = new File(sdCards, "/wtshowspic/" + "photo3.jpg");
         return aaaa;
     }
+
     public static File GetPicShowOutPath() {
         File sdCards = Environment.getExternalStorageDirectory();
         File test = new File(sdCards + "/wtshowspic");
@@ -43,6 +44,7 @@ public class SdCardUtils {
         File aaaa = new File(sdCards, "/wtshowspic/" + "photo3.jpg");
         return aaaa;
     }
+
     public static void RecursionDeleteFile(File file) {
         if (file.isFile()) {
             file.delete();
@@ -299,4 +301,42 @@ public class SdCardUtils {
             e.printStackTrace();
         }
     }
+
+
+    public static void deleteAllFiles(File root) {
+        File files[] = root.listFiles();
+        if (files != null)
+            for (File f : files) {
+                if (f.isDirectory()) { // 判断是否为文件夹
+                    deleteAllFiles(f);
+                    try {
+                        f.delete();
+                    } catch (Exception e) {
+                    }
+                } else {
+                    if (f.exists()) { // 判断是否存在
+                        deleteAllFiles(f);
+                        try {
+                            f.delete();
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+            }
+    }
+
+    /**
+     * 判断sd卡是否存在
+     *
+     * @return
+     */
+    public static boolean avaiableMedia() {
+        String status = Environment.getExternalStorageState();
+        if (status.equals(Environment.MEDIA_MOUNTED)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

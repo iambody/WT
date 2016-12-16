@@ -37,6 +37,7 @@ import io.vtown.WeiTangApp.adapter.ChatHistoryAdapter;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.im.ImBrand;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
@@ -85,15 +86,32 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
     private TextView new_zhushou_time;
     private CustomSwipeToRefresh fragment_main_new_srollviw;
     private boolean IShow = true;
+
     @Override
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_new, null);
         EventBus.getDefault().register(this, "NewReciver", BMessage.class);
         user_Get = Spuit.User_Get(BaseContext);
+        ICacheBrnadLs();
         IView();
         SetTitleHttpDataLisenter(this);
         ICache();
+
         refresh();
+//        GetNetBrandLs();
+    }
+
+    private void ICacheBrnadLs() {
+        if (StrUtils.isEmpty(CacheUtil.Im_Brand_Get(BaseContext))) {
+            GetNetBrandLs();
+        }
+    }
+
+    //获取品牌商的列表
+    private void GetNetBrandLs() {
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("member_id", user_Get.getId());//"10015086"user_Get.getId()
+        FBGetHttpData(map, Constants.Im_Chat_Brand_Ls, Request.Method.GET, 432, LOADHind);
     }
 
     @Override
@@ -134,9 +152,9 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
 
 
                 EMMessage latmessage = conversation.getLastMessage();
-                LogUtils.i("========from========"+latmessage.getFrom());
-                LogUtils.i("========tagname========"+conversation.getUserName());
-                LogUtils.i("========latmessage.getUserName()========"+latmessage.getUserName());
+                LogUtils.i("========from========" + latmessage.getFrom());
+                LogUtils.i("========tagname========" + conversation.getUserName());
+                LogUtils.i("========latmessage.getUserName()========" + latmessage.getUserName());
 
                 EventBus.getDefault().post(new BMessage(BMessage.IM_MSG_READ));
                 Intent intent = new Intent(BaseActivity, AChatInf.class);
@@ -386,6 +404,13 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
             case 31:// 删除单个消息
                 IData(INITIALIZE);
                 break;
+            case 432://品牌商列表
+
+                if (!StrUtils.isEmpty(Data.getHttpResultStr())) {
+                    CacheUtil.Im_Brand_Save(BaseContext, Data.getHttpResultStr());
+                }
+
+                break;
             default:
                 break;
         }
@@ -591,6 +616,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
                 break;
         }
     }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -618,6 +644,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
         }
 
     }
+
     @Override
     public void onRefresh() {
         IData(REFRESHING);
@@ -735,7 +762,9 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
             TextView item_my_new_time;//
         }
     }
-public String ssss = "";
+
+    public String ssss = "";
+
     public void NewReciver(BMessage message) {
         switch (message.getMessageType()) {
             case BMessage.Tage_New_Kill:
@@ -744,7 +773,6 @@ public String ssss = "";
                 break;
 
             case 11186:
-
 
 
                 break;
@@ -760,17 +788,17 @@ public String ssss = "";
         EventBus.getDefault().unregister(this);
     }
 
-    private void getDaaa(String msgId){
-        loadConversationWithRecentChat();
-        //根据消息id获取message
-        EMMessage message = EMChatManager.getInstance().getMessage(msgId);
-        //获取自定义的属性，第2个参数为返回的默认值
-
-
-
-            LogUtils.i("------------------loadConversationWithRecentChat-------Name-----------"+ message.getStringAttribute("extReceiveNickname",null));
-        LogUtils.i("------------------loadConversationWithRecentChat-------url-----------"+ message.getStringAttribute("extReceiveHeadUrl", null));
-
+    private ImBrand GetImBrandInf(String Chat) {
+        ImBrand myBrnd = null;
+        if (!StrUtils.isEmpty(CacheUtil.Im_Brand_Get(BaseContext))) {
+            List<ImBrand> brands = JSON.parseArray(CacheUtil.Im_Brand_Get(BaseContext), ImBrand.class);
+            for (int i = 0; i < brands.size(); i++) {
+                if (brands.get(i).getEmchat().equals(Chat)) {
+                    myBrnd = brands.get(i);
+                }
+            }
+        }
+        return myBrnd;
     }
 
 }

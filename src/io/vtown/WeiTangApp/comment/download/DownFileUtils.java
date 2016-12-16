@@ -65,14 +65,15 @@ public class DownFileUtils {
             @Override
             public void onSuccess(ResponseInfo<File> responseInfo) {
                 Log.i("filetest", " 下载成功。。。。。。。。。。。。" + responseInfo.result.getPath());
+
                 responseInfo.result.renameTo(new File(responseInfo.result.getPath().replace(responseInfo.result.getName(), name + ".jpg")));
                 Log.i("filetest", " 下载成功修改。。。。。。。。。。。。" + responseInfo.result.getName());
-                downLoadListener.DownLoadOk();
+                downLoadListener.DownLoadOk(responseInfo.result.getPath());
             }
 
             @Override
             public void onFailure(HttpException error, String msg) {
-                downLoadListener.DownLoadError();
+                downLoadListener.DownLoadError(msg);
                 Log.i("filetest", " 下载失败。。。。。。。。。。。。" + error.toString());
             }
         });
@@ -87,9 +88,9 @@ public class DownFileUtils {
     }
 
     public interface DownLoadListener {
-        void DownLoadOk();
+        void DownLoadOk(String path);
 
-        void DownLoadError();
+        void DownLoadError(String msg);
     }
 
 }

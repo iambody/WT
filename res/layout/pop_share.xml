@@ -114,8 +114,41 @@
         </RelativeLayout>
 
 
-        //qq空间
+        //微博
 
+        <View style="@style/line1"/>
+
+        <RelativeLayout
+            android:id="@+id/pop_share_weibo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_show_share_center"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/pop_share_center3a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/pop_share_center3a"
+                android:src="@drawable/pic_weibo_nor"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/pop_share_center3a"
+                android:text="@string/ssdk_sinaweibo"/>
+        </RelativeLayout>
 
 
 

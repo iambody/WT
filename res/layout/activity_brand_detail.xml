@@ -99,7 +99,7 @@
             android:layout_weight="1"
             android:scrollbars="none">
 
-            <ScrollView
+            <io.vtown.WeiTangApp.comment.view.custom.CustomHScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="none">
@@ -199,7 +199,7 @@
 
                     <io.vtown.WeiTangApp.comment.view.listview.HorizontalListView
                         android:id="@+id/brand_detail_horizontal_ls"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/horizontallistview"
                         android:layout_gravity="center_vertical"
                         android:background="@color/white"/>
@@ -221,7 +221,7 @@
                         android:scrollbars="none"
                         android:verticalSpacing="10dp"/>
                 </LinearLayout>
-            </ScrollView>
+            </io.vtown.WeiTangApp.comment.view.custom.CustomHScrollView>
         </io.vtown.WeiTangApp.comment.view.custom.PullView>
 
         <TextView

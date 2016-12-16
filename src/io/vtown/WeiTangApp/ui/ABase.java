@@ -819,7 +819,7 @@ public class ABase extends Activity {
         String FileEnd = fName.substring(fName.lastIndexOf(".") + 1,
                 fName.length()).toLowerCase();
         if (FileEnd.equals("jpg") || FileEnd.equals("png") || FileEnd.equals("gif")
-                || FileEnd.equals("jpeg") || FileEnd.equals("bmp")) {
+                || FileEnd.equals("jpeg") || FileEnd.equals("bmp") || FileEnd.equals("JPG") || FileEnd.equals("PNG") || FileEnd.equals("JPEG")) {
             isImageFile = true;
         } else {
             isImageFile = false;

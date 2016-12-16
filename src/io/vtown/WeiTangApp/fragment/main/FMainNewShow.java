@@ -57,6 +57,7 @@ import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.util.DateUtils;
 import io.vtown.WeiTangApp.comment.util.SdCardUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.comment.view.CopyTextView;
@@ -141,6 +142,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
         super.onResume();
         if (IShow) {
             Log.i("homewave", "显示");
+            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
             PromptManager.closeLoading();
         }
 
@@ -151,11 +153,12 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
         super.onHiddenChanged(hidden);
         if (hidden) {
             Log.i("homewave", "隐藏");
-
+if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
             IShow = false;
 
         } else {
             Log.i("homewave", "显示");
+            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
             PromptManager.closeLoading();
             IShow = true;
         }
@@ -228,6 +231,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             case LOADMOREING:
                 break;
             case LOADHind:
+                lastId = "";
                 break;
         }
         HashMap<String, String> map = new HashMap<String, String>();
@@ -460,7 +464,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                     grid_item.comment_show_gooddetail_iv_grid.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
                     grid_item.my_show_item_icon_grid.setOnClickListener(new LookShowClick(datas.get(position)));
-                   grid_item.my_show_item_is_top.setVisibility(bShow.getIs_top()==1?View.VISIBLE:View.GONE);
+                    grid_item.my_show_item_is_top.setVisibility(bShow.getIs_top() == 1 ? View.VISIBLE : View.GONE);
                     if (isMyShow(bShow.getSeller_id())) {
                         grid_item.my_show_item_delete_grid.setVisibility(View.VISIBLE);
                         grid_item.my_show_item_delete_grid.setOnClickListener(new DeleteShowClick(datas.get(position), position));
@@ -509,7 +513,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                     video_item.comment_show_gooddetail_iv_video.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
                     video_item.my_show_item_icon_video.setOnClickListener(new LookShowClick(datas.get(position)));
-                    video_item.my_show_item_is_top.setVisibility(bShow.getIs_top()==1?View.VISIBLE:View.GONE);
+                    video_item.my_show_item_is_top.setVisibility(bShow.getIs_top() == 1 ? View.VISIBLE : View.GONE);
                     if (isMyShow(bShow.getSeller_id())) {
                         video_item.my_show_item_delete_video.setVisibility(View.VISIBLE);
                         video_item.my_show_item_delete_video.setOnClickListener(new DeleteShowClick(datas.get(position), position));
@@ -554,7 +558,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                     pic_item.comment_show_gooddetail_iv_pic.setOnClickListener(new LookDetailClick(datas.get(position)));
                     //点击头像********
                     pic_item.my_show_item_icon_pic.setOnClickListener(new LookShowClick(datas.get(position)));
-                    pic_item.my_show_item_is_top.setVisibility(bShow.getIs_top()==1?View.VISIBLE:View.GONE);
+                    pic_item.my_show_item_is_top.setVisibility(bShow.getIs_top() == 1 ? View.VISIBLE : View.GONE);
                     if (isMyShow(bShow.getSeller_id())) {
                         pic_item.my_show_item_delete_pic.setVisibility(View.VISIBLE);
                         pic_item.my_show_item_delete_pic.setOnClickListener(new DeleteShowClick(datas.get(position), position));
@@ -643,7 +647,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                 super(itemView);
 
                 my_show_grid_head = itemView.findViewById(R.id.my_show_grid_head);
-                my_show_item_is_top= (ImageView) my_show_grid_head.findViewById(R.id.my_show_item_is_top);
+                my_show_item_is_top = (ImageView) my_show_grid_head.findViewById(R.id.my_show_item_is_top);
                 my_show_item_icon_grid = (CircleImageView) my_show_grid_head.findViewById(R.id.my_show_item_icon);
                 my_show_item_name_grid = (TextView) my_show_grid_head.findViewById(R.id.my_show_item_name);
                 my_show_item_time_grid = (TextView) my_show_grid_head.findViewById(R.id.my_show_item_time);
@@ -681,7 +685,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                 super(itemView);
 
                 my_show_video_head = itemView.findViewById(R.id.my_show_video_head);
-                my_show_item_is_top= (ImageView) my_show_video_head.findViewById(R.id.my_show_item_is_top);
+                my_show_item_is_top = (ImageView) my_show_video_head.findViewById(R.id.my_show_item_is_top);
                 my_show_item_icon_video = (CircleImageView) my_show_video_head.findViewById(R.id.my_show_item_icon);
                 my_show_item_name_video = (TextView) my_show_video_head.findViewById(R.id.my_show_item_name);
                 my_show_item_time_video = (TextView) my_show_video_head.findViewById(R.id.my_show_item_time);
@@ -858,7 +862,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                         myshare = new PShowShare(BaseContext, BaseActivity, bnew, true, true);
                     } else {//视频  直接取出视频封面分享
                         bnew.setShare_log(MyShareShow.getPre_url());
-                        bnew.setShare_vido_url(Constants.VidoShareHtml+MyShareShow.getVid());
+                        bnew.setShare_vido_url(Constants.VidoShareHtml + MyShareShow.getVid());
                         myshare = new PShowShare(BaseContext, BaseActivity, bnew, false, true);
                     }
                     myshare.SetShareListener(new PShowShare.ShowShareInterListener() {
@@ -907,6 +911,11 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                                 case PShowShare.SHARE_PIC_VEDIO://九宫格或者视频分享
                                     if (!IsVido)
                                         try {
+                                            //判断是否安装微信
+                                            if (!ViewUtils.isWeixinAvilible(BaseContext)) {
+                                                PromptManager.ShowCustomToast(BaseContext, "请先安装手机微信");
+                                                return;
+                                            }
                                             Pic9ShowBegin(MyShareShow.getImgarr(), StrUtils.isEmpty(MyShareShow.getIntro()) ? "微糖商城#" : MyShareShow.getIntro());
                                         } catch (Exception e) {
                                             PromptManager.closeLoading();
@@ -932,7 +941,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                         myshare = new PShowShare(BaseContext, BaseActivity, bnew, true, false);
                     } else {//视频  直接取出视频封面分享
                         bnew.setShare_url(Constants.VidoShareHtml + MyShareShow.getVid());
-                        bnew.setShare_vido_url(Constants.VidoShareHtml+MyShareShow.getVid());
+                        bnew.setShare_vido_url(Constants.VidoShareHtml + MyShareShow.getVid());
                         myshare = new PShowShare(BaseContext, BaseActivity, bnew, false, false);
                     }
                     myshare.SetShareListener(new PShowShare.ShowShareInterListener() {
@@ -984,6 +993,14 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
 //                                    PromptManager.ShowCustomToast(BaseContext, "九宫格分享");
                                     if (!IsVido) {
                                         try {
+
+                                            //判断是否安装微信
+                                            if (!ViewUtils.isWeixinAvilible(BaseContext)) {
+                                                PromptManager.ShowCustomToast(BaseContext, "请先安装手机微信");
+                                                return;
+                                            }
+
+
                                             Pic9ShowBegin(MyShareShow.getImgarr(), StrUtils.isEmpty(MyShareShow.getIntro()) ? "微糖商城#" : MyShareShow.getIntro());
                                         } catch (Exception e) {
                                             PromptManager.closeLoading();
@@ -1181,8 +1198,11 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
         PromptManager.showLoading(BaseContext);
         File sdCards = Environment.getExternalStorageDirectory();
         final File test = new File(sdCards + "/wtshowpic");
+//        PromptManager.ShowCustomToast(BaseContext, SdCardUtils.avaiableMedia() ? "SD卡存在" : "SD卡不存在");
         if (test.exists()) {
             RecursionDeleteFile(test);
+        }else{
+            test.mkdir();
         }
 
         for (int i = 0; i < imgarr.size(); i++) {
@@ -1191,23 +1211,30 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
             DownFileUtils dd = new DownFileUtils();
             dd.SetResult(new DownLoadListener() {
                 @Override
-                public void DownLoadOk() {
+                public void DownLoadOk(String path) {
+//                    PromptManager.ShowCustomToast(BaseContext,path);
                     Log.i("filetest", "成功" + postion);
                     CountNumber = CountNumber + 1;
                     if (CountNumber == imgarr.size()) {
-                        sharemuil(Content, test);
-                    }
+                        try {
+                            sharemuil(Content, test);
+                        } catch (Exception e) {
+                        }
 
+                    }
                 }
 
                 @Override
-                public void DownLoadError() {
+                public void DownLoadError(String msg) {
+                    PromptManager.ShowCustomToast(BaseContext,msg);
                     Log.i("filetest", "失败" + postion);
                     CountNumber = CountNumber + 1;
                     if (CountNumber == imgarr.size()) {
-                        sharemuil(Content, test);
+                        try {
+                            sharemuil(Content, test);
+                        } catch (Exception e) {
+                        }
                     }
-
 
                 }
             });
@@ -1218,7 +1245,7 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
     }
 
     private void sharemuil(String content, File... files) {
-        Show_Award();
+
         PromptManager.closeLoading();
         Intent intent = new Intent();
         ComponentName comp = new ComponentName("com.tencent.mm",
@@ -1237,11 +1264,17 @@ public class FMainNewShow extends FBase implements OnLoadMoreListener, OnRefresh
                     imageUris.add(Uri.fromFile(file));
                 }
             }
-
         }
         intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
         intent.putExtra("Kdescription", content);
-        startActivity(intent);
+        try {
+            BaseActivity.startActivity(intent);
+        } catch (Exception e) {
+        }
+        try {
+            Show_Award();
+        } catch (Exception e) {
+        }
     }
 
     private boolean checkIsImageFile(String fName) {
