@@ -7,7 +7,7 @@
         android:bottomLeftRadius="3dp"
         />
 
-    <solid android:color="@color/app_gray" />
+    <solid android:color="@color/app_bg" />
 
 
 

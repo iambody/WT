@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:descendantFocusability="blocksDescendants"
+    android:descendantFocusability="afterDescendants"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -153,6 +153,36 @@
             android:layout_gravity="center_vertical"
             android:padding="10dp"
             android:text="@string/nullstr" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/item_bg"
+        android:visibility="visible"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_10_dip"
+            android:text="备注留言"
+
+            android:textSize="@dimen/oderbeing_buyer_txt_size"/>
+
+        <EditText
+            android:id="@+id/tv_item_oderbeing_out_buy_message"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/hint_buyer_liuyan"
+            android:padding="@dimen/ui_10_dip"
+            android:textColor="@color/app_gray"
+            android:textColorHint="@color/app_gray"
+            android:textSize="@dimen/oderbeing_buyer_txt_size"/>
     </LinearLayout>
     <!-- 价格 -->
 

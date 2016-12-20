@@ -133,7 +133,7 @@ android:background="@color/app_bg"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dip"
-                    android:background="@color/app_fen"
+                    android:background="@drawable/selector_pic_sel_submit_btn_bg"
                     android:gravity="center"
                     android:orientation="vertical">
 

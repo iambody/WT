@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/app_bg"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical">
 
     <include
         android:id="@+id/oderbering_view"
-        layout="@layout/titlebar"/>
+        layout="@layout/titlebar" />
 
     <LinearLayout
         android:id="@+id/oderbeing_out_lay"
@@ -17,12 +17,12 @@
 
         <include
             android:id="@+id/oderbeing_address"
-            layout="@layout/commentview_address"/>
+            layout="@layout/commentview_address" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:src="@color/transparent"/>
+            android:src="@color/transparent" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -41,21 +41,22 @@
                     android:layout_height="wrap_content"
                     android:divider="@color/app_bg"
                     android:dividerHeight="4dp"
-                    android:scrollbars="none"/>
+                    android:scrollbars="none" />
                 <!-- 下边布局 -->
                 <!-- 卖家留言-->
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
-                    android:background="@color/app_bg"/>
+                    android:background="@color/app_bg" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
 
                     <TextView
@@ -64,7 +65,7 @@
                         android:padding="@dimen/ui_10_dip"
                         android:text="留     言"
 
-                        android:textSize="@dimen/oderbeing_buyer_txt_size"/>
+                        android:textSize="@dimen/oderbeing_buyer_txt_size" />
 
                     <EditText
                         android:id="@+id/oderbeing_note_ed"
@@ -77,17 +78,13 @@
                         android:padding="@dimen/ui_10_dip"
                         android:textColor="@color/app_gray"
                         android:textColorHint="@color/app_gray"
-                        android:textSize="@dimen/oderbeing_buyer_txt_size"/>
+                        android:textSize="@dimen/oderbeing_buyer_txt_size" />
                 </LinearLayout>
 
                 <!-- 卖家留言-->
 
                 <!-- 下bain布局 -->
 
-              <ImageView
-                  android:layout_width="match_parent"
-                  android:layout_height="@dimen/line_size"
-                  android:src="@color/app_line"/>
 
                 <LinearLayout
                     android:id="@+id/oderbeing_coupons_lay"
@@ -99,44 +96,84 @@
                     android:orientation="horizontal"
                     android:padding="10dp">
 
-                   <!-- <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/oderbeing_quan"
-                        v/>-->
+                    <!-- <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/oderbeing_quan"
+                         v/>-->
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="卡     券"
-                        android:textSize="@dimen/oderbeing_buyer_txt_size"/>
+                        android:textSize="@dimen/oderbeing_buyer_txt_size" />
 
                     <TextView
                         android:id="@+id/oderbeing_coupons_nameprice"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/ui_22_dip"
                         android:layout_weight="1"
                         android:gravity="left"
-                        android:textSize="@dimen/oderbeing_buyer_txt_size"
-                        android:layout_marginLeft="@dimen/ui_22_dip"
-                        android:textColor="@color/app_gray"/>
+                        android:textColor="@color/app_gray"
+                        android:textSize="@dimen/oderbeing_buyer_txt_size" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="14dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/arrow_right"/>
+                        android:src="@drawable/arrow_right" />
                 </LinearLayout>
+
+                <View style="@style/line_left2" />
+
+                <LinearLayout
+                    android:id="@+id/ll_oderbeing_real_thing_insurance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="正品保险"
+                        android:textSize="@dimen/oderbeing_buyer_txt_size" />
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/ui_22_dip"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:textColor="@color/app_gray"
+                        android:textSize="@dimen/oderbeing_buyer_txt_size" />
+
+                    <ImageView
+                        android:id="@+id/iv_oderbeing_real_thing_insurance_status"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/quan_select_3" />
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/app_bg"/>
+            android:background="@color/app_bg" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -158,7 +195,7 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:textColor="@color/app_gray"
-                    android:textSize="14dp"/>
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/oderbeing_need"
@@ -166,7 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <TextView
@@ -178,8 +215,9 @@
                 android:focusable="true"
                 android:padding="14dp"
                 android:text="    提交订单     "
-                android:textColor="@color/TextColorWhite"/>
+                android:textColor="@color/TextColorWhite" />
         </LinearLayout>
+
     </LinearLayout>
 
     <include
@@ -187,6 +225,6 @@
         layout="@layout/commentview_nodata"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 </LinearLayout>

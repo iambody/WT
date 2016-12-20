@@ -747,14 +747,15 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             holder.invite_friends_record_inside.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    final BLInviteFriends friend = bcInviteFriends.getList().get(position);
+                    BLInviteFriends friend = bcInviteFriends.getList().get(position);
 //                    BComment mBComment = new BComment(friend.getSeller_id(), friend
 //                            .getSeller_name());
 //                    PromptManager.SkipActivity(BaseActivity, new Intent(
 //                            BaseActivity, AShopDetail.class).putExtra(
 //                            BaseKey_Bean, mBComment));
 
-                    ContactFriend(friend);
+//                    ContactFriend(friend);
+                    ControlFriendDialog(friend);
 
 
                 }
@@ -800,6 +801,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
     private void ControlFriendDialog(final BLInviteFriends friend){
         List<String> strs = new ArrayList<>();
+        strs.add("修改备注");
         strs.add("复制手机号");
         strs.add("发送信息");
         CommonDialog commonDialog = new CommonDialog(AInviteFriendRecord.this,strs);
@@ -808,14 +810,24 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             public void clickPosition(int position) {
                 switch (position){
                     case 0:
-                        ClipboardManager c = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                        String content = friend.getPhone();
-                        c.setText(content);
-                        PromptManager.ShowCustomToast(BaseContext, "手机号复制成功");
+                        String seller_name = friend.getSeller_name();
+                        if(!StrUtils.isEmpty(seller_name)){
+                            Intent intent = new Intent(BaseActivity, AModifyFriendName.class);
+                            intent.putExtra(AModifyFriendName.FRIEND_NAME_KEY,seller_name);
+                            intent.putExtra(AModifyFriendName.MEMBER_ID_KEY,friend.getSeller_no());
+                            PromptManager.SkipActivity(BaseActivity,intent);
+                        }
 
                         break;
 
                     case 1:
+                        ClipboardManager c = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                        String content = friend.getPhone();
+                        c.setText(content);
+                        PromptManager.ShowCustomToast(BaseContext, "手机号复制成功");
+                        break;
+
+                    case 2:
                         if (!StrUtils.isEmpty(friend.getSeller_id()))
                             PromptManager.SkipActivity(
                                     BaseActivity,

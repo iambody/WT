@@ -70,6 +70,11 @@ public class AOderBeing extends ATitleBase {
      */
     private View oderbeing_address;
 
+    /**
+     * 是否点击了正品险
+     */
+    private boolean isAddRealInsurance = true;
+
     private TextView commentview_add_name;
     private TextView commentview_add_address;
     private TextView commentview_add_phone;
@@ -141,6 +146,8 @@ public class AOderBeing extends ATitleBase {
     private TextView RightShowTxt;
     HashMap<String, String> map = null;
     private int goGoodBus = -1;
+    private LinearLayout ll_oderbeing_real_thing_insurance;
+    private ImageView iv_oderbeing_real_thing_insurance_status;
 
     @Override
     protected void InItBaseView() {
@@ -181,10 +188,10 @@ public class AOderBeing extends ATitleBase {
 //        }
 
 
-        if(getIntent().getExtras() != null){
-            if(getIntent().getExtras().containsKey("accountstr")){
+        if (getIntent().getExtras() != null) {
+            if (getIntent().getExtras().containsKey("accountstr")) {
                 AccountStr = getIntent().getStringExtra("accountstr");
-            }else{
+            } else {
                 Bundle bundle = getIntent().getExtras();
                 SerializableMap serializableMap = (SerializableMap) bundle
                         .get("DirectBuyInfo");
@@ -232,6 +239,7 @@ public class AOderBeing extends ATitleBase {
         map.put("cid", cid);
         map.put("order_note", order_note);
         map.put("coupons_id", coupons_id);
+        map.put("insurance", isAddRealInsurance ? "1" : "0");
         FBGetHttpData(map, Constants.OderBeing, Method.POST, 1,
                 LOAD_LOADMOREING);
     }
@@ -263,6 +271,9 @@ public class AOderBeing extends ATitleBase {
         oderbeing_coupons_nameprice = (TextView) findViewById(R.id.oderbeing_coupons_nameprice);
         oderbeing_yingfu = (TextView) findViewById(R.id.oderbeing_yingfu);
         oderbeing_need = (TextView) findViewById(R.id.oderbeing_need);
+
+        ll_oderbeing_real_thing_insurance = (LinearLayout) findViewById(R.id.ll_oderbeing_real_thing_insurance);
+        iv_oderbeing_real_thing_insurance_status = (ImageView) findViewById(R.id.iv_oderbeing_real_thing_insurance_status);
         findViewById(R.id.commentview_add_iv).setVisibility(View.VISIBLE);
         oderAp = new OderAp(R.layout.item_oderbeing_out);
         oderbeing_ls.setAdapter(oderAp);
@@ -270,6 +281,7 @@ public class AOderBeing extends ATitleBase {
         oderbeing_address.setOnClickListener(this);
         oderbeing_commint.setOnClickListener(this);
         oderbeing_coupons_lay.setOnClickListener(this);
+        iv_oderbeing_real_thing_insurance_status.setOnClickListener(this);
 
     }
 
@@ -371,12 +383,12 @@ public class AOderBeing extends ATitleBase {
     }
 
 
-   public void title_left_bt(View v){
-       FrashBus();
+    public void title_left_bt(View v) {
+        FrashBus();
     }
 
-    private void FrashBus(){
-        if(1 == goGoodBus){
+    private void FrashBus() {
+        if (1 == goGoodBus) {
             EventBus.getDefault().post(new BMessage(BMessage.Shop_Frash));
         }
         finish();
@@ -385,9 +397,9 @@ public class AOderBeing extends ATitleBase {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             FrashBus();
-            return  true;
+            return true;
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -539,6 +551,7 @@ public class AOderBeing extends ATitleBase {
                         .findViewById(R.id.item_oderbeing_lay);
                 oderOutItem.item_oderbeing_more_lay = (LinearLayout) arg1
                         .findViewById(R.id.item_oderbeing_more_lay);
+                oderOutItem.tv_item_oderbeing_out_buy_message = (EditText) arg1.findViewById(R.id.tv_item_oderbeing_out_buy_message);
 
                 arg1.setTag(oderOutItem);
             } else {
@@ -637,6 +650,7 @@ public class AOderBeing extends ATitleBase {
             ImageView item_oderbeing_iv1, item_oderbeing_iv2,
                     item_oderbeing_iv3;
             LinearLayout item_oderbeing_more_lay;
+            EditText tv_item_oderbeing_out_buy_message;
         }
     }
 
@@ -748,6 +762,11 @@ public class AOderBeing extends ATitleBase {
                     RCalculate1(true);
                     return;
                 }
+                break;
+
+            case R.id.iv_oderbeing_real_thing_insurance_status://正品保险
+                isAddRealInsurance = !isAddRealInsurance;
+                iv_oderbeing_real_thing_insurance_status.setImageDrawable(getResources().getDrawable(isAddRealInsurance ? R.drawable.quan_select_3 : R.drawable.ssdk_oks_classic_check_default));
                 break;
 
             default:
@@ -917,6 +936,24 @@ public class AOderBeing extends ATitleBase {
         return (1 == Type) ? StrGoods : StrCids;
     }
 
+
+    private String getOrderNoteStr(BComment mBdComm) {
+        String order_note = "";
+        List<BLComment> list = mBdComm.getList();
+        for (int i = 0; i < list.size(); i++) {
+            View view = oderbeing_ls.getChildAt(i);
+            EditText tv_item_oderbeing_out_buy_message = (EditText) view.findViewById(R.id.tv_item_oderbeing_out_buy_message);
+            String str = StrUtils.NullToStr3(tv_item_oderbeing_out_buy_message.getText().toString().trim());
+            String seller_id = list.get(i).getSeller_id();
+            if (i != list.size() - 1) {
+                order_note = order_note + seller_id + ":" + str + "&";
+            } else {
+                order_note = order_note + seller_id + ":" + str;
+            }
+        }
+        return order_note;
+    }
+
     /**
      * 提交按钮进行生成订单操作
      */
@@ -935,16 +972,22 @@ public class AOderBeing extends ATitleBase {
 
         String GoodsStr = GetGoodsIdStr(mBdComment, 1);
         String CidsStr = GetGoodsIdStr(mBdComment, 2);
+        String order_note = getOrderNoteStr(mBdComment);
         PromptManager.showtextLoading(BaseContext, getResources().getString(R.string.loading));
 
         // CurrenShowKaQuanType ========> 0表示 没有卡券 隐藏状态;;1=>当前显示 不使用卡券
         // ;;2==》当前显示 使用卡券
         if (CurrenShowKaQuanType == 0 || CurrenShowKaQuanType == 2) {// 手动的不用卡券
+//            OderBeing(user_Get.getId(), addressBldComment, GoodsStr, CidsStr,
+//                    StrUtils.NullToStr3(oderbeing_note_ed.getText().toString().trim()), "");
             OderBeing(user_Get.getId(), addressBldComment, GoodsStr, CidsStr,
-                    StrUtils.NullToStr3(oderbeing_note_ed.getText().toString().trim()), "");
+                    order_note, "");
         } else {// 使用卡券
+//            OderBeing(user_Get.getId(), addressBldComment, GoodsStr, CidsStr,
+//                    StrUtils.NullToStr3(oderbeing_note_ed.getText().toString().trim()), coupComment == null ? "" : coupComment.getCoupons_id());
+
             OderBeing(user_Get.getId(), addressBldComment, GoodsStr, CidsStr,
-                    StrUtils.NullToStr3(oderbeing_note_ed.getText().toString().trim()), coupComment == null ? "" : coupComment.getCoupons_id());
+                    order_note, coupComment == null ? "" : coupComment.getCoupons_id());
         }// 测试先把卡券置为空//
         // coupComment.getCoupons_id());
         // PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,

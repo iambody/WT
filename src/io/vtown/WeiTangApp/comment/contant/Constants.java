@@ -979,6 +979,12 @@ public class Constants {
             + "/v1/home/home/invitedlist";
 
     /**
+     * 修改备注
+     */
+    public static String Friends_Remark = Host
+            + "/v1/member/member/add-remark";
+
+    /**
      * 获取店铺等级列表
      */
     public static String Shop_lv_list = Host
