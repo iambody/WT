@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/titlebar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/sort_good_zonghe"
+            style="@style/style_sort_up_txt"
+            android:text="@string/zonghe"
+            android:textColor="@color/app_fen"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/sort_good_price_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/sort_good_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/jiage"
+                android:textColor="@color/gray"/>
+
+            <ImageView
+                android:id="@+id/sort_good_price_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/sort_good_price"
+                android:src="@drawable/sort_price_nor"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/sort_good_jifen"
+            style="@style/style_sort_up_txt"
+            android:text="@string/jifen"
+            android:textColor="@color/gray"/>
+
+        <TextView
+            android:id="@+id/sort_good_xiaoliang"
+            style="@style/style_sort_up_txt"
+            android:text="@string/xiaoliang"
+            android:textColor="@color/gray"/>
+
+        <RelativeLayout
+            android:id="@+id/sort_good_shaixuan_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/sort_good_shaixuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/shaixuan"
+                android:textColor="@color/gray"/>
+
+            <ImageView
+                android:id="@+id/sort_good_shaixuan_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/sort_good_shaixuan"
+                android:src="@drawable/sort_arrow_dow_nor"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

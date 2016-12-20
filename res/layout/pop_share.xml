@@ -126,7 +126,7 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="5dp"
-            android:visibility="gone">
+             >
 
             <ImageView
                 android:id="@+id/pop_share_center3a"

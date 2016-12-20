@@ -179,6 +179,7 @@ public class PShare extends PopupWindow implements OnClickListener {
 //        platform.SSOSetting(true);
 //        disableSSOWhenAuthorize
         platform.SSOSetting(false);
+
         sp.setTitle(ShareBeanNew.getShare_title());
         sp.setTitleUrl(ShareBeanNew.getShare_url()); // 标题的超链接
         sp.setText(ShareBeanNew.getShare_content());
@@ -188,6 +189,7 @@ public class PShare extends PopupWindow implements OnClickListener {
             @Override
             public void onError(Platform arg0, int arg1, Throwable arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享取消");
+                PromptManager.ShowCustomToast(pContext, arg1+"=====>"+ arg2.toString());
 
             }
 

@@ -308,6 +308,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //                StrUtils.SetTxt(fragmentNewhomeBannerTitle, banner.get(Postion).getTitle());
             }
         });
+
         if (fragmentNewhomeBannerLay.getVisibility() != View.VISIBLE)
             fragmentNewhomeBannerLay.setVisibility(View.VISIBLE);
     }

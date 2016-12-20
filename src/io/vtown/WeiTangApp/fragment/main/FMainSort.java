@@ -248,6 +248,7 @@ public class FMainSort extends FBase implements OnLoadMoreListener, OnRefreshLis
 
         GoodsMap.put("min", ScoreSort.getMin());//积分的最小
         GoodsMap.put("max", ScoreSort.getMax());//积分的最大
+
         GoodsMap.put("price_max", StrUtils.toInt_price(PriceSort.getMax()));//价格的最大值
         GoodsMap.put("price_min", StrUtils.toInt_price(PriceSort.getMin()));//价格的最小值
         GoodsMap.put("keyword", BrandName);

@@ -751,6 +751,10 @@
             android:name=".ui.title.center.myshow.ANewGoodShow"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.AGoodSort"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ui.title.myhome.AModifyFriendName"
