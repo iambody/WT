@@ -148,6 +148,7 @@ public class AGoodSort extends ATitleBase implements OnLoadMoreListener, OnRefre
         EventBus.getDefault().register(this, "MyReCeverMsg", BMessage.class);
         SetTitleHttpDataLisenter(this);
         IBase();
+
     }
 
     private void IBundl() {

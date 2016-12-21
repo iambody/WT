@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:drawableTop="@drawable/tab1_nor_1"
+                android:drawableTop="@drawable/tab1_nor"
                 android:gravity="center_horizontal|bottom"
                 android:paddingBottom="@dimen/line_size4"
                 android:text="@string/main_shangcheng"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/main_tab_shop_margin_right"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/tab2_nor_1"
+                android:drawableTop="@drawable/tab2_nor"
                 android:gravity="center_horizontal|bottom"
                 android:paddingBottom="@dimen/line_size4"
 
@@ -83,7 +83,7 @@
 
                 android:textSize="@dimen/main_tab_group_txt_size"
                 app:gradual_color="#f75151"
-                app:gradual_icon="@drawable/tab3_nor_1"/>
+                app:gradual_icon="@drawable/tab3_nor"/>
 
             <io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioButton
                 android:id="@+id/maintab_center"
@@ -97,7 +97,7 @@
                 android:textSize="@dimen/main_tab_group_txt_size"
 
                 app:gradual_color="@color/app_fen"
-                app:gradual_icon="@drawable/tab4_nor_1"/>
+                app:gradual_icon="@drawable/tab4_nor"/>
 
         </io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioGroup>
         <!--
@@ -116,7 +116,7 @@
             android:layout_centerInParent="true"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/tab3_f_nor_1"/>
+            android:src="@drawable/tab3_f_nor"/>
 
     </RelativeLayout>
 </LinearLayout>
