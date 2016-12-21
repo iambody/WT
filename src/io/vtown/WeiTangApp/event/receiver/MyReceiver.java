@@ -6,18 +6,13 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
 import io.vtown.WeiTangApp.ui.afragment.AShopGoodManger;
-import io.vtown.WeiTangApp.ui.afragment.AShopOderManage;
-import io.vtown.WeiTangApp.ui.afragment.AShopPurchase;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.comment.order.AShopOrderManager;
 import io.vtown.WeiTangApp.ui.comment.order.AShopPurchaseOrder;
 import io.vtown.WeiTangApp.ui.title.APay;
 import io.vtown.WeiTangApp.ui.title.AReturnDetail;
 import io.vtown.WeiTangApp.ui.title.mynew.ANew;
-import io.vtown.WeiTangApp.ui.ui.AMain;
 import io.vtown.WeiTangApp.ui.ui.AMainTab;
-import io.vtown.WeiTangApp.ui.ui.AShop;
-import io.vtown.WeiTangApp.ui.ui.AShow;
 
 import java.util.Iterator;
 
@@ -206,7 +201,7 @@ public class MyReceiver extends BroadcastReceiver {
 
                         default:
                             // 打开自定义的Activity
-                            Intent i = new Intent(context, AMain.class).putExtra("a",
+                            Intent i = new Intent(context, AMainTab.class).putExtra("a",
                                     printBundle(bundle));
                             i.putExtras(bundle);
                             // i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

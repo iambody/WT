@@ -1112,8 +1112,8 @@ public class AShopDetail extends ATitileNoBase implements PullView.OnFooterRefre
             case R.id.shopdetail_shop_zizhi:
                 List<BShopGoods> DATA = shopBrandsLsAp.GetRsource();
                 BaseApplication.GetInstance().setZiYingShop_To_Ls(DATA);
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ALookAptitude.class));
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+//                        ALookAptitude.class));
                 break;
 
             //case R.id.shopdetail_shop_guanzhu_bt:// 关注按钮

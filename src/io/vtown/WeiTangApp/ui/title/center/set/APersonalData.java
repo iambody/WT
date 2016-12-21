@@ -27,7 +27,6 @@ import io.vtown.WeiTangApp.ui.AExitNull;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.title.loginregist.ALogin;
 import io.vtown.WeiTangApp.ui.title.loginregist.ARealIdauth;
-import io.vtown.WeiTangApp.ui.ui.AMain;
 import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 /**

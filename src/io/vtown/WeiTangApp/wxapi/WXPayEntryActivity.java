@@ -5,7 +5,6 @@ import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.ui.ABase;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
-import io.vtown.WeiTangApp.ui.afragment.AShopOderManage;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

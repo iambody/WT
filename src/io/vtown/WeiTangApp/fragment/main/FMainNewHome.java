@@ -55,7 +55,6 @@ import io.vtown.WeiTangApp.fragment.FBase;
 import io.vtown.WeiTangApp.test.ALoadmor;
 import io.vtown.WeiTangApp.test.ARetrofitTest;
 import io.vtown.WeiTangApp.test.ASwipLoadTest;
-import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;

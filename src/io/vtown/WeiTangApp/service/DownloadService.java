@@ -2,7 +2,7 @@ package io.vtown.WeiTangApp.service;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.comment.contant.DownConfig;
-import io.vtown.WeiTangApp.ui.ui.AMain;
+import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -131,7 +131,7 @@ public class DownloadService extends Service {
 				contentView.setTextViewText(R.id.name, "下载失败");
 				// 指定个性化视图
 				mNotification.contentView = contentView;
-				Intent intent = new Intent(getApplicationContext(), AMain.class);
+				Intent intent = new Intent(getApplicationContext(), AMainTab.class);
 				PendingIntent contentIntent = PendingIntent.getActivity(
 						getApplicationContext(), 0, intent,
 						PendingIntent.FLAG_UPDATE_CURRENT);

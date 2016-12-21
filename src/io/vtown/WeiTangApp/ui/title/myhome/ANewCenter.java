@@ -25,7 +25,6 @@ import io.vtown.WeiTangApp.comment.view.pop.PShowShare;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.AExitNull;
 import io.vtown.WeiTangApp.ui.ATitleBase;
-import io.vtown.WeiTangApp.ui.afragment.AMyShop;
 import io.vtown.WeiTangApp.ui.comment.ACommentList;
 import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.title.ASearchResult;
@@ -171,7 +170,7 @@ public class ANewCenter extends ATitleBase {
                 break;
 
             case R.id.view_my_shop://我的店铺
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMyShop.class));
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AMyShop.class));
                 break;
 
             case R.id.btn_quit://退出
