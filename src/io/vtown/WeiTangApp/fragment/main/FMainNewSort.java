@@ -694,6 +694,8 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             @Override
             public void onClick(View v) {
 //fgsdfsgfdfgdsg大规模fs
+//                AGoodSort.Tag_CurrentOutSortId //一级分类
+//                AGoodSort.Tag_SecondSortId //二级分类
             }
         });
     }
