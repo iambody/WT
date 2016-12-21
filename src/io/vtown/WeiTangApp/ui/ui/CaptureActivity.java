@@ -25,7 +25,6 @@ import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.ABindCode;
 import io.vtown.WeiTangApp.ui.title.mynew.ANew;
-import io.vtown.WeiTangApp.ui.title.shop.channel.ABeJunior;
 import io.vtown.WeiTangApp.wxapi.WXPayEntryActivity;
 
 import java.io.IOException;
@@ -296,13 +295,13 @@ public final class CaptureActivity extends ABase implements
                 return;
             } else {
                 // 进行区分
-                if (MyBean.getType().equals("invite")) {// 发展下级的扫码操作
-                    PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseContext, ABeJunior.class).putExtra("url",
-                            MyBean.getQrcode()));
-                    BaseActivity.finish();
-                    return;
-                }
+//                if (MyBean.getType().equals("invite")) {// 发展下级的扫码操作
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                            BaseContext, ABeJunior.class).putExtra("url",
+//                            MyBean.getQrcode()));
+//                    BaseActivity.finish();
+//                    return;
+//                }
                 if (MyBean.getType().equals("goods")) {// 商品详情
                     if (!StrUtils.isEmpty(MyBean.getGoods_id())) {
                         PromptManager.SkipActivity(BaseActivity, new Intent(

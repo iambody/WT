@@ -21,7 +21,6 @@ import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.service.DownloadService;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
-import io.vtown.WeiTangApp.ui.ui.AMain;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

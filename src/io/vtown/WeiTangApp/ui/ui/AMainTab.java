@@ -38,15 +38,11 @@ import io.vtown.WeiTangApp.comment.view.radiogroup.GradualRadioGroup;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.event.receiver.NewMessageBroadcastReceiver;
 import io.vtown.WeiTangApp.fragment.FBase;
-import io.vtown.WeiTangApp.fragment.main.FMainCenter;
-import io.vtown.WeiTangApp.fragment.main.FMainHome;
 import io.vtown.WeiTangApp.fragment.main.FMainNew;
 import io.vtown.WeiTangApp.fragment.main.FMainNewHome;
 import io.vtown.WeiTangApp.fragment.main.FMainNewShow;
 import io.vtown.WeiTangApp.fragment.main.FMainNewSort;
-import io.vtown.WeiTangApp.fragment.main.FMainShop;
 import io.vtown.WeiTangApp.fragment.main.FMainShopBus;
-import io.vtown.WeiTangApp.fragment.main.FMainShow;
 import io.vtown.WeiTangApp.fragment.main.FMainSort;
 import io.vtown.WeiTangApp.service.DownloadService;
 import io.vtown.WeiTangApp.ui.ABaseFragment;
@@ -62,7 +58,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private List<GradualRadioButton> RadioButtons;
     private ImageView maintab_show_iv;
     private FBase FMainHome, FMainShop, FMainShow, FMainShopBus,FMainNew;//
-    private FMainCenter FMainCenter;
+
     private List<FBase> Fragments;
     private int CurrentPostion = 0;
     //User

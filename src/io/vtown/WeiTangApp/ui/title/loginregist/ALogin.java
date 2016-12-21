@@ -13,7 +13,6 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewUtils;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
-import io.vtown.WeiTangApp.ui.ui.AMain;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -161,7 +160,7 @@ public class ALogin extends Activity implements View.OnClickListener, PlatformAc
                                                 ARealIdauth.class));
                             } else {// 绑定过邀请码 也认证过了===》跳转到主页面
                                 PromptManager.SkipActivity(BaseActivity,
-                                        new Intent(BaseActivity, AMain.class));
+                                        new Intent(BaseActivity, AMainTab.class));
                             }
                         }
 

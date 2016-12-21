@@ -63,7 +63,6 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.event.interf.HttpsPostResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
-import io.vtown.WeiTangApp.ui.ui.AMain;
 import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 /**

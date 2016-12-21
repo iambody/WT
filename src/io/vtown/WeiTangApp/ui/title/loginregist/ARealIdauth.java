@@ -15,7 +15,6 @@ import io.vtown.WeiTangApp.ui.title.center.set.AResetPswStep2;
 import io.vtown.WeiTangApp.ui.title.center.wallet.AAddAliPay;
 import io.vtown.WeiTangApp.ui.title.center.wallet.AAddBankCard;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
-import io.vtown.WeiTangApp.ui.ui.AMain;
 import io.vtown.WeiTangApp.ui.ui.AMainTab;
 
 import java.util.HashMap;

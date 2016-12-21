@@ -17,8 +17,6 @@ import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
 import io.vtown.WeiTangApp.ui.afragment.AShopGoodManger;
-import io.vtown.WeiTangApp.ui.afragment.AShopOderManage;
-import io.vtown.WeiTangApp.ui.afragment.AShopPurchase;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.comment.order.AShopOrderManager;
 import io.vtown.WeiTangApp.ui.comment.order.AShopPurchaseOrder;

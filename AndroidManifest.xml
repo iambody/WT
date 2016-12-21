@@ -136,10 +136,7 @@
                 <data android:scheme="weitang"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.ui.AMain"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.AExitNull"
             android:launchMode="singleTask"
@@ -148,18 +145,7 @@
             android:name=".ui.ui.AShop"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.ui.AShow"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <!--   <activity
-               android:name=".ui.title.AShopBus"
-               android:launchMode="singleTask"
-               android:screenOrientation="portrait"></activity>-->
-        <!-- <activity
-             android:name=".ui.title.myhome.ACenter"
-             android:launchMode="singleTask"
-             android:screenOrientation="portrait"></activity>-->
+
         <activity
             android:name=".ui.ui.ASouSouGood"
             android:launchMode="singleTask"
@@ -184,18 +170,9 @@
             android:name=".ui.title.ABrandDetail"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.ui.AGoodSort"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.afragment.AShopOderManage"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.afragment.AShopPurchase"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
+
+
         <activity
             android:name=".ui.title.APay"
             android:launchMode="singleTask"
@@ -204,10 +181,7 @@
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"/>
-        <activity
-            android:name=".ui.title.shop.channel.AChannel"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.title.shop.ABrandDaiLi"
             android:launchMode="singleTask"
@@ -228,30 +202,7 @@
              android:name=".comment.view.AVideoPlayerView"
              android:screenOrientation="portrait">
          </activity>-->
-        <activity
-            android:name=".ui.title.shop.channel.ABeJunior"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.channel.ADevelopJunior"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.channel.AInviteSuperior"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.channel.AInviteRecord"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.channel.AMySuperior"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.channel.AQRCode"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.comment.AVidemplay"
             android:launchMode="singleTask"
@@ -411,10 +362,7 @@
             android:name=".ui.title.center.wallet.ABankCardOperation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.ui.ALookAptitude"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.title.center.myorder.AApplyTuikuan"
             android:launchMode="singleTask"
@@ -697,10 +645,7 @@
             android:name=".ui.title.AMyLeader"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity
-            android:name=".ui.afragment.AMyShop"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
+
 
         <activity
             android:name=".ui.title.myhome.ANewCenter"
