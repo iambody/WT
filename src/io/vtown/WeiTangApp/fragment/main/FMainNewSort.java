@@ -693,10 +693,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//fgsdfsgfdfgdsg大规模fsgglllllgg
-//                AGoodSort.Tag_CurrentOutSortId
-//                AGoodSort.Tag_SecondSortId
-
+//fgsdfsgfdfgdsg大规模fs
             }
         });
     }
