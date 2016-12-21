@@ -62,7 +62,7 @@ public class FMainNewSort extends FBase {
     }
 
     private void IView() {
-        IBaseSort();//一级分类
+        IBaseSort();//wewew一级分类
 
     }
 
