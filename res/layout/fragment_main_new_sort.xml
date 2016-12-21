@@ -5,6 +5,12 @@
     android:background="@color/app_bg"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/fragment_main_new_sort_data_layout"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/titlebarheingh"
@@ -107,4 +113,15 @@
             android:id="@id/swipe_load_more_footer"
             layout="@layout/view_comment_foot" />
     </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/fragment_main_new_sort_nodata_layout"
+        layout="@layout/commentview_nodata"
+        android:clickable="false"
+        android:focusable="true"
+        android:visibility="gone" />
+
+
 </LinearLayout>

@@ -69,6 +69,8 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     HorizontalScrollView fSortNewHorizontalscrollview;
     @BindView(R.id.f_sort_new_horizontalscrollview_lay)
     LinearLayout fSortNewHorizontalscrollviewLay;
+    @BindView(R.id.fragment_main_new_sort_data_layout)
+    LinearLayout fragment_main_new_sort_data_layout;
     @BindView(R.id.swipe_target)
     ScrollView swipeTarget;
     @BindView(R.id.swipeToLoadLayout)
@@ -94,6 +96,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     private GoodsListAdapter goodsListAdapter;
     private BannerListAdapter bannerListAdapter;
     private BCMainSort sort_data;
+    private View fragment_main_new_sort_nodata_layout;
 
     @Override
     public void InItView() {
@@ -129,6 +132,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     }
 
     private void IView() {
+        fragment_main_new_sort_nodata_layout = BaseView.findViewById(R.id.fragment_main_new_sort_nodata_layout);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
         IBaseSort();//一级分类
@@ -173,15 +177,20 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             LinearLayout.LayoutParams txtparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             LinearLayout.LayoutParams layoutparams = new LinearLayout.LayoutParams(view_width, LinearLayout.LayoutParams.WRAP_CONTENT);
             LinearLayout.LayoutParams imgparams = new LinearLayout.LayoutParams(DimensionPixelUtil.dip2px(BaseContext, 70), DimensionPixelUtil.dip2px(BaseContext, 70));
-            txtparams.setMargins(0, 8, 0, 0);
+            int dip2px_5 = DimensionPixelUtil.dip2px(BaseContext, 5);
+            //imgparams.setMargins(dip2px_5, dip2px_5, dip2px_5, dip2px_5);
+            //txtparams.setMargins(0, 8, 0, 0);
             int dip2px_10 = DimensionPixelUtil.dip2px(BaseContext, 10);
+            int dip2px_14 = DimensionPixelUtil.dip2px(BaseContext, 14);
             LinearLayout layout = new LinearLayout(BaseContext);
             layout.setOrientation(LinearLayout.VERTICAL);
-            layout.setPadding(dip2px_10, dip2px_10, dip2px_10, dip2px_10);
+            layout.setPadding(dip2px_10, 0, dip2px_10, dip2px_10);
             layout.setGravity(Gravity.CENTER);
             txtparams.gravity = Gravity.CENTER;
             imgparams.gravity = Gravity.CENTER;
             ImageView img = new ImageView(BaseContext);
+            img.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            img.setPadding(dip2px_14, dip2px_14, dip2px_14, 0);
             ImageLoaderUtil.Load2(data.get(i).getCate_icon(), img, R.drawable.error_iv2);
             TextView txt = new TextView(BaseContext);
             txt.setText(data.get(i).getCate_name());
@@ -193,7 +202,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             layout.addView(txt);
             fSortNewHorizontalscrollviewLay.addView(layout);
             //fSortNewHorizontalscrollviewLay.addView(txt);
-            setCategoryClick(data,i,layout);
+            setCategoryClick(data, i, layout);
         }
     }
 
@@ -252,11 +261,17 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         switch (Data.getHttpLoadType()) {
             case INITIALIZE:
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                    fragment_main_new_sort_data_layout.setVisibility(View.GONE);
+                    fragment_main_new_sort_nodata_layout.setVisibility(View.VISIBLE);
+
                     return;
                 }
+                fragment_main_new_sort_nodata_layout.setVisibility(View.GONE);
+                fragment_main_new_sort_data_layout.setVisibility(View.VISIBLE);
+
                 sort_data = JSON.parseObject(Data.getHttpResultStr(), BCMainSort.class);
-                if(TYPE_ALL == current_type){
-                    CacheUtil.My_Super_Save(BaseContext,Data.getHttpResultStr());
+                if (TYPE_ALL == current_type) {
+                    CacheUtil.My_Super_Save(BaseContext, Data.getHttpResultStr());
                 }
                 setData(sort_data);
                 if (StrUtils.isEmpty(sort_data.getGoodslist())) {
@@ -325,7 +340,21 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
 
     @Override
     public void onError(String error, int LoadType) {
+        PromptManager.ShowCustomToast(BaseContext, error);
+        switch (LoadType) {
+            case INITIALIZE:
+                fragment_main_new_sort_data_layout.setVisibility(View.GONE);
+                fragment_main_new_sort_nodata_layout.setVisibility(View.VISIBLE);
+                break;
 
+            case REFRESHING:
+                swipeToLoadLayout.setLoadingMore(false);
+                break;
+
+            case LOADMOREING:
+                swipeToLoadLayout.setLoadingMore(false);
+                break;
+        }
     }
 
     @Override
@@ -493,7 +522,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                             }
                             break;
                         case 4:// 活动详情页
-                            BComment mBCommentss = new BComment(data.getId(),
+                            BComment mBCommentss = new BComment(data.getSource_id(),
                                     data.getTitle());
                             PromptManager.SkipActivity(BaseActivity, new Intent(
                                     BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
@@ -689,13 +718,17 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     /*
   * 分类的点击事件
   * */
-    private void setCategoryClick(List<BSortCategory> data, int position, LinearLayout layout){
+    private void setCategoryClick(final List<BSortCategory> data, final int position, LinearLayout layout) {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//fgsdfsgfdfgdsg大规模fs
 //                AGoodSort.Tag_CurrentOutSortId //一级分类
 //                AGoodSort.Tag_SecondSortId //二级分类
+                BSortCategory bSortCategory = data.get(position);
+                Intent intent = new Intent(BaseContext, AGoodSort.class);
+                intent.putExtra(AGoodSort.Tag_CurrentOutSortId, current_category_id);
+                intent.putExtra(AGoodSort.Tag_SecondSortId, bSortCategory.getId());
+                PromptManager.SkipActivity(BaseActivity, intent);
             }
         });
     }

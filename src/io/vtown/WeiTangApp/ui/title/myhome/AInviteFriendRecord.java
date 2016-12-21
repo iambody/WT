@@ -810,14 +810,11 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             public void clickPosition(int position) {
                 switch (position){
                     case 0:
-                        String seller_name = friend.getSeller_name();
-                        if(!StrUtils.isEmpty(seller_name)){
+                        String remark_name = friend.getRemark();
                             Intent intent = new Intent(BaseActivity, AModifyFriendName.class);
-                            intent.putExtra(AModifyFriendName.FRIEND_NAME_KEY,seller_name);
+                            intent.putExtra(AModifyFriendName.FRIEND_NAME_KEY,remark_name);
                             intent.putExtra(AModifyFriendName.MEMBER_ID_KEY,friend.getMember_id());
                             PromptManager.SkipActivity(BaseActivity,intent);
-                        }
-
                         break;
 
                     case 1:
@@ -894,7 +891,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             BLInviteFriends friend = friends_datas.get(position);
             ImageLoaderUtil.Load2(friend.getAvatar(), holder.iv_friend_icon, R.drawable.error_iv2);
 
-            StrUtils.SetTxt(holder.tv_friend_name, friend.getSeller_name());
+            StrUtils.SetTxt(holder.tv_friend_name, StrUtils.isEmpty(friend.getRemark())?friend.getSeller_name():friend.getRemark());
             String shop_id = BaseContext.getResources().getString(R.string.invite_friend_shop_id);
             StrUtils.SetTxt(holder.tv_friend_shop_id, String.format(shop_id, friend.getSeller_no()));
             StrUtils.SetTxt(holder.tv_invite_phone, friend.getPhone());

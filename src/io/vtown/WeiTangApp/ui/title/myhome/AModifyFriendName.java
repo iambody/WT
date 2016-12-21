@@ -47,8 +47,10 @@ public class AModifyFriendName extends ATitleBase {
     }
 
     private void IView() {
-        etModifyFriendName.setText(mFriendName);
-        etModifyFriendName.setSelection(mFriendName.length());
+        if(!StrUtils.isEmpty(mFriendName)){
+            etModifyFriendName.setText(mFriendName);
+            etModifyFriendName.setSelection(mFriendName.length());
+        }
     }
 
     @Override
@@ -102,10 +104,6 @@ public class AModifyFriendName extends ATitleBase {
             case R.id.right_txt:
                 if (CheckNet(BaseContext)) return;
                 String edit_name = etModifyFriendName.getText().toString().trim();
-                if (StrUtils.isEmpty(edit_name)) {
-                    PromptManager.ShowCustomToast(BaseContext, "备注名不能为空");
-                    return;
-                }
                 if (mFriendName.equals(edit_name)) {
                     AModifyFriendName.this.finish();
                 } else {

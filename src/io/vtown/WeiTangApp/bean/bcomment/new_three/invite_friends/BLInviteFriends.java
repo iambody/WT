@@ -18,6 +18,15 @@ public class BLInviteFriends extends BBase {
     private String seller_id;//"seller_id":1014787
     private String member_level_picture;//"member_level_picture": "http://fs.v-town.cc/StoreLevel_0_201611021548.jpg"
     private String member_id;
+    private String remark;//"remark": "",
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
     public String getMember_id() {
         return member_id;
