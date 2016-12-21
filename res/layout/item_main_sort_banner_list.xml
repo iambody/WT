@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="180dp">
+
+        <io.vtown.WeiTangApp.comment.view.RoundAngleImageView
+            android:id="@+id/item_main_sort_banner_list_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="@dimen/ui_10_dip"
+            android:layout_marginRight="@dimen/ui_10_dip"
+            android:layout_marginTop="@dimen/ui_10_dip"
+            android:scaleType="fitXY"
+
+            android:src="@drawable/error_iv1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_sanjiao_nor" />
+
+            <View style="@style/line"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/item_main_sort_banner_list_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="中华人民共和国"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.CustHScrollView
+        android:id="@+id/item_main_sort_banner_list_goods_horizontalscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/item_bg"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/item_main_sort_banner_list_goods_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:orientation="horizontal"></LinearLayout>
+    </io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.CustHScrollView>
+
+
+</LinearLayout>

@@ -814,7 +814,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
                         if(!StrUtils.isEmpty(seller_name)){
                             Intent intent = new Intent(BaseActivity, AModifyFriendName.class);
                             intent.putExtra(AModifyFriendName.FRIEND_NAME_KEY,seller_name);
-                            intent.putExtra(AModifyFriendName.MEMBER_ID_KEY,friend.getSeller_no());
+                            intent.putExtra(AModifyFriendName.MEMBER_ID_KEY,friend.getMember_id());
                             PromptManager.SkipActivity(BaseActivity,intent);
                         }
 

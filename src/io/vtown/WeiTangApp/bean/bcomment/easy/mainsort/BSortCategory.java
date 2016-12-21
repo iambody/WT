@@ -9,7 +9,17 @@ import io.vtown.WeiTangApp.bean.BBase;
 public class BSortCategory extends BBase {
     private String id;
     private String cate_name;//": "男女服装"
+    private String cate_icon;//"cate_icon": "http://fs.v-town.cc/photo_sJIUzg1xAa4LEgvvAPfhXCh8l3vnYduD"
 //
+
+
+    public String getCate_icon() {
+        return cate_icon;
+    }
+
+    public void setCate_icon(String cate_icon) {
+        this.cate_icon = cate_icon;
+    }
 
     public String getId() {
         return id;

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,8 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/shop"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/f_main_new_new_sort_sou"
@@ -25,28 +25,30 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/ui_10_dip"
             android:clickable="true"
-            android:src="@drawable/sousou_gray"/>
+            android:src="@drawable/sousou_gray" />
     </RelativeLayout>
 
     <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu
         android:id="@+id/f_sort_new_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:background="@color/item_bg"
+        android:layout_height="wrap_content" />
 
     <HorizontalScrollView
         android:id="@+id/f_sort_new_horizontalscrollview"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFF"
+        android:background="@color/item_bg"
         android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/f_sort_new_horizontalscrollview_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/item_bg"
             android:orientation="horizontal"></LinearLayout>
     </HorizontalScrollView>
+
 
     <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
         android:id="@+id/swipeToLoadLayout"
@@ -57,15 +59,52 @@
 
         <include
             android:id="@id/swipe_refresh_header"
-            layout="@layout/view_comment_head"/>
+            layout="@layout/view_comment_head" />
 
-        <android.support.v7.widget.RecyclerView
+        <ScrollView
+            android:fadingEdge="none"
             android:id="@+id/swipe_target"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:scrollbars="none"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                    android:id="@+id/fragment_main_new_sort_bannerlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@color/app_bg"
+                    android:dividerHeight="10dp"
+                    android:layout_marginTop="@dimen/ui_10_dip"
+                    android:scrollbars="none" />
+
+
+
+                <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+                    android:id="@+id/fragment_main_new_sort_goodslist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="@null"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginRight="@dimen/ui_10_dip"
+                    android:layout_marginLeft="@dimen/ui_10_dip"
+                    android:layout_marginTop="@dimen/ui_10_dip"
+                    android:horizontalSpacing="5dp"
+                    android:listSelector="@null"
+                    android:numColumns="2"
+                    android:verticalSpacing="5dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
 
         <include
             android:id="@id/swipe_load_more_footer"
-            layout="@layout/view_comment_foot"/>
+            layout="@layout/view_comment_foot" />
     </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
 </LinearLayout>

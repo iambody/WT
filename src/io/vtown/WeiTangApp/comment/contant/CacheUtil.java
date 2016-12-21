@@ -157,6 +157,12 @@ public class CacheUtil {
      * 我的团队详情
      */
     private final static String Sp_Brand_Ls = "brand_ls_sp";
+
+    /*
+    * 商城首页
+    * */
+    private final static String  Sp_Main_Sort_Data = "sp_main_sort_data";
+
     /**
      * 缓存首页数据
      */
@@ -207,6 +213,26 @@ public class CacheUtil {
         SharedPreferences Sp = pcContext.getSharedPreferences(Sp_Guanzhu,
                 Context.MODE_PRIVATE);
         return Sp.getString("goods", "");
+
+    }
+
+
+    /**
+     * 商城首页
+     */
+    public static void Main_Sort_Save(Context pcContext, String sord) {
+        SharedPreferences Sp = pcContext.getSharedPreferences(Sp_Main_Sort_Data,
+                Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+        editor.putString("mainsord", sord);
+        editor.commit();
+
+    }
+
+    public static String Main_Sort_Get(Context pcContext) {
+        SharedPreferences Sp = pcContext.getSharedPreferences(Sp_Main_Sort_Data,
+                Context.MODE_PRIVATE);
+        return Sp.getString("mainsord", "");
 
     }
 

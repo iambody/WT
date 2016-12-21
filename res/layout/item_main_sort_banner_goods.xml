@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_line_corner"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/item_main_sort_banner_goods_img"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/error_iv2"
+        android:scaleType="fitCenter"/>
+
+    <io.vtown.WeiTangApp.comment.view.DashedLineView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_size"
+
+        />
+
+    <TextView
+        android:id="@+id/item_main_sort_banner_goods_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:lines="2"
+        android:textSize="11sp"
+        android:paddingLeft="2dp"
+        android:paddingTop="2dp"
+        android:textColor="@color/gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp">
+        <TextView
+            android:id="@+id/item_main_sort_banner_goods_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textSize="11sp"
+            android:textColor="@color/red"
+            />
+    </LinearLayout>
+</LinearLayout>

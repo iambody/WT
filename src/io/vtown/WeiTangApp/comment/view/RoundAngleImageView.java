@@ -27,8 +27,8 @@ public class RoundAngleImageView extends ImageView {
      *
      * 这两个都是画圆的半径
      */
-    private int roundWidth =35;
-    private int roundHeight = 35;
+    private int roundWidth =15;
+    private int roundHeight = 15;
     private Paint paint2;
 
     public RoundAngleImageView(Context context, AttributeSet attrs, int defStyle) {
@@ -74,9 +74,9 @@ public class RoundAngleImageView extends ImageView {
         Canvas canvas2 = new Canvas(bitmap);
         super.draw(canvas2);
         drawLiftUp(canvas2);
-        drawLiftDown(canvas2);
+//        drawLiftDown(canvas2);
         drawRightUp(canvas2);
-        drawRightDown(canvas2);
+//        drawRightDown(canvas2);
         canvas.drawBitmap(bitmap, 0, 0, paint2);
         bitmap.recycle();
     }

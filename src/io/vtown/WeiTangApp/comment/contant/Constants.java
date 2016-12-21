@@ -680,6 +680,11 @@ public class Constants {
     public static String Check_Code = Host + "/v1/message/member/check";
 
     /**
+     * 商城首页接口
+     */
+    public static String Main_New_Sort = Host + "/v1/home/home/mallhome";
+
+    /**
      * 获取验证码
      */
     public static String SMS = Host + "/v1/message/member/send";

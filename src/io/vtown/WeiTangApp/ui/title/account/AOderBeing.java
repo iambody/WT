@@ -19,9 +19,9 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
-import io.vtown.WeiTangApp.ui.afragment.AShopPurchase;
 import io.vtown.WeiTangApp.ui.comment.im.AChat;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
+import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
 import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
 
@@ -357,15 +357,10 @@ public class AOderBeing extends ATitleBase {
                 data = JSON.parseObject(Data.getHttpResultStr(), BDComment.class);
                 // 如果支付的是
                 if (StrUtils.toFloat(data.getMoney_paid()) <= 0f) {
-                    if (mBdComment.getList().get(0).getStore_list().get(0)
-                            .getChannel().equals("CG")) {// 采购=》需要跳转到采购列表页面
+                        // 普通需要跳cneter界面
                         PromptManager.SkipActivity(BaseActivity, new Intent(
-                                BaseActivity, AShopPurchase.class));
-                    } else {// 普通需要跳cneter界面
-                        PromptManager.SkipActivity(BaseActivity, new Intent(
-                                BaseActivity, ACenterOder.class));
-                    }
-                    BaseActivity.finish();
+                                BaseActivity, ACenterMyOrder.class));
+                        BaseActivity.finish();
                 } else {
 
                     // BDComment data = new BDComment();
