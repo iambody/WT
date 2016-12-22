@@ -79,6 +79,8 @@ public class ACenterMyOrder extends ATitleBase implements
     public static final int PAgreeTuiKuan = 70;
     public static final int PClose = 100;
     public static final int PCancel = 110;
+    public static final int PTuikuanSuccess1 = 120;
+    public static final int PTuikuanSuccess2 = 130;
 
     /**
      * 传递tage的key
@@ -223,7 +225,6 @@ public class ACenterMyOrder extends ATitleBase implements
                 }));
 
         fragent_centeroder_nodata_lay.setOnClickListener(this);
-
 
     }
 
@@ -856,7 +857,8 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
                     break;
-
+                case PTuikuanSuccess1:
+                case PTuikuanSuccess2:
                 case PAgreeTuiKuan:
                     myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_get_integral.setVisibility(View.GONE);

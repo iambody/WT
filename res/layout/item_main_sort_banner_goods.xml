@@ -6,12 +6,13 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
+    <io.vtown.WeiTangApp.comment.view.RoundAngleImageView
         android:id="@+id/item_main_sort_banner_goods_img"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/error_iv2"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitXY"/>
+
 
     <io.vtown.WeiTangApp.comment.view.DashedLineView
         android:layout_width="match_parent"
@@ -25,17 +26,19 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="left"
-        android:lines="2"
+        android:lines="1"
         android:textSize="11sp"
         android:paddingLeft="2dp"
         android:paddingTop="2dp"
+        android:layout_marginTop="2dp"
         android:textColor="@color/gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
+        android:layout_marginTop="1dp"
+android:layout_marginBottom="1dp"
         android:paddingLeft="2dp"
         android:paddingRight="2dp">
         <TextView
@@ -46,6 +49,7 @@
             android:gravity="left"
             android:textSize="11sp"
             android:textColor="@color/red"
+
             />
     </LinearLayout>
 </LinearLayout>

@@ -20,6 +20,7 @@ import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FCenterOder;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
+import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
@@ -491,7 +492,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
         // 申请退款中
         tv_center_my_order_refund_applying = (TextView) findViewById(R.id.tv_center_my_order_refund_applying);
         switch (ket_Tage) {
-            case FCenterOder.PYiFu:// 已付款
+            case ACenterMyOrder.PYiFu:// 已付款
                 commentview_add_iv.setVisibility(View.GONE);
                 iv_right_arrow.setVisibility(View.GONE);
                 center_my_order_address.setEnabled(false);
@@ -499,7 +500,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                         .setVisibility(View.VISIBLE);
 
                 break;
-            case FCenterOder.PDaiShou:// 待收货
+            case ACenterMyOrder.PDaiShou:// 待收货
                 commentview_add_iv.setVisibility(View.GONE);
                 iv_right_arrow.setVisibility(View.GONE);
                 center_my_order_address.setEnabled(false);
@@ -508,21 +509,22 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 // ll_center_my_order_look_express_message.setVisibility(View.GONE);
                 break;
 
-            case FCenterOder.PTuiKuan:// 申请退款中。。。买家已申请退款
+            case ACenterMyOrder.PTuiKuan:// 申请退款中。。。买家已申请退款
                 center_my_order_address.setEnabled(false);
                 commentview_add_iv.setVisibility(View.GONE);
                 iv_right_arrow.setVisibility(View.GONE);
                 tv_center_my_order_refund_applying.setVisibility(View.VISIBLE);
                 break;
 
-            case FCenterOder.PZhongCai:// 仲裁中。。。买家申请退款，卖家拒绝退款
+            case ACenterMyOrder.PZhongCai:// 仲裁中。。。买家申请退款，卖家拒绝退款
                 center_my_order_address.setEnabled(false);
                 commentview_add_iv.setVisibility(View.GONE);
                 iv_right_arrow.setVisibility(View.GONE);
                 tv_center_my_order_arbitration.setVisibility(View.VISIBLE);
                 break;
-
-            case FCenterOder.PAgreeTuiKuan:// 卖家已同意退款
+            case ACenterMyOrder.PTuikuanSuccess1:
+            case ACenterMyOrder.PTuikuanSuccess2:
+            case ACenterMyOrder.PAgreeTuiKuan:// 卖家已同意退款
                 commentview_add_iv.setVisibility(View.GONE);
                 iv_right_arrow.setVisibility(View.GONE);
                 center_my_order_address.setEnabled(false);
@@ -531,14 +533,14 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
                 break;
 
-            case FCenterOder.PCancel:// 已取消
+            case ACenterMyOrder.PCancel:// 已取消
                 commentview_add_iv.setVisibility(View.GONE);
                 iv_right_arrow.setVisibility(View.GONE);
                 center_my_order_address.setEnabled(false);
                 tv_center_my_order_close_buy_agian.setVisibility(View.GONE);
                 ll_pay_time.setVisibility(View.GONE);
                 break;
-            case FCenterOder.PClose:// 已关闭
+            case ACenterMyOrder.PClose:// 已关闭
                 commentview_add_iv.setVisibility(View.GONE);
                 iv_right_arrow.setVisibility(View.GONE);
                 center_my_order_address.setEnabled(false);

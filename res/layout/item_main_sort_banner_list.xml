@@ -24,6 +24,7 @@
             android:src="@drawable/error_iv1" />
 
         <LinearLayout
+            android:id="@+id/layout_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

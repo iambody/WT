@@ -12,8 +12,10 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
@@ -72,6 +74,9 @@ public class AModifyFriendName extends ATitleBase {
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
         AModifyFriendName.this.finish();
+        BMessage msg = new BMessage(BMessage.REMARK_FRIENDS);
+        msg.setRemark_name(etModifyFriendName.getText().toString().trim());
+        EventBus.getDefault().post(msg);
     }
 
     @Override

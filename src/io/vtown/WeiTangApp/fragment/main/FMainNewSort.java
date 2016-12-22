@@ -42,6 +42,7 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.RoundAngleImageView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.CustHScrollView;
@@ -123,11 +124,6 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             }
             List<BLGoodsListData> good_list = JSON.parseArray(sort_data.getGoodslist(), BLGoodsListData.class);
             setGoodsListData(good_list);
-            if (good_list.size() > Constants.PageSize2) {
-                swipeToLoadLayout.setLoadMoreEnabled(true);
-            } else {
-                swipeToLoadLayout.setLoadMoreEnabled(false);
-            }
         }
     }
 
@@ -263,7 +259,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     fragment_main_new_sort_data_layout.setVisibility(View.GONE);
                     fragment_main_new_sort_nodata_layout.setVisibility(View.VISIBLE);
-
+                    fragment_main_new_sort_nodata_layout.setClickable(false);
                     return;
                 }
                 fragment_main_new_sort_nodata_layout.setVisibility(View.GONE);
@@ -345,6 +341,8 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             case INITIALIZE:
                 fragment_main_new_sort_data_layout.setVisibility(View.GONE);
                 fragment_main_new_sort_nodata_layout.setVisibility(View.VISIBLE);
+                fragment_main_new_sort_nodata_layout.setClickable(true);
+                ShowErrorCanLoad(getString(R.string.error_null_noda));
                 break;
 
             case REFRESHING:
@@ -414,10 +412,12 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             if (0 == position) {
                 fSortNewHorizontalscrollviewLay.setVisibility(View.GONE);//全部就不显示二级分类
                 current_category_id = "0";
+                mPage = 1;
                 IData(INITIALIZE);
                 current_type = TYPE_ALL;
             } else {
                 current_category_id = MainSortCategory.get(position - 1).getId();
+                mPage = 1;
                 IData(INITIALIZE);
                 fSortNewHorizontalscrollviewLay.setVisibility(View.VISIBLE);
                 current_type = TYPE_OTHER;
@@ -431,6 +431,10 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         switch (V.getId()) {
             case R.id.f_main_new_new_sort_sou:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AGoodSort.class));
+                break;
+
+            case R.id.fragment_main_new_sort_nodata_layout:
+                IData(INITIALIZE);
                 break;
         }
     }
@@ -480,9 +484,13 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             StrUtils.SetTxt(holder.itemMainSortBannerListTitle, blBannerListData.getTitle());
             List<BLGoods> goods = blBannerListData.getGoods();
             if (goods != null && goods.size() > 0) {
+                holder.layout_line.setVisibility(View.VISIBLE);
                 setGoosLayout(blBannerListData, goods, holder.itemMainSortBannerListGoodsLayout);
+
             } else {
+                holder.layout_line.setVisibility(View.GONE);
                 holder.itemMainSortBannerListGoodsLayout.removeAllViews();
+
             }
 
             setBannerClick(blBannerListData, holder.itemMainSortBannerListPic);
@@ -551,6 +559,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             LinearLayout view = null;
             LinearLayout.LayoutParams viewparams = new LinearLayout.LayoutParams(view_width, DimensionPixelUtil.dip2px(BaseContext, 120));
             LinearLayout.LayoutParams more_params = new LinearLayout.LayoutParams(view_width, view_width);
+            LinearLayout.LayoutParams img_params = new LinearLayout.LayoutParams(view_width, view_width);
             viewparams.setMargins(DimensionPixelUtil.dip2px(BaseContext, 3), DimensionPixelUtil.dip2px(BaseContext, 5), DimensionPixelUtil.dip2px(BaseContext, 3), DimensionPixelUtil.dip2px(BaseContext, 5));
             more_params.setMargins(DimensionPixelUtil.dip2px(BaseContext, 3), DimensionPixelUtil.dip2px(BaseContext, 5), DimensionPixelUtil.dip2px(BaseContext, 9), DimensionPixelUtil.dip2px(BaseContext, 5));
             for (int i = 0; i < good_size; i++) {
@@ -559,10 +568,10 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                     view = (LinearLayout) inflater.inflate(R.layout.item_main_sort_banner_goods, null);
                     // view.setPadding(DimensionPixelUtil.dip2px(BaseContext, 5), DimensionPixelUtil.dip2px(BaseContext, 5), DimensionPixelUtil.dip2px(BaseContext, 5), DimensionPixelUtil.dip2px(BaseContext, 5));
                     //view.setLayoutParams(viewparams);
-                    ImageView item_main_sort_banner_goods_img = (ImageView) view.findViewById(R.id.item_main_sort_banner_goods_img);
+                    RoundAngleImageView item_main_sort_banner_goods_img = (RoundAngleImageView) view.findViewById(R.id.item_main_sort_banner_goods_img);
                     TextView item_main_sort_banner_goods_name = (TextView) view.findViewById(R.id.item_main_sort_banner_goods_name);
                     TextView item_main_sort_banner_goods_price = (TextView) view.findViewById(R.id.item_main_sort_banner_goods_price);
-
+                    item_main_sort_banner_goods_img.setLayoutParams(img_params);
                     ImageLoaderUtil.Load2(blGoods.getCover(), item_main_sort_banner_goods_img, R.drawable.error_iv2);
                     StrUtils.SetTxt(item_main_sort_banner_goods_name, blGoods.getTitle());
                     StrUtils.SetTxt(item_main_sort_banner_goods_price, StrUtils.SetTextForMony(blGoods.getSell_price()) + "元");
@@ -606,8 +615,11 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         TextView itemMainSortBannerListTitle;
         @BindView(R.id.item_main_sort_banner_list_goods_layout)
         LinearLayout itemMainSortBannerListGoodsLayout;
+        @BindView(R.id.layout_line)
+        LinearLayout layout_line;
         @BindView(R.id.item_main_sort_banner_list_goods_horizontalscrollview)
         CustHScrollView item_main_sort_banner_list_goods_horizontalscrollview;
+
 
 
         BannerListHolder(View view) {

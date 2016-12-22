@@ -251,6 +251,11 @@ public class BMessage {
     //首页不可见
     public static final int Fragment_home_pause = 673;
 
+    /*
+    * 修改备注通知
+    * */
+    public static final int REMARK_FRIENDS = 0x123;
+
 
     //Main商品分类筛选视乎需要把四个筛选条件二级分类(需要一个二级分类的id)&&价格(需要一个最大最小值)&&积分（需要一个最大最小值）&&品牌（需要一个string）
     private String SecondSortId;//二级分类的id
@@ -270,6 +275,8 @@ public class BMessage {
 
     private String MsgId;
 
+    private String remark_name;
+
     //如果是透明的筛选页面点击透明的搜索 需要先跳转到搜索在进行通知销毁数据
     public static final int SortToSouSou=3099;
 
@@ -281,6 +288,14 @@ public class BMessage {
     public BMessage(int messageType) {
         super();
         this.MessageType = messageType;
+    }
+
+    public String getRemark_name() {
+        return remark_name;
+    }
+
+    public void setRemark_name(String remark_name) {
+        this.remark_name = remark_name;
     }
 
     public String getMsgId() {

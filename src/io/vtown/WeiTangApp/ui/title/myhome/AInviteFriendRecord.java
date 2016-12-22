@@ -28,12 +28,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.BLLevelName;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.invite_friends.BCInviteFriends;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.invite_friends.BLInviteFriends;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
@@ -95,10 +97,13 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
     private EditText invite_friends_record_title;
     private List<BCInviteFriends>  more_datas = new ArrayList<BCInviteFriends>();
 
+    private int remark_position ;
+    private FriendsAdapter friendsAdapter;
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_invite_friends_record);
+        EventBus.getDefault().register(this,"getEventMsg", BMessage.class);
         SetTitleHttpDataLisenter(this);
         bUser = Spuit.User_Get(BaseContext);
         IView();
@@ -659,6 +664,25 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
         IData(page, LOAD_LOADMOREING);
     }
 
+private String remark_name = "";
+    public void getEventMsg(BMessage bMessage){
+        int type = bMessage.getMessageType();
+        if(BMessage.REMARK_FRIENDS == type) {
+            page = 1;
+            IData(page,LOAD_INITIALIZE);
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try{
+            EventBus.getDefault().unregister(this);
+        }catch (Exception e){
+            return;
+        }
+    }
 
     class InviteFriendAdapter extends BaseAdapter {
         private List<BCInviteFriends> datas = new ArrayList<BCInviteFriends>();
@@ -742,7 +766,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             mPosition = position;
             final BCInviteFriends bcInviteFriends = datas.get(mPosition);
             StrUtils.SetTxt(holder.tv_invite_date, datas.get(position).getDate());
-            FriendsAdapter friendsAdapter = new FriendsAdapter(R.layout.item_invite_friends_detail, datas.get(position).getList());
+            friendsAdapter = new FriendsAdapter(R.layout.item_invite_friends_detail, datas.get(position).getList());
             holder.invite_friends_record_inside.setAdapter(friendsAdapter);
             holder.invite_friends_record_inside.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -755,6 +779,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 //                            BaseKey_Bean, mBComment));
 
 //                    ContactFriend(friend);
+                    remark_position = position;
                     ControlFriendDialog(friend);
 
 
@@ -848,6 +873,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
         private int ResourseId;
         private LayoutInflater inflater;
         private List<BLInviteFriends> friends_datas = new ArrayList<BLInviteFriends>();
+        private List<FriendsHolder> holders = new ArrayList<FriendsHolder>();
 
         public FriendsAdapter(int ResourseId, List<BLInviteFriends> friends_datas) {
             super();
@@ -866,6 +892,12 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             return friends_datas.get(position);
         }
 
+//        public void setPositionItem(int pos,String name){
+//            FriendsHolder friendsHolder = holders.get(pos);
+//            friendsHolder.tv_friend_name.setText(name);
+//            notifyDataSetChanged();
+//        }
+
         @Override
         public long getItemId(int position) {
             return position;
@@ -876,6 +908,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
             FriendsHolder holder = null;
             if (convertView == null) {
                 holder = new FriendsHolder();
+                holders.add(holder);
                 convertView = inflater.inflate(ResourseId, null);
                 holder.iv_friend_icon = (CircleImageView) convertView.findViewById(R.id.iv_friend_icon);
                 holder.iv_friend_lv = (ImageView) convertView.findViewById(R.id.iv_friend_lv);
@@ -927,4 +960,7 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
 
     }
+
+
+
 }
