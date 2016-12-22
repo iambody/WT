@@ -44,8 +44,7 @@ import io.vtown.WeiTangApp.ui.ui.ASouSouGood;
  */
 
 public class AMianSort extends ABase {
-    @BindView(R.id.pop_maitab_sort_type)
-    TextView popMaitabSortType;
+
     @BindView(R.id.pop_maitab_sort_price)
     TextView popMaitabSortPrice;
     @BindView(R.id.pop_maitab_sort_jifen)
@@ -58,8 +57,7 @@ public class AMianSort extends ABase {
     TextView popMaitabReset;
     @BindView(R.id.pop_maitab_cancle)
     TextView popMaitabCancle;
-    @BindView(R.id.pop_maitab_sort_ls)
-    CompleteListView popMaitabSortLs;
+
     @BindView(R.id.pop_maitab_sort_brand_gridview)
     CompleteGridView popMaitabSortBrandGridview;
     @BindView(R.id.pop_maitab_rangprice_ls)
@@ -88,16 +86,14 @@ public class AMianSort extends ABase {
     TextView popSortRangScoreTag;//积分的显示标题
     @BindView(R.id.pop_maitab_sort_hind_sousou_iv)
     ImageView popMaitabSortHindSousouIv;
-    @BindView(R.id.pop_maitab_sort_type_lay)
-    LinearLayout popMaitabSortTypeLay;
+
     @BindView(R.id.pop_maitab_sort_price_lay)
     LinearLayout popMaitabSortPriceLay;
     @BindView(R.id.pop_maitab_sort_jifen_lay)
     LinearLayout popMaitabSortJifenLay;
     @BindView(R.id.pop_maitab_sort_branc_lay)
     LinearLayout popMaitabSortBrancLay;
-    @BindView(R.id.pop_maitab_sort_type_state_tag)
-    TextView popMaitabSortTypeStateTag;
+
     @BindView(R.id.pop_maitab_sort_price_down_state_tag)
     TextView popMaitabSortPriceDownStateTag;
     @BindView(R.id.pop_maitab_sort_jifen_state_tag)
@@ -110,7 +106,7 @@ public class AMianSort extends ABase {
     private List<TextView> MyLeft;
     private List<LinearLayout> MyLeftLay;
     //我的二级ap
-    private MySortAp mySortAp;
+
     private MyBrandAp myBrnadAp;
     private MyRangAp myRangAp;
     private MyRangAp myRangScoreAp;
@@ -123,12 +119,12 @@ public class AMianSort extends ABase {
     private boolean IsReSet;
     //*******************需要直接初始化view还原数据时fragment带来的参数********************************
     private boolean IsRecover;
-    private String SecondSortId;
+
     private BSortRang PriceSort;
     private BSortRang ScoreSort;
     private String BrandName;
     //获取位置
-    private int SecondSortId_Postion;
+
     private int PriceSort_Postion;
     private int ScoreSort_Postion;
     private int BrandName_Postion;
@@ -178,12 +174,11 @@ public class AMianSort extends ABase {
         catoryid = getIntent().getStringExtra("catoryid");
         IsRecover = getIntent().getBooleanExtra("IsInItView", false);
         if (IsRecover) {
-            SecondSortId = getIntent().getStringExtra("SecondSortId");
+
             PriceSort = (BSortRang) getIntent().getSerializableExtra("PriceSort");
             ScoreSort = (BSortRang) getIntent().getSerializableExtra("ScoreSort");
             BrandName = getIntent().getStringExtra("BrandName");
             //开始获取对应的位置
-            SecondSortId_Postion = getIntent().getIntExtra("SecondSortId_Postion", -1);//getIntent().getIntExtra("SecondSortId_Postion",-1);
             PriceSort_Postion = getIntent().getIntExtra("PriceSort_Postion", -1);
             ScoreSort_Postion = getIntent().getIntExtra("ScoreSort_Postion", -1);
             BrandName_Postion = getIntent().getIntExtra("BrandName_Postion", -1);
@@ -203,19 +198,15 @@ public class AMianSort extends ABase {
 
     private void IBase() {
         MyLeft = new ArrayList<>();
-        MyLeft.add(popMaitabSortType);
         MyLeft.add(popMaitabSortPrice);
         MyLeft.add(popMaitabSortJifen);
         MyLeft.add(popMaitabSortBranc);
         MyLeftLay = new ArrayList<>();
-        MyLeftLay.add(popMaitabSortTypeLay);
         MyLeftLay.add(popMaitabSortPriceLay);
         MyLeftLay.add(popMaitabSortJifenLay);
         MyLeftLay.add(popMaitabSortBrancLay);
 
-        //开始二级分类的Ap的初始化
-        mySortAp = new MySortAp();
-        popMaitabSortLs.setAdapter(mySortAp);
+
 //开始进行品牌列表的Ap的初始化
         myBrnadAp = new MyBrandAp();
         popMaitabSortBrandGridview.setAdapter(myBrnadAp);
@@ -225,11 +216,11 @@ public class AMianSort extends ABase {
 //开始初始化我的积分列表
         myRangScoreAp = new MyRangAp();
         popMaitabRangscoreLs.setAdapter(myRangScoreAp);
-        if (catoryid.equals("0")) {//全部进来 应该请求的是价格
-            popMaitabSortTypeLay.setVisibility(View.GONE);
-            LeftPostion = 1;
+//        if (catoryid.equals("0")) {//全部进来 应该请求的是价格
+
+            LeftPostion = 0;
             CheckLeftPostion(LeftPostion);
-            popMaitabSortLs.setVisibility(View.GONE);
+
             popMaitabRangLs.setVisibility(View.VISIBLE);
             popSortRangPriceEdLay.setVisibility(View.VISIBLE);
             Net_Rang_Price();
@@ -246,17 +237,17 @@ public class AMianSort extends ABase {
             }
 
 
-        } else {//点击一级列表进来
-            CheckLeftPostion(LeftPostion);
-            popMaitabSortLs.setVisibility(View.VISIBLE);
-            popMaitabSortBrandGridview.setVisibility(View.GONE);
-            NetSort(catoryid);
-            //有二级分类列白哦***************************
-            NetSort(catoryid);
-            Net_Rang_Price();
-            Net_Rang_Scro();
-            NetBrandLs();
-        }
+//        } else {//点击一级列表进来
+//            CheckLeftPostion(LeftPostion);
+//            popMaitabSortLs.setVisibility(View.VISIBLE);
+//            popMaitabSortBrandGridview.setVisibility(View.GONE);
+//            NetSort(catoryid);
+//            //有二级分类列白哦***************************
+//            NetSort(catoryid);
+//            Net_Rang_Price();
+//            Net_Rang_Scro();
+//            NetBrandLs();
+//        }
 //开始操作是否自定义过的价格和积分左侧下边的标识问题
         if (IsZiDingYiPrice) {
             popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)", "" + PriceSort.getMin(), "" + PriceSort.getMax()));
@@ -267,33 +258,6 @@ public class AMianSort extends ABase {
             popMaitabSortJifenStateTag.setVisibility(View.VISIBLE);
         }
 
-
-        popMaitabSortLs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (LeftPostion) {
-                    case 0:
-                        if (position == mySortAp.GetSelectPostion()) {
-                            mySortAp.SetSelectPostion(-1);
-                            IsReSet = false;
-                            popMaitabSortTypeStateTag.setVisibility(View.INVISIBLE);
-                            return;
-                        }
-                        mySortAp.SetSelectPostion(position);
-                        IsReSet = false;
-                        //点击item后需要立马显示左侧类别按钮下边的tag
-                        popMaitabSortTypeStateTag.setText("(" + mySortAp.GetDatas().get(position).getCate_name() + ")");
-                        popMaitabSortTypeStateTag.setVisibility(View.VISIBLE);
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                }
-            }
-        });
         popMaitabSortBrandGridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -302,9 +266,8 @@ public class AMianSort extends ABase {
                         break;
                     case 1:
                         break;
+
                     case 2:
-                        break;
-                    case 3:
                         if (position == myBrnadAp.GetSelectPostion()) {
                             myBrnadAp.SetSelectPostion(-1);
                             IsReSet = false;
@@ -326,9 +289,9 @@ public class AMianSort extends ABase {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (LeftPostion) {
-                    case 0:
-                        break;
                     case 1:
+                        break;
+                    case 0:
                         if (position == myRangAp.GetSelectPostion()) {
                             IsReSet = false;
                             myRangAp.SetSelectPostion(-1);
@@ -367,9 +330,9 @@ public class AMianSort extends ABase {
                 switch (LeftPostion) {
                     case 0:
                         break;
-                    case 1:
-                        break;
                     case 2:
+                        break;
+                    case 1:
                         if (position == myRangScoreAp.GetSelectPostion()) {
                             IsReSet = false;
                             myRangScoreAp.SetSelectPostion(-1);
@@ -397,7 +360,7 @@ public class AMianSort extends ABase {
     }
 
     private void CheckLeftPostion(int postion) {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             if (i == postion) {//MyLeft
                 MyLeftLay.get(i).setBackgroundColor(getResources().getColor(R.color.white));
             } else {
@@ -407,7 +370,7 @@ public class AMianSort extends ABase {
     }
 
     //    ,R.id.pop_maitab_sort_type, R.id.pop_maitab_sort_price, R.id.pop_maitab_sort_jifen, R.id.pop_maitab_sort_branc
-    @OnClick({R.id.pop_maitab_sort_type_lay, R.id.pop_maitab_sort_price_lay, R.id.pop_maitab_sort_jifen_lay, R.id.pop_maitab_sort_branc_lay, R.id.pop_maitab_queding, R.id.pop_maitab_reset, R.id.pop_maitab_cancle, R.id.pop_sort_rang_price_bt, R.id.pop_sort_rang_score_bt, R.id.pop_maitab_sort_hind_sousou_iv})
+    @OnClick({  R.id.pop_maitab_sort_price_lay, R.id.pop_maitab_sort_jifen_lay, R.id.pop_maitab_sort_branc_lay, R.id.pop_maitab_queding, R.id.pop_maitab_reset, R.id.pop_maitab_cancle, R.id.pop_sort_rang_price_bt, R.id.pop_sort_rang_score_bt, R.id.pop_maitab_sort_hind_sousou_iv})
     public void onClick(View view) {
         switch (view.getId()) {
 
@@ -426,25 +389,10 @@ public class AMianSort extends ABase {
             case R.id.pop_sort_rang_score_bt://积分区间的确定按钮
                 RangEdCommeint(popSortRangScoreMinEd, popSortRangScoreMaxEd, 2);
                 break;
-            case R.id.pop_maitab_sort_type_lay://类型的左侧外层布局点击
-//            case R.id.pop_maitab_sort_type://第一个类别********************************************
-                LeftPostion = 0;
-                CheckLeftPostion(LeftPostion);
 
-
-                popSortRangPriceEdLay.setVisibility(View.GONE);
-                popSortRangScoreEdLay.setVisibility(View.GONE);
-                //
-
-                //
-                popMaitabRangscoreLs.setVisibility(View.GONE);
-                popMaitabRangLs.setVisibility(View.GONE);
-                popMaitabSortBrandGridview.setVisibility(View.GONE);
-                popMaitabSortLs.setVisibility(View.VISIBLE);
-                break;
             case R.id.pop_maitab_sort_price_lay://价格的左侧外层布局点击
 //            case R.id.pop_maitab_sort_price://第二个价格*************************************
-                LeftPostion = 1;
+                LeftPostion = 0;
                 CheckLeftPostion(LeftPostion);
 
                 popSortRangPriceEdLay.setVisibility(View.VISIBLE);
@@ -464,14 +412,13 @@ public class AMianSort extends ABase {
                 //
                 popMaitabRangscoreLs.setVisibility(View.GONE);
                 popMaitabSortBrandGridview.setVisibility(View.GONE);
-                popMaitabSortLs.setVisibility(View.GONE);
                 popMaitabRangLs.setVisibility(View.VISIBLE);
                 if (myRangAp.getCount() == 0)
                     Net_Rang_Price();
                 break;
             case R.id.pop_maitab_sort_jifen_lay://积分的左侧外层布局点击
 //            case R.id.pop_maitab_sort_jifen://第三个积分*************************************
-                LeftPostion = 2;
+                LeftPostion = 1;
                 CheckLeftPostion(LeftPostion);
 
                 popSortRangPriceEdLay.setVisibility(View.GONE);
@@ -489,7 +436,6 @@ public class AMianSort extends ABase {
 
                 //
                 popMaitabSortBrandGridview.setVisibility(View.GONE);
-                popMaitabSortLs.setVisibility(View.GONE);
                 popMaitabRangLs.setVisibility(View.GONE);
                 popMaitabRangscoreLs.setVisibility(View.VISIBLE);
                 if (myRangScoreAp.getCount() == 0)
@@ -499,7 +445,7 @@ public class AMianSort extends ABase {
                 break;
             case R.id.pop_maitab_sort_branc_lay://品牌的左侧外层布局点击
 //            case R.id.pop_maitab_sort_branc:// 第四个品牌*************************************************
-                LeftPostion = 3;
+                LeftPostion = 2;
                 CheckLeftPostion(LeftPostion);
                 //开始请求数据
 
@@ -508,7 +454,6 @@ public class AMianSort extends ABase {
                 //
                 popMaitabRangscoreLs.setVisibility(View.GONE);
                 popMaitabRangLs.setVisibility(View.GONE);
-                popMaitabSortLs.setVisibility(View.GONE);
                 popMaitabSortBrandGridview.setVisibility(View.VISIBLE);
                 if (popMaitabSortBrandGridview.getCount() == 0)
                     NetBrandLs();
@@ -520,7 +465,6 @@ public class AMianSort extends ABase {
 //                private MyRangAp myRangAp;
 //                private MyRangAp myRangScoreAp;
                 if (IsReSet) {
-                    mySortAp.SetSelectPostion(-1);
                     myBrnadAp.SetSelectPostion(-1);
                     myRangAp.SetSelectPostion(-1);
                     myRangScoreAp.SetSelectPostion(-1);
@@ -536,24 +480,9 @@ public class AMianSort extends ABase {
                 BMessage SortMessage = new BMessage(9901);
 
                 //把筛选的二级分类id依string形式传递出去**********************************************************************************************
-                String SortStr = "";
-                List<BSortCategory> mydatas = mySortAp.GetDatas();
-                if (mydatas.size() == 0) {
-                    SortStr = "";
-                    SortMessage.setSecondSortId_Postion(-1);
-                } else if (mySortAp.GetSelectPostion() == -1) {// 没有点击筛选需要选择全部
-                    for (int i = 0; i < mydatas.size(); i++) {
-                        SortStr = SortStr + mydatas.get(i).getId() + ",";
-                    }
-                    SortStr = SortStr.substring(0, SortStr.length() - 1);
-                    SortMessage.setSecondSortId_Postion(-1);
-                } else {//点击筛选了
-                    SortStr = mydatas.get(mySortAp.GetSelectPostion()).getId();
-                    SortMessage.setSecondSortId_Postion(mySortAp.GetSelectPostion());
-                }
 
-//                PromptManager.ShowCustomToast(BaseContext,"筛选二级分类"+SortStr);
-                SortMessage.setSecondSortId(SortStr);
+
+
                 //把筛选的价格区间封装bean传递出去************************************************************************************************
 
                 BSortRang MyPriceSort;
@@ -603,13 +532,13 @@ public class AMianSort extends ABase {
                 BaseActivity.finish();
                 break;
             case R.id.pop_maitab_reset://重置 相当于没做任何筛选
-                if (!IsZiDingYiScore && !IsZiDingYiPrice && mySortAp.getCount() == 0 && myBrnadAp.getCount() == 0 && myRangAp.getCount() == 0 && myRangScoreAp.getCount() == 0) {
+                if (!IsZiDingYiScore && !IsZiDingYiPrice   && myBrnadAp.getCount() == 0 && myRangAp.getCount() == 0 && myRangScoreAp.getCount() == 0) {
                     PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.toselect));
                     return;
                 }
 
 
-                if (!IsZiDingYiScore && !IsZiDingYiPrice && mySortAp.GetSelectPostion() == -1 && myBrnadAp.GetSelectPostion() == -1 && myRangAp.GetSelectPostion() == -1 && myRangScoreAp.GetSelectPostion() == -1) {
+                if (!IsZiDingYiScore && !IsZiDingYiPrice   && myBrnadAp.GetSelectPostion() == -1 && myRangAp.GetSelectPostion() == -1 && myRangScoreAp.GetSelectPostion() == -1) {
                     PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.toselect));
                     return;
                 }
@@ -622,7 +551,7 @@ public class AMianSort extends ABase {
 
                     @Override
                     public void RightResult() {
-                        mySortAp.SetReSet();
+
                         myBrnadAp.SetReSet();
                         myRangAp.SetReSet();
                         myRangScoreAp.SetReSet();
@@ -646,7 +575,6 @@ public class AMianSort extends ABase {
                         ZiDingYiPrice = null;
                         ZiDingYiScore = null;
                         //既然已经确定重置了那么就可以先把
-                        popMaitabSortTypeStateTag.setVisibility(View.INVISIBLE);
                         popMaitabSortPriceDownStateTag.setVisibility(View.INVISIBLE);
                         popMaitabSortJifenStateTag.setVisibility(View.INVISIBLE);
                         popMaitabSortBrancStateTag.setVisibility(View.INVISIBLE);
@@ -724,39 +652,7 @@ public class AMianSort extends ABase {
     }
 
 
-    /**
-     * 获取二级分类的列表
-     */
-    private void NetSort(String Sorttype) {
-        PromptManager.showtextLoading(BaseContext, "筛选中");
-        NHttpBaseStr mNHttpBaseStr = new NHttpBaseStr(BaseContext);
-        mNHttpBaseStr.setPostResult(new IHttpResult<String>() {
-            @Override
-            public void getResult(int Code, String Msg, String Data) {
-                List<BSortCategory> dataresult = JSON.parseArray(Data, BSortCategory.class);
-                mySortAp.FrashSortAp(dataresult);
 
-                if (IsRecover) {
-                    mySortAp.SetSelectPostion(SecondSortId_Postion);
-                    if (SecondSortId_Postion != -1) {///需要展示价格下边的tag
-                        BSortCategory data = dataresult.get(SecondSortId_Postion);
-                        popMaitabSortTypeStateTag.setText(String.format("(%s)", data.getCate_name()));
-                        popMaitabSortTypeStateTag.setVisibility(View.VISIBLE);
-                    } else {
-                        popMaitabSortTypeStateTag.setVisibility(View.INVISIBLE);
-                    }
-                }
-            }
-
-            @Override
-            public void onError(String error, int LoadType) {
-
-            }
-        });
-        HashMap<String, String> map = new HashMap<>();
-        map.put("pid", Sorttype);
-        mNHttpBaseStr.getData(Constants.Add_Good_Categoty, map, Request.Method.GET);
-    }
 
     /**
      * 获取品牌列表

@@ -112,6 +112,24 @@ public class StrUtils {
     }
 
     /**
+     * 不包含 空格 “ ”的 字符  空格 不为空   for 我的邀请列表
+     * @param input
+     * @return
+     */
+    public static boolean isEmpty5(String input) {
+        if(" ".equals(input)) return false;
+        if (input == null || "".equals(input))
+            return true;
+
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (c != ' ' && c != '\t' && c != '\r') {
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
      * 判断textview是否有内容
      *
      * @param textView1

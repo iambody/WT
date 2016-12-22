@@ -106,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="卡     券"
+                        android:text="优惠卡券"
                         android:textSize="@dimen/oderbeing_buyer_txt_size" />
 
                     <TextView
@@ -114,7 +114,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/ui_22_dip"
+                        android:layout_marginLeft="@dimen/ui_20_dip"
                         android:layout_weight="1"
                         android:gravity="left"
                         android:textColor="@color/app_gray"
@@ -138,7 +138,10 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="@dimen/ui_10_dip"
+                    android:paddingTop="@dimen/ui_3_dip"
+                    android:paddingBottom="@dimen/ui_3_dip">
 
 
                     <TextView
@@ -147,7 +150,16 @@
                         android:layout_gravity="center_vertical"
                         android:text="正品保险"
                         android:textSize="@dimen/oderbeing_buyer_txt_size" />
+                      <ImageView
+                          android:id="@+id/oderbeing_insurance_iv"
+                          android:layout_width="@dimen/ui_20_dip"
+                          android:layout_height="@dimen/ui_20_dip"
+                          android:padding="@dimen/ui_3_dip"
+                          android:src="@drawable/wenhao"
+                          android:layout_gravity="center_vertical"
+                          android:clickable="true"
 
+                          android:layout_marginLeft="@dimen/ui_17_dip"/>
                     <TextView
 
                         android:layout_width="0dp"
@@ -161,10 +173,11 @@
 
                     <ImageView
                         android:id="@+id/iv_oderbeing_real_thing_insurance_status"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/ui_30_dip"
+                        android:layout_height="@dimen/ui_30_dip"
+                         android:padding="@dimen/ui_5_dip"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/quan_select_3" />
+                        android:src="@drawable/ssdk_oks_classic_check_default" />
                 </LinearLayout>
 
             </LinearLayout>

@@ -75,7 +75,8 @@ public class AModifyFriendName extends ATitleBase {
     protected void DataResult(int Code, String Msg, BComment Data) {
         AModifyFriendName.this.finish();
         BMessage msg = new BMessage(BMessage.REMARK_FRIENDS);
-        msg.setRemark_name(etModifyFriendName.getText().toString().trim());
+        msg.setRemark_name(etModifyFriendName.getText().toString());
+
         EventBus.getDefault().post(msg);
     }
 
@@ -108,7 +109,7 @@ public class AModifyFriendName extends ATitleBase {
         switch (V.getId()) {
             case R.id.right_txt:
                 if (CheckNet(BaseContext)) return;
-                String edit_name = etModifyFriendName.getText().toString().trim();
+                String edit_name = etModifyFriendName.getText().toString();
                 if (mFriendName.equals(edit_name)) {
                     AModifyFriendName.this.finish();
                 } else {

@@ -55,6 +55,7 @@ public class CommonDialog extends Dialog {
     private void IView() {
         dialog_common_root_layout = (LinearLayout) mRootView.findViewById(R.id.dialog_common_root_layout);
         LinearLayout.LayoutParams contentParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
         //contentParams.setMargins(DimensionPixelUtil.dip2px(mContext, 16), 0, 0, 0);
         LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
         if (mDatas != null && mDatas.size() > 0) {
@@ -65,10 +66,10 @@ public class CommonDialog extends Dialog {
                 TextView textView = new TextView(mContext);
                 textView.setClickable(true);
                 textView.setLayoutParams(contentParams);
-                textView.setPadding(DimensionPixelUtil.dip2px(mContext, 11), DimensionPixelUtil.dip2px(mContext, 11), 10, DimensionPixelUtil.dip2px(mContext, 11));
+                textView.setPadding(DimensionPixelUtil.dip2px(mContext, 11), DimensionPixelUtil.dip2px(mContext, 16), 10, DimensionPixelUtil.dip2px(mContext, 16));
                 textView.setGravity(Gravity.LEFT);
                 textView.setTextSize(16);
-                textView.setTextColor(mContext.getResources().getColor(R.color.black));
+                textView.setTextColor(mContext.getResources().getColor(R.color.app_black));
                 textView.setText(mDatas.get(i));
                 dialog_common_root_layout.addView(textView);
                 if (i != mDatas.size() - 1) {

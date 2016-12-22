@@ -238,7 +238,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         for (int i = 0; i < RadioButtons.size(); i++) {
             RadioButtons.get(i).setRadioButtonChecked(false);
         }
-        maintab_show_iv.setImageResource(R.drawable.tab3_f_nor);
+        maintab_show_iv.setImageResource(R.drawable.tab3_f_pre);
         switchContent(CurrentFragment, FMainShow, R.id.maintab_fragmentlay);
 
         CurrentPostion = 4;

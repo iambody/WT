@@ -52,31 +52,7 @@
             android:background="@color/app_line2"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/pop_maitab_sort_type_lay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/pop_maitab_sort_type"
-                    style="@style/pop_sort_left_txt"
-                    android:text="@string/type"/>
-
-                <TextView
-                    android:id="@+id/pop_maitab_sort_type_state_tag"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:gravity="center"
-                    android:lines="1"
-                    android:textColor="@color/app_fen"
-                    android:textSize="@dimen/ui_12_dip"
-                    android:visibility="invisible"
-                    />
-            </LinearLayout>
 
 
             <LinearLayout
@@ -215,13 +191,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <!-- 分类的条件列表数据-->
-                    <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
-                        android:id="@+id/pop_maitab_sort_ls"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:divider="@color/app_line"
-                        android:dividerHeight="@dimen/line_size1"
-                        />
+
                     <!-- 品牌的分类列表 -->
                     <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
                         android:id="@+id/pop_maitab_sort_brand_gridview"

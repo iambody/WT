@@ -76,6 +76,7 @@ public class BComment extends BBase {
 	private BLDComment address = new BLDComment();
 	private List<BLComment> list = new ArrayList<BLComment>();
 	private String couponsNum;
+	private float insurance;
 	// 跳转到OtherShow界面里面需要带的数据*************************
 	private String cover;//
 	private String avatar;//
@@ -415,5 +416,13 @@ public class BComment extends BBase {
 
 	public void setCouponsNum(String couponsNum) {
 		this.couponsNum = couponsNum;
+	}
+
+	public float getInsurance() {
+		return insurance;
+	}
+
+	public void setInsurance(float insurance) {
+		this.insurance = insurance;
 	}
 }

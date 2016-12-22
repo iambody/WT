@@ -21,12 +21,13 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/shop"
+            android:textSize="@dimen/titlebar_size"
             android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/f_main_new_new_sort_sou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/ui_10_dip"

@@ -173,6 +173,13 @@ public class PShare extends PopupWindow implements OnClickListener {
     }
 
     private void ShareSina() {
+
+        if (!ViewUtils.isWeiboInstalled(pContext)) {
+            PromptManager.ShowCustomToast(pContext, pContext.getResources().getString(R.string.weibonoanzhuang));
+            return;
+        }
+
+
         Platform platform = null;
         ShareParams sp = new ShareParams();
         platform = ShareSDK.getPlatform(pContext, SinaWeibo.NAME);
@@ -189,7 +196,7 @@ public class PShare extends PopupWindow implements OnClickListener {
             @Override
             public void onError(Platform arg0, int arg1, Throwable arg2) {
                 PromptManager.ShowCustomToast(pContext, "分享取消");
-                PromptManager.ShowCustomToast(pContext, arg1+"=====>"+ arg2.toString());
+                PromptManager.ShowCustomToast(pContext, arg1 + "=====>" + arg2.toString());
 
             }
 

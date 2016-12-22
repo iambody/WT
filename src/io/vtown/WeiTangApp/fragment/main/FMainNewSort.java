@@ -177,7 +177,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             //imgparams.setMargins(dip2px_5, dip2px_5, dip2px_5, dip2px_5);
             //txtparams.setMargins(0, 8, 0, 0);
             int dip2px_10 = DimensionPixelUtil.dip2px(BaseContext, 10);
-            int dip2px_14 = DimensionPixelUtil.dip2px(BaseContext, 14);
+            int dip2px_16 = DimensionPixelUtil.dip2px(BaseContext, 18);
             LinearLayout layout = new LinearLayout(BaseContext);
             layout.setOrientation(LinearLayout.VERTICAL);
             layout.setPadding(dip2px_10, 0, dip2px_10, dip2px_10);
@@ -186,7 +186,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             imgparams.gravity = Gravity.CENTER;
             ImageView img = new ImageView(BaseContext);
             img.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            img.setPadding(dip2px_14, dip2px_14, dip2px_14, 0);
+            img.setPadding(dip2px_16, dip2px_16, dip2px_16, 0);
             ImageLoaderUtil.Load2(data.get(i).getCate_icon(), img, R.drawable.error_iv2);
             TextView txt = new TextView(BaseContext);
             txt.setText(data.get(i).getCate_name());
@@ -551,7 +551,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             layout.removeAllViews();
             int view_width = (screenWidth - DimensionPixelUtil.dip2px(BaseContext, 30)) / 4;
             int good_size = 0;
-            if (goods.size() > 4) {
+            if (goods.size() >2) {
                 good_size = goods.size() + 1;
             } else {
                 good_size = goods.size();
@@ -590,12 +590,60 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (posotion == goods.size()) {
-                        BComment mBCommentss = new BComment(data.getId(),
-                                data.getTitle());
-                        PromptManager.SkipActivity(BaseActivity, new Intent(
-                                BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
-                                mBCommentss));
+                    if (posotion == goods.size()&&posotion>=3) {//查看更多 第三个以及第三个以后的权威查看更多 1或者2个商品没有查看更多
+//                        BComment mBCommentss = new BComment(data.getId(),
+//                                data.getTitle());
+//                        PromptManager.SkipActivity(BaseActivity, new Intent(
+//                                BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+//                                mBCommentss));
+                        //分类******点击******
+
+
+                        int Type = StrUtils.toInt(data.getAdvert_type());
+                        switch (Type) {
+                            case 1:// HT跳转
+
+                                PromptManager.SkipActivity(BaseActivity, new Intent(
+                                        BaseActivity, AWeb.class).putExtra(
+                                        AWeb.Key_Bean,
+                                        new BComment(data.getUrl(), StrUtils.NullToStr(data
+                                                .getAdvert_type_str()))));
+                                break;
+                            case 2:// 商品详情页
+                                PromptManager.SkipActivity(BaseActivity, new Intent(
+                                        BaseContext, AGoodDetail.class).putExtra("goodid",
+                                        data.getSource_id()));
+                                // PromptManager.SkipActivity(BaseActivity, new
+                                // Intent(BaseContext, APlayer.class));
+                                break;
+                            case 3:// 店铺详情页!!!!!!!!!!!!!!!!!!!!!!!!需要修改
+                                BComment mBComment = new BComment(data.getSource_id(), data
+                                        .getTitle());
+                                if (data.getIs_brand().equals("1")) {// 品牌店铺
+                                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                                            BaseActivity, ABrandDetail.class).putExtra(
+                                            BaseKey_Bean, mBComment));
+                                }
+                                break;
+                            case 4:// 活动详情页
+                                BComment mBCommentss = new BComment(data.getSource_id(),
+                                        data.getTitle());
+                                PromptManager.SkipActivity(BaseActivity, new Intent(
+                                        BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                        mBCommentss));
+
+                                break;
+                            default:
+                                // default时候直接展示大图
+                                break;
+                        }
+
+
+
+
+
+
+                        //分类********点击***********
                     } else {
                         PromptManager.SkipActivity(BaseActivity, new Intent(
                                 BaseContext, AGoodDetail.class).putExtra("goodid",

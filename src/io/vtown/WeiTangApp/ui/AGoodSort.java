@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -86,7 +87,8 @@ public class AGoodSort extends ATitleBase implements OnLoadMoreListener, OnRefre
 
     //ls==>recycleview***************************
     private LinearLayoutManager linearLayoutManager;
-    private StaggeredGridLayoutManager staggeredGridLayoutManager;
+    private  GridLayoutManager staggeredGridLayoutManager;
+    private  DividerItemDecoration MyDividerItemDecoration;
     private SortRecycleAp sortRecycleAp;
     //ls==>recycleview***************************
     private View fragment_sort_nodata_lay;
@@ -106,7 +108,7 @@ public class AGoodSort extends ATitleBase implements OnLoadMoreListener, OnRefre
     //筛选的pop
     private PMainTabSort pMainTabSort;
     //配置
-    private List<BSortCategory> MySortCategory;
+
 
     //一个标识去记录点击筛选时候的一级分类的位置
 
@@ -219,11 +221,13 @@ public class AGoodSort extends ATitleBase implements OnLoadMoreListener, OnRefre
     //初始化里面的recyclev（s）
     private void IRecycleview() {
         linearLayoutManager = new LinearLayoutManager(BaseContext);
-        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-
+//        staggeredGridLayoutManager = new GridLayoutManager(2,GridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager = new GridLayoutManager(BaseContext,2);
         swipeTarget.setLayoutManager(linearLayoutManager);
         swipeTarget.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.VERTICAL, Color.TRANSPARENT, 3));
-        swipeTarget.addItemDecoration(new DividerItemDecoration(BaseContext, LinearLayoutManager.HORIZONTAL, Color.TRANSPARENT, 5));
+        MyDividerItemDecoration=new DividerItemDecoration(BaseContext, LinearLayoutManager.HORIZONTAL, Color.TRANSPARENT, 5);
+
+
         sortRecycleAp = new SortRecycleAp();
         sortRecycleAp.SetOnItemClickListener(new MySortClickListener() {
             @Override
@@ -293,10 +297,13 @@ public class AGoodSort extends ATitleBase implements OnLoadMoreListener, OnRefre
 //                sortRecycleAp.notifyDataSetChanged();
                 mainSortGoodControlIv.setImageResource(IsGoodsGradview ? R.drawable.f_sort_iv_grd : R.drawable.f_sort_iv_ls);
 //开始切换数据
-                if (IsGoodsGradview)
-                    swipeTarget.setLayoutManager(staggeredGridLayoutManager);
-                else
+                if (IsGoodsGradview){
+                    swipeTarget.addItemDecoration(MyDividerItemDecoration);
+                    swipeTarget.setLayoutManager(staggeredGridLayoutManager);}
+                else{
                     swipeTarget.setLayoutManager(linearLayoutManager);
+                    swipeTarget.removeItemDecoration(MyDividerItemDecoration);
+                }
 
                 break;
             case R.id.sort_good_zonghe://点击综合&&点击综合价格//积分//销量//全部清空
@@ -380,12 +387,12 @@ public class AGoodSort extends ATitleBase implements OnLoadMoreListener, OnRefre
                     MyIntent.putExtra("IsSort_Rang_Price_ZiDingYi", IsSort_Rang_Price_ZiDingYi);
                     MyIntent.putExtra("IsSort_Rang_Score_ZiDingYi", IsSort_Rang_Score_ZiDingYi);
 
-                    MyIntent.putExtra("catoryid", MySortCategory.get(UpSortPostion).getId());
+
                     PromptManager.SkipActivity(BaseActivity, MyIntent);
                 } else {
 //                    PromptManager.ShowCustomToast(BaseContext, "我需要初始化进去");
                     Intent MyIntent = new Intent(BaseActivity, AMianSort.class);
-                    MyIntent.putExtra("catoryid", MySortCategory.get(UpSortPostion).getId());
+
                     PromptManager.SkipActivity(BaseActivity, MyIntent);
                 }
 

@@ -19,6 +19,7 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.im.AChat;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
@@ -73,7 +74,7 @@ public class AOderBeing extends ATitleBase {
     /**
      * 是否点击了正品险
      */
-    private boolean isAddRealInsurance = true;
+    private boolean isAddRealInsurance = false;
 
     private TextView commentview_add_name;
     private TextView commentview_add_address;
@@ -148,6 +149,7 @@ public class AOderBeing extends ATitleBase {
     private int goGoodBus = -1;
     private LinearLayout ll_oderbeing_real_thing_insurance;
     private ImageView iv_oderbeing_real_thing_insurance_status;
+    private ImageView oderbeing_insurance_iv;
 
     @Override
     protected void InItBaseView() {
@@ -274,6 +276,7 @@ public class AOderBeing extends ATitleBase {
 
         ll_oderbeing_real_thing_insurance = (LinearLayout) findViewById(R.id.ll_oderbeing_real_thing_insurance);
         iv_oderbeing_real_thing_insurance_status = (ImageView) findViewById(R.id.iv_oderbeing_real_thing_insurance_status);
+        oderbeing_insurance_iv = (ImageView) findViewById(R.id.oderbeing_insurance_iv);
         findViewById(R.id.commentview_add_iv).setVisibility(View.VISIBLE);
         oderAp = new OderAp(R.layout.item_oderbeing_out);
         oderbeing_ls.setAdapter(oderAp);
@@ -282,7 +285,7 @@ public class AOderBeing extends ATitleBase {
         oderbeing_commint.setOnClickListener(this);
         oderbeing_coupons_lay.setOnClickListener(this);
         iv_oderbeing_real_thing_insurance_status.setOnClickListener(this);
-
+        oderbeing_insurance_iv.setOnClickListener(this);
     }
 
     @Override
@@ -357,10 +360,10 @@ public class AOderBeing extends ATitleBase {
                 data = JSON.parseObject(Data.getHttpResultStr(), BDComment.class);
                 // 如果支付的是
                 if (StrUtils.toFloat(data.getMoney_paid()) <= 0f) {
-                        // 普通需要跳cneter界面
-                        PromptManager.SkipActivity(BaseActivity, new Intent(
-                                BaseActivity, ACenterMyOrder.class));
-                        BaseActivity.finish();
+                    // 普通需要跳cneter界面
+                    PromptManager.SkipActivity(BaseActivity, new Intent(
+                            BaseActivity, ACenterMyOrder.class));
+                    BaseActivity.finish();
                 } else {
 
                     // BDComment data = new BDComment();
@@ -440,6 +443,8 @@ public class AOderBeing extends ATitleBase {
 //            CurrenShowKaQuanType = 1;
 //            ShowSelect();
 //        }
+        NeddPay = StrUtils.toFloat(StrUtils.SetTextForMony(mBdComment
+                .getOrder_total_price()));
 
         StrUtils.SetTxt(
                 oderbeing_yingfu,
@@ -719,6 +724,12 @@ public class AOderBeing extends ATitleBase {
     @Override
     protected void MyClick(View V) {
         switch (V.getId()) {
+            case R.id.oderbeing_insurance_iv:
+                PromptManager.SkipActivity(BaseActivity, new Intent(
+                        BaseActivity, AWeb.class).putExtra(
+                        AWeb.Key_Bean,
+                        new BComment(Constants.GoodsInsurance_Url, getResources().getString(R.string.zhengpin_insurance))));
+                break;
             case R.id.oderbeing_address:// 地址
                 Intent intent = new Intent(BaseContext, AAddressManage.class);
                 intent.putExtra("NeedFinish", true);
@@ -762,11 +773,25 @@ public class AOderBeing extends ATitleBase {
             case R.id.iv_oderbeing_real_thing_insurance_status://正品保险
                 isAddRealInsurance = !isAddRealInsurance;
                 iv_oderbeing_real_thing_insurance_status.setImageDrawable(getResources().getDrawable(isAddRealInsurance ? R.drawable.quan_select_3 : R.drawable.ssdk_oks_classic_check_default));
+                InsuranceSelect(isAddRealInsurance);
                 break;
 
             default:
                 break;
         }
+    }
+
+    private void InsuranceSelect(boolean isSelect) {
+
+        if (isSelect) {
+            NeddPay = NeddPay + mBdComment.getInsurance() / 100;
+        } else {
+            NeddPay = NeddPay - mBdComment.getInsurance() / 100;
+        }
+
+        StrUtils.SetColorsTxt(BaseContext, oderbeing_need, R.color.red,
+                getResources().getString(R.string.needpay), "￥"
+                        + StrUtils.To2Float((NeddPay < 0 ? 0 : NeddPay)) + "");
     }
 
     @Override
@@ -941,7 +966,7 @@ public class AOderBeing extends ATitleBase {
             String str = StrUtils.NullToStr3(tv_item_oderbeing_out_buy_message.getText().toString().trim());
             String seller_id = list.get(i).getSeller_id();
             if (i != list.size() - 1) {
-                order_note = order_note + seller_id + ":" + str + "&";
+                order_note = order_note + seller_id + ":" + str + "|||";
             } else {
                 order_note = order_note + seller_id + ":" + str;
             }

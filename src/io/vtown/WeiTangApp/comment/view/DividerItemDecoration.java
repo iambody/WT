@@ -121,6 +121,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         if (mOrientation == LinearLayoutManager.VERTICAL) {
             outRect.set(0, 0, 0, mSize);
         } else {
+            if((parent.getChildLayoutPosition(view)+2)%2==0)
             outRect.set(0, 0, mSize, 0);
         }
     }

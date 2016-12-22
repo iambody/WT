@@ -924,7 +924,8 @@ private String remark_name = "";
             BLInviteFriends friend = friends_datas.get(position);
             ImageLoaderUtil.Load2(friend.getAvatar(), holder.iv_friend_icon, R.drawable.error_iv2);
 
-            StrUtils.SetTxt(holder.tv_friend_name, StrUtils.isEmpty(friend.getRemark())?friend.getSeller_name():friend.getRemark());
+//            StrUtils.SetTxt(holder.tv_friend_name, StrUtils.isEmpty5(friend.getRemark())?friend.getSeller_name():friend.getRemark());
+            holder.tv_friend_name.setText(StrUtils.isEmpty5(friend.getRemark())?friend.getSeller_name():friend.getRemark());
             String shop_id = BaseContext.getResources().getString(R.string.invite_friend_shop_id);
             StrUtils.SetTxt(holder.tv_friend_shop_id, String.format(shop_id, friend.getSeller_no()));
             StrUtils.SetTxt(holder.tv_invite_phone, friend.getPhone());

@@ -791,6 +791,8 @@
     <string name="fangqi">等待</string>
     <string name="tuichu">取消</string>
     <string name="shop">商城</string>
+    <string name="weibonoanzhuang">请先安装微博客户端</string>
+    <string name="zhengpin_insurance">正品险</string>
 
 
 </resources>
