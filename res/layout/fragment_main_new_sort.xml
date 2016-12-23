@@ -32,7 +32,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/ui_10_dip"
             android:clickable="true"
-            android:src="@drawable/sousou_gray" />
+            android:src="@drawable/newhome_sou" />
     </RelativeLayout>
 
     <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu

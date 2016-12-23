@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:descendantFocusability="afterDescendants"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:descendantFocusability="afterDescendants"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingBottom="@dimen/line_size6"
         android:paddingLeft="@dimen/ui_10_dip"
         android:paddingRight="@dimen/ui_10_dip"
-        android:paddingTop="@dimen/line_size6"
-        android:paddingBottom="@dimen/line_size6">
+        android:paddingTop="@dimen/line_size6">
 
-       <!-- <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/shopbus_item_log1" />-->
+        <!-- <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center_vertical"
+             android:layout_marginLeft="10dp"
+             android:src="@drawable/shopbus_item_log1" />-->
 
         <TextView
             android:id="@+id/item_oderbeing_out_shoptxt"
@@ -30,27 +30,27 @@
             android:layout_marginLeft="4dp"
             android:layout_weight="1"
             android:text="@string/nullstr"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/item_oderbeing_connect"
             style="@style/bt_textview"
             android:layout_marginRight="10dp"
-            android:text="@string/connect_shangjia" />
+            android:text="@string/connect_shangjia"/>
     </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_size1"
-        android:src="@color/app_line" />
+        android:src="@color/app_line"/>
 
     <LinearLayout
         android:id="@+id/item_oderbeing_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
         android:clickable="true"
-        android:padding="10dp" >
+        android:focusable="true"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/item_oderbeing_iv1"
@@ -60,7 +60,7 @@
             android:padding="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/testiv"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/item_oderbeing_iv2"
@@ -70,7 +70,7 @@
             android:padding="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/testiv"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/item_oderbeing_iv3"
@@ -80,7 +80,7 @@
             android:padding="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/testiv"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <LinearLayout
             android:id="@+id/item_oderbeing_more_lay"
@@ -91,7 +91,7 @@
             android:clickable="true"
             android:focusable="true"
             android:orientation="horizontal"
-            android:padding="10dp" >
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/item_oderbeing_out_goodnumbers_up"
@@ -100,13 +100,13 @@
                 android:layout_gravity="center_vertical"
                 android:text="@string/nullstr"
                 android:textColor="@color/app_gray"
-                android:visibility="invisible" />
+                android:visibility="invisible"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/arrow_right" />
+                android:src="@drawable/arrow_right"/>
         </LinearLayout>
     </LinearLayout>
     <!-- 运费 -->
@@ -115,9 +115,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_size1"
 
-        android:src="@color/app_line" />
-
-
+        android:src="@color/app_line"/>
 
 
     <!-- 运费 -->
@@ -127,14 +125,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="10dp" >
+        android:paddingLeft="10dp">
+
         <TextView
             android:id="@+id/item_oderbeing_out_yunfei"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
 
-            android:text="@string/nullstr" />
+            android:text="@string/nullstr"/>
+
         <TextView
             android:id="@+id/item_oderbeing_out_number_down"
             android:layout_width="0dp"
@@ -143,8 +143,8 @@
             android:layout_weight="1"
             android:gravity="right"
             android:padding="5dp"
-            android:textColor="@color/gray"
-            android:text="@string/nullstr" />
+            android:text="@string/nullstr"
+            android:textColor="@color/gray"/>
 
         <TextView
             android:id="@+id/item_oderbeing_out_mony"
@@ -152,15 +152,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:padding="10dp"
-            android:text="@string/nullstr" />
+            android:text="@string/nullstr"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/item_bg"
-        android:visibility="visible"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="visible">
 
 
         <TextView
@@ -168,7 +168,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/ui_10_dip"
             android:text="备注留言"
-
+            android:textColor="@drawable/gray"
             android:textSize="@dimen/oderbeing_buyer_txt_size"/>
 
         <EditText
@@ -177,6 +177,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+
             android:background="@null"
             android:hint="@string/hint_buyer_liuyan"
             android:padding="@dimen/ui_10_dip"

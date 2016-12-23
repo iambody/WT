@@ -640,7 +640,7 @@
     <string name="newhome_qiandao">今日签到</string>
     <string name="newhome_qiandao1">已签到</string>
     <string name="newhome_yaoqing">邀请好友</string>
-    <string name="newhome_libao">今日精选</string>
+    <string name="newhome_libao">激活礼包</string>
     <string name="newhome_temai">特卖专区</string>
     <string name="noincome">还没有收入哦</string>
     <string name="nosell">没有销量,加油哦</string>
@@ -793,6 +793,7 @@
     <string name="shop">商城</string>
     <string name="weibonoanzhuang">请先安装微博客户端</string>
     <string name="zhengpin_insurance">正品险</string>
+    <string name="newhome_show">我的SHOW</string>
 
 
 </resources>

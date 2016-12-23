@@ -180,14 +180,14 @@
                         android:id="@+id/fragment_newhome_yaoqing_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>
 
+
+                    <include
+                        android:id="@+id/fragment_newhome_myshop_lay"
+                        layout="@layout/comment_fragment_newhome_downlay"/>
+
                     <include
                         android:id="@+id/fragment_newhome_libao_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>
-
-                    <include
-                        android:id="@+id/fragment_newhome_temai_lay"
-                        layout="@layout/comment_fragment_newhome_downlay"/>
-
                 </LinearLayout>
                 <!-- 3.1新添加-->
 
@@ -195,19 +195,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
                     <include
-                        android:id="@+id/fragment_newhome_wallet_lay"
+                        android:id="@+id/fragment_newhome_temai_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>
 
                     <include
                         android:id="@+id/fragment_newhome_kaquan_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>
-
                     <include
-                        android:id="@+id/fragment_newhome_myshop_lay"
+                        android:id="@+id/fragment_newhome_wallet_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>
-
                     <include
                         android:id="@+id/fragment_newhome_myoder_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>

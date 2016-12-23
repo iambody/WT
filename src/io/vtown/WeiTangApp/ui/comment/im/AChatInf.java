@@ -987,6 +987,8 @@ public class AChatInf extends ABase implements OnClickListener {
 				message.setAttribute("extReceiveNickname", Title);
 				message.setAttribute("extSendHeadUrl", mBUser.getHead_img());// TagerAvater
 				message.setAttribute("extReceiveHeadUrl", TagerAvater);
+
+
 			} catch (Exception e) {
 				LogUtils.i(e.toString());
 			}

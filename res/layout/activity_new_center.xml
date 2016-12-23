@@ -45,11 +45,12 @@
                 layout="@layout/commentview_center"/>
 
             <View
-                style="@style/line_left2"/>
+                style="@style/line_left2" android:visibility="gone"/>
 
             <include
                 android:id="@+id/view_my_show"
-                layout="@layout/commentview_center"/>
+                layout="@layout/commentview_center"
+                android:visibility="gone"/>
 
             <View
                 style="@style/line_left2"/>

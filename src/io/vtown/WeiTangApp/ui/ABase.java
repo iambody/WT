@@ -10,9 +10,12 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.PicImageItem;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.UpComparator;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -75,6 +78,7 @@ import android.widget.TextView;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
+import com.alibaba.fastjson.JSON;
 import com.android.volley.Request;
 import com.easemob.chat.EMMessage;
 import com.easemob.chat.ImageMessageBody;
@@ -85,6 +89,9 @@ import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import org.w3c.dom.Text;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
+import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
 
 public class ABase extends Activity {
     /**
@@ -826,4 +833,52 @@ public class ABase extends Activity {
         }
         return isImageFile;
     }
+
+
+    protected boolean CheckLimite() {
+        if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
+            ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                    getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                    new IDialogResult() {
+                        @Override
+                        public void RightResult() {
+                            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                    ANewBindCode.class));
+                        }
+
+                        @Override
+                        public void LeftResult() {
+                        }
+                    });
+            return true;
+        }
+        if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+            ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                    getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
+                    new IDialogResult() {
+                        @Override
+                        public void RightResult() {
+                            BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                            BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                    maxtive.getActivitytitle());
+                            PromptManager.SkipActivity(BaseActivity, new Intent(
+                                    BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                    mBCommentss));
+                        }
+
+                        @Override
+                        public void LeftResult() {
+                            PromptManager.SkipActivity(BaseActivity, new Intent(
+                                    BaseActivity, AWeb.class).putExtra(
+                                    AWeb.Key_Bean,
+                                    new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                        }
+                    });
+
+            return true;
+        }
+        return false;
+    }
+
 }

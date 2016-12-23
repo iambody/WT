@@ -105,8 +105,7 @@ public class AGoodSort extends ATitleBase implements OnLoadMoreListener, OnRefre
     private boolean SortJiFenClick = false;
     //是否销量被筛选
     private boolean SortSellNumberClick = false;
-    //筛选的pop
-    private PMainTabSort pMainTabSort;
+
     //配置
 
 

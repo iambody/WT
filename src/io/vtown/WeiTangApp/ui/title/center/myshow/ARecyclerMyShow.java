@@ -61,6 +61,7 @@ import io.vtown.WeiTangApp.ui.comment.AGoodVidoShare;
 import io.vtown.WeiTangApp.ui.comment.AVidemplay;
 import io.vtown.WeiTangApp.ui.comment.AphotoPager;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.ui.AAddNewShow;
 
 /**
  * Created by Yihuihua on 2016/9/23.
@@ -144,7 +145,7 @@ public class ARecyclerMyShow extends ATitleBase {
 
             }
         });
-
+        recyclerview_my_show.smoothScrollToPosition(0);
     }
 
 
@@ -214,6 +215,8 @@ public class ARecyclerMyShow extends ATitleBase {
     @Override
     protected void InitTile() {
         SetTitleTxt("我的SHOW");
+        SetRightIv(R.drawable.ic_jiahao_add);
+        right_iv.setOnClickListener(this);
     }
 
     @Override
@@ -291,7 +294,12 @@ public class ARecyclerMyShow extends ATitleBase {
 
     @Override
     protected void MyClick(View V) {
-
+        if (V.getId() == R.id.right_iv) {
+            //权限判定！！！！！！！！！！！！！！
+            if (CheckLimite()) return;
+            //权限判定！！！！！！！！！！！！！！！！！！！
+            PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AAddNewShow.class));
+        }
     }
 
     @Override

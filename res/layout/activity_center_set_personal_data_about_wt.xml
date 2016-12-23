@@ -53,27 +53,33 @@
             android:id="@+id/function_introduce"
             layout="@layout/commentview_txtarrow"/>
 
-         <View style="@style/line_left" />
+        <View style="@style/line_left"/>
 
 
         <include
             android:id="@+id/opinion_dengjiguize"
             layout="@layout/commentview_txtarrow"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/ui_10_dip"
-            android:visibility="gone"
-            android:src="@color/app_bg"/>
+            android:src="@color/app_bg"
+            android:visibility="gone"/>
+
         <include
             android:id="@+id/opinion_abouus"
-            layout="@layout/commentview_txtarrow"/>
+            layout="@layout/commentview_txtarrow"
+            android:visibility="gone"/>
 
-        <View style="@style/line_left"/>
+        <View
+            style="@style/line_left"
+            android:visibility="gone"/>
+
         <include
             android:id="@+id/opinion_feedback"
-            layout="@layout/commentview_txtarrow"/>
+            layout="@layout/commentview_txtarrow"
+            android:visibility="gone"/>
 
         <View style="@style/line_left"/>
 

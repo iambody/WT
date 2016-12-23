@@ -713,7 +713,7 @@ public class AMianSort extends ABase {
                 myRangAp.SetSelectPostion(PriceSort_Postion);
                 if (PriceSort_Postion != -1) {
                     if (ResultPrice.get(PriceSort_Postion).getMax() == null) {
-                        popMaitabSortPriceDownStateTag.setText("大于" + ResultPrice.get(PriceSort_Postion).getMin());
+                        popMaitabSortPriceDownStateTag.setText("(大于" + ResultPrice.get(PriceSort_Postion).getMin()+")");
                     } else
                         popMaitabSortPriceDownStateTag.setText(String.format("(%s-%s)", "" + ResultPrice.get(PriceSort_Postion).getMin(), "" + ResultPrice.get(PriceSort_Postion).getMax()));
 

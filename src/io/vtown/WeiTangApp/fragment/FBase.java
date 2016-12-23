@@ -2,12 +2,18 @@ package io.vtown.WeiTangApp.fragment;
 
 import java.util.HashMap;
 
+import com.alibaba.fastjson.JSON;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BActive;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
+import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.net.NHttpBaseStr;
 import io.vtown.WeiTangApp.comment.net.delet.NHttpDeletBaseStr;
 import io.vtown.WeiTangApp.comment.util.NetUtil;
@@ -17,9 +23,13 @@ import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.onConfirmClick;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog.oncancelClick;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
+import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -310,5 +320,50 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
         ((ImageView) BaseView.findViewById(R.id.iv_error)).setImageResource(ResouceId);
     }
 
+    protected boolean CheckLimite() {
+        if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
+            ShowCustomDialog(getResources().getString(R.string.no_bind_code),
+                    getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
+                    new IDialogResult() {
+                        @Override
+                        public void RightResult() {
+                            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
+                                    ANewBindCode.class));
+                        }
+
+                        @Override
+                        public void LeftResult() {
+                        }
+                    });
+            return true;
+        }
+        if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
+            ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
+                    getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
+                    new IDialogResult() {
+                        @Override
+                        public void RightResult() {
+                            BActive maxtive = Spuit.Jihuo_get(BaseContext);
+                            BComment mBCommentss = new BComment(maxtive.getActivityid(),
+                                    maxtive.getActivitytitle());
+                            PromptManager.SkipActivity(BaseActivity, new Intent(
+                                    BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
+                                    mBCommentss));
+                        }
+
+                        @Override
+                        public void LeftResult() {
+                            PromptManager.SkipActivity(BaseActivity, new Intent(
+                                    BaseActivity, AWeb.class).putExtra(
+                                    AWeb.Key_Bean,
+                                    new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
+
+                        }
+                    });
+
+            return true;
+        }
+        return false;
+    }
 
 }

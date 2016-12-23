@@ -150,7 +150,7 @@
 
 
         </RelativeLayout>
-
+        <View style="@style/line1"/>
         <RelativeLayout
             android:id="@+id/ll_share_2_sinawb"
             android:layout_width="match_parent"
@@ -158,7 +158,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="5dp"
-            android:visibility="gone">
+             >
 
             <ImageView
                 android:layout_width="wrap_content"

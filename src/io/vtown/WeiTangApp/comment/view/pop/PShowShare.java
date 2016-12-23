@@ -25,6 +25,7 @@ import java.util.HashMap;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.tencent.qzone.QZone;
 import cn.sharesdk.wechat.friends.Wechat;
@@ -322,7 +323,8 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                 break;
             case R.id.ll_share_2_sinawb://分享微博
 //                PromptManager.ShowCustomToast(mContext, "分享微博");ss
-                controlType(SHARE_TO_SINAWB);
+//                controlType(SHARE_TO_SINAWB);
+                ShareSina();
                 break;
 
             case R.id.dialog_show_share_cancel:
@@ -331,6 +333,51 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
                 }
                 break;
         }
+    }
+
+    private void ShareSina() {
+            if (!ViewUtils.isWeiboInstalled(activity)) {
+                PromptManager.ShowCustomToast(activity, activity.getResources().getString(R.string.weibonoanzhuang));
+                return;
+            }
+
+            Platform platform = null;
+            Platform.ShareParams sp = new Platform.ShareParams();
+            platform = ShareSDK.getPlatform(activity, SinaWeibo.NAME);
+//        platform.SSOSetting(true);
+//        disableSSOWhenAuthorize
+            platform.SSOSetting(false);
+
+            sp.setTitle(mShareBeanNew.getShare_title());
+            sp.setTitleUrl(mShareBeanNew.getShare_url()); // 标题的超链接
+            sp.setText(mShareBeanNew.getShare_content());
+            sp.setImageUrl(mShareBeanNew.getShare_log());
+            platform.setPlatformActionListener(new PlatformActionListener() {
+
+                @Override
+                public void onError(Platform arg0, int arg1, Throwable arg2) {
+                    PromptManager.ShowCustomToast(activity, "分享取消");
+//                    PromptManager.ShowCustomToast(activity, arg1 + "=====>" + arg2.toString());
+
+                }
+
+                @Override
+                public void onComplete(Platform arg0, int arg1,
+                                       HashMap<String, Object> arg2) {
+                    PromptManager.ShowCustomToast(activity, "分享完成");
+
+                }
+
+                @Override
+                public void onCancel(Platform arg0, int arg1) {
+
+                }
+            });
+            platform.share(sp);
+
+
+
+
     }
 
     private void controlType(int resultType) {

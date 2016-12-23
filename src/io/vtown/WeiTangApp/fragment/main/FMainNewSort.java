@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.fragment.main;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,7 @@ import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
+import io.vtown.WeiTangApp.ui.ui.ASouSouGood;
 
 /**
  * Created by datutu on 2016/12/19.
@@ -98,7 +100,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     private BannerListAdapter bannerListAdapter;
     private BCMainSort sort_data;
     private View fragment_main_new_sort_nodata_layout;
-
+    private boolean IShow = true;
     @Override
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_main_new_sort, null);
@@ -137,7 +139,12 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         goodsListAdapter = new GoodsListAdapter();
         fragment_main_new_sort_goodslist.setAdapter(goodsListAdapter);
         fragment_main_new_sort_goodslist.setOnItemClickListener(this);
-
+        fragment_main_new_sort_nodata_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IData(INITIALIZE);
+            }
+        });
     }
 
     private void IData(int loadtype) {
@@ -162,6 +169,8 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
 
         //二级分类测试
     }
+
+
 
     /*
     * 设置二级分类数据
@@ -202,6 +211,34 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         }
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (IShow) {
+            Log.i("homewave", "显示");
+            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
+            PromptManager.closeLoading();
+        }
+
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            Log.i("homewave", "隐藏");
+            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
+            IShow = false;
+
+        } else {
+            Log.i("homewave", "显示");
+            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
+            PromptManager.closeLoading();
+            IShow = true;
+        }
+
+    }
     /*
     * 设置BannerList数据
     * */
@@ -278,7 +315,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                 }
                 List<BLGoodsListData> good_list = JSON.parseArray(sort_data.getGoodslist(), BLGoodsListData.class);
                 setGoodsListData(good_list);
-                if (good_list.size() > Constants.PageSize2) {
+                if (good_list.size() == Constants.PageSize2) {
                     swipeToLoadLayout.setLoadMoreEnabled(true);
                 } else {
                     swipeToLoadLayout.setLoadMoreEnabled(false);
@@ -301,7 +338,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                 }
                 List<BLGoodsListData> good_list1 = JSON.parseArray(sort_data.getGoodslist(), BLGoodsListData.class);
                 setGoodsListData(good_list1);
-                if (good_list1.size() > Constants.PageSize2) {
+                if (good_list1.size() == Constants.PageSize2) {
                     swipeToLoadLayout.setLoadMoreEnabled(true);
                 } else {
                     swipeToLoadLayout.setLoadMoreEnabled(false);
@@ -324,7 +361,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                     }
                     List<BLGoodsListData> good_list2 = JSON.parseArray(sort_data.getGoodslist(), BLGoodsListData.class);
                     setGoodsListMoreData(good_list2);
-                    if (good_list2.size() > Constants.PageSize2) {
+                    if (good_list2.size() == Constants.PageSize2) {
                         swipeToLoadLayout.setLoadMoreEnabled(true);
                     } else {
                         swipeToLoadLayout.setLoadMoreEnabled(false);
@@ -409,6 +446,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         @Override
         public void onPageChanged(int position, boolean visitStatus) {
             // PromptManager.ShowCustomToast(BaseContext, String.format("第%s页", position + ""));
+            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
             if (0 == position) {
                 fSortNewHorizontalscrollviewLay.setVisibility(View.GONE);//全部就不显示二级分类
                 current_category_id = "0";
@@ -430,7 +468,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.f_main_new_new_sort_sou:
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AGoodSort.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ASouSouGood.class));
                 break;
 
             case R.id.fragment_main_new_sort_nodata_layout:
@@ -573,7 +611,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                     TextView item_main_sort_banner_goods_price = (TextView) view.findViewById(R.id.item_main_sort_banner_goods_price);
                     item_main_sort_banner_goods_img.setLayoutParams(img_params);
                     ImageLoaderUtil.Load2(blGoods.getCover(), item_main_sort_banner_goods_img, R.drawable.error_iv2);
-                    StrUtils.SetTxt(item_main_sort_banner_goods_name, blGoods.getTitle());
+                    StrUtils.SetTxt(item_main_sort_banner_goods_name,StrUtils.isEmpty(blGoods.getShorttitle())?blGoods.getTitle(): blGoods.getShorttitle());
                     StrUtils.SetTxt(item_main_sort_banner_goods_price, StrUtils.SetTextForMony(blGoods.getSell_price()) + "元");
                     view.setLayoutParams(viewparams);
                 } else {//添加查看更布局
@@ -597,8 +635,6 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
 //                                BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
 //                                mBCommentss));
                         //分类******点击******
-
-
                         int Type = StrUtils.toInt(data.getAdvert_type());
                         switch (Type) {
                             case 1:// HT跳转
@@ -639,15 +675,11 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                         }
 
 
-
-
-
-
                         //分类********点击***********
-                    } else {
+                    } else {//点击商品跳转
                         PromptManager.SkipActivity(BaseActivity, new Intent(
                                 BaseContext, AGoodDetail.class).putExtra("goodid",
-                                goods.get(posotion).getId()));
+                                goods.get(posotion).getGoods_id()));
                     }
                 }
             });

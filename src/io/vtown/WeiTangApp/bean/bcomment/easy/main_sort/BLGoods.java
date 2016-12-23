@@ -21,7 +21,7 @@ public class BLGoods extends BBase {
     private String orig_price;//"orig_price": 17200,
     private String score;//"score": 1080,
     private String sales;//"sales": 1
-
+    private String shorttitle;
 
     public String getSales() {
         return sales;
@@ -125,5 +125,13 @@ public class BLGoods extends BBase {
 
     public void setOrig_price(String orig_price) {
         this.orig_price = orig_price;
+    }
+
+    public String getShorttitle() {
+        return shorttitle;
+    }
+
+    public void setShorttitle(String shorttitle) {
+        this.shorttitle = shorttitle;
     }
 }

@@ -220,9 +220,7 @@ public class ASouSouGood extends ATitileNoBase {
         if (IsAdd)
             mDaoSouRecord.insert(addbean);
 
-        // if (mDaoSouRecord.findAll().size() == 3) {
-        // mDaoSouRecord.DeletItem("_id", 0 + "");
-        // }
+
         List<BSouRecord> sddss = mDaoSouRecord.findAll();
         List<BSouRecord> newlist = new ArrayList<BSouRecord>();
         if (sddss.size() > Constants.SouSouHeistory) {// 超出规定条数
@@ -264,10 +262,7 @@ public class ASouSouGood extends ATitileNoBase {
     }
 
     private void IView() {
-//        goodsousou_toshop_sousou_txt_lay = (RelativeLayout) findViewById(R.id.goodsousou_toshop_sousou_txt_lay);
-//        goodsousou_toshop_sousou_txt = (TextView) findViewById(R.id.goodsousou_toshop_sousou_txt);
-//        // goodsousou_toshop_sousou_txt.setOnClickListener(this);
-//        goodsousou_toshop_sousou_txt_lay.setOnClickListener(this);
+
         sousou_sou_ed_cha= (ImageView) findViewById(R.id.sousou_sou_ed_cha);
         sousou_sou_ed_cha.setOnClickListener(this);
         // 清除历史
@@ -281,17 +276,11 @@ public class ASouSouGood extends ATitileNoBase {
         sousou_remen_grid = (CompleteGridView) findViewById(R.id.sousou_remen_grid);
         sousou_history_ls = (CompleteListView) findViewById(R.id.sousou_history_ls);
         sousou_sousou_ls = (CompleteListView) findViewById(R.id.sousou_sousou_ls);
-//
-//        FootShopView = ViewHolder.ToView(BaseContext,
-//                R.layout.view_sousou_good_footview);
-//        GoShopSouTxt = (TextView) FootShopView
-//                .findViewById(R.id.view_sousou_good_footview_goshopsou);
-//        goodsousou_toshop_sousou_txt_downbg = (ImageView) findViewById(R.id.goodsousou_toshop_sousou_txt_downbg);
         myGradAp = new MyGradAp(R.layout.item_sousou_remen);
         sousou_remen_grid.setAdapter(myGradAp);
 
         // 搜索结果列表的处理
-//        sousou_sousou_ls.addFooterView(FootShopView);
+
         souSouAdapter = new SouSouAdapter(BaseContext,
                 R.layout.item_sousougood_result);
         sousou_sousou_ls.setAdapter(souSouAdapter);
@@ -308,7 +297,7 @@ public class ASouSouGood extends ATitileNoBase {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
                 if (arg3 <= -1) {// 点击的是head和foot
-                    // PromptManager.ShowCustomToast(BaseContext, "搜索店铺");
+
 
                 } else {// 点击正常
                     // PromptManager.ShowCustomToast(BaseContext, "位置：" + arg2);
@@ -341,13 +330,6 @@ public class ASouSouGood extends ATitileNoBase {
                                     long arg3) {
 
                 BSouRecord DATA = (BSouRecord) arg0.getItemAtPosition(arg2);
-//                BComment data = new BComment(DATA.getId(), DATA.getTitle());
-//                PromptManager.SkipActivity(
-//                        BaseActivity,
-//                        new Intent(BaseActivity, ACommentList.class).putExtra(
-//                                ACommentList.Tage_ResultKey,
-//                                ACommentList.Tage_SouGoodResultItem).putExtra(
-//                                ACommentList.Tage_BeanKey, data));
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, isFromShow?AAddShowGoodLs.class:ASearchResult.class).putExtra("search_key", DATA.getTitle()));
 
 
@@ -368,22 +350,6 @@ public class ASouSouGood extends ATitileNoBase {
                         return true;
                     }
                 });
-//        GoShopSouTxt.setOnClickListener(new OnClickListener() {
-//
-//            @Override
-//            public void onClick(View arg0) {
-//                if (StrUtils.IsOnlyNumber(sousou_sou_ed.getText().toString()
-//                        .trim())) {
-//                    PromptManager.SkipActivity(BaseActivity, new Intent(
-//                            BaseActivity, ASouSouShop.class).putExtra("id",
-//                            sousou_sou_ed.getText().toString().trim()));
-//                } else {
-//                    PromptManager.SkipActivity(BaseActivity, new Intent(
-//                            BaseActivity, ASouSouShop.class));
-//                }
-//
-//            }
-//        });
     }
 
     private void HistryOnLongClick(final BSouRecord da) {
@@ -449,22 +415,10 @@ public class ASouSouGood extends ATitileNoBase {
             if (!StrUtils.isEmpty(s.toString().trim())) {
                 DataEding(s.toString());
                 sousou_sou_ed_cha.setVisibility(View.VISIBLE);
-//                if (StrUtils.IsOnlyNumber(s.toString().trim())) {
-//
-//
-//                    goodsousou_toshop_sousou_txt_lay
-//                            .setVisibility(View.VISIBLE);
-//
-//                    StrUtils.SetColorsTxt(BaseContext,
-//                            goodsousou_toshop_sousou_txt, R.color.red,
-//                            "去搜索店铺:", s.toString().trim());
-//
-//                }
             } else {
-//                sousou_up_lay.setVisibility(View.VISIBLE);
-//                sousou_sousou_ls.setVisibility(View.GONE);
-//
-//                goodsousou_toshop_sousou_txt_lay.setVisibility(View.GONE);
+                
+                sousou_sou_ed_cha.setVisibility(View.GONE);
+                souSouAdapter.Refrsh(new ArrayList<BLComment>());
 
             }
         }
@@ -782,13 +736,7 @@ public class ASouSouGood extends ATitileNoBase {
                 sousou_sou_ed_cha.setVisibility(View.GONE);
                 souSouAdapter.Refrsh(new ArrayList<BLComment>());
                 break;
-            // case R.id.sousou_sou_iv:// 搜索按钮
-            // if (!StrUtils.isEmpty(sousou_sou_ed.getText().toString().trim())) {
-            // PromptManager.showtextLoading(BaseContext, getResources()
-            // .getString(R.string.loading));
-            // DataEding(sousou_sou_ed.getText().toString().trim());
-            // }
-            // break;
+
             case R.id.sousou_cancle_txt:// 取消txt===>确定搜索
                 // 去搜索*********************************************************************************************************************************
 

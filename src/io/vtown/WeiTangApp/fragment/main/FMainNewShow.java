@@ -1127,51 +1127,6 @@ if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
 
     }
 
-    private boolean CheckLimite() {
-        if (!Spuit.IsHaveBind_Get(BaseContext) && !Spuit.IsHaveBind_JiQi_Get(BaseContext)) {//未绑定邀请码
-            ShowCustomDialog(getResources().getString(R.string.no_bind_code),
-                    getResources().getString(R.string.quxiao), getResources().getString(R.string.bind_code),
-                    new IDialogResult() {
-                        @Override
-                        public void RightResult() {
-                            PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-                                    ANewBindCode.class));
-                        }
-
-                        @Override
-                        public void LeftResult() {
-                        }
-                    });
-            return true;
-        }
-        if (!Spuit.IsHaveActive_Get(BaseContext)) {//绑定邀请码未激活
-            ShowCustomDialog(JSON.parseObject(CacheUtil.NewHome_Get(BaseContext), BNewHome.class).getIntegral() < 10000 ? getResources().getString(R.string.to_Jihuo_toqiandao1) : getResources().getString(R.string.to_Jihuo_toqiandao2),
-                    getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo1),
-                    new IDialogResult() {
-                        @Override
-                        public void RightResult() {
-                            BActive maxtive = Spuit.Jihuo_get(BaseContext);
-                            BComment mBCommentss = new BComment(maxtive.getActivityid(),
-                                    maxtive.getActivitytitle());
-                            PromptManager.SkipActivity(BaseActivity, new Intent(
-                                    BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
-                                    mBCommentss));
-                        }
-
-                        @Override
-                        public void LeftResult() {
-                            PromptManager.SkipActivity(BaseActivity, new Intent(
-                                    BaseActivity, AWeb.class).putExtra(
-                                    AWeb.Key_Bean,
-                                    new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
-
-                        }
-                    });
-
-            return true;
-        }
-        return false;
-    }
 
     int CountNumber = 0;
 

@@ -60,6 +60,7 @@ import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.AMyLeader;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.myhome.AIntegralDetail;
 import io.vtown.WeiTangApp.ui.title.myhome.AInviteFriendRecord;
 import io.vtown.WeiTangApp.ui.title.myhome.AInviteTeamInfo;
@@ -332,7 +333,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
         SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian);
         SetDownLay(fragment_newhome_yaoqing_lay, getResources().getString(R.string.newhome_yaoqing), R.drawable.newhome_down_freads);
         SetDownLay(fragment_newhome_libao_lay, getResources().getString(R.string.newhome_libao), R.drawable.newhome_down_libao);
-        SetDownLay(fragment_newhome_temai_lay, getResources().getString(R.string.newhome_temai), R.drawable.newhome_down_temai);
+        SetDownLay(fragment_newhome_temai_lay, getResources().getString(R.string.newhome_show), R.drawable.newhome_down_temaia);
         //下边布局3.1*******************
         fragment_newhome_wallet_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_wallet_lay);
         fragment_newhome_kaquan_lay = ViewHolder.get(BaseView, R.id.fragment_newhome_kaquan_lay);
@@ -551,7 +552,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 break;
             case 10://开始签到
                 IsHomeSign = true;
-                SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre_1);
+                SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
                 //需要进行缓存本地
                 INetData(LOADHind);
                 break;
@@ -601,45 +602,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             case R.id.fragment_newhome_renshu_lay:
                 if (CheckNet(BaseContext))
                     return;
-//                if (IsHaveXiaji) {
-//                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AInviteFriendRecord.class));
-//                    return;
-//                }
-//                if (!Spuit.IsHaveBind_Get(BaseActivity)) {
-//                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext,
-//                            ANewBindCode.class));
-//                    return;
-//                }
-//                if (Spuit.IsHaveActive_Get(BaseActivity)) {
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AInviteTeamInfo.class));
-//                }
-//
-//                if (Spuit.IsHaveBind_Get(BaseActivity) && !Spuit.IsHaveActive_Get(BaseContext)) {
-//                    ShowCustomDialog(getResources().getString(R.string.to_Jihuo),
-//                            getResources().getString(R.string.look_guize), getResources().getString(R.string.to_jihuo),
-//                            new IDialogResult() {
-//                                @Override
-//                                public void RightResult() {
-//                                    BActive maxtive = Spuit.Jihuo_get(BaseContext);
-//                                    BComment mBCommentss = new BComment(maxtive.getActivityid(),
-//                                            maxtive.getActivitytitle());
-//                                    PromptManager.SkipActivity(BaseActivity, new Intent(
-//                                            BaseContext, AZhuanQu.class).putExtra(BaseKey_Bean,
-//                                            mBCommentss));
-//                                }
-//
-//                                @Override
-//                                public void LeftResult() {
-//                                    PromptManager.SkipActivity(BaseActivity, new Intent(
-//                                            BaseActivity, AWeb.class).putExtra(
-//                                            AWeb.Key_Bean,
-//                                            new BComment(Constants.Homew_JiFen, getResources().getString(R.string.jifenguize))));
-//
-//                                }
-//                            });
-//                    return;
-//                }
-
 
                 break;
             case R.id.fragment_newhome_jifen_lay:
@@ -654,10 +617,11 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                     return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AReturnDetail.class));
                 break;
-            case R.id.fragment_newhome_temai_lay://特卖专区
+            case R.id.fragment_newhome_temai_lay://我的Show
                 if (CheckNet(BaseContext))
                     return;
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
+                        ARecyclerMyShow.class).putExtra("seller_id", Spuit.User_Get(BaseContext).getSeller_id()));
                 break;
 //            fragment_newhome_qian_lay, fragment_newhome_yaoqing_lay, fragment_newhome_libao_lay
             case R.id.fragment_newhome_qian_lay://签到
