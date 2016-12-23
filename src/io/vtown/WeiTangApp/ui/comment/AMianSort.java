@@ -808,6 +808,7 @@ public class AMianSort extends ABase {
 
         public void SetReSet() {
             IsJiaClear = true;
+            selectItem=-1;
             this.notifyDataSetChanged();
         }
 
@@ -896,6 +897,7 @@ public class AMianSort extends ABase {
 
         public void SetReSet() {
             IsJiaClear = true;
+            selectItem=-1;
             this.notifyDataSetChanged();
         }
 
@@ -977,6 +979,7 @@ public class AMianSort extends ABase {
 
         public void SetReSet() {
             IsJiaClear = true;
+            selectItem=-1;
             this.notifyDataSetChanged();
         }
 

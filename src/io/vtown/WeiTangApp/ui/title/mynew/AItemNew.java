@@ -15,11 +15,7 @@ import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
-import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
-import io.vtown.WeiTangApp.ui.afragment.AShopGoodManger;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
-import io.vtown.WeiTangApp.ui.comment.order.AShopOrderManager;
-import io.vtown.WeiTangApp.ui.comment.order.AShopPurchaseOrder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -145,51 +141,51 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
                     case 3:// 订单
                         int action = StrUtils.toInt(itemdata.getAction());
                         switch (action) {
-                            case Constants.ACTION_PT_ORDER:// 普通下单
-                                Intent shopOrderIntent = new Intent(BaseContext,
-                                        AShopOrderManager.class);
-                                shopOrderIntent.putExtra("order_stutas", 3);
-//                                shopOrderIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(shopOrderIntent);
-
-//                                EventBus.getDefault().post(
-//                                        new BMessage(BMessage.Tage_New_Kill));
-                                BaseActivity.finish();
-                                break;
-                            case Constants.ACTION_CG_ORDER:// 采购下单
-                                Intent shopGoodIntent = new Intent(BaseContext,
-                                        AShopOrderManager.class);
-//                                shopGoodIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(shopGoodIntent);
-
-//                                EventBus.getDefault().post(
-//                                        new BMessage(BMessage.Tage_New_Kill));
-                                BaseActivity.finish();
-                                break;
-                            case Constants.ACTION_TO_PAY:// 付款
-                                Intent shopOrderIntent6 = new Intent(BaseContext,
-                                        AShopOrderManager.class);
-//                                shopOrderIntent6.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(shopOrderIntent6);
-
-//                                EventBus.getDefault().post(
-//                                        new BMessage(BMessage.Tage_New_Kill));
-                                BaseActivity.finish();
-                                break;
-                            case Constants.ACTION_CG_SEND:// 采购订单发货
-                                Intent shopGoodIntent1 = new Intent(BaseContext,
-                                        AShopPurchaseOrder.class);
-//                                shopGoodIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(shopGoodIntent1);
-
-//                                EventBus.getDefault().post(
-//                                        new BMessage(BMessage.Tage_New_Kill));
-                                BaseActivity.finish();
-                                break;
+//                            case Constants.ACTION_PT_ORDER:// 普通下单
+//                                Intent shopOrderIntent = new Intent(BaseContext,
+//                                        AShopOrderManager.class);
+//                                shopOrderIntent.putExtra("order_stutas", 3);
+////                                shopOrderIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+////                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                startActivity(shopOrderIntent);
+//
+////                                EventBus.getDefault().post(
+////                                        new BMessage(BMessage.Tage_New_Kill));
+//                                BaseActivity.finish();
+//                                break;
+//                            case Constants.ACTION_CG_ORDER:// 采购下单
+//                                Intent shopGoodIntent = new Intent(BaseContext,
+//                                        AShopOrderManager.class);
+////                                shopGoodIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+////                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                startActivity(shopGoodIntent);
+//
+////                                EventBus.getDefault().post(
+////                                        new BMessage(BMessage.Tage_New_Kill));
+//                                BaseActivity.finish();
+//                                break;
+//                            case Constants.ACTION_TO_PAY:// 付款
+//                                Intent shopOrderIntent6 = new Intent(BaseContext,
+//                                        AShopOrderManager.class);
+////                                shopOrderIntent6.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+////                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                startActivity(shopOrderIntent6);
+//
+////                                EventBus.getDefault().post(
+////                                        new BMessage(BMessage.Tage_New_Kill));
+//                                BaseActivity.finish();
+//                                break;
+//                            case Constants.ACTION_CG_SEND:// 采购订单发货
+//                                Intent shopGoodIntent1 = new Intent(BaseContext,
+//                                        AShopPurchaseOrder.class);
+////                                shopGoodIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+////                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                startActivity(shopGoodIntent1);
+//
+////                                EventBus.getDefault().post(
+////                                        new BMessage(BMessage.Tage_New_Kill));
+//                                BaseActivity.finish();
+//                                break;
                             case Constants.ACTION_PT_SEND:// 普通订单发货
                                 Intent shopOrderIntent1 = new Intent(BaseContext,
                                         ACenterMyOrder.class);
@@ -201,17 +197,17 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
-                            case Constants.ACTION_CG_REFUND:// 采购订单同意退款
-                                Intent shopOrderIntent2 = new Intent(BaseContext,
-                                        AShopPurchaseOrder.class);
-//                                shopOrderIntent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(shopOrderIntent2);
-
-//                                EventBus.getDefault().post(
-//                                        new BMessage(BMessage.Tage_New_Kill));
-                                BaseActivity.finish();
-                                break;
+//                            case Constants.ACTION_CG_REFUND:// 采购订单同意退款
+//                                Intent shopOrderIntent2 = new Intent(BaseContext,
+//                                        AShopPurchaseOrder.class);
+////                                shopOrderIntent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+////                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                startActivity(shopOrderIntent2);
+//
+////                                EventBus.getDefault().post(
+////                                        new BMessage(BMessage.Tage_New_Kill));
+//                                BaseActivity.finish();
+//                                break;
                             case Constants.ACTION_PT_REFUND:// 普通订单同意退款
                                 // Intent shopOrderIntent3 = new Intent(BaseContext,
                                 // AShopOderManage.class);
@@ -232,17 +228,17 @@ public class AItemNew extends ATitleBase implements IXListViewListener {
 //                                        new BMessage(BMessage.Tage_New_Kill));
                                 BaseActivity.finish();
                                 break;
-                            case Constants.ACTION_CG_UNREFUND:// 采购订单拒绝退款
-                                Intent shopOrderIntent4 = new Intent(BaseContext,
-                                        AShopPurchaseOrder.class);
-//                                shopOrderIntent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(shopOrderIntent4);
-
-//                                EventBus.getDefault().post(
-//                                        new BMessage(BMessage.Tage_New_Kill));
-                                BaseActivity.finish();
-                                break;
+//                            case Constants.ACTION_CG_UNREFUND:// 采购订单拒绝退款
+//                                Intent shopOrderIntent4 = new Intent(BaseContext,
+//                                        AShopPurchaseOrder.class);
+////                                shopOrderIntent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+////                                        | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                startActivity(shopOrderIntent4);
+//
+////                                EventBus.getDefault().post(
+////                                        new BMessage(BMessage.Tage_New_Kill));
+//                                BaseActivity.finish();
+//                                break;
 
                             case Constants.ACTION_PT_UNREFUND:// 采购订单拒绝退款
                             case Constants.ACTION_PT_MODIFY_PRICE://订单修改价格

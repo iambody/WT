@@ -5,10 +5,7 @@ import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
-import io.vtown.WeiTangApp.ui.afragment.AShopGoodManger;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
-import io.vtown.WeiTangApp.ui.comment.order.AShopOrderManager;
-import io.vtown.WeiTangApp.ui.comment.order.AShopPurchaseOrder;
 import io.vtown.WeiTangApp.ui.title.APay;
 import io.vtown.WeiTangApp.ui.title.AReturnDetail;
 import io.vtown.WeiTangApp.ui.title.mynew.ANew;
@@ -120,35 +117,35 @@ public class MyReceiver extends BroadcastReceiver {
                     break;
                 case Constants.SOURCE_TYPE_ORDER:// 订单
                     switch (action) {
-                        case Constants.ACTION_PT_ORDER://普通下单
-                            Intent shopOrderIntent = new Intent(context,
-                                    AShopOrderManager.class);
-                            //shopOrderIntent.putExtra("order_stutas", 3);
-                            shopOrderIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            context.startActivity(shopOrderIntent);
-                            break;
-                        case Constants.ACTION_CG_ORDER://采购下单
-                            Intent shopGoodIntent = new Intent(context,
-                                    AShopOrderManager.class);
-                            shopGoodIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            context.startActivity(shopGoodIntent);
-                            break;
-                        case Constants.ACTION_TO_PAY://付款
-                            Intent shopOrderIntent6 = new Intent(context,
-                                    AShopOrderManager.class);
-                            shopOrderIntent6.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            context.startActivity(shopOrderIntent6);
-                            break;
-                        case Constants.ACTION_CG_SEND://采购订单发货
-                            Intent shopGoodIntent1 = new Intent(context,
-                                    AShopPurchaseOrder.class);
-                            shopGoodIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            context.startActivity(shopGoodIntent1);
-                            break;
+//                        case Constants.ACTION_PT_ORDER://普通下单
+//                            Intent shopOrderIntent = new Intent(context,
+//                                    AShopOrderManager.class);
+//                            //shopOrderIntent.putExtra("order_stutas", 3);
+//                            shopOrderIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            context.startActivity(shopOrderIntent);
+//                            break;
+//                        case Constants.ACTION_CG_ORDER://采购下单
+//                            Intent shopGoodIntent = new Intent(context,
+//                                    AShopOrderManager.class);
+//                            shopGoodIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            context.startActivity(shopGoodIntent);
+//                            break;
+//                        case Constants.ACTION_TO_PAY://付款
+//                            Intent shopOrderIntent6 = new Intent(context,
+//                                    AShopOrderManager.class);
+//                            shopOrderIntent6.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            context.startActivity(shopOrderIntent6);
+//                            break;
+//                        case Constants.ACTION_CG_SEND://采购订单发货
+//                            Intent shopGoodIntent1 = new Intent(context,
+//                                    AShopPurchaseOrder.class);
+//                            shopGoodIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            context.startActivity(shopGoodIntent1);
+//                            break;
                         case Constants.ACTION_PT_SEND://普通订单发货
 //					Intent shopOrderIntent1 = new Intent(context,
 //							AShopOderManage.class);
@@ -161,27 +158,27 @@ public class MyReceiver extends BroadcastReceiver {
                                     | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             context.startActivity(shopOrderIntent1);
                             break;
-                        case Constants.ACTION_CG_REFUND://采购订单同意退款
-                            Intent shopOrderIntent2 = new Intent(context,
-                                    AShopPurchaseOrder.class);
-                            shopOrderIntent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            context.startActivity(shopOrderIntent2);
-                            break;
-                        case Constants.ACTION_PT_REFUND://普通订单同意退款
-                            Intent shopOrderIntent3 = new Intent(context,
-                                    ACenterMyOrder.class);
-                            shopOrderIntent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            context.startActivity(shopOrderIntent3);
-                            break;
-                        case Constants.ACTION_CG_UNREFUND://采购订单拒绝退款
-                            Intent shopOrderIntent4 = new Intent(context,
-                                    AShopPurchaseOrder.class);
-                            shopOrderIntent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            context.startActivity(shopOrderIntent4);
-                            break;
+//                        case Constants.ACTION_CG_REFUND://采购订单同意退款
+//                            Intent shopOrderIntent2 = new Intent(context,
+//                                    AShopPurchaseOrder.class);
+//                            shopOrderIntent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            context.startActivity(shopOrderIntent2);
+//                            break;
+//                        case Constants.ACTION_PT_REFUND://普通订单同意退款
+//                            Intent shopOrderIntent3 = new Intent(context,
+//                                    ACenterMyOrder.class);
+//                            shopOrderIntent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            context.startActivity(shopOrderIntent3);
+//                            break;
+//                        case Constants.ACTION_CG_UNREFUND://采购订单拒绝退款
+//                            Intent shopOrderIntent4 = new Intent(context,
+//                                    AShopPurchaseOrder.class);
+//                            shopOrderIntent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//                                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            context.startActivity(shopOrderIntent4);
+//                            break;
 
                         case Constants.ACTION_PT_UNREFUND://采购订单拒绝退款
                             Intent shopOrderIntent5 = new Intent(context,

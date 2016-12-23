@@ -141,19 +141,13 @@
             android:name=".ui.AExitNull"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.ui.AShop"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
 
         <activity
             android:name=".ui.ui.ASouSouGood"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.ui.ASouSouShop"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.comment.ACommentList"
             android:launchMode="singleTask"
@@ -182,18 +176,10 @@
             android:exported="true"
             android:launchMode="singleTop"/>
 
-        <activity
-            android:name=".ui.title.shop.ABrandDaiLi"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
 
-        <activity
-            android:name=".ui.title.shop.addgood.ANewAddGood"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".ui.title.shop.addgood.AAddGoodRule"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
+
+
         <activity
             android:name=".ui.afragment.AShopGoodManger"
             android:launchMode="singleTask"
@@ -309,21 +295,14 @@
         <activity
             android:name=".ui.title.loginregist.AInviteAndApprove"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.odermanger.AOderDetail"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.odermanger.ADaifaOrderModify"
-            android:screenOrientation="portrait"></activity>
+
+
         <!--<activity
             android:name=".ui.title.shop.odermanger.ADaifaSendOut"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>-->
-        <activity
-            android:name=".ui.title.shop.odermanger.ADaifuOrderModify"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.title.ABrandJoin"
             android:launchMode="singleTask"
@@ -347,10 +326,7 @@
             android:name=".ui.title.account.ACashierDesk"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.addgood.AGoodPreview"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.title.center.wallet.ASelectBank"
             android:screenOrientation="portrait"></activity>
@@ -371,9 +347,7 @@
             android:name=".ui.title.center.myshow.AMyShowDataSet"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.addgood.AAddGoodCategory"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.title.center.set.AEditAddress"
             android:screenOrientation="portrait"></activity>
@@ -423,9 +397,7 @@
             android:name=".ui.ui.ALoadAd"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.odermanger.ASeleteLogistics"
-            android:screenOrientation="portrait"></activity>
+
 
 
         <activity
@@ -436,10 +408,7 @@
             android:name=".ui.title.center.myinvitecode.AMyInviteCode"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.purchase.APurchaseDetail"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.comment.im.AChatInf"
             android:launchMode="singleTask"
@@ -480,10 +449,7 @@
             android:name=".ui.title.center.myorder.ACenterMyOrderNoPayDetail"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.odermanger.AEditGoodPrice"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.ui.ANewHome"
             android:launchMode="singleTask"
@@ -502,17 +468,12 @@
             android:screenOrientation="portrait"></activity>
 
 
-        <activity
-            android:name=".ui.title.shop.odermanger.AModifyDeliveryAddress"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.comment.im.AChatLoad"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.purchase.APurchaseNoPayDetail"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.title.mynew.ANewInf"
             android:launchMode="singleTask"
@@ -530,10 +491,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
 
-        <activity
-            android:name=".ui.title.shop.goodmanger.AAlterBrandNumber"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.ANull"
             android:launchMode="singleTask"
@@ -547,28 +505,19 @@
             android:name=".ui.comment.order.AShopOrderManager"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.goodmanger.ABrandNumberEdit"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.comment.order.AShopPurchaseOrder"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.title.shop.ABrandList"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".comment.view.select_pic.PicSelActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             ></activity>
 
-        <activity
-            android:name=".ui.title.shop.goodmanger.ANewGoodMangerEdit"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".ui.comment.AShopGoodSou"
             android:launchMode="singleTask"
