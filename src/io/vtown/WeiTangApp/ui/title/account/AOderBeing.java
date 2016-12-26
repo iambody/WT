@@ -150,6 +150,7 @@ public class AOderBeing extends ATitleBase {
     private LinearLayout ll_oderbeing_real_thing_insurance;
     private ImageView iv_oderbeing_real_thing_insurance_status;
     private ImageView oderbeing_insurance_iv;
+    private TextView oderbeing_insurance_price;
 
     @Override
     protected void InItBaseView() {
@@ -247,6 +248,7 @@ public class AOderBeing extends ATitleBase {
     }
 
     private void IBase() {
+        oderbeing_insurance_price= (TextView) findViewById(R.id.oderbeing_insurance_price);
         oderbeing_note_ed = (EditText) findViewById(R.id.oderbeing_note_ed);
         oderbering_view = findViewById(R.id.oderbering_view);
 
@@ -414,6 +416,8 @@ public class AOderBeing extends ATitleBase {
         if (!StrUtils.isEmpty(mBdComment.getCouponsNum())) {
             StrUtils.SetTxt(oderbeing_coupons_nameprice, mBdComment.getCouponsNum() + "张可用卡券");
         }
+
+        StrUtils.SetTxt(oderbeing_insurance_price,mBdComment.getInsurance()/100+"元");
         oderAp.FrashData(mBdComment.getList());
         // 判断地址数据是否为空
         addressBldComment = mBdComment.getAddress();

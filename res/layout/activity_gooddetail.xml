@@ -566,6 +566,7 @@
 
 
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/good_detail_bottom_layout"
         android:layout_width="match_parent"

@@ -148,18 +148,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="正品保险"
+                        android:text="@string/renzheng_zhengpin"
                         android:textSize="@dimen/oderbeing_buyer_txt_size" />
-                      <ImageView
-                          android:id="@+id/oderbeing_insurance_iv"
-                          android:layout_width="@dimen/ui_20_dip"
-                          android:layout_height="@dimen/ui_20_dip"
-                          android:padding="@dimen/ui_3_dip"
-                          android:src="@drawable/wenhao"
-                          android:layout_gravity="center_vertical"
-                          android:clickable="true"
 
-                          android:layout_marginLeft="@dimen/ui_17_dip"/>
+                    <TextView
+                        android:id="@+id/oderbeing_insurance_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/app_gray"
+                        android:layout_marginLeft="@dimen/ui_20_dip"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/oderbeing_buyer_txt_size"
+                        />
+                    <ImageView
+                        android:id="@+id/oderbeing_insurance_iv"
+                        android:layout_width="@dimen/ui_20_dip"
+                        android:layout_height="@dimen/ui_20_dip"
+                        android:padding="@dimen/ui_3_dip"
+                        android:src="@drawable/wenhao"
+                        android:layout_gravity="center_vertical"
+                        android:clickable="true"
+
+                        android:layout_marginLeft="@dimen/ui_10_dip"/>
                     <TextView
 
                         android:layout_width="0dp"

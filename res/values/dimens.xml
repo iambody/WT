@@ -657,6 +657,7 @@
     <dimen name="add_new_show_edittext_height">80dp</dimen>
     <dimen name="ui_3_dip">3dp</dimen>
     <dimen name="ui_17_dip">17dp</dimen>
+    <dimen name="ui_19_dip">19dp</dimen>
 
 
 </resources>
