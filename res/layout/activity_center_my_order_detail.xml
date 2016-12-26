@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_bg"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include layout="@layout/titlebar" />
 
@@ -11,18 +11,18 @@
         android:id="@+id/center_my_order_detail_outlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scrollbars="none"
-            android:layout_weight="1" >
+            android:layout_weight="1"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <include
                     android:id="@+id/center_my_order_address"
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="vertical"
-                    android:visibility="visible" >
+                    android:visibility="visible">
 
                     <View
                         android:layout_width="match_parent"
@@ -76,6 +76,81 @@
                         android:visibility="visible" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/ll_center_my_order_order_note_insurance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_center_my_order_order_insurance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="8dp">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="正品保险："
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/order_list_good_number" />
+
+                        <TextView
+                            android:id="@+id/tv_center_my_order_order_insurance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/order_list_good_number" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/line_insurance_note"
+                        style="@style/line_left2" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_center_my_order_order_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="8dp">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="备注留言："
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/order_list_good_number" />
+
+                        <TextView
+                            android:id="@+id/tv_center_my_order_order_note"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/order_list_good_number" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/insulate_view_height" />
@@ -84,13 +159,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:id="@+id/rl_relation_seller"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/order_detail_layout_padding" >
+                        android:padding="@dimen/order_detail_layout_padding">
 
                         <TextView
                             android:id="@+id/tv_center_my_order_shop_name"
@@ -101,18 +176,18 @@
 
                         <ImageView
                             android:layout_width="14dp"
-                            android:src="@drawable/ic_tiaozhuan_nor"
-                            android:visibility="gone"
-                            android:layout_toRightOf="@id/tv_center_my_order_shop_name"
+                            android:layout_height="14dp"
                             android:layout_marginLeft="10dp"
-                            android:layout_height="14dp" />
+                            android:layout_toRightOf="@id/tv_center_my_order_shop_name"
+                            android:src="@drawable/ic_tiaozhuan_nor"
+                            android:visibility="gone" />
 
                         <LinearLayout
                             android:id="@+id/ll_center_my_order_contact_seller"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -136,20 +211,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
                         android:id="@+id/lv_center_my_order_goods"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:cacheColorHint="#00000000"
-                        android:dividerHeight="3dp"
                         android:divider="@color/white"
+                        android:dividerHeight="3dp"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:listSelector="#00000000" >
-                    </io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
-
+                        android:listSelector="#00000000"></io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
 
 
                     <LinearLayout
@@ -157,23 +230,23 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:padding="@dimen/order_detail_layout_padding" >
+                        android:padding="@dimen/order_detail_layout_padding">
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="match_parent"
                             android:layout_centerVertical="true"
+                            android:layout_weight="1"
                             android:background="@color/white"
                             android:gravity="center_vertical|right"
                             android:orientation="horizontal"
-                            android:visibility="visible" >
+                            android:visibility="visible">
 
                             <io.vtown.WeiTangApp.comment.view.DotView
                                 android:id="@+id/dot_view"
                                 android:layout_width="@dimen/order_detail_dot_size"
-                                android:visibility="gone"
-                                android:layout_height="@dimen/order_detail_dot_size" />
+                                android:layout_height="@dimen/order_detail_dot_size"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/tv_center_my_order_good_count"
@@ -188,9 +261,9 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
                             android:layout_marginLeft="10dp"
-                            android:orientation="horizontal" >
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -220,28 +293,30 @@
                 <LinearLayout
                     android:id="@+id/ll_center_my_order_get_integral_tips"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:visibility="gone"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/app_bg"
-                        android:layout_height="@dimen/insulate_view_height" />
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg" />
 
                     <TextView
                         android:id="@+id/tv_center_my_order_get_integral_tips"
                         android:layout_width="match_parent"
-                        android:text="温馨提示："
+                        android:layout_height="wrap_content"
                         android:paddingBottom="8dp"
-                        android:textColor="@color/grey"
-                        android:textSize="@dimen/order_list_good_number"
                         android:paddingLeft="10dp"
                         android:paddingTop="8dp"
-                        android:layout_height="wrap_content" />
+                        android:text="温馨提示："
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/order_list_good_number" />
 
                 </LinearLayout>
+
+
 
 
                 <LinearLayout
@@ -250,23 +325,22 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="vertical"
-                    android:visibility="gone" >
+                    android:visibility="gone">
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/insulate_view_height"
-                        android:background="@color/app_bg"
-                        />
+                        android:background="@color/app_bg" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
+                        android:paddingBottom="@dimen/order_detail_layout_top_bottom_padding"
                         android:paddingLeft="@dimen/order_detail_layout_padding"
                         android:paddingRight="@dimen/order_detail_layout_padding"
-                        android:paddingBottom="@dimen/order_detail_layout_top_bottom_padding"
-                        android:paddingTop="@dimen/order_detail_layout_top_bottom_padding" >
+                        android:paddingTop="@dimen/order_detail_layout_top_bottom_padding">
 
                         <io.vtown.WeiTangApp.comment.view.DotView
                             android:id="@+id/dot_view_1"
@@ -283,16 +357,18 @@
                             android:textColor="@color/grey"
                             android:textSize="@dimen/comment_label_txtsize" />
                     </LinearLayout>
+
                     <View style="@style/line_left2" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingTop="@dimen/order_detail_layout_top_bottom_padding"
                         android:paddingBottom="@dimen/order_detail_layout_top_bottom_padding"
                         android:paddingLeft="@dimen/order_detail_layout_padding"
-                        android:paddingRight="@dimen/order_detail_layout_padding" >
+                        android:paddingRight="@dimen/order_detail_layout_padding"
+                        android:paddingTop="@dimen/order_detail_layout_top_bottom_padding">
 
                         <io.vtown.WeiTangApp.comment.view.DotView
                             android:id="@+id/dot_view_2"
@@ -309,7 +385,6 @@
                             android:textSize="@dimen/comment_label_txtsize" />
                     </LinearLayout>
                 </LinearLayout>
-
 
 
                 <View style="@style/line1" />
@@ -336,21 +411,20 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:listSelector="#00000000"
-                    android:visibility="gone" >
-                </io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
+                    android:visibility="gone"></io.vtown.WeiTangApp.comment.view.custom.CompleteListView>
             </LinearLayout>
         </ScrollView>
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/ll_center_my_order_buy_agian_and_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_center_my_order_delayreceive"
@@ -386,7 +460,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_center_my_order_get_integral"
@@ -439,7 +513,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_center_my_order_to_pay"

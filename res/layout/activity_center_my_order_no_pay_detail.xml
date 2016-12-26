@@ -63,6 +63,54 @@
                         android:visibility="visible" />
                 </LinearLayout>
 
+
+                <LinearLayout
+                    android:id="@+id/ll_center_my_no_pay_order_note_insurance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/insulate_view_height"
+                        android:background="@color/app_bg" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_center_my_no_pay_order_order_insurance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="8dp">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="正品保险："
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/order_list_good_number" />
+
+                        <TextView
+                            android:id="@+id/tv_center_my_no_pay_order_insurance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/order_list_good_number" />
+
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/insulate_view_height" />

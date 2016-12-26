@@ -144,6 +144,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private Bundle GetBund() {
         Bundle mybundle = new Bundle();
         mybundle.putInt("screenwidth", screenWidth);
+        mybundle.putInt("screenheight", screenHeight);
         return mybundle;
     }
 

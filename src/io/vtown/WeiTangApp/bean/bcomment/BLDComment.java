@@ -279,6 +279,17 @@ public class BLDComment extends BBase {
 	// private String description;//":"成为kobe的二级代理商"
 
 
+
+	private String order_note;//"order_note": "陈光标哈哈",
+
+	public String getOrder_note() {
+		return order_note;
+	}
+
+	public void setOrder_note(String order_note) {
+		this.order_note = order_note;
+	}
+
 	public String getShow_count() {
 		return show_count;
 	}

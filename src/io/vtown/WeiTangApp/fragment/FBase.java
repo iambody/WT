@@ -82,6 +82,7 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
     public abstract void InitCreate(Bundle d);
 
     protected int screenWidth;
+    protected int screenHeight;
     //fragment传递出去的包含在intent里面的bean
     protected String BaseKey_Bean = "abasebeankey";
 
@@ -93,6 +94,7 @@ public abstract class FBase extends Fragment implements IHttpResult<BComment> {
         Bundle Mbundle = getArguments();
         if (Mbundle != null && Mbundle.containsKey("screenwidth")) {
             screenWidth = Mbundle.getInt("screenwidth");
+            screenHeight = Mbundle.getInt("screenheight");
         }
 
         InitCreate(getArguments());

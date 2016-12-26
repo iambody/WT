@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.RoundAngleImageView;
+import io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteGridView;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.CustHScrollView;
@@ -73,9 +75,11 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     @BindView(R.id.f_sort_new_horizontalscrollview_lay)
     LinearLayout fSortNewHorizontalscrollviewLay;
     @BindView(R.id.fragment_main_new_sort_data_layout)
-    LinearLayout fragment_main_new_sort_data_layout;
+    RelativeLayout fragment_main_new_sort_data_layout;
+    @BindView(R.id.rl_to_sort_top)
+    RelativeLayout rl_to_sort_top;
     @BindView(R.id.swipe_target)
-    ScrollView swipeTarget;
+    ScrollDistanceScrollView swipeTarget;
     @BindView(R.id.swipeToLoadLayout)
     SwipeToLoadLayout swipeToLoadLayout;
     //banner ListView
@@ -130,6 +134,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     }
 
     private void IView() {
+
         fragment_main_new_sort_nodata_layout = BaseView.findViewById(R.id.fragment_main_new_sort_nodata_layout);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
@@ -145,6 +150,21 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                 IData(INITIALIZE);
             }
         });
+
+        swipeTarget
+                .SetOnGetDistanceListener(new ScrollDistanceScrollView.OnGetDistanceListener() {
+
+                    @Override
+                    public void getDistance(int distance) {
+                        if (distance < screenHeight) {
+                            rl_to_sort_top.setVisibility(View.GONE);
+
+                        } else {
+                            rl_to_sort_top.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+
     }
 
     private void IData(int loadtype) {
@@ -449,12 +469,14 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
             if (0 == position) {
                 fSortNewHorizontalscrollviewLay.setVisibility(View.GONE);//全部就不显示二级分类
+                swipeTarget.smoothScrollTo(0,0);
                 current_category_id = "0";
                 mPage = 1;
                 IData(INITIALIZE);
                 current_type = TYPE_ALL;
             } else {
                 current_category_id = MainSortCategory.get(position - 1).getId();
+                swipeTarget.smoothScrollTo(0,0);
                 mPage = 1;
                 IData(INITIALIZE);
                 fSortNewHorizontalscrollviewLay.setVisibility(View.VISIBLE);
@@ -464,16 +486,18 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         }
     }
 
-    @OnClick({R.id.f_main_new_new_sort_sou})
+    @OnClick({R.id.f_main_new_new_sort_sou,R.id.rl_to_sort_top})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.f_main_new_new_sort_sou:
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ASouSouGood.class));
                 break;
 
-            case R.id.fragment_main_new_sort_nodata_layout:
-                IData(INITIALIZE);
+            case R.id.rl_to_sort_top:
+                swipeTarget.fullScroll(View.FOCUS_UP);
                 break;
+
+
         }
     }
 

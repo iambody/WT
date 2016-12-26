@@ -142,6 +142,7 @@ public class ACenterMyOrder extends ATitleBase implements
     private TextView mTitle;
     private RefreshLayout fragment_center_order_refrash;
     private int SelectPosition = -1;
+    private TextView tv_center_order_is_refund;
 
     // @Override
     // public void InItView() {
@@ -258,6 +259,9 @@ public class ACenterMyOrder extends ATitleBase implements
                     .findViewById(R.id.ll_center_order_no_take);
             LinearLayout ll_center_order_refund_and_arbitrament = (LinearLayout) contentView
                     .findViewById(R.id.ll_center_order_refund_and_arbitrament);
+
+            LinearLayout ll_center_order_is_refund = (LinearLayout) contentView.findViewById(R.id.ll_center_order_is_refund);
+
             LinearLayout ll_center_order_over = (LinearLayout) contentView
                     .findViewById(R.id.ll_center_order_over);
 
@@ -271,6 +275,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     .findViewById(R.id.tv_center_order_no_take);
             tv_center_order_refund_and_arbitrament = (TextView) contentView
                     .findViewById(R.id.tv_center_order_refund_and_arbitrament);
+            tv_center_order_is_refund = (TextView) contentView.findViewById(R.id.tv_center_order_is_refund);
             tv_center_order_over = (TextView) contentView
                     .findViewById(R.id.tv_center_order_over);
 
@@ -281,6 +286,7 @@ public class ACenterMyOrder extends ATitleBase implements
             ll_center_order_paid.setOnClickListener(this);
             ll_center_order_no_take.setOnClickListener(this);
             ll_center_order_refund_and_arbitrament.setOnClickListener(this);
+            ll_center_order_is_refund.setOnClickListener(this);
             ll_center_order_over.setOnClickListener(this);
 
             gray_view.setOnClickListener(this);
@@ -320,6 +326,8 @@ public class ACenterMyOrder extends ATitleBase implements
         tv_center_order_no_take.setTextColor(getResources().getColor(
                 R.color.grey));
         tv_center_order_refund_and_arbitrament.setTextColor(getResources()
+                .getColor(R.color.grey));
+        tv_center_order_is_refund.setTextColor(getResources()
                 .getColor(R.color.grey));
         tv_center_order_over
                 .setTextColor(getResources().getColor(R.color.grey));
@@ -1032,7 +1040,7 @@ public class ACenterMyOrder extends ATitleBase implements
             //LogUtils.i("**************good--id****************" + data.getId());
             int order_status = Integer.parseInt(data.getOrder_status());
             ControlView(myItem, data, order_status);
-            if(PClose == order_status || PCancel == order_status || PAgreeTuiKuan == order_status){
+            if(PClose == order_status || PCancel == order_status || PAgreeTuiKuan == order_status || PTuikuanSuccess1 == order_status || PTuikuanSuccess2 == order_status){
                 myItem.center_order_remove.setVisibility(View.VISIBLE);
             }else{
                 myItem.center_order_remove.setVisibility(View.GONE);
@@ -1924,7 +1932,6 @@ public class ACenterMyOrder extends ATitleBase implements
                         //PromptManager.ShowCustomToast(BaseContext, "暂无订单");
                         switch (Ket_Tage) {
 
-
                             case PAll:
                                 ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_all));
                                 break;
@@ -1939,6 +1946,9 @@ public class ACenterMyOrder extends ATitleBase implements
                                 break;
                             case PTuiKuan:
                                 ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_tuikuan));
+                                break;
+                            case PAgreeTuiKuan:
+                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_yituikuan));
                                 break;
                             case PClose:
                                 ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_over));
@@ -2183,6 +2193,12 @@ public class ACenterMyOrder extends ATitleBase implements
             case R.id.ll_center_order_refund_and_arbitrament:
                 categoryOperate("退款/仲裁", tv_center_order_refund_and_arbitrament,
                         PTuiKuan);
+                break;
+
+            case R.id.ll_center_order_is_refund://已退款
+                categoryOperate("已退款", tv_center_order_is_refund,
+                        PAgreeTuiKuan);
+
                 break;
 
             case R.id.ll_center_order_over:

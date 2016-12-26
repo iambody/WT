@@ -138,6 +138,10 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 	private LinearLayout ll_center_order_no_pay_used_balance_and_coupons;
 	private TextView tv_center_order_no_pay_used_coupons;
 	private TextView tv_center_my_no_pay_order_post_price;
+	private LinearLayout ll_center_my_no_pay_order_note_insurance;
+	private LinearLayout ll_center_my_no_pay_order_order_insurance;
+	private TextView tv_center_my_no_pay_order_insurance;
+
 
 	@Override
 	protected void InItBaseView() {
@@ -174,6 +178,14 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 		
 		ll_center_order_no_pay_used_balance_and_coupons = (LinearLayout) findViewById(R.id.ll_center_order_no_pay_used_balance_and_coupons);
 		tv_center_order_no_pay_used_coupons = (TextView) findViewById(R.id.tv_center_order_no_pay_used_coupons);
+
+		//正品险
+		ll_center_my_no_pay_order_note_insurance = (LinearLayout) findViewById(R.id.ll_center_my_no_pay_order_note_insurance);
+		ll_center_my_no_pay_order_order_insurance = (LinearLayout) findViewById(R.id.ll_center_my_no_pay_order_order_insurance);
+		tv_center_my_no_pay_order_insurance = (TextView) findViewById(R.id.tv_center_my_no_pay_order_insurance);
+
+
+
 
 		ImageView iv_right_arrow = (ImageView) center_my_order_no_pay_address
 				.findViewById(R.id.iv_right_arrow);
@@ -231,6 +243,19 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 			
 		}else{
 			ll_center_order_no_pay_used_balance_and_coupons.setVisibility(View.GONE);
+		}
+
+		if(!StrUtils.isEmpty(data2.getOrder_note()) || !data2.getInsurance().equals("0")){
+			ll_center_my_no_pay_order_note_insurance.setVisibility(View.VISIBLE);
+
+			if(!data2.getInsurance().equals("0")){
+				ll_center_my_no_pay_order_order_insurance.setVisibility(View.VISIBLE);
+				StrUtils.SetTxt(tv_center_my_no_pay_order_insurance,StrUtils.SetTextForMony(data2.getInsurance()));
+			}else{
+				ll_center_my_no_pay_order_order_insurance.setVisibility(View.GONE);
+			}
+		}else{
+			ll_center_my_no_pay_order_note_insurance.setVisibility(View.GONE);
 		}
 
 //		StrUtils.SetTxt(
@@ -510,7 +535,11 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 						.findViewById(R.id.item_fragment_center_order_no_pay_detail_outside);
 				centerOrderNoPayInside.ll_center_my_order_no_pay_contact_seller = (LinearLayout) convertView
 						.findViewById(R.id.ll_center_my_order_no_pay_contact_seller);
+				centerOrderNoPayInside.ll_center_my_no_pay_order_note = (LinearLayout) convertView.findViewById(R.id.ll_center_my_no_pay_order_note);
+				centerOrderNoPayInside.tv_center_my_no_pay_order_note = (TextView)convertView.findViewById(R.id.tv_center_my_no_pay_order_note);
+				centerOrderNoPayInside.no_pay_line = convertView.findViewById(R.id.no_pay_line);
 				convertView.setTag(centerOrderNoPayInside);
+
 			} else {
 				centerOrderNoPayInside = (CenterOrderNoPayInsideItem) convertView
 						.getTag();
@@ -523,6 +552,16 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 					secoud_datas.get(position).getGoods());
 			centerOrderNoPayInside.item_fragment_center_order_no_pay_detail_outside
 					.setAdapter(centerOrderNoPayInnerMost);
+
+			if(StrUtils.isEmpty(secoud_datas.get(position).getOrder_note())){
+				centerOrderNoPayInside.ll_center_my_no_pay_order_note.setVisibility(View.GONE);
+				centerOrderNoPayInside.no_pay_line.setVisibility(View.GONE);
+			}else{
+				centerOrderNoPayInside.ll_center_my_no_pay_order_note.setVisibility(View.VISIBLE);
+				centerOrderNoPayInside.no_pay_line.setVisibility(View.VISIBLE);
+				StrUtils.SetTxt(centerOrderNoPayInside.tv_center_my_no_pay_order_note,secoud_datas.get(position).getOrder_note());
+			}
+
 			final int myItemPosition = position;
 			// 点击商品item跳转商品详情页面
 			centerOrderNoPayInside.item_fragment_center_order_no_pay_detail_outside
@@ -665,6 +704,9 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 		public TextView tv_center_order_no_pay_detail_seller_name;// 买家名称
 		public CompleteListView item_fragment_center_order_no_pay_detail_outside;// 第二层的订单列表
 		public LinearLayout ll_center_my_order_no_pay_contact_seller;// 联系卖家
+		public LinearLayout ll_center_my_no_pay_order_note;
+		public TextView tv_center_my_no_pay_order_note;
+		public View no_pay_line;
 	}
 
 	/**

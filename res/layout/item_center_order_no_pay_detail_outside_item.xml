@@ -46,6 +46,40 @@
         android:layout_height="wrap_content"
         android:dividerHeight="3dp"
         android:divider="@color/white" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_center_my_no_pay_order_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:paddingBottom="8dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="8dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="备注留言："
+            android:textColor="@color/grey"
+            android:textSize="@dimen/order_list_good_number" />
+
+        <TextView
+            android:id="@+id/tv_center_my_no_pay_order_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/order_list_good_number" />
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/no_pay_line"
+        style="@style/line_left2"
+        />
     
    
     

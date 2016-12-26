@@ -66,6 +66,24 @@ public class BDCenterOrderDetail extends BBase {
 	private String point_time;//"point_time": 1478248638,
 	private int advance_point;//"advance_point": 1,
 	private int is_have_point;
+	private String order_note;//"order_note": "12345678901234567890123456789012345678901234567890",
+	private String insurance;//"insurance": 0,
+
+	public String getOrder_note() {
+		return order_note;
+	}
+
+	public void setOrder_note(String order_note) {
+		this.order_note = order_note;
+	}
+
+	public String getInsurance() {
+		return insurance;
+	}
+
+	public void setInsurance(String insurance) {
+		this.insurance = insurance;
+	}
 
 	public int getIs_have_point() {
 		return is_have_point;

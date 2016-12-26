@@ -26,10 +26,25 @@ public class BDCenterOrderNoPayDetail extends BBase {
 	private String money_paid;//"money_paid": "156",
 	private List<BLDComment> son_order = new ArrayList<BLDComment>();//"son_order":
 	private String used_coupons_money;//"used_coupons_money": 0,
-	
-	
-	
-	
+	private String insurance;//"insurance": 0,
+	private String order_note;//"order_note":
+
+	public String getInsurance() {
+		return insurance;
+	}
+
+	public void setInsurance(String insurance) {
+		this.insurance = insurance;
+	}
+
+	public String getOrder_note() {
+		return order_note;
+	}
+
+	public void setOrder_note(String order_note) {
+		this.order_note = order_note;
+	}
+
 	public String getUsed_coupons_money() {
 		return used_coupons_money;
 	}

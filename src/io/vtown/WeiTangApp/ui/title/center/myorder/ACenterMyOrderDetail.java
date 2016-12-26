@@ -55,6 +55,8 @@ import android.widget.TextView.BufferType;
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
+import org.w3c.dom.Text;
+
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
@@ -292,6 +294,12 @@ public class ACenterMyOrderDetail extends ATitleBase {
     private LinearLayout ll_center_my_order_get_integral_tips;
     private TextView tv_center_my_order_get_integral_tips;
     private RelativeLayout rl_relation_seller;
+    private LinearLayout ll_center_my_order_order_note_insurance;
+    private LinearLayout ll_center_my_order_order_insurance;
+    private LinearLayout ll_center_my_order_order_note;
+    private TextView tv_center_my_order_order_insurance;
+    private TextView tv_center_my_order_order_note;
+    private View line_insurance_note;
 
     @Override
     protected void InItBaseView() {
@@ -446,6 +454,14 @@ public class ACenterMyOrderDetail extends ATitleBase {
         tv_center_order_used_coupons = (TextView) findViewById(R.id.tv_center_order_used_coupons);
         line_left_center_order = findViewById(R.id.line_left_center_order);
 
+        //正品险和备注留言
+        ll_center_my_order_order_note_insurance = (LinearLayout) findViewById(R.id.ll_center_my_order_order_note_insurance);
+        ll_center_my_order_order_insurance = (LinearLayout) findViewById(R.id.ll_center_my_order_order_insurance);
+        ll_center_my_order_order_note = (LinearLayout) findViewById(R.id.ll_center_my_order_order_note);
+        tv_center_my_order_order_insurance = (TextView) findViewById(R.id.tv_center_my_order_order_insurance);
+        tv_center_my_order_order_note = (TextView) findViewById(R.id.tv_center_my_order_order_note);
+        line_insurance_note = findViewById(R.id.line_insurance_note);
+
 
         tv_center_my_order_is_delay = (TextView) findViewById(R.id.tv_center_my_order_is_delay);
         rl_relation_seller = (RelativeLayout) findViewById(R.id.rl_relation_seller);
@@ -581,6 +597,27 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
         StrUtils.SetColorsTxt(BaseContext, tv_center_order_used_balance, R.color.app_gray, "使用余额：", String.format("%1$s元", StrUtils.SetTextForMony(order_detail2.getBalance_price())));
         StrUtils.SetColorsTxt(BaseContext, tv_center_order_used_coupons, R.color.app_gray, "使用卡券：", String.format("%1$s元", StrUtils.SetTextForMony(order_detail2.getCoupons_price())));
+
+        if(!StrUtils.isEmpty(order_detail2.getOrder_note()) || !order_detail2.getInsurance().equals("0")){
+            ll_center_my_order_order_note_insurance.setVisibility(View.VISIBLE);
+            if(!StrUtils.isEmpty(order_detail2.getOrder_note())){
+                ll_center_my_order_order_note.setVisibility(View.VISIBLE);
+                StrUtils.SetTxt(tv_center_my_order_order_note,order_detail2.getOrder_note());
+            }else{
+                ll_center_my_order_order_note.setVisibility(View.GONE);
+                line_insurance_note.setVisibility(View.GONE);
+            }
+
+            if(!order_detail2.getInsurance().equals("0")){
+                ll_center_my_order_order_insurance.setVisibility(View.VISIBLE);
+                StrUtils.SetTxt(tv_center_my_order_order_insurance,StrUtils.SetTextForMony(order_detail2.getInsurance()));
+            }else{
+                ll_center_my_order_order_insurance.setVisibility(View.GONE);
+                line_insurance_note.setVisibility(View.GONE);
+            }
+        }else{
+            ll_center_my_order_order_note_insurance.setVisibility(View.GONE);
+        }
         //显示使用余额和卡券，只有金额不为0的时候才显示
         if (0 != Integer.parseInt(order_detail2.getBalance_price()) || 0 != Integer.parseInt(order_detail2.getCoupons_price())) {
             ll_center_order_used_balance_and_coupons.setVisibility(View.VISIBLE);

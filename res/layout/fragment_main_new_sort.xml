@@ -5,117 +5,146 @@
     android:background="@color/app_bg"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/fragment_main_new_sort_data_layout"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/titlebarheingh"
-        android:background="@color/app_fen">
+        <RelativeLayout
+            android:id="@+id/title_layout_sort"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/titlebarheingh"
+            android:background="@color/app_fen">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/shop"
+                android:textColor="@color/white"
+                android:textSize="@dimen/titlebar_size" />
+
+            <ImageView
+                android:id="@+id/f_main_new_new_sort_sou"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/ui_10_dip"
+                android:clickable="true"
+                android:src="@drawable/newhome_sou" />
+        </RelativeLayout>
+
+        <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu
+            android:id="@+id/f_sort_new_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/shop"
-            android:textSize="@dimen/titlebar_size"
-            android:textColor="@color/white" />
+            android:layout_below="@+id/title_layout_sort"
+            android:background="@color/item_bg" />
 
-        <ImageView
-            android:id="@+id/f_main_new_new_sort_sou"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/ui_10_dip"
-            android:clickable="true"
-            android:src="@drawable/newhome_sou" />
-    </RelativeLayout>
-
-    <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu
-        android:id="@+id/f_sort_new_container"
-        android:layout_width="match_parent"
-        android:background="@color/item_bg"
-        android:layout_height="wrap_content" />
-
-    <HorizontalScrollView
-        android:id="@+id/f_sort_new_horizontalscrollview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/item_bg"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:id="@+id/f_sort_new_horizontalscrollview_lay"
+        <HorizontalScrollView
+            android:id="@+id/f_sort_new_horizontalscrollview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/item_bg"
-            android:orientation="horizontal"></LinearLayout>
-    </HorizontalScrollView>
-
-
-    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
-        android:id="@+id/swipeToLoadLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/app_bg">
-
-        <include
-            android:id="@id/swipe_refresh_header"
-            layout="@layout/view_comment_head" />
-
-        <ScrollView
-            android:fadingEdge="none"
-            android:id="@+id/swipe_target"
-            android:layout_width="match_parent"
-            android:scrollbars="none"
-            android:layout_height="match_parent">
+            android:layout_below="@+id/f_sort_new_container"
+            android:scrollbars="none">
 
             <LinearLayout
+                android:id="@+id/f_sort_new_horizontalscrollview_lay"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:background="@color/item_bg"
+                android:orientation="horizontal"></LinearLayout>
+        </HorizontalScrollView>
 
-                <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
-                    android:id="@+id/fragment_main_new_sort_bannerlist"
+
+        <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+            android:id="@+id/swipeToLoadLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_below="@+id/f_sort_new_horizontalscrollview"
+            android:background="@color/app_bg">
+
+            <include
+                android:id="@id/swipe_refresh_header"
+                layout="@layout/view_comment_head" />
+
+
+                <io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView
+                    android:id="@+id/swipe_target"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@color/app_bg"
-                    android:dividerHeight="10dp"
-                    android:layout_marginTop="@dimen/ui_10_dip"
-                    android:scrollbars="none" />
+                    android:layout_height="match_parent"
+                    android:fadingEdge="none"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                            android:id="@+id/fragment_main_new_sort_bannerlist"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/ui_10_dip"
+                            android:divider="@color/app_bg"
+                            android:dividerHeight="10dp"
+                            android:scrollbars="none" />
+
+
+                        <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
+                            android:id="@+id/fragment_main_new_sort_goodslist"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/ui_10_dip"
+                            android:layout_marginRight="@dimen/ui_10_dip"
+                            android:layout_marginTop="@dimen/ui_10_dip"
+                            android:cacheColorHint="@null"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:horizontalSpacing="5dp"
+                            android:listSelector="@null"
+                            android:numColumns="2"
+                            android:verticalSpacing="5dp" />
+
+
+                    </LinearLayout>
+
+
+                </io.vtown.WeiTangApp.comment.view.ScrollDistanceScrollView>
 
 
 
-                <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
-                    android:id="@+id/fragment_main_new_sort_goodslist"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:cacheColorHint="@null"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_marginRight="@dimen/ui_10_dip"
-                    android:layout_marginLeft="@dimen/ui_10_dip"
-                    android:layout_marginTop="@dimen/ui_10_dip"
-                    android:horizontalSpacing="5dp"
-                    android:listSelector="@null"
-                    android:numColumns="2"
-                    android:verticalSpacing="5dp" />
 
-            </LinearLayout>
+            <include
+                android:id="@id/swipe_load_more_footer"
+                layout="@layout/view_comment_foot" />
+        </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
 
-        </ScrollView>
+        <RelativeLayout
+            android:id="@+id/rl_to_sort_top"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/select_show_up"
+            android:padding="10dp"
+            android:visibility="gone">
 
-        <include
-            android:id="@id/swipe_load_more_footer"
-            layout="@layout/view_comment_foot" />
-    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Top"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <include
         android:id="@+id/fragment_main_new_sort_nodata_layout"
