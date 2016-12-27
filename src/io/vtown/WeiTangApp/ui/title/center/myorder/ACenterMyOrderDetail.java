@@ -19,6 +19,7 @@ import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.fragment.FCenterOder;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
@@ -300,6 +301,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
     private TextView tv_center_my_order_order_insurance;
     private TextView tv_center_my_order_order_note;
     private View line_insurance_note;
+    private ImageView iv_center_order_what_is_insurance;
 
     @Override
     protected void InItBaseView() {
@@ -461,6 +463,9 @@ public class ACenterMyOrderDetail extends ATitleBase {
         tv_center_my_order_order_insurance = (TextView) findViewById(R.id.tv_center_my_order_order_insurance);
         tv_center_my_order_order_note = (TextView) findViewById(R.id.tv_center_my_order_order_note);
         line_insurance_note = findViewById(R.id.line_insurance_note);
+        iv_center_order_what_is_insurance = (ImageView) findViewById(R.id.iv_center_order_what_is_insurance);
+        tv_center_my_order_order_insurance.setOnClickListener(this);
+        iv_center_order_what_is_insurance.setOnClickListener(this);
 
 
         tv_center_my_order_is_delay = (TextView) findViewById(R.id.tv_center_my_order_is_delay);
@@ -610,7 +615,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
             if(!order_detail2.getInsurance().equals("0")){
                 ll_center_my_order_order_insurance.setVisibility(View.VISIBLE);
-                StrUtils.SetTxt(tv_center_my_order_order_insurance,StrUtils.SetTextForMony(order_detail2.getInsurance()));
+                StrUtils.SetTxt(tv_center_my_order_order_insurance,"已购买正品保险");
             }else{
                 ll_center_my_order_order_insurance.setVisibility(View.GONE);
                 line_insurance_note.setVisibility(View.GONE);
@@ -1075,6 +1080,15 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ANew.class));
                 break;
+
+            case R.id.tv_center_my_order_order_note:
+            case R.id.iv_center_order_what_is_insurance:
+                PromptManager.SkipActivity(BaseActivity, new Intent(
+                        BaseActivity, AWeb.class).putExtra(
+                        AWeb.Key_Bean,
+                        new BComment(Constants.GoodsInsurance_Url, getResources().getString(R.string.zhengpin_insurance))));
+                break;
+
 
 //            case R.id.rl_relation_seller://查看店铺
 //                BComment bComment = new BComment(order_detail.getSeller_id(), order_detail.getSeller_name());

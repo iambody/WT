@@ -242,8 +242,9 @@ public class ACenterMyOrder extends ATitleBase implements
         menu_data.add(new OrderMenuData("待发货",PYiFu));
         menu_data.add(new OrderMenuData("待收货",PDaiShou));
         menu_data.add(new OrderMenuData("退款/仲裁",PZhongCai));
-        menu_data.add(new OrderMenuData("已取消",PCancel));
         menu_data.add(new OrderMenuData("已完成",PClose));
+        menu_data.add(new OrderMenuData("已取消",PCancel));
+
 
         center_order_container.setMenuItemPaddingLeft(50);
         center_order_container.setMenuItemPaddingRight(50);

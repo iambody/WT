@@ -114,6 +114,13 @@
                             android:textColor="@color/grey"
                             android:textSize="@dimen/order_list_good_number" />
 
+                        <ImageView
+                            android:id="@+id/iv_center_order_what_is_insurance"
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/wenhao"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content" />
+
 
                     </LinearLayout>
 

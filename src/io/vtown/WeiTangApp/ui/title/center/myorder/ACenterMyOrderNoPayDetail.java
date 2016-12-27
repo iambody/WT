@@ -15,6 +15,7 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
@@ -141,6 +142,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 	private LinearLayout ll_center_my_no_pay_order_note_insurance;
 	private LinearLayout ll_center_my_no_pay_order_order_insurance;
 	private TextView tv_center_my_no_pay_order_insurance;
+	private ImageView iv_what_is_insurance;
 
 
 	@Override
@@ -183,8 +185,9 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 		ll_center_my_no_pay_order_note_insurance = (LinearLayout) findViewById(R.id.ll_center_my_no_pay_order_note_insurance);
 		ll_center_my_no_pay_order_order_insurance = (LinearLayout) findViewById(R.id.ll_center_my_no_pay_order_order_insurance);
 		tv_center_my_no_pay_order_insurance = (TextView) findViewById(R.id.tv_center_my_no_pay_order_insurance);
-
-
+		iv_what_is_insurance = (ImageView) findViewById(R.id.iv_what_is_insurance);
+		tv_center_my_no_pay_order_insurance.setOnClickListener(this);
+		iv_what_is_insurance.setOnClickListener(this);
 
 
 		ImageView iv_right_arrow = (ImageView) center_my_order_no_pay_address
@@ -250,7 +253,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 
 			if(!data2.getInsurance().equals("0")){
 				ll_center_my_no_pay_order_order_insurance.setVisibility(View.VISIBLE);
-				StrUtils.SetTxt(tv_center_my_no_pay_order_insurance,StrUtils.SetTextForMony(data2.getInsurance()));
+				StrUtils.SetTxt(tv_center_my_no_pay_order_insurance,"已购买正品保险");
 			}else{
 				ll_center_my_no_pay_order_order_insurance.setVisibility(View.GONE);
 			}
@@ -324,7 +327,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 
 	@Override
 	protected void InitTile() {
-		SetTitleTxt("确认订单");
+		SetTitleTxt("未付款订单");
 		ImageView right_right_iv = (ImageView) findViewById(R.id.right_right_iv);
 		right_right_iv.setVisibility(View.VISIBLE);
 		right_right_iv.setImageDrawable(getResources().getDrawable(
@@ -457,6 +460,14 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
 					ANew.class));
 			break;
+
+			case R.id.tv_center_my_no_pay_order_insurance:
+			case R.id.iv_what_is_insurance:
+				PromptManager.SkipActivity(BaseActivity, new Intent(
+						BaseActivity, AWeb.class).putExtra(
+						AWeb.Key_Bean,
+						new BComment(Constants.GoodsInsurance_Url, getResources().getString(R.string.zhengpin_insurance))));
+				break;
 
 		default:
 			break;
