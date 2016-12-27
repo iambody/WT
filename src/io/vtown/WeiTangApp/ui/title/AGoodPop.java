@@ -245,8 +245,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
      */
     private int IsFristClick = 0;
     // 记录是否上边下边已经点击过了
-    private int UpPostion = -1;
-    private int DownPostion = -1;
+    private int UpPostion = 0;
+    private int DownPostion = 0;
     private int mPostion = 0;
     // 最后一次的点击位置
     private int LastClickItem = 0;
@@ -464,13 +464,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                             id = select_bl.getId();
                             attr_id = select_bl.getAttr_id();
                             String price = et_price.getText().toString().trim();
-                            // if(StrUtils.isEmpty(price)){
-                            // PromptManager.ShowMyToast(pContext, "请输入建议零售价");
-                            //
-                            // }
-
                             sell_price = Float.parseFloat(price) * 100 + "";
-
                         }
                     } else {
                         float sell_priceF = 0;
@@ -531,12 +525,18 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
         pop_purchase_price = (TextView) findViewById(R.id.pop_purchase_price);
         pop_purchase_kucun = (TextView) findViewById(R.id.pop_purchase_kucun);
-        pop_purchase_price.setVisibility(View.GONE);
-        tv_good_integral.setVisibility(View.GONE);
+
+        BDataGood bDataGood = databean.getGoods_attr().get(0);
+        score = bDataGood.getScore();
+        mSell_price = bDataGood.getSell_price();
+        setHeaderData(mSell_price,score);
+//        pop_purchase_price.setVisibility(View.GONE);
+//        tv_good_integral.setVisibility(View.GONE);
 
 
         // 默认显示商品的名字
-        StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
+        StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle() + " "
+                + bDataGood.getAttr_name());
 
         tv_good_standard_lable1 = (TextView) findViewById(R.id.tv_good_standard_lable1);
         tv_good_standard_lable2 = (TextView) findViewById(R.id.tv_good_standard_lable2);
@@ -659,11 +659,12 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                         StrUtils.SetTxt(et_price, "");
                         // aasv_add_sub.setNum(1);
                         //aasv_add_sub.SetMinNumber(1);
-                        pop_purchase_price.setVisibility(View.GONE);
-                        tv_good_integral.setVisibility(View.GONE);
-                        pop_purchase_kucun.setVisibility(View.VISIBLE);
-                        DownPostion = -1;
-                        StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
+//                        pop_purchase_price.setVisibility(View.GONE);
+//                        tv_good_integral.setVisibility(View.GONE);
+                        //pop_purchase_kucun.setVisibility(View.VISIBLE);
+                        DownPostion = 0;
+
+                       // StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
                         break;
                     case 2:// 下边的gradview已经点击过了===》
                         for (int i = 0; i < myUpAdapter.gradItems().size(); i++) {
@@ -681,10 +682,14 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                             PromptManager.ShowMyToast(BaseContext, getString(R.string.good_pop_select_good_no_stroe));
                         }
                         //
-                        IFView();
+
                         break;
 
+
+
                 }
+
+                IFView();
 
             }
         });
@@ -722,12 +727,11 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
                         StrUtils.SetTxt(et_price, "");
                         //aasv_add_sub.setNum(1);
-                        pop_purchase_price.setVisibility(View.GONE);
-                        tv_good_integral.setVisibility(View.GONE);
+//                        pop_purchase_price.setVisibility(View.GONE);
+//                        tv_good_integral.setVisibility(View.GONE);
                         pop_purchase_kucun.setVisibility(View.VISIBLE);
-                        UpPostion = -1;
-                        StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
-
+                        UpPostion = 0;
+                        //StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle());
                         break;
                     case 1:
 
@@ -745,10 +749,11 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                         if ("0".equals(da.getStore())) {
                             PromptManager.ShowMyToast(BaseContext, getString(R.string.good_pop_select_good_no_stroe));
                         }
-                        IFView();
+
                         break;
 
                 }
+                IFView();
 
             }
         });
@@ -781,7 +786,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 //            String format_price = String.format("%1$s元",
 //                    StrUtils.SetTextForMony(mSell_price +""));
             //           StrUtils.SetTxt(pop_purchase_price, format_price);
-            setHeaderData(mSell_price, fee, score);
+            setHeaderData(mSell_price,score);
             StrUtils.SetTxt(pop_purchase_kucun, databean.getTitle() + " "
                     + blComment.getAttr_name());
 
@@ -1082,7 +1087,7 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
         if (goods_num > 1) {
             mHandler.sendEmptyMessage(0);
         } else {
-            setHeaderData(mSell_price, fee, score);
+            setHeaderData(mSell_price,score);
         }
 
     }
@@ -1106,12 +1111,12 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
 
 //            }
 
-            setHeaderData(Integer.parseInt(mSell_price) * goods_num + "", StrUtils.isEmpty(fee) ? "" : Integer.parseInt(fee) * goods_num + "", StrUtils.isEmpty(score) ? "" : Integer.parseInt(score) * goods_num + "");
+            setHeaderData(Integer.parseInt(mSell_price) * goods_num + "", StrUtils.isEmpty(score) ? "" : Integer.parseInt(score) * goods_num + "");
         }
     };
 
 
-    private void setHeaderData(String price, String _fee, String _score) {
+    private void setHeaderData(String price, String _score) {
         String format_price = String.format("%1$s元",
                 StrUtils.SetTextForMony(price));
         StrUtils.SetTxt(pop_purchase_price, format_price);
@@ -1162,6 +1167,9 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
             items = new ArrayList<MyAdapter.ShowGradItem>();
             iBooleans = new ArrayList<Boolean>();
             for (int i = 0; i < mBldComments.size(); i++) {
+                if(0 == i){
+                    iBooleans.add(true);
+                }
                 iBooleans.add(false);
                 if (i == mBldComments.size() - 1)
                     continue;
@@ -1385,8 +1393,8 @@ public class AGoodPop extends ATitleBase implements AddAndSubView.OnNumChangeLis
                 }
                 IsFristClick = 0;
                 // 记录是否上边下边已经点击过了
-                UpPostion = -1;
-                DownPostion = -1;
+                UpPostion = 0;
+                DownPostion = 0;
                 // 最后一次的点击位置
                 LastClickItem = 0;
                 // myUpAdapter.notifyDataSetChanged();

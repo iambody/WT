@@ -38,17 +38,21 @@ import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLDComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.easy.OrderMenuData;
 import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BLCenterOder;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
+import io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HBaseAdapter;
+import io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
@@ -81,6 +85,7 @@ public class ACenterMyOrder extends ATitleBase implements
     public static final int PCancel = 110;
     public static final int PTuikuanSuccess1 = 120;
     public static final int PTuikuanSuccess2 = 130;
+    public static final int PTuikuanSuccess3 = 140;//超时退款
 
     /**
      * 传递tage的key
@@ -143,6 +148,8 @@ public class ACenterMyOrder extends ATitleBase implements
     private RefreshLayout fragment_center_order_refrash;
     private int SelectPosition = -1;
     private TextView tv_center_order_is_refund;
+    private HorizontalScrollMenu center_order_container;
+    private List<OrderMenuData> menu_data;
 
     // @Override
     // public void InItView() {
@@ -194,8 +201,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
     private void IView() {
         fragent_centeroder_nodata_lay = findViewById(R.id.fragent_centeroder_nodata_lay1);
-
-
+        center_order_container = (HorizontalScrollMenu) findViewById(R.id.center_order_container);
         fragment_center_order_refrash = (RefreshLayout) findViewById(R.id.fragment_center_order_refrash);
         fragment_center_order_refrash.setOnLoadListener(this);
         fragment_center_order_refrash.setColorSchemeResources(R.color.app_fen, R.color.app_fen1, R.color.app_fen2, R.color.app_fen3);
@@ -205,7 +211,7 @@ public class ACenterMyOrder extends ATitleBase implements
                 R.layout.item_fragment_center_order_outside);
         centerOrderNoPayAdapter = new CenterOrderNoPayAdapter(
                 R.layout.item_center_order_no_pay_outside);
-
+        setHorizontalMenu();
 
         fragment_center_order_ls.setAdapter(centerOrderOutsideAdapter);
 
@@ -227,6 +233,21 @@ public class ACenterMyOrder extends ATitleBase implements
 
         fragent_centeroder_nodata_lay.setOnClickListener(this);
 
+    }
+
+    private void setHorizontalMenu(){
+        menu_data = new ArrayList<OrderMenuData>();
+        menu_data.add(new OrderMenuData("全部",PAll));
+        menu_data.add(new OrderMenuData("待付款",PDaiFu));
+        menu_data.add(new OrderMenuData("待发货",PYiFu));
+        menu_data.add(new OrderMenuData("待收货",PDaiShou));
+        menu_data.add(new OrderMenuData("退款/仲裁",PZhongCai));
+        menu_data.add(new OrderMenuData("已取消",PCancel));
+        menu_data.add(new OrderMenuData("已完成",PClose));
+
+        center_order_container.setMenuItemPaddingLeft(50);
+        center_order_container.setMenuItemPaddingRight(50);
+        center_order_container.setAdapter(new OrderMenuAdapter());
     }
 
     /**
@@ -512,6 +533,11 @@ public class ACenterMyOrder extends ATitleBase implements
          */
         public void RefreshData(List<BLCenterOder> order_list) {
             this.datas = order_list;
+            this.notifyDataSetChanged();
+        }
+
+        public void removeData() {
+            this.datas .clear();
             this.notifyDataSetChanged();
         }
 
@@ -867,6 +893,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     break;
                 case PTuikuanSuccess1:
                 case PTuikuanSuccess2:
+                case PTuikuanSuccess3:
                 case PAgreeTuiKuan:
                     myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
@@ -1040,7 +1067,7 @@ public class ACenterMyOrder extends ATitleBase implements
             //LogUtils.i("**************good--id****************" + data.getId());
             int order_status = Integer.parseInt(data.getOrder_status());
             ControlView(myItem, data, order_status);
-            if(PClose == order_status || PCancel == order_status || PAgreeTuiKuan == order_status || PTuikuanSuccess1 == order_status || PTuikuanSuccess2 == order_status){
+            if(PClose == order_status || PCancel == order_status || PAgreeTuiKuan == order_status || PTuikuanSuccess1 == order_status || PTuikuanSuccess2 == order_status || PTuikuanSuccess3 == order_status){
                 myItem.center_order_remove.setVisibility(View.VISIBLE);
             }else{
                 myItem.center_order_remove.setVisibility(View.GONE);
@@ -1165,21 +1192,30 @@ public class ACenterMyOrder extends ATitleBase implements
 
                         @Override
                         public void onClick(View v) {
-                            ShowCustomDialog("确认要去付款吗？", "取消", "确认",
-                                    new IDialogResult() {
-                                        @Override
-                                        public void RightResult() {
-                                            if (CheckNet(BaseContext))
-                                                return;
-                                            GoPay(blComment.getMember_id(),
-                                                    blComment.getOrder_sn());
-                                            SelectPosition = position;
-                                        }
+//                            ShowCustomDialog("确认要去付款吗？", "取消", "确认",
+//                                    new IDialogResult() {
+//                                        @Override
+//                                        public void RightResult() {
+//                                            if (CheckNet(BaseContext))
+//                                                return;
+//                                            GoPay(blComment.getMember_id(),
+//                                                    blComment.getOrder_sn());
+//                                            SelectPosition = position;
+//                                        }
+//
+//                                        @Override
+//                                        public void LeftResult() {
+//                                        }
+//                                    });
 
-                                        @Override
-                                        public void LeftResult() {
-                                        }
-                                    });
+                            Intent intent = new Intent(BaseContext,
+                                    ACenterMyOrderNoPayDetail.class);
+                            intent.putExtra("order_sn", blComment.getOrder_sn());
+                            intent.putExtra("member_id", blComment.getMember_id());
+                            intent.putExtra("seller_order_sn", blComment.getSeller_order_sn());
+                            PromptManager.SkipActivity((Activity) BaseContext, intent);
+
+
 
                         }
                     });
@@ -1599,20 +1635,27 @@ public class ACenterMyOrder extends ATitleBase implements
 
                         @Override
                         public void onClick(View v) {
-                            ShowCustomDialog("确认要去付款吗？", "取消", "确认",
-                                    new IDialogResult() {
-                                        @Override
-                                        public void RightResult() {
-                                            if (CheckNet(BaseContext))
-                                                return;
-                                            GoPay(blComment.getMember_id(),
-                                                    blComment.getOrder_sn());
-                                        }
+//                            ShowCustomDialog("确认要去付款吗？", "取消", "确认",
+//                                    new IDialogResult() {
+//                                        @Override
+//                                        public void RightResult() {
+//                                            if (CheckNet(BaseContext))
+//                                                return;
+//                                            GoPay(blComment.getMember_id(),
+//                                                    blComment.getOrder_sn());
+//                                        }
+//
+//                                        @Override
+//                                        public void LeftResult() {
+//                                        }
+//                                    });
 
-                                        @Override
-                                        public void LeftResult() {
-                                        }
-                                    });
+                            Intent intent = new Intent(BaseContext,
+                                    ACenterMyOrderNoPayDetail.class);
+                            intent.putExtra("order_sn", blComment.getOrder_sn());
+                            intent.putExtra("member_id", blComment.getMember_id());
+                            intent.putExtra("seller_order_sn", blComment.getSeller_order_sn());
+                            PromptManager.SkipActivity((Activity) BaseContext, intent);
 
                         }
                     });
@@ -1912,13 +1955,13 @@ public class ACenterMyOrder extends ATitleBase implements
 
     @Override
     protected void InitTile() {
-        mTitle = (TextView) findViewById(R.id.title);
-        SetTitleTxt("全部");
-        mDrawable = getResources().getDrawable(R.drawable.arrow_down);
-        mDrawable.setBounds(0, 0, mDrawable.getMinimumWidth(),
-                mDrawable.getMinimumHeight());
-        mTitle.setCompoundDrawables(null, null, mDrawable, null);
-        mTitle.setOnClickListener(this);
+ //       mTitle = (TextView) findViewById(R.id.title);
+        SetTitleTxt("我的订单");
+//        mDrawable = getResources().getDrawable(R.drawable.arrow_down);
+//        mDrawable.setBounds(0, 0, mDrawable.getMinimumWidth(),
+//                mDrawable.getMinimumHeight());
+//        mTitle.setCompoundDrawables(null, null, mDrawable, null);
+//        mTitle.setOnClickListener(this);
     }
 
     @Override
@@ -2013,6 +2056,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     case LOAD_INITIALIZE:
 
                         if (PDaiFu == Ket_Tage) {
+                            //centerOrderOutsideAdapter.removeData();
                             centerOrderNoPayAdapter.RefreshData(order_list);
                         } else {
                             centerOrderOutsideAdapter.RefreshData(order_list);
@@ -2169,10 +2213,10 @@ public class ACenterMyOrder extends ATitleBase implements
     @Override
     protected void MyClick(View V) {
         switch (V.getId()) {
-            case R.id.title:
-                if (CheckNet(BaseContext)) return;
-                showPopupWindow(V);
-                break;
+//            case R.id.title:
+//                if (CheckNet(BaseContext)) return;
+//                showPopupWindow(V);
+//                break;
             case R.id.ll_center_order_all:
                 categoryOperate("全部", tv_center_order_all, PAll);
                 break;
@@ -2242,6 +2286,50 @@ public class ACenterMyOrder extends ATitleBase implements
         }
     }
 
+
+    class OrderMenuAdapter extends HBaseAdapter {
+        @Override
+        public List<String> getMenuItems() {
+            List<String> item_title = new ArrayList<String>();
+            for(int i = 0; i< menu_data.size();i++){
+                item_title.add(menu_data.get(i).getTitle());
+            }
+            return item_title;
+        }
+
+        @Override
+        public List<View> getContentViews() {
+            List<View> views = new ArrayList<View>();
+            for (String str : getMenuItems()) {
+                View v = LayoutInflater.from(BaseContext).inflate(
+                        R.layout.content_view, null);
+                TextView tv = (TextView) v.findViewById(R.id.tv_content);
+                tv.setText(str);
+                LinearLayout.LayoutParams ps = new LinearLayout.LayoutParams(
+                        120, DimensionPixelUtil.dip2px(BaseContext, 50));
+                ps.setMargins(16, 10, 16, 10);
+                v.setLayoutParams(ps);
+                views.add(v);
+            }
+            return views;
+        }
+
+        @Override
+        public void onPageChanged(int position, boolean visitStatus) {
+            // PromptManager.ShowCustomToast(BaseContext, String.format("第%s页", position + ""));
+            if(fragment_center_order_refrash.isRefreshing())fragment_center_order_refrash.setRefreshing(false);
+            Ket_Tage = menu_data.get(position).getOrder_status();
+            if (PDaiFu == Ket_Tage) {
+                fragment_center_order_ls.setAdapter(centerOrderNoPayAdapter);
+            } else {
+                fragment_center_order_ls.setAdapter(centerOrderOutsideAdapter);
+            }
+            last_id = "";
+            IData(LOAD_INITIALIZE, Ket_Tage + "");
+
+        }
+    }
+
     @Override
     protected void InItBundle(Bundle bundle) {
     }
@@ -2277,7 +2365,7 @@ public class ACenterMyOrder extends ATitleBase implements
         super.onDestroy();
         Ket_Tage = PAll;
         last_id = "";
-        popupWindow = null;
+        //popupWindow = null;
         try {
             EventBus.getDefault().unregister(this);
         } catch (Exception e) {

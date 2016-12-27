@@ -7,6 +7,12 @@
 
     <include layout="@layout/titlebar" />
 
+    <io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu
+        android:id="@+id/center_order_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/item_bg" />
+
 
     <io.vtown.WeiTangApp.comment.view.custom.RefreshLayout
         android:id="@+id/fragment_center_order_refrash"
