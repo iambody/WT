@@ -133,7 +133,8 @@
                         android:id="@+id/item_center_order_no_pay_detail_outside"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:divider="@null" />
+                        android:dividerHeight="3dp"
+                        android:divider="@color/app_bg" />
 
 
 

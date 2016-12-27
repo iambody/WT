@@ -121,6 +121,11 @@ public class CacheUtil {
      */
     private final static String SP_Integral_Type_Lv = "integraltype";
 
+    /**
+     * 资金明细筛选类型缓存
+     */
+    private final static String SP_Property_Type_Lv = "propertytype";
+
     private final static String Sp_MynewHome = "mynewhome";
 
     /**
@@ -603,6 +608,36 @@ public class CacheUtil {
         SharedPreferences Sp = context.getSharedPreferences(
                 SP_Integral_Type_Lv, Context.MODE_PRIVATE);
         return Sp.getString("integraltype", "");
+    }
+
+    /**
+     * 资金明细筛选类型列表
+     *
+     * @param pcContext
+     * @param walletStr
+     */
+    public static void Property_Type_Save(Context pcContext,
+                                          String integral) {
+        SharedPreferences Sp = pcContext.getSharedPreferences(
+                SP_Property_Type_Lv, Context.MODE_PRIVATE);
+        Editor editor = Sp.edit();
+
+        editor.putString("propertytype", integral);
+
+        editor.commit();
+    }
+
+
+    /**
+     * 资金明细筛选类型列表缓存
+     *
+     * @param context
+     * @return
+     */
+    public static String Property_Type_Get(Context context) {
+        SharedPreferences Sp = context.getSharedPreferences(
+                SP_Property_Type_Lv, Context.MODE_PRIVATE);
+        return Sp.getString("propertytype", "");
     }
 
 

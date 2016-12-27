@@ -1,43 +1,8 @@
 package io.vtown.WeiTangApp.ui.title.center.myorder;
 
-import io.vtown.WeiTangApp.R;
-import io.vtown.WeiTangApp.bean.bcomment.BComment;
-import io.vtown.WeiTangApp.bean.bcomment.BLComment;
-import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BDCenterOrderDetail;
-import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BLCenterOder;
-import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
-import io.vtown.WeiTangApp.comment.contant.Constants;
-import io.vtown.WeiTangApp.comment.contant.PromptManager;
-import io.vtown.WeiTangApp.comment.util.DateUtils;
-import io.vtown.WeiTangApp.comment.util.StrUtils;
-import io.vtown.WeiTangApp.comment.util.ViewHolder;
-import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
-import io.vtown.WeiTangApp.comment.view.CopyTextView;
-import io.vtown.WeiTangApp.comment.view.DotView;
-import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
-import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
-import io.vtown.WeiTangApp.event.interf.IDialogResult;
-import io.vtown.WeiTangApp.fragment.FCenterOder;
-import io.vtown.WeiTangApp.ui.ATitleBase;
-import io.vtown.WeiTangApp.ui.comment.AWeb;
-import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
-import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
-import io.vtown.WeiTangApp.ui.title.ABrandDetail;
-import io.vtown.WeiTangApp.ui.title.AGoodDetail;
-import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
-import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
-import io.vtown.WeiTangApp.ui.title.mynew.ANew;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.method.ArrowKeyMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,15 +16,39 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.TextView.BufferType;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import de.greenrobot.event.EventBus;
-import io.vtown.WeiTangApp.ui.ui.AShopDetail;
+import io.vtown.WeiTangApp.R;
+import io.vtown.WeiTangApp.bean.bcomment.BComment;
+import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BDCenterOrderDetail;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.util.DateUtils;
+import io.vtown.WeiTangApp.comment.util.StrUtils;
+import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
+import io.vtown.WeiTangApp.comment.view.CopyTextView;
+import io.vtown.WeiTangApp.comment.view.DotView;
+import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
+import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
+import io.vtown.WeiTangApp.event.interf.IDialogResult;
+import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.AWeb;
+import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
+import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
+import io.vtown.WeiTangApp.ui.title.AGoodDetail;
+import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
+import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
+import io.vtown.WeiTangApp.ui.title.mynew.ANew;
 
 /**
  * @author 作者 易惠华 yihuihua@v-town.cc
@@ -643,15 +632,24 @@ public class ACenterMyOrderDetail extends ATitleBase {
         }
 
         int Order_status = Integer.parseInt(order_detail2.getOrder_status());
-        if (FCenterOder.PDaiFu == Order_status
-                || FCenterOder.PCancel == Order_status) {
+        if (ACenterMyOrder.PDaiFu == Order_status
+                || ACenterMyOrder.PCancel == Order_status) {
             StrUtils.SetTxt(tv_order_id, order_detail2.getOrder_sn());
         } else {
             StrUtils.SetTxt(tv_order_id, order_detail2.getSeller_order_sn());
         }
 
+
+        if(ACenterMyOrder.PDaiShou != Order_status){
+            tv_center_my_order_confirm.setVisibility(View.GONE);
+            tv_center_my_order_confirm.setEnabled(false);
+        }else{
+            tv_center_my_order_confirm.setVisibility(View.VISIBLE);
+            tv_center_my_order_confirm.setEnabled(true);
+        }
+
         // 如果没有延期收货，则显示确认收货和延期收货
-        if (FCenterOder.PDaiShou == Order_status) {
+        if (ACenterMyOrder.PDaiShou == Order_status) {
             // 延迟时间10天，只有10天后才显示延迟收货
             long delaytime = Long.parseLong(order_detail2.getCreate_time())
                     + (10 * 24 * 60 * 60);
@@ -675,7 +673,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
         }
 
         // 只有未申请过退款才能申请退款,如果已申请退款就不能提醒发货了
-        if (FCenterOder.PYiFu == Order_status) {
+        if (ACenterMyOrder.PYiFu == Order_status) {
             if ("0".equals(order_detail2.getRefund())) {
                 tv_center_my_order_apply_refund.setVisibility(View.VISIBLE);
 
@@ -779,10 +777,10 @@ public class ACenterMyOrderDetail extends ATitleBase {
         } catch (Exception e) {
 
         }
-        if (FCenterOder.PDaiShou == Order_status
-                || FCenterOder.PClose == Order_status) {
+        if (ACenterMyOrder.PDaiShou == Order_status
+                || ACenterMyOrder.PClose == Order_status) {
             tv_center_order_good_express_title.setVisibility(View.VISIBLE);
-            //tv_center_my_order_confirm.setVisibility(View.GONE);
+
             if (express_data.size() == 0) {
                 tv_center_order_good_express_title.setVisibility(View.GONE);
             } else {
@@ -888,6 +886,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 EventBus.getDefault().post(
                         new BMessage(BMessage.Tage_Center_Order_Updata));
                 IData();
+
                 break;
 
             case 5:// 延期收货

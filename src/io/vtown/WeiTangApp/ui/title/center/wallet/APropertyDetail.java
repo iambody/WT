@@ -5,10 +5,12 @@ import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.wallet.BLAPropertyDetail;
 import io.vtown.WeiTangApp.bean.bcomment.easy.wallet.BLAPropertyList;
+import io.vtown.WeiTangApp.bean.bcomment.easy.zhuanqu.BLIntegralType;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.view.DotView;
@@ -17,6 +19,7 @@ import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
 import io.vtown.WeiTangApp.comment.view.listview.LListView.IXListViewListener;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.title.myhome.AIntegralDetail;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +30,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore.Video;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +42,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.android.volley.Request;
 import com.android.volley.Request.Method;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
 
@@ -93,14 +98,26 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 
     private String lastid = "";
 
+    private List<BLIntegralType> type_datas = new ArrayList<BLIntegralType>();
+
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_center_wallet_property_detail);
         user_Get = Spuit.User_Get(getApplicationContext());
         IView();
+        ITypeCache();
         ICache();
         SetTitleHttpDataLisenter(this);
+        IvData();
         IData(TAGE_ALL, LOAD_INITIALIZE);
+    }
+
+    private void ITypeCache() {
+        String type_lvs = CacheUtil.Property_Type_Get(BaseContext);
+        if (!StrUtils.isEmpty(type_lvs)) {
+
+            type_datas = JSON.parseArray(type_lvs, BLIntegralType.class);
+        }
     }
 
     private void IData(int type, int LoadType) {
@@ -113,6 +130,10 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
         map.put("type", type + "");
         FBGetHttpData(map, Constants.ZiJinJiLu, Method.GET, 0, LoadType);
 
+    }
+
+    private void IvData() {
+        FBGetHttpData(new HashMap<String, String>(), Constants.Property_Type, Request.Method.GET, 1, LOAD_INITIALIZE);
     }
 
     private void ICache() {
@@ -164,147 +185,142 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
     protected void InitTile() {
         SetTitleTxt(getResources().getString(R.string.title_property_detail_all));
         SetRightText(getResources().getString(R.string.txt_filter));
+        if(type_datas.size()>0){
+            right_txt.setVisibility(View.VISIBLE);
+        }else{
+            right_txt.setVisibility(View.GONE);
+        }
         right_txt.setOnClickListener(this);
     }
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
 
+        switch (Data.getHttpResultTage()){
+            case 0:
+                switch (Data.getHttpLoadType()) {
+                    case LOAD_INITIALIZE:
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            lv_property_detail_list.setVisibility(View.GONE);
+                            center_my_property_detail_nodata_lay.setVisibility(View.VISIBLE);
+                            center_my_property_detail_nodata_lay.setClickable(false);
+                            String error_tip = getResources().getString(R.string.error_null_property_list);
 
-        switch (Data.getHttpLoadType()) {
-            case LOAD_INITIALIZE:
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    lv_property_detail_list.setVisibility(View.GONE);
-                    center_my_property_detail_nodata_lay.setVisibility(View.VISIBLE);
-                    center_my_property_detail_nodata_lay.setClickable(false);
-                    String error_tip = "";
-                    switch (CurrentType) {
-                        case TAGE_ALL:
-                            error_tip = getResources().getString(R.string.error_null_property_list);
-                            break;
+                            ShowErrorCanLoad(error_tip);
+                            //PromptManager.ShowCustomToast(BaseContext, "记录为空");
+                            if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
+                                if (CurrentType == TAGE_ALL) {
+                                    CacheUtil.Center_Wallet_Property_Save(getApplicationContext(), Data.getHttpResultStr());
+                                }
+                            }
 
-                        case TAGE_RECHARGE:
-                            error_tip = getResources().getString(R.string.error_null_property_recharge);
-                            break;
+                            return;
+                        }
 
-                        case TAGE_SELl:
-                            error_tip = getResources().getString(R.string.error_null_property_sell);
-                            break;
+                        //dattaa = new ArrayList<BLAPropertyList>();
+                        try {
 
-                        case TAGE_SHOPPING:
-                            error_tip = getResources().getString(R.string.error_null_property_shopping);
-                            break;
+                            dattaa = JSON.parseArray(Data.getHttpResultStr(), BLAPropertyList.class);
+                        } catch (Exception e) {
+                            DataError("解析错误", 1);
+                        }
+                        lv_property_detail_list.setVisibility(View.VISIBLE);
+                        center_my_property_detail_nodata_lay.setVisibility(View.GONE);
 
-                        case TAGE_WITHDRAW:
-                            error_tip = getResources().getString(R.string.error_null_property_withdraw);
-                            break;
-
-                        case TAGE_RETURN:
-                            error_tip = getResources().getString(R.string.error_null_property_return);
-                            break;
-                    }
-                    ShowErrorCanLoad(error_tip);
-                    //PromptManager.ShowCustomToast(BaseContext, "记录为空");
-                    if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
+                        List<BLAPropertyDetail> list = getAllPropertyDetailList(dattaa);
+                        lastid = list.get(list.size() - 1).getId();
+                        LsAp.FrashData(dattaa);
                         if (CurrentType == TAGE_ALL) {
                             CacheUtil.Center_Wallet_Property_Save(getApplicationContext(), Data.getHttpResultStr());
                         }
-                    }
 
-                    return;
+                        if (list.size() == Constants.PageSize2) {
+                            lv_property_detail_list.ShowFoot();
+                            //property_detail_list_refrash.setCanLoadMore(true);
+                        }
+
+                        if (list.size() < Constants.PageSize2) {
+                            lv_property_detail_list.hidefoot();
+                            //property_detail_list_refrash.setCanLoadMore(false);
+                        }
+
+
+                        break;
+                    case LOAD_REFRESHING:
+                        //property_detail_list_refrash.setRefreshing(false);
+                        lv_property_detail_list.stopRefresh();
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            return;
+                        }
+                        try {
+                            dattaa = JSON.parseArray(Data.getHttpResultStr(), BLAPropertyList.class);
+                        } catch (Exception e) {
+
+                        }
+                        LsAp.FrashData(dattaa);
+                        List<BLAPropertyDetail> list1 = getAllPropertyDetailList(dattaa);
+                        lastid = list1.get(list1.size() - 1).getId();
+                        if (list1.size() == Constants.PageSize2) {
+                            lv_property_detail_list.ShowFoot();
+                            //property_detail_list_refrash.setCanLoadMore(true);
+
+                        }
+
+                        if (list1.size() < Constants.PageSize2) {
+                            lv_property_detail_list.hidefoot();
+                            // property_detail_list_refrash.setCanLoadMore(false);
+                        }
+
+
+                        break;
+                    case LOAD_LOADMOREING:
+                        // property_detail_list_refrash.setLoading(false);
+                        lv_property_detail_list.stopLoadMore();
+                        if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                            return;
+                        }
+                        try {
+                            dattaa = JSON.parseArray(Data.getHttpResultStr(), BLAPropertyList.class);
+                        } catch (Exception e) {
+
+                        }
+                        if(LsAp.GetApData().size()==0)return;
+                        if (dattaa.get(0).getMonth().equals(LsAp.GetApData().get(LsAp.getCount() - 1).getMonth())) {
+                            LsAp.MergeFrashData(dattaa);
+                        } else {
+                            LsAp.AddFrashData(dattaa);
+                        }
+
+
+                        List<BLAPropertyDetail> list2 = getAllPropertyDetailList(dattaa);
+                        lastid = list2.get(list2.size() - 1).getId();
+
+                        if (list2.size() == Constants.PageSize2) {
+                            lv_property_detail_list.ShowFoot();
+                            //property_detail_list_refrash.setCanLoadMore(true);
+                        }
+
+                        if (list2.size() < Constants.PageSize2) {
+                            lv_property_detail_list.hidefoot();
+                            //property_detail_list_refrash.setCanLoadMore(false);
+                        }
+
+
+                        break;
                 }
-
-                //dattaa = new ArrayList<BLAPropertyList>();
-                try {
-
-                    dattaa = JSON.parseArray(Data.getHttpResultStr(), BLAPropertyList.class);
-                } catch (Exception e) {
-                    DataError("解析错误", 1);
-                }
-                lv_property_detail_list.setVisibility(View.VISIBLE);
-                center_my_property_detail_nodata_lay.setVisibility(View.GONE);
-
-                List<BLAPropertyDetail> list = getAllPropertyDetailList(dattaa);
-                lastid = list.get(list.size() - 1).getId();
-                LsAp.FrashData(dattaa);
-                if (CurrentType == TAGE_ALL) {
-                    CacheUtil.Center_Wallet_Property_Save(getApplicationContext(), Data.getHttpResultStr());
-                }
-
-                if (list.size() == Constants.PageSize2) {
-                    lv_property_detail_list.ShowFoot();
-                    //property_detail_list_refrash.setCanLoadMore(true);
-                }
-
-                if (list.size() < Constants.PageSize2) {
-                    lv_property_detail_list.hidefoot();
-                    //property_detail_list_refrash.setCanLoadMore(false);
-                }
-
-
                 break;
-            case LOAD_REFRESHING:
-                //property_detail_list_refrash.setRefreshing(false);
-                lv_property_detail_list.stopRefresh();
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    return;
+
+            case 1:
+                type_datas = JSON.parseArray(Data.getHttpResultStr(),BLIntegralType.class);
+                CacheUtil.Property_Type_Save(BaseContext,Data.getHttpResultStr());
+                if(type_datas.size()>0){
+                    right_txt.setVisibility(View.VISIBLE);
                 }
-                try {
-                    dattaa = JSON.parseArray(Data.getHttpResultStr(), BLAPropertyList.class);
-                } catch (Exception e) {
-
-                }
-                LsAp.FrashData(dattaa);
-                List<BLAPropertyDetail> list1 = getAllPropertyDetailList(dattaa);
-                lastid = list1.get(list1.size() - 1).getId();
-                if (list1.size() == Constants.PageSize2) {
-                    lv_property_detail_list.ShowFoot();
-                    //property_detail_list_refrash.setCanLoadMore(true);
-
-                }
-
-                if (list1.size() < Constants.PageSize2) {
-                    lv_property_detail_list.hidefoot();
-                    // property_detail_list_refrash.setCanLoadMore(false);
-                }
-
-
-                break;
-            case LOAD_LOADMOREING:
-                // property_detail_list_refrash.setLoading(false);
-                lv_property_detail_list.stopLoadMore();
-                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
-                    return;
-                }
-                try {
-                    dattaa = JSON.parseArray(Data.getHttpResultStr(), BLAPropertyList.class);
-                } catch (Exception e) {
-
-                }
-                if(LsAp.GetApData().size()==0)return;
-                if (dattaa.get(0).getMonth().equals(LsAp.GetApData().get(LsAp.getCount() - 1).getMonth())) {
-                    LsAp.MergeFrashData(dattaa);
-                } else {
-                    LsAp.AddFrashData(dattaa);
-                }
-
-
-                List<BLAPropertyDetail> list2 = getAllPropertyDetailList(dattaa);
-                lastid = list2.get(list2.size() - 1).getId();
-
-                if (list2.size() == Constants.PageSize2) {
-                    lv_property_detail_list.ShowFoot();
-                    //property_detail_list_refrash.setCanLoadMore(true);
-                }
-
-                if (list2.size() < Constants.PageSize2) {
-                    lv_property_detail_list.hidefoot();
-                    //property_detail_list_refrash.setCanLoadMore(false);
-                }
-
-
                 break;
         }
+
+
+
 
 
     }
@@ -374,24 +390,6 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
             case R.id.tv_select_all://全部
                 detailSwitch(TAGE_ALL,getResources().getString(R.string.title_property_detail_all));
                 break;
-            case R.id.tv_buy_good:// 购买
-                detailSwitch(TAGE_SHOPPING,getResources().getString(R.string.title_property_detail_buy_good));
-                break;
-
-            case R.id.tv_top_up:// 退款
-                detailSwitch(TAGE_RECHARGE,getResources().getString(R.string.title_property_detail_top_up));
-                break;
-
-            case R.id.tv_withdraw:// 提现
-                detailSwitch(TAGE_WITHDRAW,getResources().getString(R.string.title_property_detail_withdraw));
-                break;
-
-            case R.id.tv_sell_record:// 销售
-                detailSwitch(TAGE_SELl,getResources().getString(R.string.title_property_detail_sell_record));
-                break;
-
-            case R.id.tv_user_return://返佣
-                detailSwitch(TAGE_RETURN,getResources().getString(R.string.title_property_detail_return));
 
         }
     }
@@ -429,27 +427,47 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
     private void showPop(View V) {
         View view = View.inflate(BaseContext, R.layout.pop_property_filter,
                 null);
-        TextView tv_buy_good = (TextView) view.findViewById(R.id.tv_buy_good);
-        TextView tv_top_up = (TextView) view.findViewById(R.id.tv_top_up);
-        TextView tv_withdraw = (TextView) view.findViewById(R.id.tv_withdraw);
+        LinearLayout ll_pop_property_layout = (LinearLayout) view.findViewById(R.id.ll_pop_property_layout);
+//        TextView tv_buy_good = (TextView) view.findViewById(R.id.tv_buy_good);
+//        TextView tv_top_up = (TextView) view.findViewById(R.id.tv_top_up);
+//        TextView tv_withdraw = (TextView) view.findViewById(R.id.tv_withdraw);
         TextView tv_select_all = (TextView) view.findViewById(R.id.tv_select_all);
-        TextView tv_sell_record = (TextView) view
-                .findViewById(R.id.tv_sell_record);
+//        TextView tv_sell_record = (TextView) view
+//                .findViewById(R.id.tv_sell_record);
 
-        TextView tv_user_return = (TextView)view.findViewById(R.id.tv_user_return) ;
-        tv_buy_good.setOnClickListener(this);
-        tv_top_up.setOnClickListener(this);
-        tv_withdraw.setOnClickListener(this);
-        tv_sell_record.setOnClickListener(this);
+ //       TextView tv_user_return = (TextView)view.findViewById(R.id.tv_user_return) ;
+//        tv_buy_good.setOnClickListener(this);
+//        tv_top_up.setOnClickListener(this);
+//        tv_withdraw.setOnClickListener(this);
+//        tv_sell_record.setOnClickListener(this);
         tv_select_all.setOnClickListener(this);
-        tv_user_return.setOnClickListener(this);
+ //       tv_user_return.setOnClickListener(this);
+
+
+        LinearLayout.LayoutParams contentParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
+        for(int i = 0; i < type_datas.size();i++) {
+            TextView textView = new TextView(BaseContext);
+            View line = new View(BaseContext);
+            textView.setText(type_datas.get(i).getName());
+            textView.setTextColor(getResources().getColor(R.color.white));
+            textView.setClickable(true);
+            textView.setLayoutParams(contentParams);
+            textView.setPadding(5, DimensionPixelUtil.dip2px(BaseContext, 8), 5, DimensionPixelUtil.dip2px(BaseContext, 8));
+            textView.setGravity(Gravity.CENTER);
+            line.setBackgroundResource(R.color.white);
+            line.setLayoutParams(lineParams);
+            ll_pop_property_layout.addView(textView);
+            ll_pop_property_layout.addView(line);
+            textView.setOnClickListener(new OnPopClickListener(i));
+        }
 
         popupWindow = new PopupWindow(view, LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         ColorDrawable dw = new ColorDrawable(0xb0000000);
         popupWindow.setBackgroundDrawable(dw);
-        popupWindow.showAsDropDown(V, 0, 30);
+        popupWindow.showAsDropDown(V, 0, 0);
     }
 
     @Override
@@ -807,6 +825,19 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
             return Color.rgb(r, g, b);
         }
 
+    }
+
+    class OnPopClickListener implements View.OnClickListener {
+        private int clickposition;
+
+        public OnPopClickListener(int position) {
+            clickposition = position;
+        }
+
+        @Override
+        public void onClick(View v) {
+            detailSwitch(type_datas.get(clickposition).getId(),type_datas.get(clickposition).getName());
+        }
     }
 
 

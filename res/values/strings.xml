@@ -585,7 +585,7 @@
     <string name="error_null_my_order_yituikuan">无已退款订单</string>
     <string name="error_null_my_order_over">没有已完成订单</string>
     <string name="error_null_bank_list_over">无获取到您想要的银行哦，请稍后再试试吧</string>
-    <string name="error_null_property_list">无资金明细</string>
+    <string name="error_null_property_list">无此类型的资金明细</string>
     <string name="error_null_property_shopping">无购物资金明细</string>
     <string name="error_null_property_recharge">无退款资金明细</string>
     <string name="error_null_property_withdraw">无提现资金明细</string>
