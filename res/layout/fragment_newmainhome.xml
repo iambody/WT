@@ -92,6 +92,14 @@
                             android:textColor="@color/black"
                             android:textSize="18dp"/>
 
+                        <ImageView
+                            android:id="@+id/fragment_newhome_usertag_iv"
+                            android:layout_width="@dimen/ui_60_dip"
+                            android:layout_height="@dimen/ui_20_dip"
+
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/fragment_newhome_username"/>
+
                         <TextView
                             android:id="@+id/fragment_newhome_usertag"
                             android:layout_width="wrap_content"
@@ -104,7 +112,8 @@
                             android:paddingLeft="@dimen/line_size6"
                             android:paddingRight="@dimen/line_size6"
                             android:textColor="@color/gray"
-                            android:textSize="10dp"/>
+                            android:textSize="10dp"
+                            android:visibility="gone"/>
                     </RelativeLayout>
                 </RelativeLayout>
                 <!--我的数据 -->
@@ -195,6 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <include
                         android:id="@+id/fragment_newhome_temai_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>
@@ -202,9 +212,11 @@
                     <include
                         android:id="@+id/fragment_newhome_kaquan_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>
+
                     <include
                         android:id="@+id/fragment_newhome_wallet_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>
+
                     <include
                         android:id="@+id/fragment_newhome_myoder_lay"
                         layout="@layout/comment_fragment_newhome_downlay"/>

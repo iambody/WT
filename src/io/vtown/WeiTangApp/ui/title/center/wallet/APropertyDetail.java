@@ -155,6 +155,9 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
         lv_property_detail_list.setPullLoadEnable(true);
         lv_property_detail_list.setXListViewListener(this);
         lv_property_detail_list.hidefoot();
+
+
+
     }
 
     @Override
@@ -278,7 +281,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                 } catch (Exception e) {
 
                 }
-
+                if(LsAp.GetApData().size()==0)return;
                 if (dattaa.get(0).getMonth().equals(LsAp.GetApData().get(LsAp.getCount() - 1).getMonth())) {
                     LsAp.MergeFrashData(dattaa);
                 } else {
@@ -395,6 +398,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 
 
     private void detailSwitch(int type,String titlename){
+        lv_property_detail_list.stopLoadMore();
         if (CurrentType != type) {
             SetTitleTxt(titlename);
             CurrentType = type;
@@ -423,7 +427,6 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
     }
 
     private void showPop(View V) {
-
         View view = View.inflate(BaseContext, R.layout.pop_property_filter,
                 null);
         TextView tv_buy_good = (TextView) view.findViewById(R.id.tv_buy_good);
