@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.android.volley.Cache;
 import com.android.volley.Request;
 
 import java.util.ArrayList;
@@ -52,27 +52,22 @@ import io.vtown.WeiTangApp.comment.view.custom.swipeLayout.CustomSwipeToRefresh;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.event.interf.IHttpResult;
 import io.vtown.WeiTangApp.fragment.FBase;
-import io.vtown.WeiTangApp.test.ALoadmor;
-import io.vtown.WeiTangApp.test.ARetrofitTest;
-import io.vtown.WeiTangApp.test.ASwipLoadTest;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.AMyLeader;
-import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
-import io.vtown.WeiTangApp.ui.title.myhome.AIntegralDetail;
-import io.vtown.WeiTangApp.ui.title.myhome.AInviteFriendRecord;
-import io.vtown.WeiTangApp.ui.title.myhome.AInviteTeamInfo;
-import io.vtown.WeiTangApp.ui.title.myhome.ANewCenter;
 import io.vtown.WeiTangApp.ui.title.AReturnDetail;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
+import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerMyShow;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
+import io.vtown.WeiTangApp.ui.title.myhome.AIntegralDetail;
+import io.vtown.WeiTangApp.ui.title.myhome.AInviteTeamInfo;
+import io.vtown.WeiTangApp.ui.title.myhome.ANewCenter;
 import io.vtown.WeiTangApp.ui.title.mynew.ANew;
 import io.vtown.WeiTangApp.ui.title.zhuanqu.AZhuanQu;
-import io.vtown.WeiTangApp.ui.ui.ANewHome;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 import io.vtown.WeiTangApp.ui.ui.ASouSouGood;
 import io.vtown.WeiTangApp.ui.ui.CaptureActivity;
@@ -114,6 +109,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
     TextView fragmentNewhomeUsername;//用户名
     @BindView(R.id.fragment_newhome_usertag)
     TextView fragmentNewhomeUsertag;//用户标签
+    @BindView(R.id.fragment_newhome_usertag_iv)
+    ImageView fragmentNewhomeUsertagIv;
 
 
     private LinearLayout fragmentNewhomeIvLaya;
@@ -370,6 +367,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
      * IsStar===>1标识普通店铺，2标识明细店铺
      */
     private void LevelSet(BNewHome Data) {
+        ImageLoaderUtil.Load2(Data.getMember_level_picture(),fragmentNewhomeUsertagIv,R.drawable.error_iv2);
         //是否激活状态
         if (Data.getIs_activate() == 1) {//已经激活
 //            StrUtils.SetTxt(fragmentNewhomeUsertag, getResources().getString(R.string.yijihuo));
@@ -886,5 +884,13 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             }
         });
         BaNHttpBaseStr.getData(Constants.Im_Chat_Brand_Ls, map, Request.Method.GET);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this, rootView);
+        return rootView;
     }
 }

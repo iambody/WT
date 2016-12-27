@@ -32,9 +32,11 @@ public class BNewHome extends BBase {
     private String member_level_name;//=青铜店铺
 
     //是否绑定机器人
-    private int  is_ropot;
+    private int is_ropot;
 
-    private String   team_num;//=54
+    private String team_num;//=54
+    private String member_level_picture;//=http://fs.v-town.cc/StoreLevel_2_201612131544.png
+
     public BNewShop getSellerinfo() {
         return sellerinfo;
     }
@@ -169,5 +171,14 @@ public class BNewHome extends BBase {
 
     public void setTeam_num(String team_num) {
         this.team_num = team_num;
+    }
+
+
+    public String getMember_level_picture() {
+        return member_level_picture;
+    }
+
+    public void setMember_level_picture(String member_level_picture) {
+        this.member_level_picture = member_level_picture;
     }
 }

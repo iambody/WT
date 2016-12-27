@@ -118,6 +118,9 @@ public class AInviteAndApprove extends ATitleBase {
     private boolean WxIsBind = false;
     private String WXId = "";
 
+    //预留bug 如果是true直接取得输入框的电话号码
+    private ImageView verification_phone_longclick_iv;
+    private boolean CanGetEdPhone=false;
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_verification_code);
@@ -137,6 +140,7 @@ public class AInviteAndApprove extends ATitleBase {
 
 
     private void IBase() {
+        verification_phone_longclick_iv= (ImageView) findViewById(R.id.verification_phone_longclick_iv);
         login_back_iv= (ImageView) findViewById(R.id.login_back_iv);
         login_back_iv.setOnClickListener(this);
         findViewById(R.id.login_title_lay).setVisibility(View.GONE);
@@ -166,7 +170,13 @@ public class AInviteAndApprove extends ATitleBase {
         // if(WxIsBind){//如果是微信登录需要进行view的隐藏 （非绑定则为全部显示）
         // verification_code_down_lay.setVisibility(View.GONE);
         // }
-
+        verification_phone_longclick_iv.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                CanGetEdPhone=true;
+                return true;
+            }
+        });
     }
 
     @Override
@@ -559,8 +569,8 @@ public class AInviteAndApprove extends ATitleBase {
                 if (!CheCheckCode(2))
                     return;
 
-                if (!WxIsBind) {// 手机号登录
-                    PhoneLogin(MyCommintPhone, verification_code.getText()
+                if (!WxIsBind) {// 手机号登录 如果CanGetEdPhone是真的直接去输入框的电话号码（预留漏洞  ） 正常情况是使用获取验证码的手机号
+                    PhoneLogin(CanGetEdPhone?verification_phone.getText().toString():MyCommintPhone, verification_code.getText()
                             .toString().trim());
                 } else {// 微信绑定手机号
                     CheckCode(MyCommintPhone, verification_code.getText()

@@ -970,9 +970,9 @@ public class AOderBeing extends ATitleBase {
             String str = StrUtils.NullToStr3(tv_item_oderbeing_out_buy_message.getText().toString().trim());
             String seller_id = list.get(i).getSeller_id();
             if (i != list.size() - 1) {
-                order_note = order_note + seller_id + ":" + str + "|||";
+                order_note = order_note + seller_id + "###" + str + "|||";
             } else {
-                order_note = order_note + seller_id + ":" + str;
+                order_note = order_note + seller_id + "###" + str;
             }
         }
         return order_note;

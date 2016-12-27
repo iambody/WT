@@ -41,6 +41,7 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.mainsort.BSortCategory;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
+import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
@@ -172,6 +173,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         map.put("category_id", current_category_id);
         map.put("page", mPage + "");
         map.put("pagesize", Constants.PageSize2 + "");
+        map.put("member_id", Spuit.User_Get(BaseContext).getMember_id());
         FBGetHttpData(map, Constants.Main_New_Sort, Request.Method.GET, 0, loadtype);
     }
 
