@@ -255,7 +255,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 
 			if(!data2.getInsurance().equals("0")){
 				ll_center_my_no_pay_order_order_insurance.setVisibility(View.VISIBLE);
-				StrUtils.SetTxt(tv_center_my_no_pay_order_insurance,"已购买正品保险");
+				StrUtils.SetTxt(tv_center_my_no_pay_order_insurance,StrUtils.SetTextForMony(data2.getInsurance())+"元");
 			}else{
 				ll_center_my_no_pay_order_order_insurance.setVisibility(View.GONE);
 			}
@@ -330,11 +330,6 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 	@Override
 	protected void InitTile() {
 		SetTitleTxt("未付款订单");
-		ImageView right_right_iv = (ImageView) findViewById(R.id.right_right_iv);
-		right_right_iv.setVisibility(View.VISIBLE);
-		right_right_iv.setImageDrawable(getResources().getDrawable(
-				R.drawable.new1));
-		right_right_iv.setOnClickListener(this);
 	}
 
 	@Override
@@ -454,13 +449,6 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 			if (CheckNet(BaseContext))
 				return;
 			IData();
-			break;
-
-		case R.id.right_right_iv:// 消息按钮
-			if (CheckNet(BaseContext))
-				return;
-			PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-					ANew.class));
 			break;
 
 			case R.id.tv_center_my_no_pay_order_insurance:

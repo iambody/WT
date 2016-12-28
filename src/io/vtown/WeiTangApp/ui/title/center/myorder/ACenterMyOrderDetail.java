@@ -830,11 +830,6 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
         SetTitleTxt("订单详情");
 
-        ImageView right_right_iv = (ImageView) findViewById(R.id.right_right_iv);
-        right_right_iv.setVisibility(View.VISIBLE);
-        right_right_iv.setImageDrawable(getResources().getDrawable(
-                R.drawable.new1));
-        right_right_iv.setOnClickListener(this);
     }
 
     @Override
@@ -1071,13 +1066,6 @@ public class ACenterMyOrderDetail extends ATitleBase {
                                             order_detail.getSeller_name())
                                     .putExtra(AChatLoad.Tage_Iv,
                                             order_detail.getAvatar()));
-                break;
-
-            case R.id.right_right_iv:// 消息按钮
-                if (CheckNet(BaseContext))
-                    return;
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-                        ANew.class));
                 break;
 
             case R.id.tv_center_my_order_order_insurance:

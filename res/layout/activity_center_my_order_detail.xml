@@ -105,14 +105,14 @@
                             android:layout_height="wrap_content"
                             android:text="正品保险："
                             android:textColor="@color/grey"
-                            android:textSize="@dimen/order_list_good_number" />
+                            android:textSize="@dimen/comment_label_txtsize"/>
 
                         <TextView
                             android:id="@+id/tv_center_my_order_order_insurance"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:textColor="@color/grey"
-                            android:textSize="@dimen/order_list_good_number" />
+                            android:textColor="@color/app_gray"
+                            android:textSize="@dimen/comment_label_txtsize"/>
 
                         <ImageView
                             android:id="@+id/iv_center_order_what_is_insurance"
@@ -143,14 +143,14 @@
                             android:layout_height="wrap_content"
                             android:text="备注留言："
                             android:textColor="@color/grey"
-                            android:textSize="@dimen/order_list_good_number" />
+                            android:textSize="@dimen/comment_label_txtsize" />
 
                         <TextView
                             android:id="@+id/tv_center_my_order_order_note"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey"
-                            android:textSize="@dimen/order_list_good_number" />
+                            android:textColor="@color/app_gray"
+                            android:textSize="@dimen/comment_label_txtsize" />
 
 
                     </LinearLayout>
