@@ -542,8 +542,8 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
         if (LOAD_INITIALIZE == LoadTyp) {// 刚进来获取数据时候异常就不显示数据
             // 数据初异常时不可用
             good_detail_bottom_layout.setVisibility(View.GONE);
-            rl_good_detail_lianxikefu_log.setVisibility(View.GONE);
-            right_right_iv.setVisibility(View.GONE);
+//            rl_good_detail_lianxikefu_log.setVisibility(View.GONE);
+ //           right_right_iv.setVisibility(View.GONE);
 //            right_iv.setVisibility(View.GONE);
 //            right_iv.setEnabled(false);
 //            good_detail_title_up_shoucang.setVisibility(View.GONE);
