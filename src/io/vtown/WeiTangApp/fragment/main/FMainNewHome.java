@@ -784,6 +784,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                             });
                     return;
                 }
+                if (CheckNet(BaseContext))
+                    return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AMyLeader.class));
 
                 break;

@@ -613,7 +613,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
 
         private void setGoosLayout(BLBannerListData data, List<BLGoods> goods, LinearLayout layout) {
             layout.removeAllViews();
-            int view_width = (screenWidth - DimensionPixelUtil.dip2px(BaseContext, 30)) / 4;
+            int view_width = (screenWidth - DimensionPixelUtil.dip2px(BaseContext, 0)) / 4;
             int good_size = 0;
             if (goods.size() >2) {
                 good_size = goods.size() + 1;

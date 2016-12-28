@@ -57,7 +57,7 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
     protected void InItBaseView() {
         setContentView(R.layout.activity_add_show_ls);
         mBinder = ButterKnife.bind(this);
-        MyUser= Spuit.User_Get(BaseContext);
+        MyUser = Spuit.User_Get(BaseContext);
         IBundle();
         IBase();
         IData(LOAD_INITIALIZE);
@@ -71,6 +71,7 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
         search_result_lv_nodata_lay = findViewById(R.id.search_result_lv_nodata_lay);
+        search_result_lv_nodata_lay.setOnClickListener(this);
         mSearchResultAdapter = new ShowSearchResultAdapter();
         swipeTarget.setAdapter(mSearchResultAdapter);
         swipeTarget.setOnItemClickListener(this);
@@ -84,7 +85,7 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
         HashMap<String, String> map = new HashMap<>();
         map.put("keyword", mTitle);
         map.put("page", mPage + "");
-        map.put("member_id",MyUser.getMember_id());
+        map.put("member_id", MyUser.getMember_id());
         map.put("pagesize", Constants.PageSize + "");
         FBGetHttpData(map, Constants.Search_Goodinfo, Request.Method.GET, 0, loadtype);
     }
@@ -201,7 +202,12 @@ public class AAddShowGoodLs extends ATitleBase implements OnLoadMoreListener, On
 
     @Override
     protected void MyClick(View V) {
-
+        switch (V.getId()) {
+            case R.id.search_result_lv_nodata_lay:
+                if (CheckNet(BaseContext)) return;
+                IData(LOAD_INITIALIZE);
+                break;
+        }
     }
 
     @Override

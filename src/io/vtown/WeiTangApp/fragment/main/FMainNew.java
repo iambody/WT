@@ -339,6 +339,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
         } else {// 没有缓存
             PromptManager.showtextLoading(BaseContext, getResources()
                     .getString(R.string.loading));
+            if(CheckNet(BaseContext))return;
             fragment_main_new_srollviw.setRefreshing(true);
             IData(REFRESHING);
         }
@@ -346,6 +347,7 @@ public class FMainNew extends FBase implements View.OnClickListener, SwipeRefres
 
     /* 获取接口的数据 */
     private void IData(int LoadType) {
+       if( CheckNet(BaseContext))return;
         if (LoadType == LOADMOREING) {
             PromptManager.showtextLoading(BaseContext, getResources()
                     .getString(R.string.loading));
