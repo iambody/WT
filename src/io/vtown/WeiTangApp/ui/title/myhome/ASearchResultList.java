@@ -216,6 +216,7 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if( CheckNet(BaseContext))return;
         BLSearchShopAndGood item = (BLSearchShopAndGood) mSearchResultAdapter.getItem(position);
         switch (Show_Type) {
             case 1:

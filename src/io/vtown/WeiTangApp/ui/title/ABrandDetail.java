@@ -553,6 +553,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                 CollecNetDo(!IsCollect);
                 break;
             case R.id.brandshop_sou_lay://搜搜
+                if( CheckNet(BaseContext))return;
                 if (mBComment.getAgent() == null) {
                     PromptManager.ShowCustomToast(BaseContext, "店铺没有商品，无法搜索");
                     return;

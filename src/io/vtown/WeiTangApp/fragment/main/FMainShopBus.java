@@ -51,6 +51,7 @@ import io.vtown.WeiTangApp.ui.title.account.AOderBeing;
 import io.vtown.WeiTangApp.ui.title.loginregist.bindcode_three.ANewBindCode;
 import io.vtown.WeiTangApp.ui.ui.ANewHome;
 import io.vtown.WeiTangApp.ui.ui.AShopDetail;
+import io.vtown.WeiTangApp.ui.ui.ASouSouGood;
 
 /**
  * Created by datutu on 2016/9/18.
@@ -958,7 +959,8 @@ public class FMainShopBus extends FBase implements SwipeRefreshLayout.OnRefreshL
                 if (NoGood) {//标识是没有商品
                     //TODO去跳转到新 商品首页的列表！！！！！！！！！！！！！！！！！！！！！
 //                    PromptManager.ShowCustomToast(BaseContext,"跳转到商品列表");
-                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
+                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ASouSouGood.class));
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ANewHome.class));
                 } else
                     IData(INITIALIZE);
                 break;
