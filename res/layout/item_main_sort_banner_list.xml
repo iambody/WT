@@ -9,16 +9,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
 
-        android:layout_height="180dp">
+        android:layout_height="@dimen/dp_200">
 
-        <io.vtown.WeiTangApp.comment.view.RoundAngleImageView
+        <ImageView
             android:id="@+id/item_main_sort_banner_list_pic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="3dp"
-            android:layout_marginLeft="@dimen/ui_10_dip"
-            android:layout_marginRight="@dimen/ui_10_dip"
-            android:layout_marginTop="@dimen/ui_10_dip"
+
             android:scaleType="fitXY"
 
             android:src="@drawable/error_iv1" />

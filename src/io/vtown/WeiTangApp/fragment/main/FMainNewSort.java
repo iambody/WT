@@ -112,8 +112,9 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_main_new_sort, null);
         SetTitleHttpDataLisenter(this);
         mBinder = ButterKnife.bind(this, BaseView);
-        ICache();
         IView();
+        ICache();
+
     }
 
     private void ICache() {
@@ -327,7 +328,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
 
                 sort_data = JSON.parseObject(Data.getHttpResultStr(), BCMainSort.class);
                 if (TYPE_ALL == current_type) {
-                    CacheUtil.My_Super_Save(BaseContext, Data.getHttpResultStr());
+                    CacheUtil.Main_Sort_Save(BaseContext, Data.getHttpResultStr());
                 }
                 setData(sort_data);
                 if (StrUtils.isEmpty(sort_data.getGoodslist())) {
@@ -633,7 +634,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                     view = (LinearLayout) inflater.inflate(R.layout.item_main_sort_banner_goods, null);
                     // view.setPadding(DimensionPixelUtil.dip2px(BaseContext, 5), DimensionPixelUtil.dip2px(BaseContext, 5), DimensionPixelUtil.dip2px(BaseContext, 5), DimensionPixelUtil.dip2px(BaseContext, 5));
                     //view.setLayoutParams(viewparams);
-                    RoundAngleImageView item_main_sort_banner_goods_img = (RoundAngleImageView) view.findViewById(R.id.item_main_sort_banner_goods_img);
+                    ImageView item_main_sort_banner_goods_img = (ImageView) view.findViewById(R.id.item_main_sort_banner_goods_img);
                     TextView item_main_sort_banner_goods_name = (TextView) view.findViewById(R.id.item_main_sort_banner_goods_name);
                     TextView item_main_sort_banner_goods_price = (TextView) view.findViewById(R.id.item_main_sort_banner_goods_price);
                     item_main_sort_banner_goods_img.setLayoutParams(img_params);
