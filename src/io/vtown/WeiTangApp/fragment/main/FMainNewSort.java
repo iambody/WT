@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.fragment.main;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -621,7 +622,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                 good_size = goods.size();
             }
             LinearLayout view = null;
-            LinearLayout.LayoutParams viewparams = new LinearLayout.LayoutParams(view_width, DimensionPixelUtil.dip2px(BaseContext, 120));
+            LinearLayout.LayoutParams viewparams = new LinearLayout.LayoutParams(view_width, LinearLayout.LayoutParams.WRAP_CONTENT);// DimensionPixelUtil.dip2px(BaseContext, 120)
             LinearLayout.LayoutParams more_params = new LinearLayout.LayoutParams(view_width, view_width);
             LinearLayout.LayoutParams img_params = new LinearLayout.LayoutParams(view_width, view_width);
             viewparams.setMargins(DimensionPixelUtil.dip2px(BaseContext, 3), DimensionPixelUtil.dip2px(BaseContext, 5), DimensionPixelUtil.dip2px(BaseContext, 3), DimensionPixelUtil.dip2px(BaseContext, 5));
