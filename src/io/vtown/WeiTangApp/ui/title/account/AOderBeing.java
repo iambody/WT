@@ -746,6 +746,7 @@ public class AOderBeing extends ATitleBase {
 
                 break;
             case R.id.oderbeing_coupons_lay:
+                if(CheckNet(BaseContext))return;
                 PromptManager.SkipResultActivity(BaseActivity, new Intent(
                         BaseActivity, AMyCoupons.class).putExtra(
                         AMyCoupons.Tage_key, true), 201);

@@ -288,7 +288,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
     private LinearLayout good_detail_bottom_layout;
     private RelativeLayout good_detail_shopbus_log_layout;
     private ImageView good_detail_add_shopbus_status;
-
+//
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_gooddetail);
@@ -913,7 +913,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
                 da.GetShareResult(new PShare.ShareResultIntface() {
                     @Override
                     public void ShareResult(int ResultType) {
-                        if(1==ResultType){
+                        if (1 == ResultType) {
                             Show_Award();
                         }
                     }
@@ -1158,7 +1158,7 @@ public class AGoodDetail extends ATitleBase implements SwipeRefreshLayout.OnRefr
             case PShare.TYPE_GOODDETAIL_TO_SHOW:  //开始跳转到发SHOW页面
                 Intent MyIntens = new Intent(BaseActivity, AAddNewShow.class);
                 MyIntens.putExtra(AAddNewShow.KEY_CREATE_SHOW_TYPE, AAddNewShow.CREATE_TYPE_GOODDETAIL_PIC);
-                MyIntens.putExtra(AAddNewShow.KEY_CREATE_SHOW_GOODINFO, new BLSearchShopAndGood(datas.getId(),datas.getTitle(),datas.getSeller_name(), datas.getCover(), datas.getSales(), datas.getScore(), datas.getSell_price(), datas.getOrig_price(),datas.getGoods_url()));
+                MyIntens.putExtra(AAddNewShow.KEY_CREATE_SHOW_GOODINFO, new BLSearchShopAndGood(datas.getId(), datas.getTitle(), datas.getSeller_name(), datas.getCover(), datas.getSales(), datas.getScore(), datas.getSell_price(), datas.getOrig_price(), datas.getGoods_url()));
                 PromptManager.SkipActivity(BaseActivity, MyIntens);
 
                 break;
