@@ -1080,7 +1080,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                         ANew.class));
                 break;
 
-            case R.id.tv_center_my_order_order_note:
+            case R.id.tv_center_my_order_order_insurance:
             case R.id.iv_center_order_what_is_insurance:
                 PromptManager.SkipActivity(BaseActivity, new Intent(
                         BaseActivity, AWeb.class).putExtra(
