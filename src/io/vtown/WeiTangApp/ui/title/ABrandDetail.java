@@ -561,7 +561,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                 BaseApplication.GetInstance().setShopSouRecommend(mBComment.getAgent());
                 break;
             case R.id.brandshop_connect_iv:// 联系客服
-
+               if( CheckNet(BaseContext))return;
                 if (!StrUtils.isEmpty(mBComment.getBase().getId()))
                     PromptManager.SkipActivity(
                             BaseActivity,

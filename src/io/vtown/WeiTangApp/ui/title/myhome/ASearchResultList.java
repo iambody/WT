@@ -123,8 +123,8 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
         switch (Data.getHttpLoadType()) {
             case LOAD_REFRESHING:
                 searchResultListRefrash.setRefreshing(false);
-                if(StrUtils.isEmpty(Data.getHttpResultStr())){
-                    PromptManager.ShowCustomToast(BaseContext,"没有最新的了");
+                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                    PromptManager.ShowCustomToast(BaseContext, "没有最新的了");
                     return;
                 }
                 datas = JSON.parseArray(Data.getHttpResultStr(), BLSearchShopAndGood.class);
@@ -139,8 +139,8 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
 
             case LOAD_LOADMOREING:
                 searchResultListRefrash.setLoading(false);
-                if(StrUtils.isEmpty(Data.getHttpResultStr())){
-                    PromptManager.ShowCustomToast(BaseContext,"没有更多了");
+                if (StrUtils.isEmpty(Data.getHttpResultStr())) {
+                    PromptManager.ShowCustomToast(BaseContext, "没有更多了");
                     return;
                 }
                 List<BLSearchShopAndGood> data_more = new ArrayList<BLSearchShopAndGood>();
@@ -159,6 +159,7 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
 
     @Override
     protected void DataError(String error, int LoadType) {
+        if (searchResultListRefrash.isRefreshing()) searchResultListRefrash.setRefreshing(false);
         PromptManager.ShowCustomToast(BaseContext, error);
     }
 
@@ -171,6 +172,7 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
     @Override
     protected void NetDisConnect() {
         NetError.setVisibility(View.VISIBLE);
+        if (searchResultListRefrash.isRefreshing()) searchResultListRefrash.setRefreshing(false);
     }
 
     @Override
@@ -284,11 +286,11 @@ public class ASearchResultList extends ATitleBase implements RefreshLayout.OnLoa
                 case 1:
                     ImageLoaderUtil.Load2(blSearchShopAndGood.getAvatar(), holder.ivSearchResultAllShopIcon, R.drawable.error_iv2);
                     StrUtils.SetTxt(holder.tvSearchResultAllShopName, blSearchShopAndGood.getSeller_name());
-                    if(StrUtils.isEmpty(blSearchShopAndGood.getIntro())){
-                        StrUtils.SetTxt(holder.tvSearchResultAllShopDesc,"店铺暂时还没有相关描述，敬请期待……");
-                    }else{
+                    if (StrUtils.isEmpty(blSearchShopAndGood.getIntro())) {
+                        StrUtils.SetTxt(holder.tvSearchResultAllShopDesc, "店铺暂时还没有相关描述，敬请期待……");
+                    } else {
                         StrUtils.SetTxt(holder.tvSearchResultAllShopDesc, blSearchShopAndGood.getIntro());
-                }
+                    }
 
                     break;
 
