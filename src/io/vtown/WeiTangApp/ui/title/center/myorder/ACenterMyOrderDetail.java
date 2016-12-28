@@ -732,9 +732,9 @@ public class ACenterMyOrderDetail extends ATitleBase {
 //		StrUtils.SetTxt(tv_center_my_order_total_price, String.format("%1$s元",
 //				StrUtils.SetTextForMony(order_detail2.getOrder_total_price())));
 
-        StrUtils.SetMoneyFormat(BaseContext, tv_center_my_order_total_price, order_detail2.getOrder_total_price(), 17);
+        StrUtils.SetMoneyFormat(BaseContext, tv_center_my_order_total_price, order_detail2.getGoods_price(), 17);
         float postageF = Float.parseFloat(order_detail2.getPostage());
-        String postage = String.format("(含运费%1$s元)",
+        String postage = String.format("(运费%1$s元)",
                 StrUtils.SetTextForMony(postageF + ""));
         StrUtils.SetTxt(tv_center_my_order_post_price,
                 postageF == 0.0f ? "(免邮费)" : postage);

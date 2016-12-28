@@ -45,6 +45,8 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
 
+import org.w3c.dom.Text;
+
 import de.greenrobot.event.EventBus;
 
 /**
@@ -267,7 +269,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 //						StrUtils.SetTextForMony(data2.getOrder_total_price())));
 
 		float postageF = Float.parseFloat(data2.getPostage_money());
-		String postage = String.format("(含运费%1$s元)",
+		String postage = String.format("(运费%1$s元)",
 				StrUtils.SetTextForMony(postageF + ""));
 		StrUtils.SetTxt(tv_center_my_no_pay_order_post_price,
 				postageF == 0.0f ? "(免邮费)" : postage);
@@ -548,6 +550,8 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 						.findViewById(R.id.ll_center_my_order_no_pay_contact_seller);
 				centerOrderNoPayInside.ll_center_my_no_pay_order_note = (LinearLayout) convertView.findViewById(R.id.ll_center_my_no_pay_order_note);
 				centerOrderNoPayInside.tv_center_my_no_pay_order_note = (TextView)convertView.findViewById(R.id.tv_center_my_no_pay_order_note);
+				centerOrderNoPayInside.tv_center_my_order_no_pay_goods_price = (TextView) convertView.findViewById(R.id.tv_center_my_order_no_pay_goods_price);
+				centerOrderNoPayInside.tv_center_my_order_no_pay_goods_postage = (TextView)convertView.findViewById(R.id.tv_center_my_order_no_pay_goods_postage);
 				centerOrderNoPayInside.no_pay_line = convertView.findViewById(R.id.no_pay_line);
 				convertView.setTag(centerOrderNoPayInside);
 
@@ -563,6 +567,14 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 					secoud_datas.get(position).getGoods());
 			centerOrderNoPayInside.item_fragment_center_order_no_pay_detail_outside
 					.setAdapter(centerOrderNoPayInnerMost);
+
+			StrUtils.SetMoneyFormat(BaseContext,centerOrderNoPayInside.tv_center_my_order_no_pay_goods_price,secoud_datas.get(position).getGoods_price(),17);
+			float postageF = Float.parseFloat(secoud_datas.get(position).getPostage());
+			String postage = String.format("(运费%1$s元)",
+					StrUtils.SetTextForMony(postageF + ""));
+			StrUtils.SetTxt(centerOrderNoPayInside.tv_center_my_order_no_pay_goods_postage,
+					postageF == 0.0f ? "(免邮费)" : postage);
+
 
 			if(StrUtils.isEmpty(secoud_datas.get(position).getOrder_note())){
 				centerOrderNoPayInside.ll_center_my_no_pay_order_note.setVisibility(View.GONE);
@@ -715,6 +727,8 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 		public TextView tv_center_order_no_pay_detail_seller_name;// 买家名称
 		public CompleteListView item_fragment_center_order_no_pay_detail_outside;// 第二层的订单列表
 		public LinearLayout ll_center_my_order_no_pay_contact_seller;// 联系卖家
+		public TextView tv_center_my_order_no_pay_goods_price;
+		public TextView tv_center_my_order_no_pay_goods_postage;
 		public LinearLayout ll_center_my_no_pay_order_note;
 		public TextView tv_center_my_no_pay_order_note;
 		public View no_pay_line;

@@ -1115,7 +1115,6 @@ public class ACenterMyOrder extends ATitleBase implements
                                 return;
                             BLCenterOder bl_data = (BLCenterOder) centerOrderOutsideAdapter
                                     .getItem(myItemPosition);
-
                             if (PDaiFu != Integer.parseInt(data.getOrder_status())) {
 
                                 Intent intent = new Intent(BaseContext, ACenterMyOrderDetail.class);
@@ -1596,9 +1595,11 @@ public class ACenterMyOrder extends ATitleBase implements
             } else {
                 centerOrderNoPay = (CenterOrderNoPayItem) convertView.getTag();
             }
+
+
             final CenterOrderNoPayInsideAdapter centerOrderNoPayInside = new CenterOrderNoPayInsideAdapter(
                     R.layout.item_center_order_no_pay_inside, datas.get(
-                    position).getSon_order());
+                    position).getSon_order(),position);
             centerOrderNoPay.item_fragment_center_order_no_pay_outside
                     .setAdapter(centerOrderNoPayInside);
             StrUtils.SetTxt(centerOrderNoPay.tv_center_order_no_pay_order_sn,
@@ -1694,14 +1695,16 @@ public class ACenterMyOrder extends ATitleBase implements
         private int ResourseId;
         private LayoutInflater inflater;
         private List<BLDComment> secoud_datas = new ArrayList<BLDComment>();
+        private int mPosition;
 
         public CenterOrderNoPayInsideAdapter(int ResourseId,
-                                             List<BLDComment> datas) {
+                                             List<BLDComment> datas, int position) {
             super();
 
             this.ResourseId = ResourseId;
             this.inflater = LayoutInflater.from(BaseContext);
             this.secoud_datas = datas;
+            this.mPosition = position;
         }
 
         @Override
@@ -1746,7 +1749,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     .get(position).getGoods());
             centerOrderNoPayInside.item_fragment_center_order_no_pay_inside
                     .setAdapter(centerOrderNoPayInnerMost);
-            final int myItemPosition = position;
+
             centerOrderNoPayInside.item_fragment_center_order_no_pay_inside
                     .setOnItemClickListener(new OnItemClickListener() {
 
@@ -1754,7 +1757,8 @@ public class ACenterMyOrder extends ATitleBase implements
                         public void onItemClick(AdapterView<?> parent,
                                                 View view, int position, long id) {
                             BLCenterOder bl_data = (BLCenterOder) centerOrderNoPayAdapter
-                                    .getItem(position);
+                                    .getItem(mPosition);
+
                             Intent intent = new Intent(BaseContext,
                                     ACenterMyOrderNoPayDetail.class);
                             intent.putExtra("order_sn", bl_data.getOrder_sn());
