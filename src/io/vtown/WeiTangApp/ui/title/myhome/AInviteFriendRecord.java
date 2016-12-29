@@ -97,7 +97,6 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
     private EditText invite_friends_record_title;
     private List<BCInviteFriends>  more_datas = new ArrayList<BCInviteFriends>();
 
-    private int remark_position ;
     private FriendsAdapter friendsAdapter;
 
     @Override
@@ -663,17 +662,21 @@ public class AInviteFriendRecord extends ATitleBase implements LListView.IXListV
 
         IData(page, LOAD_LOADMOREING);
     }
-
-private String remark_name = "";
+    private int outApPosition = -1;
+    private int inPosition = -1;
     public void getEventMsg(BMessage bMessage){
         int type = bMessage.getMessageType();
         if(BMessage.REMARK_FRIENDS == type) {
-            page = 1;
-            IData(page,LOAD_INITIALIZE);
+            BCInviteFriends bcInviteFriends = mAdapter.GetApData().get(outApPosition);
+            BLInviteFriends friends = bcInviteFriends.getList().get(inPosition);
+            String remark_name = bMessage.getRemark_name();
+            if(!StrUtils.isEmpty(remark_name)){
+                friends.setRemark(remark_name);
+                mAdapter.notifyDataSetChanged();
+            }
+
         }
-
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -762,9 +765,8 @@ private String remark_name = "";
             } else {
                 holder = (InviteFriendHolder) convertView.getTag();
             }
-
-            mPosition = position;
-            final BCInviteFriends bcInviteFriends = datas.get(mPosition);
+          final int remark_position = position;
+            final BCInviteFriends bcInviteFriends = datas.get(position);
             StrUtils.SetTxt(holder.tv_invite_date, datas.get(position).getDate());
             friendsAdapter = new FriendsAdapter(R.layout.item_invite_friends_detail, datas.get(position).getList());
             holder.invite_friends_record_inside.setAdapter(friendsAdapter);
@@ -779,8 +781,7 @@ private String remark_name = "";
 //                            BaseKey_Bean, mBComment));
 
 //                    ContactFriend(friend);
-                    remark_position = position;
-                    ControlFriendDialog(friend);
+                    ControlFriendDialog(friend,position,remark_position);
 
 
                 }
@@ -823,8 +824,7 @@ private String remark_name = "";
         });
 
     }
-
-    private void ControlFriendDialog(final BLInviteFriends friend){
+    private void ControlFriendDialog(final BLInviteFriends friend, final int inposition, final int listposition){
         List<String> strs = new ArrayList<>();
         strs.add("修改备注");
         strs.add("复制手机号");
@@ -836,6 +836,8 @@ private String remark_name = "";
                 switch (position){
                     case 0:
                         String remark_name = friend.getRemark();
+                        inPosition = inposition;
+                        outApPosition = listposition;
                             Intent intent = new Intent(BaseActivity, AModifyFriendName.class);
                             intent.putExtra(AModifyFriendName.FRIEND_NAME_KEY,remark_name);
                             intent.putExtra(AModifyFriendName.MEMBER_ID_KEY,friend.getMember_id());
@@ -873,13 +875,14 @@ private String remark_name = "";
         private int ResourseId;
         private LayoutInflater inflater;
         private List<BLInviteFriends> friends_datas = new ArrayList<BLInviteFriends>();
-        private List<FriendsHolder> holders = new ArrayList<FriendsHolder>();
+
 
         public FriendsAdapter(int ResourseId, List<BLInviteFriends> friends_datas) {
             super();
             this.ResourseId = ResourseId;
             this.friends_datas = friends_datas;
             this.inflater = LayoutInflater.from(BaseContext);
+
         }
 
         @Override
@@ -898,6 +901,11 @@ private String remark_name = "";
 //            notifyDataSetChanged();
 //        }
 
+        public List<BLInviteFriends> getData(){
+            return this.friends_datas;
+        }
+
+
         @Override
         public long getItemId(int position) {
             return position;
@@ -908,7 +916,6 @@ private String remark_name = "";
             FriendsHolder holder = null;
             if (convertView == null) {
                 holder = new FriendsHolder();
-                holders.add(holder);
                 convertView = inflater.inflate(ResourseId, null);
                 holder.iv_friend_icon = (CircleImageView) convertView.findViewById(R.id.iv_friend_icon);
                 holder.iv_friend_lv = (ImageView) convertView.findViewById(R.id.iv_friend_lv);

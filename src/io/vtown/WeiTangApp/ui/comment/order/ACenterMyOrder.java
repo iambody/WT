@@ -1969,6 +1969,43 @@ public class ACenterMyOrder extends ATitleBase implements
 //        mTitle.setOnClickListener(this);
     }
 
+
+    private void showNullDataLayout(int type){
+        switch (type) {
+
+            case PAll:
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_all));
+                break;
+            case PDaiFu:
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_no_pay));
+                break;
+            case PYiFu:
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_daifa));
+                break;
+            case PDaiShou:
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_daishou));
+                break;
+            case PTuiKuan:
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_tuikuan));
+                break;
+            case PAgreeTuiKuan:
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_yituikuan));
+                break;
+            case PClose:
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_over));
+                break;
+
+            case PCancel:
+                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_cannel));
+                break;
+
+        }
+        ShowErrorIv(R.drawable.pic_maidongxikongbaiyemian);
+        fragent_centeroder_nodata_lay.setVisibility(View.VISIBLE);
+        fragent_centeroder_nodata_lay.setClickable(false);
+        fragment_center_order_ls.setVisibility(View.GONE);
+    }
+
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
         switch (Data.getHttpResultTage()) {
@@ -1978,39 +2015,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
                     if (LOAD_INITIALIZE == Data.getHttpLoadType()) {
                         //PromptManager.ShowCustomToast(BaseContext, "暂无订单");
-                        switch (Ket_Tage) {
-
-                            case PAll:
-                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_all));
-                                break;
-                            case PDaiFu:
-                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_no_pay));
-                                break;
-                            case PYiFu:
-                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_daifa));
-                                break;
-                            case PDaiShou:
-                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_daishou));
-                                break;
-                            case PTuiKuan:
-                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_tuikuan));
-                                break;
-                            case PAgreeTuiKuan:
-                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_yituikuan));
-                                break;
-                            case PClose:
-                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_over));
-                                break;
-
-                            case PCancel:
-                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_cannel));
-                                break;
-
-                        }
-                        ShowErrorIv(R.drawable.pic_maidongxikongbaiyemian);
-                        fragent_centeroder_nodata_lay.setVisibility(View.VISIBLE);
-                        fragent_centeroder_nodata_lay.setClickable(false);
-                        fragment_center_order_ls.setVisibility(View.GONE);
+                        showNullDataLayout(Ket_Tage);
                         if (PDaiFu == Ket_Tage) {
                             centerOrderNoPayAdapter
                                     .RefreshData(new ArrayList<BLCenterOder>());
@@ -2032,8 +2037,9 @@ public class ACenterMyOrder extends ATitleBase implements
                         fragment_center_order_refrash.setLoading(false);
                     }
                     if (LOAD_REFRESHING == Data.getHttpLoadType()) {
-                        //fragment_center_order_ls.stopRefresh();
+                        fragment_center_order_refrash.setRefreshing(false);
                         PromptManager.ShowCustomToast(BaseContext, "暂无订单");
+                        showNullDataLayout(Ket_Tage);
                         if (PDaiFu == Ket_Tage) {
                             centerOrderNoPayAdapter
                                     .RefreshData(new ArrayList<BLCenterOder>());
@@ -2186,11 +2192,11 @@ public class ACenterMyOrder extends ATitleBase implements
                 ShowErrorCanLoad(getResources().getString(R.string.error_null_noda));
                 break;
             case LOAD_REFRESHING:// 刷新数据
-                // fragment_center_order_ls.stopRefresh();
+                fragment_center_order_refrash.setRefreshing(false);
 
                 break;
             case LOAD_LOADMOREING:// 加载更多
-                //fragment_center_order_ls.stopLoadMore();
+                fragment_center_order_refrash.setLoading(false);
 
                 break;
 
