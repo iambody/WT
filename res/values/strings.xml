@@ -584,6 +584,7 @@
     <string name="error_null_my_order_tuikuan">无退款/仲裁订单</string>
     <string name="error_null_my_order_yituikuan">无已退款订单</string>
     <string name="error_null_my_order_over">没有已完成订单</string>
+    <string name="error_null_my_order_cannel">没有已取消订单</string>
     <string name="error_null_bank_list_over">无获取到您想要的银行哦，请稍后再试试吧</string>
     <string name="error_null_property_list">无此类型的资金明细</string>
     <string name="error_null_property_shopping">无购物资金明细</string>

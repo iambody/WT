@@ -241,7 +241,7 @@ public class ACenterMyOrder extends ATitleBase implements
         menu_data.add(new OrderMenuData("待付款",PDaiFu));
         menu_data.add(new OrderMenuData("待发货",PYiFu));
         menu_data.add(new OrderMenuData("待收货",PDaiShou));
-        menu_data.add(new OrderMenuData("退款/仲裁",PZhongCai));
+        menu_data.add(new OrderMenuData("退款/仲裁",PTuiKuan));
         menu_data.add(new OrderMenuData("已完成",PClose));
         menu_data.add(new OrderMenuData("已取消",PCancel));
 
@@ -2000,6 +2000,10 @@ public class ACenterMyOrder extends ATitleBase implements
                                 break;
                             case PClose:
                                 ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_over));
+                                break;
+
+                            case PCancel:
+                                ShowErrorCanLoad(getResources().getString(R.string.error_null_my_order_cannel));
                                 break;
 
                         }
