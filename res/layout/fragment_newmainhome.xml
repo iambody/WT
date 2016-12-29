@@ -49,7 +49,7 @@
 
                         <RelativeLayout
                             android:layout_width="@dimen/shop_user_hright"
-                            android:layout_height="@dimen/shop_user_hright6"
+                            android:layout_height="@dimen/shop_user_hright"
                             android:layout_centerInParent="true">
 
                             <io.vtown.WeiTangApp.comment.view.CircleImageView
@@ -61,19 +61,7 @@
                                 android:focusable="true"
                                 />
 
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true"
-                                android:layout_centerHorizontal="true"
-                                android:paddingLeft="@dimen/ui_10_dip">
 
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/ui_10_dip"
-                                    android:src="@drawable/f_home_maozi"/>
-                            </RelativeLayout>
                         </RelativeLayout>
 
                     </RelativeLayout>

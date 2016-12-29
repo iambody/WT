@@ -66,7 +66,7 @@
                 android:layout_marginRight="@dimen/ui_10_dip"
                 android:lines="1"
                 android:textColor="@color/app_gray"
-                android:textSize="@dimen/ui_10_dip"
+                android:textSize="@dimen/ui_12_dip"
                 />
         </LinearLayout>
 

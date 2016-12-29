@@ -128,18 +128,20 @@ public class ANewCenter extends ATitleBase {
 
     @Override
     protected void MyClick(View V) {
-        if (CheckNet(BaseContext)) return;
+
         switch (V.getId()) {
             case R.id.view_personal_data://个人资料
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseContext, AShopData.class));
                 break;
 
             case R.id.view_my_show://我的show
+                if (CheckNet(BaseContext)) return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ARecyclerMyShow.class).putExtra("seller_id", Spuit.User_Get(BaseContext).getSeller_id()));
                 break;
 
             case R.id.view_good_soucang://商品收藏
+                if (CheckNet(BaseContext)) return;
                 Intent intent = new Intent(BaseActivity, ACommentList.class);
                 intent.putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterOderGuanzhu);
@@ -147,11 +149,13 @@ public class ANewCenter extends ATitleBase {
                 PromptManager.SkipActivity(BaseActivity, intent);
                 break;
             case R.id.view_shop_guanzhu://店铺关注
+                if (CheckNet(BaseContext)) return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterShopCollect));
                 break;
             case R.id.view_scan_record://浏览记录
+                if (CheckNet(BaseContext)) return;
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                         ACommentList.class).putExtra(ACommentList.Tage_ResultKey,
                         ACommentList.Tage_ACenterGoodBrowseRecord));
@@ -164,6 +168,7 @@ public class ANewCenter extends ATitleBase {
                 break;
 
             case R.id.view_my_address://我的地址
+
                 Intent intentss = new Intent(BaseActivity, AAddressManage.class);
                 intentss.putExtra("NeedFinish", false);
                 PromptManager.SkipActivity(BaseActivity, intentss);

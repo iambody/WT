@@ -40,6 +40,7 @@ import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
+import io.vtown.WeiTangApp.comment.util.NetUtil;
 import io.vtown.WeiTangApp.comment.util.ViewUtils;
 import io.vtown.WeiTangApp.comment.view.ShowSelectPic;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
@@ -336,46 +337,49 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
     }
 
     private void ShareSina() {
-            if (!ViewUtils.isWeiboInstalled(activity)) {
-                PromptManager.ShowCustomToast(activity, activity.getResources().getString(R.string.weibonoanzhuang));
-                return;
-            }
+        if (!NetUtil.isConnected(activity)) {
+            PromptManager.ShowCustomToast(mContext,
+                    mContext.getString(R.string.check_net));
+            return;
+        }
+        if (!ViewUtils.isWeiboInstalled(activity)) {
+            PromptManager.ShowCustomToast(activity, activity.getResources().getString(R.string.weibonoanzhuang));
+            return;
+        }
 
-            Platform platform = null;
-            Platform.ShareParams sp = new Platform.ShareParams();
-            platform = ShareSDK.getPlatform(activity, SinaWeibo.NAME);
+        Platform platform = null;
+        Platform.ShareParams sp = new Platform.ShareParams();
+        platform = ShareSDK.getPlatform(activity, SinaWeibo.NAME);
 //        platform.SSOSetting(true);
 //        disableSSOWhenAuthorize
-            platform.SSOSetting(false);
+        platform.SSOSetting(false);
 
-            sp.setTitle(mShareBeanNew.getShare_title());
-            sp.setTitleUrl(mShareBeanNew.getShare_url()); // 标题的超链接
-            sp.setText(mShareBeanNew.getShare_content());
-            sp.setImageUrl(mShareBeanNew.getShare_log());
-            platform.setPlatformActionListener(new PlatformActionListener() {
+        sp.setTitle(mShareBeanNew.getShare_title());
+        sp.setTitleUrl(mShareBeanNew.getShare_url()); // 标题的超链接
+        sp.setText(mShareBeanNew.getShare_content());
+        sp.setImageUrl(mShareBeanNew.getShare_log());
+        platform.setPlatformActionListener(new PlatformActionListener() {
 
-                @Override
-                public void onError(Platform arg0, int arg1, Throwable arg2) {
-                    PromptManager.ShowCustomToast(activity, "分享取消");
+            @Override
+            public void onError(Platform arg0, int arg1, Throwable arg2) {
+                PromptManager.ShowCustomToast(activity, "分享取消");
 //                    PromptManager.ShowCustomToast(activity, arg1 + "=====>" + arg2.toString());
 
-                }
+            }
 
-                @Override
-                public void onComplete(Platform arg0, int arg1,
-                                       HashMap<String, Object> arg2) {
-                    PromptManager.ShowCustomToast(activity, "分享完成");
+            @Override
+            public void onComplete(Platform arg0, int arg1,
+                                   HashMap<String, Object> arg2) {
+                PromptManager.ShowCustomToast(activity, "分享完成");
 
-                }
+            }
 
-                @Override
-                public void onCancel(Platform arg0, int arg1) {
+            @Override
+            public void onCancel(Platform arg0, int arg1) {
 
-                }
-            });
-            platform.share(sp);
-
-
+            }
+        });
+        platform.share(sp);
 
 
     }
@@ -481,8 +485,8 @@ public class PShowShare extends PopupWindow implements View.OnClickListener {
             public void onComplete(Platform arg0, int arg1,
                                    HashMap<String, Object> arg2) {
                 PromptManager.ShowCustomToast(mContext, "分享完成");
-                if(SHARE_TO_FRIENDS==Type||SHARE_TO_FRIENDS==Type)
-                MShowShareInterListener.GetResultType(SHARE_GOODS_OK);
+                if (SHARE_TO_FRIENDS == Type || SHARE_TO_FRIENDS == Type)
+                    MShowShareInterListener.GetResultType(SHARE_GOODS_OK);
                 PromptManager.closeLoading();
                 PShowShare.this.dismiss();
             }

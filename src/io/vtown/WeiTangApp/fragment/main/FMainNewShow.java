@@ -360,6 +360,7 @@ if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
                 break;
             case R.id.maintab_new_show_uptxt:
                 swipeTarget.smoothScrollToPosition(0);
+
                 break;
         }
     }
@@ -848,6 +849,7 @@ if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
                 //权限888888888888888888888
                 //如果未绑定或者已绑定未激活的用户分享权限的判断***************************
                 if (CheckLimite()) return;
+                if(CheckNet(BaseContext))return;
                 //判断发show的权限！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
                 PShowShare myshare = null;//new PShowShare(BaseContext, BaseActivity, new BNew(), true, true);
 
@@ -909,6 +911,7 @@ if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
                                 case PShowShare.SHARE_GOODS_ERROR://三方分享失败
                                     break;
                                 case PShowShare.SHARE_PIC_VEDIO://九宫格或者视频分享
+                                    if(CheckNet(BaseContext))return;
                                     if (!IsVido)
                                         try {
                                             //判断是否安装微信
@@ -987,6 +990,7 @@ if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
                                 case PShowShare.SHARE_GOODS_ERROR://三方分享失败
                                     break;
                                 case PShowShare.SHARE_PIC_VEDIO://九宫格或者视频分享
+                                    if(CheckNet(BaseContext))return;
                                     //开始九宫格分享！！！！！！！！！！！！
                                     //开始九宫格分享！！！！！！！！！！！！
                                     //开始九宫格分享！！！！！！！！！！！！
