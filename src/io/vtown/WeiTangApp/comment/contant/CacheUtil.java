@@ -645,9 +645,6 @@ public class CacheUtil {
      * 清除所有的sp缓存数据
      */
     public static void ClearnCache(Context mpContext) {
-        Integral_Type_Save(mpContext,"");
-        Main_Sort_Save(mpContext,"");
-        Property_Type_Save(mpContext,"");
         Center_Order_List_Save(mpContext, "");
         Shop_Order_List_Save(mpContext, "");
         Shop_Purchase_List_Save(mpContext, "");
