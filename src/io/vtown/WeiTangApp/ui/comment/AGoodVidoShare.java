@@ -216,6 +216,7 @@ public class AGoodVidoShare extends ATitleBase {
                 // UpVido(NewVidoPath);
 //			SharePop();
 //Show转发
+                if (CheckNet(BaseContext))return;
                 UpVido(NewVidoPath);
 
                 break;

@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.adapter.MyIvdapter;
 
@@ -37,6 +38,7 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.BShowShare;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLBShow;
 import io.vtown.WeiTangApp.bean.bcomment.easy.show.BLShow;
 import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
+import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
@@ -95,6 +97,7 @@ public class ARecyclerMyShow extends ATitleBase {
         setContentView(R.layout.activity_recycler_my_show);
         this.mRootView = LayoutInflater.from(BaseContext).inflate(R.layout.activity_recycler_my_show, null);
         SetTitleHttpDataLisenter(this);
+        EventBus.getDefault().register(this,"getEventMsg", BMessage.class);
         String seller_id = getIntent().getStringExtra("seller_id");
         if (StrUtils.isEmpty(seller_id)) {
             return;
@@ -1158,6 +1161,20 @@ public class ARecyclerMyShow extends ATitleBase {
 
     }
 
+    public void getEventMsg(BMessage message){
+        int messageType = message.getMessageType();
+        if(BMessage.Tage_Show_Hind_Load == messageType){
+            lastid = "";
+            IData(lastid, LOAD_INITIALIZE);
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+       EventBus.getDefault().unregister(this);
+    }
 
     //adapter
 }

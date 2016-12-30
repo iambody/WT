@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,203 +31,211 @@ import de.greenrobot.event.EventBus;
  */
 public class AAddBankCard extends ATitleBase {
 
-	/**
-	 * 输入银行卡卡号
-	 */
-	private EditText et_bank_card_numb;
-	/**
-	 * 选择银行
-	 */
-	private View select_bank;
-	/**
-	 * 我同意选择按钮
-	 */
-	// private CheckBox cb_i_agree;
-	/**
-	 * 银行授权协议
-	 */
-	private TextView tv_bank_transfer_agreement;
-	/**
-	 * 提交按钮
-	 */
-	private TextView tv_btn_submit_bank_card;
-	private BLSelectBank mBlComment;
-	/**
-	 * 用户信息
-	 */
-	private BUser user_Get;
-	/**
-	 * 完成之后要跳到哪里
-	 */
-	private int togo;
-	/**
-	 * 显示银行卡名称
-	 */
-	private TextView comment_txtarrow_content;
-	/**
-	 * 真实姓名
-	 */
-	private TextView tv_bind_bank_card_real_name;
+    /**
+     * 输入银行卡卡号
+     */
+    private EditText et_bank_card_numb;
+    /**
+     * 选择银行
+     */
+    private View select_bank;
+    /**
+     * 我同意选择按钮
+     */
+    // private CheckBox cb_i_agree;
+    /**
+     * 银行授权协议
+     */
+    private TextView tv_bank_transfer_agreement;
+    /**
+     * 提交按钮
+     */
+    private TextView tv_btn_submit_bank_card;
+    private BLSelectBank mBlComment;
+    /**
+     * 用户信息
+     */
+    private BUser user_Get;
+    /**
+     * 完成之后要跳到哪里
+     */
+    private int togo;
+    /**
+     * 显示银行卡名称
+     */
+    private TextView comment_txtarrow_content;
+    /**
+     * 真实姓名
+     */
+    private TextView tv_bind_bank_card_real_name;
 
-	@Override
-	protected void InItBaseView() {
-		setContentView(R.layout.activity_center_wallet_bankcard_manager_add_bankcard);
-		user_Get = Spuit.User_Get(BaseActivity);
-		togo = getIntent().getIntExtra("togo", 0);
-		IView();
-	}
+    @Override
+    protected void InItBaseView() {
+        setContentView(R.layout.activity_center_wallet_bankcard_manager_add_bankcard);
+        user_Get = Spuit.User_Get(BaseActivity);
+        togo = getIntent().getIntExtra("togo", 0);
+        IView();
+    }
 
-	private void IView() {
-		et_bank_card_numb = (EditText) findViewById(R.id.et_bank_card_numb);
-		select_bank = findViewById(R.id.select_bank);
-		tv_bank_transfer_agreement = (TextView) findViewById(R.id.tv_bank_transfer_agreement);
-		tv_btn_submit_bank_card = (TextView) findViewById(R.id.tv_btn_submit_bank_card);
-		tv_bind_bank_card_real_name = (TextView) findViewById(R.id.tv_bind_bank_card_real_name);
-		StrUtils.SetColorsTxt(BaseContext, tv_bind_bank_card_real_name,
-				R.color.app_gray, "持卡人：", user_Get.getName());
-		SetItemContent(select_bank, R.string.select_bank, "");
-		tv_bank_transfer_agreement.setOnClickListener(this);
-		tv_btn_submit_bank_card.setOnClickListener(this);
-	}
+    private void IView() {
+        et_bank_card_numb = (EditText) findViewById(R.id.et_bank_card_numb);
+        select_bank = findViewById(R.id.select_bank);
+        tv_bank_transfer_agreement = (TextView) findViewById(R.id.tv_bank_transfer_agreement);
+        tv_btn_submit_bank_card = (TextView) findViewById(R.id.tv_btn_submit_bank_card);
+        tv_bind_bank_card_real_name = (TextView) findViewById(R.id.tv_bind_bank_card_real_name);
+        StrUtils.SetColorsTxt(BaseContext, tv_bind_bank_card_real_name,
+                R.color.app_gray, "持卡人：", user_Get.getName());
+        SetItemContent(select_bank, R.string.select_bank, "");
+        tv_bank_transfer_agreement.setOnClickListener(this);
+        tv_btn_submit_bank_card.setOnClickListener(this);
+    }
 
-	private void IData(String cardNo) {
-		String name = user_Get.getName();
+    private void IData(String cardNo) {
+        String name = user_Get.getName();
 
-		SetTitleHttpDataLisenter(this);
-		PromptManager.showLoading(BaseContext);
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("member_id", user_Get.getId());
-		map.put("seller_id", user_Get.getSeller_id());
-		map.put("api_version", "2.0.1");//API版本上线2.0.1
-		map.put("name", name);
-		map.put("bank_name", mBlComment.getBank_name());
-		map.put("bank_id", mBlComment.getBank_id());
-		map.put("card_number", cardNo);
-		FBGetHttpData(map, Constants.Bank_Manage_Add_Card, Method.POST, 0,
-				LOAD_INITIALIZE);
+        SetTitleHttpDataLisenter(this);
+        PromptManager.showLoading(BaseContext);
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("member_id", user_Get.getId());
+        map.put("seller_id", user_Get.getSeller_id());
+        map.put("api_version", "2.0.1");//API版本上线2.0.1
+        map.put("name", name);
+        map.put("bank_name", mBlComment.getBank_name());
+        map.put("bank_id", mBlComment.getBank_id());
+        map.put("card_number", cardNo);
+        FBGetHttpData(map, Constants.Bank_Manage_Add_Card, Method.POST, 0,
+                LOAD_INITIALIZE);
 
-	}
+    }
 
-	private void SetItemContent(View VV, int ResourceTitle, String str) {
-		((TextView) VV.findViewById(R.id.comment_txtarrow_title))
-				.setText(getResources().getString(ResourceTitle));
-		comment_txtarrow_content = ((TextView) VV
-				.findViewById(R.id.comment_txtarrow_content));
-		comment_txtarrow_content.setText(str);
+    private void SetItemContent(View VV, int ResourceTitle, String str) {
+        ((TextView) VV.findViewById(R.id.comment_txtarrow_title))
+                .setText(getResources().getString(ResourceTitle));
+        comment_txtarrow_content = ((TextView) VV
+                .findViewById(R.id.comment_txtarrow_content));
+        comment_txtarrow_content.setText(str);
 
-		VV.setOnClickListener(this);
-	}
+        VV.setOnClickListener(this);
+    }
 
-	@Override
-	protected void InitTile() {
-		SetTitleTxt(getResources().getString(R.string.add_bank_card));
-	}
+    @Override
+    protected void InitTile() {
+        SetTitleTxt(getResources().getString(R.string.add_bank_card));
+    }
 
-	@Override
-	protected void DataResult(int Code, String Msg, BComment Data) {
-		tv_btn_submit_bank_card.setEnabled(true);
-		if (Code == 200) {
-			EventBus.getDefault().post(
-					new BMessage(BMessage.Tage_Updata_BankCard_List));
-			PromptManager.ShowMyToast(BaseContext, "银行卡添加成功");
-			Intent intent = null;
-			if (1 == togo) {
-				intent = new Intent(BaseContext, ATiXian.class);
-			} else {
-				intent = new Intent(BaseContext, ABankCardManager.class);
-				intent.putExtra("isFinish", false);
-			}
-			EventBus.getDefault().post(new BMessage(BMessage.Tage_Updata_Tixian_Message));
-			startActivity(intent);
+    @Override
+    protected void DataResult(int Code, String Msg, BComment Data) {
+        tv_btn_submit_bank_card.setEnabled(true);
+        if (Code == 200) {
+            EventBus.getDefault().post(
+                    new BMessage(BMessage.Tage_Updata_BankCard_List));
+            PromptManager.ShowMyToast(BaseContext, "银行卡添加成功");
+            Intent intent = null;
+            if (1 == togo) {
+                intent = new Intent(BaseContext, ATiXian.class);
+            } else {
+                intent = new Intent(BaseContext, ABankCardManager.class);
+                intent.putExtra("isFinish", false);
+            }
+            EventBus.getDefault().post(new BMessage(BMessage.Tage_Updata_Tixian_Message));
+            startActivity(intent);
 
-			finish();
-		} else {
-			DataError("银行卡添加失败", 1);
-		}
+            finish();
+        } else {
+            DataError("银行卡添加失败", 1);
+            //tv_btn_submit_bank_card.setEnabled(true);
+        }
 
-	}
+    }
 
-	@Override
-	protected void DataError(String error, int LoadTyp) {
-		tv_btn_submit_bank_card.setEnabled(true);
-		PromptManager.ShowMyToast(BaseContext, error);
-	}
+    @Override
+    protected void DataError(String error, int LoadTyp) {
+        //tv_btn_submit_bank_card.setEnabled(true);
+        PromptManager.ShowMyToast(BaseContext, error);
+    }
 
-	@Override
-	protected void NetConnect() {
-		NetError.setVisibility(View.GONE);
-		tv_btn_submit_bank_card.setEnabled(true);
-	}
+    @Override
+    protected void NetConnect() {
+        //tv_btn_submit_bank_card.setEnabled(true);
+        NetError.setVisibility(View.GONE);
 
-	@Override
-	protected void NetDisConnect() {
-		NetError.setVisibility(View.VISIBLE);
-	}
+    }
 
-	@Override
-	protected void SetNetView() {
-		SetNetStatuse(NetError);
-	}
+    @Override
+    protected void NetDisConnect() {
+        //tv_btn_submit_bank_card.setEnabled(true);
+        NetError.setVisibility(View.VISIBLE);
+    }
 
-	@Override
-	protected void MyClick(View V) {
-		switch (V.getId()) {
-		case R.id.select_bank:
-			PromptManager.SkipResultActivity(BaseActivity, new Intent(
-					BaseActivity, ASelectBank.class), 0);
-			break;
+    @Override
+    protected void SetNetView() {
+        SetNetStatuse(NetError);
+    }
 
-		case R.id.tv_bank_transfer_agreement:
+    @Override
+    protected void MyClick(View V) {
+        switch (V.getId()) {
+            case R.id.select_bank:
+                PromptManager.SkipResultActivity(BaseActivity, new Intent(
+                        BaseActivity, ASelectBank.class), 0);
+                break;
 
-			break;
+            case R.id.tv_bank_transfer_agreement:
 
-		case R.id.tv_btn_submit_bank_card:
-			tv_btn_submit_bank_card.setEnabled(false);
-			String cardNo = et_bank_card_numb.getText().toString().trim();
+                break;
 
-			if (!StrUtils.checkBankCard(BaseContext, cardNo)) {
-				tv_btn_submit_bank_card.setEnabled(true);
-				return;
-			}
+            case R.id.tv_btn_submit_bank_card:
 
-			String bank_name = comment_txtarrow_content.getText().toString()
-					.trim();
-			if (StrUtils.isEmpty(bank_name)) {
-				tv_btn_submit_bank_card.setEnabled(true);
-				PromptManager.ShowMyToast(BaseContext, "选择您要绑定的银行");
-				return;
-			}
 
-			// if (!cb_i_agree.isChecked()) {
-			// PromptManager.ShowMyToast(BaseContext, "请阅读并同意《银行转账授权协议》");
-			// return;
-			// }
-			if (CheckNet(BaseContext))
-				return;
-			IData(cardNo);
-			break;
 
-		}
-	}
+                //tv_btn_submit_bank_card.setEnabled(false);
+                String cardNo = et_bank_card_numb.getText().toString().trim();
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                if (!StrUtils.checkBankCard(BaseContext, cardNo)) {
+                    //tv_btn_submit_bank_card.setEnabled(true);
+                    return;
+                }
 
-		if (0 == requestCode && resultCode == RESULT_OK) {
-			mBlComment = (BLSelectBank) data.getSerializableExtra("bank_info");
-			SetItemContent(select_bank, R.string.select_bank,
-					mBlComment.getBank_name());
-		}
+                String bank_name = comment_txtarrow_content.getText().toString()
+                        .trim();
+                if (StrUtils.isEmpty(bank_name)) {
+                   // tv_btn_submit_bank_card.setEnabled(true);
+                    PromptManager.ShowMyToast(BaseContext, "选择您要绑定的银行");
+                    return;
+                }
 
-		super.onActivityResult(requestCode, resultCode, data);
-	}
+                // if (!cb_i_agree.isChecked()) {
+                // PromptManager.ShowMyToast(BaseContext, "请阅读并同意《银行转账授权协议》");
+                // return;
+                // }
+                if (CheckNet(BaseContext))
+                    return;
 
-	@Override
-	protected void InItBundle(Bundle bundle) {
-	}
+                IData(cardNo);
 
-	@Override
-	protected void SaveBundle(Bundle bundle) {
-	}
+                break;
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (0 == requestCode && resultCode == RESULT_OK) {
+            mBlComment = (BLSelectBank) data.getSerializableExtra("bank_info");
+            SetItemContent(select_bank, R.string.select_bank,
+                    mBlComment.getBank_name());
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void InItBundle(Bundle bundle) {
+    }
+
+    @Override
+    protected void SaveBundle(Bundle bundle) {
+    }
 
 }

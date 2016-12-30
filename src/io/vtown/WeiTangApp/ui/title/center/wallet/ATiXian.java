@@ -338,7 +338,7 @@ public class ATiXian extends ATitleBase {
 
 	@Override
 	protected void DataResult(int Code, String Msg, BComment Data) {
-		tv_apply_withdraw_deposit.setEnabled(true);
+		//tv_apply_withdraw_deposit.setEnabled(true);
 		switch (Data.getHttpResultTage()) {
 		case 0:
 
@@ -369,7 +369,7 @@ public class ATiXian extends ATitleBase {
 
 	@Override
 	protected void DataError(String error, int LoadTyp) {
-		tv_apply_withdraw_deposit.setEnabled(true);
+		//tv_apply_withdraw_deposit.setEnabled(true);
 		PromptManager.ShowMyToast(BaseContext, error);
 		 if(LOAD_INITIALIZE == LoadTyp){
 			 center_wallet_tixian_outlay.setVisibility(View.VISIBLE);
@@ -390,7 +390,7 @@ public class ATiXian extends ATitleBase {
 	@Override
 	protected void NetConnect() {
 		NetError.setVisibility(View.GONE);
-		tv_apply_withdraw_deposit.setEnabled(true);
+		//tv_apply_withdraw_deposit.setEnabled(true);
 	}
 
 	@Override
@@ -426,20 +426,20 @@ public class ATiXian extends ATitleBase {
 			break;
 
 			case R.id.tv_apply_withdraw_deposit:
-				tv_apply_withdraw_deposit.setEnabled(false);
+				//tv_apply_withdraw_deposit.setEnabled(false);
 				switch (fetch_type){
 					case  1:
 						String transferMoney1 = et_this_time_allow_transfer_money_bank
 								.getText().toString().trim();
 						if (!StrUtils.checkMoney(BaseContext, transferMoney1, 100, 50000)) {
-							tv_apply_withdraw_deposit.setEnabled(true);
+							//tv_apply_withdraw_deposit.setEnabled(true);
 							return;
 						}
 						if (bank_list != null) {
 							if (CheckNet(BaseContext))
 								return;
 							PassView(fetch_type, transferMoney1);
-							tv_apply_withdraw_deposit.setEnabled(true);
+							//tv_apply_withdraw_deposit.setEnabled(true);
 						}
 						break;
 
@@ -448,13 +448,14 @@ public class ATiXian extends ATitleBase {
 								.getText().toString().trim();
 
 						if (!StrUtils.checkMoney(BaseContext, transferMoney, 100, 50000)) {
-							tv_apply_withdraw_deposit.setEnabled(true);
+							//tv_apply_withdraw_deposit.setEnabled(true);
 							return;
 						}
 						if (CheckNet(BaseContext))
 							return;
+						hintKbTwo();
 						PassView(fetch_type,transferMoney);
-						tv_apply_withdraw_deposit.setEnabled(true);
+						//tv_apply_withdraw_deposit.setEnabled(true);
 						break;
 				}
 
@@ -562,7 +563,7 @@ public class ATiXian extends ATitleBase {
 
 			@Override
 			public void Cancle() {
-				tv_apply_withdraw_deposit.setEnabled(true);
+				//tv_apply_withdraw_deposit.setEnabled(true);
 				p.dismiss();
 
 			}
