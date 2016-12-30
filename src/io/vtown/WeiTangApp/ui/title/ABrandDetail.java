@@ -69,6 +69,8 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request.Method;
+import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
+import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 
 import de.greenrobot.event.EventBus;
 import io.vtown.WeiTangApp.ui.title.center.myshow.ARecyclerOtherShow;
@@ -79,8 +81,8 @@ import io.vtown.WeiTangApp.ui.title.zhuanqu.ABrandShopShare;
  * @author home页面点击跳转品牌详情页
  * @version 创建时间：2016-4-27 下午3:23:22
  */
-public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefreshListener {
-    private PullView brandscroll;
+public class ABrandDetail extends ATitleBase  implements OnLoadMoreListener {
+
     /**
      * 正常时候需要显示
      */
@@ -125,7 +127,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     /**
      * 推荐品牌
      */
-    private CompleteGridView brand_detail_grid;
+    private CompleteGridView swipe_target1;
     /**
      * 推荐品牌AP
      */
@@ -138,6 +140,9 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
      * pager
      */
 //    private ImageCycleView branddetail_banner;
+
+    private SwipeToLoadLayout swipeToLoadLayout;
+
 
     /**
      * 分页加载时候的当前页
@@ -182,14 +187,15 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
      * view的初始化
      */
     private void IView() {
-
+        swipeToLoadLayout= (SwipeToLoadLayout) findViewById(R.id.swipeToLoadLayout);
+        swipeToLoadLayout.setRefreshEnabled(false);
+        swipeToLoadLayout.setOnLoadMoreListener(this);
         brand_detail_brand_collect_iv = (ImageView) findViewById(R.id.brand_detail_brand_collect_iv);
         brandshop_back_iv = (ImageView) findViewById(R.id.brandshop_back_iv);
         brandshop_sou_lay = (RelativeLayout) findViewById(R.id.brandshop_sou_lay);
         brandshop_connect_iv = (ImageView) findViewById(R.id.brandshop_connect_iv);
 //        brand_detail_brand_sou_iv = (ImageView) findViewById(R.id.brand_detail_brand_sou_iv);
-        brandscroll = (PullView) findViewById(R.id.brandscroll);
-        brandscroll.setOnFooterRefreshListener(this);
+
 //        branddetail_banner = (ImageCycleView) findViewById(R.id.branddetail_banner);
         brand_detail_out_lay = (LinearLayout) findViewById(R.id.brand_detail_out_lay);
         brand_detail_nodata_lay = findViewById(R.id.brand_detail_nodata_lay);
@@ -202,7 +208,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
         brand_detail_brand_lookshow_iv = (ImageView) findViewById(R.id.brand_detail_brand_lookshow_iv);
         brand_detail_brand_brandinf_iv = (ImageView) findViewById(R.id.brand_detail_brand_brandinf_iv);
         brand_detail_horizontal_ls = (HorizontalListView) findViewById(R.id.brand_detail_horizontal_ls);
-        brand_detail_grid = (CompleteGridView) findViewById(R.id.brand_detail_grid);
+        swipe_target1 = (CompleteGridView) findViewById(R.id.swipe_target1);
 
         brand_detail_brand_brandinf_iv.setOnClickListener(this);
         brand_detail_brand_lookshow_iv.setOnClickListener(this);
@@ -212,13 +218,13 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 //        brand_detail_apply.setOnClickListener(this);
 
         recommendAp = new RecommendAp(BaseContext);
-        brand_detail_grid.setAdapter(recommendAp);
+        swipe_target1.setAdapter(recommendAp);
 
         brandLsAp = new BrandLsAp(BaseContext,
                 R.layout.item_fragment_shop_good_manger_brand);
         brand_detail_horizontal_ls.setAdapter(brandLsAp);
         //
-        brand_detail_grid.setOnItemClickListener(new OnItemClickListener() {
+        swipe_target1.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -283,6 +289,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
             case 0:// 获取全部的信息
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     DataError(Constants.SucessToError, Data.getHttpLoadType());
+
                     return;
                 }
                 mBComment = new BShopBrand();
@@ -352,10 +359,11 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                         NOVIEW_RIGHT);
                 break;
             case 1:// 获取分类列表数据
+                if(swipeToLoadLayout.isLoadingMore())swipeToLoadLayout.setLoadingMore(false);
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     // DataError(Msg, Data.getHttpLoadType());
                     if (LOAD_LOADMOREING == Data.getHttpLoadType()) {
-                        brandscroll.onFooterRefreshComplete();
+                        swipeToLoadLayout.setLoadingMore(false);
                         PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.nomoregood));
                     }
 
@@ -367,6 +375,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                             BShopGoods.class);
                 } catch (Exception e) {
                     // DataError("", Data.getHttpLoadType());
+
                     return;
                 }
                 switch (Data.getHttpLoadType()) {
@@ -374,20 +383,20 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
                         recommendAp.FrashData(mBlComments);
 //				LateItem = mBlComments.size() - 1;
                         if (mBlComments.size() == 10) {
-                            brandscroll.ShowFoot();
+                            swipeToLoadLayout.setLoadMoreEnabled(true);
                         } else {
-                            brandscroll.HindFoot();
+                            swipeToLoadLayout.setLoadMoreEnabled(false);
                         }
                         break;
                     case LOAD_LOADMOREING:
 //				brand_detail_grid.setSelection(LateItem);
                         recommendAp.AddFrashData(mBlComments);
 //				LateItem = LateItem + mBlComments.size();ssssssssssssss
-                        brandscroll.onFooterRefreshComplete();
+                        swipeToLoadLayout.setLoadingMore(false);
                         if (mBlComments.size() == 10) {
-                            brandscroll.ShowFoot();
+                            swipeToLoadLayout.setLoadMoreEnabled(true);
                         } else {
-                            brandscroll.HindFoot();
+                            swipeToLoadLayout.setLoadMoreEnabled(false);
 
                         }
                         break;
@@ -414,13 +423,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 
     public void ReciverMessage(BMessage message) {
         if (message.getMessageType() == BMessage.Tage_Brand_Apply_Statue) {
-//            brand_detail_apply.setClickable(false);
-//            brand_detail_apply.setFocusable(false);
-//            brand_detail_apply.setBackgroundColor(getResources().getColor(
-//                    R.color.app_gray));
-//            brand_detail_apply.setText("审核中");
-//            brand_detail_apply.setTextColor(getResources().getColor(
-//                    R.color.white));
+
         }
 
 
@@ -431,27 +434,6 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
      */
     private void ResultData(BShopBrand data) {
         brandshop_connect_iv.setVisibility(View.VISIBLE);
-//        if (data.getIs_agented().equals("1")) {// 已经代理过
-//            brand_detail_apply.setClickable(false);
-//            brand_detail_apply.setFocusable(false);
-//            brand_detail_apply.setBackgroundColor(getResources().getColor(
-//                    R.color.app_gray));
-//            brand_detail_apply.setText("您已代理");
-//            brand_detail_apply.setTextColor(getResources().getColor(
-//                    R.color.white));
-//        } else if (data.getIs_agented().equals("2")) {// 审核中
-//            brand_detail_apply.setClickable(false);
-//            brand_detail_apply.setFocusable(false);
-//            brand_detail_apply.setBackgroundColor(getResources().getColor(
-//                    R.color.app_gray));
-//            brand_detail_apply.setText("审核中");
-//            brand_detail_apply.setTextColor(getResources().getColor(
-//                    R.color.white));
-//        } else if (data.getIs_agented().equals("0")) {// 未代理
-//
-//        } else {// 未代理过
-//
-//        }
 
         // 获取品牌信息
 //        InItPaGeView(data.getRoll());
@@ -475,6 +457,7 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
     protected void DataError(String error, int LoadTyp) {
         PromptManager.ShowCustomToast(BaseContext, error);
         IDataView(brand_detail_out_lay, brand_detail_nodata_lay, NOVIEW_ERROR);
+        if(swipeToLoadLayout.isLoadingMore())swipeToLoadLayout.setLoadingMore(false);
     }
 
     @Override
@@ -636,15 +619,14 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 
     };
 
-    @Override
-    protected void InItBundle(Bundle bundle) {
 
-    }
 
     @Override
     protected void SaveBundle(Bundle bundle) {
 
     }
+
+
 
 
     /**
@@ -956,11 +938,20 @@ public class ABrandDetail extends ATitleBase implements PullView.OnFooterRefresh
 //	public void scrollUp() {
 //
 //	}
+//    @Override
+//    public void onFooterRefresh(PullView view) {
+////		PromptManager.showLoading(BaseContext);
+//        CurrentPage = CurrentPage + 1;
+//        GetList(CurrentPage, LOAD_LOADMOREING);
+//    }
     @Override
-    public void onFooterRefresh(PullView view) {
-//		PromptManager.showLoading(BaseContext);
+    protected void InItBundle(Bundle bundle) {
+
+    }
+
+    @Override
+    public void onLoadMore() {
         CurrentPage = CurrentPage + 1;
         GetList(CurrentPage, LOAD_LOADMOREING);
     }
-
 }

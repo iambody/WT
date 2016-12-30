@@ -233,6 +233,7 @@ public class AGoodSort extends ATitleBase implements OnLoadMoreListener, OnRefre
             public void onItemClick(View view, int postion) {
 
                 BSortGood data = sortRecycleAp.GetData().get(postion);
+                //
                 PromptManager.SkipActivity(BaseActivity,
                         new Intent(BaseActivity, AGoodDetail.class)
                                 .putExtra("goodid", data.getId()));

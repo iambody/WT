@@ -92,23 +92,29 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <io.vtown.WeiTangApp.comment.view.custom.PullView
-            android:id="@+id/brandscroll"
+
+
+        <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+            android:id="@+id/swipeToLoadLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:scrollbars="none">
+            android:background="@color/app_bg">
 
-            <io.vtown.WeiTangApp.comment.view.custom.CustomHScrollView
+            <include
+                android:id="@id/swipe_refresh_header"
+                layout="@layout/view_comment_head"/>
+
+            <ScrollView
+                android:id="@+id/swipe_target"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
-
                     <!-- head部分设计 -->
 
                     <LinearLayout
@@ -210,10 +216,13 @@
                         android:src="@color/app_bg"/>
                     <!-- head部分设计**** -->
 
+
+
+
                     <io.vtown.WeiTangApp.comment.view.custom.CompleteGridView
-                        android:id="@+id/brand_detail_grid"
+                        android:id="@+id/swipe_target1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:horizontalSpacing="10dp"
@@ -221,8 +230,13 @@
                         android:scrollbars="none"
                         android:verticalSpacing="10dp"/>
                 </LinearLayout>
-            </io.vtown.WeiTangApp.comment.view.custom.CustomHScrollView>
-        </io.vtown.WeiTangApp.comment.view.custom.PullView>
+            </ScrollView>
+
+            <include
+                android:id="@id/swipe_load_more_footer"
+                layout="@layout/view_comment_foot"/>
+        </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+
 
         <TextView
             android:id="@+id/brand_detail_apply"
