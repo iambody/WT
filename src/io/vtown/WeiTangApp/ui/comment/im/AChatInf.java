@@ -3,7 +3,9 @@ package io.vtown.WeiTangApp.ui.comment.im;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
+import io.vtown.WeiTangApp.bean.bcomment.new_three.BNewHome;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -65,6 +67,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.easemob.EMCallBack;
 import com.easemob.EMError;
 import com.easemob.chat.EMChat;
@@ -145,7 +148,9 @@ public class AChatInf extends ABase implements OnClickListener {
 	 * 
 	 * @param msgId
 	 */
-	private BShop mBShop;
+//	private BShop mBShop;
+
+	private BNewHome MyNewHome;
 	private String Title = "";
 	private String TagerAvater = "";
 
@@ -216,7 +221,8 @@ public class AChatInf extends ABase implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // 请求没有标题栏样式
 		setContentView(R.layout.chat_chatinf);
 		mBUser = Spuit.User_Get(BaseContext);
-		mBShop = Spuit.Shop_Get(BaseContext);
+		MyNewHome= JSON.parseObject(  CacheUtil.NewHome_Get(BaseContext), BNewHome.class);
+//		mBShop = Spuit.Shop_Get(BaseContext);
 		chatName = (TextView) findViewById(R.id.chatName);
 		chat_listview = (MyImListView) findViewById(R.id.chat_listview);
 		plus = (ImageView) findViewById(R.id.plus);
@@ -515,9 +521,9 @@ public class AChatInf extends ABase implements OnClickListener {
 			message.addBody(body);
 			try {
 				// 增加自己特定的属性，目前SDK支持int、boolean、String这三种属性，可以设置多个扩展属性
-				message.setAttribute("extSendNickname", mBUser.getSeller_name());
+				message.setAttribute("extSendNickname", MyNewHome.getSellerinfo().getSeller_name());
 				message.setAttribute("extReceiveNickname", Title);
-				message.setAttribute("extSendHeadUrl", mBUser.getHead_img());// TagerAvater
+				message.setAttribute("extSendHeadUrl",MyNewHome.getSellerinfo().getAvatar());// TagerAvater
 				message.setAttribute("extReceiveHeadUrl", TagerAvater);
 			} catch (Exception e) {
 
@@ -983,12 +989,10 @@ public class AChatInf extends ABase implements OnClickListener {
 
 			try {
 				// 增加自己特定的属性，目前SDK支持int、boolean、String这三种属性，可以设置多个扩展属性
-				message.setAttribute("extSendNickname", mBUser.getSeller_name());
+				message.setAttribute("extSendNickname", MyNewHome.getSellerinfo().getSeller_name());
 				message.setAttribute("extReceiveNickname", Title);
-				message.setAttribute("extSendHeadUrl", mBUser.getHead_img());// TagerAvater
+				message.setAttribute("extSendHeadUrl",MyNewHome.getSellerinfo().getAvatar());// TagerAvater
 				message.setAttribute("extReceiveHeadUrl", TagerAvater);
-
-
 			} catch (Exception e) {
 				LogUtils.i(e.toString());
 			}
