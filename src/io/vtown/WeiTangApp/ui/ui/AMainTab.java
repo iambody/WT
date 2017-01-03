@@ -24,6 +24,7 @@ import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.comment.BUpData;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -57,7 +58,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
     private GradualRadioButton maintab_home, maintab_shop, maintab_shopbus, maintab_center;
     private List<GradualRadioButton> RadioButtons;
     private ImageView maintab_show_iv;
-    private FBase FMainHome, FMainShop, FMainShow, FMainShopBus,FMainNew;//
+    private FBase FMainHome, FMainShop, FMainShow, FMainShopBus, FMainNew;//
 
     private List<FBase> Fragments;
     private int CurrentPostion = 0;
@@ -83,9 +84,17 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 //        }
         EventBus.getDefault().register(this, "ReciverChangMainTab", BMessage.class);
         MBUser = Spuit.User_Get(this);
+        CheckNeedDeletCache();
         FBaseInit();
         IBase();
         HindLoadData();
+    }
+
+    private void CheckNeedDeletCache() {
+        if (Constants.getVersionCode(BaseContext) == 59) {//强制升级最新版本时候判断版本号 去清除好友列表缓存
+            PromptManager.ShowCustomToast(BaseContext,"检测版本号59 开始删除缓存");
+            CacheUtil.My_Invite_Friends_Save(BaseContext, "");
+        }
     }
 
     /**
@@ -120,23 +129,23 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
         FMainShop = new FMainNewSort(); //FMainSort()
         FMainShow = new FMainNewShow();//FMainShow();FMainNewShow
         FMainShopBus = new FMainShopBus();
-       // FMainCenter = new FMainCenter();
+        // FMainCenter = new FMainCenter();
         FMainNew = new FMainNew();
 
         FMainHome.setArguments(GetBund());
         FMainShop.setArguments(GetBund());
         FMainShow.setArguments(GetBund());
         FMainShopBus.setArguments(GetBund());
-       //FMainCenter.setArguments(GetBund());
+        //FMainCenter.setArguments(GetBund());
         FMainNew.setArguments(GetBund());
 
         Fragments.add(FMainHome);
         Fragments.add(FMainShop);
 //        Fragments.add(FMainShow);
         Fragments.add(FMainShopBus);
-  //      Fragments.add(FMainCenter);
+        //      Fragments.add(FMainCenter);
 
-       Fragments.add(FMainNew);
+        Fragments.add(FMainNew);
 
 
     }
@@ -168,7 +177,7 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
 
         if (Spuit.ShopBusNumber_Get(this) > 0) {
             maintab_shopbus.SetIsShowTage(true);
-        }else{
+        } else {
             maintab_shopbus.SetIsShowTage(false);
         }
 
@@ -304,7 +313,6 @@ public class AMainTab extends ABaseFragment implements GradualRadioGroup.MainTab
                 break;
         }
     }
-
 
 
     @Override
