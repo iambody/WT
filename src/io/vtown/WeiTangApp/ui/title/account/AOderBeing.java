@@ -1014,9 +1014,7 @@ public class AOderBeing extends ATitleBase {
             OderBeing(user_Get.getId(), addressBldComment, GoodsStr, CidsStr,
                     order_note, coupComment == null ? "" : coupComment.getCoupons_id());
         }// 测试先把卡券置为空//
-        // coupComment.getCoupons_id());
-        // PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
-        // ACashierDesk.class));
+
 
     }
 
