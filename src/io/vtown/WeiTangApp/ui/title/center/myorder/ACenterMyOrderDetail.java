@@ -35,6 +35,7 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.DateUtils;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.ViewUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CopyTextView;
 import io.vtown.WeiTangApp.comment.view.DotView;
@@ -42,6 +43,7 @@ import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.dialog.CustomDialog;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.APaySucceed;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
@@ -291,6 +293,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
     private TextView tv_center_my_order_order_note;
     private View line_insurance_note;
     private ImageView iv_center_order_what_is_insurance;
+    private ImageView iv_detail_share_red_packets;
 
     @Override
     protected void InItBaseView() {
@@ -496,6 +499,10 @@ public class ACenterMyOrderDetail extends ATitleBase {
         // 退货/仲裁--仲裁状态
         tv_center_my_order_arbitration = (TextView) findViewById(R.id.tv_center_my_order_arbitration);
 
+        iv_detail_share_red_packets = (ImageView) findViewById(R.id.iv_detail_share_red_packets);
+        iv_detail_share_red_packets.setOnClickListener(this);
+        ViewUtils.setAnimator(iv_detail_share_red_packets);
+
         // 已关闭--再次购买
 
         tv_center_my_order_close_buy_agian = (TextView) findViewById(R.id.tv_center_my_order_close_buy_agian);
@@ -508,6 +515,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 center_my_order_address.setEnabled(false);
                 ll_center_my_order_apply_refund_and_remind_send_out
                         .setVisibility(View.VISIBLE);
+                iv_detail_share_red_packets.setVisibility(View.VISIBLE);
 
                 break;
             case ACenterMyOrder.PDaiShou:// 待收货
@@ -515,7 +523,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 iv_right_arrow.setVisibility(View.GONE);
                 center_my_order_address.setEnabled(false);
                 ll_center_my_order_buy_agian_and_confirm.setVisibility(View.GONE);
-
+                iv_detail_share_red_packets.setVisibility(View.VISIBLE);
                 // ll_center_my_order_look_express_message.setVisibility(View.GONE);
                 break;
 
@@ -524,13 +532,15 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 commentview_add_iv.setVisibility(View.GONE);
                 iv_right_arrow.setVisibility(View.GONE);
                 tv_center_my_order_refund_applying.setVisibility(View.VISIBLE);
-                break;
+                iv_detail_share_red_packets.setVisibility(View.GONE);
+            break;
 
             case ACenterMyOrder.PZhongCai:// 仲裁中。。。买家申请退款，卖家拒绝退款
                 center_my_order_address.setEnabled(false);
                 commentview_add_iv.setVisibility(View.GONE);
                 iv_right_arrow.setVisibility(View.GONE);
                 tv_center_my_order_arbitration.setVisibility(View.VISIBLE);
+                iv_detail_share_red_packets.setVisibility(View.GONE);
                 break;
             case ACenterMyOrder.PTuikuanSuccess1:
             case ACenterMyOrder.PTuikuanSuccess2:
@@ -540,7 +550,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 center_my_order_address.setEnabled(false);
                 // ll_center_my_order_look_express_message.setVisibility(View.GONE);
                 tv_center_my_order_close_buy_agian.setVisibility(View.GONE);
-
+                iv_detail_share_red_packets.setVisibility(View.GONE);
                 break;
 
             case ACenterMyOrder.PCancel:// 已取消
@@ -549,6 +559,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 center_my_order_address.setEnabled(false);
                 tv_center_my_order_close_buy_agian.setVisibility(View.GONE);
                 ll_pay_time.setVisibility(View.GONE);
+                iv_detail_share_red_packets.setVisibility(View.GONE);
                 break;
             case ACenterMyOrder.PClose:// 已关闭
                 commentview_add_iv.setVisibility(View.GONE);
@@ -556,7 +567,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 center_my_order_address.setEnabled(false);
                 // ll_center_my_order_look_express_message.setVisibility(View.GONE);
                 tv_center_my_order_close_buy_agian.setVisibility(View.GONE);
-
+                iv_detail_share_red_packets.setVisibility(View.VISIBLE);
                 break;
 
         }
@@ -1092,6 +1103,12 @@ public class ACenterMyOrderDetail extends ATitleBase {
 //                PromptManager.SkipActivity(BaseActivity, intent);
 //
 //                break;
+
+            case R.id.iv_detail_share_red_packets://红包
+                Intent intent11 = new Intent(BaseContext, APaySucceed.class);
+                intent11.putExtra(APaySucceed.Key_Oder,order_detail.getOrder_sn());
+                PromptManager.SkipActivity(BaseActivity,intent11);
+                break;
         }
     }
 

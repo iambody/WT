@@ -55,6 +55,7 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
+import io.vtown.WeiTangApp.comment.util.ViewUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.comment.view.custom.RefreshLayout;
@@ -62,6 +63,7 @@ import io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HBaseAdapter;
 import io.vtown.WeiTangApp.comment.view.custom.horizontalscroll.HorizontalScrollMenu;
 import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.comment.APaySucceed;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.account.ACashierDesk;
@@ -515,55 +517,7 @@ public class ACenterMyOrder extends ATitleBase implements
         IData(LOAD_REFRESHING, Ket_Tage + "");
     }
 
-    private void setAnimator(ImageView view){
-        float shakeFactor = 5;
-        PropertyValuesHolder pvhScaleX = PropertyValuesHolder.ofKeyframe(View.SCALE_X,
-                Keyframe.ofFloat(0f, 1f),
-                Keyframe.ofFloat(.1f, .9f),
-                Keyframe.ofFloat(.2f, .9f),
-                Keyframe.ofFloat(.3f, 1.1f),
-                Keyframe.ofFloat(.4f, 1.1f),
-                Keyframe.ofFloat(.5f, 1.1f),
-                Keyframe.ofFloat(.6f, 1.1f),
-                Keyframe.ofFloat(.7f, 1.1f),
-                Keyframe.ofFloat(.8f, 1.1f),
-                Keyframe.ofFloat(.9f, 1.1f),
-                Keyframe.ofFloat(1f, 1f)
-        );
 
-        PropertyValuesHolder pvhScaleY = PropertyValuesHolder.ofKeyframe(View.SCALE_Y,
-                Keyframe.ofFloat(0f, 1f),
-                Keyframe.ofFloat(.1f, .9f),
-                Keyframe.ofFloat(.2f, .9f),
-                Keyframe.ofFloat(.3f, 1.1f),
-                Keyframe.ofFloat(.4f, 1.1f),
-                Keyframe.ofFloat(.5f, 1.1f),
-                Keyframe.ofFloat(.6f, 1.1f),
-                Keyframe.ofFloat(.7f, 1.1f),
-                Keyframe.ofFloat(.8f, 1.1f),
-                Keyframe.ofFloat(.9f, 1.1f),
-                Keyframe.ofFloat(1f, 1f)
-        );
-
-        PropertyValuesHolder pvhRotate = PropertyValuesHolder.ofKeyframe(View.ROTATION,
-                Keyframe.ofFloat(0f, 0f),
-                Keyframe.ofFloat(.1f, -3f * shakeFactor),
-                Keyframe.ofFloat(.2f, -3f * shakeFactor),
-                Keyframe.ofFloat(.3f, 3f * shakeFactor),
-                Keyframe.ofFloat(.4f, -3f * shakeFactor),
-                Keyframe.ofFloat(.5f, 3f * shakeFactor),
-                Keyframe.ofFloat(.6f, -3f * shakeFactor),
-                Keyframe.ofFloat(.7f, 3f * shakeFactor),
-                Keyframe.ofFloat(.8f, -3f * shakeFactor),
-                Keyframe.ofFloat(.9f, 3f * shakeFactor),
-                Keyframe.ofFloat(1f, 0)
-        );
-
-        ObjectAnimator.ofPropertyValuesHolder(view, pvhScaleX, pvhScaleY, pvhRotate).
-                setDuration(1000).start();
-
-
-    }
 
 
     /**
@@ -789,6 +743,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_get_integral.setVisibility(View.GONE);
                     myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.GONE);
 
                     break;
 
@@ -828,6 +783,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
                         }
                     }
+                    myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
 
                     myItem.fragment_center_order_cancel_order
                             .setVisibility(View.GONE);
@@ -898,6 +854,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.fragment_center_order_apply_refunding
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
                     break;
 
                 case PTuiKuan:
@@ -923,6 +880,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.VISIBLE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.GONE);
                     break;
 
                 case PZhongCai:
@@ -948,6 +906,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.GONE);
                     break;
                 case PTuikuanSuccess1:
                 case PTuikuanSuccess2:
@@ -977,6 +936,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.GONE);
                     break;
 
                 case PClose:
@@ -1005,6 +965,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
                     break;
 
                 case PCancel:// 订单已取消
@@ -1032,6 +993,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.GONE);
                     break;
 
                 default:
@@ -1057,6 +1019,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.GONE);
                     break;
             }
         }
@@ -1125,12 +1088,13 @@ public class ACenterMyOrder extends ATitleBase implements
             //LogUtils.i("**************good--id****************" + data.getId());
             int order_status = Integer.parseInt(data.getOrder_status());
             ControlView(myItem, data, order_status);
+            ViewUtils.setAnimator(myItem.iv_share_red_packets);
             if(PClose == order_status || PCancel == order_status || PAgreeTuiKuan == order_status || PTuikuanSuccess1 == order_status || PTuikuanSuccess2 == order_status || PTuikuanSuccess3 == order_status){
                 myItem.center_order_remove.setVisibility(View.VISIBLE);
             }else{
                 myItem.center_order_remove.setVisibility(View.GONE);
             }
-            setAnimator(myItem.iv_share_red_packets);
+
             StrUtils.SetTxt(myItem.tv_center_my_order_seller_order_sn,
                     data.getSeller_order_sn());
             StrUtils.SetTxt(myItem.fragment_center_order_shopname, data.getSeller_name());
@@ -1142,7 +1106,6 @@ public class ACenterMyOrder extends ATitleBase implements
 //            StrUtils.SetTxt(myItem.item_fragment_center_order_allmoney, String
 //                    .format("%1$s元", StrUtils.SetTextForMony(data
 //                            .getOrder_total_price())));
-
             StrUtils.SetMoneyFormat(BaseContext, myItem.item_fragment_center_order_allmoney, data.getOrder_total_price(), 17);
 
             float postageF = Float.parseFloat(data.getPostage());
@@ -1150,8 +1113,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.item_fragment_center_order_postage,
                     postageF == 0.0f ? "(免邮费)" : String.format("(含运费%1$s元)",
                             StrUtils.SetTextForMony(postageF + "")));
-            String str = StrUtils.SetTextForMony(data
-                    .getOrder_total_price());
+
 
 
             myItem.item_fragment_center_order_ls
@@ -1462,7 +1424,9 @@ public class ACenterMyOrder extends ATitleBase implements
             myItem.iv_share_red_packets.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //sdsd
+                    Intent intent = new Intent(BaseContext, APaySucceed.class);
+                    intent.putExtra(APaySucceed.Key_Oder,blComment.getOrder_sn());
+                    PromptManager.SkipActivity(BaseActivity,intent);
                 }
             });
 
