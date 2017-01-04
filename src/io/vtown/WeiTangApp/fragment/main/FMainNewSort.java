@@ -484,6 +484,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                 mPage = 1;
                 IData(INITIALIZE);
                 fSortNewHorizontalscrollviewLay.setVisibility(View.VISIBLE);
+                fSortNewHorizontalscrollview.smoothScrollBy(0,0);
                 current_type = TYPE_OTHER;
             }
 

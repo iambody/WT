@@ -1,5 +1,8 @@
 package io.vtown.WeiTangApp.ui.comment.order;
 
+import android.animation.Keyframe;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +14,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
@@ -506,6 +513,56 @@ public class ACenterMyOrder extends ATitleBase implements
     public void OnFrash() {
         last_id = "";
         IData(LOAD_REFRESHING, Ket_Tage + "");
+    }
+
+    private void setAnimator(ImageView view){
+        float shakeFactor = 5;
+        PropertyValuesHolder pvhScaleX = PropertyValuesHolder.ofKeyframe(View.SCALE_X,
+                Keyframe.ofFloat(0f, 1f),
+                Keyframe.ofFloat(.1f, .9f),
+                Keyframe.ofFloat(.2f, .9f),
+                Keyframe.ofFloat(.3f, 1.1f),
+                Keyframe.ofFloat(.4f, 1.1f),
+                Keyframe.ofFloat(.5f, 1.1f),
+                Keyframe.ofFloat(.6f, 1.1f),
+                Keyframe.ofFloat(.7f, 1.1f),
+                Keyframe.ofFloat(.8f, 1.1f),
+                Keyframe.ofFloat(.9f, 1.1f),
+                Keyframe.ofFloat(1f, 1f)
+        );
+
+        PropertyValuesHolder pvhScaleY = PropertyValuesHolder.ofKeyframe(View.SCALE_Y,
+                Keyframe.ofFloat(0f, 1f),
+                Keyframe.ofFloat(.1f, .9f),
+                Keyframe.ofFloat(.2f, .9f),
+                Keyframe.ofFloat(.3f, 1.1f),
+                Keyframe.ofFloat(.4f, 1.1f),
+                Keyframe.ofFloat(.5f, 1.1f),
+                Keyframe.ofFloat(.6f, 1.1f),
+                Keyframe.ofFloat(.7f, 1.1f),
+                Keyframe.ofFloat(.8f, 1.1f),
+                Keyframe.ofFloat(.9f, 1.1f),
+                Keyframe.ofFloat(1f, 1f)
+        );
+
+        PropertyValuesHolder pvhRotate = PropertyValuesHolder.ofKeyframe(View.ROTATION,
+                Keyframe.ofFloat(0f, 0f),
+                Keyframe.ofFloat(.1f, -3f * shakeFactor),
+                Keyframe.ofFloat(.2f, -3f * shakeFactor),
+                Keyframe.ofFloat(.3f, 3f * shakeFactor),
+                Keyframe.ofFloat(.4f, -3f * shakeFactor),
+                Keyframe.ofFloat(.5f, 3f * shakeFactor),
+                Keyframe.ofFloat(.6f, -3f * shakeFactor),
+                Keyframe.ofFloat(.7f, 3f * shakeFactor),
+                Keyframe.ofFloat(.8f, -3f * shakeFactor),
+                Keyframe.ofFloat(.9f, 3f * shakeFactor),
+                Keyframe.ofFloat(1f, 0)
+        );
+
+        ObjectAnimator.ofPropertyValuesHolder(view, pvhScaleX, pvhScaleY, pvhRotate).
+                setDuration(1000).start();
+
+
     }
 
 
@@ -1046,6 +1103,7 @@ public class ACenterMyOrder extends ATitleBase implements
                         .findViewById(R.id.item_fragment_center_order_allmoney);
                 myItem.item_fragment_center_order_ls = (CompleteListView) convertView
                         .findViewById(R.id.item_fragment_center_order_ls);
+                myItem.iv_share_red_packets = (ImageView) convertView.findViewById(R.id.iv_share_red_packets);
                 myItem.item_fragment_center_order_postage = (TextView) convertView
                         .findViewById(R.id.item_fragment_center_order_postage);
                 myItem.fragment_center_order_is_cencal = (TextView) convertView
@@ -1064,7 +1122,6 @@ public class ACenterMyOrder extends ATitleBase implements
             }
 
             final BLCenterOder data = datas.get(position);// 非未付订单列表
-
             //LogUtils.i("**************good--id****************" + data.getId());
             int order_status = Integer.parseInt(data.getOrder_status());
             ControlView(myItem, data, order_status);
@@ -1073,7 +1130,7 @@ public class ACenterMyOrder extends ATitleBase implements
             }else{
                 myItem.center_order_remove.setVisibility(View.GONE);
             }
-
+            setAnimator(myItem.iv_share_red_packets);
             StrUtils.SetTxt(myItem.tv_center_my_order_seller_order_sn,
                     data.getSeller_order_sn());
             StrUtils.SetTxt(myItem.fragment_center_order_shopname, data.getSeller_name());
@@ -1402,6 +1459,13 @@ public class ACenterMyOrder extends ATitleBase implements
                 }
             });
 
+            myItem.iv_share_red_packets.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //sdsd
+                }
+            });
+
         }
 
         /**
@@ -1428,6 +1492,7 @@ public class ACenterMyOrder extends ATitleBase implements
             LinearLayout ll_center_order_shopname;
             LinearLayout ll_center_my_order_seller_order_sn;
             CompleteListView item_fragment_center_order_ls;
+            ImageView iv_share_red_packets;
 
             TextView item_fragment_center_order_allnum;// 多少件商品
             TextView item_fragment_center_order_allmoney;// 所有费用

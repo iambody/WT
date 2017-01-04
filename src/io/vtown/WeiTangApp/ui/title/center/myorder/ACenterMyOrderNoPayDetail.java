@@ -269,7 +269,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 //						StrUtils.SetTextForMony(data2.getOrder_total_price())));
 
 		float postageF = Float.parseFloat(data2.getPostage_money());
-		String postage = String.format("(运费%1$s元)",
+		String postage = String.format("(含运费%1$s元)",
 				StrUtils.SetTextForMony(postageF + ""));
 		StrUtils.SetTxt(tv_center_my_no_pay_order_post_price,
 				postageF == 0.0f ? "(免邮费)" : postage);
@@ -555,10 +555,11 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 					secoud_datas.get(position).getGoods());
 			centerOrderNoPayInside.item_fragment_center_order_no_pay_detail_outside
 					.setAdapter(centerOrderNoPayInnerMost);
-
-			StrUtils.SetMoneyFormat(BaseContext,centerOrderNoPayInside.tv_center_my_order_no_pay_goods_price,secoud_datas.get(position).getGoods_price(),17);
+			float good_priceF = Float.parseFloat(secoud_datas.get(position).getGoods_price());
 			float postageF = Float.parseFloat(secoud_datas.get(position).getPostage());
-			String postage = String.format("(运费%1$s元)",
+			StrUtils.SetMoneyFormat(BaseContext,centerOrderNoPayInside.tv_center_my_order_no_pay_goods_price,(good_priceF+postageF)+"",17);
+
+			String postage = String.format("(含运费%1$s元)",
 					StrUtils.SetTextForMony(postageF + ""));
 			StrUtils.SetTxt(centerOrderNoPayInside.tv_center_my_order_no_pay_goods_postage,
 					postageF == 0.0f ? "(免邮费)" : postage);

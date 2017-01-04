@@ -329,6 +329,7 @@ public class AMyCoupons extends ATitleBase {
                         R.id.tv_my_coupons_price);
                 myCoupons.tv_my_coupons_type = ViewHolder.get(arg1,
                         R.id.tv_my_coupons_type);
+                myCoupons.tv_coupons_donation = ViewHolder.get(arg1,R.id.tv_coupons_donation);
                 myCoupons.tv_my_coupons_validity = ViewHolder.get(arg1,
                         R.id.tv_my_coupons_validity);
                 arg1.setTag(myCoupons);
@@ -352,12 +353,18 @@ public class AMyCoupons extends ATitleBase {
 //			myCoupons.iv_coupons_item_bg.setBackgroundResource(datas.get(arg0)
 //					.getStatus().equals("1") ? R.drawable.ico_kaquan_nor
 //					: R.drawable.ico_kaquan_press);
+            myCoupons.tv_coupons_donation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PromptManager.ShowCustomToast(BaseContext,"转赠优惠券");
+                }
+            });
             return arg1;
         }
 
         class MyCouponsItem {
             TextView tv_my_coupons_price, tv_my_coupons_type,
-                    tv_my_coupons_validity;
+                    tv_my_coupons_validity,tv_coupons_donation;
             ImageView iv_my_coupons_used;//iv_coupons_item_bg,
         }
 

@@ -113,11 +113,31 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/tv_my_coupons_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nullstr" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_my_coupons_type"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nullstr" />
+
+                    <TextView
+                        android:id="@+id/tv_coupons_donation"
+                        android:layout_width="wrap_content"
+                        android:text="转赠"
+                        android:textSize="@dimen/order_list_button_txt"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/order_list_txt_padding"
+                        android:background="@drawable/shape_daifu_daifa_btn_bg"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
 
                 <TextView
                     android:id="@+id/tv_my_coupons_validity"

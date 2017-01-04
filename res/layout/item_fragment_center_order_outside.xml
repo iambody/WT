@@ -245,14 +245,30 @@
 
        <!-- <View style="@style/line_left_right" />-->
 
-        <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
-            android:id="@+id/item_fragment_center_order_ls"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:dividerHeight="3dp"
+            android:layout_height="wrap_content">
+            <io.vtown.WeiTangApp.comment.view.custom.CompleteListView
+                android:id="@+id/item_fragment_center_order_ls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="3dp"
 
-            android:divider="@color/white"
-             />
+                android:divider="@color/white"
+                />
+
+            <ImageView
+                android:id="@+id/iv_share_red_packets"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_fanyong_nor"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
         <!-- 下部分的Title -->
 
         <!--<View style="@style/line_left_right" />-->
