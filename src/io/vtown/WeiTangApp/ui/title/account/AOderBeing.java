@@ -19,6 +19,7 @@ import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.custom.CompleteListView;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
+import io.vtown.WeiTangApp.ui.comment.APaySucceed;
 import io.vtown.WeiTangApp.ui.comment.AWeb;
 import io.vtown.WeiTangApp.ui.comment.im.AChat;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
@@ -363,8 +364,11 @@ public class AOderBeing extends ATitleBase {
                 // 如果支付的是
                 if (StrUtils.toFloat(data.getMoney_paid()) <= 0f) {
                     // 普通需要跳cneter界面
+//                    PromptManager.SkipActivity(BaseActivity, new Intent(
+//                            BaseActivity, ACenterMyOrder.class));
+//                    BaseActivity.finish();
                     PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseActivity, ACenterMyOrder.class));
+                            BaseActivity, APaySucceed.class).putExtra(APaySucceed.Key_Oder,data.getOrder_sn()));
                     BaseActivity.finish();
                 } else {
 

@@ -166,7 +166,6 @@
             android:screenOrientation="portrait"></activity>
 
 
-
         <activity
             android:name=".ui.title.APay"
             android:launchMode="singleTask"
@@ -176,8 +175,11 @@
             android:exported="true"
             android:launchMode="singleTop"/>
 
-
-
+        <activity
+            android:name=".ui.comment.APaySucceed"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
 
 
         <!-- <activity
@@ -395,7 +397,6 @@
             android:screenOrientation="portrait"></activity>
 
 
-
         <activity
             android:name=".ui.title.ABeQRCode"
             android:launchMode="singleTask"
@@ -464,7 +465,6 @@
             android:screenOrientation="portrait"></activity>
 
 
-
         <activity
             android:name=".ui.comment.im.AChatLoad"
             android:launchMode="singleTask"
@@ -497,8 +497,6 @@
             android:name=".ui.comment.order.ACenterMyOrder"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"></activity>
-
-
 
 
         <activity
@@ -780,9 +778,9 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity
-            android:multiprocess="true"
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:multiprocess="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>

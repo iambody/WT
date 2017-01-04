@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.wxapi;
 
+import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -17,6 +18,7 @@ import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 import de.greenrobot.event.EventBus;
+import io.vtown.WeiTangApp.ui.comment.APaySucceed;
 
 public class WXPayEntryActivity extends ABase implements IWXAPIEventHandler {
 
@@ -58,6 +60,8 @@ public class WXPayEntryActivity extends ABase implements IWXAPIEventHandler {
 			EventBus.getDefault().post(
 					new BMessage(BMessage.Tage_To_Pay_Updata));
 			EventBus.getDefault().post(new BMessage(BMessage.Tage_Kill_Self2));
+			PromptManager.SkipActivity(BaseActivity, new Intent(
+					BaseActivity, APaySucceed.class).putExtra(APaySucceed.Key_Oder,((BaseApplication)getApplication()).getWeiXinPayOderNumber()));
 			WXPayEntryActivity.this.finish();
 			break;
 		case -1:// -1 错误 可能的原因：签名错误、未注册APPID、项目设置APPID不正确、注册的APPID与设置的不匹配、其他异常等。

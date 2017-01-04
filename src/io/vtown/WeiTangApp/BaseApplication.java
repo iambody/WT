@@ -66,13 +66,16 @@ public class BaseApplication extends Application {
     NewMessageBroadcastReceiver msgReceiver = new NewMessageBroadcastReceiver();
     public int PicType;// 1==>selectpice；；；2==》goodshow;3==>goodshare
     //在点击图片 跳转到大图查看区域
-    private List<PicImageItem> PicImages = new ArrayList<PicImageItem>();
+//    private List<PicImageItem> PicImages = new ArrayList<PicImageItem>();
     //跳转到店铺内搜索时候传入的推荐商品
-    private List<BShopGoods>ShopSouRecommend=new ArrayList<BShopGoods>();
+    private List<BShopGoods> ShopSouRecommend = new ArrayList<BShopGoods>();
+    //微信支付时候保存下微信支付时候的订单号 付完款 跳转到分享界面时候需要传递订单号进去
+    private String WeiXinPayOderNumber;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        instance=this;
+        instance = this;
         IIM();
         InItData();
         mQueue = Volley.newRequestQueue(getApplicationContext());
@@ -81,9 +84,11 @@ public class BaseApplication extends Application {
          */
         Thread.setDefaultUncaughtExceptionHandler(appException);
     }
+
     public static RequestQueue getRequstQueue() {
         return mQueue;
     }
+
     private void IIM() {
         EMChat.getInstance().init(getApplicationContext());
         /**
@@ -128,7 +133,7 @@ public class BaseApplication extends Application {
                 .denyCacheImageMultipleSizesInMemory()
                 .discCache(new UnlimitedDiscCache(new
                         File(Constants.PicCach)))//自定义缓存路径,图片缓存到sd卡
-                .memoryCacheExtraOptions(720*2, 1280*4)
+                .memoryCacheExtraOptions(720 * 2, 1280 * 4)
                 .memoryCache(new LruMemoryCache(4 * 1024 * 1024))
                 .memoryCacheSize(4 * 1024 * 1024).memoryCacheSizePercentage(13)
                 .discCacheFileCount(200).denyCacheImageMultipleSizesInMemory()
@@ -287,13 +292,13 @@ public class BaseApplication extends Application {
         PicType = picType;
     }
 
-    public List<PicImageItem> getPicImages() {
-        return PicImages;
-    }
-
-    public void setPicImages(List<PicImageItem> picImages) {
-        PicImages = picImages;
-    }
+//    public List<PicImageItem> getPicImages() {
+//        return PicImages;
+//    }
+//
+//    public void setPicImages(List<PicImageItem> picImages) {
+//        PicImages = picImages;
+//    }
 
     public List<BShopGoods> getShopSouRecommend() {
         return ShopSouRecommend;
@@ -301,5 +306,13 @@ public class BaseApplication extends Application {
 
     public void setShopSouRecommend(List<BShopGoods> shopSouRecommend) {
         ShopSouRecommend = shopSouRecommend;
+    }
+
+    public String getWeiXinPayOderNumber() {
+        return WeiXinPayOderNumber;
+    }
+
+    public void setWeiXinPayOderNumber(String weiXinPayOderNumber) {
+        WeiXinPayOderNumber = weiXinPayOderNumber;
     }
 }

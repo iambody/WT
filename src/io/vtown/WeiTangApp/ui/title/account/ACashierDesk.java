@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title.account;
 
+import io.vtown.WeiTangApp.BaseApplication;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcache.BShop;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
@@ -20,6 +21,7 @@ import io.vtown.WeiTangApp.event.interf.IDialogResult;
 import io.vtown.WeiTangApp.event.interf.OnPasswordInputFinish;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.afragment.ACenterOder;
+import io.vtown.WeiTangApp.ui.comment.APaySucceed;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.center.wallet.ACenterWallet;
 import io.vtown.WeiTangApp.ui.title.loginregist.ALogin;
@@ -151,6 +153,7 @@ public class ACashierDesk extends ATitleBase {
     // 是否支持全部余额支付！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     private boolean IsBlanceAllPay = false;
 
+    private BaseApplication baseApplication;
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_cashier_desk);
@@ -163,6 +166,7 @@ public class ACashierDesk extends ATitleBase {
         }
         EventBus.getDefault().register(this, "ReciverInf", BMessage.class);
         mBUser = Spuit.User_Get(BaseContext);
+        baseApplication= (BaseApplication) getApplication();
         SetTitleHttpDataLisenter(this);
         InItPay();
         IView();
@@ -346,7 +350,9 @@ public class ACashierDesk extends ATitleBase {
                                 new BMessage(BMessage.Tage_To_Pay_Updata));
 //					BaseActivity.finish();
 
-                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ACenterMyOrder.class));
+//                        PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ACenterMyOrder.class));
+                        PromptManager.SkipActivity(BaseActivity, new Intent(
+                                BaseActivity, APaySucceed.class).putExtra(APaySucceed.Key_Oder,addOrderInfo.getOrder_sn()));
                         BaseActivity.finish();
                     } else {
                         // 判断resultStatus 为非"9000"则代表可能支付失败
@@ -376,6 +382,7 @@ public class ACashierDesk extends ATitleBase {
      * 微信支付
      */
     private void WXPay(BPay mBPay) {
+
         PayReq request = new PayReq();
 
         request.appId = mBPay.getAppid();
@@ -412,6 +419,7 @@ public class ACashierDesk extends ATitleBase {
                     PromptManager.ShowCustomToast(BaseContext, "微信解析错误");
                     return;
                 }
+                baseApplication.setWeiXinPayOderNumber(addOrderInfo.getOrder_sn());
                 WXPay(mBPay);
                 break;
             case 20:// 支付宝
@@ -444,7 +452,9 @@ public class ACashierDesk extends ATitleBase {
                 // 通知刷新订单数据
                 EventBus.getDefault().post(
                         new BMessage(BMessage.Tage_To_Pay_Updata));
-                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ACenterMyOrder.class));
+//                PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, ACenterMyOrder.class));
+                PromptManager.SkipActivity(BaseActivity, new Intent(
+                        BaseActivity, APaySucceed.class).putExtra(APaySucceed.Key_Oder,addOrderInfo.getOrder_sn()));
                 BaseActivity.finish();
                 break;
             default:
