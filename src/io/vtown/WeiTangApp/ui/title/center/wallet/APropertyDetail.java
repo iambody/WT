@@ -24,6 +24,7 @@ import io.vtown.WeiTangApp.ui.title.myhome.AIntegralDetail;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import android.graphics.Color;
@@ -125,6 +126,7 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
 
         HashMap<String, String> map = new HashMap<String, String>();
         // map.put("page_num",Constants.PageSize+"");
+        map.put("api_version","3.2.0");
         map.put("member_id", user_Get.getId());
         map.put("last_id", lastid);
         map.put("type", type + "");
@@ -133,7 +135,8 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
     }
 
     private void IvData() {
-        FBGetHttpData(new HashMap<String, String>(), Constants.Property_Type, Request.Method.GET, 1, LOAD_INITIALIZE);
+        HashMap<String,String> map = new HashMap<String, String>();
+        FBGetHttpData(map, Constants.Property_Type, Request.Method.GET, 1, LOAD_INITIALIZE);
     }
 
     private void ICache() {
@@ -757,6 +760,13 @@ public class APropertyDetail extends ATitleBase implements IXListViewListener {
                     item.tv_trade_state.setText("返佣");
                     item.tv_record_money.setTextColor(getResources().getColor(R.color.app_fen));
                     item.tv_record_money.setText(String.format("+ %1$s元", StrUtils.SetTextForMony(data.get(arg0).getPrice())));
+
+                    break;
+
+                case 7:
+                    item.tv_trade_state.setText("正品险");
+                    item.tv_record_money.setTextColor(getResources().getColor(R.color.forestgreen));
+                    item.tv_record_money.setText(String.format("- %1$s元", StrUtils.SetTextForMony(data.get(arg0).getPrice())));
 
                     break;
 

@@ -41,6 +41,7 @@ import io.vtown.WeiTangApp.bean.bcomment.easy.main_sort.BLGoodsListData;
 import io.vtown.WeiTangApp.bean.bcomment.easy.mainsort.BSortCategory;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.DimensionPixelUtil;
@@ -107,6 +108,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     private BCMainSort sort_data;
     private View fragment_main_new_sort_nodata_layout;
     private boolean IShow = true;
+
     @Override
     public void InItView() {
         BaseView = LayoutInflater.from(BaseContext).inflate(R.layout.fragment_main_new_sort, null);
@@ -195,7 +197,6 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
     }
 
 
-
     /*
     * 设置二级分类数据
     * */
@@ -241,7 +242,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         super.onResume();
         if (IShow) {
             Log.i("homewave", "显示");
-            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
+            if (swipeToLoadLayout.isRefreshing()) swipeToLoadLayout.setRefreshing(false);
             PromptManager.closeLoading();
         }
 
@@ -252,17 +253,18 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         super.onHiddenChanged(hidden);
         if (hidden) {
             Log.i("homewave", "隐藏");
-            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
+            if (swipeToLoadLayout.isRefreshing()) swipeToLoadLayout.setRefreshing(false);
             IShow = false;
 
         } else {
             Log.i("homewave", "显示");
-            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
+            if (swipeToLoadLayout.isRefreshing()) swipeToLoadLayout.setRefreshing(false);
             PromptManager.closeLoading();
             IShow = true;
         }
 
     }
+
     /*
     * 设置BannerList数据
     * */
@@ -470,28 +472,31 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         @Override
         public void onPageChanged(int position, boolean visitStatus) {
             // PromptManager.ShowCustomToast(BaseContext, String.format("第%s页", position + ""));
-            if(swipeToLoadLayout.isRefreshing())swipeToLoadLayout.setRefreshing(false);
+            if (swipeToLoadLayout.isRefreshing()) swipeToLoadLayout.setRefreshing(false);
             if (0 == position) {
                 fSortNewHorizontalscrollviewLay.setVisibility(View.GONE);//全部就不显示二级分类
-                swipeTarget.smoothScrollTo(0,0);
+                swipeTarget.smoothScrollTo(0, 0);
                 current_category_id = "0";
                 mPage = 1;
                 IData(INITIALIZE);
                 current_type = TYPE_ALL;
             } else {
                 current_category_id = MainSortCategory.get(position - 1).getId();
-                swipeTarget.smoothScrollTo(0,0);
+                swipeTarget.smoothScrollTo(0, 0);
                 mPage = 1;
                 IData(INITIALIZE);
                 fSortNewHorizontalscrollviewLay.setVisibility(View.VISIBLE);
-                fSortNewHorizontalscrollview.smoothScrollBy(0,0);
+
+                fSortNewHorizontalscrollview.smoothScrollTo(0, 0);
+
+
                 current_type = TYPE_OTHER;
             }
 
         }
     }
 
-    @OnClick({R.id.f_main_new_new_sort_sou,R.id.rl_to_sort_top})
+    @OnClick({R.id.f_main_new_new_sort_sou, R.id.rl_to_sort_top})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.f_main_new_new_sort_sou:
@@ -618,7 +623,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             layout.removeAllViews();
             int view_width = (screenWidth - DimensionPixelUtil.dip2px(BaseContext, 0)) / 4;
             int good_size = 0;
-            if (goods.size() >2) {
+            if (goods.size() > 2) {
                 good_size = goods.size() + 1;
             } else {
                 good_size = goods.size();
@@ -640,7 +645,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
                     TextView item_main_sort_banner_goods_price = (TextView) view.findViewById(R.id.item_main_sort_banner_goods_price);
                     item_main_sort_banner_goods_img.setLayoutParams(img_params);
                     ImageLoaderUtil.Load2(blGoods.getCover(), item_main_sort_banner_goods_img, R.drawable.error_iv2);
-                    StrUtils.SetTxt(item_main_sort_banner_goods_name,StrUtils.isEmpty(blGoods.getShorttitle())?blGoods.getTitle(): blGoods.getShorttitle());
+                    StrUtils.SetTxt(item_main_sort_banner_goods_name, StrUtils.isEmpty(blGoods.getShorttitle()) ? blGoods.getTitle() : blGoods.getShorttitle());
                     StrUtils.SetTxt(item_main_sort_banner_goods_price, StrUtils.SetTextForMony(blGoods.getSell_price()) + "元");
                     view.setLayoutParams(viewparams);
                 } else {//添加查看更布局
@@ -657,7 +662,7 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (posotion == goods.size()&&posotion>=3) {//查看更多 第三个以及第三个以后的权威查看更多 1或者2个商品没有查看更多
+                    if (posotion == goods.size() && posotion >= 3) {//查看更多 第三个以及第三个以后的权威查看更多 1或者2个商品没有查看更多
 //                        BComment mBCommentss = new BComment(data.getId(),
 //                                data.getTitle());
 //                        PromptManager.SkipActivity(BaseActivity, new Intent(
@@ -728,7 +733,6 @@ public class FMainNewSort extends FBase implements OnLoadMoreListener, OnRefresh
         LinearLayout layout_line;
         @BindView(R.id.item_main_sort_banner_list_goods_horizontalscrollview)
         CustHScrollView item_main_sort_banner_list_goods_horizontalscrollview;
-
 
 
         BannerListHolder(View view) {

@@ -243,7 +243,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
     /**
      * 获取到数据时显示的布局
      */
-    private LinearLayout center_my_order_detail_outlay;
+    private RelativeLayout center_my_order_detail_outlay;
     /**
      * 获取数据失败时显示的布局
      */
@@ -409,7 +409,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
      */
     private void IView() {
 
-        center_my_order_detail_outlay = (LinearLayout) findViewById(R.id.center_my_order_detail_outlay);
+        center_my_order_detail_outlay = (RelativeLayout) findViewById(R.id.center_my_order_detail_outlay);
         center_my_order_detail_nodata_lay = findViewById(R.id.center_my_order_detail_nodata_lay);
         IDataView(center_my_order_detail_outlay,
                 center_my_order_detail_nodata_lay, NOVIEW_INITIALIZE);
