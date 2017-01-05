@@ -57,6 +57,7 @@ import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.ABrandDetail;
 import io.vtown.WeiTangApp.ui.title.AGoodDetail;
 import io.vtown.WeiTangApp.ui.title.AMyLeader;
+import io.vtown.WeiTangApp.ui.title.ANewSingn;
 import io.vtown.WeiTangApp.ui.title.AReturnDetail;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
 import io.vtown.WeiTangApp.ui.title.center.myinvitecode.AMyInviteCode;
@@ -377,8 +378,8 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
             UiHelper.SetShapeColor(fragmentNewhomeUsertag, getResources().getColor(R.color.app_fen1));
             fragmentNewhomeUsertag.setTextColor(getResources().getColor(R.color.white));
 //激活才能邀请好友未激活不能邀请好友
-            ((ImageView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(R.drawable.newhome_down_qian_1);
-            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.gray));
+//            ((ImageView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_iv)).setImageResource(R.drawable.newhome_down_qian_1);
+//            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.gray));
         } else {//未激活
             //设置shape的背景色和字体颜色
             UiHelper.SetShapeColor(fragmentNewhomeUsertag, getResources().getColor(R.color.app_line));
@@ -424,15 +425,15 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
 //        }
 
         //是否已经签到
-        if (Data.getIs_attendance() == 1) {// 已经签到
-            IsHomeSign = true;
-            SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
-            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.app_line));
-        } else {
-            IsHomeSign = false;
-            SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian);
-            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.gray));
-        }
+//        if (Data.getIs_attendance() == 1) {// 已经签到
+//            IsHomeSign = true;
+//            SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
+//            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.app_line));
+//        } else {
+//            IsHomeSign = false;
+//            SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao), R.drawable.newhome_down_qian);
+//            ((TextView) fragment_newhome_qian_lay.findViewById(R.id.comment_fragment_newhome_downlay_txt)).setTextColor(getResources().getColor(R.color.gray));
+//        }
 
     }
 
@@ -550,7 +551,7 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 break;
             case 10://开始签到
                 IsHomeSign = true;
-                SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
+//                SetDownLay(fragment_newhome_qian_lay, getResources().getString(R.string.newhome_qiandao1), R.drawable.newhome_down_qian_pre);
                 //需要进行缓存本地
                 INetData(LOADHind);
                 break;
@@ -669,10 +670,12 @@ public class FMainNewHome extends FBase implements View.OnClickListener, SwipeRe
                 }
 
                 if (Spuit.IsHaveActive_Get(BaseContext)) {//已经激活
-                    BeginSign();
+//                    BeginSign();
+                    PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ANewSingn.class));
                     return;
                 }
-                BeginSign();
+                PromptManager.SkipActivity(BaseActivity,new Intent(BaseActivity, ANewSingn.class));
+//                BeginSign();
                 break;
             case R.id.fragment_newhome_yaoqing_lay://邀请好友
 

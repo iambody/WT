@@ -109,10 +109,10 @@ public class Constants {
      * 功能介绍
      */
     public static String AppGongnneg_Url = "http://www.v-town.cc/guide.html";//"http://dev.vt.static.v-town.cn/v2/front/m/guide.html"; //
-/**
- * 正品保险
- */
-    public static String  GoodsInsurance_Url="https://h5.v-town.cc/pages/insurance.html";
+    /**
+     * 正品保险
+     */
+    public static String GoodsInsurance_Url = "https://h5.v-town.cc/pages/insurance.html";
     /**
      * 开发环境 的host
      */
@@ -1037,12 +1037,14 @@ public class Constants {
     /**
      * 获取积分明细筛选类型
      */
-    public static String Integral_Type = Host+ "/v1/member/point/get-type";
+    public static String Integral_Type = Host + "/v1/member/point/get-type";
 
     /**
      * 资金明细类型
      */
-    public static String Property_Type = Host+ "/v1/pay/capital/get-type";
+    public static String Property_Type = Host + "/v1/pay/capital/get-type";
+
+
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************

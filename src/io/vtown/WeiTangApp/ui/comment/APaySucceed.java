@@ -29,6 +29,8 @@ import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 public class APaySucceed extends ATitleBase {
     private BNew ShareBeanNew = null;
     public static final String Key_Oder = "odernumber";
+    public static final String Key_ShareBean = "sharebean";
+    public static final String Key_IsShareBean = "issharebean";
     private String OderNumber;
 
     @Override
