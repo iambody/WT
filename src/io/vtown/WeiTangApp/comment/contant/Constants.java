@@ -1044,7 +1044,10 @@ public class Constants {
      */
     public static String Property_Type = Host + "/v1/pay/capital/get-type";
 
-
+    /**
+     * 根据大订单获取内容
+     */
+    public static String OderNumbe_GetShareBean = "/v1/order/member/share-packet";
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************

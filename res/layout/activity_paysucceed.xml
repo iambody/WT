@@ -2,14 +2,101 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="#4c000000"
               android:orientation="vertical">
 
-    <include layout="@layout/titlebar"/>
+    <include
+        layout="@layout/titlebar"
+        android:visibility="gone"/>
 
-    <Button
-        android:id="@+id/activity_paysucceed_bt"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="点击分享成功"/>
+        android:layout_marginTop="@dimen/ui_80_dip"
+        android:orientation="vertical">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/paysuccessd_tiao_bg"/>
+            <!-- 上边相对浅红布局 -->
+            <RelativeLayout
+                android:id="@+id/paysucceed_up_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/ui_30_dip"
+                android:layout_marginRight="@dimen/ui_30_dip"
+                android:background="@drawable/paysuccessd_up_bg"
+                >
+
+                <TextView
+                    android:id="@+id/pay_succeed_mony"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="恭喜获得30元红包"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/ui_18_dip"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+            <!--上边相对浅红布局  -->
+            <!--下边相对白色布局  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@id/paysucceed_up_lay"
+                android:layout_marginLeft="@dimen/ui_35_dip"
+                android:layout_marginRight="@dimen/ui_35_dip"
+                android:background="@drawable/shap_paysuccessed_down_white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/ui_35_dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/paysuccessd_cent_iv_bg"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/share_wallet_to_freind"
+                    android:textColor="@drawable/gray"/>
+
+                <TextView
+                    android:id="@+id/paysucced_share_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/ui_40_dip"
+                    android:layout_marginRight="@dimen/ui_40_dip"
+                    android:layout_marginTop="@dimen/ui_20_dip"
+                    android:background="@drawable/select_paysucced_share_bt"
+                    android:clickable="true"
+                    android:paddingBottom="@dimen/ui_10_dip"
+                    android:paddingLeft="@dimen/ui_30_dip"
+                    android:paddingRight="@dimen/ui_30_dip"
+                    android:paddingTop="@dimen/ui_10_dip"
+                    android:text="分享"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/ui_20_dip"
+                    />
+            </LinearLayout>
+            <!--下边相对白色布局  -->
+        </RelativeLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>

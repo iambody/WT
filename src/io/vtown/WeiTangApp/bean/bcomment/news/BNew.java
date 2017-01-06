@@ -10,12 +10,13 @@ import io.vtown.WeiTangApp.bean.BBase;
 public class BNew extends BBase {
 	// 生成二维码分享********************
 	private String share_log;// ": "http://fs.v-town.cc/logo.png",
-	private String share_pic;// ": "http://fs.v-town.cc/qrcode/1db35b2bbd147f28f1ffffc1310d7693.jpg",
+
 	private String share_title;// ": "邀请下级",
-	private String share_content;// ": "永奎怀孕啦……",
+	private String share_content;// ": " ",
 	private String share_url;// ": "http://www.qq.com"
 	private String qrcode;
 	private String share_vido_url;//纯视频的合成播放视频网页的url
+	private String share_pic;// ": "http://fs.v-town.cc/qrcode/1db35b2bbd147f28f1ffffc1310d7693.jpg",
 	// 消息列表*********ANew****************************
 	private String id;// ": "219",
 	private String member_id;// ": "2",
