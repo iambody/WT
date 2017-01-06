@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+  android:layout_gravity="center"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_sign_right_01"
+        android:layout_width="wrap_content"
+        android:src="@drawable/pic_huisetangguo_nor"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_sign_right_point_01"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_sanhuidian_nor"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_sign_right_02"
+        android:layout_width="wrap_content"
+        android:src="@drawable/pic_huisetangguo_nor"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_sign_right_point_02"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_sanhuidian_nor"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_sign_right_03"
+        android:layout_width="wrap_content"
+        android:src="@drawable/pic_huisetangguo_nor"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_sign_right_point_03"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_sanhuidian_nor"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_sign_right_04"
+        android:layout_width="wrap_content"
+        android:src="@drawable/pic_huisetangguo_nor"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_sign_right_point_04"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_sanhuidian_nor"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_sign_right_05"
+        android:layout_width="wrap_content"
+        android:src="@drawable/pic_libao_nor"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

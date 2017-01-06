@@ -107,6 +107,16 @@ public class BComment extends BBase {
 	//
 	// }
 
+	private int sign_number;
+
+	public int getSign_number() {
+		return sign_number;
+	}
+
+	public void setSign_number(int sign_number) {
+		this.sign_number = sign_number;
+	}
+
 	public int getCart_num() {
 		return cart_num;
 	}

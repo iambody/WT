@@ -2,18 +2,24 @@ package io.vtown.WeiTangApp.ui.title;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.android.volley.Request;
 
 import java.util.HashMap;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
-import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
 /**
@@ -22,12 +28,30 @@ import io.vtown.WeiTangApp.ui.ATitleBase;
 
 public class ANewSingn extends ATitleBase {
 
+    @BindView(R.id.tv_sign)
+    TextView tvSign;
+    @BindView(R.id.tv_sign_days)
+    TextView tvSignDays;
+    @BindView(R.id.rl_sign_btn_layout)
+    RelativeLayout rlSignBtnLayout;
+    @BindView(R.id.iv_sign_piont_1)
+    ImageView ivSignPiont1;
+    @BindView(R.id.iv_sign_piont_2)
+    ImageView ivSignPiont2;
+    @BindView(R.id.iv_sign_piont_3)
+    ImageView ivSignPiont3;
+    @BindView(R.id.iv_sign_piont_4)
+    ImageView ivSignPiont4;
+    @BindView(R.id.iv_sign_piont_5)
+    ImageView ivSignPiont5;
     private BUser MyUser;
-    private TextView jj;
+    private Unbinder mBinder;
+
 
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_newsingn);
+        mBinder = ButterKnife.bind(this);
         MyUser = Spuit.User_Get(BaseContext);
         SetTitleHttpDataLisenter(this);
         IBaseView();
@@ -41,7 +65,13 @@ public class ANewSingn extends ATitleBase {
     }
 
     private void IBaseView() {
-        jj = (TextView) findViewById(R.id.jj);
+        View layout_sign_1 = findViewById(R.id.layout_sign_1);
+        View layout_sign_2 = findViewById(R.id.layout_sign_2);
+        View layout_sign_3 = findViewById(R.id.layout_sign_3);
+        View layout_sign_4 = findViewById(R.id.layout_sign_4);
+        View layout_sign_5 = findViewById(R.id.layout_sign_5);
+        View layout_sign_6 = findViewById(R.id.layout_sign_6);
+
     }
 
     @Override
@@ -51,7 +81,9 @@ public class ANewSingn extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
-        StrUtils.SetTxt(jj, Data.getHttpResultStr());
+        BComment bComment = JSON.parseObject(Data.getHttpResultStr(), BComment.class);
+        int sign_number = bComment.getSign_number();
+
     }
 
     @Override
@@ -75,8 +107,14 @@ public class ANewSingn extends ATitleBase {
     }
 
     @Override
+    @OnClick(R.id.rl_sign_btn_layout)
     protected void MyClick(View V) {
-
+        switch (V.getId()) {
+            case R.id.rl_sign_btn_layout:
+                if (CheckNet(BaseContext)) return;
+                IBaseNet();
+                break;
+        }
     }
 
     @Override
@@ -87,5 +125,11 @@ public class ANewSingn extends ATitleBase {
     @Override
     protected void SaveBundle(Bundle bundle) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mBinder.unbind();
     }
 }

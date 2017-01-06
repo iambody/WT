@@ -322,9 +322,6 @@ public class AMyCoupons extends ATitleBase {
 //				myCoupons.iv_coupons_item_bg = ViewHolder.get(arg1,
 //						R.id.iv_coupons_item_bg);
 
-                myCoupons.iv_my_coupons_used = ViewHolder.get(arg1,
-                        R.id.iv_my_coupons_used);
-
                 myCoupons.tv_my_coupons_price = ViewHolder.get(arg1,
                         R.id.tv_my_coupons_price);
                 myCoupons.tv_my_coupons_type = ViewHolder.get(arg1,
@@ -347,9 +344,6 @@ public class AMyCoupons extends ATitleBase {
                     validity, datas.get(arg0).getUsed_starttime(),
                     datas.get(arg0).getUsed_endtime()));
 
-            myCoupons.iv_my_coupons_used.setBackgroundResource(datas.get(arg0)
-                    .getStatus().equals("1") ? R.color.transparent
-                    : R.drawable.ic_buke_nor);
 //			myCoupons.iv_coupons_item_bg.setBackgroundResource(datas.get(arg0)
 //					.getStatus().equals("1") ? R.drawable.ico_kaquan_nor
 //					: R.drawable.ico_kaquan_press);
@@ -365,7 +359,6 @@ public class AMyCoupons extends ATitleBase {
         class MyCouponsItem {
             TextView tv_my_coupons_price, tv_my_coupons_type,
                     tv_my_coupons_validity,tv_coupons_donation;
-            ImageView iv_my_coupons_used;//iv_coupons_item_bg,
         }
 
     }
