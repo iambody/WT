@@ -14,6 +14,7 @@ public class BNew extends BBase {
 	private String share_title;// ": "邀请下级",
 	private String share_content;// ": " ",
 	private String share_url;// ": "http://www.qq.com"
+	private String sharing_url;
 	private String qrcode;
 	private String share_vido_url;//纯视频的合成播放视频网页的url
 	private String share_pic;// ": "http://fs.v-town.cc/qrcode/1db35b2bbd147f28f1ffffc1310d7693.jpg",
@@ -232,5 +233,13 @@ private String message_id;
 
 	public void setShare_vido_url(String share_vido_url) {
 		this.share_vido_url = share_vido_url;
+	}
+
+	public String getSharing_url() {
+		return sharing_url;
+	}
+
+	public void setSharing_url(String sharing_url) {
+		this.sharing_url = sharing_url;
 	}
 }
