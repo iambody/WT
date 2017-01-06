@@ -48,6 +48,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.OrderMenuData;
 import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BLCenterOder;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -783,7 +784,13 @@ public class ACenterMyOrder extends ATitleBase implements
 
                         }
                     }
-                    myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
+
+                    if (1 == data.getDraw_type()){
+                        myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
+                    }else{
+                        myItem.iv_share_red_packets.setVisibility(View.GONE);
+                    }
+
 
                     myItem.fragment_center_order_cancel_order
                             .setVisibility(View.GONE);
@@ -854,7 +861,11 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.fragment_center_order_apply_refunding
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
-                    myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
+                    if (1 == data.getDraw_type()){
+                        myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
+                    }else{
+                        myItem.iv_share_red_packets.setVisibility(View.GONE);
+                    }
                     break;
 
                 case PTuiKuan:
@@ -965,7 +976,11 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
-                    myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
+                    if (1 == data.getDraw_type()){
+                        myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
+                    }else{
+                        myItem.iv_share_red_packets.setVisibility(View.GONE);
+                    }
                     break;
 
                 case PCancel:// 订单已取消
@@ -1424,8 +1439,20 @@ public class ACenterMyOrder extends ATitleBase implements
             myItem.iv_share_red_packets.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Intent intent = new Intent(BaseContext, APaySucceed.class);
-                    intent.putExtra(APaySucceed.Key_Oder,blComment.getOrder_sn());
+                    String sharing_url = blComment.getSharing_url();
+                    if(StrUtils.isEmpty(sharing_url)){
+                        intent.putExtra(APaySucceed.Key_Oder,blComment.getOrder_sn());
+                    }else{
+                        BNew bNew = new BNew();
+                        bNew.setSharing_url(sharing_url);
+                        bNew.setShare_title("发红包了，赶快领取吧！");
+                        bNew.setShare_content(BaseContext.getResources().getString(R.string.invter_share_conten));
+                        bNew.setShare_log(blComment.getGoods().get(position).getCover());
+                        intent.putExtra(APaySucceed.Key_IsShareBean,true);
+                        intent.putExtra(APaySucceed.Key_ShareBean,bNew);
+                    }
                     PromptManager.SkipActivity(BaseActivity,intent);
                 }
             });

@@ -69,6 +69,25 @@ public class BDCenterOrderDetail extends BBase {
 	private String order_note;//"order_note": "12345678901234567890123456789012345678901234567890",
 	private String insurance;//"insurance": 0,
 
+	private String sharing_url;//"sharing_url": "http://dev.vt.m.v-town.cn/packet/share/index?invite_code=RNE3FL&packet_id=W4QbYKezqM",
+	private int draw_type;//"draw_type": 0,
+
+	public String getSharing_url() {
+		return sharing_url;
+	}
+
+	public void setSharing_url(String sharing_url) {
+		this.sharing_url = sharing_url;
+	}
+
+	public int getDraw_type() {
+		return draw_type;
+	}
+
+	public void setDraw_type(int draw_type) {
+		this.draw_type = draw_type;
+	}
+
 	public String getOrder_note() {
 		return order_note;
 	}

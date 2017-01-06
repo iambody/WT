@@ -30,6 +30,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.easy.centerorder.BDCenterOrderDetail;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.util.DateUtils;
@@ -515,7 +516,11 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 center_my_order_address.setEnabled(false);
                 ll_center_my_order_apply_refund_and_remind_send_out
                         .setVisibility(View.VISIBLE);
-                iv_detail_share_red_packets.setVisibility(View.VISIBLE);
+                if (1 == order_detail.getDraw_type()){
+                    iv_detail_share_red_packets.setVisibility(View.VISIBLE);
+                }else{
+                    iv_detail_share_red_packets.setVisibility(View.GONE);
+                }
 
                 break;
             case ACenterMyOrder.PDaiShou:// 待收货
@@ -523,7 +528,12 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 iv_right_arrow.setVisibility(View.GONE);
                 center_my_order_address.setEnabled(false);
                 ll_center_my_order_buy_agian_and_confirm.setVisibility(View.GONE);
-                iv_detail_share_red_packets.setVisibility(View.VISIBLE);
+                if (1 == order_detail.getDraw_type()){
+                    iv_detail_share_red_packets.setVisibility(View.VISIBLE);
+                }else{
+                    iv_detail_share_red_packets.setVisibility(View.GONE);
+                }
+
                 // ll_center_my_order_look_express_message.setVisibility(View.GONE);
                 break;
 
@@ -567,7 +577,11 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 center_my_order_address.setEnabled(false);
                 // ll_center_my_order_look_express_message.setVisibility(View.GONE);
                 tv_center_my_order_close_buy_agian.setVisibility(View.GONE);
-                iv_detail_share_red_packets.setVisibility(View.VISIBLE);
+                if (1 == order_detail.getDraw_type()){
+                    iv_detail_share_red_packets.setVisibility(View.VISIBLE);
+                }else{
+                    iv_detail_share_red_packets.setVisibility(View.GONE);
+                }
                 break;
 
         }
@@ -1105,9 +1119,22 @@ public class ACenterMyOrderDetail extends ATitleBase {
 //                break;
 
             case R.id.iv_detail_share_red_packets://红包
-                Intent intent11 = new Intent(BaseContext, APaySucceed.class);
-                intent11.putExtra(APaySucceed.Key_Oder,order_detail.getOrder_sn());
-                PromptManager.SkipActivity(BaseActivity,intent11);
+
+                Intent intent1 = new Intent(BaseContext, APaySucceed.class);
+                String sharing_url = order_detail.getSharing_url();
+                if(StrUtils.isEmpty(sharing_url)){
+                    intent1.putExtra(APaySucceed.Key_Oder,order_detail.getOrder_sn());
+                }else{
+                    BNew bNew = new BNew();
+                    bNew.setSharing_url(sharing_url);
+                    bNew.setShare_title("发红包了，赶快领取吧！");
+                    bNew.setShare_content(BaseContext.getResources().getString(R.string.invter_share_conten));
+                    bNew.setShare_log(order_detail.getGoods().get(0).getCover());
+                    intent1.putExtra(APaySucceed.Key_IsShareBean,true);
+                    intent1.putExtra(APaySucceed.Key_ShareBean,bNew);
+                }
+                PromptManager.SkipActivity(BaseActivity,intent1);
+
                 break;
         }
     }
