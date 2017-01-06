@@ -516,11 +516,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 center_my_order_address.setEnabled(false);
                 ll_center_my_order_apply_refund_and_remind_send_out
                         .setVisibility(View.VISIBLE);
-                if (1 == order_detail.getDraw_type()){
-                    iv_detail_share_red_packets.setVisibility(View.VISIBLE);
-                }else{
-                    iv_detail_share_red_packets.setVisibility(View.GONE);
-                }
+
 
                 break;
             case ACenterMyOrder.PDaiShou:// 待收货
@@ -528,11 +524,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 iv_right_arrow.setVisibility(View.GONE);
                 center_my_order_address.setEnabled(false);
                 ll_center_my_order_buy_agian_and_confirm.setVisibility(View.GONE);
-                if (1 == order_detail.getDraw_type()){
-                    iv_detail_share_red_packets.setVisibility(View.VISIBLE);
-                }else{
-                    iv_detail_share_red_packets.setVisibility(View.GONE);
-                }
+
 
                 // ll_center_my_order_look_express_message.setVisibility(View.GONE);
                 break;
@@ -577,11 +569,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 center_my_order_address.setEnabled(false);
                 // ll_center_my_order_look_express_message.setVisibility(View.GONE);
                 tv_center_my_order_close_buy_agian.setVisibility(View.GONE);
-                if (1 == order_detail.getDraw_type()){
-                    iv_detail_share_red_packets.setVisibility(View.VISIBLE);
-                }else{
-                    iv_detail_share_red_packets.setVisibility(View.GONE);
-                }
+
                 break;
 
         }
@@ -613,7 +601,11 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
         String name = getResources().getString(R.string.consignee_name_order);
 
-
+        if (1 == order_detail.getDraw_type()){
+            iv_detail_share_red_packets.setVisibility(View.VISIBLE);
+        }else{
+            iv_detail_share_red_packets.setVisibility(View.GONE);
+        }
         StrUtils.SetColorsTxt(BaseContext, tv_center_order_used_balance, R.color.app_gray, "使用余额：", String.format("%1$s元", StrUtils.SetTextForMony(order_detail2.getBalance_price())));
         StrUtils.SetColorsTxt(BaseContext, tv_center_order_used_coupons, R.color.app_gray, "使用卡券：", String.format("%1$s元", StrUtils.SetTextForMony(order_detail2.getCoupons_price())));
 
