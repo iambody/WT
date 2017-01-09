@@ -29,7 +29,7 @@ public class DashedLineView extends View {
         paint.setColor(Color.GRAY);//颜色可以自己设置
         Path path = new Path();
         path.moveTo(0, 0);//起始坐标
-        path.lineTo(900,0);//终点坐标
+        path.lineTo(1000,0);//终点坐标
         PathEffect effects = new DashPathEffect(new float[]{8, 8, 8, 8}, 1);//设置虚线的间隔和点的长度
         paint.setPathEffect(effects);
         canvas.drawPath(path, paint);

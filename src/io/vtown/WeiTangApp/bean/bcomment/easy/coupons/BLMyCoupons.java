@@ -15,6 +15,60 @@ public class BLMyCoupons extends BBase{
     // private String info;
     private String used_day;
     private String status;// 0:可有，1:可用
+    private String coupons_img;//"coupons_img": "http://dev.vt.h5.v-town.cn/images/invite11.jpg?app=3.1",
+    private String coupons_url;// "coupons_url": "http://dev.vt.m.v-town.cn/packet/share/conpons?invite_code=ZHN83H&coupons_id=313682&member_id=10014951&id=169",
+    private String coupons_type;//"coupons_type": "通用 ¥10.00",
+    private String apply_brands;//"apply_brands": "全部品牌",
+    private String apply_store;//"apply_store": 0,
+    private String apply_goods;// "apply_goods": 0,
+
+    public String getApply_store() {
+        return apply_store;
+    }
+
+    public void setApply_store(String apply_store) {
+        this.apply_store = apply_store;
+    }
+
+    public String getApply_goods() {
+        return apply_goods;
+    }
+
+    public void setApply_goods(String apply_goods) {
+        this.apply_goods = apply_goods;
+    }
+
+    public String getCoupons_img() {
+        return coupons_img;
+    }
+
+    public void setCoupons_img(String coupons_img) {
+        this.coupons_img = coupons_img;
+    }
+
+    public String getApply_brands() {
+        return apply_brands;
+    }
+
+    public void setApply_brands(String apply_brands) {
+        this.apply_brands = apply_brands;
+    }
+
+    public String getCoupons_type() {
+        return coupons_type;
+    }
+
+    public void setCoupons_type(String coupons_type) {
+        this.coupons_type = coupons_type;
+    }
+
+    public String getCoupons_url() {
+        return coupons_url;
+    }
+
+    public void setCoupons_url(String coupons_url) {
+        this.coupons_url = coupons_url;
+    }
 
     public String getCoupons_id() {
         return coupons_id;

@@ -5,6 +5,7 @@ import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
 import io.vtown.WeiTangApp.bean.bcomment.BUser;
 import io.vtown.WeiTangApp.bean.bcomment.easy.coupons.BLMyCoupons;
+import io.vtown.WeiTangApp.bean.bcomment.news.BNew;
 import io.vtown.WeiTangApp.comment.contant.CacheUtil;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
@@ -12,6 +13,7 @@ import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewHolder;
 import io.vtown.WeiTangApp.comment.view.listview.LListView;
+import io.vtown.WeiTangApp.comment.view.pop.PShare;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,9 +73,12 @@ public class AMyCoupons extends ATitleBase {
 
     private List<BLMyCoupons> listdata = new ArrayList<BLMyCoupons>();
 
+    private View mView;
+
     @Override
     protected void InItBaseView() {
-        setContentView(R.layout.activity_center_my_conpons);
+        mView =  LayoutInflater.from(BaseContext).inflate(R.layout.activity_center_my_conpons,null);
+        setContentView(mView);
         mBUser = Spuit.User_Get(getApplicationContext());
 
         GetRequst();
@@ -138,7 +144,7 @@ public class AMyCoupons extends ATitleBase {
 
 
         myConpousAdapter = new MyConpousAdapter(BaseContext,
-                R.layout.item_my_coupons_lv);
+                R.layout.item_my_coupons_lv2);
         lv_my_conpons_list.setAdapter(myConpousAdapter);
         lv_my_conpons_list.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -156,7 +162,6 @@ public class AMyCoupons extends ATitleBase {
             }
         });
     }
-
 
 
     @Override
@@ -313,7 +318,7 @@ public class AMyCoupons extends ATitleBase {
         }
 
         @Override
-        public View getView(int arg0, View arg1, ViewGroup arg2) {
+        public View getView(final int arg0, View arg1, ViewGroup arg2) {
 
             MyCouponsItem myCoupons = null;
             if (arg1 == null) {
@@ -324,11 +329,14 @@ public class AMyCoupons extends ATitleBase {
 
                 myCoupons.tv_my_coupons_price = ViewHolder.get(arg1,
                         R.id.tv_my_coupons_price);
-                myCoupons.tv_my_coupons_type = ViewHolder.get(arg1,
+                myCoupons.tv_coupons_type = ViewHolder.get(arg1,R.id.tv_coupons_type);
+                myCoupons.tv_my_coupons_name = ViewHolder.get(arg1,
                         R.id.tv_my_coupons_type);
-                myCoupons.tv_coupons_donation = ViewHolder.get(arg1,R.id.tv_coupons_donation);
+                myCoupons.tv_coupons_donation = ViewHolder.get(arg1, R.id.tv_coupons_donation);
                 myCoupons.tv_my_coupons_validity = ViewHolder.get(arg1,
                         R.id.tv_my_coupons_validity);
+                myCoupons.tv_apply_shops = ViewHolder.get(arg1,R.id.tv_apply_shops);
+                myCoupons.tv_look_all_shop = ViewHolder.get(arg1,R.id.tv_look_all_shop);
                 arg1.setTag(myCoupons);
             } else {
                 myCoupons = (MyCouponsItem) arg1.getTag();
@@ -336,7 +344,8 @@ public class AMyCoupons extends ATitleBase {
 
             StrUtils.SetTxt(myCoupons.tv_my_coupons_price,
                     StrUtils.SetTextForMony(datas.get(arg0).getCoupons_money()));
-            StrUtils.SetTxt(myCoupons.tv_my_coupons_type, datas.get(arg0)
+            StrUtils.SetTxt(myCoupons.tv_coupons_type,datas.get(arg0).getCoupons_type());
+            StrUtils.SetTxt(myCoupons.tv_my_coupons_name, datas.get(arg0)
                     .getCoupons_name());
             String validity = getString(R.string.my_coupons_validity);
 
@@ -344,21 +353,56 @@ public class AMyCoupons extends ATitleBase {
                     validity, datas.get(arg0).getUsed_starttime(),
                     datas.get(arg0).getUsed_endtime()));
 
+            if(IsFromOderBeing){
+
+                myCoupons.tv_coupons_donation.setVisibility(View.GONE);
+
+            }else{
+                myCoupons.tv_coupons_donation.setVisibility(View.VISIBLE);
+            }
+
+            if("0".equals(datas.get(arg0).getApply_store())){
+                StrUtils.SetTxt(myCoupons.tv_apply_shops,"全场通用");
+                myCoupons.tv_look_all_shop.setVisibility(View.GONE);
+
+            }else{
+                StrUtils.SetTxt(myCoupons.tv_apply_shops,"部分店铺可用"+datas.get(arg0).getApply_store());
+                myCoupons.tv_look_all_shop.setVisibility(View.VISIBLE);
+            }
+
 //			myCoupons.iv_coupons_item_bg.setBackgroundResource(datas.get(arg0)
 //					.getStatus().equals("1") ? R.drawable.ico_kaquan_nor
 //					: R.drawable.ico_kaquan_press);
             myCoupons.tv_coupons_donation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    PromptManager.ShowCustomToast(BaseContext,"转赠优惠券");
+                    BNew mBNew = new BNew();
+                    mBNew.setShare_url(datas.get(arg0).getCoupons_url());
+                    mBNew.setShare_content(StrUtils.isEmpty(datas.get(arg0).getCoupons_type()) ? BaseContext.getResources().getString(R.string.invter_share_conten) : datas.get(arg0).getCoupons_type());
+                    mBNew.setShare_title(mBUser.getSeller_name()+"分享了"+ datas.get(arg0).getCoupons_name());
+                    mBNew.setShare_log(datas.get(arg0).getCoupons_img());
+//                ShowP(mView, mBNew);
+                    PShare da = new PShare(BaseContext, mBNew, false);
+                    da.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
+
+                }
+            });
+
+            myCoupons.tv_look_all_shop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(BaseContext, ACouponsShop.class);
+                    intent.putExtra(ACouponsShop.KEY_COUPONS_NAME,datas.get(arg0).getCoupons_name());
+                    intent.putExtra(ACouponsShop.KEY_COUPONS_ID,datas.get(arg0).getCoupons_id());
+                    PromptManager.SkipActivity(BaseActivity,intent);
                 }
             });
             return arg1;
         }
 
         class MyCouponsItem {
-            TextView tv_my_coupons_price, tv_my_coupons_type,
-                    tv_my_coupons_validity,tv_coupons_donation;
+            TextView tv_my_coupons_price, tv_my_coupons_name,tv_coupons_type,tv_apply_shops,tv_look_all_shop,
+                    tv_my_coupons_validity, tv_coupons_donation;
         }
 
     }

@@ -92,17 +92,17 @@ public class ACouponsShop extends ATitleBase {
 
     @Override
     protected void NetConnect() {
-
+        NetError.setVisibility(View.GONE);
     }
 
     @Override
     protected void NetDisConnect() {
-
+        NetError.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void SetNetView() {
-
+        SetNetStatuse(NetError);
     }
 
     @Override
