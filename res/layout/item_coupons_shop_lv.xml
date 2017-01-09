@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <io.vtown.WeiTangApp.comment.view.CircleImageView
+        android:id="@+id/iv_conpons_shop_icon"
+        android:layout_width="@dimen/invite_friend_hright"
+        android:layout_height="@dimen/invite_friend_hright"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp" />
+
+
+    <TextView
+        android:id="@+id/tv_conpons_shop_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/tv_user_coupons"
+        android:layout_width="wrap_content"
+        style="@style/bt_textview"
+        android:text="立即使用"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="@dimen/order_list_button_txt"
+        android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>

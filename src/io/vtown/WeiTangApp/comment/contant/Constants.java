@@ -520,6 +520,11 @@ public class Constants {
     public static String CENTER_MY_COUPONS = Host + "/v1/coupons/coupons/list";
 
     /**
+     * 我的卡卷店铺
+     */
+    public static String CENTER_MY_COUPONS_SELLER = Host + "/v1/coupons/coupons/get-coupons-seller";
+
+    /**
      * 渠道管理页面
      */
     public static String SHOP_CHANNEL_MANAGE = Host + "/v1/seller/seller/sales";

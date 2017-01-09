@@ -39,6 +39,25 @@ public class BLAPropertyDetail extends BBase {
 	private String alipay;//"alipay": "",
 	private String bank_card;//"bank_card": "1000089563333396",
 
+	private String capital_type_name;//"capital_type_name": "购物",
+	private int capital_direction;//		"capital_direction": 2,
+
+	public String getCapital_type_name() {
+		return capital_type_name;
+	}
+
+	public void setCapital_type_name(String capital_type_name) {
+		this.capital_type_name = capital_type_name;
+	}
+
+	public int getCapital_direction() {
+		return capital_direction;
+	}
+
+	public void setCapital_direction(int capital_direction) {
+		this.capital_direction = capital_direction;
+	}
+
 	public String getGoods_id() {
 		return goods_id;
 	}

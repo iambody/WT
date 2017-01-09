@@ -46,7 +46,7 @@
                 android:padding="@dimen/center_my_conpons_look_over_time_coupons_txt_padding"
                 android:layout_centerVertical="true"
                 android:paddingTop="4dp"
-                android:text="查看失效卡券 >"
+                android:text="查看过期卡券 >"
                 android:textColor="@color/app_fen" />
         </RelativeLayout>
     </LinearLayout>

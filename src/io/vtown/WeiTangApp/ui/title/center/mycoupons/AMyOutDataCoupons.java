@@ -85,7 +85,7 @@ public class AMyOutDataCoupons extends ATitleBase {
 
     @Override
     protected void InitTile() {
-        SetTitleTxt("失效卡券");
+        SetTitleTxt("过期卡券");
     }
 
     @Override
@@ -95,7 +95,7 @@ public class AMyOutDataCoupons extends ATitleBase {
             IDataView(center_my_out_data_coupons_outlay, center_my_out_data_coupons_nodata_lay, NOVIEW_ERROR);
             center_my_out_data_coupons_nodata_lay.setClickable(false);
             //DataError(getResources().getString(R.string.error_null_over_coupons), Data.getHttpLoadType());
-           ShowErrorCanLoad(getResources().getString(R.string.error_null_over_coupons));
+            ShowErrorCanLoad(getResources().getString(R.string.error_null_over_coupons));
             return;
         }
 
@@ -140,7 +140,7 @@ public class AMyOutDataCoupons extends ATitleBase {
 
     @Override
     protected void MyClick(View V) {
-        switch (V.getId()){
+        switch (V.getId()) {
             case R.id.center_my_out_data_coupons_nodata_lay:
                 IData();
                 break;
@@ -205,10 +205,10 @@ public class AMyOutDataCoupons extends ATitleBase {
             }
 
             StrUtils.SetTxt(item.tv_my_out_data_coupons_price, String.format("%1$s", StrUtils.SetTextForMony(datas.get(position).getCoupons_money())));
-            StrUtils.SetTxt(item.tv_my_out_data_coupons_type, datas.get(position).getCoupons_name());
+            StrUtils.SetTxt(item.tv_my_out_data_coupons_type, datas.get(position).getCoupons_name()+"  已过期");
             String validity = getString(R.string.my_coupons_validity);
 
-            StrUtils.SetTxt(item.tv_my_out_data_coupons_validity, String.format(
+            StrUtils.SetTxt(item.tv_my_out_data_coupons_validity, "有效期:" + String.format(
                     validity, datas.get(position).getUsed_starttime(),
                     datas.get(position).getUsed_endtime()));
             return convertView;
