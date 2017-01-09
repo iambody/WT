@@ -166,7 +166,11 @@ public class CacheUtil {
     /*
     * 商城首页
     * */
-    private final static String  Sp_Main_Sort_Data = "sp_main_sort_data";
+    private final static String Sp_Main_Sort_Data = "sp_main_sort_data";
+    /**
+     * 签到时候的连续签到次数
+     */
+    private final static String Sp_Main_NewSign_Number = "sp_new_sign_number";
 
     /**
      * 缓存首页数据
@@ -587,7 +591,7 @@ public class CacheUtil {
      * @param walletStr
      */
     public static void Integral_Type_Save(Context pcContext,
-                                    String integral) {
+                                          String integral) {
         SharedPreferences Sp = pcContext.getSharedPreferences(
                 SP_Integral_Type_Lv, Context.MODE_PRIVATE);
         Editor editor = Sp.edit();
@@ -774,11 +778,10 @@ public class CacheUtil {
     }
 
 
-
     /**
      * 团队详情缓存获取
      */
-    public static String  Invite_Team_Get(Context mPContext) {
+    public static String Invite_Team_Get(Context mPContext) {
 
         SharedPreferences Sp = mPContext.getSharedPreferences(
                 Sp_My_Team, Context.MODE_PRIVATE);
@@ -835,7 +838,7 @@ public class CacheUtil {
      * 我的上级
      */
     public static void My_Super_Save(Context pContext,
-                                              String mysuper) {
+                                     String mysuper) {
         SharedPreferences Sp = pContext.getSharedPreferences(Sp_My_Super,
                 Context.MODE_PRIVATE);
         Editor editor = Sp.edit();
@@ -1046,6 +1049,22 @@ public class CacheUtil {
         SharedPreferences Sp = pContext.getSharedPreferences(Sp_Brand_Ls,
                 Context.MODE_PRIVATE);
         return Sp.getString("brandls", "");
+    }
+
+    /**
+     * 连续签到的次数
+     */
+//    Sp_Main_NewSign_Number
+    public static void Sign_Number_Save(Context PcContext, int Number) {
+        SharedPreferences sp = PcContext.getSharedPreferences(Sp_Main_NewSign_Number, Context.MODE_PRIVATE);
+        Editor editor = sp.edit();
+        editor.putInt("signnumber", Number);
+        editor.commit();
+    }
+
+    public static int Sign_Number_Get(Context pcontext) {
+        SharedPreferences sp = pcontext.getSharedPreferences(Sp_Main_NewSign_Number, Context.MODE_PRIVATE);
+        return sp.getInt("signnumber", 0);
     }
 }
 

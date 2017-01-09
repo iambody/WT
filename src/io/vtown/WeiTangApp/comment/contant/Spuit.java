@@ -168,6 +168,7 @@ public class Spuit {
         ShopBus_Save(XX, "");
         CacheUtil.NewHome_Save(XX, "");
         InvitationCode_Set(XX, false);
+        CacheUtil.Sign_Number_Save(XX, 0);
         //
         CacheUtil.ClearnCache(XX);// 清除列表的缓存
 
