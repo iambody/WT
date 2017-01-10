@@ -333,6 +333,7 @@ public class AMyCoupons extends ATitleBase {
                 myCoupons.tv_my_coupons_name = ViewHolder.get(arg1,
                         R.id.tv_my_coupons_type);
                 myCoupons.tv_coupons_donation = ViewHolder.get(arg1, R.id.tv_coupons_donation);
+                myCoupons.tv_coupons_other_donation = ViewHolder.get(arg1,R.id.tv_coupons_other_donation);
                 myCoupons.tv_my_coupons_validity = ViewHolder.get(arg1,
                         R.id.tv_my_coupons_validity);
                 myCoupons.tv_apply_shops = ViewHolder.get(arg1,R.id.tv_apply_shops);
@@ -361,15 +362,24 @@ public class AMyCoupons extends ATitleBase {
                 myCoupons.tv_coupons_donation.setVisibility(View.VISIBLE);
             }
 
-            if("0".equals(datas.get(arg0).getApply_store())){
-                StrUtils.SetTxt(myCoupons.tv_apply_shops,"全场通用");
+            if("全部品牌".equals(datas.get(arg0).getApply_brands())){
                 myCoupons.tv_look_all_shop.setVisibility(View.GONE);
 
             }else{
-                StrUtils.SetTxt(myCoupons.tv_apply_shops,"部分店铺可用"+datas.get(arg0).getApply_store());
                 myCoupons.tv_look_all_shop.setVisibility(View.VISIBLE);
             }
 
+            if(0 == datas.get(arg0).getDonation()){
+                myCoupons.tv_coupons_donation.setVisibility(View.VISIBLE);
+                myCoupons.tv_coupons_other_donation.setVisibility(View.GONE);
+            }else if(2 == datas.get(arg0).getDonation()){
+                myCoupons.tv_coupons_donation.setVisibility(View.GONE);
+                myCoupons.tv_coupons_other_donation.setVisibility(View.VISIBLE);
+            }else{
+                myCoupons.tv_coupons_donation.setVisibility(View.GONE);
+                myCoupons.tv_coupons_other_donation.setVisibility(View.GONE);
+            }
+            StrUtils.SetTxt(myCoupons.tv_apply_shops,"可用品牌："+datas.get(arg0).getApply_brands());
 //			myCoupons.iv_coupons_item_bg.setBackgroundResource(datas.get(arg0)
 //					.getStatus().equals("1") ? R.drawable.ico_kaquan_nor
 //					: R.drawable.ico_kaquan_press);
@@ -402,7 +412,7 @@ public class AMyCoupons extends ATitleBase {
 
         class MyCouponsItem {
             TextView tv_my_coupons_price, tv_my_coupons_name,tv_coupons_type,tv_apply_shops,tv_look_all_shop,
-                    tv_my_coupons_validity, tv_coupons_donation;
+                    tv_my_coupons_validity, tv_coupons_donation,tv_coupons_other_donation;
         }
 
     }

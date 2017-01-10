@@ -3,6 +3,7 @@ package io.vtown.WeiTangApp.ui.title.center.mycoupons;
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.BComment;
 import io.vtown.WeiTangApp.bean.bcomment.BLComment;
+import io.vtown.WeiTangApp.bean.bcomment.easy.coupons.BLMyCoupons;
 import io.vtown.WeiTangApp.comment.contant.Constants;
 import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
@@ -67,7 +68,7 @@ public class AMyOutDataCoupons extends ATitleBase {
         lv_my_out_data_conpons_list.setPullRefreshEnable(false);
         lv_my_out_data_conpons_list.setPullLoadEnable(false);
         lv_my_out_data_conpons_list.hidefoot();
-        outDataConponsAp = new OutDataConponsAdapter(R.layout.item_my_out_data_coupons_list);
+        outDataConponsAp = new OutDataConponsAdapter(R.layout.item_my_out_data_coupons_list2);
         lv_my_out_data_conpons_list.setAdapter(outDataConponsAp);
         center_my_out_data_coupons_nodata_lay.setOnClickListener(this);
     }
@@ -99,9 +100,9 @@ public class AMyOutDataCoupons extends ATitleBase {
             return;
         }
 
-        List<BLComment> list_data = new ArrayList<BLComment>();
+        List<BLMyCoupons> list_data = new ArrayList<BLMyCoupons>();
         try {
-            list_data = JSON.parseArray(Data.getHttpResultStr(), BLComment.class);
+            list_data = JSON.parseArray(Data.getHttpResultStr(),BLMyCoupons.class);
         } catch (Exception e) {
             DataError("解析失败", 0);
         }
@@ -159,7 +160,7 @@ public class AMyOutDataCoupons extends ATitleBase {
 
         private int ResourseID;
         private LayoutInflater inflater;
-        private List<BLComment> datas = new ArrayList<BLComment>();
+        private List<BLMyCoupons> datas = new ArrayList<BLMyCoupons>();
 
         public OutDataConponsAdapter(int ResourseID) {
             super();
@@ -167,7 +168,7 @@ public class AMyOutDataCoupons extends ATitleBase {
             this.inflater = LayoutInflater.from(BaseContext);
         }
 
-        public void RefreshData(List<BLComment> datas) {
+        public void RefreshData(List<BLMyCoupons> datas) {
             this.datas = datas;
             this.notifyDataSetChanged();
         }
@@ -205,7 +206,12 @@ public class AMyOutDataCoupons extends ATitleBase {
             }
 
             StrUtils.SetTxt(item.tv_my_out_data_coupons_price, String.format("%1$s", StrUtils.SetTextForMony(datas.get(position).getCoupons_money())));
-            StrUtils.SetTxt(item.tv_my_out_data_coupons_type, datas.get(position).getCoupons_name()+"  已过期");
+            if(1 == datas.get(position).getDonation()){
+                StrUtils.SetTxt(item.tv_my_out_data_coupons_type, datas.get(position).getCoupons_name()+"  已转赠");
+            }else{
+                StrUtils.SetTxt(item.tv_my_out_data_coupons_type, datas.get(position).getCoupons_name()+"  已过期");
+            }
+
             String validity = getString(R.string.my_coupons_validity);
 
             StrUtils.SetTxt(item.tv_my_out_data_coupons_validity, "有效期:" + String.format(

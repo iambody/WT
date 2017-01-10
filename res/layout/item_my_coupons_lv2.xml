@@ -122,8 +122,20 @@
                     android:background="@drawable/shape_daifu_daifa_btn_bg"
                     android:padding="@dimen/order_list_txt_padding"
                     android:text="转赠"
+                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:textSize="@dimen/order_list_button_txt" />
+
+                <TextView
+                    android:id="@+id/tv_coupons_other_donation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/order_list_txt_padding"
+                    android:text="领取他人转赠"
+                    android:textColor="@color/grey"
+                    android:visibility="gone"
+                    android:textSize="@dimen/order_list_button_txt" />
+
 
             </LinearLayout>
 
@@ -188,6 +200,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textColor="@color/grey"
              />
 

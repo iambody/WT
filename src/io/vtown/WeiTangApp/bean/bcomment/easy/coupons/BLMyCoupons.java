@@ -22,6 +22,16 @@ public class BLMyCoupons extends BBase{
     private String apply_store;//"apply_store": 0,
     private String apply_goods;// "apply_goods": 0,
 
+    private int donation;//是否可转赠
+
+    public int getDonation() {
+        return donation;
+    }
+
+    public void setDonation(int donation) {
+        this.donation = donation;
+    }
+
     public String getApply_store() {
         return apply_store;
     }

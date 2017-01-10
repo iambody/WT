@@ -19,7 +19,17 @@ public class BDataGood extends BBase {
 	private String attr_name;
 	private String fee;
 	private String score;
+	private String icon;
 	private BLDataGood attr_map=new BLDataGood();
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
 	public String getAttr_id() {
 		return attr_id;
 	}

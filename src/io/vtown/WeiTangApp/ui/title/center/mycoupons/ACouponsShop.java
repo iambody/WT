@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title.center.mycoupons;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,8 @@ import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.image.ImageLoaderUtil;
 import io.vtown.WeiTangApp.comment.view.CircleImageView;
 import io.vtown.WeiTangApp.ui.ATitleBase;
+import io.vtown.WeiTangApp.ui.title.ABrandDetail;
+import io.vtown.WeiTangApp.ui.ui.AShopDetail;
 
 /**
  * Created by Yihuihua on 2017/1/9.
@@ -80,14 +83,24 @@ public class ACouponsShop extends ATitleBase {
             return;
         }
         BCCouponsShop shop_data = JSON.parseObject(Data.getHttpResultStr(), BCCouponsShop.class);
-        mCouponsShopAdapter.setData(shop_data.getSellerList());
+        if (shop_data.getSellerList().size() == 1) {
+            BLCouponsShops blCouponsShops = shop_data.getSellerList().get(0);
+            Intent intent = new Intent(BaseContext, ABrandDetail.class);
+            BComment d = new BComment(blCouponsShops.getId(), blCouponsShops.getSeller_name());
+            intent.putExtra(BaseKey_Bean,d);
+            PromptManager.SkipActivity(BaseActivity, intent);
+            this.finish();
+        } else {
+            mCouponsShopAdapter.setData(shop_data.getSellerList());
+        }
+
 
     }
 
     @Override
     protected void DataError(String error, int LoadType) {
 
-        PromptManager.ShowCustomToast(BaseContext,error);
+        PromptManager.ShowCustomToast(BaseContext, error);
     }
 
     @Override
@@ -160,10 +173,20 @@ public class ACouponsShop extends ATitleBase {
             } else {
                 holder = (CouponsShopHolder) convertView.getTag();
             }
+           final BLCouponsShops blCouponsShops = sellerList.get(position);
+            ImageLoaderUtil.Load2(blCouponsShops.getCover(), holder.ivConponsShopIcon, R.drawable.error_iv2);
 
-            ImageLoaderUtil.Load2(sellerList.get(position).getCover(), holder.ivConponsShopIcon, R.drawable.error_iv2);
+            StrUtils.SetTxt(holder.tvConponsShopName, blCouponsShops.getSeller_name());
 
-            StrUtils.SetTxt(holder.tvConponsShopName, sellerList.get(position).getSeller_name());
+            holder.tvUserCoupons.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(BaseContext, ABrandDetail.class);
+                    BComment d = new BComment(blCouponsShops.getId(), blCouponsShops.getSeller_name());
+                    intent.putExtra(BaseKey_Bean,d);
+                    PromptManager.SkipActivity(BaseActivity, intent);
+                }
+            });
 
             return convertView;
         }
