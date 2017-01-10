@@ -362,12 +362,18 @@ public class AMyCoupons extends ATitleBase {
                 myCoupons.tv_coupons_donation.setVisibility(View.VISIBLE);
             }
 
-            if("全部品牌".equals(datas.get(arg0).getApply_brands())){
-                myCoupons.tv_look_all_shop.setVisibility(View.GONE);
+            if(!StrUtils.isEmpty(datas.get(arg0).getApply_brands())){
+                if("全部品牌".equals(datas.get(arg0).getApply_brands())){
+                    myCoupons.tv_look_all_shop.setVisibility(View.GONE);
 
+                }else{
+                    myCoupons.tv_look_all_shop.setVisibility(View.VISIBLE);
+                }
             }else{
-                myCoupons.tv_look_all_shop.setVisibility(View.VISIBLE);
+                myCoupons.tv_look_all_shop.setVisibility(View.GONE);
             }
+
+
 
             if(0 == datas.get(arg0).getDonation()){
                 myCoupons.tv_coupons_donation.setVisibility(View.VISIBLE);
