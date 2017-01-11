@@ -32,7 +32,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
 
                 android:text="@string/nullstr"
                 android:textColor="@color/grey"
@@ -43,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="bottom"
-                android:paddingBottom="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="元"
                 android:textColor="@color/grey"
                 android:textSize="10dp" />

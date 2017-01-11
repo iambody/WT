@@ -211,7 +211,7 @@
             android:layout_height="match_parent"
             android:textColor="@color/grey"
             android:paddingLeft="20dp"
-            android:text="查看可用店铺 >>" />
+            android:text="查看适用店铺 >>" />
 
     </LinearLayout>
 
