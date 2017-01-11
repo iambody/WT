@@ -36,7 +36,7 @@ public class BNew extends BBase {
     private String packet_name;
     private String packet_img;
     //    private String sharing_url;
-    private String packet_money;
+    private float packet_money;
 
     public String getMessage_id() {
         return message_id;
@@ -263,11 +263,11 @@ public class BNew extends BBase {
         this.packet_img = packet_img;
     }
 
-    public String getPacket_money() {
+    public float getPacket_money() {
         return packet_money;
     }
 
-    public void setPacket_money(String packet_money) {
+    public void setPacket_money(float packet_money) {
         this.packet_money = packet_money;
     }
 }

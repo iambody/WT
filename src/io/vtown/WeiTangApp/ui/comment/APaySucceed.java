@@ -45,13 +45,13 @@ public class APaySucceed extends ATitleBase {
     public static final String Key_Oder = "odernumber";
     public static final String Key_ShareBean = "sharebean";
     public static final String Key_IsShareBean = "issharebean";
-
+    public static final String Key_ShareMony = "sharemony";
     private boolean IsShareBean;
 
 
     private String OderNumber;
     private BUser MyUser;
-
+    private String ShareMony;
     //第一次进来需要获取数据封装好的bean
     private BNew HttpDataShareBeanNew = null;
     private View mView;
@@ -80,6 +80,7 @@ public class APaySucceed extends ATitleBase {
         if (IsShareBean) {
             ShareBeanNew = (BNew) getIntent().getSerializableExtra(Key_ShareBean);
             ShareBeanNew.setShare_url(ShareBeanNew.getSharing_url());
+
         } else if (getIntent().getExtras().containsKey(Key_Oder)) {
             OderNumber = getIntent().getStringExtra(Key_Oder);
         } else {
@@ -104,15 +105,16 @@ public class APaySucceed extends ATitleBase {
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
         String HttpData = Data.getHttpResultStr();
-        if (!StrUtils.isEmpty(HttpData)){
+        if (!StrUtils.isEmpty(HttpData)) {
+
             HttpDataShareBeanNew = JSON.parseObject(HttpData, BNew.class);
-            ShareBeanNew=new BNew();
+            StrUtils.SetTxt(pay_succeed_mony, String.format("恭喜获得%s元红包", (HttpDataShareBeanNew.getPacket_money() / 100) + ""));
+            ShareBeanNew = new BNew();
             ShareBeanNew.setShare_title(HttpDataShareBeanNew.getPacket_name());
             ShareBeanNew.setShare_log(HttpDataShareBeanNew.getPacket_img());
             ShareBeanNew.setShare_content(getResources().getString(R.string.share_lingqu));
             ShareBeanNew.setShare_url(HttpDataShareBeanNew.getSharing_url());
         }
-
 
 
     }

@@ -1052,7 +1052,7 @@ public class Constants {
     /**
      * 根据大订单获取内容
      */
-    public static String OderNumbe_GetShareBean = "/v1/order/member/share-packet";
+    public static String OderNumbe_GetShareBean =Host+ "/v1/order/member/share-packet";
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
     // 其他参数*******************************************************************
