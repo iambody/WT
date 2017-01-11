@@ -1111,7 +1111,8 @@ public class ACenterMyOrderDetail extends ATitleBase {
 //                break;
 
             case R.id.iv_detail_share_red_packets://红包
-
+                if (CheckNet(BaseContext))
+                    return;
                 Intent intent1 = new Intent(BaseContext, APaySucceed.class);
                 String sharing_url = order_detail.getSharing_url();
                 if(StrUtils.isEmpty(sharing_url)){

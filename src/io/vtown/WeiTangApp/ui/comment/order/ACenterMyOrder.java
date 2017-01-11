@@ -790,8 +790,6 @@ public class ACenterMyOrder extends ATitleBase implements
                     }else{
                         myItem.iv_share_red_packets.setVisibility(View.GONE);
                     }
-
-
                     myItem.fragment_center_order_cancel_order
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_pay_to.setVisibility(View.GONE);
@@ -1449,7 +1447,7 @@ public class ACenterMyOrder extends ATitleBase implements
                         bNew.setSharing_url(sharing_url);
                         bNew.setShare_title("发红包了，赶快领取吧！");
                         bNew.setShare_content(BaseContext.getResources().getString(R.string.invter_share_conten));
-                        bNew.setShare_log(blComment.getGoods().get(position).getCover());
+                        bNew.setShare_log(blComment.getGoods().get(0).getCover());
                         intent.putExtra(APaySucceed.Key_IsShareBean,true);
                         intent.putExtra(APaySucceed.Key_ShareBean,bNew);
                     }

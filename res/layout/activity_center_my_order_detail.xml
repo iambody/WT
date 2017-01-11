@@ -607,14 +607,14 @@
 <!--s-->
         <ImageView
             android:id="@+id/iv_detail_share_red_packets"
-            android:layout_width="60dp"
-            android:src="@drawable/ic_fanyong_nor"
+            android:layout_width="70dp"
+            android:src="@drawable/ic_red_packets_nor"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="70dp"
-            android:layout_height="60dp" />
+            android:layout_height="70dp" />
 
     </RelativeLayout>
 
