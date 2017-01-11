@@ -83,6 +83,8 @@ public class Constants {
 
     public static final String SucessToError = "successtoerror";
 
+    public static final String Share_Red_Packet_Log = "http://fs.v-town.cc/ic_hongbao200_nor.jpg";
+
     /**
      * 所有上传图片拍照图片必须要放在本文件夹里面
      */

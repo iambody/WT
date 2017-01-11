@@ -72,6 +72,15 @@ public class BDCenterOrderDetail extends BBase {
 	private String sharing_url;//"sharing_url": "http://dev.vt.m.v-town.cn/packet/share/index?invite_code=RNE3FL&packet_id=W4QbYKezqM",
 	private int draw_type;//"draw_type": 0,
 	private int packet_money;//"packet_money": 9500,
+	private String packet_img;
+
+	public String getPacket_img() {
+		return packet_img;
+	}
+
+	public void setPacket_img(String packet_img) {
+		this.packet_img = packet_img;
+	}
 
 	public int getPacket_money() {
 		return packet_money;

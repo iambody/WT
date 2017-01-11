@@ -601,7 +601,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
         String name = getResources().getString(R.string.consignee_name_order);
 
-        if (1 == order_detail.getDraw_type()){
+        if (0 == order_detail.getDraw_type()){
             iv_detail_share_red_packets.setVisibility(View.VISIBLE);
         }else{
             iv_detail_share_red_packets.setVisibility(View.GONE);
@@ -799,8 +799,8 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 || ACenterMyOrder.PClose == Order_status) {
             tv_center_order_good_express_title.setVisibility(View.VISIBLE);
 
-            if (express_data.size() == 0) {
-                tv_center_order_good_express_title.setVisibility(View.GONE);
+            if (express_data.size() == 0 ) {
+                StrUtils.SetTxt(tv_center_order_good_express_title, "物流状态："+order_detail2.getLogisticinfo());
             } else {
 
                 StrUtils.SetTxt(tv_center_order_good_express_title, "物流状态：");
@@ -1122,8 +1122,9 @@ public class ACenterMyOrderDetail extends ATitleBase {
                     bNew.setSharing_url(sharing_url);
                     bNew.setShare_title("发红包了，赶快领取吧！");
                     bNew.setShare_content(BaseContext.getResources().getString(R.string.invter_share_conten));
-                    bNew.setShare_log(order_detail.getGoods().get(0).getCover());
+                    bNew.setShare_log(Constants.Share_Red_Packet_Log);
                     intent1.putExtra(APaySucceed.Key_IsShareBean,true);
+                    intent1.putExtra(APaySucceed.Key_ShareMony,order_detail.getPacket_money());
                     intent1.putExtra(APaySucceed.Key_ShareBean,bNew);
                 }
                 PromptManager.SkipActivity(BaseActivity,intent1);

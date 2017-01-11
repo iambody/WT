@@ -785,7 +785,7 @@ public class ACenterMyOrder extends ATitleBase implements
                         }
                     }
 
-                    if (1 == data.getDraw_type()){
+                    if (0 == data.getDraw_type()){
                         myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
                     }else{
                         myItem.iv_share_red_packets.setVisibility(View.GONE);
@@ -859,7 +859,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.fragment_center_order_apply_refunding
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
-                    if (1 == data.getDraw_type()){
+                    if (0 == data.getDraw_type()){
                         myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
                     }else{
                         myItem.iv_share_red_packets.setVisibility(View.GONE);
@@ -974,7 +974,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
-                    if (1 == data.getDraw_type()){
+                    if (0 == data.getDraw_type()){
                         myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
                     }else{
                         myItem.iv_share_red_packets.setVisibility(View.GONE);
@@ -1447,8 +1447,9 @@ public class ACenterMyOrder extends ATitleBase implements
                         bNew.setSharing_url(sharing_url);
                         bNew.setShare_title("发红包了，赶快领取吧！");
                         bNew.setShare_content(BaseContext.getResources().getString(R.string.invter_share_conten));
-                        bNew.setShare_log(blComment.getGoods().get(0).getCover());
+                        bNew.setShare_log(Constants.Share_Red_Packet_Log);
                         intent.putExtra(APaySucceed.Key_IsShareBean,true);
+                        intent.putExtra(APaySucceed.Key_ShareMony,blComment.getPacket_money());
                         intent.putExtra(APaySucceed.Key_ShareBean,bNew);
                     }
                     PromptManager.SkipActivity(BaseActivity,intent);
