@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="恭喜获得30元红包"
+                    android:text="恭喜获得--元红包"
                     android:textColor="@color/white"
                     android:textSize="@dimen/ui_18_dip"
                     android:textStyle="bold"/>
