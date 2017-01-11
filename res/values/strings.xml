@@ -799,6 +799,8 @@
     <string name="signe">签到</string>
     <string name="share_wallet_to_freind">立刻分享红包给好友吧</string>
     <string name="signe_succeed">签到成功</string>
+    <string name="select_shareway">请选择分享方式</string>
+    <string name="share_lingqu">领取微糖商城惊喜礼包吧</string>
 
 
 </resources>

@@ -2,10 +2,13 @@ package io.vtown.WeiTangApp.ui.comment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.android.volley.Request;
 
 import java.util.HashMap;
@@ -25,6 +28,7 @@ import io.vtown.WeiTangApp.comment.contant.PromptManager;
 import io.vtown.WeiTangApp.comment.contant.Spuit;
 import io.vtown.WeiTangApp.comment.util.StrUtils;
 import io.vtown.WeiTangApp.comment.util.ViewUtils;
+import io.vtown.WeiTangApp.comment.view.pop.PShare;
 import io.vtown.WeiTangApp.ui.ATitleBase;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 
@@ -33,7 +37,6 @@ import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
  */
 
 public class APaySucceed extends ATitleBase {
-
     private TextView paysucced_share_bt;
     private TextView pay_succeed_mony;
 
@@ -49,9 +52,14 @@ public class APaySucceed extends ATitleBase {
     private String OderNumber;
     private BUser MyUser;
 
+    //第一次进来需要获取数据封装好的bean
+    private BNew HttpDataShareBeanNew = null;
+    private View mView;
+
     @Override
     protected void InItBaseView() {
         setContentView(R.layout.activity_paysucceed);
+        mView = LayoutInflater.from(this).inflate(R.layout.activity_paysucceed, null);
         MyUser = Spuit.User_Get(BaseContext);
         SetTitleHttpDataLisenter(this);
         InItMyBundle();
@@ -71,6 +79,7 @@ public class APaySucceed extends ATitleBase {
         IsShareBean = getIntent().getBooleanExtra(Key_IsShareBean, false);
         if (IsShareBean) {
             ShareBeanNew = (BNew) getIntent().getSerializableExtra(Key_ShareBean);
+            ShareBeanNew.setShare_url(ShareBeanNew.getSharing_url());
         } else if (getIntent().getExtras().containsKey(Key_Oder)) {
             OderNumber = getIntent().getStringExtra(Key_Oder);
         } else {
@@ -83,60 +92,9 @@ public class APaySucceed extends ATitleBase {
         paysucced_share_bt = (TextView) findViewById(R.id.paysucced_share_bt);
         pay_succeed_mony = (TextView) findViewById(R.id.pay_succeed_mony);
         paysucced_share_bt.setOnClickListener(this);
-        ShareSDK.initSDK(BaseContext);
+
     }
 
-    private void Share(int Type) {
-        if (!ViewUtils.isWeixinAvilible(BaseContext)) {
-            PromptManager.ShowCustomToast(BaseContext, "请先安装手机微信");
-            return;
-        }
-        Platform platform = null;
-        Platform.ShareParams sp = new Platform.ShareParams();
-        switch (Type) {
-            case 1:// 好友分享
-                platform = ShareSDK.getPlatform(BaseContext, Wechat.NAME);
-
-                sp.setShareType(Platform.SHARE_WEBPAGE);// SHARE_WEBPAGE);}
-                sp.setText(ShareBeanNew.getShare_content());
-                sp.setImageUrl(ShareBeanNew.getShare_log());
-                sp.setTitle(ShareBeanNew.getShare_title());//
-                sp.setUrl(ShareBeanNew.getShare_url());
-                break;
-            case 2:// 朋友圈分享
-                platform = ShareSDK.getPlatform(BaseContext, WechatMoments.NAME);
-
-                sp.setShareType(Platform.SHARE_WEBPAGE);// SHARE_WEBPAGE);}
-                sp.setText(ShareBeanNew.getShare_content());
-                sp.setImageUrl(ShareBeanNew.getShare_log());
-                sp.setTitle(ShareBeanNew.getShare_title());//
-                sp.setUrl(ShareBeanNew.getShare_url());
-                break;
-            default:
-                break;
-        }
-        platform.setPlatformActionListener(new PlatformActionListener() {
-
-            @Override
-            public void onError(Platform arg0, int arg1, Throwable arg2) {
-                PromptManager.ShowCustomToast(BaseContext, "分享取消");
-
-            }
-
-            @Override
-            public void onComplete(Platform arg0, int arg1,
-                                   HashMap<String, Object> arg2) {
-                PromptManager.ShowCustomToast(BaseContext, "分享完成");
-
-            }
-
-            @Override
-            public void onCancel(Platform arg0, int arg1) {
-
-            }
-        });
-        platform.share(sp);
-    }
 
     @Override
     protected void InitTile() {
@@ -145,6 +103,17 @@ public class APaySucceed extends ATitleBase {
 
     @Override
     protected void DataResult(int Code, String Msg, BComment Data) {
+        String HttpData = Data.getHttpResultStr();
+        if (!StrUtils.isEmpty(HttpData)){
+            HttpDataShareBeanNew = JSON.parseObject(HttpData, BNew.class);
+            ShareBeanNew=new BNew();
+            ShareBeanNew.setShare_title(HttpDataShareBeanNew.getPacket_name());
+            ShareBeanNew.setShare_log(HttpDataShareBeanNew.getPacket_img());
+            ShareBeanNew.setShare_content(getResources().getString(R.string.share_lingqu));
+            ShareBeanNew.setShare_url(HttpDataShareBeanNew.getSharing_url());
+        }
+
+
 
     }
 
@@ -172,7 +141,17 @@ public class APaySucceed extends ATitleBase {
     protected void MyClick(View V) {
         switch (V.getId()) {
             case R.id.paysucced_share_bt:
+                if (ShareBeanNew != null) {
+                    PShare da = new PShare(BaseContext, ShareBeanNew, false);
+                    da.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
+                    da.GetShareResult(new PShare.ShareResultIntface() {
+                        @Override
+                        public void ShareResult(int ResultType) {
+                            BaseActivity.finish();
 
+                        }
+                    });
+                }
 
                 break;
         }
