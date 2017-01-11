@@ -51,7 +51,7 @@ public class APaySucceed extends ATitleBase {
 
     private String OderNumber;
     private BUser MyUser;
-    private String ShareMony;
+    private int ShareMony = 0;
     //第一次进来需要获取数据封装好的bean
     private BNew HttpDataShareBeanNew = null;
     private View mView;
@@ -65,6 +65,9 @@ public class APaySucceed extends ATitleBase {
         InItMyBundle();
         IBaseInit();
         if (!IsShareBean) IDataNet();
+        if (IsShareBean)
+            StrUtils.SetTxt(pay_succeed_mony, String.format("恭喜获得%s元红包", (ShareMony / 100) + ""));
+
     }
 
     private void IDataNet() {//
@@ -80,7 +83,7 @@ public class APaySucceed extends ATitleBase {
         if (IsShareBean) {
             ShareBeanNew = (BNew) getIntent().getSerializableExtra(Key_ShareBean);
             ShareBeanNew.setShare_url(ShareBeanNew.getSharing_url());
-
+            ShareMony = getIntent().getIntExtra(Key_ShareMony, 0);
         } else if (getIntent().getExtras().containsKey(Key_Oder)) {
             OderNumber = getIntent().getStringExtra(Key_Oder);
         } else {
