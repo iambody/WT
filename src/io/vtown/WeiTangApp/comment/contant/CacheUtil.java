@@ -9,6 +9,10 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.text.Editable;
 
+import com.alibaba.fastjson.JSON;
+
+import java.util.List;
+
 /**
  * @author 作者 大兔兔 wangyongkui@v-town.cc
  * @version 创建时间：2016-7-29 下午2:37:27
@@ -171,6 +175,12 @@ public class CacheUtil {
      * 签到时候的连续签到次数
      */
     private final static String Sp_Main_NewSign_Number = "sp_new_sign_number";
+
+
+    /**
+     * 签到时候的连续签到方案
+     */
+    private final static String Sp_Main_Caption_Number = "sp_new_sign_Caption";
 
     /**
      * 缓存首页数据
@@ -1065,6 +1075,24 @@ public class CacheUtil {
     public static int Sign_Number_Get(Context pcontext) {
         SharedPreferences sp = pcontext.getSharedPreferences(Sp_Main_NewSign_Number, Context.MODE_PRIVATE);
         return sp.getInt("signnumber", 0);
+    }
+
+
+    /**
+     * 连续签到显示方案
+     */
+//    Sp_Main_NewSign_Number
+    public static void Sign_Caption_Save(Context PcContext, String captions) {
+        SharedPreferences sp = PcContext.getSharedPreferences(Sp_Main_Caption_Number, Context.MODE_PRIVATE);
+        Editor editor = sp.edit();
+
+        editor.putString("signcaptions", captions);
+        editor.commit();
+    }
+
+    public static String Sign_Caption_Get(Context pcontext) {
+        SharedPreferences sp = pcontext.getSharedPreferences(Sp_Main_Caption_Number, Context.MODE_PRIVATE);
+        return sp.getString("signcaptions","");
     }
 }
 

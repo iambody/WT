@@ -106,6 +106,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -115,7 +116,7 @@
                     android:layout_weight="1"
                     android:text="@string/nullstr" />
 
-                <TextView
+               <!-- <TextView
                     android:id="@+id/tv_coupons_donation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -124,7 +125,33 @@
                     android:text="转赠"
                     android:visibility="gone"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/order_list_button_txt" />
+                    android:textSize="@dimen/order_list_button_txt" />-->
+
+
+                <LinearLayout
+                    android:id="@+id/tv_coupons_donation"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+                    <ImageView
+
+                        android:layout_width="25dp"
+                        android:src="@drawable/center_iv3"
+                        android:visibility="visible"
+                        android:layout_height="25dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="转赠"
+                        android:textSize="11sp"
+                        android:textColor="@color/grey"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+
+
 
                 <TextView
                     android:id="@+id/tv_coupons_other_donation"

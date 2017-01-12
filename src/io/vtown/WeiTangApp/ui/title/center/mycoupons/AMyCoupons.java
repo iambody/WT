@@ -412,7 +412,9 @@ public class AMyCoupons extends ATitleBase {
 
         class MyCouponsItem {
             TextView tv_my_coupons_price, tv_my_coupons_name, tv_coupons_type, tv_apply_shops, tv_look_all_shop,
-                    tv_my_coupons_validity, tv_coupons_donation, tv_coupons_other_donation;
+                    tv_my_coupons_validity, tv_coupons_other_donation;
+
+            LinearLayout tv_coupons_donation;
         }
 
     }

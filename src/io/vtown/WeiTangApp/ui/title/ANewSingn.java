@@ -50,6 +50,16 @@ public class ANewSingn extends ATitleBase implements SwipeRefreshLayout.OnRefres
     ImageView ivSignPiont4;
     @BindView(R.id.iv_sign_piont_5)
     ImageView ivSignPiont5;
+    @BindView(R.id.tv_new_sign_tips1)
+    TextView tvNewSignTips1;
+    @BindView(R.id.tv_new_sign_tips2)
+    TextView tvNewSignTips2;
+    @BindView(R.id.tv_new_sign_tips3)
+    TextView tvNewSignTips3;
+    @BindView(R.id.tv_new_sign_tips4)
+    TextView tvNewSignTips4;
+    @BindView(R.id.tv_new_sign_tips5)
+    TextView tvNewSignTips5;
     private SwipeRefreshLayout new_sign_swiperefeshlayout;
     private View layout_sign_1, layout_sign_2, layout_sign_3, layout_sign_4, layout_sign_5, layout_sign_6;
     private List<View> LineViews = new ArrayList<>();
@@ -64,7 +74,8 @@ public class ANewSingn extends ATitleBase implements SwipeRefreshLayout.OnRefres
         MyUser = Spuit.User_Get(BaseContext);
         SetTitleHttpDataLisenter(this);
         IBaseView();
-        IResetView(CacheUtil.Sign_Number_Get(BaseContext));
+        //IResetView(CacheUtil.Sign_Number_Get(BaseContext));
+        showCaptions(CacheUtil.Sign_Caption_Get(BaseContext));
         IBaseNet(LOAD_INITIALIZE);
     }
 
@@ -103,10 +114,31 @@ public class ANewSingn extends ATitleBase implements SwipeRefreshLayout.OnRefres
             new_sign_swiperefeshlayout.setRefreshing(false);
         BComment bComment = JSON.parseObject(Data.getHttpResultStr(), BComment.class);
         int sign_number = bComment.getSign_number();
+        String captions = bComment.getCaption();
+
+        if(!captions.equals(CacheUtil.Sign_Caption_Get(BaseContext))){
+            CacheUtil.Sign_Caption_Save(BaseContext,captions);
+        }
+
+            showCaptions(captions);
+
+
         if (CacheUtil.Sign_Number_Get(BaseContext) != sign_number)
             PromptManager.ShowMyToast(BaseContext, getResources().getString(R.string.signe_succeed));
         CacheUtil.Sign_Number_Save(BaseContext, sign_number);
         IResetView(sign_number);
+    }
+
+    private void showCaptions(String captionstr) {
+        if(!StrUtils.isEmpty(captionstr)){
+            List<String> caption = JSON.parseArray(captionstr, String.class);
+            StrUtils.SetTxt(tvNewSignTips1,caption.get(0));
+            StrUtils.SetTxt(tvNewSignTips2,caption.get(1));
+            StrUtils.SetTxt(tvNewSignTips3,caption.get(2));
+            StrUtils.SetTxt(tvNewSignTips4,caption.get(3));
+            StrUtils.SetTxt(tvNewSignTips5,caption.get(4));
+        }
+
     }
 
     /**
@@ -369,4 +401,5 @@ public class ANewSingn extends ATitleBase implements SwipeRefreshLayout.OnRefres
         }
         IBaseNet(LOAD_REFRESHING);
     }
+
 }

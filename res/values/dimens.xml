@@ -273,7 +273,7 @@
     <!-- 查看过期卡券文字padding -->
     <dimen name="center_my_conpons_look_over_time_coupons_txt_padding">4dp</dimen>
     <!-- 卡券有效期的margin -->
-    <dimen name="center_my_conpons_my_coupons_validity_margin">20dp</dimen>
+    <dimen name="center_my_conpons_my_coupons_validity_margin">10dp</dimen>
     <!-- 卡券有效期的文字大小 -->
     <dimen name="center_my_conpons_my_coupons_validity_txt_size">13sp</dimen>
     <!-- 卡券是否可用图标padding -->

@@ -93,7 +93,7 @@
                             android:layout_below="@+id/line_qiandao"
                             android:layout_centerHorizontal="true"
 
-                            android:textColor="@color/app_fen"
+                            android:textColor="@color/app_fen2"
                             android:textSize="11sp"/>
 
                     </RelativeLayout>
@@ -324,9 +324,9 @@
                             android:src="@drawable/shape_gray_point"/>
 
                         <TextView
+                            android:id="@+id/tv_new_sign_tips1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="连续签到5、10、15、20、25、30天，自动领取微糖奖励。"
                             android:textColor="@color/grey"
                             android:textSize="11sp"/>
 
@@ -336,7 +336,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginBottom="@dimen/ui_10_dip"
                         android:orientation="horizontal"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp">
@@ -349,9 +348,83 @@
                             android:src="@drawable/shape_gray_point"/>
 
                         <TextView
+                            android:id="@+id/tv_new_sign_tips2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="忘记签到，将重新开始。"
+                            android:textColor="@color/grey"
+                            android:textSize="11sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="5dp"
+                            android:src="@drawable/shape_gray_point"/>
+
+                        <TextView
+                            android:id="@+id/tv_new_sign_tips3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey"
+                            android:textSize="11sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="5dp"
+                            android:src="@drawable/shape_gray_point"/>
+
+                        <TextView
+                            android:id="@+id/tv_new_sign_tips4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey"
+                            android:textSize="11sp"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="5dp"
+                            android:src="@drawable/shape_gray_point"/>
+
+                        <TextView
+                            android:id="@+id/tv_new_sign_tips5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:textColor="@color/grey"
                             android:textSize="11sp"/>
 

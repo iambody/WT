@@ -92,6 +92,9 @@ public class BComment extends BBase {
 	private List<BLComment> PT;
 	private List<BLComment> CG;
 
+	private String caption ;
+
+
 	// 个人中心 我的show里面
 	public BComment() {
 		super();
@@ -108,6 +111,14 @@ public class BComment extends BBase {
 	// }
 
 	private int sign_number;
+
+	public String getCaption() {
+		return caption;
+	}
+
+	public void setCaption(String caption) {
+		this.caption = caption;
+	}
 
 	public int getSign_number() {
 		return sign_number;
