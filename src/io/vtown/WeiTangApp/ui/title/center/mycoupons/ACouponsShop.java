@@ -60,6 +60,9 @@ public class ACouponsShop extends ATitleBase {
         lvMyConponsShopList.setAdapter(mCouponsShopAdapter);
     }
 
+    /*
+    * 获取网络数据
+    * */
     private void IData() {
         SetTitleHttpDataLisenter(this);
         HashMap<String, String> map = new HashMap<>();
@@ -87,7 +90,7 @@ public class ACouponsShop extends ATitleBase {
             BLCouponsShops blCouponsShops = shop_data.getSellerList().get(0);
             Intent intent = new Intent(BaseContext, ABrandDetail.class);
             BComment d = new BComment(blCouponsShops.getId(), blCouponsShops.getSeller_name());
-            intent.putExtra(BaseKey_Bean,d);
+            intent.putExtra(BaseKey_Bean, d);
             PromptManager.SkipActivity(BaseActivity, intent);
             this.finish();
         } else {
@@ -173,7 +176,7 @@ public class ACouponsShop extends ATitleBase {
             } else {
                 holder = (CouponsShopHolder) convertView.getTag();
             }
-           final BLCouponsShops blCouponsShops = sellerList.get(position);
+            final BLCouponsShops blCouponsShops = sellerList.get(position);
             ImageLoaderUtil.Load2(blCouponsShops.getCover(), holder.ivConponsShopIcon, R.drawable.error_iv2);
 
             StrUtils.SetTxt(holder.tvConponsShopName, blCouponsShops.getSeller_name());
@@ -183,7 +186,7 @@ public class ACouponsShop extends ATitleBase {
                 public void onClick(View v) {
                     Intent intent = new Intent(BaseContext, ABrandDetail.class);
                     BComment d = new BComment(blCouponsShops.getId(), blCouponsShops.getSeller_name());
-                    intent.putExtra(BaseKey_Bean,d);
+                    intent.putExtra(BaseKey_Bean, d);
                     PromptManager.SkipActivity(BaseActivity, intent);
                 }
             });
