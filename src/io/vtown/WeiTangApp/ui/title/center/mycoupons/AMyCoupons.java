@@ -356,13 +356,12 @@ public class AMyCoupons extends ATitleBase {
 
             if (IsFromOderBeing) {
                 myCoupons.tv_coupons_donation.setVisibility(View.GONE);
-
             } else {
                 myCoupons.tv_coupons_donation.setVisibility(View.VISIBLE);
             }
 
 
-            if ("0".equals(datas.get(arg0).getApply_store())) {
+            if ("0".equals(datas.get(arg0).getApply_brands())) {
                 myCoupons.tv_look_all_shop.setVisibility(View.GONE);
                 StrUtils.SetTxt(myCoupons.tv_apply_shops, "全场通用");
             } else {
