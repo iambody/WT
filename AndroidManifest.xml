@@ -652,7 +652,6 @@
 
         <activity
             android:name=".ui.title.center.mycoupons.AOrderCoupons"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <!-- activity的space************************************* -->
 

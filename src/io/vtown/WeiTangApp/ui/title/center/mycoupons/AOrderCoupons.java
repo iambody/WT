@@ -1,5 +1,6 @@
 package io.vtown.WeiTangApp.ui.title.center.mycoupons;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -111,6 +112,11 @@ public class AOrderCoupons extends ATitleBase implements AdapterView.OnItemClick
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         BLMyCoupons blMyCoupons = blMyCouponses.get(position);
+        Intent intent = new Intent();
+        intent.putExtra("coupresult", blMyCoupons);
+//					intent.putExtra("coupresult", blComment);
+        setResult(202, intent);
+        finish();
     }
 
     private class OrderCouponsAdapter extends BaseAdapter {

@@ -147,7 +147,7 @@ public class APaySucceed extends ATitleBase {
         switch (V.getId()) {
             case R.id.paysucced_share_bt:
                 if (ShareBeanNew != null) {
-                    PShare da = new PShare(BaseContext, ShareBeanNew, false);
+                    PShare da = new PShare(BaseContext, ShareBeanNew, true);
                     da.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
                     da.GetShareResult(new PShare.ShareResultIntface() {
                         @Override

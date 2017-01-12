@@ -25,6 +25,7 @@ import io.vtown.WeiTangApp.ui.comment.im.AChat;
 import io.vtown.WeiTangApp.ui.comment.im.AChatLoad;
 import io.vtown.WeiTangApp.ui.comment.order.ACenterMyOrder;
 import io.vtown.WeiTangApp.ui.title.center.mycoupons.AMyCoupons;
+import io.vtown.WeiTangApp.ui.title.center.mycoupons.AOrderCoupons;
 import io.vtown.WeiTangApp.ui.title.center.set.AAddressManage;
 
 import java.util.ArrayList;
@@ -249,7 +250,7 @@ public class AOderBeing extends ATitleBase {
     }
 
     private void IBase() {
-        oderbeing_insurance_price= (TextView) findViewById(R.id.oderbeing_insurance_price);
+        oderbeing_insurance_price = (TextView) findViewById(R.id.oderbeing_insurance_price);
         oderbeing_note_ed = (EditText) findViewById(R.id.oderbeing_note_ed);
         oderbering_view = findViewById(R.id.oderbering_view);
 
@@ -368,7 +369,7 @@ public class AOderBeing extends ATitleBase {
 //                            BaseActivity, ACenterMyOrder.class));
 //                    BaseActivity.finish();
                     PromptManager.SkipActivity(BaseActivity, new Intent(
-                            BaseActivity, APaySucceed.class).putExtra(APaySucceed.Key_Oder,data.getOrder_sn()));
+                            BaseActivity, APaySucceed.class).putExtra(APaySucceed.Key_Oder, data.getOrder_sn()));
                     BaseActivity.finish();
                 } else {
 
@@ -421,7 +422,7 @@ public class AOderBeing extends ATitleBase {
             StrUtils.SetTxt(oderbeing_coupons_nameprice, mBdComment.getCouponsNum() + "张可用卡券");
         }
 
-        StrUtils.SetTxt(oderbeing_insurance_price,mBdComment.getInsurance()/100+"元");
+        StrUtils.SetTxt(oderbeing_insurance_price, mBdComment.getInsurance() / 100 + "元");
         oderAp.FrashData(mBdComment.getList());
         // 判断地址数据是否为空
         addressBldComment = mBdComment.getAddress();
@@ -750,10 +751,13 @@ public class AOderBeing extends ATitleBase {
 
                 break;
             case R.id.oderbeing_coupons_lay:
-                if(CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
+                if (StrUtils.isEmpty(mBdComment.getCoupons_list())) {
+                    PromptManager.ShowCustomToast(BaseContext, getResources().getString(R.string.znawuyouhuiq));
+                    return;
+                }
                 PromptManager.SkipResultActivity(BaseActivity, new Intent(
-                        BaseActivity, AMyCoupons.class).putExtra(
-                        AMyCoupons.Tage_key, true), 201);
+                        BaseActivity, AOrderCoupons.class).putExtra(AOrderCoupons.COUPONS_STR_KEY, mBdComment.getCoupons_list()), 201);
 
                 // PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity,
                 // AMyCoupons.class).putExtra(AMyCoupons.Tage_key, true));
