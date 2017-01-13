@@ -71,7 +71,7 @@
     <ImageView
         android:id="@+id/iv_sign_right_05"
         android:layout_width="wrap_content"
-        android:src="@drawable/pic_libao_nor"
+        android:src="@drawable/qiandao_huise_libao"
         android:layout_gravity="center_vertical"
         android:layout_height="wrap_content" />
 

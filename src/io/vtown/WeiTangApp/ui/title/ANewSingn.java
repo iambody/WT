@@ -230,6 +230,7 @@ public class ANewSingn extends ATitleBase implements SwipeRefreshLayout.OnRefres
                 ((ImageView) OddLineView.findViewById(R.id.iv_sign_right_point_03)).setImageResource(R.drawable.ic_dandian_nor);
                 ((ImageView) OddLineView.findViewById(R.id.iv_sign_right_04)).setImageResource(R.drawable.pic_fensetangguo_nor);
                 ((ImageView) OddLineView.findViewById(R.id.iv_sign_right_point_04)).setImageResource(R.drawable.ic_dandian_nor);
+                ((ImageView) OddLineView.findViewById(R.id.iv_sign_right_05)).setImageResource(R.drawable.pic_libao_nor);
                 break;
 
         }
@@ -275,6 +276,7 @@ public class ANewSingn extends ATitleBase implements SwipeRefreshLayout.OnRefres
                 ((ImageView) OddLineView.findViewById(R.id.iv_sign_left_point_02)).setImageResource(R.drawable.ic_dandian_nor);
                 ((ImageView) OddLineView.findViewById(R.id.iv_sign_left_02)).setImageResource(R.drawable.pic_fensetangguo_nor);
                 ((ImageView) OddLineView.findViewById(R.id.iv_sign_left_point_01)).setImageResource(R.drawable.ic_dandian_nor);
+                ((ImageView) OddLineView.findViewById(R.id.iv_sign_left_01)).setImageResource(R.drawable.pic_libao_nor);
                 break;
         }
     }
