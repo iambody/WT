@@ -177,7 +177,7 @@ public class ACouponsShop extends ATitleBase {
                 holder = (CouponsShopHolder) convertView.getTag();
             }
             final BLCouponsShops blCouponsShops = sellerList.get(position);
-            ImageLoaderUtil.Load2(blCouponsShops.getCover(), holder.ivConponsShopIcon, R.drawable.error_iv2);
+            ImageLoaderUtil.Load2(blCouponsShops.getAvatar(), holder.ivConponsShopIcon, R.drawable.error_iv2);
 
             StrUtils.SetTxt(holder.tvConponsShopName, blCouponsShops.getSeller_name());
 

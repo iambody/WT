@@ -604,7 +604,7 @@ public class AAddNewShow extends ATitleBase implements CompoundButton.OnCheckedC
     //发show 的方法*********************************************************
     private void SendShow() {
         if(CheckNet(BaseContext))return;
-        PromptManager.showtextLoading3(this, getResources().getString(R.string.addgooding));
+        PromptManager.showtextLoading3(this, getResources().getString(R.string.loading));
         if (current_type == TYPE_PIC) {
             uploadPics(etAddNewShowTxtContent.getText().toString().trim());
         } else {

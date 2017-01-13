@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import io.vtown.WeiTangApp.R;
 import io.vtown.WeiTangApp.bean.bcomment.news.BMessage;
+import io.vtown.WeiTangApp.comment.contant.LogUtils;
 import io.vtown.WeiTangApp.ui.ABase;
 import io.vtown.WeiTangApp.ui.comment.recordervido.MovieRecorderView.OnRecordFinishListener;
 
@@ -49,10 +50,10 @@ public class ARecoderVido extends ABase {
                     mShootBtn
                             .setBackgroundResource(R.drawable.bg_movie_add_shoot_select);
                     mRecorderView.record(new OnRecordFinishListener() {
-
                         @Override
                         public void onRecordFinish() {
                             if (!success && mRecorderView.getTimeCount() < 10) {// 判断用户按下时间是否大于10秒
+                            LogUtils.i("************** ACTION_DOWN  mTimeCount **************" + mRecorderView.getTimeCount());
                                 success = true;
                                 handler.sendEmptyMessage(1);
                             }
@@ -62,6 +63,8 @@ public class ARecoderVido extends ABase {
                     mShootBtn
                             .setBackgroundResource(R.drawable.bg_movie_add_shoot);
                     if (mRecorderView.getTimeCount() > 3) {// 判断用户按下时间是否大于3秒
+
+                        LogUtils.i("************** ACTION_UP  mTimeCount **************" + mRecorderView.getTimeCount());
                         if (!success) {
                             success = true;
                             handler.sendEmptyMessage(1);
@@ -117,15 +120,18 @@ public class ARecoderVido extends ABase {
         @Override
         public void handleMessage(Message msg) {
             if (success) {
-                finishActivity();
+                finishActivity1();
             }
         }
     };
 
     // 视频录制结束后，跳转的函数
-    private void finishActivity() {
+    private void finishActivity1() {
         if (isFinish) {
+
             mRecorderView.stop();
+
+
 //			 Intent intent = new Intent(this, ARecoderSuccess.class);
 //			 Bundle bundle = new Bundle();
 //			 bundle.putString("text",

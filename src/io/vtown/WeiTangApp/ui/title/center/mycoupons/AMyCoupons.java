@@ -403,7 +403,7 @@ public class AMyCoupons extends ATitleBase {
                 public void onClick(View v) {
                     Intent intent = new Intent(BaseContext, ACouponsShop.class);
                     intent.putExtra(ACouponsShop.KEY_COUPONS_NAME, datas.get(arg0).getCoupons_name());
-                    intent.putExtra(ACouponsShop.KEY_COUPONS_ID, datas.get(arg0).getCoupons_id());
+                    intent.putExtra(ACouponsShop.KEY_COUPONS_ID, datas.get(arg0).getId());
                     PromptManager.SkipActivity(BaseActivity, intent);
                 }
             });

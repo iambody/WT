@@ -81,7 +81,7 @@ import io.vtown.WeiTangApp.ui.title.zhuanqu.ABrandShopShare;
  * @author home页面点击跳转品牌详情页
  * @version 创建时间：2016-4-27 下午3:23:22
  */
-public class ABrandDetail extends ATitleBase  implements OnLoadMoreListener {
+public class ABrandDetail extends ATitleBase implements OnLoadMoreListener {
 
     /**
      * 正常时候需要显示
@@ -187,15 +187,15 @@ public class ABrandDetail extends ATitleBase  implements OnLoadMoreListener {
      * view的初始化
      */
     private void IView() {
-        swipeToLoadLayout= (SwipeToLoadLayout) findViewById(R.id.swipeToLoadLayout);
+        swipeToLoadLayout = (SwipeToLoadLayout) findViewById(R.id.swipeToLoadLayout);
         swipeToLoadLayout.setRefreshEnabled(false);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         brand_detail_brand_collect_iv = (ImageView) findViewById(R.id.brand_detail_brand_collect_iv);
         brandshop_back_iv = (ImageView) findViewById(R.id.brandshop_back_iv);
         brandshop_sou_lay = (RelativeLayout) findViewById(R.id.brandshop_sou_lay);
+
         brandshop_connect_iv = (ImageView) findViewById(R.id.brandshop_connect_iv);
 //        brand_detail_brand_sou_iv = (ImageView) findViewById(R.id.brand_detail_brand_sou_iv);
-
 //        branddetail_banner = (ImageCycleView) findViewById(R.id.branddetail_banner);
         brand_detail_out_lay = (LinearLayout) findViewById(R.id.brand_detail_out_lay);
         brand_detail_nodata_lay = findViewById(R.id.brand_detail_nodata_lay);
@@ -289,7 +289,6 @@ public class ABrandDetail extends ATitleBase  implements OnLoadMoreListener {
             case 0:// 获取全部的信息
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     DataError(Constants.SucessToError, Data.getHttpLoadType());
-
                     return;
                 }
                 mBComment = new BShopBrand();
@@ -303,6 +302,7 @@ public class ABrandDetail extends ATitleBase  implements OnLoadMoreListener {
                     DataError(Msg, Data.getHttpLoadType());
                     return;
                 }
+
                 if (StrUtils.JsonContainKey(mJsonObject, "agent")) {
                     try {
                         if (!StrUtils.isEmpty(mJsonObject.getString("agent")))
@@ -359,7 +359,7 @@ public class ABrandDetail extends ATitleBase  implements OnLoadMoreListener {
                         NOVIEW_RIGHT);
                 break;
             case 1:// 获取分类列表数据
-                if(swipeToLoadLayout.isLoadingMore())swipeToLoadLayout.setLoadingMore(false);
+                if (swipeToLoadLayout.isLoadingMore()) swipeToLoadLayout.setLoadingMore(false);
                 if (StrUtils.isEmpty(Data.getHttpResultStr())) {
                     // DataError(Msg, Data.getHttpLoadType());
                     if (LOAD_LOADMOREING == Data.getHttpLoadType()) {
@@ -457,7 +457,7 @@ public class ABrandDetail extends ATitleBase  implements OnLoadMoreListener {
     protected void DataError(String error, int LoadTyp) {
         PromptManager.ShowCustomToast(BaseContext, error);
         IDataView(brand_detail_out_lay, brand_detail_nodata_lay, NOVIEW_ERROR);
-        if(swipeToLoadLayout.isLoadingMore())swipeToLoadLayout.setLoadingMore(false);
+        if (swipeToLoadLayout.isLoadingMore()) swipeToLoadLayout.setLoadingMore(false);
     }
 
     @Override
@@ -536,16 +536,26 @@ public class ABrandDetail extends ATitleBase  implements OnLoadMoreListener {
                 CollecNetDo(!IsCollect);
                 break;
             case R.id.brandshop_sou_lay://搜搜
-                if( CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
+                if (mBComment == null) {
+                    return;
+                }
+
                 if (mBComment.getAgent() == null) {
                     PromptManager.ShowCustomToast(BaseContext, "店铺没有商品，无法搜索");
                     return;
                 }
                 PromptManager.SkipActivity(BaseActivity, new Intent(BaseActivity, AShopGoodSou.class).putExtra("Sellid", mBComment.getBase().getId()).putExtra("Sellname", mBComment.getBase().getSeller_name()));
                 BaseApplication.GetInstance().setShopSouRecommend(mBComment.getAgent());
+
+
                 break;
             case R.id.brandshop_connect_iv:// 联系客服
-               if( CheckNet(BaseContext))return;
+                if (CheckNet(BaseContext)) return;
+
+                if (mBComment == null) {
+                    return;
+                }
                 if (!StrUtils.isEmpty(mBComment.getBase().getId()))
                     PromptManager.SkipActivity(
                             BaseActivity,
@@ -620,13 +630,10 @@ public class ABrandDetail extends ATitleBase  implements OnLoadMoreListener {
     };
 
 
-
     @Override
     protected void SaveBundle(Bundle bundle) {
 
     }
-
-
 
 
     /**

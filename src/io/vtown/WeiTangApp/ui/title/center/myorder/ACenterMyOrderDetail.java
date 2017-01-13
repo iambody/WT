@@ -601,7 +601,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
 
         String name = getResources().getString(R.string.consignee_name_order);
 
-        if (0 == order_detail.getDraw_type()){
+        if (1 == order_detail.getDraw_type()){
             iv_detail_share_red_packets.setVisibility(View.VISIBLE);
         }else{
             iv_detail_share_red_packets.setVisibility(View.GONE);

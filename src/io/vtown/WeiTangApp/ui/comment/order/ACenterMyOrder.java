@@ -785,11 +785,9 @@ public class ACenterMyOrder extends ATitleBase implements
                         }
                     }
 
-                    if (0 == data.getDraw_type()){
-                        myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
-                    }else{
+
                         myItem.iv_share_red_packets.setVisibility(View.GONE);
-                    }
+
                     myItem.fragment_center_order_cancel_order
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_pay_to.setVisibility(View.GONE);
@@ -859,11 +857,9 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.fragment_center_order_apply_refunding
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
-                    if (0 == data.getDraw_type()){
-                        myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
-                    }else{
+
                         myItem.iv_share_red_packets.setVisibility(View.GONE);
-                    }
+
                     break;
 
                 case PTuiKuan:
@@ -974,11 +970,9 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
-                    if (0 == data.getDraw_type()){
-                        myItem.iv_share_red_packets.setVisibility(View.VISIBLE);
-                    }else{
+
                         myItem.iv_share_red_packets.setVisibility(View.GONE);
-                    }
+
                     break;
 
                 case PCancel:// 订单已取消
