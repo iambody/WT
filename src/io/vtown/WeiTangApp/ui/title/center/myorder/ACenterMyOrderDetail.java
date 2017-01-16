@@ -535,7 +535,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 iv_right_arrow.setVisibility(View.GONE);
                 tv_center_my_order_refund_applying.setVisibility(View.VISIBLE);
                 iv_detail_share_red_packets.setVisibility(View.GONE);
-            break;
+                break;
 
             case ACenterMyOrder.PZhongCai:// 仲裁中。。。买家申请退款，卖家拒绝退款
                 center_my_order_address.setEnabled(false);
@@ -595,38 +595,42 @@ public class ACenterMyOrderDetail extends ATitleBase {
      * @param order_detail2
      */
     private void RefreshView(final BDCenterOrderDetail order_detail2) {
-
+        int Order_status = Integer.parseInt(order_detail2.getOrder_status());
         StrUtils.SetTxt(tv_center_my_order_shop_name,
                 order_detail2.getSeller_name());
 
         String name = getResources().getString(R.string.consignee_name_order);
-
-        if (1 == order_detail.getDraw_type()){
-            iv_detail_share_red_packets.setVisibility(View.VISIBLE);
-        }else{
+        if (Order_status == ACenterMyOrder.PYiFu || Order_status == ACenterMyOrder.PDaiShou || Order_status == ACenterMyOrder.PClose) {
+            if (0 == order_detail.getDraw_type()) {
+                iv_detail_share_red_packets.setVisibility(View.VISIBLE);
+            } else {
+                iv_detail_share_red_packets.setVisibility(View.GONE);
+            }
+        } else {
             iv_detail_share_red_packets.setVisibility(View.GONE);
         }
+
         StrUtils.SetColorsTxt(BaseContext, tv_center_order_used_balance, R.color.app_gray, "使用余额：", String.format("%1$s元", StrUtils.SetTextForMony(order_detail2.getBalance_price())));
         StrUtils.SetColorsTxt(BaseContext, tv_center_order_used_coupons, R.color.app_gray, "使用卡券：", String.format("%1$s元", StrUtils.SetTextForMony(order_detail2.getCoupons_price())));
 
-        if(!StrUtils.isEmpty(order_detail2.getOrder_note()) || !order_detail2.getInsurance().equals("0")){
+        if (!StrUtils.isEmpty(order_detail2.getOrder_note()) || !order_detail2.getInsurance().equals("0")) {
             ll_center_my_order_order_note_insurance.setVisibility(View.VISIBLE);
-            if(!StrUtils.isEmpty(order_detail2.getOrder_note())){
+            if (!StrUtils.isEmpty(order_detail2.getOrder_note())) {
                 ll_center_my_order_order_note.setVisibility(View.VISIBLE);
-                StrUtils.SetTxt(tv_center_my_order_order_note,order_detail2.getOrder_note());
-            }else{
+                StrUtils.SetTxt(tv_center_my_order_order_note, order_detail2.getOrder_note());
+            } else {
                 ll_center_my_order_order_note.setVisibility(View.GONE);
                 line_insurance_note.setVisibility(View.GONE);
             }
 
-            if(!order_detail2.getInsurance().equals("0")){
+            if (!order_detail2.getInsurance().equals("0")) {
                 ll_center_my_order_order_insurance.setVisibility(View.VISIBLE);
-                StrUtils.SetTxt(tv_center_my_order_order_insurance,"已购买正品保险");
-            }else{
+                StrUtils.SetTxt(tv_center_my_order_order_insurance, "已购买正品保险");
+            } else {
                 ll_center_my_order_order_insurance.setVisibility(View.GONE);
                 line_insurance_note.setVisibility(View.GONE);
             }
-        }else{
+        } else {
             ll_center_my_order_order_note_insurance.setVisibility(View.GONE);
         }
         //显示使用余额和卡券，只有金额不为0的时候才显示
@@ -648,7 +652,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
             ll_center_order_used_balance_and_coupons.setVisibility(View.GONE);
         }
 
-        int Order_status = Integer.parseInt(order_detail2.getOrder_status());
+
         if (ACenterMyOrder.PDaiFu == Order_status
                 || ACenterMyOrder.PCancel == Order_status) {
             StrUtils.SetTxt(tv_order_id, order_detail2.getOrder_sn());
@@ -657,10 +661,10 @@ public class ACenterMyOrderDetail extends ATitleBase {
         }
 
 
-        if(ACenterMyOrder.PDaiShou != Order_status){
+        if (ACenterMyOrder.PDaiShou != Order_status) {
             tv_center_my_order_confirm.setVisibility(View.GONE);
             tv_center_my_order_confirm.setEnabled(false);
-        }else{
+        } else {
             tv_center_my_order_confirm.setVisibility(View.VISIBLE);
             tv_center_my_order_confirm.setEnabled(true);
         }
@@ -693,8 +697,6 @@ public class ACenterMyOrderDetail extends ATitleBase {
         if (ACenterMyOrder.PYiFu == Order_status) {
             if ("0".equals(order_detail2.getRefund())) {
                 tv_center_my_order_apply_refund.setVisibility(View.VISIBLE);
-
-
 
 
                 if ("0".equals(order_detail2.getRemind_time())) {
@@ -750,7 +752,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
 //				StrUtils.SetTextForMony(order_detail2.getOrder_total_price())));
         float postageF = Float.parseFloat(order_detail2.getPostage());
         float good_priceF = Float.parseFloat(order_detail2.getGoods_price());
-        StrUtils.SetMoneyFormat(BaseContext, tv_center_my_order_total_price, (postageF+good_priceF)+"", 17);
+        StrUtils.SetMoneyFormat(BaseContext, tv_center_my_order_total_price, (postageF + good_priceF) + "", 17);
 
         String postage = String.format("(含运费%1$s元)",
                 StrUtils.SetTextForMony(postageF + ""));
@@ -799,8 +801,8 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 || ACenterMyOrder.PClose == Order_status) {
             tv_center_order_good_express_title.setVisibility(View.VISIBLE);
 
-            if (express_data.size() == 0 ) {
-                StrUtils.SetTxt(tv_center_order_good_express_title, "物流状态："+order_detail2.getLogisticinfo());
+            if (express_data.size() == 0) {
+                StrUtils.SetTxt(tv_center_order_good_express_title, "物流状态：" + order_detail2.getLogisticinfo());
             } else {
 
                 StrUtils.SetTxt(tv_center_order_good_express_title, "物流状态：");
@@ -818,7 +820,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                         BLComment item = (BLComment) centerExpressMessageAdapter.getItem(position);
                         if (!StrUtils.isEmpty(item.getContext())) {
                             final String telnum = StrUtils.getTelnum(item.getContext());
-                            if(!StrUtils.isEmpty(telnum)){
+                            if (!StrUtils.isEmpty(telnum)) {
                                 ShowCustomDialog("联系：" + telnum, "拨号", "取消", new IDialogResult() {
                                     @Override
                                     public void LeftResult() {
@@ -1115,19 +1117,19 @@ public class ACenterMyOrderDetail extends ATitleBase {
                     return;
                 Intent intent1 = new Intent(BaseContext, APaySucceed.class);
                 String sharing_url = order_detail.getSharing_url();
-                if(StrUtils.isEmpty(sharing_url)){
-                    intent1.putExtra(APaySucceed.Key_Oder,order_detail.getOrder_sn());
-                }else{
+                if (StrUtils.isEmpty(sharing_url)) {
+                    intent1.putExtra(APaySucceed.Key_Oder, order_detail.getOrder_sn());
+                } else {
                     BNew bNew = new BNew();
                     bNew.setSharing_url(sharing_url);
                     bNew.setShare_title("发红包了，赶快领取吧！");
                     bNew.setShare_content(BaseContext.getResources().getString(R.string.invter_share_conten));
                     bNew.setShare_log(Constants.Share_Red_Packet_Log);
-                    intent1.putExtra(APaySucceed.Key_IsShareBean,true);
-                    intent1.putExtra(APaySucceed.Key_ShareMony,order_detail.getPacket_money());
-                    intent1.putExtra(APaySucceed.Key_ShareBean,bNew);
+                    intent1.putExtra(APaySucceed.Key_IsShareBean, true);
+                    intent1.putExtra(APaySucceed.Key_ShareMony, order_detail.getPacket_money());
+                    intent1.putExtra(APaySucceed.Key_ShareBean, bNew);
                 }
-                PromptManager.SkipActivity(BaseActivity,intent1);
+                PromptManager.SkipActivity(BaseActivity, intent1);
 
                 break;
         }
