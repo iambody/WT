@@ -329,7 +329,7 @@ public class ACenterMyOrderNoPayDetail extends ATitleBase {
 
 	@Override
 	protected void InitTile() {
-		SetTitleTxt("未付款订单");
+		SetTitleTxt("订单详情");
 	}
 
 	@Override
