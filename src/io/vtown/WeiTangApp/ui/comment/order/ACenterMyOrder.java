@@ -200,6 +200,13 @@ public class ACenterMyOrder extends ATitleBase implements
         FiltIsPayOver();
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        FiltIsPayOver();
+    }
+
     private void FiltIsPayOver() {
         if (getIntent().getBooleanExtra(Tage_IsPayOver, false)) {
             PromptManager.SkipActivity(BaseActivity, new Intent(
