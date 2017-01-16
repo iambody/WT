@@ -392,7 +392,7 @@ public class AMyCoupons extends ATitleBase {
                     mBNew.setShare_title(mBUser.getSeller_name() + "分享了" + datas.get(arg0).getCoupons_name());
                     mBNew.setShare_log(datas.get(arg0).getCoupons_img());
 //                ShowP(mView, mBNew);
-                    PShare da = new PShare(BaseContext, mBNew, false);
+                    PShare da = new PShare(BaseContext, mBNew, true);
                     da.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
 
                 }
