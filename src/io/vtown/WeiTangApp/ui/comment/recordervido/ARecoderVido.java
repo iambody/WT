@@ -30,6 +30,7 @@ public class ARecoderVido extends ABase {
     private boolean isFinish = true;
     private boolean success = false;// 防止录制完成后出现多次跳转事件
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +53,8 @@ public class ARecoderVido extends ABase {
                     mRecorderView.record(new OnRecordFinishListener() {
                         @Override
                         public void onRecordFinish() {
-                            if (!success && mRecorderView.getTimeCount() < 10) {// 判断用户按下时间是否大于10秒
-                            LogUtils.i("************** ACTION_DOWN  mTimeCount **************" + mRecorderView.getTimeCount());
+                            if (!success && mRecorderView.getTimeCount() == 10) {// 判断用户按下时间是否大于10秒
+                                LogUtils.i("************** ACTION_DOWN  mTimeCount **************" + mRecorderView.getTimeCount());
                                 success = true;
                                 handler.sendEmptyMessage(1);
                             }
@@ -64,11 +65,13 @@ public class ARecoderVido extends ABase {
                             .setBackgroundResource(R.drawable.bg_movie_add_shoot);
                     if (mRecorderView.getTimeCount() > 3) {// 判断用户按下时间是否大于3秒
 
-                        LogUtils.i("************** ACTION_UP  mTimeCount **************" + mRecorderView.getTimeCount());
                         if (!success) {
                             success = true;
                             handler.sendEmptyMessage(1);
                         }
+
+                        LogUtils.i("************** > 3 ACTION_UP  mTimeCount **************" + mRecorderView.getTimeCount());
+
                     } else {
                         success = false;
                         if (mRecorderView.getmVecordFile() != null)
@@ -119,8 +122,11 @@ public class ARecoderVido extends ABase {
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+
             if (success) {
+
                 finishActivity1();
+
             }
         }
     };
@@ -142,9 +148,11 @@ public class ARecoderVido extends ABase {
             event.setReCordVidoPath(mRecorderView.getmVecordFile().toString());
             EventBus.getDefault().post(event);
             BaseActivity.finish();
+
         }
         success = false;
     }
+
 
     /**
      * 录制完成回调

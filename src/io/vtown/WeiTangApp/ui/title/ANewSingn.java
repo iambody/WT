@@ -60,6 +60,8 @@ public class ANewSingn extends ATitleBase implements SwipeRefreshLayout.OnRefres
     TextView tvNewSignTips4;
     @BindView(R.id.tv_new_sign_tips5)
     TextView tvNewSignTips5;
+    @BindView(R.id.tv_new_sign_tips6)
+    TextView tvNewSignTips6;
     private SwipeRefreshLayout new_sign_swiperefeshlayout;
     private View layout_sign_1, layout_sign_2, layout_sign_3, layout_sign_4, layout_sign_5, layout_sign_6;
     private List<View> LineViews = new ArrayList<>();
@@ -137,6 +139,7 @@ public class ANewSingn extends ATitleBase implements SwipeRefreshLayout.OnRefres
             StrUtils.SetTxt(tvNewSignTips3,caption.get(2));
             StrUtils.SetTxt(tvNewSignTips4,caption.get(3));
             StrUtils.SetTxt(tvNewSignTips5,caption.get(4));
+            StrUtils.SetTxt(tvNewSignTips6,caption.get(5));
         }
 
     }

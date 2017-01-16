@@ -258,7 +258,7 @@ public class MovieRecorderView extends LinearLayout implements OnErrorListener {
                     mProgressBar.setProgress(mTimeCount);// 设置进度条
                     if (mTimeCount == mRecordMaxTime) {// 达到指定时间，停止拍摄
                         LogUtils.i("************** run  mTimeCount **************" + mTimeCount);
-                        stop();
+                        //stop();
                         if (mOnRecordFinishListener != null)
                             mOnRecordFinishListener.onRecordFinish();
                     }
