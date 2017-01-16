@@ -79,7 +79,7 @@ import io.vtown.WeiTangApp.ui.ui.AShopDetail;
  * @version 创建时间：2016-8-18 下午1:37:57
  */
 public class ACenterMyOrder extends ATitleBase implements
-        RefreshLayout.OnLoadListener{
+        RefreshLayout.OnLoadListener {
     /**
      * 标记 分别是 全部，代付款，已付款，待收货，退货,关闭 订单状态 10:代付款 20:已付款 待发货 30:已发货 待收货 40:退款中
      * 50:仲裁处理中 100:已完成 110:已取消 60拒绝退款，70同意退款
@@ -161,6 +161,11 @@ public class ACenterMyOrder extends ATitleBase implements
     private HorizontalScrollMenu center_order_container;
     private List<OrderMenuData> menu_data;
 
+
+    public static final String Tage_IsPayOver = "tage_payover";
+    public static final String Tage_PayOderNumber = "tage_payodernumbe";
+
+
     // @Override
     // public void InItView() {
     //
@@ -192,6 +197,15 @@ public class ACenterMyOrder extends ATitleBase implements
 
         // 注册事件
         EventBus.getDefault().register(this, "OnGetMessage", BMessage.class);
+        FiltIsPayOver();
+    }
+
+    private void FiltIsPayOver() {
+        if (getIntent().getBooleanExtra(Tage_IsPayOver, false)) {
+            PromptManager.SkipActivity(BaseActivity, new Intent(
+                    BaseActivity, APaySucceed.class).putExtra(APaySucceed.Key_Oder, getIntent().getStringExtra(Tage_PayOderNumber)));
+
+        }
     }
 
     private void ICache() {
@@ -245,15 +259,15 @@ public class ACenterMyOrder extends ATitleBase implements
 
     }
 
-    private void setHorizontalMenu(){
+    private void setHorizontalMenu() {
         menu_data = new ArrayList<OrderMenuData>();
-        menu_data.add(new OrderMenuData("全部",PAll));
-        menu_data.add(new OrderMenuData("待付款",PDaiFu));
-        menu_data.add(new OrderMenuData("待发货",PYiFu));
-        menu_data.add(new OrderMenuData("待收货",PDaiShou));
-        menu_data.add(new OrderMenuData("退款/仲裁",PTuiKuan));
-        menu_data.add(new OrderMenuData("已完成",PClose));
-        menu_data.add(new OrderMenuData("已取消",PCancel));
+        menu_data.add(new OrderMenuData("全部", PAll));
+        menu_data.add(new OrderMenuData("待付款", PDaiFu));
+        menu_data.add(new OrderMenuData("待发货", PYiFu));
+        menu_data.add(new OrderMenuData("待收货", PDaiShou));
+        menu_data.add(new OrderMenuData("退款/仲裁", PTuiKuan));
+        menu_data.add(new OrderMenuData("已完成", PClose));
+        menu_data.add(new OrderMenuData("已取消", PCancel));
 
 
         center_order_container.setMenuItemPaddingLeft(50);
@@ -519,8 +533,6 @@ public class ACenterMyOrder extends ATitleBase implements
     }
 
 
-
-
     /**
      * 外层list的Ap
      *
@@ -550,7 +562,7 @@ public class ACenterMyOrder extends ATitleBase implements
         }
 
         public void removeData() {
-            this.datas .clear();
+            this.datas.clear();
             this.notifyDataSetChanged();
         }
 
@@ -786,7 +798,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     }
 
 
-                        myItem.iv_share_red_packets.setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.GONE);
 
                     myItem.fragment_center_order_cancel_order
                             .setVisibility(View.GONE);
@@ -858,7 +870,7 @@ public class ACenterMyOrder extends ATitleBase implements
                             .setVisibility(View.GONE);
                     myItem.fragment_center_order_is_get_integral.setVisibility(View.GONE);
 
-                        myItem.iv_share_red_packets.setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.GONE);
 
                     break;
 
@@ -971,7 +983,7 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.fragment_center_order_is_delaytime
                             .setVisibility(View.GONE);
 
-                        myItem.iv_share_red_packets.setVisibility(View.GONE);
+                    myItem.iv_share_red_packets.setVisibility(View.GONE);
 
                     break;
 
@@ -1096,9 +1108,9 @@ public class ACenterMyOrder extends ATitleBase implements
             int order_status = Integer.parseInt(data.getOrder_status());
             ControlView(myItem, data, order_status);
             ViewUtils.setAnimator(myItem.iv_share_red_packets);
-            if(PClose == order_status || PCancel == order_status || PAgreeTuiKuan == order_status || PTuikuanSuccess1 == order_status || PTuikuanSuccess2 == order_status || PTuikuanSuccess3 == order_status){
+            if (PClose == order_status || PCancel == order_status || PAgreeTuiKuan == order_status || PTuikuanSuccess1 == order_status || PTuikuanSuccess2 == order_status || PTuikuanSuccess3 == order_status) {
                 myItem.center_order_remove.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 myItem.center_order_remove.setVisibility(View.GONE);
             }
 
@@ -1120,7 +1132,6 @@ public class ACenterMyOrder extends ATitleBase implements
                     myItem.item_fragment_center_order_postage,
                     postageF == 0.0f ? "(免邮费)" : String.format("(含运费%1$s元)",
                             StrUtils.SetTextForMony(postageF + "")));
-
 
 
             myItem.item_fragment_center_order_ls
@@ -1240,7 +1251,6 @@ public class ACenterMyOrder extends ATitleBase implements
                             intent.putExtra("member_id", blComment.getMember_id());
                             intent.putExtra("seller_order_sn", blComment.getSeller_order_sn());
                             PromptManager.SkipActivity((Activity) BaseContext, intent);
-
 
 
                         }
@@ -1420,7 +1430,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
                         @Override
                         public void RightResult() {
-                            deleteOrder(blComment.getSeller_order_sn(),blComment.getMember_id());
+                            deleteOrder(blComment.getSeller_order_sn(), blComment.getMember_id());
                         }
                     });
 
@@ -1434,19 +1444,19 @@ public class ACenterMyOrder extends ATitleBase implements
 
                     Intent intent = new Intent(BaseContext, APaySucceed.class);
                     String sharing_url = blComment.getSharing_url();
-                    if(StrUtils.isEmpty(sharing_url)){
-                        intent.putExtra(APaySucceed.Key_Oder,blComment.getOrder_sn());
-                    }else{
+                    if (StrUtils.isEmpty(sharing_url)) {
+                        intent.putExtra(APaySucceed.Key_Oder, blComment.getOrder_sn());
+                    } else {
                         BNew bNew = new BNew();
                         bNew.setSharing_url(sharing_url);
                         bNew.setShare_title("发红包了，赶快领取吧！");
                         bNew.setShare_content(BaseContext.getResources().getString(R.string.invter_share_conten));
                         bNew.setShare_log(Constants.Share_Red_Packet_Log);
-                        intent.putExtra(APaySucceed.Key_IsShareBean,true);
-                        intent.putExtra(APaySucceed.Key_ShareMony,blComment.getPacket_money());
-                        intent.putExtra(APaySucceed.Key_ShareBean,bNew);
+                        intent.putExtra(APaySucceed.Key_IsShareBean, true);
+                        intent.putExtra(APaySucceed.Key_ShareMony, blComment.getPacket_money());
+                        intent.putExtra(APaySucceed.Key_ShareBean, bNew);
                     }
-                    PromptManager.SkipActivity(BaseActivity,intent);
+                    PromptManager.SkipActivity(BaseActivity, intent);
                 }
             });
 
@@ -1648,7 +1658,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
             final CenterOrderNoPayInsideAdapter centerOrderNoPayInside = new CenterOrderNoPayInsideAdapter(
                     R.layout.item_center_order_no_pay_inside, datas.get(
-                    position).getSon_order(),position);
+                    position).getSon_order(), position);
             centerOrderNoPay.item_fragment_center_order_no_pay_outside
                     .setAdapter(centerOrderNoPayInside);
             StrUtils.SetTxt(centerOrderNoPay.tv_center_order_no_pay_order_sn,
@@ -2009,7 +2019,7 @@ public class ACenterMyOrder extends ATitleBase implements
 
     @Override
     protected void InitTile() {
- //       mTitle = (TextView) findViewById(R.id.title);
+        //       mTitle = (TextView) findViewById(R.id.title);
         SetTitleTxt("我的订单");
 //        mDrawable = getResources().getDrawable(R.drawable.arrow_down);
 //        mDrawable.setBounds(0, 0, mDrawable.getMinimumWidth(),
@@ -2019,7 +2029,7 @@ public class ACenterMyOrder extends ATitleBase implements
     }
 
 
-    private void showNullDataLayout(int type){
+    private void showNullDataLayout(int type) {
         switch (type) {
 
             case PAll:
@@ -2355,7 +2365,7 @@ public class ACenterMyOrder extends ATitleBase implements
         @Override
         public List<String> getMenuItems() {
             List<String> item_title = new ArrayList<String>();
-            for(int i = 0; i< menu_data.size();i++){
+            for (int i = 0; i < menu_data.size(); i++) {
                 item_title.add(menu_data.get(i).getTitle());
             }
             return item_title;
@@ -2381,7 +2391,8 @@ public class ACenterMyOrder extends ATitleBase implements
         @Override
         public void onPageChanged(int position, boolean visitStatus) {
             // PromptManager.ShowCustomToast(BaseContext, String.format("第%s页", position + ""));
-            if(fragment_center_order_refrash.isRefreshing())fragment_center_order_refrash.setRefreshing(false);
+            if (fragment_center_order_refrash.isRefreshing())
+                fragment_center_order_refrash.setRefreshing(false);
             Ket_Tage = menu_data.get(position).getOrder_status();
             if (PDaiFu == Ket_Tage) {
                 fragment_center_order_ls.setAdapter(centerOrderNoPayAdapter);
