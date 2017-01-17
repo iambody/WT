@@ -313,8 +313,8 @@ public class ACenterMyOrderDetail extends ATitleBase {
     /**
      * 获取订单详情
      *
-     * @param member_id
-     * @param seller_order_sn
+     * @param
+     * @param
      */
     private void IData() {
         PromptManager.showtextLoading(BaseContext,
@@ -378,8 +378,8 @@ public class ACenterMyOrderDetail extends ATitleBase {
     /**
      * 延迟收货
      *
-     * @param seller_order_sn
-     * @param member_id
+     * @param
+     * @param
      */
     private void DelayReceive() {
         HashMap<String, String> map = new HashMap<String, String>();
@@ -393,8 +393,8 @@ public class ACenterMyOrderDetail extends ATitleBase {
     /**
      * 快速获取积分
      *
-     * @param seller_order_sn
-     * @param member_id
+     * @param
+     * @param
      */
     private void getIntegral() {
         HashMap<String, String> map = new HashMap<String, String>();
@@ -1122,6 +1122,7 @@ public class ACenterMyOrderDetail extends ATitleBase {
                 } else {
                     BNew bNew = new BNew();
                     bNew.setSharing_url(sharing_url);
+                    bNew.setShare_url(sharing_url);
                     bNew.setShare_title("发红包了，赶快领取吧！");
                     bNew.setShare_content(BaseContext.getResources().getString(R.string.invter_share_conten));
                     bNew.setShare_log(Constants.Share_Red_Packet_Log);
